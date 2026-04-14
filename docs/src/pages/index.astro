@@ -22,12 +22,12 @@ const samplePatterns = [
 ].filter(Boolean);
 
 const principles = [
-  { title: 'Strategy before pixels', desc: 'Understand the problem before designing the solution.' },
-  { title: 'Ethics as architecture', desc: 'Dark patterns are structural failures, not cosmetic ones.' },
-  { title: 'Research is a skill', desc: 'Don\'t assume. Investigate. Let evidence lead.' },
-  { title: 'Systems over screens', desc: 'Design the machinery, not just the interface.' },
-  { title: 'Depth over breadth', desc: 'Every skill should be deep enough to teach from.' },
-  { title: 'The intent carries through', desc: 'If you can\'t articulate the intent, the design is unexamined.' },
+  { title: 'The problem comes first', desc: 'Don\'t generate interfaces until you understand what you\'re solving. Research and strategy happen before anyone opens a design tool.' },
+  { title: 'Manipulative design is a defect', desc: 'Dark patterns aren\'t aggressive business tactics. They\'re bugs in the product. Intent catalogs 72+ of them so they get caught and fixed.' },
+  { title: 'Decisions need evidence', desc: 'Not gut feeling, not "best practice," not what the competitor did. Evidence from research, data, and observed user behavior.' },
+  { title: 'Systems over screens', desc: 'The interface is just the surface. The real design work is the services, data flows, and processes underneath it.' },
+  { title: 'Accessibility is a design discipline', desc: 'Not a compliance checklist bolted on at the end. It has its own methodology, its own skill, and it runs throughout the process.' },
+  { title: 'Unexamined design is decoration', desc: 'If you can\'t articulate the intent behind a decision, the decision isn\'t finished. Name the reason or rethink the choice.' },
 ];
 ---
 
@@ -39,9 +39,8 @@ const principles = [
         Design with <span class="hero__accent">Intent</span>
       </h1>
       <p class="hero__lede subtext">
-        A UX strategy system for AI tools. {skills.length} specialized skills
-        that give AI the context to approach design decisions with depth — research,
-        strategy, systems, flows, content, ethics, and measurement.
+        A UX strategy system for AI tools. {skills.length} skills covering research,
+        strategy, flows, content, accessibility, ethics, and measurement.
       </p>
       <div class="code-block hero__install">
         <span class="code-block__hint">Claude Code</span>
@@ -55,15 +54,16 @@ const principles = [
       <div class="section-content">
         <h2 id="philosophy-heading" class="visually-hidden">Philosophy</h2>
         <p class="lead">
-          Every design decision should have a reason. Not a guess, not a trend,
-          not "best practice" — a reason grounded in evidence, examined through
-          ethics, and carried through every layer of the experience.
+          AI tools are good at producing interfaces. They're bad at asking
+          whether the interface should exist, who it's for, or whether it
+          respects them. Intent fills that gap.
         </p>
         <p class="philosophy__body">
-          Intent doesn't make things look good. It makes things work right — for
-          the people who use them, not just the people who ship them. It's the
-          difference between decoration and design, between following patterns
-          and understanding why patterns exist.
+          It gives AI real design methodology. How to frame a problem. How
+          to run research. How to structure information, write clear copy,
+          evaluate quality, and catch manipulative patterns before they ship.
+          The kind of thinking a senior design team does before anyone opens
+          a design tool.
         </p>
       </div>
     </section>

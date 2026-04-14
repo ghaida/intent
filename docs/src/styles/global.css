@@ -287,26 +287,30 @@ a.link:hover {
 /* --- Code Blocks --- */
 
 .code-block {
-  background: var(--code-bg);
-  color: var(--code-fg);
-  font-family: var(--mono);
-  font-size: var(--text-xs);
-  line-height: 1.6;
-  padding: var(--s6);
-  border-radius: 6px;
-  overflow-x: auto;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
 }
 
 .code-block__hint {
-  position: absolute;
-  top: var(--s3);
-  right: var(--s4);
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: var(--blueprint-mark);
   letter-spacing: 0.04em;
   user-select: none;
+}
+
+.code-block code {
+  display: block;
+  background: var(--surface);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow-x: auto;
 }
 
 /* --- Skill Tag Chips --- */
