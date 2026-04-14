@@ -596,18 +596,14 @@ details[open] > summary::after {
 
 .nav-inner {
   display: flex;
-  align-items: stretch;
+  align-items: baseline;
   height: 56px;
-}
-
-.nav-inner > * {
-  display: flex;
-  align-items: center;
+  padding-top: 18px;
 }
 
 .nav-brand {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--s3);
   margin-right: auto;
 }
@@ -655,6 +651,7 @@ details[open] > summary::after {
 .nav-actions {
   display: flex;
   align-items: center;
+  align-self: center;
   gap: 0;
   margin-left: var(--s8);
 }
