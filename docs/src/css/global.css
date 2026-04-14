@@ -643,6 +643,11 @@ details[open] > summary::after {
   border-radius: 4px;
 }
 
+.nav-actions svg {
+  transform: translateY(1px);
+}
+}
+
 .theme-toggle:hover {
   color: var(--fg);
 }
