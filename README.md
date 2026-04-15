@@ -65,17 +65,18 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 ## Install
 
-**Claude Code (plugin):**
+**All platforms (Cursor, Claude Code, Codex CLI, and more):**
+```
+npx skills add ghaida/intent --all
+```
+
+**Claude Code plugin:**
 ```
 /plugin marketplace add ghaida/intent
 ```
-Then open `/plugin` in Claude Code to install. Skills become available as `/intent:strategize`, `/intent:evaluate`, etc.
+Then open `/plugin` in Claude Code to install.
 
-**Cursor:** Download the latest [Cursor release zip](https://github.com/ghaida/intent/releases) and extract `.cursor/rules/` to your project root.
-
-**VS Code Copilot:** Download the latest [Copilot release zip](https://github.com/ghaida/intent/releases) and extract `.github/` to your project root.
-
-**Manual (any platform):** Clone the repo and run `./build.sh` to generate distributions for all platforms.
+**Manual download:** Grab the latest zip from [releases](https://github.com/ghaida/intent/releases/latest).
 
 ## How to use
 
