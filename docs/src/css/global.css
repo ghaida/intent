@@ -1201,6 +1201,8 @@ tr[hidden] {
 
 .lifecycle {
   position: relative;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .lifecycle-flow {
@@ -1241,36 +1243,24 @@ tr[hidden] {
 }
 
 .lifecycle-sage {
-  margin-top: var(--s8);
-  display: flex;
-  align-items: center;
-  gap: var(--s4);
+  margin-top: var(--s6);
 }
 
 .lifecycle-sage-line {
-  flex: 1;
-  height: 1px;
-  background: repeating-linear-gradient(
-    to right,
-    var(--accent) 0,
-    var(--accent) 4px,
-    transparent 4px,
-    transparent 8px
-  );
-  max-width: 460px;
+  display: none;
 }
 
 .lifecycle-sage-node {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--s1);
+  justify-content: center;
+  gap: var(--s3);
   padding: var(--s4) var(--s6);
   border: 1px solid var(--accent);
   border-radius: 6px;
   background: var(--accent-subtle);
   text-align: center;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .lifecycle-sage-node .lifecycle-agent {
