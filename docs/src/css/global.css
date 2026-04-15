@@ -1153,8 +1153,7 @@ tr[hidden] {
 
   /* Home */
   .hero {
-    padding: var(--s24) 0 var(--s16);
-    padding-left: calc(var(--label-col) + var(--col-gap));
+    padding: var(--s24) 0 var(--s24);
   }
 
   .principles-grid {
@@ -1186,5 +1185,11 @@ tr[hidden] {
   .lifecycle-node {
     padding: var(--s4) var(--s6);
     min-width: 88px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-left: calc(var(--label-col) + var(--col-gap));
   }
 }
