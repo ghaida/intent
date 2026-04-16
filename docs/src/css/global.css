@@ -899,32 +899,31 @@ details[open] > summary::after {
 }
 
 .hero-how-to-use {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: var(--s2);
+  gap: var(--s4);
+  margin-bottom: var(--s8);
+  flex-wrap: wrap;
+}
+
+.hero-how-to-use-btn {
+  display: inline-block;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--accent);
+  color: white;
   text-decoration: none;
-  padding: var(--s3) var(--s5);
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  padding: var(--s2) var(--s5);
+  background: var(--accent);
   border-radius: 6px;
-  margin-bottom: var(--s8);
-  transition: background var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+  transition: opacity var(--duration) var(--ease-out);
 }
 
-.hero-how-to-use:hover {
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+.hero-how-to-use-btn:hover {
+  opacity: 0.85;
 }
 
-.hero-how-to-use svg {
-  transition: transform var(--duration) var(--ease-out);
-}
-
-.hero-how-to-use:hover svg {
-  transform: translateX(3px);
+.hero-how-to-use-desc {
+  font-size: var(--text-sm);
 }
 
 .hero-install-group {
