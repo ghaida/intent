@@ -1903,7 +1903,7 @@ tr[hidden] {
 
 .philosopher-callout {
   padding: var(--s5) var(--s5);
-  margin: var(--s6) 0;
+  margin: 0 0 var(--s12);
   border: 1px dashed var(--border);
   border-radius: 6px;
   font-size: var(--text-sm);
@@ -2020,6 +2020,7 @@ tr[hidden] {
 
   .philosopher-callout {
     margin-left: calc(var(--label-col) + var(--col-gap));
+    margin-bottom: var(--s16);
   }
 
   .output-panel {
