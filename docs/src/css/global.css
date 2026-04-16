@@ -1337,7 +1337,7 @@ tr[hidden] {
   top: 0;
   right: 0;
   width: 100%;
-  max-width: 640px;
+  max-width: 52vw;
   height: 100vh;
   background: var(--bg);
   border-left: 1px solid var(--border);
@@ -1385,7 +1385,7 @@ tr[hidden] {
 .output-panel-body {
   flex: 1;
   overflow-y: auto;
-  padding: var(--s6);
+  padding: var(--s6) var(--s8) var(--s16);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1424,12 +1424,34 @@ tr[hidden] {
   padding-left: var(--s5);
 }
 
+.step-output ul {
+  list-style: disc;
+}
+
+.step-output ol {
+  list-style: decimal;
+}
+
 .step-output li {
   margin-bottom: var(--s1);
+  list-style: inherit;
 }
 
 .step-output strong {
   color: var(--fg);
+}
+
+/* Bold-only paragraphs act as section headings */
+.step-output p > strong:only-child {
+  display: block;
+  font-size: var(--text-sm);
+  margin-top: var(--s5);
+  margin-bottom: var(--s1);
+  letter-spacing: 0.01em;
+}
+
+.step-output p:first-child > strong:only-child {
+  margin-top: 0;
 }
 
 .step-output table {
