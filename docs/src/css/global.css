@@ -1337,7 +1337,7 @@ tr[hidden] {
   top: 0;
   right: 0;
   width: 100%;
-  max-width: 52vw;
+  max-width: min(66.666vw, 960px);
   height: 100vh;
   background: var(--bg);
   border-left: 1px solid var(--border);
@@ -1385,7 +1385,7 @@ tr[hidden] {
 .output-panel-body {
   flex: 1;
   overflow-y: auto;
-  padding: var(--s6) var(--s8) var(--s16);
+  padding: var(--s6) var(--s8) 72px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1473,10 +1473,21 @@ tr[hidden] {
   color: var(--fg);
 }
 
-/* --- Visual Diagrams (inline in output panel) --- */
+/* --- Visual Diagrams (inline in output panel) ---
+   Design system for skill visual output. Consistent across all diagram types.
+
+   Tokens:
+   - Containers: var(--surface) bg, 1px solid var(--border), 8px radius
+   - Nodes: var(--bg) bg, 1px solid var(--border), 4px radius
+   - Active/endpoint nodes: var(--accent) border
+   - Labels: var(--mono), 10px uppercase, 0.06em tracking
+   - Node text: 11px/600 for titles, 10px for details
+   - Connectors: 1px solid var(--border), dashed for separation lines
+   - Metrics/annotations: var(--accent) for values, var(--fg-muted) for labels
+*/
 
 .visual-diagram {
-  margin: var(--s5) 0 var(--s8);
+  margin: 0 0 var(--s6);
   padding: var(--s5);
   background: var(--surface);
   border-radius: 8px;
@@ -1486,10 +1497,10 @@ tr[hidden] {
 
 .visual-label {
   font-family: var(--mono);
-  font-size: var(--text-xs);
+  font-size: 10px;
   font-weight: 600;
   color: var(--fg-muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   margin-bottom: var(--s4);
   text-transform: uppercase;
 }
@@ -1499,18 +1510,17 @@ tr[hidden] {
   display: flex;
   align-items: center;
   gap: 0;
-  padding: var(--s4) 0;
-  min-width: 500px;
+  padding: var(--s3) 0;
 }
 
 .flow-node {
-  flex-shrink: 0;
-  padding: var(--s3) var(--s4);
+  flex: 1;
+  padding: var(--s2) var(--s2);
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   text-align: center;
-  min-width: 80px;
+  min-width: 0;
 }
 
 .flow-node-step {
@@ -1518,11 +1528,11 @@ tr[hidden] {
   font-size: 10px;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 .flow-node-label {
-  font-size: var(--text-xs);
+  font-size: 11px;
   font-weight: 600;
   color: var(--fg);
 }
@@ -1530,7 +1540,7 @@ tr[hidden] {
 .flow-node-detail {
   font-size: 10px;
   color: var(--fg-muted);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .flow-node-icon {
@@ -1543,15 +1553,18 @@ tr[hidden] {
 .flow-start {
   border-color: var(--accent);
   border-width: 2px;
+  flex: 0 0 auto;
+  padding: var(--s2) var(--s3);
 }
 
 .flow-end {
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
 }
 
 .flow-arrow {
-  width: 20px;
+  width: 16px;
+  min-width: 16px;
   height: 1px;
   background: var(--border);
   flex-shrink: 0;
@@ -1563,9 +1576,7 @@ tr[hidden] {
   position: absolute;
   right: 0;
   top: -3px;
-  width: 0;
-  height: 0;
-  border-left: 5px solid var(--border);
+  border-left: 4px solid var(--border);
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
 }
@@ -1573,6 +1584,8 @@ tr[hidden] {
 .flow-gates {
   display: flex;
   padding-top: var(--s2);
+  gap: var(--s6);
+  padding-left: 15%;
 }
 
 .flow-gate {
@@ -1581,18 +1594,18 @@ tr[hidden] {
 
 .flow-gate-connector {
   width: 1px;
-  height: 12px;
+  height: 10px;
   background: var(--border);
   margin: 0 auto;
 }
 
 .flow-gate-diamond {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: var(--surface);
   border: 1px solid var(--border);
   transform: rotate(45deg);
-  margin: 0 auto var(--s1);
+  margin: 0 auto 4px;
 }
 
 .flow-gate-label {
@@ -1604,14 +1617,14 @@ tr[hidden] {
 .flow-gate-action {
   font-size: 10px;
   color: var(--fg-muted);
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .flow-metric {
-  margin-top: var(--s4);
+  margin-top: var(--s3);
   padding-top: var(--s3);
   border-top: 1px solid var(--border);
-  font-size: var(--text-xs);
+  font-size: 11px;
 }
 
 .flow-metric-value {
@@ -1625,7 +1638,7 @@ tr[hidden] {
 
 /* Blueprint diagram */
 .blueprint-lane {
-  padding: var(--s3) 0;
+  padding: var(--s2) 0;
 }
 
 .blueprint-lane-label {
@@ -1654,13 +1667,13 @@ tr[hidden] {
 }
 
 .blueprint-node {
-  flex-shrink: 0;
-  padding: var(--s2) var(--s3);
+  flex: 1;
+  padding: var(--s2) var(--s2);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 4px;
   text-align: center;
-  min-width: 72px;
+  min-width: 0;
 }
 
 .blueprint-node-step {
@@ -1681,7 +1694,8 @@ tr[hidden] {
 }
 
 .blueprint-connector {
-  width: 16px;
+  width: 12px;
+  min-width: 12px;
   height: 1px;
   background: var(--border);
   flex-shrink: 0;
@@ -1691,7 +1705,7 @@ tr[hidden] {
 .blueprint-line-of-visibility,
 .blueprint-line-of-support {
   border-top: 1px dashed var(--border);
-  padding: var(--s1) 0;
+  padding: 4px 0;
   text-align: right;
 }
 
@@ -1703,12 +1717,12 @@ tr[hidden] {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--fg-muted);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .blueprint-lane-services {
   display: flex;
-  gap: var(--s3);
+  gap: var(--s2);
   flex-wrap: wrap;
 }
 
@@ -1718,7 +1732,7 @@ tr[hidden] {
   border: 1px solid var(--border);
   border-radius: 4px;
   flex: 1;
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .blueprint-service-name {
@@ -1743,7 +1757,7 @@ tr[hidden] {
 }
 
 .blueprint-lane-support {
-  opacity: 0.65;
+  opacity: 0.6;
 }
 
 /* Site map diagram */
@@ -1751,11 +1765,11 @@ tr[hidden] {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: var(--s2) var(--s4);
+  padding: var(--s2) var(--s3);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  margin-bottom: var(--s5);
+  margin-bottom: var(--s4);
 }
 
 .sitemap-tab {
@@ -1783,8 +1797,8 @@ tr[hidden] {
 .sitemap-tab-post {
   background: var(--accent);
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1796,7 +1810,7 @@ tr[hidden] {
 }
 
 .sitemap-tree {
-  padding: var(--s3) 0;
+  padding: var(--s2) 0;
 }
 
 .sitemap-root {
@@ -1805,24 +1819,24 @@ tr[hidden] {
 
 .sitemap-root .sitemap-node-label {
   font-family: var(--mono);
-  font-size: var(--text-xs);
+  font-size: 11px;
   font-weight: 700;
   color: var(--fg);
 }
 
 .sitemap-branches {
   display: flex;
-  gap: var(--s3);
+  gap: var(--s2);
   flex-wrap: wrap;
 }
 
 .sitemap-branch {
   flex: 1;
-  min-width: 90px;
+  min-width: 85px;
 }
 
 .sitemap-node {
-  padding: var(--s2) var(--s3);
+  padding: var(--s2) var(--s2);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -1832,7 +1846,7 @@ tr[hidden] {
   margin-bottom: var(--s2);
   display: flex;
   align-items: center;
-  gap: var(--s2);
+  gap: var(--s1);
 }
 
 .sitemap-node-primary {
@@ -1854,9 +1868,9 @@ tr[hidden] {
 }
 
 .sitemap-children {
-  padding-left: var(--s3);
+  padding-left: var(--s2);
   border-left: 1px solid var(--border);
-  margin-left: var(--s3);
+  margin-left: var(--s2);
 }
 
 .sitemap-leaf {

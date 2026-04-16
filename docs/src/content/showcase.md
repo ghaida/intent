@@ -429,30 +429,6 @@ We organized Nearby around a simple principle: proximity first, category second.
 
 ### Output
 
-**Site Map**
-
-```
-Nearby
-├── Map (default home) ← primary navigation, always accessible
-│   ├── Item pins (thumbnail + price overlay)
-│   ├── Radius indicator + adjustment controls
-│   └── Item detail (sheet overlay, not page navigation)
-├── Feed (list view toggle)
-│   ├── Distance-grouped sections ("On your block" / "5-min walk" / "10-min walk")
-│   ├── Filter chips (category, price, recency)
-│   └── Search (pull-down, not prominent)
-├── Post (+) ← persistent FAB, opens camera
-│   └── Posting flow (camera → details → preview → publish)
-├── Activity
-│   ├── My Listings (active, pending interest, completed, expired)
-│   ├── My Interests (waiting, accepted, completed, expired)
-│   └── Pickup Coordination (active exchanges)
-└── Profile
-    ├── Neighborhood identity (tenure, exchange count, neighborhood name)
-    ├── Settings (location, notifications, privacy, radius default)
-    └── Help
-```
-
 **Navigation Specification**
 
 **Pattern selected: Hub-and-spoke with spatial primary**
