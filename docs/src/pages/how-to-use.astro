@@ -89,7 +89,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
   </div>
 
   <!-- Output panel (slides in from right) -->
-  <div class="output-panel" id="output-panel" aria-hidden="true">
+  <div class="output-panel" id="output-panel" role="dialog" aria-modal="true" aria-labelledby="output-panel-title" aria-hidden="true">
     <div class="output-panel-header">
       <span class="output-panel-title mono" id="output-panel-title"></span>
       <button class="output-panel-close" type="button" aria-label="Close panel">

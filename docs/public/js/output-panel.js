@@ -4,20 +4,46 @@
   var title = document.getElementById('output-panel-title');
   var body = document.getElementById('output-panel-body');
   var closeBtn = panel.querySelector('.output-panel-close');
+  var activeTrigger = null;
 
-  function open(skill) {
-    // Content is from our own build-time rendered HTML, not user input
+  function getFocusableElements() {
+    return panel.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+  }
+
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    var focusable = getFocusableElements();
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function open(skill, trigger) {
+    // Safe: source content is static HTML generated at build time by Astro
     var source = document.getElementById('output-' + skill);
     if (!source) return;
 
+    activeTrigger = trigger;
     title.textContent = '/' + skill;
-    // Safe: source content is static HTML generated at build time by Astro,
-    // not user-supplied input. No sanitization needed.
     body.innerHTML = source.innerHTML;
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    panel.addEventListener('keydown', trapFocus);
     closeBtn.focus();
   }
 
@@ -26,12 +52,17 @@
     panel.setAttribute('aria-hidden', 'true');
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    panel.removeEventListener('keydown', trapFocus);
+    if (activeTrigger) {
+      activeTrigger.focus();
+      activeTrigger = null;
+    }
   }
 
   // Trigger buttons
   document.querySelectorAll('.step-output-trigger').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      open(btn.dataset.skill);
+      open(btn.dataset.skill, btn);
     });
   });
 

@@ -34,6 +34,20 @@ const SKILL_CATEGORIES: Record<string, string> = {
   specify: 'Handoff',
 };
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function inlineMarkdown(text: string): string {
+  return escapeHtml(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
 function simpleMarkdown(text: string): string {
   const lines = text.split('\n');
   const html: string[] = [];
@@ -45,11 +59,29 @@ function simpleMarkdown(text: string): string {
     // Skip blank lines
     if (!line.trim()) { i++; continue; }
 
-    // Unordered list block
-    if (line.match(/^- /)) {
+    // Horizontal rule
+    if (line.trim().match(/^-{3,}$/)) {
+      html.push('<hr>');
+      i++;
+      continue;
+    }
+
+    // Headings (# syntax)
+    const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      // Offset by 3 since these are within an output block (h4-h6)
+      const tag = `h${Math.min(level + 3, 6)}`;
+      html.push(`<${tag}>${inlineMarkdown(headingMatch[2])}</${tag}>`);
+      i++;
+      continue;
+    }
+
+    // Unordered list block (supports indented sub-items)
+    if (line.match(/^\s*- /)) {
       const items: string[] = [];
-      while (i < lines.length && lines[i].match(/^- /)) {
-        items.push(`<li>${inlineMarkdown(lines[i].replace(/^- /, ''))}</li>`);
+      while (i < lines.length && lines[i].match(/^\s*- /)) {
+        items.push(`<li>${inlineMarkdown(lines[i].replace(/^\s*- /, ''))}</li>`);
         i++;
       }
       html.push(`<ul>${items.join('')}</ul>`);
@@ -73,8 +105,8 @@ function simpleMarkdown(text: string): string {
       let isHeader = true;
       while (i < lines.length && lines[i].includes('|') && lines[i].trim().startsWith('|')) {
         const cells = lines[i].split('|').filter(c => c.trim()).map(c => c.trim());
-        // Skip separator row (|---|---|)
-        if (lines[i].match(/^\|[\s-|]+\|$/)) { i++; isHeader = false; continue; }
+        // Skip separator row (|---|---| with optional trailing whitespace)
+        if (lines[i].trim().match(/^\|[\s-:|]+\|?\s*$/)) { i++; isHeader = false; continue; }
         const tag = isHeader ? 'th' : 'td';
         rows.push(`<tr>${cells.map(c => `<${tag}>${inlineMarkdown(c)}</${tag}>`).join('')}</tr>`);
         if (isHeader) isHeader = false;
@@ -86,7 +118,12 @@ function simpleMarkdown(text: string): string {
 
     // Paragraph (collect consecutive non-special lines)
     const paraLines: string[] = [];
-    while (i < lines.length && lines[i].trim() && !lines[i].match(/^- /) && !lines[i].match(/^\d+\. /) && !(lines[i].includes('|') && lines[i].trim().startsWith('|'))) {
+    while (i < lines.length && lines[i].trim()
+      && !lines[i].match(/^\s*- /)
+      && !lines[i].match(/^\d+\. /)
+      && !lines[i].trim().match(/^-{3,}$/)
+      && !lines[i].match(/^#{1,4}\s+/)
+      && !(lines[i].includes('|') && lines[i].trim().startsWith('|'))) {
       paraLines.push(lines[i]);
       i++;
     }
@@ -94,12 +131,6 @@ function simpleMarkdown(text: string): string {
   }
 
   return html.join('\n');
-}
-
-function inlineMarkdown(text: string): string {
-  return text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>');
 }
 
 export function loadShowcase(): ShowcaseProject {

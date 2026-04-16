@@ -1331,13 +1331,12 @@ tr[hidden] {
   font-size: var(--text-xs);
 }
 
-/* Output panel */
+/* Output panel — full-screen on mobile, 2/3 width on desktop */
 .output-panel {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
-  max-width: min(66.666vw, 960px);
   height: 100vh;
   background: var(--bg);
   border-left: 1px solid var(--border);
@@ -1452,6 +1451,12 @@ tr[hidden] {
 
 .step-output p:first-child > strong:only-child {
   margin-top: 0;
+}
+
+.step-output hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--s5) 0;
 }
 
 .step-output table {
@@ -1653,7 +1658,6 @@ tr[hidden] {
 .blueprint-lane-nodes {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
 .blueprint-node {
@@ -1988,6 +1992,10 @@ tr[hidden] {
 
   .philosopher-callout {
     margin-left: calc(var(--label-col) + var(--col-gap));
+  }
+
+  .output-panel {
+    max-width: min(66.666vw, 960px);
   }
 }
 
