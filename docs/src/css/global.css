@@ -1273,6 +1273,94 @@ tr[hidden] {
   border-top: 1px solid var(--border);
 }
 
+/* --- How to Use --- */
+
+.how-to-use-hero {
+  padding: var(--s16) 0 var(--s8);
+}
+
+.showcase-premise {
+  margin-top: var(--s6);
+  padding: var(--s4) var(--s5);
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.step-summary {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--s2);
+}
+
+.step-narrative {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+  margin-bottom: var(--s4);
+}
+
+.step-output-label {
+  font-size: var(--text-sm);
+}
+
+.step-output-label code {
+  font-size: var(--text-xs);
+}
+
+.step-output {
+  font-size: var(--text-xs);
+  line-height: var(--leading-relaxed);
+  background: var(--surface);
+  padding: var(--s4) var(--s5);
+  border-radius: 4px;
+}
+
+.step-output p {
+  margin-bottom: var(--s3);
+}
+
+.step-output p:last-child {
+  margin-bottom: 0;
+}
+
+.step-output ul,
+.step-output ol {
+  margin: var(--s2) 0;
+  padding-left: var(--s5);
+}
+
+.step-output li {
+  margin-bottom: var(--s1);
+}
+
+.step-output strong {
+  color: var(--fg);
+}
+
+.philosopher-callout {
+  padding: var(--s4) var(--s5);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+}
+
+.philosopher-label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--s2);
+  letter-spacing: 0.04em;
+}
+
+.philosopher-callout p {
+  margin: 0;
+}
 
 /* ============================================================
    Responsive (mobile-first: base is mobile, min-width for desktop)
@@ -1361,6 +1449,15 @@ tr[hidden] {
   .lifecycle-node {
     padding: var(--s4) var(--s6);
     min-width: 88px;
+  }
+
+  /* How to Use */
+  .how-to-use-hero {
+    padding-left: calc(var(--label-col) + var(--col-gap));
+  }
+
+  .philosopher-callout {
+    margin-left: calc(var(--label-col) + var(--col-gap));
   }
 }
 
