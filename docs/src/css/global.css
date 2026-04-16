@@ -1385,7 +1385,7 @@ tr[hidden] {
 .output-panel-body {
   flex: 1;
   overflow-y: auto;
-  padding: var(--s6) var(--s8) 72px;
+  padding: var(--s8) var(--s8) 72px;
   -webkit-overflow-scrolling: touch;
 }
 
