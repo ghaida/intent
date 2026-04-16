@@ -1340,8 +1340,28 @@ tr[hidden] {
   color: var(--fg);
 }
 
+.step-output table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--s3) 0;
+  font-size: var(--text-xs);
+}
+
+.step-output th,
+.step-output td {
+  padding: var(--s2) var(--s3);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.step-output th {
+  font-weight: 600;
+  color: var(--fg);
+}
+
 .philosopher-callout {
-  padding: var(--s4) var(--s5);
+  padding: var(--s5) var(--s5);
+  margin: var(--s6) 0;
   border: 1px dashed var(--border);
   border-radius: 6px;
   font-size: var(--text-sm);
