@@ -47,7 +47,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
         {step.philosopher && (
           <div class="philosopher-callout">
             <span class="philosopher-label mono">/philosopher</span>
-            <p set:html={step.philosopher} />
+            <div set:html={step.philosopher} />
           </div>
         )}
       </>

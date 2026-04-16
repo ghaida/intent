@@ -35,17 +35,33 @@ const SKILL_CATEGORIES: Record<string, string> = {
 };
 
 function simpleMarkdown(text: string): string {
+  const blocks = text.split(/\n\n+/).filter(b => b.trim());
+  return blocks.map(block => {
+    // List block
+    if (block.match(/^- /m)) {
+      const items = block.split('\n')
+        .filter(l => l.trim())
+        .map(l => `<li>${inlineMarkdown(l.replace(/^- /, ''))}</li>`)
+        .join('');
+      return `<ul>${items}</ul>`;
+    }
+    // Numbered list block
+    if (block.match(/^\d+\. /m)) {
+      const items = block.split('\n')
+        .filter(l => l.trim())
+        .map(l => `<li>${inlineMarkdown(l.replace(/^\d+\.\s*/, ''))}</li>`)
+        .join('');
+      return `<ol>${items}</ol>`;
+    }
+    // Paragraph
+    return `<p>${inlineMarkdown(block.replace(/\n/g, ' '))}</p>`;
+  }).join('\n');
+}
+
+function inlineMarkdown(text: string): string {
   return text
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^- (.+)/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
-    .replace(/^(\d+)\. (.+)/gm, '<li>$1. $2</li>')
-    .replace(/<\/p><p>/g, '</p>\n<p>')
-    .replace(/^(?!<)/, '<p>')
-    .replace(/(?<!>)$/, '</p>');
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
 }
 
 export function loadShowcase(): ShowcaseProject {
@@ -66,7 +82,7 @@ export function loadShowcase(): ShowcaseProject {
   const body = fmMatch[2];
 
   // Split into step blocks by ## headings
-  const stepBlocks = body.split(/^## /m).filter(Boolean);
+  const stepBlocks = body.split(/^## /m).filter(b => b.trim());
 
   const steps: ShowcaseStep[] = [];
 
