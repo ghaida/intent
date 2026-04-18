@@ -28,12 +28,12 @@ const AGENT_META: Record<string, { domain: string; skills: string[] }> = {
     skills: ['evaluate', 'fortify', 'include'],
   },
   rune: {
-    domain: 'Adaptation & Measurement',
-    skills: ['transpose', 'localize', 'measure'],
+    domain: 'Engineering Handoff',
+    skills: ['specify'],
   },
   sage: {
     domain: 'Cross-cutting Wisdom',
-    skills: ['philosopher', 'blueprint', 'specify'],
+    skills: ['philosopher'],
   },
 };
 
