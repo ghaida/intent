@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "intent",
   "metadata": {
     "description": "Design with Intent. 15 specialized UX and design strategy skills — from early research through engineering handoff."
@@ -11,7 +10,7 @@
     {
       "name": "intent",
       "description": "Design with Intent. A comprehensive UX and design strategy system — 15 specialized skills covering strategy, research, experience design, quality assurance, accessibility, measurement, and engineering handoff.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": {
         "name": "Ghaida Zahran"
       },

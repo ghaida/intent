@@ -1,10 +1,11 @@
 #!/bin/bash
 # Design with Intent
-# Build script: generates platform-specific distributions from source skills
+# Build script: generates platform-specific distributions from source skills.
+#
+# Claude Code reads source skills/ and agents/ directly — no generation step.
+# This script only produces the distributions other platforms need.
 #
 # Platforms:
-#   .claude/skills/   — Claude Code skills (native format, direct copy)
-#   .claude/agents/   — Claude Code subagents (source + injected frontmatter)
 #   .cursor/rules/    — Cursor (.mdc files, simplified frontmatter)
 #   .github/          — VS Code Copilot (copilot-instructions.md + skill files)
 
@@ -12,7 +13,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_DIR="$SCRIPT_DIR/skills"
-AGENTS_DIR="$SCRIPT_DIR/agents"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -24,104 +24,8 @@ echo -e "${BLUE}Design with Intent${NC}"
 echo "Building platform distributions..."
 echo ""
 
-# =============================================================================
-# CLAUDE CODE — .claude/
-# Skills: native format, copied as-is.
-# Agents: source stays clean (readable + paste-friendly for Claude Projects,
-# web Claude, etc.); Claude-Code-specific frontmatter is injected at build time.
-# =============================================================================
-
-echo -e "${GREEN}[1/3] Claude Code (.claude/)${NC}"
-
-CLAUDE_SKILLS_DIR="$SCRIPT_DIR/.claude/skills"
-rm -rf "$CLAUDE_SKILLS_DIR"
-mkdir -p "$CLAUDE_SKILLS_DIR"
-
-for skill_dir in "$SKILLS_DIR"/*/; do
-    skill_name=$(basename "$skill_dir")
-    cp -r "$skill_dir" "$CLAUDE_SKILLS_DIR/$skill_name"
-done
-
-skill_count=$(ls -d "$CLAUDE_SKILLS_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
-echo "  Skills: $skill_count (native format)"
-
-CLAUDE_AGENTS_DIR="$SCRIPT_DIR/.claude/agents"
-rm -rf "$CLAUDE_AGENTS_DIR"
-mkdir -p "$CLAUDE_AGENTS_DIR"
-
-# Per-agent descriptions are loaded into named variables via read-d-heredoc
-# rather than inline $(cat <<EOF ... EOF) inside a case statement, because
-# the inline form trips a bash 3.2 parser bug on stock macOS bash (the first
-# case misparses and subsequent heredocs confuse the rest of the parse).
-# `IFS= read -r -d ''` reads until EOF and always returns non-zero at EOF,
-# so `|| :` prevents `set -e` from killing the script.
-
-IFS= read -r -d '' NOOR_DESC << 'ENDOFDESC' || :
-Entry point for Intent UX design work. Use at the start of any design engagement — or anytime the team needs reorientation — to establish project context (users, product, constraints, ethical stance, success criteria), hold the six core UX principles in conversation, flag manipulative patterns against the Intent anti-pattern catalog as they come up, and route to the right specialist agent (ember, wren, vigil, rune, sage). Use when the user says "start a new project", "set up the context", "who are we building for", "is this ethical", "is this a dark pattern", "which agent do I need", or when the specialist isn't yet obvious.
-ENDOFDESC
-
-IFS= read -r -d '' EMBER_DESC << 'ENDOFDESC' || :
-Strategy and research specialist. Use when a design problem is unclear, fuzzy, or potentially misframed — before any flows, copy, or specs are produced. Frames problems against five foundational questions (problem validation, audience, solution fit, feature validation, competitive landscape), synthesizes existing research, sizes opportunities with evidence, defines testable hypotheses, and scopes projects (will-do / will-not-do). Invoke when starting a new project, when stakeholders disagree on what to build, when research exists but hasn't been synthesized, when someone says "we already know what users want" without evidence, or when the user asks to "frame the problem", "synthesize research", "write a brief", "scope this", or "do we even need to build this".
-ENDOFDESC
-
-IFS= read -r -d '' WREN_DESC << 'ENDOFDESC' || :
-Experience designer. Use once the problem is framed and the experience itself needs designing — flows, information architecture, or interface copy. Designs end-to-end user journeys (signup, onboarding, checkout, search, error recovery, settings, dashboards), structures navigation and taxonomy, and writes what the product says at every moment (error messages, empty states, CTAs, microcopy, voice and tone). Invoke when users can't find things, can't complete tasks, or don't understand what the product is saying — or when the user says "design this flow", "how should users experience X", "organize the IA", "what should this button say", "write the error copy", or "define the voice".
-ENDOFDESC
-
-IFS= read -r -d '' VIGIL_DESC << 'ENDOFDESC' || :
-Quality, resilience, and accessibility specialist — the honest evaluator. Use to systematically assess an existing design against Nielsen's 10 heuristics, the Intent anti-pattern catalog, and WCAG 2.2; to stress-test against edge cases, error recovery, empty states, loading states, offline behavior, and real-world chaos; or to audit keyboard, screen reader, cognitive, and motor accessibility. Produces scored UX health reports (0-100) with P0-P3 findings routed to the specialist that owns each fix. Invoke when the user says "review this design", "audit the UX", "find the dark patterns", "is this accessible", "what happens when X fails", "stress test this", "harden this for production", or "run a heuristic evaluation".
-ENDOFDESC
-
-IFS= read -r -d '' RUNE_DESC << 'ENDOFDESC' || :
-Design-to-engineering handoff specialist. Use when a design is decided and needs to be documented precisely enough to implement — detailed specs per screen (behavior, layout, copy, interaction logic, states, accessibility), copy/variant matrices, edge case documentation, asset inventories, stakeholder presentations, and test plans with success criteria. Also runs ethical review against the Intent anti-pattern catalog before sign-off. Invoke when the user says "write the spec", "prepare the handoff", "document this for engineering", "what does the dev need", "create a review deck", or "is this ready to ship".
-ENDOFDESC
-
-IFS= read -r -d '' SAGE_DESC << 'ENDOFDESC' || :
-Brainstorming partner for sitting with a problem before solving it. Not a phase — a cognitive mode any other agent can enter when the problem needs more exploration before the next move. Runs a strict three-phase protocol (problem immersion, associative expansion, synthesis only when invited) with cross-domain connection-making, assumption challenging, and structured check-ins. Invoke when the team is stuck, when a problem feels misframed, when the obvious answer isn't satisfying, when another agent's output feels too tidy, or when the user says "I'm stuck", "sit with this", "brainstorm", "go deeper", "think differently", "what am I missing", "go weird with it", "don't filter yourself", "philosopher mode", or "expansive mode".
-ENDOFDESC
-
-for agent_file in "$AGENTS_DIR"/*.md; do
-    agent_name=$(basename "$agent_file" .md)
-
-    # HOW-TO-USE is documentation for humans, not a subagent
-    if [ "$agent_name" = "HOW-TO-USE" ]; then
-        continue
-    fi
-
-    model=""
-    description=""
-    case "$agent_name" in
-        noor)  description="$NOOR_DESC" ;;
-        ember) description="$EMBER_DESC" ;;
-        wren)  description="$WREN_DESC" ;;
-        vigil) description="$VIGIL_DESC" ;;
-        rune)  description="$RUNE_DESC" ;;
-        sage)  description="$SAGE_DESC"; model="opus" ;;
-        *)
-            echo "  Warning: no frontmatter mapping for agent '$agent_name' — skipping" >&2
-            continue
-            ;;
-    esac
-
-    # Strip trailing newline read-d leaves on the captured heredoc content
-    description="${description%$'\n'}"
-
-    {
-        echo "---"
-        echo "name: $agent_name"
-        echo "description: $description"
-        if [ -n "$model" ]; then
-            echo "model: $model"
-        fi
-        echo "tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill"
-        echo "---"
-        echo ""
-        cat "$agent_file"
-    } > "$CLAUDE_AGENTS_DIR/$agent_name.md"
-done
-
-agent_count=$(ls "$CLAUDE_AGENTS_DIR"/*.md 2>/dev/null | wc -l | tr -d ' ')
-echo "  Agents: $agent_count (frontmatter injected)"
+skill_count=$(ls -d "$SKILLS_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
+agent_count=$(ls "$SCRIPT_DIR"/agents/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 # =============================================================================
 # CURSOR — .cursor/rules/
@@ -130,7 +34,7 @@ echo "  Agents: $agent_count (frontmatter injected)"
 # parent skill's .mdc file.
 # =============================================================================
 
-echo -e "${GREEN}[2/3] Cursor (.cursor/rules/)${NC}"
+echo -e "${GREEN}[1/2] Cursor (.cursor/rules/)${NC}"
 
 CURSOR_DIR="$SCRIPT_DIR/.cursor/rules"
 rm -rf "$CURSOR_DIR"
@@ -243,7 +147,7 @@ echo "  Generated $mdc_count .mdc rule files"
 # Individual skills as .instructions.md files in .github/copilot/skills/
 # =============================================================================
 
-echo -e "${GREEN}[3/3] VS Code Copilot (.github/)${NC}"
+echo -e "${GREEN}[2/2] VS Code Copilot (.github/)${NC}"
 
 GITHUB_DIR="$SCRIPT_DIR/.github"
 COPILOT_SKILLS_DIR="$GITHUB_DIR/copilot/skills"
@@ -353,10 +257,10 @@ echo "  Generated copilot-instructions.md + AGENTS.md + $copilot_count skill fil
 echo ""
 echo -e "${BLUE}Build complete.${NC}"
 echo ""
-echo "  .claude/skills/     — $skill_count skills (native format)"
-echo "  .claude/agents/     — $agent_count agents (frontmatter injected)"
+echo "  skills/             — $skill_count skills (source, read by Claude Code directly)"
+echo "  agents/             — $agent_count agents (source, read by Claude Code directly)"
 echo "  .cursor/rules/      — $mdc_count rules (.mdc format)"
 echo "  .github/            — copilot-instructions.md + AGENTS.md + $copilot_count skills"
 echo ""
-echo -e "${YELLOW}Note:${NC} Commit the generated directories to make skills and agents"
-echo "available in each platform. Run this script again after editing source files."
+echo -e "${YELLOW}Note:${NC} Commit the generated .cursor/ and .github/ directories to make"
+echo "Intent available in Cursor and Copilot. Claude Code uses the source files directly."

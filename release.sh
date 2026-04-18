@@ -86,14 +86,29 @@ echo "  Updated plugin.json + marketplace.json"
 # Rebuild distributions
 # =============================================================================
 
-echo -e "${GREEN}[2/4] Rebuilding distributions${NC}"
+echo -e "${GREEN}[2/5] Rebuilding distributions${NC}"
 "$SCRIPT_DIR/build.sh"
+
+# =============================================================================
+# Validate plugin + marketplace manifests
+# Catches issues that would block install (invalid schema, bad frontmatter,
+# broken component paths) before the release gets tagged and pushed.
+# =============================================================================
+
+echo -e "${GREEN}[3/5] Validating plugin${NC}"
+if ! command -v claude >/dev/null 2>&1; then
+    echo -e "${RED}Error:${NC} 'claude' CLI not found — cannot validate plugin before release."
+    echo "Install Claude Code or re-run after ensuring 'claude' is on PATH."
+    exit 1
+fi
+claude plugin validate "$SCRIPT_DIR/.claude-plugin/plugin.json"
+claude plugin validate "$SCRIPT_DIR/.claude-plugin/marketplace.json"
 
 # =============================================================================
 # Commit
 # =============================================================================
 
-echo -e "${GREEN}[3/4] Committing${NC}"
+echo -e "${GREEN}[4/5] Committing${NC}"
 git add -A
 git commit -m "Release $TAG"
 
@@ -101,7 +116,7 @@ git commit -m "Release $TAG"
 # Tag and push
 # =============================================================================
 
-echo -e "${GREEN}[4/4] Tagging and pushing${NC}"
+echo -e "${GREEN}[5/5] Tagging and pushing${NC}"
 git tag "$TAG"
 git push
 git push origin "$TAG"

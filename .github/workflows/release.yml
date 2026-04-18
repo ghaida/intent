@@ -24,8 +24,9 @@ jobs:
           # Full plugin (Claude Code)
           zip -r "intent-plugin-${TAG}.zip" \
             .claude-plugin/ \
-            .claude/skills/ \
+            skills/ \
             agents/ \
+            HOW-TO-USE.md \
             README.md \
             LICENSE
 

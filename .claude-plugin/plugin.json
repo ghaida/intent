@@ -1,7 +1,7 @@
 {
   "name": "intent",
   "description": "Design with Intent. A comprehensive UX and design strategy system — 15 specialized skills and 6 named agents covering strategy, research, experience design, quality assurance, accessibility, measurement, and engineering handoff.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": {
     "name": "Ghaida Zahran"
   },
@@ -19,7 +19,5 @@
     "service-design",
     "measurement",
     "ethics"
-  ],
-  "skills": "./.claude/skills",
-  "agents": "./.claude/agents"
+  ]
 }

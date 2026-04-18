@@ -39,7 +39,7 @@ const AGENT_META: Record<string, { domain: string; skills: string[] }> = {
 
 export function loadAgents(): Agent[] {
   const agentsDir = path.resolve(process.cwd(), '..', 'agents');
-  const files = fs.readdirSync(agentsDir).filter((f: string) => f.endsWith('.md') && f !== 'HOW-TO-USE.md');
+  const files = fs.readdirSync(agentsDir).filter((f: string) => f.endsWith('.md'));
 
   const agents: Agent[] = [];
 

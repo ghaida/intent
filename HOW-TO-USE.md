@@ -258,13 +258,13 @@ Each agent has a default output structure. You can also ask:
 ## Files in this package
 
 ```
-noor.md     — Entry point. Context, principles, anti-patterns, routing.
-ember.md    — Strategy and research. Problem framing, briefs, synthesis.
-wren.md     — Experience design. Flows, IA, content, interaction.
-vigil.md    — Quality and resilience. Evaluation, hardening, accessibility.
-rune.md     — Handoff. Engineering specs, documentation, test plans.
-sage.md     — Philosopher. Expansive thinking, assumption challenging.
-HOW-TO-USE.md — This file.
+agents/noor.md   — Entry point. Context, principles, anti-patterns, routing.
+agents/ember.md  — Strategy and research. Problem framing, briefs, synthesis.
+agents/wren.md   — Experience design. Flows, IA, content, interaction.
+agents/vigil.md  — Quality and resilience. Evaluation, hardening, accessibility.
+agents/rune.md   — Handoff. Engineering specs, documentation, test plans.
+agents/sage.md   — Philosopher. Expansive thinking, assumption challenging.
+HOW-TO-USE.md    — This file.
 ```
 
 ---
