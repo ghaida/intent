@@ -58,6 +58,22 @@ Start a new Project (or conversation) for each agent. Carry the prior agent's ou
 
 **Sage** is not a sequential step. She is available at any point when the team needs to step back and think before moving forward.
 
+### Option 4: Claude Code plugin
+
+If you use Claude Code, install the Intent plugin — all 6 agents and 15 skills register automatically:
+
+```
+/plugin marketplace add ghaida/intent
+/plugin install intent@intent
+```
+
+Then in any Claude Code session:
+
+- **Invoke agents** as subagents via `@<name>` — e.g., `@ember help me frame this problem`, `@vigil audit this flow`, `@wren design the signup`.
+- **Invoke skills** as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc.
+
+**Tip:** This is the fastest path for Claude Code users. No per-project copy-paste. All 6 agents and 15 skills are one plugin install away.
+
 ---
 
 ## Quick decision tree

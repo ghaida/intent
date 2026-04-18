@@ -14,8 +14,8 @@ Six named agents, each combining multiple skills into a specialist persona:
 | Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
 | Experience Design | **Wren** | `/journey` + `/organize` + `/articulate` — shapes user flows, structures information, designs the words |
 | Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
-| Adaptation + Measurement | **Rune** | `/transpose` + `/localize` + `/measure` — adapts across platforms and cultures, defines success metrics |
-| Cross-cutting Wisdom | **Sage** | `/philosopher` + `/blueprint` + `/specify` — maps systems, sits with problems, bridges design to engineering |
+| Engineering Handoff | **Rune** | `/specify` — carries design intent into implementation-ready specs, copy matrices, and handoff packages |
+| Cross-cutting Wisdom | **Sage** | `/philosopher` — sits with problems, expands thinking, challenges assumptions |
 
 For larger projects, chain agents in sequence: Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered at any point when the problem needs more exploration.
 
@@ -74,13 +74,13 @@ npx skills add ghaida/intent --all
 ```
 /plugin marketplace add ghaida/intent
 ```
-Then open `/plugin` in Claude Code to install.
+Then open `/plugin` in Claude Code to install. You'll get all 15 skills as slash commands and all 6 named agents registered as subagents.
 
 **Manual download:** Grab the latest zip from [releases](https://github.com/ghaida/intent/releases/latest).
 
 ## How to use
 
-**In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc.
+**In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc. — and the 6 named agents (Noor, Ember, Wren, Vigil, Rune, Sage) are invokable as subagents via `@<name>` (e.g., `@ember help me frame this problem`).
 
 **Quick decision tree:**
 
