@@ -3,7 +3,8 @@
 # Build script: generates platform-specific distributions from source skills
 #
 # Platforms:
-#   .claude/skills/   — Claude Code (native format, direct copy)
+#   .claude/skills/   — Claude Code skills (native format, direct copy)
+#   .claude/agents/   — Claude Code subagents (source + injected frontmatter)
 #   .cursor/rules/    — Cursor (.mdc files, simplified frontmatter)
 #   .github/          — VS Code Copilot (copilot-instructions.md + skill files)
 
@@ -24,23 +25,99 @@ echo "Building platform distributions..."
 echo ""
 
 # =============================================================================
-# CLAUDE CODE — .claude/skills/
-# Native format. Copy skill directories as-is.
+# CLAUDE CODE — .claude/
+# Skills: native format, copied as-is.
+# Agents: source stays clean (readable + paste-friendly for Claude Projects,
+# web Claude, etc.); Claude-Code-specific frontmatter is injected at build time.
 # =============================================================================
 
-echo -e "${GREEN}[1/3] Claude Code (.claude/skills/)${NC}"
+echo -e "${GREEN}[1/3] Claude Code (.claude/)${NC}"
 
-CLAUDE_DIR="$SCRIPT_DIR/.claude/skills"
-rm -rf "$CLAUDE_DIR"
-mkdir -p "$CLAUDE_DIR"
+CLAUDE_SKILLS_DIR="$SCRIPT_DIR/.claude/skills"
+rm -rf "$CLAUDE_SKILLS_DIR"
+mkdir -p "$CLAUDE_SKILLS_DIR"
 
 for skill_dir in "$SKILLS_DIR"/*/; do
     skill_name=$(basename "$skill_dir")
-    cp -r "$skill_dir" "$CLAUDE_DIR/$skill_name"
+    cp -r "$skill_dir" "$CLAUDE_SKILLS_DIR/$skill_name"
 done
 
-skill_count=$(ls -d "$CLAUDE_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
-echo "  Copied $skill_count skills (native format)"
+skill_count=$(ls -d "$CLAUDE_SKILLS_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
+echo "  Skills: $skill_count (native format)"
+
+CLAUDE_AGENTS_DIR="$SCRIPT_DIR/.claude/agents"
+rm -rf "$CLAUDE_AGENTS_DIR"
+mkdir -p "$CLAUDE_AGENTS_DIR"
+
+for agent_file in "$AGENTS_DIR"/*.md; do
+    agent_name=$(basename "$agent_file" .md)
+
+    # HOW-TO-USE is documentation for humans, not a subagent
+    if [ "$agent_name" = "HOW-TO-USE" ]; then
+        continue
+    fi
+
+    model=""
+    case "$agent_name" in
+        noor)
+            description=$(cat << 'ENDOFDESC'
+Entry point for Intent UX design work. Use at the start of any design engagement — or anytime the team needs reorientation — to establish project context (users, product, constraints, ethical stance, success criteria), hold the six core UX principles in conversation, flag manipulative patterns against the Intent anti-pattern catalog as they come up, and route to the right specialist agent (ember, wren, vigil, rune, sage). Use when the user says "start a new project", "set up the context", "who are we building for", "is this ethical", "is this a dark pattern", "which agent do I need", or when the specialist isn't yet obvious.
+ENDOFDESC
+)
+            ;;
+        ember)
+            description=$(cat << 'ENDOFDESC'
+Strategy and research specialist. Use when a design problem is unclear, fuzzy, or potentially misframed — before any flows, copy, or specs are produced. Frames problems against five foundational questions (problem validation, audience, solution fit, feature validation, competitive landscape), synthesizes existing research, sizes opportunities with evidence, defines testable hypotheses, and scopes projects (will-do / will-not-do). Invoke when starting a new project, when stakeholders disagree on what to build, when research exists but hasn't been synthesized, when someone says "we already know what users want" without evidence, or when the user asks to "frame the problem", "synthesize research", "write a brief", "scope this", or "do we even need to build this".
+ENDOFDESC
+)
+            ;;
+        wren)
+            description=$(cat << 'ENDOFDESC'
+Experience designer. Use once the problem is framed and the experience itself needs designing — flows, information architecture, or interface copy. Designs end-to-end user journeys (signup, onboarding, checkout, search, error recovery, settings, dashboards), structures navigation and taxonomy, and writes what the product says at every moment (error messages, empty states, CTAs, microcopy, voice and tone). Invoke when users can't find things, can't complete tasks, or don't understand what the product is saying — or when the user says "design this flow", "how should users experience X", "organize the IA", "what should this button say", "write the error copy", or "define the voice".
+ENDOFDESC
+)
+            ;;
+        vigil)
+            description=$(cat << 'ENDOFDESC'
+Quality, resilience, and accessibility specialist — the honest evaluator. Use to systematically assess an existing design against Nielsen's 10 heuristics, the Intent anti-pattern catalog, and WCAG 2.2; to stress-test against edge cases, error recovery, empty states, loading states, offline behavior, and real-world chaos; or to audit keyboard, screen reader, cognitive, and motor accessibility. Produces scored UX health reports (0-100) with P0-P3 findings routed to the specialist that owns each fix. Invoke when the user says "review this design", "audit the UX", "find the dark patterns", "is this accessible", "what happens when X fails", "stress test this", "harden this for production", or "run a heuristic evaluation".
+ENDOFDESC
+)
+            ;;
+        rune)
+            description=$(cat << 'ENDOFDESC'
+Design-to-engineering handoff specialist. Use when a design is decided and needs to be documented precisely enough to implement — detailed specs per screen (behavior, layout, copy, interaction logic, states, accessibility), copy/variant matrices, edge case documentation, asset inventories, stakeholder presentations, and test plans with success criteria. Also runs ethical review against the Intent anti-pattern catalog before sign-off. Invoke when the user says "write the spec", "prepare the handoff", "document this for engineering", "what does the dev need", "create a review deck", or "is this ready to ship".
+ENDOFDESC
+)
+            ;;
+        sage)
+            description=$(cat << 'ENDOFDESC'
+Brainstorming partner for sitting with a problem before solving it. Not a phase — a cognitive mode any other agent can enter when the problem needs more exploration before the next move. Runs a strict three-phase protocol (problem immersion, associative expansion, synthesis only when invited) with cross-domain connection-making, assumption challenging, and structured check-ins. Invoke when the team is stuck, when a problem feels misframed, when the obvious answer isn't satisfying, when another agent's output feels too tidy, or when the user says "I'm stuck", "sit with this", "brainstorm", "go deeper", "think differently", "what am I missing", "go weird with it", "don't filter yourself", "philosopher mode", or "expansive mode".
+ENDOFDESC
+)
+            model="opus"
+            ;;
+        *)
+            echo "  Warning: no frontmatter mapping for agent '$agent_name' — skipping" >&2
+            continue
+            ;;
+    esac
+
+    {
+        echo "---"
+        echo "name: $agent_name"
+        echo "description: $description"
+        if [ -n "$model" ]; then
+            echo "model: $model"
+        fi
+        echo "tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill"
+        echo "---"
+        echo ""
+        cat "$agent_file"
+    } > "$CLAUDE_AGENTS_DIR/$agent_name.md"
+done
+
+agent_count=$(ls "$CLAUDE_AGENTS_DIR"/*.md 2>/dev/null | wc -l | tr -d ' ')
+echo "  Agents: $agent_count (frontmatter injected)"
 
 # =============================================================================
 # CURSOR — .cursor/rules/
@@ -273,8 +350,9 @@ echo ""
 echo -e "${BLUE}Build complete.${NC}"
 echo ""
 echo "  .claude/skills/     — $skill_count skills (native format)"
+echo "  .claude/agents/     — $agent_count agents (frontmatter injected)"
 echo "  .cursor/rules/      — $mdc_count rules (.mdc format)"
 echo "  .github/            — copilot-instructions.md + AGENTS.md + $copilot_count skills"
 echo ""
-echo -e "${YELLOW}Note:${NC} Commit the generated directories to make skills available"
-echo "in each platform. Run this script again after editing source skills."
+echo -e "${YELLOW}Note:${NC} Commit the generated directories to make skills and agents"
+echo "available in each platform. Run this script again after editing source files."
