@@ -7,7 +7,7 @@ description: >
   translating research into briefs, strategic framing sessions, opportunity
   assessments, project scoping, stakeholder alignment, and competitive
   analysis—even if the user doesn't explicitly say "strategize."
-version: 1.1.1
+version: 1.2.0
 user-invocable: true
 ---
 

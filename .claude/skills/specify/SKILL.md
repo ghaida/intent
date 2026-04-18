@@ -9,7 +9,7 @@ description: >
   addressing edge cases, aligning stakeholders, packaging designs
   "for engineering," or saying "write the spec," "prepare the handoff,"
   "document this," or "what do we need for design review?"
-version: 1.1.1
+version: 1.2.0
 user-invocable: true
 ---
 
