@@ -25,6 +25,7 @@ const CATEGORIES: Record<string, { label: string; order: number }> = {
   localize:    { label: 'Adaptation & Context',    order: 4 },
   measure:     { label: 'Measurement',             order: 5 },
   philosopher: { label: 'Cross-cutting',           order: 6 },
+  storytelling: { label: 'Cross-cutting',           order: 6 },
   specify:     { label: 'Handoff',                 order: 7 },
 };
 
