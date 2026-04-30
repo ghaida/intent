@@ -1,6 +1,6 @@
 # Design with Intent
 
-A comprehensive UX and design strategy system for AI tools. 15 specialized skills and 6 named agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
+A comprehensive UX and design strategy system for AI tools. 16 specialized skills and 6 named agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
 
 Intent gives AI the context to approach design decisions with depth. Where visual design tools focus on how things look, Intent focuses on why they exist — research, strategy, systems thinking, flows, content, accessibility, ethics, and measurement.
 
@@ -21,7 +21,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 ## The skills
 
-15 discipline-specific skills plus the Intent foundation, organized by what you need done:
+16 discipline-specific skills plus the Intent foundation, organized by what you need done:
 
 ### Intent (foundation)
 
@@ -58,6 +58,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 ### Cross-cutting
 
 - `philosopher/SKILL.md` — Expansive brainstorming protocol. Three strict phases (problem immersion, associative expansion, synthesis only when invited). Intensity levels, structured check-ins, and integration with every other skill. A cognitive mode, not a phase.
+- `storytelling/SKILL.md` — Narrative structure for design work. Four canonical patterns — protagonist-arc, choreography, situation/complication/resolution, what-is/what-could-be — each with a goal, shape, and named pathology. Restated inline in `journey`, `blueprint`, `strategize`, `evaluate`. Refuses to smooth user data into clean arcs, manufacture strategic tension, substitute emotional appeal for evidence, or engineer stakeholder assent by shortcut.
 
 ### Handoff
 
@@ -74,7 +75,7 @@ npx skills add ghaida/intent --all
 ```
 /plugin marketplace add ghaida/intent
 ```
-Then open `/plugin` in Claude Code to install. You'll get all 15 skills as slash commands and all 6 named agents registered as subagents.
+Then open `/plugin` in Claude Code to install. You'll get all 16 skills as slash commands and all 6 named agents registered as subagents.
 
 **Manual download:** Grab the latest zip from [releases](https://github.com/ghaida/intent/releases/latest).
 
