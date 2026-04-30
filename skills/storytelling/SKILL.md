@@ -42,3 +42,21 @@ These are different jobs. Conflating them is where most of the field's critiques
 - When a design artifact feels structurally complete but emotionally sterile.
 
 **Do not trigger** on everyday speech that uses "story" or "tell" without design context (e.g., "tell me the story of how this bug got introduced"). Activation requires the conversation to be about design content.
+
+## The pattern library
+
+Four patterns. Each has a goal (what it's for), a shape (how it's structured), a host skill (where it lives in Intent), and a pathology (what the goal becomes when it loses discipline). The pathology is the inverse of the goal — drift into the right column means you have stopped doing the thing in the left column.
+
+| Pattern | Goal | Shape | Host skill | Pathology (the goal gone wrong) |
+|---|---|---|---|---|
+| **Protagonist-arc** | **Empathy.** Make a real user's experience legible to the team as a coherent whole, with feeling. | A user with a goal moves through stages with rising/falling tension toward a resolution. Carries an emotional curve. | `journey` (and `evaluate`, applied to failure points) | **False coherence.** The arc replaces messy data instead of organizing it. The team empathizes with a smoothed fictional version of the user. |
+| **Choreography** | **Coordination.** Make a service legible as a performance across multiple actors, frontstage and backstage, over time. | Actors × time × handoffs and dependencies. **No single protagonist.** Story is the lived service. | `blueprint` | **Role reduction.** Coordination clarity bought at the cost of human visibility. People disappear into system roles; the choreography is clear but no human can locate themselves in it. |
+| **Situation → Complication → Resolution** | **Orient.** Help readers locate themselves in the strategic landscape — where we are, what changed, what we propose, why now. | Three beats: present state → tension that broke equilibrium → proposed change. | `strategize` (briefs, strategy) | **False orientation.** Manufactured complication — the tension is sized to fit the proposal, not the evidence. Readers are oriented to a reality that isn't accurate. |
+| **What-is / What-could-be** | **Persuade / inspire.** Move stakeholders from current-state acceptance to desired-future commitment. | Recurring oscillation between today's pain and tomorrow's vision. Ends on the gap that calls for action. | `presentation` (forthcoming) | **Manipulation.** Emotional shortcut substituted for evidence. The future is pre-decided for the audience; their assent is engineered, not earned. |
+
+### Notes on the set
+
+- **Closed for now, not forever.** Four patterns covers the practices identified in the field. Adding more later is fine. Resisting the urge to invent patterns that don't have field traction matters more than completeness.
+- **Kishōtenketsu** — the four-beat non-conflict structure (introduction → development → twist → reconciliation) — is a *variant of protagonist-arc* for non-conflict experiences (calm products, habit formation, recurring use). Use it when the product's experience genuinely is not conflict-shaped. Not every user journey is a hero's journey.
+- **The story spine** ("once upon a time / every day / until one day / because of that / until finally / and ever since") is a useful workshop side-tool when teams are stuck articulating causation. It does not earn canonical-pattern status because its defining mechanism — forcing causation — *is* the narrative-fallacy pathology. Use it sparingly, knowing what it does.
+- **`evaluate` integration** borrows `protagonist-arc` and applies it to *failure points*: "where does the user's story break?" The pattern is the same; the application changes.
