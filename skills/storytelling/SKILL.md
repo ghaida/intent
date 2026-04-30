@@ -1,8 +1,8 @@
 ---
 name: storytelling
 description: >
-  Discipline for carrying emotional truth across humans through structured
-  narrative. Provides four canonical patterns — protagonist-arc, choreography,
+  Discipline for giving design work narrative structure that makes people
+  care. Provides four canonical patterns — protagonist-arc, choreography,
   situation/complication/resolution, what-is/what-could-be — each with a goal,
   shape, and named pathology. Use when design work needs narrative structure,
   when stakeholders need to see the user's experience as a story, when presenting
