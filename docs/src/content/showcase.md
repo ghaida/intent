@@ -54,14 +54,16 @@ We stepped back to ask whether this idea has legs. The hyperlocal exchange space
 
 **Design Brief: Nearby**
 
-**Context**
-Peer-to-peer exchange is a $200B+ annual activity in the US alone (garage sales, secondhand, informal trade), but the tools available are either too broad (Facebook Marketplace, Craigslist) or too constrained (Buy Nothing Facebook Groups). None are optimized for the specific context that makes local exchange work: physical proximity. The shift to hybrid/remote work has increased time spent in neighborhoods, and trust in large platforms continues to erode. People want local-first, but there's no product that makes local-first the core organizing principle.
+The brief is structured around situation → complication → resolution. The complication was tested against evidence before the resolution was shaped; the first draft sized the problem to fit "build a competitor to Marketplace," and that complication didn't survive scrutiny.
 
-**Gap**
-Existing platforms treat geography as a filter applied on top of a broad experience. You search Facebook Marketplace and filter by "within 5 miles," but the experience is identical whether the item is 2 blocks away or 20 miles away. No platform builds trust, discovery, or coordination around walkability. The result: exchange completion rates on broad platforms hover around 20-30% for local items, because logistics (driving across town for a $15 item) and trust (meeting a stranger from the internet) remain unresolved.
+**Situation**
+Peer-to-peer exchange is a $200B+ annual activity in the US alone (garage sales, secondhand, informal trade). The tools available are either too broad (Facebook Marketplace, Craigslist) or too constrained (Buy Nothing Facebook Groups). None are optimized for the specific context that makes local exchange work: physical proximity. The shift to hybrid/remote work has increased time spent in neighborhoods, and trust in large platforms continues to erode. People want local-first, but there is no product that makes local-first the core organizing principle.
 
-**Opportunity**
-If proximity is the organizing principle, the exchange experience fundamentally changes. Logistics collapse to "walk over and pick it up." Trust shifts from algorithmic reputation to neighborhood familiarity. Discovery becomes spatial ("what's near me right now?") instead of keyword-based. This is a new category: neighborhood infrastructure for physical exchange.
+**Complication**
+Existing platforms treat geography as a filter applied on top of a broad experience. You search Facebook Marketplace and filter by "within 5 miles," but the experience is identical whether the item is 2 blocks away or 20 miles away. No platform builds trust, discovery, or coordination around walkability. The result: exchange completion rates on broad platforms hover around 20-30% for local items, because logistics (driving across town for a $15 item) and trust (meeting a stranger from the internet) remain unresolved. The tension isn't "there's no marketplace for local exchange" — there are several. The tension is that none of them are *shaped* for sub-block exchange. The existing tools are wrong-shaped, not absent.
+
+**Resolution**
+If proximity is the organizing principle, the exchange experience fundamentally changes. Logistics collapse to "walk over and pick it up." Trust shifts from algorithmic reputation to neighborhood familiarity. Discovery becomes spatial ("what's near me right now?") instead of keyword-based. This is a new category: neighborhood infrastructure for physical exchange. *Why now:* the cultural shift toward hyperlocal life is accelerating; trust in broad platforms is eroding faster than at any point in the last decade; the technology to do trust-without-identity (proximity, tenure, mutual connection) is now table stakes. The window is open and has a closing edge — broad platforms will eventually try to retrofit local-first features, and the architectural work to do it well takes years.
 
 **Goals**
 1. Achieve 15+ completed exchanges per 1,000 households per week in mature neighborhoods
@@ -242,11 +244,23 @@ We mapped the invisible machinery behind a simple exchange. What looks like "I w
 
 **Service Blueprint: Item Exchange Flow**
 
-**Actors:** Seller, Buyer, Platform (client + server), Neighborhood Graph Service, Trust Inference Engine, Content Moderation System, Notification Service, Community Organizer (human)
+**The choreography**
+
+This blueprint is a performance, not an org chart. Five actors enter and exit at different moments, and the service exists in the coordination between them — not in any single role's path.
+
+- **Sarah, the seller.** Moving-week panicked. Enters the service when she opens the app to post the couch. Stays present through pickup coordination. Exits when the couch is gone. Her arc is 4–48 hours; the service can't slow her down without losing her.
+- **Marcus, the buyer.** Casual, ambient. Enters by accident — he opens the app while walking home. Stays present briefly: see, decide, walk over, pick up. His arc is 20 minutes to 2 hours. The service can't ask him to commit upfront.
+- **Diane, the community organizer.** Operational, sustained. Always present in the background. Enters reactively when something breaks — a flagged listing, a harassment report, a stale post. Her arc is the lifetime of the neighborhood instance.
+- **The neighborhood density itself.** Not a person, but an actor — the service has no value below a threshold of active users per square mile. Without it, Sarah posts and nobody sees; Marcus opens the app and finds nothing. The choreography depends on density existing as a precondition.
+- **Future buyers, present in absence.** Sarah's first exchange affects the third buyer who hasn't joined yet. Trust and tenure compound across handoffs that haven't happened. Their absence is structural; designing for them means designing the service so the first ten exchanges are visibly trustworthy enough to recruit the eleventh.
+
+The systems below — Notification Service, Trust Inference Engine, Content Moderation, Neighborhood Graph — exist to support this human choreography, not to define it. Where the blueprint started flattening Sarah and Marcus into "the seller" and "the buyer," we re-introduced who they are at each step so the team could feel the coordination across real human moments rather than abstract roles.
+
+**Actors (full list):** Sarah/Marcus/Diane (named representative humans), the buyer-population, the seller-population, Platform (client + server), Neighborhood Graph Service, Trust Inference Engine, Content Moderation System, Notification Service.
 
 ---
 
-**Frontstage — Seller Touchpoints**
+**Frontstage — Seller Touchpoints (Sarah's arc)**
 
 | Step | User action | Sees/hears | Channel |
 |---|---|---|---|
@@ -258,7 +272,7 @@ We mapped the invisible machinery behind a simple exchange. What looks like "I w
 | 6. Accept/decline | Taps "It's yours" or ignores | Pickup coordination screen with suggested meeting point and time | Mobile app |
 | 7. Complete exchange | Meets buyer in person, taps "Exchanged" | "Nice, that's your 8th exchange in Capitol Hill" | Mobile app |
 
-**Frontstage — Buyer Touchpoints**
+**Frontstage — Buyer Touchpoints (Marcus's arc)**
 
 | Step | User action | Sees/hears | Channel |
 |---|---|---|---|
@@ -271,7 +285,7 @@ We mapped the invisible machinery behind a simple exchange. What looks like "I w
 
 ---
 
-**Backstage — Organizational Processes**
+**Backstage — Organizational Processes (Diane's arc + system actors)**
 
 **Neighborhood Graph Service**
 - Determines walking radius per user based on housing density, street network graph, and physical barriers
@@ -338,7 +352,23 @@ We traced the four paths people actually take through Nearby. Each flow was desi
 
 ### Output
 
+**The user arcs**
+
+Three protagonists shaped these flows. We mapped them as separate arcs rather than one composite — the variance is the design constraint.
+
+*Sarah, seller, moving-week.* It's Thursday. Parents arrive Saturday. There's a couch, a coffee table, and three lamps that need to be gone — not sold for top dollar, just gone. She's standing in a hallway with bad reception, moving boxes piling up around her, opening her phone in spare moments between packing. *Goal:* clear the apartment before Saturday. *Obstacle:* every existing tool wants her to write a description, set up a meet-up, message back and forth. *Turning point:* the app posts in 30 seconds and her downstairs neighbor messages "I'll come by at 6." *Resolution:* the couch is gone before dinner; she never had to leave the building.
+
+*Marcus, buyer, casual.* He's walking home from the train. He opens Nearby out of habit, the way he checks Twitter. He's not shopping for anything. *Goal:* none, until the app shows him something. *Obstacle:* discovery has to compete with passive scrolling, not a search query. *Turning point:* a $15 desk lamp two blocks away, posted twenty minutes ago, picture good enough. *Resolution:* he taps "interested," walks the long way home, and carries it back.
+
+*Diane, organizer, buy-nothing veteran.* She runs the neighborhood Facebook group with 800 members. She is drowning in DMs, missing handoffs, and tired of being the only moderator. *Goal:* keep the gift economy alive without losing her weekends to it. *Obstacle:* the platform must support generosity as a first-class flow, not just commerce-with-a-free-checkbox. *Turning point:* she sees the "Free" pickup-prefs flow and recognizes her work in it. *Resolution:* she moves her group's exchanges into Nearby and recruits two co-organizers within the first month.
+
+These are not personas. The arcs are honest about the variance — Sarah's experience is panicked and time-bounded, Marcus's is ambient and serendipitous, Diane's is operational and sustained. Each flow below was designed against all three; where they diverge, we noted which arc the design optimizes for.
+
+---
+
 **Flow 1: Posting an Item**
+
+*Primary arc: Sarah's. The flow is optimized for speed under stress.*
 
 *Entry:* Tap "+" from any screen. Camera opens immediately, no intermediate menu.
 
@@ -364,6 +394,8 @@ We traced the four paths people actually take through Nearby. Each flow was desi
 ---
 
 **Flow 2: Discovering Nearby Items**
+
+*Primary arc: Marcus's. The flow is optimized for ambient browsing, not intentional search.*
 
 *Entry:* App launch defaults to map view. Deep links from notifications or shares land on item detail.
 
@@ -394,6 +426,8 @@ We traced the four paths people actually take through Nearby. Each flow was desi
 
 **Flow 3: Expressing Interest & Coordination**
 
+*Primary arc: Marcus's into Sarah's. The flow has to land lightly for Marcus and clearly for Sarah at the same moment.*
+
 *Entry:* Tap any item card from map, list, or notification.
 
 | Step | Screen | What happens | State transitions |
@@ -416,6 +450,8 @@ We traced the four paths people actually take through Nearby. Each flow was desi
 ---
 
 **Flow 4: Messaging (Unlocked After Mutual Interest)**
+
+*Primary arc: all three. Diane's organizer arc shapes the moderation defaults; Sarah's seller arc shapes the quick-reply set; Marcus's buyer arc shapes the unlock progression.*
 
 **Interaction spec:**
 - Messaging is *not* a general chat feature. It unlocks only after seller accepts a buyer's interest.
