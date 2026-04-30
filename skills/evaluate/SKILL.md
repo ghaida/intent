@@ -63,6 +63,30 @@ Evaluate is unique in the Intent system because it routes to every other skill. 
 
 ---
 
+## Storytelling pattern: protagonist-arc applied to failure points
+
+When evaluating a design, you carry the storytelling discipline's `protagonist-arc` pattern — but applied to where the user's story breaks rather than where it succeeds.
+
+**Goal:** Empathy. Make the team feel where users actually get stuck, not just what fails the heuristics.
+
+**Shape:** Same as the canonical protagonist-arc — user with a goal, stages, tension, turning points — but the analysis focuses on:
+
+- **Where does the user's story break?** Which step is the moment the arc collapses?
+- **What goal-state did they fail to reach?** Be specific — not "the user got confused" but "the user could not complete checkout because the address validation kept rejecting valid international postcodes."
+- **What does the breakage feel like for them?** Frustration, abandonment, switching to a competitor, calling support — the emotional resolution of the failed arc.
+
+**Pathology to refuse:** Same as the canonical pattern — *false coherence.* Smoothing the breakage into a tidy "the user struggled with X" when the underlying data shows three different ways three different users got stuck. Show the variance.
+
+**Why this matters:** A heuristic audit can pass and still miss what users actually feel when the design fails them. The arc applied to failures connects the audit findings to the user's lived experience — turns a list of issues into a story of where the team's design lost the people it was meant to serve.
+
+**Operative voice:**
+
+> *"The audit identified three high-severity issues. Let me reframe them as the story of where the user's checkout journey breaks — the team will care more, and prioritization gets clearer once we see which break costs the user the most."*
+
+For the full pattern library and stance, see `storytelling`.
+
+---
+
 ## Core capabilities
 
 ### 1. Heuristic evaluation
