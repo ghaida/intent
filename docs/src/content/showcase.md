@@ -110,6 +110,10 @@ If we constrain a marketplace to walking distance and build trust signals around
 
 What does "neighborhood" actually mean? In a dense urban block, walking distance might be 0.2 miles — you can see the seller's building from your window. In a suburban subdivision, it's the development itself, maybe a mile across. In a rural town, it might be the whole town. The product assumes a shared definition of "nearby" that doesn't exist. Are we building for a radius, a census tract, a zip code, or a felt sense of community? The answer changes the entire trust model.
 
+### Storytelling
+
+The brief here is built on situation → complication → resolution. Situation: existing tools for buying and selling between neighbors are heavy, social-network-shaped, and built for cities that no longer exist. Complication: in dense neighborhoods, exchange already happens — through stoop sales, "FREE" signs, group texts — but it's friction-loaded and impossible to find. Resolution: a hyperlocal marketplace whose only feature is proximity. The first draft sized the complication to fit "build a competitor to Marketplace." When tested against the evidence, what we actually had was "the existing tools are wrong-shaped for sub-block exchange." Same resolution — but now the brief is oriented to a reality the team can actually verify.
+
 ## /investigate
 agent: Ember
 summary: Designed a research plan with interview scripts for buyers, sellers, and community organizers.
@@ -322,6 +326,10 @@ We mapped the invisible machinery behind a simple exchange. What looks like "I w
 - *Why no messaging until mutual interest?* Unstructured messaging before commitment invites spam, lowball negotiation, and harassment. Pre-structured quick replies reduce friction and abuse simultaneously. Trade-off: less flexibility. Mitigation: free-text unlocks after 3 successful exchanges between two users.
 - *Why community organizers as first-line moderators?* They already do this work in Facebook Groups and know their neighborhoods. Platform moderation at the neighborhood level would require local context we don't have. Trade-off: moderation quality varies by neighborhood. Mitigation: platform escalation path + organizer guidelines.
 
+### Storytelling
+
+A blueprint without choreography is an org chart. The temptation here was to draw a clean handoff: buyer → frontend → backend → seller. But the real Nearby service is choreographed across actors who don't yet know each other — the buyer, the seller, the neighborhood density that makes any exchange viable, the moderator catching abuse before it escalates, the future buyers whose trust depends on this exchange working out. Each enters and exits at different moments. Story emerges from the coordination itself, not from any one character's path. Where the blueprint started flattening "the seller" into a system role, we re-introduced who the sellers actually are at each step — a moving-week panicked Sarah, a buy-nothing organizer juggling fifteen DMs — so the team could feel the choreography across real human moments.
+
 ## /journey
 agent: Wren
 summary: Designed four core flows — posting an item, discovering nearby listings, buying, and messaging.
@@ -420,6 +428,10 @@ We traced the four paths people actually take through Nearby. Each flow was desi
 ### Philosopher
 
 The buy/sell mental model assumes every exchange has a price. But in real neighborhoods, the most common local exchange isn't commerce — it's generosity. A bag of lemons from someone's tree. A kid's bike they outgrew. Moving boxes you'll never use again. If Nearby only supports buying and selling, it misses the gift economy that actually builds neighborhood trust. Should "Free" be a price option, or should gifting be an entirely separate mode with different social mechanics?
+
+### Storytelling
+
+The protagonist-arc pattern keeps the journey work honest about whose experience we're designing. Sarah moved into the neighborhood three weeks ago, has a couch she needs gone before her parents visit Saturday, and is opening Nearby on her phone in a hallway with bad reception while moving boxes pile up around her. That's the protagonist, the goal, the time pressure. The arc isn't "user posts → buyer arrives → transaction completes." It's the felt experience of hoping someone in her building will save her from a Goodwill run. But there are also Sarahs who are excited, Sarahs who are anxious, Sarahs who aren't moving at all but have a kid's bike that needs a new home. We mapped them as separate arcs rather than smoothing them into one composite — false coherence would hide the real variance from the team.
 
 ## /organize
 agent: Wren

@@ -57,6 +57,13 @@ const base = raw.endsWith('/') ? raw : raw + '/';
             <div set:html={step.philosopher} />
           </div>
         )}
+
+        {step.storytelling && (
+          <div class="storytelling-callout">
+            <span class="storytelling-label mono">/storytelling</span>
+            <div set:html={step.storytelling} />
+          </div>
+        )}
       </>
     ))}
 
@@ -66,7 +73,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
       <div class="section-content">
         <h2 id="get-started-heading" class="visually-hidden">Get Started</h2>
         <p class="step-narrative">
-          This is what Intent does for every project. Fifteen skills, six agents, one cohesive design practice.
+          This is what Intent does for every project. Sixteen skills, six agents, one cohesive design practice.
         </p>
         <div class="code-block">
           <span class="code-block-hint">All platforms</span>

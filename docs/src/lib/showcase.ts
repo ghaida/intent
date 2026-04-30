@@ -9,6 +9,7 @@ export interface ShowcaseStep {
   narrative: string;
   output: string;
   philosopher?: string;
+  storytelling?: string;
 }
 
 export interface ShowcaseProject {
@@ -176,9 +177,10 @@ export function loadShowcase(): ShowcaseProject {
 
     const rest = lines.slice(bodyStart).join('\n');
 
-    // Split by ### Output and ### Philosopher
-    const outputMatch = rest.match(/### Output\n([\s\S]*?)(?=### Philosopher|$)/);
-    const philMatch = rest.match(/### Philosopher\n([\s\S]*?)$/);
+    // Split by ### Output, ### Philosopher, ### Storytelling
+    const outputMatch = rest.match(/### Output\n([\s\S]*?)(?=### Philosopher|### Storytelling|$)/);
+    const philMatch = rest.match(/### Philosopher\n([\s\S]*?)(?=### Storytelling|$)/);
+    const storyMatch = rest.match(/### Storytelling\n([\s\S]*?)(?=### Philosopher|$)/);
 
     // Narrative is everything before ### Output
     const narrativeEnd = rest.indexOf('### Output');
@@ -194,6 +196,7 @@ export function loadShowcase(): ShowcaseProject {
       narrative,
       output: outputMatch ? simpleMarkdown(outputMatch[1].trim()) : '',
       philosopher: philMatch ? simpleMarkdown(philMatch[1].trim()) : undefined,
+      storytelling: storyMatch ? simpleMarkdown(storyMatch[1].trim()) : undefined,
     });
   }
 

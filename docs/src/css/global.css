@@ -1907,7 +1907,8 @@ tr[hidden] {
   padding: 2px 0;
 }
 
-.philosopher-callout {
+.philosopher-callout,
+.storytelling-callout {
   padding: var(--s5) var(--s5);
   margin: 0 0 var(--s12);
   border: 1px dashed var(--border);
@@ -1917,7 +1918,8 @@ tr[hidden] {
   color: var(--fg-muted);
 }
 
-.philosopher-label {
+.philosopher-label,
+.storytelling-label {
   display: block;
   font-size: var(--text-xs);
   font-weight: 600;
@@ -1926,7 +1928,8 @@ tr[hidden] {
   letter-spacing: 0.04em;
 }
 
-.philosopher-callout p {
+.philosopher-callout p,
+.storytelling-callout p {
   margin: 0;
 }
 
@@ -2015,7 +2018,8 @@ tr[hidden] {
   }
 
   /* How to Use */
-  .philosopher-callout {
+  .philosopher-callout,
+  .storytelling-callout {
     margin-left: calc(var(--label-col) + var(--col-gap));
     margin-bottom: var(--s16);
   }
