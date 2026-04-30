@@ -3,17 +3,19 @@ import Base from '../layouts/Base.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import { loadSkills, groupByCategory } from '../lib/skills';
 
-const categories = groupByCategory(loadSkills());
+const allSkills = loadSkills();
+const categories = groupByCategory(allSkills);
+const skillCount = allSkills.length;
 const raw = import.meta.env.BASE_URL;
 const base = raw.endsWith('/') ? raw : raw + '/';
 ---
 
-<Base title="Skills — Intent" description="15 specialized UX design skills organized by discipline. Each skill represents deep expertise in a distinct area of product design.">
+<Base title="Skills — Intent" description={`${skillCount} specialized UX design skills organized by discipline. Each skill represents deep expertise in a distinct area of product design.`}>
   <div class="page">
     <section class="skills-hero" aria-labelledby="skills-heading">
       <h1 id="skills-heading">Skills</h1>
       <p class="subtext muted">
-        15 skills organized by discipline. Each one carries real methodology
+        {skillCount} skills organized by discipline. Each one carries real methodology
         for a distinct area of product design.
       </p>
     </section>
