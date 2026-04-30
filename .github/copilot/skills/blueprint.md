@@ -91,6 +91,24 @@ needs to work*. `/journey` defines *what the user experiences*. `/specify`
 makes it *buildable*. `/philosopher` can be entered from any skill when the
 problem needs more exploration before the next move.
 
+## Storytelling pattern: choreography
+
+When designing a service blueprint, you carry the storytelling discipline's `choreography` pattern.
+
+**Goal:** Coordination. Make a service legible as a performance across multiple actors, frontstage and backstage, over time.
+
+**Shape:** Actors × time × handoffs and dependencies. **No single protagonist.** The story is the lived service — the coordinated movement of customers, frontline staff, backend systems, partners, and physical/digital touchpoints across the duration of a service encounter. Story emerges from the choreography itself, not from one character's arc.
+
+**Pathology to refuse:** *Role reduction.* Coordination clarity purchased at the cost of human visibility. When you flatten people into system roles ("the customer," "the agent," "the system"), the blueprint becomes an org chart — clear, but nobody on the team can locate themselves or a real user inside it. The choreography must keep the humans visible.
+
+**Operative voice when refusing:**
+
+> *"This blueprint is starting to read like an org chart. The 'customer' role is doing a lot of work in three swim lanes — let me re-introduce who they actually are at each step, so the team can feel the coordination across a real human's experience."*
+
+**When to import protagonist-arc instead:** if the service has a clear single hero (e.g., a private banker walking one client through a process), `protagonist-arc` may be the better pattern. Choreography is for multi-actor coordination where no single role dominates.
+
+For the full pattern library and stance, see `storytelling`.
+
 ## Core capabilities
 
 ### 1. Service blueprinting

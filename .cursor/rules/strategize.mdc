@@ -35,6 +35,30 @@ This skill works alongside the full Intent skill system:
 
 ---
 
+## Storytelling pattern: situation → complication → resolution
+
+When framing strategic briefs and design strategy, you carry the storytelling discipline's `situation → complication → resolution` pattern.
+
+**Goal:** Orient. Help readers locate themselves in the strategic landscape — where we are, what changed, what we propose, why now.
+
+**Shape:** Three beats:
+
+1. **Situation** — the present state. What's true in the world the brief lives in. Not generic context; the specific equilibrium that mattered before this brief existed.
+2. **Complication** — the tension that broke equilibrium. What changed, what's at stake, why now. Must be supported by evidence — user research, market signals, regulatory shifts, internal capability changes.
+3. **Resolution** — what we propose. The change that addresses the complication. Plus *why now* — what makes this the right moment.
+
+**Pathology to refuse:** *False orientation.* Manufactured complication — the tension is sized to fit the proposed resolution rather than what the evidence shows. Symptom: the complication feels conveniently shaped. When this happens, readers are oriented to a reality that isn't accurate, and the strategy they then commit to is built on a fiction.
+
+**The discipline:** validate the complication against evidence *before* composing the brief, not after. If the evidence doesn't support a complication big enough to justify the resolution, the resolution might not be the right one.
+
+**Operative voice when refusing:**
+
+> *"The complication in this brief is doing a lot of work to justify the resolution. Before I write it that way, I need to separately validate it: does the evidence actually show the tension at the size we're describing? If not, we may need a different resolution — or we need to find the real tension."*
+
+For the full pattern library and stance, see `storytelling`.
+
+---
+
 ## Five foundational questions
 
 Every project — regardless of stage, domain, or scale — should be pressure-tested against these five strategic questions. They are not optional. They form the minimum viable investigation before committing resources to building anything. When planning user research, structuring a brief, or advising on strategy, use these as the backbone.

@@ -280,6 +280,18 @@ Not manipulative by intent, but harmful through negligence or incompetence. Thes
 | **Mobile Afterthought** | Desktop-first design that becomes cramped, broken, or missing features on mobile. | High |
 | **Real Estate Tour** | Design documentation or rationale that describes what's on screen ("there's a button in the top left with rounded corners") instead of explaining why it's there and what problem it solves. Inventory masquerading as intent. | Medium |
 
+### Category 10: Narrative Pathologies in Design Process
+
+Designs and design *processes* that fool the team about user reality. Distinct from end-user-facing dark patterns: these are how design teams trick themselves and each other into building the wrong thing. Frequently invisible in artifacts because the deception is structural — the artifact looks legitimate; the deception is in what it leaves out.
+
+| Pattern | What it does | Severity |
+|---------|-------------|----------|
+| **Smoothed-arc Personas** | Constructs a single user narrative arc that smooths over real variance in research. The persona reads coherently when the underlying data showed three or more distinct, non-converging user paths. The team empathizes with a fictional composite, not actual users. | High |
+| **Manufactured-Tension Briefs** | Strategic narratives whose complication is sized to fit a predetermined resolution rather than what evidence shows. Symptom: the tension feels conveniently shaped. Result: teams commit to strategies built on inflated or invented problems. | High |
+| **Conflict-Default Journeys** | Frames every user experience as a hero's journey with a goal, obstacle, and resolution — even when the actual experience is habit-shaped, ambient, or recurring. Forces conflict structure onto experiences that don't have it, distorting the design. | Medium |
+| **Story-as-Evidence Substitution** | Uses narrative emotional appeal to win stakeholder assent for design decisions that aren't supported by research. The story carries the conviction; the evidence is post-hoc or absent. | High |
+| **Choreography Role-Reduction** | Service blueprints that flatten humans into system roles. The blueprint reads cleanly because nobody is in it — the customer, the agent, the system are all abstractions. Coordination clarity purchased by erasing the people the service exists for. | Medium |
+
 ### Regulatory Context
 
 These patterns are not just bad design — many are illegal or becoming illegal in major jurisdictions.
