@@ -54,16 +54,13 @@ We stepped back to ask whether this idea has legs. The hyperlocal exchange space
 
 **Design Brief: Nearby**
 
-The brief is structured around situation → complication → resolution. The complication was tested against evidence before the resolution was shaped; the first draft sized the problem to fit "build a competitor to Marketplace," and that complication didn't survive scrutiny.
+**Situation.** Peer-to-peer exchange is a $200B+ US activity. Existing tools — Marketplace, Craigslist, Buy Nothing groups — treat geography as a filter, not the organizing principle.
 
-**Situation**
-Peer-to-peer exchange is a $200B+ annual activity in the US alone (garage sales, secondhand, informal trade). The tools available are either too broad (Facebook Marketplace, Craigslist) or too constrained (Buy Nothing Facebook Groups). None are optimized for the specific context that makes local exchange work: physical proximity. The shift to hybrid/remote work has increased time spent in neighborhoods, and trust in large platforms continues to erode. People want local-first, but there is no product that makes local-first the core organizing principle.
+**Complication.** Sub-block exchange completes at 20–30% on these platforms. The tools aren't absent; they're wrong-shaped for walking-distance trust and logistics.
 
-**Complication**
-Existing platforms treat geography as a filter applied on top of a broad experience. You search Facebook Marketplace and filter by "within 5 miles," but the experience is identical whether the item is 2 blocks away or 20 miles away. No platform builds trust, discovery, or coordination around walkability. The result: exchange completion rates on broad platforms hover around 20-30% for local items, because logistics (driving across town for a $15 item) and trust (meeting a stranger from the internet) remain unresolved. The tension isn't "there's no marketplace for local exchange" — there are several. The tension is that none of them are *shaped* for sub-block exchange. The existing tools are wrong-shaped, not absent.
+**Resolution.** A marketplace whose only feature is proximity. Trust shifts to neighborhood familiarity. Discovery becomes spatial. Logistics collapse to walking. *Why now:* the hyperlocal shift is accelerating, and the architectural retrofit broad platforms would need takes years.
 
-**Resolution**
-If proximity is the organizing principle, the exchange experience fundamentally changes. Logistics collapse to "walk over and pick it up." Trust shifts from algorithmic reputation to neighborhood familiarity. Discovery becomes spatial ("what's near me right now?") instead of keyword-based. This is a new category: neighborhood infrastructure for physical exchange. *Why now:* the cultural shift toward hyperlocal life is accelerating; trust in broad platforms is eroding faster than at any point in the last decade; the technology to do trust-without-identity (proximity, tenure, mutual connection) is now table stakes. The window is open and has a closing edge — broad platforms will eventually try to retrofit local-first features, and the architectural work to do it well takes years.
+*Discipline note:* the first draft sized the complication to fit "compete with Marketplace." Evidence trimmed it to "existing tools are wrong-shaped." Same resolution — but the brief now orients the team to a reality it can verify.
 
 **Goals**
 1. Achieve 15+ completed exchanges per 1,000 households per week in mature neighborhoods
@@ -114,7 +111,7 @@ What does "neighborhood" actually mean? In a dense urban block, walking distance
 
 ### Storytelling
 
-The brief here is built on situation → complication → resolution. Situation: existing tools for buying and selling between neighbors are heavy, social-network-shaped, and built for cities that no longer exist. Complication: in dense neighborhoods, exchange already happens — through stoop sales, "FREE" signs, group texts — but it's friction-loaded and impossible to find. Resolution: a hyperlocal marketplace whose only feature is proximity. The first draft sized the complication to fit "build a competitor to Marketplace." When tested against the evidence, what we actually had was "the existing tools are wrong-shaped for sub-block exchange." Same resolution — but now the brief is oriented to a reality the team can actually verify.
+S/C/R framing isn't decoration. The discipline is: validate the complication against evidence *before* composing the brief — not after. If the complication can't survive that check, the resolution it implies probably can't either. The first draft of Nearby's complication was sized to fit a "compete with Marketplace" resolution. It didn't survive scrutiny, and the resolution wouldn't have either.
 
 ## /investigate
 agent: Ember
