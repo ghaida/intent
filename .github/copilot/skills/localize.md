@@ -49,12 +49,12 @@ Localize works alongside the full Intent skill system:
 
 Cultural frameworks provide starting hypotheses for design adaptation — not stereotypes to design by. Use them to generate questions, then validate with research.
 
-**High-context vs. low-context (Hall):**
+**High-context vs. low-context communication:**
 - High-context cultures (Japan, China, Arab countries, Korea): communication is implicit, relationships matter before transactions, visual density is expected (not cluttered), social proof and authority signals carry weight, indirectness is politeness.
 - Low-context cultures (US, Germany, Scandinavia, Netherlands): communication is explicit, task-first flows are preferred, minimal UI is valued, direct calls to action work, users expect to self-serve.
 - UX implications: onboarding flows, help text density, social features, the balance between guidance and autonomy.
 
-**Power distance (Hofstede):**
+**Power distance:**
 - High power distance: formal tone, hierarchical navigation, respect for authority in copy ("Approved by Dr. [Name]"), institutional trust signals.
 - Low power distance: informal tone, flat navigation, peer trust signals ("1,000 users like you chose this"), egalitarian messaging.
 - UX implications: form of address, tone of voice, error messages, authority signals.
