@@ -103,6 +103,9 @@ I have a design challenge
 ├─ "I'm stuck / brainstorm / sit with this"
 │  └─ /philosopher
 │
+├─ "What's the story here? / This feels lifeless"
+│  └─ /storytelling
+│
 └─ "I need to set up context for the project"
    └─ /intent
 ```
