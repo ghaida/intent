@@ -1,12 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Theme toggle
-  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+  function updateThemeToggleLabel(toggle, theme) {
+    if (!toggle) return;
+    // Label describes the action the click will take, not the current state.
+    toggle.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+    );
+  }
+
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    // Sync the initial label to whatever theme is active at load time.
+    updateThemeToggleLabel(
+      themeToggle,
+      document.documentElement.getAttribute('data-theme'),
+    );
+
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeToggleLabel(themeToggle, next);
+    });
+  }
 
   // Mobile menu
   const hamburger = document.querySelector('.nav-hamburger');

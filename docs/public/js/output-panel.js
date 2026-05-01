@@ -32,7 +32,12 @@
   }
 
   function open(skill, trigger) {
-    // Safe: source content is static HTML generated at build time by Astro
+    // SAFETY CONTRACT: the source <div> below is populated at build time
+    // by Astro from showcase.md, after passing through simpleMarkdown() in
+    // docs/src/lib/showcase.ts, which calls escapeHtml() on every text
+    // span before any markdown-to-HTML conversion. Do NOT introduce any
+    // path that populates the source div from runtime or user-controlled
+    // content without restoring an explicit sanitization step here.
     var source = document.getElementById('output-' + skill);
     if (!source) return;
 
@@ -44,6 +49,7 @@
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     panel.addEventListener('keydown', trapFocus);
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
     closeBtn.focus();
   }
 
@@ -54,6 +60,7 @@
     document.body.style.overflow = '';
     panel.removeEventListener('keydown', trapFocus);
     if (activeTrigger) {
+      activeTrigger.setAttribute('aria-expanded', 'false');
       activeTrigger.focus();
       activeTrigger = null;
     }

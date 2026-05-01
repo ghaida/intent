@@ -75,7 +75,7 @@ ul, ol {
   --border:           #d8d8e4;
   --surface:          #f0f0f6;
   --grid-dot:         #e0e0ea;
-  --blueprint-mark:   #74748c;
+  --blueprint-mark:   #65657a;
   --severity-crit-bg: #fee2e2;
   --severity-crit-fg: #b91c1c;
   --severity-high-bg: #fef3c7;
@@ -141,7 +141,7 @@ ul, ol {
   --border:           #2a2a40;
   --surface:          #181828;
   --grid-dot:         #222236;
-  --blueprint-mark:   #5c5c78;
+  --blueprint-mark:   #8888a8;
   --severity-crit-bg: #281818;
   --severity-crit-fg: #f06868;
   --severity-high-bg: #282018;
@@ -149,7 +149,7 @@ ul, ol {
   --severity-med-bg:  #1c1a30;
   --severity-med-fg:  #7c6ff0;
   --severity-low-bg:  #181828;
-  --severity-low-fg:  #7878a0;
+  --severity-low-fg:  #8888b0;
   --code-bg:          #0c0c18;
   --code-fg:          #c8c8e0;
 }
@@ -165,7 +165,7 @@ ul, ol {
     --border:           #2a2a40;
     --surface:          #181828;
     --grid-dot:         #222236;
-    --blueprint-mark:   #5c5c78;
+    --blueprint-mark:   #8888a8;
     --severity-crit-bg: #281818;
     --severity-crit-fg: #f06868;
     --severity-high-bg: #282018;
