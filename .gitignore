@@ -14,6 +14,9 @@ CLAUDE.md
 design-docs/
 .superpowers/
 
+# Local worktrees
+.worktrees/
+
 # Playwright MCP snapshots
 .playwright-mcp/
 
