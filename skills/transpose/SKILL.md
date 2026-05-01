@@ -11,7 +11,7 @@ description: >
   or when someone says "make it work on mobile" and you need to push back
   on "just shrink it." Also trigger for cross-device journey continuity,
   platform convention audits, or context-specific priority mapping.
-version: 1.2.1
+version: 1.3.0
 user-invocable: true
 ---
 

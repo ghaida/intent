@@ -12,7 +12,7 @@ description: >
   strategize, evaluate (and presentation when that skill ships). Refuses to smooth user data into clean
   arcs, manufacture strategic tension, substitute emotional appeal for evidence,
   assume conflict arcs are universal, or engineer stakeholder assent by shortcut.
-version: 1.2.1
+version: 1.3.0
 user-invocable: true
 ---
 
