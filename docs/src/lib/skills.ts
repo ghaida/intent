@@ -53,7 +53,10 @@ function parseFrontmatter(content: string): { data: Record<string, string>; body
 }
 
 function extractSection(body: string, heading: string): string {
-  const pattern = new RegExp(`^##\\s+${heading}[\\s\\S]*?\\n\\n([\\s\\S]*?)(?=\\n##\\s|$)`, 'm');
+  // Match `## Heading` followed by any content until the next H2 or end.
+  // Tolerant of an optional blank line between the heading and the body
+  // (some skill files have it, some don't).
+  const pattern = new RegExp(`^##\\s+${heading}\\s*\\n+([\\s\\S]*?)(?=\\n##\\s|$)`, 'm');
   const match = body.match(pattern);
   if (!match) return '';
   // Take first 2-3 sentences

@@ -41,6 +41,23 @@ export function loadAgents(): Agent[] {
   const agentsDir = path.resolve(process.cwd(), '..', 'agents');
   const files = fs.readdirSync(agentsDir).filter((f: string) => f.endsWith('.md'));
 
+  // Cross-validate AGENT_META against the actual agents/ directory so
+  // an agent file added without a matching meta entry is loud, not silent.
+  const knownSlugs = new Set(files.map((f) => f.replace('.md', '')));
+  const orphanMetas = Object.keys(AGENT_META).filter((slug) => !knownSlugs.has(slug));
+  if (orphanMetas.length > 0) {
+    throw new Error(
+      `agents.ts: AGENT_META contains entries with no matching agent file: ${orphanMetas.join(', ')}.`,
+    );
+  }
+  const missingMetas = [...knownSlugs].filter((slug) => !AGENT_META[slug]);
+  if (missingMetas.length > 0) {
+    throw new Error(
+      `agents.ts: agents/ contains files with no AGENT_META entry: ${missingMetas.join(', ')}. ` +
+      `Add a domain/skills mapping for each new agent.`,
+    );
+  }
+
   const agents: Agent[] = [];
 
   for (const file of files) {

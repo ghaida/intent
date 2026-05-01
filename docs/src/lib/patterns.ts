@@ -23,6 +23,21 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
+const VALID_SEVERITIES = new Set(['Critical', 'High', 'Medium', 'Low']);
+
+function findCategoryDescription(lines: string[], headingIdx: number): string {
+  // Walk forward from the heading to the first non-empty, non-table line.
+  // Stops at the table separator or any subsequent heading so we don't
+  // accidentally absorb the table content as the description.
+  for (let j = headingIdx + 1; j < lines.length; j++) {
+    const line = lines[j].trim();
+    if (!line) continue;
+    if (line.startsWith('|') || line.startsWith('### ') || line.startsWith('## ')) break;
+    return line;
+  }
+  return '';
+}
+
 export function loadPatterns(): PatternCategory[] {
   const filePath = path.resolve(process.cwd(), '..', 'skills', 'intent', 'SKILL.md');
   const content = fs.readFileSync(filePath, 'utf-8');
@@ -39,12 +54,10 @@ export function loadPatterns(): PatternCategory[] {
     const catMatch = line.match(/^### Category \d+:\s*(.+)/);
     if (catMatch) {
       const name = catMatch[1].trim();
-      // Next line is the description
-      const desc = (lines[i + 1] || '').trim();
       currentCategory = {
         name,
         slug: slugify(name),
-        description: desc,
+        description: findCategoryDescription(lines, i),
         patterns: [],
       };
       categories.push(currentCategory);
@@ -58,7 +71,14 @@ export function loadPatterns(): PatternCategory[] {
         const nameMatch = cells[0].match(/\*\*(.+?)\*\*/);
         const name = nameMatch ? nameMatch[1] : cells[0];
         const description = cells[1];
-        const severity = cells[2] as AntiPattern['severity'];
+        const rawSeverity = cells[2];
+        if (!VALID_SEVERITIES.has(rawSeverity)) {
+          throw new Error(
+            `patterns.ts: pattern '${name}' has invalid severity '${rawSeverity}'. ` +
+            `Expected one of: ${[...VALID_SEVERITIES].join(', ')}.`,
+          );
+        }
+        const severity = rawSeverity as AntiPattern['severity'];
 
         currentCategory.patterns.push({
           name,

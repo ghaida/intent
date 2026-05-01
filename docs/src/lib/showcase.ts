@@ -177,10 +177,12 @@ export function loadShowcase(): ShowcaseProject {
 
     const rest = lines.slice(bodyStart).join('\n');
 
-    // Split by ### Output, ### Philosopher, ### Storytelling
-    const outputMatch = rest.match(/### Output\n([\s\S]*?)(?=### Philosopher|### Storytelling|$)/);
-    const philMatch = rest.match(/### Philosopher\n([\s\S]*?)(?=### Storytelling|$)/);
-    const storyMatch = rest.match(/### Storytelling\n([\s\S]*?)(?=### Philosopher|$)/);
+    // Split by ### Output, ### Philosopher, ### Storytelling.
+    // Each capture stops at any of the other two — order in the source
+    // doesn't matter, and a misordered file won't silently swallow content.
+    const outputMatch = rest.match(/### Output\n([\s\S]*?)(?=\n### Philosopher\n|\n### Storytelling\n|$)/);
+    const philMatch = rest.match(/### Philosopher\n([\s\S]*?)(?=\n### Output\n|\n### Storytelling\n|$)/);
+    const storyMatch = rest.match(/### Storytelling\n([\s\S]*?)(?=\n### Output\n|\n### Philosopher\n|$)/);
 
     // Narrative is everything before ### Output
     const narrativeEnd = rest.indexOf('### Output');
