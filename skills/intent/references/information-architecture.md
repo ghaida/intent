@@ -96,7 +96,7 @@ A mental model is the user's internal representation of how a system works. It d
 
 ### Applied Mental Model Theory
 
-**Don Norman's "The Design of Everyday Things" (1988)** distinguishes three models:
+**The Design of Everyday Things (1988)** distinguishes three models:
 1. **Design model** — How the designer thinks the system works
 2. **System model** — How the system actually works
 3. **User model** — How the user thinks the system works
