@@ -6,6 +6,40 @@ alwaysApply: true
 
 # Intent
 
+## Invocation banner
+
+When `/intent` is invoked, your FIRST action — before any other response content — is to render the invocation banner.
+
+**Primary path (colored, via Bash):**
+
+Use the Bash tool to execute exactly:
+
+```
+bash hooks/banner.sh
+```
+
+The script reads `skills/` at runtime, builds a 16-mark frame grouped by the 8 canonical categories, and prints the wordmark, thesis, and opening question between two frame rules — all with ANSI indigo coloring.
+
+**Fallback path (monochrome, via markdown):**
+
+If the bash invocation fails, produces no output, or you cannot execute Bash in the current surface, render the following markdown code block in place of the banner output:
+
+````
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+
+  intent.
+
+  Make the reason behind every decision visible.
+
+  What are you designing, and for whom?
+
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+````
+
+Same content as the colored banner; only color is lost.
+
+After the banner renders (either path), continue with the rest of this skill's normal response.
+
 ## Overview
 
 Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer.
