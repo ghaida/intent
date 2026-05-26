@@ -1,0 +1,242 @@
+---
+// TEMPORARY preview route — verify all 22 score components render correctly.
+// Delete this file at the end of Checkpoint 5 once detail pages and catalog
+// thumbnails are wired up.
+
+import Base from '../../layouts/Base.astro';
+import SkillScore from '../../components/visuals/SkillScore.astro';
+import AgentSymbol from '../../components/visuals/AgentSymbol.astro';
+import { loadSkills } from '../../lib/skills';
+import { loadAgents } from '../../lib/agents';
+
+const skills = loadSkills();
+const agents = loadAgents();
+
+const CLUSTER_LABEL: Record<string, string> = {
+  strategy:      'Strategy & Discovery',
+  systems:       'Systems & Structure',
+  quality:       'Quality & Care',
+  communication: 'Communication',
+};
+
+const CLUSTER_ORDER = ['strategy', 'systems', 'quality', 'communication'] as const;
+
+// Group skills by cluster, preserving CLUSTER_ORDER
+const byCluster = CLUSTER_ORDER.map((cluster) => ({
+  cluster,
+  label: CLUSTER_LABEL[cluster],
+  skills: skills.filter((s) => s.cluster === cluster),
+}));
+---
+
+<Base title="Score system preview — Intent" description="Internal preview of the 22 graphic-score and agent-symbol components.">
+  <div class="preview">
+    <header class="preview__head">
+      <p class="preview__super">Internal preview · temporary</p>
+      <h1>Score system — 16 skills + 6 agents</h1>
+      <p class="preview__lede">
+        Visual sanity check for the 22 SVG components extracted from the v5 sketches.
+        This route exists only during Checkpoints 2–5 and will be removed before launch.
+      </p>
+    </header>
+
+    {byCluster.map((group) => (
+      <section class="preview__cluster" data-cluster={group.cluster}>
+        <h2 class="preview__cluster-name">
+          <span class="preview__dot" aria-hidden="true"></span>
+          {group.label}
+        </h2>
+        <div class="preview__skill-grid">
+          {group.skills.map((skill) => (
+            <article class="preview__skill" data-cluster={skill.cluster}>
+              <div class="preview__skill-meta">
+                <span class="preview__skill-slug mono">/{skill.slug}</span>
+                <p class="preview__skill-shape">{skill.shape}</p>
+              </div>
+              <figure class="preview__skill-figure">
+                <SkillScore slug={skill.slug} />
+              </figure>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="preview__agents">
+      <h2 class="preview__cluster-name">
+        <span class="preview__dot preview__dot--neutral" aria-hidden="true"></span>
+        Agents
+      </h2>
+      <div class="preview__agent-grid">
+        {agents.map((agent) => (
+          <article class="preview__agent" data-cluster={agent.cluster}>
+            <figure class="preview__agent-figure">
+              <AgentSymbol slug={agent.slug} />
+            </figure>
+            <div class="preview__agent-meta">
+              <span class="preview__agent-slug mono">/{agent.slug}</span>
+              <p class="preview__agent-tagline">{agent.tagline}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .preview {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  .preview__head {
+    margin-bottom: 64px;
+    max-width: 64ch;
+  }
+
+  .preview__super {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 12px;
+  }
+
+  .preview__head h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: 0 0 16px;
+  }
+
+  .preview__lede {
+    color: var(--fg-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .preview__cluster,
+  .preview__agents {
+    margin-bottom: 80px;
+  }
+
+  .preview__cluster-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9375rem;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg);
+    margin: 0 0 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .preview__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--c);
+    display: inline-block;
+  }
+  .preview__dot--neutral {
+    background: var(--fg-muted);
+  }
+
+  .preview__skill-grid {
+    display: grid;
+    gap: 48px;
+  }
+
+  .preview__skill {
+    display: grid;
+    gap: 16px;
+  }
+
+  .preview__skill-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .preview__skill-slug {
+    font-weight: 500;
+    color: var(--fg);
+  }
+
+  .preview__skill-shape {
+    margin: 0;
+    color: var(--fg-muted);
+    font-style: italic;
+    font-size: 0.9375rem;
+  }
+
+  .preview__skill-figure {
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+
+  .preview__skill-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .preview__agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 32px;
+  }
+
+  .preview__agent {
+    display: grid;
+    gap: 12px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .preview__agent-figure {
+    margin: 0;
+    width: 128px;
+    height: 128px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+  }
+
+  .preview__agent-figure :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .preview__agent-slug {
+    font-weight: 500;
+  }
+
+  .preview__agent-tagline {
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 900px) {
+    .preview__skill {
+      grid-template-columns: 220px 1fr;
+      align-items: start;
+      gap: 32px;
+    }
+    .preview__skill-meta {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>

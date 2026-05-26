@@ -1,0 +1,45 @@
+---
+// Skill score: journey (cluster: systems)
+// Note: wide viewBox 1600×600
+---
+<svg viewBox="0 0 1600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="score-journey-title" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title id="score-journey-title">Journey score — a long horizontal sequence of five frames connected by step vectors, with an aperture, a loop-back arc, phase boundaries, and a periodic emotional wave register below carrying affective points. A path across territory with dual registers — action above, feeling below.</title>
+  <!-- Phase boundaries at gap midpoints (structural) -->
+  <g stroke-width="1">
+    <line x1="664"  y1="64" x2="664"  y2="536"/>
+    <line x1="1208" y1="64" x2="1208" y2="536"/>
+  </g>
+  <!-- 5 frames, all 192×128, gaps of 80 (structural) -->
+  <g stroke-width="2">
+    <rect x="160" y="144" width="192" height="128"/>
+    <!-- F2 with aperture in top edge (48px gap centered at 528) -->
+    <line x1="432" y1="272" x2="432" y2="144"/>
+    <line x1="432" y1="144" x2="504" y2="144"/>
+    <line x1="552" y1="144" x2="624" y2="144"/>
+    <line x1="624" y1="144" x2="624" y2="272"/>
+    <line x1="624" y1="272" x2="432" y2="272"/>
+    <rect x="704" y="144" width="192" height="128"/>
+  </g>
+  <rect x="976"  y="144" width="192" height="128" stroke-width="3"/>
+  <rect x="1248" y="144" width="192" height="128" stroke-width="2"/>
+  <!-- ACTIVE: connectors at frame center y=208, all 80px long -->
+  <g stroke="var(--c)" stroke-width="2.5">
+    <line x1="352"  y1="208" x2="432"  y2="208"/>
+    <line x1="624"  y1="208" x2="704"  y2="208"/>
+    <line x1="896"  y1="208" x2="976"  y2="208"/>
+    <line x1="1168" y1="208" x2="1248" y2="208"/>
+  </g>
+  <!-- ACTIVE: loop-back arc from F3 top to F2 top through aperture -->
+  <path d="M 800 144 Q 664 48 528 144" stroke="var(--c)" stroke-width="1.5"/>
+  <circle cx="528" cy="144" r="4" fill="var(--c)" stroke="none"/>
+  <!-- ACTIVE: emotional register — clean periodic wave on 80px rhythm -->
+  <path d="M 160 432 Q 240 488 320 432 Q 400 376 480 432 Q 560 488 640 432 Q 720 488 800 432 Q 880 376 960 432 Q 1040 488 1120 432 Q 1200 376 1280 432 Q 1360 488 1440 432" stroke="var(--c)" stroke-width="2.5"/>
+  <!-- ACTIVE: affective points on clean x positions, heavy at friction (x=720) -->
+  <g fill="var(--c)" stroke="none">
+    <circle cx="240"  cy="472" r="3"/>
+    <circle cx="480"  cy="412" r="3"/>
+    <circle cx="720"  cy="472" r="6"/>
+    <circle cx="960"  cy="412" r="3"/>
+    <circle cx="1280" cy="412" r="3"/>
+  </g>
+</svg>

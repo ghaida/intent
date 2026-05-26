@@ -1,0 +1,40 @@
+---
+// Skill score: storytelling (cluster: communication)
+// Note: wide viewBox 1600×600
+---
+<svg viewBox="0 0 1600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="score-storytelling-title" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title id="score-storytelling-title">Storytelling score — a long horizontal composition divided into four narrative sections by thresholds; a protagonist point traverses through path, complication frame with an aperture, and resolution arc to a heavy terminal, with a quieter emotional wave below carrying affective points. An arc — a designed sequence with felt rhythm.</title>
+  <!-- Section thresholds at clean grid: 4 sections of 400px each -->
+  <g stroke-width="1">
+    <line x1="400"  y1="64" x2="400"  y2="440"/>
+    <line x1="800"  y1="64" x2="800"  y2="440"/>
+    <line x1="1200" y1="64" x2="1200" y2="440"/>
+  </g>
+  <!-- ACTIVE: protagonist + journey through sections -->
+  <circle cx="160" cy="280" r="10" fill="var(--c)" stroke="none"/>
+  <line x1="172" y1="280" x2="720" y2="296" stroke="var(--c)" stroke-width="3"/>
+  <circle cx="500" cy="288" r="5" fill="var(--c)" stroke="none"/>
+  <!-- Complication frame (structural — the obstacle) with aperture in right edge -->
+  <rect x="900" y="220" width="200" height="160" stroke-width="2"/>
+  <line x1="1100" y1="220" x2="1100" y2="288" stroke-width="2"/>
+  <line x1="1100" y1="312" x2="1100" y2="380" stroke-width="2"/>
+  <!-- ACTIVE: marks inside complication -->
+  <g fill="var(--c)" stroke="none">
+    <circle cx="952"  cy="280" r="4"/>
+    <circle cx="1020" cy="320" r="3"/>
+    <circle cx="1060" cy="260" r="3"/>
+  </g>
+  <line x1="720"  y1="296" x2="900"  y2="300" stroke="var(--c)" stroke-width="3"/>
+  <line x1="1100" y1="300" x2="1240" y2="284" stroke="var(--c)" stroke-width="3"/>
+  <path d="M 1240 284 Q 1380 320 1500 260" stroke="var(--c)" stroke-width="3"/>
+  <circle cx="1500" cy="260" r="8" fill="var(--c)" stroke="none"/>
+  <!-- ACTIVE: emotional line — clean wave on 4-grid -->
+  <path d="M 80 480 Q 240 512 400 472 Q 560 432 720 488 Q 880 540 1040 460 Q 1200 412 1360 468 Q 1480 504 1540 460" stroke="var(--c)" stroke-width="2"/>
+  <g fill="var(--c)" stroke="none">
+    <circle cx="280"  cy="488" r="3"/>
+    <circle cx="600"  cy="472" r="3"/>
+    <circle cx="900"  cy="532" r="4"/>
+    <circle cx="1180" cy="432" r="3"/>
+    <circle cx="1480" cy="476" r="3"/>
+  </g>
+</svg>
