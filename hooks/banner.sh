@@ -86,7 +86,51 @@ get_color() {
 
 # (Frame builder and banner output in subsequent tasks.)
 
-# Temporary smoke test (removed in Task 3).
-echo "Category for 'intent' is: $(get_category intent)"
-echo "Category for 'investigate' is: $(get_category investigate)"
-echo "Category for 'fakeskill' is: $(get_category fakeskill)"
+# ── Skill enumeration ──────────────────────────────────────────────
+# Read every subdirectory under skills/ that contains a SKILL.md.
+ACTUAL_SKILLS=()
+if [[ -d "$SKILLS_DIR" ]]; then
+  for entry in "$SKILLS_DIR"/*/SKILL.md; do
+    [[ -f "$entry" ]] || continue
+    skill_dir="$(dirname "$entry")"
+    ACTUAL_SKILLS+=("$(basename "$skill_dir")")
+  done
+fi
+
+# Sort for deterministic output (defensive — directory order may vary by FS).
+IFS=$'\n' ACTUAL_SKILLS=($(printf '%s\n' "${ACTUAL_SKILLS[@]}" | sort))
+unset IFS
+
+# Group skills by category. Use parallel arrays (associative arrays
+# behave inconsistently across Bash versions).
+GROUPED_CATEGORIES=()
+GROUPED_COUNTS=()
+ORPHANS=()
+
+for category in "${CATEGORY_ORDER[@]}"; do
+  count=0
+  for skill in "${ACTUAL_SKILLS[@]}"; do
+    if [[ "$(get_category "$skill")" == "$category" ]]; then
+      count=$((count + 1))
+    fi
+  done
+  if [[ $count -gt 0 ]]; then
+    GROUPED_CATEGORIES+=("$category")
+    GROUPED_COUNTS+=("$count")
+  fi
+done
+
+for skill in "${ACTUAL_SKILLS[@]}"; do
+  if [[ "$(get_category "$skill")" == "orphan" ]]; then
+    ORPHANS+=("$skill")
+  fi
+done
+
+# Temporary diagnostic (removed in Task 4).
+echo "Enumerated ${#ACTUAL_SKILLS[@]} skills"
+for i in "${!GROUPED_CATEGORIES[@]}"; do
+  echo "  ${GROUPED_CATEGORIES[$i]}: ${GROUPED_COUNTS[$i]}"
+done
+if [[ ${#ORPHANS[@]} -gt 0 ]]; then
+  echo "  Orphans: ${ORPHANS[*]}"
+fi
