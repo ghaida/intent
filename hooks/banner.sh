@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Intent invocation banner.
+# Prints the colored banner for /intent invocations.
+# Reads skills/ at runtime; maps to the 8 canonical categories from docs/src/lib/skills.ts.
+
+set -u
+
+# Resolve the script's repo root so it works from any CWD.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SKILLS_DIR="$REPO_ROOT/skills"
+
+# TODO: implementation in subsequent tasks.
+echo "banner.sh: skeleton placeholder"
