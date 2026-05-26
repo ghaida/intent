@@ -126,11 +126,54 @@ for skill in "${ACTUAL_SKILLS[@]}"; do
   fi
 done
 
-# Temporary diagnostic (removed in Task 4).
-echo "Enumerated ${#ACTUAL_SKILLS[@]} skills"
-for i in "${!GROUPED_CATEGORIES[@]}"; do
-  echo "  ${GROUPED_CATEGORIES[$i]}: ${GROUPED_COUNTS[$i]}"
-done
+# ── Frame builder ──────────────────────────────────────────────────
+build_frame() {
+  local out=""
+  out+="${CORNER}◆${RESET}"
+  local first=1
+  for i in "${!GROUPED_CATEGORIES[@]}"; do
+    local category="${GROUPED_CATEGORIES[$i]}"
+    local count="${GROUPED_COUNTS[$i]}"
+    local color
+    color=$(get_color "$category")
+
+    if [[ $first -eq 0 ]]; then
+      out+=" ${SEP}│${RESET}"
+    fi
+    first=0
+
+    for ((j = 0; j < count; j++)); do
+      out+=" ${color}─${RESET}"
+    done
+  done
+
+  # Orphan skills appended in neutral tone.
+  if [[ ${#ORPHANS[@]} -gt 0 ]]; then
+    out+=" ${SEP}│${RESET}"
+    for orphan in "${ORPHANS[@]}"; do
+      out+=" ${C_ORPHAN}─${RESET}"
+    done
+  fi
+
+  out+=" ${CORNER}◆${RESET}"
+  printf '%s\n' "$out"
+}
+
+# ── Orphan warning (to stderr) ─────────────────────────────────────
 if [[ ${#ORPHANS[@]} -gt 0 ]]; then
-  echo "  Orphans: ${ORPHANS[*]}"
+  printf 'banner.sh: %d skill(s) not in CATEGORY_MAP: %s\n' \
+    "${#ORPHANS[@]}" "${ORPHANS[*]}" >&2
 fi
+
+# ── Render banner ──────────────────────────────────────────────────
+printf '\n'
+build_frame
+printf '\n'
+printf '  %sintent.%s\n' "$ACCENT" "$RESET"
+printf '\n'
+printf '  %sMake the reason behind every decision visible.%s\n' "$HEAVY" "$RESET"
+printf '\n'
+printf '  %sWhat are you designing, and for whom?%s\n' "$QUIET" "$RESET"
+printf '\n'
+build_frame
+printf '\n'
