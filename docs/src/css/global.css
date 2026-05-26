@@ -87,6 +87,19 @@ ul, ol {
   --code-bg:          #1e1e2e;
   --code-fg:          #e0e0f0;
 
+  /* — Score system tokens (graphic-score SVGs) — */
+  /* Aliases: sketches reference --ink/--paper; map to site's --fg/--bg */
+  --ink:        var(--fg);
+  --paper:      var(--bg);
+  --ink-quiet:  var(--fg-muted);
+  --rule:       var(--border);
+
+  /* Cluster colors — semantic active-intent colors per skill cluster */
+  --c-strategy:      oklch(54% 0.26  268);  /* indigo */
+  --c-systems:       oklch(60% 0.17  196);  /* teal */
+  --c-quality:       oklch(60% 0.22   28);  /* coral */
+  --c-communication: oklch(74% 0.20  100);  /* citron */
+
   /* Typography */
   --display: 'General Sans', system-ui, -apple-system, sans-serif;
   --body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
@@ -152,6 +165,12 @@ ul, ol {
   --severity-low-fg:  #8888b0;
   --code-bg:          #0c0c18;
   --code-fg:          #c8c8e0;
+
+  /* Score-system cluster colors — brighter dark-mode variants */
+  --c-strategy:      oklch(70% 0.22  268);
+  --c-systems:       oklch(72% 0.16  196);
+  --c-quality:       oklch(72% 0.22   28);
+  --c-communication: oklch(82% 0.18  100);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -176,8 +195,20 @@ ul, ol {
     --severity-low-fg:  #8888b0;
     --code-bg:          #0c0c18;
     --code-fg:          #c8c8e0;
+
+    /* Score-system cluster colors — brighter dark-mode variants */
+    --c-strategy:      oklch(70% 0.22  268);
+    --c-systems:       oklch(72% 0.16  196);
+    --c-quality:       oklch(72% 0.22   28);
+    --c-communication: oklch(82% 0.18  100);
   }
 }
+
+/* --- Score system: cluster color cascade --- */
+[data-cluster="strategy"]      { --c: var(--c-strategy); }
+[data-cluster="systems"]       { --c: var(--c-systems); }
+[data-cluster="quality"]       { --c: var(--c-quality); }
+[data-cluster="communication"] { --c: var(--c-communication); }
 
 /* --- Base Typography --- */
 

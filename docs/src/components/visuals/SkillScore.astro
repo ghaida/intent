@@ -1,0 +1,27 @@
+---
+// Dispatcher: renders the inline SVG fragment for the given skill slug.
+// Each fragment lives at ./scores/{slug}.astro and is a pure <svg>…</svg> block.
+// Cluster color is delivered via the parent's data-cluster cascade — the
+// component must always be rendered inside an element with data-cluster set.
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const fragments = import.meta.glob('./scores/*.astro', { eager: true }) as Record<
+  string,
+  { default: any }
+>;
+
+const Fragment = fragments[`./scores/${slug}.astro`]?.default;
+
+if (!Fragment) {
+  throw new Error(
+    `SkillScore: no SVG fragment for slug "${slug}". Expected docs/src/components/visuals/scores/${slug}.astro to exist.`,
+  );
+}
+---
+
+<Fragment />

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { Cluster } from './skills';
 
 export interface Agent {
   slug: string;
@@ -8,32 +9,39 @@ export interface Agent {
   domain: string;
   skills: string[];
   description: string;
+  cluster: Cluster;
 }
 
-const AGENT_META: Record<string, { domain: string; skills: string[] }> = {
+const AGENT_META: Record<string, { domain: string; skills: string[]; cluster: Cluster }> = {
   noor: {
     domain: 'Foundation & Context',
     skills: ['intent'],
+    cluster: 'strategy',
   },
   ember: {
     domain: 'Strategy & Research',
     skills: ['strategize', 'investigate'],
+    cluster: 'strategy',
   },
   wren: {
     domain: 'Experience Design',
     skills: ['journey', 'organize', 'articulate'],
+    cluster: 'systems',
   },
   vigil: {
     domain: 'Quality & Inclusion',
     skills: ['evaluate', 'fortify', 'include'],
+    cluster: 'quality',
   },
   rune: {
     domain: 'Engineering Handoff',
     skills: ['specify'],
+    cluster: 'communication',
   },
   sage: {
     domain: 'Cross-cutting Wisdom',
     skills: ['philosopher'],
+    cluster: 'strategy',
   },
 };
 
@@ -91,6 +99,7 @@ export function loadAgents(): Agent[] {
       domain: meta.domain,
       skills: meta.skills,
       description: desc,
+      cluster: meta.cluster,
     });
   }
 

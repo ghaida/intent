@@ -1,0 +1,26 @@
+---
+// Dispatcher: renders the inline SVG glyph for the given agent slug.
+// Each glyph lives at ./symbols/{slug}.astro and is a pure <svg>…</svg> block.
+// Cluster color is delivered via the parent's data-cluster cascade.
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const fragments = import.meta.glob('./symbols/*.astro', { eager: true }) as Record<
+  string,
+  { default: any }
+>;
+
+const Fragment = fragments[`./symbols/${slug}.astro`]?.default;
+
+if (!Fragment) {
+  throw new Error(
+    `AgentSymbol: no SVG glyph for slug "${slug}". Expected docs/src/components/visuals/symbols/${slug}.astro to exist.`,
+  );
+}
+---
+
+<Fragment />

@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+export type Cluster = 'strategy' | 'systems' | 'quality' | 'communication';
+
 export interface Skill {
   slug: string;
   name: string;
@@ -8,6 +10,8 @@ export interface Skill {
   overview: string;
   triggers: string;
   category: string;
+  cluster: Cluster;
+  shape: string;
 }
 
 const CATEGORIES: Record<string, { label: string; order: number }> = {
@@ -27,6 +31,44 @@ const CATEGORIES: Record<string, { label: string; order: number }> = {
   philosopher: { label: 'Cross-cutting',           order: 6 },
   storytelling: { label: 'Cross-cutting',           order: 6 },
   specify:     { label: 'Handoff',                 order: 7 },
+};
+
+const SKILL_CLUSTERS: Record<string, Cluster> = {
+  intent:       'strategy',
+  strategize:   'strategy',
+  investigate:  'strategy',
+  philosopher:  'strategy',
+  blueprint:    'systems',
+  organize:     'systems',
+  journey:      'systems',
+  transpose:    'systems',
+  localize:     'systems',
+  evaluate:     'quality',
+  fortify:      'quality',
+  include:      'quality',
+  measure:      'quality',
+  articulate:   'communication',
+  storytelling: 'communication',
+  specify:      'communication',
+};
+
+const SKILL_SHAPES: Record<string, string> = {
+  intent:       'An opening — the moment of orientation before any work begins.',
+  strategize:   'Many framings → judgment → one chosen frame.',
+  investigate:  'From a question, attention extends outward; judgment selects.',
+  philosopher:  'Openness — the suspension of frame.',
+  blueprint:    'A system rendered as scaffolded territories with paths between them.',
+  organize:     'Chaos sorted into named territories with paths between them.',
+  journey:      'A path across territory, with dual registers (action / feeling).',
+  transpose:    'A design recomposed for different conditions.',
+  localize:     'A design refracted through different cultural mediums.',
+  evaluate:     'An existing system, examined under structured pressure, weighted by severity.',
+  fortify:      'Bounded territory under stress, reinforced at the points of impact.',
+  include:      'A single design extending its reach across human difference.',
+  measure:      'Comparison made structural, judgment held at the aperture.',
+  articulate:   'Noise → signal.',
+  storytelling: 'An arc — a designed sequence with felt rhythm.',
+  specify:      'Design rendered into instruction, every element accounted for.',
 };
 
 function parseFrontmatter(content: string): { data: Record<string, string>; body: string } {
@@ -90,6 +132,15 @@ export function loadSkills(): Skill[] {
     const cat = CATEGORIES[slug];
     if (!cat) continue;
 
+    const cluster = SKILL_CLUSTERS[slug];
+    const shape = SKILL_SHAPES[slug];
+    if (!cluster) {
+      throw new Error(`skills.ts: SKILL_CLUSTERS missing entry for "${slug}". Add a cluster mapping.`);
+    }
+    if (!shape) {
+      throw new Error(`skills.ts: SKILL_SHAPES missing entry for "${slug}". Add a shape line.`);
+    }
+
     skills.push({
       slug,
       name: data.name || slug,
@@ -97,6 +148,8 @@ export function loadSkills(): Skill[] {
       overview: extractSection(body, 'Overview'),
       triggers: extractTriggers(body),
       category: cat.label,
+      cluster,
+      shape,
     });
   }
 
