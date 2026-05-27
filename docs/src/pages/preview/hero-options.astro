@@ -1,0 +1,325 @@
+---
+// TEMPORARY: 6 thumbnail concepts for the homepage hero background.
+// All compositions follow the v5 vocabulary: point, line, vector, frame, field.
+// Cluster colors used semantically (color = active intent, ink = structural).
+// Each is wide-aspect (1200×400) to match a hero band.
+// Delete this route after the user picks a direction.
+
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Hero options — Intent (preview)" description="Six concept thumbnails for the homepage hero background.">
+  <div class="hero-options">
+    <header class="hero-options__head">
+      <p class="hero-options__super mono">Internal preview · pick one</p>
+      <h1>Hero background — 6 concepts</h1>
+      <p class="hero-options__lede">
+        Each thumbnail uses the same vocabulary as the 16 skill scores:
+        points, lines, vectors, frames, fields. Cluster colors are used
+        sparingly. Hover any to preview hover affordance.
+      </p>
+    </header>
+
+    <!-- 01 — Diagonal traversal -->
+    <article class="hero-option" data-cluster="strategy">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sparse structural field -->
+          <g fill="var(--ink)" opacity="0.4" stroke="none">
+            <circle cx="80"   cy="320" r="2"/>
+            <circle cx="200"  cy="80"  r="2"/>
+            <circle cx="320"  cy="280" r="2"/>
+            <circle cx="480"  cy="120" r="2"/>
+            <circle cx="640"  cy="220" r="2"/>
+            <circle cx="800"  cy="100" r="2"/>
+            <circle cx="960"  cy="280" r="2"/>
+            <circle cx="1120" cy="160" r="2"/>
+            <circle cx="160"  cy="180" r="2"/>
+            <circle cx="400"  cy="340" r="2"/>
+            <circle cx="720"  cy="320" r="2"/>
+            <circle cx="1040" cy="60"  r="2"/>
+          </g>
+          <!-- Hero vector cutting diagonally -->
+          <line x1="120" y1="340" x2="1080" y2="60" stroke="var(--ink)" stroke-width="3"/>
+          <!-- Cluster-colored terminal at end -->
+          <circle cx="1080" cy="60" r="12" fill="var(--c)" stroke="none"/>
+          <!-- 3 colored waypoints along the vector -->
+          <circle cx="360" cy="260" r="6" fill="var(--c-quality)" stroke="none"/>
+          <circle cx="600" cy="190" r="6" fill="var(--c-systems)" stroke="none"/>
+          <circle cx="840" cy="120" r="6" fill="var(--c-communication)" stroke="none"/>
+          <!-- Faint provisional frame on the left (the origin) -->
+          <rect x="60" y="280" width="120" height="80" stroke="var(--ink)" stroke-width="1" stroke-dasharray="6 6" opacity="0.5"/>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">01</span> · Diagonal traversal — intent moving from origin to terminal, picking up cluster waypoints
+      </p>
+    </article>
+
+    <!-- 02 — Two frames, embedded marks -->
+    <article class="hero-option" data-cluster="systems">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sparse structural field across whole canvas -->
+          <g fill="var(--ink)" opacity="0.35" stroke="none">
+            <circle cx="120" cy="80"  r="2"/>
+            <circle cx="240" cy="200" r="2"/>
+            <circle cx="360" cy="120" r="2"/>
+            <circle cx="600" cy="60"  r="2"/>
+            <circle cx="720" cy="320" r="2"/>
+            <circle cx="880" cy="80"  r="2"/>
+            <circle cx="1000" cy="240" r="2"/>
+            <circle cx="1140" cy="320" r="2"/>
+            <circle cx="40"  cy="220" r="2"/>
+            <circle cx="180" cy="340" r="2"/>
+          </g>
+          <!-- Larger background frame with aperture (right edge) -->
+          <g stroke="var(--ink)" stroke-width="1.5">
+            <line x1="320" y1="80"  x2="880" y2="80"/>
+            <line x1="880" y1="80"  x2="880" y2="160"/>
+            <line x1="880" y1="220" x2="880" y2="320"/>
+            <line x1="880" y1="320" x2="320" y2="320"/>
+            <line x1="320" y1="320" x2="320" y2="80"/>
+          </g>
+          <!-- Smaller foreground frame, offset -->
+          <rect x="480" y="140" width="280" height="120" stroke="var(--ink)" stroke-width="2.5"/>
+          <!-- Colored marks scattered inside -->
+          <g stroke="none">
+            <circle cx="540" cy="180" r="6"  fill="var(--c-strategy)"/>
+            <circle cx="620" cy="200" r="8"  fill="var(--c)"/>
+            <circle cx="700" cy="220" r="5"  fill="var(--c-quality)"/>
+            <circle cx="580" cy="240" r="4"  fill="var(--c-communication)"/>
+          </g>
+          <!-- Heavy convergent vector through the aperture -->
+          <line x1="980" y1="200" x2="880" y2="200" stroke="var(--c)" stroke-width="3"/>
+          <circle cx="1000" cy="200" r="10" fill="var(--c)" stroke="none"/>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">02</span> · Layered frames — practice inside scope, colored marks held within, intent entering through aperture
+      </p>
+    </article>
+
+    <!-- 03 — Wave + affective register -->
+    <article class="hero-option" data-cluster="systems">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Faint phase boundaries -->
+          <g stroke="var(--ink)" stroke-width="0.8" opacity="0.4">
+            <line x1="400"  y1="40" x2="400"  y2="360"/>
+            <line x1="800"  y1="40" x2="800"  y2="360"/>
+          </g>
+          <!-- Periodic wave -->
+          <path d="M 60 240 Q 160 180 260 240 Q 360 300 460 240 Q 560 180 660 240 Q 760 300 860 240 Q 960 180 1060 240 Q 1140 280 1180 240" stroke="var(--ink)" stroke-width="2"/>
+          <!-- Colored affective points sitting on/near the wave -->
+          <g stroke="none">
+            <circle cx="160" cy="200" r="6"  fill="var(--c-strategy)"/>
+            <circle cx="360" cy="280" r="5"  fill="var(--c-strategy)"/>
+            <circle cx="560" cy="200" r="10" fill="var(--c-quality)"/>
+            <circle cx="760" cy="280" r="6"  fill="var(--c-systems)"/>
+            <circle cx="960" cy="200" r="6"  fill="var(--c-systems)"/>
+            <circle cx="1140" cy="260" r="5" fill="var(--c-communication)"/>
+          </g>
+          <!-- Sparse field above -->
+          <g fill="var(--ink)" opacity="0.3" stroke="none">
+            <circle cx="80"  cy="80"  r="2"/>
+            <circle cx="240" cy="120" r="2"/>
+            <circle cx="500" cy="60"  r="2"/>
+            <circle cx="700" cy="100" r="2"/>
+            <circle cx="900" cy="60"  r="2"/>
+            <circle cx="1080" cy="100" r="2"/>
+          </g>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">03</span> · Wave & affective register — phases marked, colored points carry weight along an emotional line
+      </p>
+    </article>
+
+    <!-- 04 — Constellation -->
+    <article class="hero-option" data-cluster="quality">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sparse atmospheric field -->
+          <g fill="var(--ink)" opacity="0.35" stroke="none">
+            <circle cx="80"   cy="200" r="2"/>
+            <circle cx="280"  cy="80"  r="2"/>
+            <circle cx="420"  cy="300" r="2"/>
+            <circle cx="580"  cy="180" r="2"/>
+            <circle cx="800"  cy="60"  r="2"/>
+            <circle cx="940"  cy="280" r="2"/>
+            <circle cx="1100" cy="160" r="2"/>
+            <circle cx="180"  cy="340" r="2"/>
+            <circle cx="360"  cy="200" r="2"/>
+            <circle cx="640"  cy="320" r="2"/>
+            <circle cx="880"  cy="220" r="2"/>
+            <circle cx="1020" cy="80"  r="2"/>
+          </g>
+          <!-- Small dashed frame: provisional -->
+          <rect x="100" y="100" width="120" height="80" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <!-- Small heavy point cluster -->
+          <g fill="var(--c-strategy)" stroke="none">
+            <circle cx="320" cy="180" r="8"/>
+            <circle cx="360" cy="140" r="5"/>
+            <circle cx="340" cy="220" r="4"/>
+          </g>
+          <!-- Short heavy line -->
+          <line x1="560" y1="100" x2="680" y2="160" stroke="var(--ink)" stroke-width="2.5"/>
+          <!-- Single heavy citron terminal -->
+          <circle cx="780" cy="240" r="14" fill="var(--c-communication)" stroke="none"/>
+          <!-- Tiny solid frame far right -->
+          <rect x="980" y="200" width="80" height="60" stroke="var(--ink)" stroke-width="2.5"/>
+          <!-- One coral mark -->
+          <circle cx="1020" cy="230" r="6" fill="var(--c-quality)" stroke="none"/>
+          <!-- Faint connecting hairlines -->
+          <g stroke="var(--ink)" stroke-width="0.8" opacity="0.4">
+            <line x1="220" y1="140" x2="320" y2="180"/>
+            <line x1="380" y1="180" x2="560" y2="120"/>
+            <line x1="700" y1="160" x2="780" y2="240"/>
+            <line x1="800" y1="240" x2="980" y2="230"/>
+          </g>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">04</span> · Constellation — sparse asymmetric arrangement of marks across the field, faint connections between
+      </p>
+    </article>
+
+    <!-- 05 — Single heavy mark + emanation -->
+    <article class="hero-option" data-cluster="communication">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Faint commitment field flowing rightward -->
+          <g fill="var(--ink)" opacity="0.4" stroke="none">
+            <circle cx="100" cy="200" r="2"/>
+            <circle cx="180" cy="120" r="2"/>
+            <circle cx="220" cy="280" r="2"/>
+            <circle cx="320" cy="180" r="2"/>
+            <circle cx="380" cy="260" r="2"/>
+            <circle cx="460" cy="100" r="2"/>
+            <circle cx="500" cy="320" r="2"/>
+            <circle cx="600" cy="200" r="2"/>
+            <circle cx="680" cy="60"  r="2"/>
+            <circle cx="720" cy="340" r="2"/>
+          </g>
+          <!-- Hero terminal — large, anchored upper-right -->
+          <circle cx="940" cy="160" r="28" fill="var(--c)" stroke="none"/>
+          <!-- Heavy vector reaching to terminal -->
+          <line x1="160" y1="280" x2="912" y2="172" stroke="var(--ink)" stroke-width="5"/>
+          <!-- A few small cluster marks scattered along path -->
+          <g stroke="none">
+            <circle cx="300" cy="248" r="5" fill="var(--c-strategy)"/>
+            <circle cx="500" cy="220" r="5" fill="var(--c-systems)"/>
+            <circle cx="700" cy="200" r="5" fill="var(--c-quality)"/>
+          </g>
+          <!-- Short reinforcement marks near the terminal -->
+          <g stroke="var(--ink)" stroke-width="1.5">
+            <line x1="920" y1="120" x2="960" y2="120"/>
+            <line x1="920" y1="200" x2="960" y2="200"/>
+            <line x1="980" y1="160" x2="1000" y2="160"/>
+          </g>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">05</span> · Single hero terminal — one anchored mark, heavy vector reaches it from across the field
+      </p>
+    </article>
+
+    <!-- 06 — Grid field + sparse deliberate marks -->
+    <article class="hero-option" data-cluster="communication">
+      <figure class="hero-option__figure">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Grid field — regular dots forming paper texture -->
+          <g fill="var(--ink)" opacity="0.3" stroke="none">
+            {[40, 80, 120, 160, 200, 240, 280, 320, 360].map((y) =>
+              [80, 160, 240, 320, 400, 480, 560, 640, 720, 800, 880, 960, 1040, 1120].map((x) => (
+                <circle cx={x} cy={y} r="1.2"/>
+              ))
+            )}
+          </g>
+          <!-- Two heavy marks on grid -->
+          <circle cx="320" cy="160" r="10" fill="var(--c-strategy)" stroke="none"/>
+          <circle cx="800" cy="240" r="14" fill="var(--c-quality)" stroke="none"/>
+          <!-- Short heavy vector connecting the two -->
+          <line x1="332" y1="168" x2="788" y2="232" stroke="var(--ink)" stroke-width="2.5"/>
+          <!-- Tiny tick marks at edges of field — instrumental detail -->
+          <g stroke="var(--ink)" stroke-width="1">
+            <line x1="80" y1="40" x2="80" y2="32"/>
+            <line x1="320" y1="40" x2="320" y2="32"/>
+            <line x1="560" y1="40" x2="560" y2="32"/>
+            <line x1="800" y1="40" x2="800" y2="32"/>
+            <line x1="1040" y1="40" x2="1040" y2="32"/>
+            <line x1="80" y1="360" x2="80" y2="368"/>
+            <line x1="1040" y1="360" x2="1040" y2="368"/>
+          </g>
+          <!-- One small cluster mark off-grid -->
+          <circle cx="1080" cy="120" r="6" fill="var(--c-communication)" stroke="none"/>
+        </svg>
+      </figure>
+      <p class="hero-option__caption">
+        <span class="mono">06</span> · Grid field — regular paper texture, sparse deliberate marks held by it, instrumental tick marks at the edges
+      </p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .hero-options {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  .hero-options__head {
+    margin-bottom: 64px;
+    max-width: 70ch;
+  }
+
+  .hero-options__super {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 12px;
+  }
+
+  .hero-options__head h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: 0 0 16px;
+  }
+
+  .hero-options__lede {
+    color: var(--fg-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .hero-option {
+    margin-bottom: 56px;
+  }
+
+  .hero-option__figure {
+    margin: 0 0 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+
+  .hero-option__figure svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-option__caption {
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .hero-option__caption .mono {
+    color: var(--fg);
+    margin-right: 4px;
+  }
+</style>

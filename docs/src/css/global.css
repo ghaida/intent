@@ -697,7 +697,12 @@ details[open] > summary::after {
   top: 0;
   z-index: 50;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  /* The topbar's bottom rule is drawn as an inset shadow at the bottom of
+     the nav's content area, NOT as border-bottom. This puts the line at the
+     same y-coordinate as a child link's border-bottom (also rendered inside
+     the content area), so an active link's border-bottom sits flush in the
+     same lane. */
+  box-shadow: inset 0 -1px 0 var(--border);
 }
 
 .nav-inner {
@@ -730,20 +735,33 @@ details[open] > summary::after {
 
 .nav-links {
   display: none;
-  align-items: center;
+  align-items: stretch;
+  align-self: stretch;
   gap: var(--s8);
   margin-left: var(--s8);
 }
 
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
   font-size: var(--text-xs);
   font-weight: 500;
   color: var(--fg-muted);
+  border-bottom: 2px solid transparent;
   transition: color var(--duration) var(--ease-out);
 }
 
 .nav-links a:hover {
   color: var(--fg);
+}
+
+/* Active-page indicator — a colored border-bottom that sits flush with the
+   topbar's own bottom border. The link's bottom edge meets the nav's bottom
+   because .nav-links uses align-items: stretch, so the 2px accent border
+   lands directly above the nav's 1px grey border. */
+.nav-links a[aria-current="page"] {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
 }
 
 .nav-install {
@@ -948,17 +966,18 @@ main > .page {
   z-index: 1;
 }
 
-/* Nav becomes transparent (with backdrop blur) so the SVG visibly extends
-   beneath it. Without this the SVG looks cut off at the nav's bottom edge. */
-.nav {
+/* On pages with the hero backdrop, the nav becomes transparent (with backdrop
+   blur) so the SVG visibly extends beneath it. Scoped via :has() — pages
+   without the backdrop keep the default solid background and border. */
+body:has(main > .hero-backdrop) .nav {
   background: color-mix(in srgb, var(--bg) 70%, transparent);
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: none;
+  box-shadow: none;
 }
 
 @supports not (backdrop-filter: blur(1px)) {
-  .nav { background: var(--bg); }
+  body:has(main > .hero-backdrop) .nav { background: var(--bg); }
 }
 
 .hero h1 {

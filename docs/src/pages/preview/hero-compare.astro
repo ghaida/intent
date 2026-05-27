@@ -1,0 +1,252 @@
+---
+// TEMPORARY: side-by-side hero previews using concept 03 (wave) and 04 (constellation)
+// as background, with the real hero text overlaid. Delete after a direction is chosen.
+
+import Base from '../../layouts/Base.astro';
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<Base title="Hero compare — 03 vs 04" description="Two hero background options in real hero context.">
+  <div class="page">
+    <header class="hero-compare__head">
+      <p class="hero-options__super mono">Internal preview · 03 vs 04</p>
+      <h1>Hero compare</h1>
+      <p class="hero-options__lede">
+        Two candidate backgrounds placed behind the real hero text. Hover the
+        colored marks to see the subtle interaction.
+      </p>
+    </header>
+
+    <!-- ===== Variant 03 — Wave & affective register ===== -->
+    <section class="hero hero--compare hero--variant-03" aria-labelledby="h-03">
+      <svg class="hero-bg" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- Faint phase boundaries -->
+        <g stroke="var(--ink)" stroke-width="0.8" opacity="0.3">
+          <line x1="400" y1="80" x2="400" y2="720"/>
+          <line x1="800" y1="80" x2="800" y2="720"/>
+        </g>
+        <!-- Periodic wave — sits low in the hero -->
+        <path d="M 60 620 Q 160 560 260 620 Q 360 680 460 620 Q 560 560 660 620 Q 760 680 860 620 Q 960 560 1060 620 Q 1140 660 1180 620" stroke="var(--ink)" stroke-width="2" opacity="0.55"/>
+        <!-- Colored affective points sitting on/near the wave -->
+        <g class="hero-bg__marks">
+          <a class="hero-bg__terminal" data-cluster="strategy" href={`${base}skills/#intent`}>
+            <title>/intent · entry point</title>
+            <circle cx="160" cy="580" r="7"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="strategy" href={`${base}skills/#strategize`}>
+            <title>/strategize · framing problems</title>
+            <circle cx="360" cy="660" r="6"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="quality" href={`${base}skills/#evaluate`}>
+            <title>/evaluate · weighted under pressure</title>
+            <circle cx="560" cy="580" r="11"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="systems" href={`${base}skills/#journey`}>
+            <title>/journey · dual register path</title>
+            <circle cx="760" cy="660" r="7"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="systems" href={`${base}skills/#blueprint`}>
+            <title>/blueprint · scaffolded territories</title>
+            <circle cx="960" cy="580" r="7"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="communication" href={`${base}skills/#articulate`}>
+            <title>/articulate · noise to signal</title>
+            <circle cx="1140" cy="640" r="6"/>
+          </a>
+        </g>
+        <!-- Sparse structural field above text -->
+        <g fill="var(--ink)" opacity="0.25" stroke="none">
+          <circle cx="80"   cy="120" r="2"/>
+          <circle cx="240"  cy="200" r="2"/>
+          <circle cx="500"  cy="60"  r="2"/>
+          <circle cx="700"  cy="160" r="2"/>
+          <circle cx="900"  cy="80"  r="2"/>
+          <circle cx="1080" cy="160" r="2"/>
+        </g>
+      </svg>
+
+      <div class="hero-content">
+        <h2 id="h-03" class="hero-compare__label mono">03 · Wave & register</h2>
+        <h1>Design with <span class="hero-accent">Intent</span></h1>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+          <span class="hero-how-to-use-desc muted">Follow a project from first question to engineering handoff</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Variant 04 — Constellation ===== -->
+    <section class="hero hero--compare hero--variant-04" aria-labelledby="h-04">
+      <svg class="hero-bg" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- Sparse atmospheric field (positioned to avoid text zone upper-left) -->
+        <g fill="var(--ink)" opacity="0.3" stroke="none">
+          <circle cx="900"  cy="100"  r="2"/>
+          <circle cx="1080" cy="200"  r="2"/>
+          <circle cx="800"  cy="640"  r="2"/>
+          <circle cx="1140" cy="500"  r="2"/>
+          <circle cx="600"  cy="700"  r="2"/>
+          <circle cx="1020" cy="380"  r="2"/>
+          <circle cx="720"  cy="240"  r="2"/>
+          <circle cx="980"  cy="600"  r="2"/>
+          <circle cx="660"  cy="540"  r="2"/>
+          <circle cx="540"  cy="600"  r="2"/>
+        </g>
+        <!-- Provisional dashed frame, lower-left area -->
+        <rect x="80" y="540" width="120" height="80" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.55"/>
+        <!-- Heavy small frame upper-right area -->
+        <rect x="1020" y="100" width="80" height="60" stroke="var(--ink)" stroke-width="2.5"/>
+        <!-- Short heavy line -->
+        <line x1="700" y1="180" x2="820" y2="240" stroke="var(--ink)" stroke-width="2.5"/>
+        <!-- Faint hairline connectors -->
+        <g stroke="var(--ink)" stroke-width="0.8" opacity="0.4">
+          <line x1="240" y1="600" x2="380" y2="540"/>
+          <line x1="420" y1="500" x2="600" y2="380"/>
+          <line x1="840" y1="260" x2="940" y2="320"/>
+          <line x1="980" y1="340" x2="1080" y2="220"/>
+          <line x1="640" y1="640" x2="780" y2="600"/>
+        </g>
+        <!-- Colored marks -->
+        <g class="hero-bg__marks">
+          <a class="hero-bg__terminal" data-cluster="strategy" href={`${base}skills/#strategize`}>
+            <title>/strategize · framings to a chosen frame</title>
+            <circle cx="380" cy="540" r="8"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="strategy" href={`${base}skills/#intent`}>
+            <title>/intent · the orienting moment</title>
+            <circle cx="420" cy="500" r="5"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="quality" href={`${base}skills/#evaluate`}>
+            <title>/evaluate · severity-weighted</title>
+            <circle cx="600" cy="380" r="10"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="communication" href={`${base}skills/#articulate`}>
+            <title>/articulate · noise → signal</title>
+            <circle cx="940" cy="320" r="14"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="systems" href={`${base}skills/#journey`}>
+            <title>/journey · dual register</title>
+            <circle cx="1060" cy="140" r="6"/>
+          </a>
+          <a class="hero-bg__terminal" data-cluster="systems" href={`${base}skills/#blueprint`}>
+            <title>/blueprint · scaffolded territories</title>
+            <circle cx="780" cy="600" r="6"/>
+          </a>
+        </g>
+      </svg>
+
+      <div class="hero-content">
+        <h2 id="h-04" class="hero-compare__label mono">04 · Constellation</h2>
+        <h1>Design with <span class="hero-accent">Intent</span></h1>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+          <span class="hero-how-to-use-desc muted">Follow a project from first question to engineering handoff</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero-compare__head {
+    max-width: 70ch;
+    padding: 32px 0 16px;
+  }
+
+  .hero-compare__head h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 0 0 12px;
+  }
+
+  .hero-options__super {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 12px;
+  }
+
+  .hero-options__lede {
+    color: var(--fg-muted);
+    margin: 0;
+  }
+
+  .hero--compare {
+    position: relative;
+    margin: 32px 0;
+    padding: 80px 0 96px;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-bg__terminal {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .hero-bg__terminal circle {
+    fill: var(--c);
+    transition: r var(--duration) var(--ease-out),
+                filter var(--duration) var(--ease-out);
+  }
+
+  .hero-bg__terminal:hover circle,
+  .hero-bg__terminal:focus-visible circle {
+    filter: brightness(1.15);
+  }
+
+  .hero-bg__terminal:focus-visible {
+    outline: 2px solid var(--c);
+    outline-offset: 4px;
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 56ch;
+  }
+
+  .hero-compare__label {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 24px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+  }
+
+  .hero-lede {
+    color: var(--fg-muted);
+    margin: 0 0 32px;
+  }
+</style>

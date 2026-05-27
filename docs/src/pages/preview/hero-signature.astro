@@ -1,0 +1,152 @@
+---
+// TEMPORARY: hero signature mark.
+// A small, properly-composed v5 illustration positioned in the lower-right
+// corner of the hero. Multiple primitives but small footprint — reads as a
+// signature/wordmark accent, not a background field. Pure ink monochrome.
+
+import Base from '../../layouts/Base.astro';
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<Base title="Hero signature — Intent (preview)" description="Corner signature mark in v5 style.">
+  <div class="page">
+    <header class="hero-sig__head">
+      <p class="mono small muted">Internal preview · corner signature</p>
+      <h1>Composed mark, lower-right</h1>
+      <p class="muted">
+        A small v5 illustration sits in the corner like a signature.
+        Composed (frame + vector + terminal + field) — clearly an artwork,
+        not a placeholder. ~280px tall. Cursor proximity brightens it.
+      </p>
+    </header>
+
+    <section class="hero hero--sig">
+      <div class="hero-content">
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+          <span class="hero-how-to-use-desc muted">Follow a project from first question to engineering handoff</span>
+        </div>
+      </div>
+
+      <figure class="hero-sig-mark" aria-hidden="true">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Frame with aperture on left (scope, open on one side) -->
+          <g stroke-width="2">
+            <line x1="80"  y1="80"  x2="320" y2="80"/>
+            <line x1="320" y1="80"  x2="320" y2="240"/>
+            <line x1="320" y1="240" x2="80"  y2="240"/>
+            <line x1="80"  y1="240" x2="80"  y2="180"/>
+            <line x1="80"  y1="140" x2="80"  y2="80"/>
+          </g>
+          <!-- Heavy vector entering the frame through the aperture -->
+          <line x1="20" y1="160" x2="80" y2="160" stroke-width="3"/>
+          <!-- Vector continues across the frame, ending at a terminal -->
+          <line x1="100" y1="160" x2="240" y2="160" stroke-width="2.5"/>
+          <!-- Terminal point — the act lands -->
+          <circle cx="260" cy="160" r="10" fill="var(--ink)" stroke="none"/>
+          <!-- Reinforcement marks near terminal -->
+          <g stroke-width="1.5">
+            <line x1="252" y1="124" x2="268" y2="124"/>
+            <line x1="252" y1="196" x2="268" y2="196"/>
+          </g>
+          <!-- Sparse field of context dots inside the frame, irregular positions -->
+          <g fill="var(--ink)" stroke="none">
+            <circle cx="140" cy="108" r="2"/>
+            <circle cx="200" cy="116" r="2"/>
+            <circle cx="180" cy="200" r="2"/>
+            <circle cx="240" cy="212" r="2"/>
+            <circle cx="296" cy="116" r="2"/>
+            <circle cx="288" cy="208" r="2"/>
+          </g>
+        </svg>
+      </figure>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero-sig__head {
+    max-width: 70ch;
+    padding: 48px 0 16px;
+  }
+
+  .hero-sig__head h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 12px 0;
+  }
+
+  .hero--sig {
+    position: relative;
+    margin: 32px 0;
+    padding: 120px 0;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 600px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+
+  .hero-content h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+
+  .hero-content .hero-accent { color: var(--accent); }
+
+  .hero-lede {
+    color: var(--fg-muted);
+    margin: 0 0 32px;
+    max-width: 55ch;
+  }
+
+  /* The signature: bottom-right corner, transitions opacity on hover */
+  .hero-sig-mark {
+    position: absolute;
+    right: clamp(var(--page-pad), 4vw, var(--s12));
+    bottom: var(--s12);
+    margin: 0;
+    width: clamp(200px, 28vw, 360px);
+    opacity: 0.28;
+    transition: opacity 400ms var(--ease-out);
+    pointer-events: none;
+  }
+
+  .hero-sig-mark svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero--sig:hover .hero-sig-mark {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 720px) {
+    .hero-sig-mark {
+      position: static;
+      width: 100%;
+      max-width: 320px;
+      margin: var(--s12) auto 0;
+      opacity: 0.5;
+    }
+  }
+</style>

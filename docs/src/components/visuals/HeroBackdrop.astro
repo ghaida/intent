@@ -1,9 +1,10 @@
 ---
 // Hero backdrop — light grey at rest, cursor reveals a slightly darker grey
-// locally. Composition adapted from /intent: vectors radiating from a center
-// to terminal points AT the viewBox edges, plus a sparse center field.
-// preserveAspectRatio="none" lets the SVG stretch to fill the viewport
-// exactly — terminals always land at the browser-window edges.
+// locally. A distributed pattern using the Intent visual vocabulary: a sparse
+// dot grain, accent marks, hairline corner brackets at the surface edges, a
+// partial frame with aperture, two dashed provisional segments, and a small
+// loop-back arc. preserveAspectRatio="none" stretches the composition so
+// corner brackets always land at the viewport corners.
 ---
 
 <svg
@@ -25,29 +26,204 @@
               fill="url(#hero-backdrop-pool)"/>
     </mask>
 
-    <!-- Reusable composition: vectors from center to viewBox-edge terminals -->
+    <!-- Reusable composition: distributed blueprint pattern across the surface.
+         All coordinates 40-grid aligned, matching the score components' rhythm.
+         Vocabulary borrowed from the skill scores: dots of varying weight, hairline
+         corner brackets, registration crosses, partial frames with apertures,
+         dashed provisional segments, connector hairlines, the articulate
+         "noisy field" tilted marks, loop-back arcs, and a journey wave. -->
     <g id="hero-backdrop-marks">
-      <!-- Sparse center field -->
+
+      <!-- Background dot grain (r=2) — staggered 40-grid, dense field -->
       <g fill="currentColor" stroke="none">
-        <circle cx="540" cy="360" r="2"/>
-        <circle cx="612" cy="384" r="2"/>
-        <circle cx="668" cy="412" r="2"/>
-        <circle cx="556" cy="436" r="2"/>
-        <circle cx="640" cy="464" r="2"/>
+        <circle cx="120"  cy="80"  r="2"/>
+        <circle cx="280"  cy="80"  r="2"/>
+        <circle cx="440"  cy="80"  r="2"/>
+        <circle cx="600"  cy="80"  r="2"/>
+        <circle cx="760"  cy="80"  r="2"/>
+        <circle cx="920"  cy="80"  r="2"/>
+        <circle cx="1080" cy="80"  r="2"/>
+        <circle cx="200"  cy="160" r="2"/>
+        <circle cx="360"  cy="160" r="2"/>
+        <circle cx="520"  cy="160" r="2"/>
+        <circle cx="680"  cy="160" r="2"/>
+        <circle cx="840"  cy="160" r="2"/>
+        <circle cx="1000" cy="160" r="2"/>
+        <circle cx="120"  cy="240" r="2"/>
+        <circle cx="280"  cy="240" r="2"/>
+        <circle cx="440"  cy="240" r="2"/>
+        <circle cx="600"  cy="240" r="2"/>
+        <circle cx="760"  cy="240" r="2"/>
+        <circle cx="920"  cy="240" r="2"/>
+        <circle cx="1080" cy="240" r="2"/>
+        <circle cx="200"  cy="320" r="2"/>
+        <circle cx="360"  cy="320" r="2"/>
+        <circle cx="520"  cy="320" r="2"/>
+        <circle cx="680"  cy="320" r="2"/>
+        <circle cx="840"  cy="320" r="2"/>
+        <circle cx="1000" cy="320" r="2"/>
+        <circle cx="120"  cy="400" r="2"/>
+        <circle cx="280"  cy="400" r="2"/>
+        <circle cx="440"  cy="400" r="2"/>
+        <circle cx="600"  cy="400" r="2"/>
+        <circle cx="760"  cy="400" r="2"/>
+        <circle cx="920"  cy="400" r="2"/>
+        <circle cx="1080" cy="400" r="2"/>
+        <circle cx="200"  cy="480" r="2"/>
+        <circle cx="360"  cy="480" r="2"/>
+        <circle cx="520"  cy="480" r="2"/>
+        <circle cx="680"  cy="480" r="2"/>
+        <circle cx="840"  cy="480" r="2"/>
+        <circle cx="1000" cy="480" r="2"/>
+        <circle cx="120"  cy="560" r="2"/>
+        <circle cx="280"  cy="560" r="2"/>
+        <circle cx="440"  cy="560" r="2"/>
+        <circle cx="600"  cy="560" r="2"/>
+        <circle cx="760"  cy="560" r="2"/>
+        <circle cx="920"  cy="560" r="2"/>
+        <circle cx="1080" cy="560" r="2"/>
+        <circle cx="200"  cy="640" r="2"/>
+        <circle cx="360"  cy="640" r="2"/>
+        <circle cx="520"  cy="640" r="2"/>
+        <circle cx="680"  cy="640" r="2"/>
+        <circle cx="840"  cy="640" r="2"/>
+        <circle cx="1000" cy="640" r="2"/>
+        <circle cx="120"  cy="720" r="2"/>
+        <circle cx="280"  cy="720" r="2"/>
+        <circle cx="440"  cy="720" r="2"/>
+        <circle cx="600"  cy="720" r="2"/>
+        <circle cx="760"  cy="720" r="2"/>
+        <circle cx="920"  cy="720" r="2"/>
+        <circle cx="1080" cy="720" r="2"/>
       </g>
-      <!-- 6 radiating vectors from center to corners and edge midpoints -->
+
+      <!-- Accent marks (r=3) — punctuation, distributed -->
+      <g fill="currentColor" stroke="none">
+        <circle cx="320"  cy="200" r="3"/>
+        <circle cx="760"  cy="320" r="3"/>
+        <circle cx="440"  cy="560" r="3"/>
+        <circle cx="920"  cy="160" r="3"/>
+        <circle cx="200"  cy="640" r="3"/>
+        <circle cx="1040" cy="680" r="3"/>
+        <circle cx="560"  cy="280" r="3"/>
+        <circle cx="1040" cy="440" r="3"/>
+        <circle cx="320"  cy="480" r="3"/>
+        <circle cx="840"  cy="600" r="3"/>
+      </g>
+
+      <!-- Heavier weighted marks (r=4 / r=6) — severity-style punctuation, sparse -->
+      <g fill="currentColor" stroke="none">
+        <circle cx="400"  cy="320" r="4"/>
+        <circle cx="1080" cy="520" r="4"/>
+        <circle cx="680"  cy="200" r="4"/>
+        <circle cx="240"  cy="560" r="4"/>
+        <circle cx="880"  cy="440" r="6"/>
+        <circle cx="160"  cy="320" r="6"/>
+      </g>
+
+      <!-- Hairline corner brackets — surface frame, anchored to viewBox edges
+           so they land at the viewport corners under preserveAspectRatio="none" -->
+      <g fill="none" stroke="currentColor" stroke-width="1"
+         vector-effect="non-scaling-stroke">
+        <!-- Top-left -->
+        <line x1="0"  y1="40" x2="80" y2="40"/>
+        <line x1="40" y1="0"  x2="40" y2="120"/>
+        <!-- Top-right -->
+        <line x1="1120" y1="40" x2="1200" y2="40"/>
+        <line x1="1160" y1="0"  x2="1160" y2="120"/>
+        <!-- Bottom-left -->
+        <line x1="0"  y1="760" x2="80" y2="760"/>
+        <line x1="40" y1="680" x2="40" y2="800"/>
+        <!-- Bottom-right -->
+        <line x1="1120" y1="760" x2="1200" y2="760"/>
+        <line x1="1160" y1="680" x2="1160" y2="800"/>
+      </g>
+
+      <!-- Registration crosses (small "+" tick marks) at interior grid points -->
+      <g fill="none" stroke="currentColor" stroke-width="1"
+         vector-effect="non-scaling-stroke">
+        <line x1="312" y1="160" x2="328" y2="160"/><line x1="320" y1="152" x2="320" y2="168"/>
+        <line x1="992" y1="280" x2="1008" y2="280"/><line x1="1000" y1="272" x2="1000" y2="288"/>
+        <line x1="472" y1="680" x2="488" y2="680"/><line x1="480" y1="672" x2="480" y2="688"/>
+        <line x1="832" y1="720" x2="848" y2="720"/><line x1="840" y1="712" x2="840" y2="728"/>
+        <line x1="152" y1="480" x2="168" y2="480"/><line x1="160" y1="472" x2="160" y2="488"/>
+        <line x1="712" y1="640" x2="728" y2="640"/><line x1="720" y1="632" x2="720" y2="648"/>
+      </g>
+
+      <!-- Partial frame with aperture (journey/strategize/evaluate aperture motif).
+           A 280×160 rectangle missing the middle segment of its top edge. -->
       <g fill="none" stroke="currentColor" stroke-width="1.5"
          vector-effect="non-scaling-stroke">
-        <line x1="600" y1="400" x2="0"    y2="100"/>
-        <line x1="600" y1="400" x2="600"  y2="0"/>
-        <line x1="600" y1="400" x2="1200" y2="100"/>
-        <line x1="600" y1="400" x2="1200" y2="700"/>
-        <line x1="600" y1="400" x2="600"  y2="800"/>
-        <line x1="600" y1="400" x2="0"    y2="700"/>
+        <line x1="640" y1="400" x2="720" y2="400"/>
+        <line x1="800" y1="400" x2="920" y2="400"/>
+        <line x1="920" y1="400" x2="920" y2="560"/>
+        <line x1="920" y1="560" x2="640" y2="560"/>
+        <line x1="640" y1="560" x2="640" y2="400"/>
       </g>
-      <!-- Terminal points removed — they read as endpoints where lines
-           visibly "cut off." Without them the vectors simply leave the SVG
-           at its bounding box. -->
+
+      <!-- Mid-canvas L-shaped frame fragments (the partial-territory motif) -->
+      <g fill="none" stroke="currentColor" stroke-width="1"
+         vector-effect="non-scaling-stroke">
+        <!-- Upper-left bracket cluster -->
+        <line x1="200" y1="120" x2="320" y2="120"/>
+        <line x1="200" y1="120" x2="200" y2="200"/>
+        <!-- Lower-right bracket cluster -->
+        <line x1="960" y1="680" x2="1080" y2="680"/>
+        <line x1="1080" y1="600" x2="1080" y2="680"/>
+        <!-- Upper-right bracket cluster -->
+        <line x1="880"  y1="80" x2="880"  y2="160"/>
+        <line x1="880"  y1="80" x2="1000" y2="80"/>
+      </g>
+
+      <!-- Dashed provisional segments (the /intent score's dashed-frame motif) -->
+      <g fill="none" stroke="currentColor" stroke-width="1.5"
+         stroke-dasharray="8 8" vector-effect="non-scaling-stroke">
+        <line x1="80"  y1="440" x2="440"  y2="440"/>
+        <line x1="800" y1="200" x2="1120" y2="200"/>
+        <line x1="560" y1="640" x2="560"  y2="800"/>
+      </g>
+
+      <!-- Connector hairlines (the measure/evaluate motif — short links between marks) -->
+      <g fill="none" stroke="currentColor" stroke-width="1"
+         vector-effect="non-scaling-stroke">
+        <line x1="320" y1="200" x2="400" y2="320"/>
+        <line x1="400" y1="320" x2="560" y2="280"/>
+        <line x1="680" y1="200" x2="760" y2="320"/>
+        <line x1="240" y1="560" x2="320" y2="480"/>
+        <line x1="880" y1="440" x2="1040" y2="440"/>
+        <line x1="840" y1="600" x2="920" y2="560"/>
+      </g>
+
+      <!-- Noisy-field tilted hairlines (the articulate "raw material" motif) — short
+           tilted segments scattered in pockets, varied angles -->
+      <g fill="none" stroke="currentColor" stroke-width="1"
+         vector-effect="non-scaling-stroke">
+        <line x1="120" y1="200" x2="160" y2="184"/>
+        <line x1="160" y1="280" x2="200" y2="264"/>
+        <line x1="80"  y1="360" x2="120" y2="376"/>
+        <line x1="1000" y1="80"  x2="1040" y2="96"/>
+        <line x1="1040" y1="160" x2="1080" y2="144"/>
+        <line x1="960"  y1="240" x2="1000" y2="256"/>
+        <line x1="520"  y1="720" x2="560"  y2="704"/>
+        <line x1="640"  y1="720" x2="680"  y2="736"/>
+        <line x1="720"  y1="680" x2="760"  y2="664"/>
+        <line x1="360"  y1="720" x2="400"  y2="736"/>
+      </g>
+
+      <!-- Loop-back arc (the journey skill's signature motif) -->
+      <path d="M 280 640 Q 360 560 440 640"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            vector-effect="non-scaling-stroke"/>
+
+      <!-- Wider sweep arc upper-right -->
+      <path d="M 760 160 Q 920 80 1080 160"
+            fill="none" stroke="currentColor" stroke-width="1"
+            vector-effect="non-scaling-stroke"/>
+
+      <!-- Small periodic wave (the journey emotional-register motif), lower band -->
+      <path d="M 480 720 Q 520 696 560 720 Q 600 744 640 720 Q 680 696 720 720"
+            fill="none" stroke="currentColor" stroke-width="1"
+            vector-effect="non-scaling-stroke"/>
 
     </g>
   </defs>
@@ -73,7 +249,7 @@
 
   .hero-backdrop__resting {
     color: var(--border);
-    opacity: 0.175;
+    opacity: 0.225;
   }
 
   .hero-backdrop__lit {

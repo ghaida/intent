@@ -1,0 +1,252 @@
+---
+// TEMPORARY: 3 interactive prototypes of Hybrid 1+3 (sleeping grid + light pool).
+// Pure monochrome. Three different "meaning" reads:
+//   A · atmospheric — just the grid + light pool
+//   B · structural — adds blueprint marks (tick rules, alignment cues)
+//   C · depth      — two grid layers at different scales, layered behind hero text
+
+import Base from '../../layouts/Base.astro';
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<Base title="Hero archetypes — Intent (preview)" description="Three subtle interactive hero prototypes.">
+  <div class="page">
+    <header class="hero-archetypes__head">
+      <p class="mono small muted">Internal preview · pick A / B / C</p>
+      <h1>Hero archetypes — Hybrid 1+3</h1>
+      <p class="muted">
+        Sleeping grid + light pool. Pure monochrome. Move your cursor across
+        each hero to see the response. At rest, each is nearly invisible.
+      </p>
+    </header>
+
+    <!-- ===== A · Atmospheric ===== -->
+    <section class="hero hero--archetype hero--A">
+      <div class="hero-bg hero-bg--archA">
+        <div class="hero-bg__grid hero-bg__grid--ambient"></div>
+        <div class="hero-bg__grid hero-bg__grid--cursor"></div>
+      </div>
+      <div class="hero-content">
+        <span class="hero-archetype__label mono">A · Atmospheric</span>
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B · Structural ===== -->
+    <section class="hero hero--archetype hero--B">
+      <div class="hero-bg hero-bg--archB">
+        <div class="hero-bg__grid hero-bg__grid--ambient"></div>
+        <div class="hero-bg__grid hero-bg__grid--cursor"></div>
+        <!-- Blueprint marks: tick rules at top + bottom edges, faint corner brackets -->
+        <svg class="hero-bg__marks" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" stroke="var(--ink)" fill="none" aria-hidden="true">
+          <!-- Top edge tick marks every 80px -->
+          <g stroke-width="1" opacity="0.18">
+            <line x1="120" y1="40" x2="120" y2="56"/>
+            <line x1="280" y1="40" x2="280" y2="56"/>
+            <line x1="440" y1="40" x2="440" y2="56"/>
+            <line x1="600" y1="40" x2="600" y2="56"/>
+            <line x1="760" y1="40" x2="760" y2="56"/>
+            <line x1="920" y1="40" x2="920" y2="56"/>
+            <line x1="1080" y1="40" x2="1080" y2="56"/>
+            <line x1="120" y1="760" x2="120" y2="744"/>
+            <line x1="280" y1="760" x2="280" y2="744"/>
+            <line x1="440" y1="760" x2="440" y2="744"/>
+            <line x1="600" y1="760" x2="600" y2="744"/>
+            <line x1="760" y1="760" x2="760" y2="744"/>
+            <line x1="920" y1="760" x2="920" y2="744"/>
+            <line x1="1080" y1="760" x2="1080" y2="744"/>
+          </g>
+          <!-- Faint corner brackets -->
+          <g stroke-width="1" opacity="0.22">
+            <path d="M 56 40 L 40 40 L 40 56"/>
+            <path d="M 1144 40 L 1160 40 L 1160 56"/>
+            <path d="M 40 744 L 40 760 L 56 760"/>
+            <path d="M 1160 744 L 1160 760 L 1144 760"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <span class="hero-archetype__label mono">B · Structural</span>
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== C · Depth ===== -->
+    <section class="hero hero--archetype hero--C">
+      <div class="hero-bg hero-bg--archC">
+        <!-- Two grid layers at different scales suggest depth -->
+        <div class="hero-bg__grid hero-bg__grid--ambient hero-bg__grid--far"></div>
+        <div class="hero-bg__grid hero-bg__grid--ambient hero-bg__grid--near"></div>
+        <div class="hero-bg__grid hero-bg__grid--cursor hero-bg__grid--near"></div>
+      </div>
+      <div class="hero-content">
+        <span class="hero-archetype__label mono">C · Depth</span>
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero-archetypes__head {
+    max-width: 70ch;
+    padding: 48px 0 16px;
+  }
+
+  .hero-archetypes__head h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 12px 0;
+  }
+
+  .hero--archetype {
+    position: relative;
+    margin: 32px 0;
+    padding: 96px 0 96px;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 480px;
+    isolation: isolate;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    --mx: -300px;
+    --my: -300px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Capture cursor on the hero — JS reads it and writes --mx/--my onto .hero-bg */
+  .hero--archetype { cursor: default; }
+
+  .hero-bg__grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px);
+    background-size: 24px 24px;
+    color: var(--fg);
+  }
+
+  .hero-bg__grid--ambient { opacity: 0.08; }
+
+  .hero-bg__grid--cursor {
+    opacity: 0.42;
+    mask-image: radial-gradient(circle 220px at var(--mx) var(--my),
+                                #000 0%,
+                                rgba(0,0,0,0.5) 40%,
+                                transparent 70%);
+    -webkit-mask-image: radial-gradient(circle 220px at var(--mx) var(--my),
+                                         #000 0%,
+                                         rgba(0,0,0,0.5) 40%,
+                                         transparent 70%);
+    transition: opacity 200ms ease-out;
+  }
+
+  /* C · Depth — two grid scales */
+  .hero-bg__grid--far {
+    background-size: 48px 48px;
+    opacity: 0.06;
+  }
+  .hero-bg__grid--near {
+    background-size: 16px 16px;
+  }
+  .hero-bg--archC .hero-bg__grid--ambient.hero-bg__grid--near {
+    opacity: 0.05;
+  }
+  .hero-bg--archC .hero-bg__grid--cursor.hero-bg__grid--near {
+    opacity: 0.4;
+  }
+
+  .hero-bg__marks {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 56ch;
+    padding: 0 var(--page-pad);
+    margin: 0 auto;
+    max-width: var(--page-max);
+  }
+
+  .hero-archetype__label {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 24px;
+  }
+
+  .hero-content h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+  }
+
+  .hero-content .hero-accent { color: var(--accent); }
+
+  .hero-lede {
+    color: var(--fg-muted);
+    margin: 0 0 32px;
+    max-width: 55ch;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg__grid--cursor { display: none; }
+  }
+</style>
+
+<script is:inline>
+  // Cursor → CSS custom properties for each hero archetype background.
+  document.querySelectorAll('.hero--archetype').forEach((hero) => {
+    const bg = hero.querySelector('.hero-bg');
+    if (!bg) return;
+    hero.addEventListener('pointermove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      bg.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      bg.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+    hero.addEventListener('pointerleave', () => {
+      // Park the pool off-screen so the cursor mask fades out cleanly
+      bg.style.setProperty('--mx', '-400px');
+      bg.style.setProperty('--my', '-400px');
+    });
+  });
+</script>

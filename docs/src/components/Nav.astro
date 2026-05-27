@@ -1,6 +1,18 @@
 ---
 const raw = import.meta.env.BASE_URL;
 const base = raw.endsWith('/') ? raw : raw + '/';
+
+const normalize = (p: string) => (p.endsWith('/') ? p : p + '/');
+const current = normalize(Astro.url.pathname);
+
+const navItems = [
+  { href: `${base}how-to-use/`, label: 'How to Use' },
+  { href: `${base}skills/`,     label: 'Skills' },
+  { href: `${base}patterns/`,   label: 'Anti-Patterns' },
+  { href: `${base}agents/`,     label: 'Agents' },
+];
+
+const isActive = (href: string) => normalize(href) === current;
 ---
 
 <nav class="nav" aria-label="Main navigation">
@@ -11,10 +23,14 @@ const base = raw.endsWith('/') ? raw : raw + '/';
     </div>
 
     <div class="nav-links">
-      <a href={`${base}how-to-use/`}>How to Use</a>
-      <a href={`${base}skills/`}>Skills</a>
-      <a href={`${base}patterns/`}>Anti-Patterns</a>
-      <a href={`${base}agents/`}>Agents</a>
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
       <a href={`${base}skills/#install`} class="nav-install">Install</a>
     </div>
 
@@ -49,10 +65,14 @@ const base = raw.endsWith('/') ? raw : raw + '/';
   </div>
 
   <div class="nav-mobile-menu" hidden>
-    <a href={`${base}how-to-use/`}>How to Use</a>
-    <a href={`${base}skills/`}>Skills</a>
-    <a href={`${base}patterns/`}>Anti-Patterns</a>
-    <a href={`${base}agents/`}>Agents</a>
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        aria-current={isActive(item.href) ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
     <a href={`${base}skills/#install`}>Install</a>
   </div>
 </nav>

@@ -1,0 +1,125 @@
+---
+// TEMPORARY: single-mark hero background.
+// ONE v5 primitive — a dashed provisional frame — placed off-center.
+// Pure monochrome. At rest: very faint. Cursor proximity: brightens.
+// Not a composition. Not a scene. A signature.
+
+import Base from '../../layouts/Base.astro';
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<Base title="Hero mark — Intent (preview)" description="Single-mark hero background.">
+  <div class="page">
+    <header class="hero-mark__head">
+      <p class="mono small muted">Internal preview · single-mark signature</p>
+      <h1>One mark, fixed</h1>
+      <p class="muted">
+        One v5 primitive — a dashed provisional frame — sits in the hero at
+        very low opacity. Cursor proximity brightens it. That's the whole
+        graphic. No composition, no scene.
+      </p>
+    </header>
+
+    <section class="hero hero--mark">
+      <svg
+        class="hero-mark-bg"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- The single mark: dashed provisional frame, right portion of hero.
+             Coordinates on 4-grid. -->
+        <rect
+          class="hero-mark-bg__frame"
+          x="880" y="200" width="560" height="400"
+          fill="none"
+          stroke="var(--ink)"
+          stroke-width="2"
+          stroke-dasharray="12 12"
+        />
+      </svg>
+
+      <div class="hero-content">
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+          <span class="hero-how-to-use-desc muted">Follow a project from first question to engineering handoff</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero-mark__head {
+    max-width: 70ch;
+    padding: 48px 0 16px;
+  }
+
+  .hero-mark__head h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 12px 0;
+  }
+
+  .hero--mark {
+    position: relative;
+    margin: 32px 0;
+    padding: 120px 0;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 600px;
+    isolation: isolate;
+  }
+
+  .hero-mark-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-mark-bg__frame {
+    opacity: 0.12;
+    transition: opacity 400ms var(--ease-out);
+  }
+
+  .hero--mark:hover .hero-mark-bg__frame {
+    opacity: 0.32;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+
+  .hero-content h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+
+  .hero-content .hero-accent { color: var(--accent); }
+
+  .hero-lede {
+    color: var(--fg-muted);
+    margin: 0 0 32px;
+    max-width: 55ch;
+  }
+</style>

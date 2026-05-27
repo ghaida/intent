@@ -1,0 +1,227 @@
+---
+// TEMPORARY: hero background using actual v5 vocabulary
+// (frame, vector, terminal point, irregular field) + light pool reveal.
+// Pure monochrome. Subtle. Composition stays at rest; cursor brightens
+// nearby marks. No regular grids, no decorative texture.
+
+import Base from '../../layouts/Base.astro';
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<Base title="Hero v5 — Intent (preview)" description="Hero background built from v5 vocabulary.">
+  <div class="page">
+    <header class="hero-v5__head">
+      <p class="mono small muted">Internal preview · v5-vocabulary background</p>
+      <h1>Hero background in the v5 style</h1>
+      <p class="muted">
+        Same primitives as the 16 skill scores: irregular field, off-center
+        frame, heavy vector, terminal point. Pure ink. At rest the composition
+        is at ~10% opacity. Move your cursor — marks within ~220px brighten.
+      </p>
+    </header>
+
+    <section class="hero hero--v5">
+      <svg
+        class="hero-v5-bg"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="var(--ink)"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <!-- Soft cursor mask: marks inside this radius become more visible.
+             The whole composition stays at low opacity at rest. -->
+        <defs>
+          <mask id="cursor-light">
+            <!-- Always-on ambient visibility -->
+            <rect width="100%" height="100%" fill="rgba(255,255,255,0.18)"/>
+            <!-- Light pool — JS sets cx/cy via CSS variable on the gradient stops -->
+            <radialGradient id="pool" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%"  stop-color="white" stop-opacity="0.92"/>
+              <stop offset="55%" stop-color="white" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+            <circle class="hero-v5-bg__pool" cx="-400" cy="-400" r="320" fill="url(#pool)"/>
+          </mask>
+        </defs>
+
+        <g mask="url(#cursor-light)">
+          <!-- 1. Provisional dashed frame, off-center to the right -->
+          <rect x="1040" y="120" width="360" height="240"
+                stroke-width="2" stroke-dasharray="10 10"/>
+
+          <!-- Sparse field of context dots inside that frame -->
+          <g fill="var(--ink)" stroke="none">
+            <circle cx="1100" cy="180" r="3"/>
+            <circle cx="1180" cy="220" r="3"/>
+            <circle cx="1260" cy="200" r="3"/>
+            <circle cx="1340" cy="260" r="3"/>
+            <circle cx="1120" cy="280" r="3"/>
+            <circle cx="1220" cy="320" r="3"/>
+            <circle cx="1300" cy="160" r="3"/>
+          </g>
+
+          <!-- 2. Heavy hero vector traversing left → right -->
+          <line x1="120" y1="640" x2="1380" y2="240" stroke-width="3"/>
+
+          <!-- 3. Terminal point at the right end -->
+          <circle cx="1380" cy="240" r="14" fill="var(--ink)" stroke="none"/>
+
+          <!-- 4. Sparse irregular field across the canvas — NOT a grid,
+                  marks placed compositionally on 4-grid coordinates -->
+          <g fill="var(--ink)" stroke="none">
+            <circle cx="80"   cy="120" r="2"/>
+            <circle cx="200"  cy="280" r="2"/>
+            <circle cx="320"  cy="80"  r="2"/>
+            <circle cx="440"  cy="380" r="2"/>
+            <circle cx="560"  cy="200" r="2"/>
+            <circle cx="640"  cy="500" r="2"/>
+            <circle cx="760"  cy="120" r="2"/>
+            <circle cx="880"  cy="440" r="2"/>
+            <circle cx="960"  cy="180" r="2"/>
+            <circle cx="80"   cy="400" r="2"/>
+            <circle cx="160"  cy="540" r="2"/>
+            <circle cx="280"  cy="660" r="2"/>
+            <circle cx="400"  cy="720" r="2"/>
+            <circle cx="520"  cy="780" r="2"/>
+            <circle cx="700"  cy="340" r="2"/>
+            <circle cx="820"  cy="640" r="2"/>
+            <circle cx="980"  cy="560" r="2"/>
+            <circle cx="1080" cy="800" r="2"/>
+            <circle cx="1220" cy="700" r="2"/>
+            <circle cx="1320" cy="800" r="2"/>
+            <circle cx="1420" cy="600" r="2"/>
+            <circle cx="1500" cy="700" r="2"/>
+            <circle cx="1480" cy="440" r="2"/>
+            <circle cx="1540" cy="280" r="2"/>
+            <circle cx="1460" cy="80"  r="2"/>
+          </g>
+
+          <!-- A few short hairline connectors -->
+          <g stroke-width="1">
+            <line x1="200"  y1="280" x2="320"  y2="80"/>
+            <line x1="700"  y1="340" x2="880"  y2="440"/>
+            <line x1="1080" y1="800" x2="1220" y2="700"/>
+          </g>
+
+          <!-- A small heavy reinforcement near the terminal -->
+          <g stroke-width="1.5">
+            <line x1="1370" y1="200" x2="1390" y2="200"/>
+            <line x1="1370" y1="280" x2="1390" y2="280"/>
+          </g>
+        </g>
+      </svg>
+
+      <div class="hero-content">
+        <h2>Design with <span class="hero-accent">Intent</span></h2>
+        <p class="hero-lede subtext">
+          A UX strategy system for AI tools. {skills.length} skills covering research,
+          strategy, flows, content, accessibility, ethics, and measurement.
+        </p>
+        <div class="hero-how-to-use">
+          <a href={`${base}how-to-use/`} class="hero-how-to-use-btn">See Intent in action</a>
+          <span class="hero-how-to-use-desc muted">Follow a project from first question to engineering handoff</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero-v5__head {
+    max-width: 70ch;
+    padding: 48px 0 16px;
+  }
+
+  .hero-v5__head h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 12px 0;
+  }
+
+  .hero--v5 {
+    position: relative;
+    margin: 32px 0;
+    padding: 120px 0 120px;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 600px;
+    isolation: isolate;
+  }
+
+  .hero-v5-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+
+  .hero-content h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+
+  .hero-content .hero-accent { color: var(--accent); }
+
+  .hero-lede {
+    color: var(--fg-muted);
+    margin: 0 0 32px;
+    max-width: 55ch;
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    const hero = document.querySelector('.hero--v5');
+    if (!hero) return;
+    const pool = hero.querySelector('.hero-v5-bg__pool');
+    if (!pool) return;
+
+    // The SVG uses viewBox 1600×900 with preserveAspectRatio="xMidYMid slice".
+    // We need cursor coords in viewBox space.
+    function viewBoxCoords(ev) {
+      const svg = hero.querySelector('.hero-v5-bg');
+      const rect = svg.getBoundingClientRect();
+      // Slice → height is scaled to fill, width may overflow. Compute scale.
+      const vbW = 1600, vbH = 900;
+      const scale = Math.max(rect.width / vbW, rect.height / vbH);
+      const renderedW = vbW * scale;
+      const renderedH = vbH * scale;
+      const offX = (rect.width - renderedW) / 2;
+      const offY = (rect.height - renderedH) / 2;
+      const px = ev.clientX - rect.left - offX;
+      const py = ev.clientY - rect.top - offY;
+      return { x: px / scale, y: py / scale };
+    }
+
+    hero.addEventListener('pointermove', (e) => {
+      const { x, y } = viewBoxCoords(e);
+      pool.setAttribute('cx', String(x));
+      pool.setAttribute('cy', String(y));
+    });
+    hero.addEventListener('pointerleave', () => {
+      pool.setAttribute('cx', '-400');
+      pool.setAttribute('cy', '-400');
+    });
+  })();
+</script>
