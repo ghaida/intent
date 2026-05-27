@@ -156,6 +156,11 @@ WORKFLOWS_BACKUP=""
 if [ -d "$GITHUB_DIR/workflows" ]; then
     WORKFLOWS_BACKUP=$(mktemp -d)
     cp -r "$GITHUB_DIR/workflows" "$WORKFLOWS_BACKUP/workflows"
+    # Safety net: if the script dies between the rm and the restore mv below
+    # (signal, disk error, set -e tripping on a downstream command), this
+    # trap recreates .github/workflows from the backup so the source repo
+    # is never left in a corrupt state.
+    trap '[ -n "${WORKFLOWS_BACKUP:-}" ] && [ -d "$WORKFLOWS_BACKUP/workflows" ] && [ ! -d "$GITHUB_DIR/workflows" ] && { mkdir -p "$GITHUB_DIR" 2>/dev/null; mv "$WORKFLOWS_BACKUP/workflows" "$GITHUB_DIR/workflows" 2>/dev/null; } || true' EXIT
 fi
 rm -rf "$GITHUB_DIR"
 mkdir -p "$COPILOT_SKILLS_DIR"

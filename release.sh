@@ -68,7 +68,7 @@ echo ""
 # Bump versions
 # =============================================================================
 
-echo -e "${GREEN}[1/4] Bumping versions${NC}"
+echo -e "${GREEN}[1/5] Bumping versions${NC}"
 
 # Source skill files (frontmatter: version: X.Y.Z)
 for skill_file in "$SCRIPT_DIR"/skills/*/SKILL.md; do
@@ -109,15 +109,45 @@ claude plugin validate "$SCRIPT_DIR/.claude-plugin/marketplace.json"
 # =============================================================================
 
 echo -e "${GREEN}[4/5] Committing${NC}"
-git add -A
+# Stage explicit paths only. Avoids `git add -A` accidentally bundling stray
+# untracked files (editor crashfiles, screenshots, local notes) into a tagged
+# release commit.
+git add skills/ agents/ .claude-plugin/ .cursor/ .github/ hooks/ 2>/dev/null || true
+# Re-add the script files themselves if version bumping touched them (it doesn't
+# today, but be defensive in case release.sh ever bumps its own constants).
+git add build.sh release.sh README.md 2>/dev/null || true
+
+# Verify only expected paths are staged. Bail if anything unexpected shows up.
+unexpected=$(git diff --cached --name-only | grep -vE '^(skills/|agents/|\.claude-plugin/|\.cursor/|\.github/|hooks/|build\.sh|release\.sh|README\.md)' || true)
+if [ -n "$unexpected" ]; then
+    echo -e "${RED}Error:${NC} unexpected files staged for the release commit:"
+    echo "$unexpected" | sed 's/^/  /'
+    echo "Resolve manually (unstage, .gitignore, or remove) and re-run."
+    exit 1
+fi
+
 git commit -m "Release $TAG"
 
 # =============================================================================
-# Tag and push
+# Tag — push gated behind confirmation
 # =============================================================================
 
-echo -e "${GREEN}[5/5] Tagging and pushing${NC}"
+echo -e "${GREEN}[5/5] Tagging${NC}"
 git tag "$TAG"
+
+echo ""
+echo -e "${YELLOW}Commit + tag created locally.${NC}"
+echo "  Commit: $(git log -1 --pretty=format:'%h %s')"
+echo "  Tag:    $TAG"
+echo ""
+read -r -p "Push commit + tag to origin? [y/N] " confirm
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo ""
+    echo "Push cancelled. To push when ready:"
+    echo "  git push && git push origin $TAG"
+    exit 0
+fi
+
 git push
 git push origin "$TAG"
 

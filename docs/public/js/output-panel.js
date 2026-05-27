@@ -1,5 +1,9 @@
 (function () {
   var panel = document.getElementById('output-panel');
+  // Bail if this script gets loaded on a page that doesn't mount the panel.
+  // Today only how-to-use/ does, but guard so a future inclusion doesn't
+  // crash pre-DOMContentLoaded on the `panel.querySelector` below.
+  if (!panel) return;
   var overlay = document.getElementById('output-panel-overlay');
   var title = document.getElementById('output-panel-title');
   var body = document.getElementById('output-panel-body');
