@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import AgentSymbol from '../components/visuals/AgentSymbol.astro';
 import { loadAgents } from '../lib/agents';
 
 const agents = loadAgents();
@@ -32,10 +33,15 @@ const base = raw.endsWith('/') ? raw : raw + '/';
           </thead>
           <tbody>
             {agents.map((agent) => (
-              <tr>
+              <tr data-cluster={agent.cluster}>
                 <td class="agent-domain mono small muted">{agent.domain}</td>
                 <td>
-                  <span class="agent-name">{agent.name}</span>
+                  <span class="agent-name-cell">
+                    <span class="agent-thumb" aria-hidden="true">
+                      <AgentSymbol slug={agent.slug} />
+                    </span>
+                    <span class="agent-name">{agent.name}</span>
+                  </span>
                 </td>
                 <td>
                   <div class="agent-skills">

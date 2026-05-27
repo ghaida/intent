@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SectionLabel from '../components/SectionLabel.astro';
+import SkillScore from '../components/visuals/SkillScore.astro';
 import { loadSkills, groupByCategory } from '../lib/skills';
 
 const allSkills = loadSkills();
@@ -11,7 +12,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 ---
 
 <Base title="Skills — Intent" description={`${skillCount} specialized UX design skills organized by discipline. Each skill represents deep expertise in a distinct area of product design.`}>
-  <div class="page">
+  <div class="page skills-page">
     <section class="skills-hero" aria-labelledby="skills-heading">
       <h1 id="skills-heading">Skills</h1>
       <p class="subtext muted">
@@ -35,8 +36,11 @@ const base = raw.endsWith('/') ? raw : raw + '/';
           </h2>
 
           {cat.skills.map((skill) => (
-            <details id={skill.slug}>
+            <details id={skill.slug} data-cluster={skill.cluster}>
               <summary>
+                <figure class="skill-thumb" aria-hidden="true">
+                  <SkillScore slug={skill.slug} />
+                </figure>
                 <div class="skill-header">
                   <h3 class="skill-name">/{skill.slug}</h3>
                   <p class="skill-desc muted">{skill.description}</p>

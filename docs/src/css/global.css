@@ -1037,6 +1037,62 @@ details[open] > summary::after {
   color: var(--accent);
 }
 
+/* Score thumbnail rendered inside summary, left of skill-header.
+   Width is overridden by .skills-page (large) — fallback used elsewhere. */
+.skill-thumb {
+  flex-shrink: 0;
+  width: 96px;
+  margin: 0;
+  align-self: center;
+}
+
+.skill-thumb svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Skills catalog page: cat label on top, large illustration per row */
+.skills-page .section {
+  grid-template-columns: 1fr;
+  gap: var(--s8);
+}
+
+.skills-page .section-label {
+  padding-top: 0;
+}
+
+.skills-page details {
+  border-bottom: none;
+}
+
+.skills-page .section-label-annotation {
+  display: inline;
+  margin-left: var(--s3);
+}
+
+.skills-page details > summary {
+  padding: var(--s6) 0;
+  gap: var(--s8);
+  align-items: center;
+}
+
+.skills-page .skill-thumb {
+  width: 120px;
+}
+
+@media (min-width: 720px) {
+  .skills-page .skill-thumb {
+    width: 280px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .skills-page .skill-thumb {
+    width: 360px;
+  }
+}
+
 .skill-header {
   flex: 1;
   min-width: 0;
@@ -1221,6 +1277,26 @@ tr[hidden] {
 .agent-domain {
   white-space: nowrap;
   letter-spacing: 0.04em;
+}
+
+.agent-name-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.agent-thumb {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+}
+
+.agent-thumb svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .agent-name {
