@@ -1081,15 +1081,27 @@ details[open] > summary::after {
   width: 120px;
 }
 
+/* Inset the expanded body so it aligns with the skill text column, not the
+   illustration. Matches the thumbnail width + the summary's flex gap. */
+.skills-page .details-content {
+  padding-left: calc(120px + var(--s8));
+}
+
 @media (min-width: 720px) {
   .skills-page .skill-thumb {
     width: 280px;
+  }
+  .skills-page .details-content {
+    padding-left: calc(280px + var(--s8));
   }
 }
 
 @media (min-width: 1000px) {
   .skills-page .skill-thumb {
     width: 360px;
+  }
+  .skills-page .details-content {
+    padding-left: calc(360px + var(--s8));
   }
 }
 
