@@ -16,23 +16,12 @@ user-invocable: true
 
 ## Invocation banner
 
-When `/intent` is invoked, your FIRST action — before any other response content — is to render the invocation banner.
+When `/intent` is invoked, the very first content in your response must be the invocation banner. Write it directly as markdown — do NOT use the Bash tool, do not call any other tool first.
 
-**Primary path (colored, via Bash):**
+Output exactly this, starting with the triple-backtick line, ending with the closing triple-backtick line, then a blank line:
 
-Use the Bash tool to execute exactly:
-
+`````
 ```
-bash hooks/banner.sh
-```
-
-The script reads `skills/` at runtime, builds a 16-mark frame grouped by the 8 canonical categories, and prints the wordmark, thesis, and opening question between two frame rules — all with ANSI indigo coloring.
-
-**Fallback path (monochrome, via markdown):**
-
-If the bash invocation fails, produces no output, or you cannot execute Bash in the current surface, render the following markdown code block in place of the banner output:
-
-````
 ◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
 
   intent.
@@ -42,11 +31,12 @@ If the bash invocation fails, produces no output, or you cannot execute Bash in 
   What are you designing, and for whom?
 
 ◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
-````
+```
+`````
 
-Same content as the colored banner; only color is lost.
+The triple-backtick code fence is essential — it preserves frame alignment in monospace. Do not modify the content, do not paraphrase, do not skip the banner.
 
-After the banner renders (either path), continue with the rest of this skill's normal response.
+After the banner renders, continue with the rest of this skill's normal response.
 
 ## Overview
 
