@@ -71,15 +71,16 @@
 </svg>
 
 <style>
-  /* Super full-bleed: SVG scales beyond the viewport edges so terminals
-     extend off-canvas. preserveAspectRatio="slice" crops gracefully. */
+  /* Super-full-bleed: SVG is much larger than the viewport so the composition
+     extends well beyond the visible window edges. preserveAspectRatio="slice"
+     crops what falls outside. */
   .hero-backdrop {
     position: absolute;
-    top: -8%;
+    top: -18%;
     left: 50%;
     transform: translateX(-50%);
-    width: 130vw;
-    height: 116%;
+    width: 180vw;
+    height: 136%;
     pointer-events: none;
     z-index: 0;
   }
@@ -89,9 +90,22 @@
     opacity: 0.32;
   }
 
+  /* The lit layer sits only slightly darker than resting — the cursor reveal
+     is intentionally subtle. */
   .hero-backdrop__lit {
     color: var(--blueprint-mark);
-    opacity: 0.7;
+    opacity: 0.45;
+  }
+
+  /* Smooth the cursor-following pool so the reveal eases in/out rather than
+     jumping with each pointer event. */
+  .hero-backdrop__pool {
+    transition: cx 600ms cubic-bezier(0.16, 1, 0.3, 1),
+                cy 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-backdrop__pool { transition: none; }
   }
 </style>
 
