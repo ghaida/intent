@@ -41,6 +41,175 @@ You work alongside complementary skills that handle interconnected concerns:
 
 Collaborate explicitly with each when their domain matters. Call out what you're *not* deciding.
 
+## Visualization
+
+When the user invokes `/journey`, decide whether the deliverable should
+include a visual diagram of the flow, and if so, in what format. Ask the
+user up front — before producing the markdown deliverable.
+
+### Ask first
+
+Open the response with this question, with HTML as the default:
+
+> Would you like a visualization of this journey?
+>
+> - **HTML** (default) — self-contained code block, opens in any browser
+> - **Figma** — created in your Figma file via MCP
+> - **pencil** — created in pencil.dev via MCP
+> - **No** — markdown only
+
+Skip the question if the user's request already states a preference —
+phrases like "with a diagram", "with figma", "in pencil", "no diagram",
+or "html only" preempt the prompt. If the user says yes without naming
+a format, default to HTML.
+
+### HTML output
+
+Emit a single self-contained HTML file as a fenced code block. No external
+CSS, no external fonts, no JS. The user copies the code into a `.html` file
+and opens it in a browser. Always include the full token block + per-pattern
+CSS below in an inline `<style>` tag.
+
+**Required style block** — paste verbatim into `<style>`:
+
+```css
+:root {
+  --bg: #fafafc; --surface: #ffffff; --fg: #18182b; --fg-muted: #65657a;
+  --border: #d8d8e4; --accent: #4338ca;
+  --sans: "Hanken Grotesk", Inter, system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+    --border: #2a2a44; --accent: #7c6ff0;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--fg);
+  padding: var(--s7); line-height: 1.5; margin: 0;
+}
+.visual-diagram {
+  margin: 0; padding: var(--s5);
+  background: var(--surface); border-radius: 8px;
+  border: 1px solid var(--border); overflow-x: auto;
+}
+.visual-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  color: var(--fg-muted); letter-spacing: 0.06em;
+  margin-bottom: var(--s4); text-transform: uppercase;
+}
+.flow-grid {
+  display: grid;
+  grid-template-columns: auto 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
+  align-items: center; padding: var(--s3) 0; row-gap: var(--s2);
+}
+.flow-node {
+  padding: var(--s2); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 4px;
+  text-align: center; min-width: 0;
+}
+.flow-node-step { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--accent); margin-bottom: 1px; }
+.flow-node-label { font-size: 11px; font-weight: 600; color: var(--fg); }
+.flow-node-detail { font-size: 10px; color: var(--fg-muted); margin-top: 1px; }
+.flow-node-icon { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--accent); }
+.flow-start { border-color: var(--accent); border-width: 2px; padding: var(--s2) var(--s3); }
+.flow-end { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--bg)); }
+.flow-arrow { height: 1px; background: var(--border); position: relative; }
+.flow-arrow::after {
+  content: ''; position: absolute; right: 0; top: -3px;
+  border-left: 4px solid var(--border);
+  border-top: 3px solid transparent; border-bottom: 3px solid transparent;
+}
+.flow-gate { text-align: center; padding-top: var(--s1); }
+.flow-gate-connector { width: 1px; height: 10px; background: var(--border); margin: 0 auto; }
+.flow-gate-diamond {
+  width: 10px; height: 10px; background: var(--surface);
+  border: 1px solid var(--border);
+  transform: rotate(45deg); margin: 0 auto 4px;
+}
+.flow-gate-label { font-size: 10px; font-weight: 600; color: var(--fg-muted); }
+.flow-gate-action { font-size: 10px; color: var(--fg-muted); opacity: 0.6; }
+.flow-metric { margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--border); font-size: 11px; }
+.flow-metric-value { font-weight: 600; color: var(--accent); }
+.flow-metric-label { color: var(--fg-muted); }
+```
+
+**Structure template** — fill with the real flow:
+
+```html
+<div class="visual-diagram">
+  <div class="visual-label">Flow: [SHORT NAME]</div>
+  <div class="flow-grid">
+    <!-- Start node: flow-start, with icon OR step number -->
+    <div class="flow-node flow-start">
+      <div class="flow-node-icon">[ICON]</div>
+      <div class="flow-node-label">[START LABEL]</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <!-- Middle nodes: 3–6 typical -->
+    <div class="flow-node">
+      <div class="flow-node-step">1</div>
+      <div class="flow-node-label">[STEP]</div>
+      <div class="flow-node-detail">[DETAIL]</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <!-- ... repeat node + arrow pairs ... -->
+    <!-- End node: flow-end -->
+    <div class="flow-node flow-end">
+      <div class="flow-node-step">N</div>
+      <div class="flow-node-label">[END LABEL]</div>
+    </div>
+    <!-- Decision gates align to step columns. Column math:
+         start = col 1, step 1 = col 3, step 2 = col 5, step 3 = col 7, ... -->
+    <div class="flow-gate" style="grid-column: 5; grid-row: 2;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">[CONDITION]?</div>
+      <div class="flow-gate-action">[ACTION]</div>
+    </div>
+  </div>
+  <!-- Optional metric line -->
+  <div class="flow-metric">
+    <span class="flow-metric-value">[N taps / N sec]</span>
+    <span class="flow-metric-label">[CONTEXT]</span>
+  </div>
+</div>
+```
+
+**Rules:**
+
+- Always wrap in `.visual-diagram` with a `.visual-label` caption.
+- Start node uses `flow-start` (2px accent border). End node uses `flow-end` (accent border + 6% tinted bg).
+- Step numbers use the monospace font in the accent color.
+- Don't invent class names — copy from this list verbatim. Class names are how the design system stays consistent across skills.
+- Light + dark themes ship together via `prefers-color-scheme`. Don't strip dark mode.
+- Self-contained: no external `<link>` to fonts or CSS, no JS.
+
+### Figma output
+
+When the user picks Figma, load the `/figma-use` skill first (mandatory),
+then call `mcp__claude_ai_Figma__use_figma`. Translate flow patterns to
+Figma equivalents:
+
+- `.flow-node` → a frame, ~120×72, white fill (#fafafc light / #18182b dark), 1px stroke at `#d8d8e4`, 4px radius, step number on top (Mono 10/600/indigo), label below (Sans 11/600/foreground), optional detail (Sans 10/regular/muted).
+- `.flow-start` → same frame, 2px accent stroke (#4338ca light / #7c6ff0 dark).
+- `.flow-end` → same frame, 2px accent stroke, fill 6% accent over bg.
+- `.flow-arrow` → 1px horizontal line `#d8d8e4` with caret at end.
+- `.flow-gate` → vertical 1px hairline + 10px rotated square + label below diamond.
+- Container: padded card-like background `#ffffff` (or `#1f1f36` dark) with 1px `#d8d8e4` border, 8px radius.
+
+### pencil.dev output
+
+When the user picks pencil, call `mcp__pencil__open_document` with `'new'`
+to create a new file. Set the Intent diagram tokens via
+`mcp__pencil__set_variables`, then use `mcp__pencil__batch_design` to insert
+frames for each flow node, connectors for arrows, and a smaller frame +
+rotated diamond for each decision gate.
+
 ## Storytelling pattern: protagonist-arc
 
 When designing a journey, you carry the storytelling discipline's `protagonist-arc` pattern.

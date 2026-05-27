@@ -47,6 +47,236 @@ You work alongside complementary skills that handle interconnected concerns:
 
 Collaborate explicitly with each when their domain matters. Call out what you're *not* deciding.
 
+## Visualization
+
+When the user invokes `/organize`, decide whether the deliverable should
+include a site map / IA diagram, and if so, in what format. Ask the user
+up front — before producing the markdown deliverable.
+
+### Ask first
+
+Open the response with this question, with HTML as the default:
+
+> Would you like a visualization of this IA?
+>
+> - **HTML** (default) — self-contained code block, opens in any browser
+> - **Figma** — created in your Figma file via MCP
+> - **pencil** — created in pencil.dev via MCP
+> - **No** — markdown only
+
+Skip the question if the request already states a preference — "with a
+diagram", "with figma", "in pencil", "no diagram", "html only" all preempt
+the prompt. Default to HTML if the user says yes without naming a format.
+
+### HTML output
+
+Emit a single self-contained HTML file as a fenced code block. No external
+CSS, no external fonts, no JS. The user copies the code into a `.html` file
+and opens it in a browser. Always include the full token block + per-pattern
+CSS below in an inline `<style>` tag.
+
+**Required style block** — paste verbatim into `<style>`:
+
+```css
+:root {
+  --bg: #fafafc; --surface: #ffffff; --fg: #18182b; --fg-muted: #65657a;
+  --border: #d8d8e4; --accent: #4338ca;
+  --sans: "Hanken Grotesk", Inter, system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+    --border: #2a2a44; --accent: #7c6ff0;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--fg);
+  padding: var(--s7); line-height: 1.5; margin: 0;
+}
+.visual-diagram {
+  margin: 0; padding: var(--s5);
+  background: var(--surface); border-radius: 8px;
+  border: 1px solid var(--border); overflow-x: auto;
+}
+.visual-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  color: var(--fg-muted); letter-spacing: 0.06em;
+  margin-bottom: var(--s4); text-transform: uppercase;
+}
+.sitemap-tabbar {
+  display: flex; align-items: center; justify-content: space-around;
+  padding: var(--s2) var(--s3);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: var(--s4);
+}
+.sitemap-tab {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 2px; font-size: 10px; color: var(--fg-muted);
+  padding: var(--s1) var(--s2);
+}
+.sitemap-tab svg { color: var(--fg-muted); }
+.sitemap-tab-active { color: var(--accent); }
+.sitemap-tab-active svg { color: var(--accent); }
+.sitemap-tab-post {
+  background: var(--accent); border-radius: 50%;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+}
+.sitemap-tab-post svg { color: white; }
+.sitemap-tree { padding: var(--s2) 0; }
+.sitemap-root { margin-bottom: var(--s3); }
+.sitemap-root .sitemap-node-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--fg);
+}
+.sitemap-branches { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.sitemap-branch { flex: 1; min-width: 85px; }
+.sitemap-node {
+  padding: var(--s2); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 4px;
+  font-size: 11px; font-weight: 600; color: var(--fg);
+  margin-bottom: var(--s2);
+  display: flex; align-items: center; gap: var(--s1);
+}
+.sitemap-node-primary { border-color: var(--accent); border-width: 2px; }
+.sitemap-node-action {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.sitemap-node-tag {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--fg-muted); font-weight: 400; margin-left: auto;
+}
+.sitemap-node-action .sitemap-node-tag { color: rgba(255,255,255,0.7); }
+.sitemap-children {
+  padding-left: var(--s3); border-left: 1px dashed var(--border);
+}
+.sitemap-leaf {
+  font-size: 10.5px; color: var(--fg-muted);
+  padding: 2px 0; line-height: 1.4;
+}
+```
+
+**Structure template** — fill with the real IA:
+
+```html
+<div class="visual-diagram">
+  <div class="visual-label">Information Architecture: [PRODUCT NAME]</div>
+
+  <!-- Optional tab bar mockup (skip if the IA isn't a tabbed mobile shell). -->
+  <div class="sitemap-tabbar">
+    <div class="sitemap-tab sitemap-tab-active">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round"
+           stroke-linejoin="round"><!-- icon path --></svg>
+      <span>[TAB 1 — ACTIVE]</span>
+    </div>
+    <div class="sitemap-tab">
+      <svg ...><!-- icon --></svg>
+      <span>[TAB 2]</span>
+    </div>
+    <!-- Centered accent action tab (e.g., Post, Pay, +) — round indigo button -->
+    <div class="sitemap-tab sitemap-tab-post">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+           stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </div>
+    <div class="sitemap-tab">
+      <svg ...><!-- icon --></svg>
+      <span>[TAB 4]</span>
+    </div>
+    <div class="sitemap-tab">
+      <svg ...><!-- icon --></svg>
+      <span>[TAB 5]</span>
+    </div>
+  </div>
+
+  <!-- Site map tree -->
+  <div class="sitemap-tree">
+    <div class="sitemap-root">
+      <span class="sitemap-node-label">[PRODUCT]</span>
+    </div>
+
+    <div class="sitemap-branches">
+      <!-- Primary / default branch — accent 2px border, "default" tag -->
+      <div class="sitemap-branch">
+        <div class="sitemap-node sitemap-node-primary">
+          <span>[SECTION]</span>
+          <span class="sitemap-node-tag">default</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">[CHILD SCREEN]</div>
+          <div class="sitemap-leaf">[CHILD SCREEN]</div>
+          <!-- 2–4 leaves per branch -->
+        </div>
+      </div>
+
+      <!-- Default branch -->
+      <div class="sitemap-branch">
+        <div class="sitemap-node">
+          <span>[SECTION]</span>
+          <span class="sitemap-node-tag">toggle</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">[CHILD]</div>
+        </div>
+      </div>
+
+      <!-- Action branch — solid accent fill, white text -->
+      <div class="sitemap-branch">
+        <div class="sitemap-node sitemap-node-action">
+          <span>[ACTION] (+)</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">[CHILD]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Rules:**
+
+- Always wrap in `.visual-diagram` with a `.visual-label` caption.
+- Three node states:
+  - `sitemap-node` — default 1px border (most branches)
+  - `sitemap-node-primary` — 2px accent border (the "default" / "home" / "primary" branch users land on)
+  - `sitemap-node-action` — solid accent background + white text (creation actions like Post, Pay, New)
+- Children sit under each node with a dashed left border (`.sitemap-children`), 12px indent.
+- Tab bar (optional) shows the navigation shell. Active tab uses `sitemap-tab-active` (indigo color). Centered action uses `sitemap-tab-post` (32×32 indigo circle, white icon, no label).
+- SVG icons for tabs use `stroke-width="2"` for regular tabs, `2.5` for the centered action's plus icon.
+- Use mono tags (`default`, `toggle`, `requires auth`, etc.) sparingly — they annotate the branch's behavior, not its name.
+- Don't invent class names — copy verbatim. Class consistency is how skills stay aligned.
+- Light + dark themes ship together. Don't strip dark mode.
+- Self-contained: no external `<link>` to fonts or CSS, no JS.
+
+### Figma output
+
+When the user picks Figma, load the `/figma-use` skill first (mandatory),
+then call `mcp__claude_ai_Figma__use_figma`. Translate sitemap patterns
+to Figma equivalents:
+
+- Tab bar → horizontal frame, 64px tall, 8px radius, 1px stroke `#d8d8e4`, filled `#fafafc`. Tabs distributed evenly. Active tab's icon + label in accent indigo.
+- Centered action tab → 32×32 circle filled `#4338ca` with white `+` glyph (or domain-equivalent icon).
+- `.sitemap-node` → ~160×40 frame, 4px radius, 1px stroke `#d8d8e4`, label (Sans 11/600/foreground) left, optional mono tag (Mono 9/regular/muted) right.
+- `.sitemap-node-primary` → same frame, 2px accent stroke.
+- `.sitemap-node-action` → same frame, fill `#4338ca`, white text.
+- `.sitemap-children` → indented column, 1px dashed left line `#d8d8e4`, leaves as Sans 10.5/regular/muted lines.
+
+### pencil.dev output
+
+When the user picks pencil, call `mcp__pencil__open_document` with `'new'`
+to create a new file. Set the Intent diagram tokens via
+`mcp__pencil__set_variables`. Then use `mcp__pencil__batch_design` to
+insert the tab bar mockup (if applicable), the root label, and a row of
+branch frames with their child leaves underneath.
+
 ## Core capabilities
 
 ### 1. Navigation pattern design

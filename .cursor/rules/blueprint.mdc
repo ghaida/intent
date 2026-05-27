@@ -78,6 +78,213 @@ needs to work*. `/journey` defines *what the user experiences*. `/specify`
 makes it *buildable*. `/philosopher` can be entered from any skill when the
 problem needs more exploration before the next move.
 
+## Visualization
+
+When the user invokes `/blueprint`, decide whether the deliverable should
+include a service blueprint diagram, and if so, in what format. Ask the
+user up front — before producing the markdown deliverable.
+
+### Ask first
+
+Open the response with this question, with HTML as the default:
+
+> Would you like a visualization of this blueprint?
+>
+> - **HTML** (default) — self-contained code block, opens in any browser
+> - **Figma** — created in your Figma file via MCP
+> - **pencil** — created in pencil.dev via MCP
+> - **No** — markdown only
+
+Skip the question if the request already states a preference — "with a
+diagram", "with figma", "in pencil", "no diagram", "html only" all preempt
+the prompt. Default to HTML if the user says yes without naming a format.
+
+### HTML output
+
+Emit a single self-contained HTML file as a fenced code block. No external
+CSS, no external fonts, no JS. The user copies the code into a `.html` file
+and opens it in a browser. Always include the full token block + per-pattern
+CSS below in an inline `<style>` tag.
+
+**Required style block** — paste verbatim into `<style>`:
+
+```css
+:root {
+  --bg: #fafafc; --surface: #ffffff; --fg: #18182b; --fg-muted: #65657a;
+  --border: #d8d8e4; --accent: #4338ca;
+  --sans: "Hanken Grotesk", Inter, system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+    --border: #2a2a44; --accent: #7c6ff0;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--fg);
+  padding: var(--s7); line-height: 1.5; margin: 0;
+}
+.visual-diagram {
+  margin: 0; padding: var(--s5);
+  background: var(--surface); border-radius: 8px;
+  border: 1px solid var(--border); overflow-x: auto;
+}
+.visual-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  color: var(--fg-muted); letter-spacing: 0.06em;
+  margin-bottom: var(--s4); text-transform: uppercase;
+}
+.blueprint-lane { padding: var(--s2) 0; }
+.blueprint-lane-label { margin-bottom: var(--s2); }
+.blueprint-lane-title {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--fg-muted);
+}
+.blueprint-lane-sub { font-size: 10px; color: var(--fg-muted); margin-left: var(--s2); }
+.blueprint-lane-nodes { display: flex; align-items: center; }
+.blueprint-node {
+  flex: 1; padding: var(--s2);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 4px; text-align: center; min-width: 0;
+}
+.blueprint-node-step { font-family: var(--mono); font-size: 9px; color: var(--accent); font-weight: 600; }
+.blueprint-node-label { font-size: 11px; font-weight: 500; color: var(--fg); }
+.blueprint-node-end { border-color: var(--accent); }
+.blueprint-connector {
+  width: 12px; min-width: 12px; height: 1px;
+  background: var(--border); flex-shrink: 0;
+}
+.blueprint-line-of-interaction,
+.blueprint-line-of-visibility,
+.blueprint-line-of-support {
+  border-top: 1px dashed var(--border);
+  padding: 4px 0; text-align: right;
+}
+.blueprint-line-of-interaction span,
+.blueprint-line-of-visibility span,
+.blueprint-line-of-support span {
+  font-size: 9px; font-family: var(--mono);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--fg-muted); opacity: 0.5;
+}
+.blueprint-lane-services { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.blueprint-service {
+  padding: var(--s2) var(--s3);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 4px; flex: 1; min-width: 80px;
+}
+.blueprint-service-name { font-size: 11px; font-weight: 600; color: var(--fg); }
+.blueprint-service-detail { font-size: 10px; color: var(--fg-muted); margin-top: 1px; }
+.blueprint-service-infra { background: transparent; border-style: dashed; }
+.blueprint-lane-backstage { opacity: 0.85; }
+.blueprint-lane-support { opacity: 0.6; }
+```
+
+**Structure template** — fill with the real blueprint:
+
+```html
+<div class="visual-diagram">
+  <div class="visual-label">Service Blueprint: [NAME]</div>
+
+  <!-- Frontstage lane(s). Use one per actor (e.g., Seller + Buyer). -->
+  <div class="blueprint-lane">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Frontstage</span>
+      <span class="blueprint-lane-sub">[ACTOR]</span>
+    </div>
+    <div class="blueprint-lane-nodes">
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">1</div>
+        <div class="blueprint-node-label">[ACTION]</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <!-- ... more nodes + connectors ... -->
+      <div class="blueprint-node blueprint-node-end">
+        <div class="blueprint-node-step">N</div>
+        <div class="blueprint-node-label">[FINAL ACTION]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Line of interaction: between frontstage and frontstage (multi-actor)
+       OR between frontstage and backstage. -->
+  <div class="blueprint-line-of-interaction"><span>Line of interaction</span></div>
+
+  <!-- Additional frontstage lanes if needed. -->
+
+  <!-- Line of visibility: separates frontstage from backstage. -->
+  <div class="blueprint-line-of-visibility"><span>Line of visibility</span></div>
+
+  <!-- Backstage lane: services that produce the user experience but aren't user-facing. -->
+  <div class="blueprint-lane blueprint-lane-backstage">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Backstage</span>
+    </div>
+    <div class="blueprint-lane-nodes blueprint-lane-services">
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">[SERVICE]</div>
+        <div class="blueprint-service-detail">[ROLE]</div>
+      </div>
+      <!-- ... more services ... -->
+    </div>
+  </div>
+
+  <!-- Line of support: separates backstage from infrastructure tier. -->
+  <div class="blueprint-line-of-support"><span>Line of support</span></div>
+
+  <!-- Support tier: infrastructure with dashed borders, more muted. -->
+  <div class="blueprint-lane blueprint-lane-support">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Support</span>
+    </div>
+    <div class="blueprint-lane-nodes blueprint-lane-services">
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">[INFRA SERVICE]</div>
+      </div>
+      <!-- ... more infra ... -->
+    </div>
+  </div>
+</div>
+```
+
+**Rules:**
+
+- Always wrap in `.visual-diagram` with a `.visual-label` caption.
+- Three opacity tiers: frontstage 1.0, backstage 0.85, support 0.6 — applied via `blueprint-lane-backstage` and `blueprint-lane-support` classes. This is the visual hierarchy of "what users see → what produces the experience → what enables it."
+- Lines of interaction/visibility/support are 1px dashed dividers with right-aligned mono caption.
+- Backstage services use solid borders; support-tier services use `blueprint-service-infra` (dashed border, transparent bg).
+- End node uses `blueprint-node-end` (accent border).
+- Don't invent class names — copy verbatim. Class consistency is how skills stay aligned.
+- Light + dark themes ship together. Don't strip dark mode.
+- Self-contained: no external `<link>` to fonts or CSS, no JS.
+
+### Figma output
+
+When the user picks Figma, load the `/figma-use` skill first (mandatory),
+then call `mcp__claude_ai_Figma__use_figma`. Translate blueprint patterns
+to Figma equivalents:
+
+- Each lane → a horizontal frame containing a lane label (mono 10/600/muted) and a flex row of nodes.
+- `.blueprint-node` → ~140×56 frame, 1px stroke `#d8d8e4`, 4px radius, step number (Mono 9/600/indigo) above label (Sans 11/500/foreground).
+- `.blueprint-node-end` → same frame, 1px accent stroke.
+- `.blueprint-service` → ~160×60 frame, solid stroke. Backstage = full opacity. Support-tier (`blueprint-service-infra`) = transparent fill, dashed stroke.
+- Lines of interaction/visibility/support → 1px dashed horizontal lines spanning the full width, with right-aligned mono caption above.
+- Apply tier opacity to the entire backstage/support lanes (0.85 / 0.6).
+
+### pencil.dev output
+
+When the user picks pencil, call `mcp__pencil__open_document` with `'new'`
+to create a new file. Set the Intent diagram tokens via
+`mcp__pencil__set_variables`. Then use `mcp__pencil__batch_design` to
+insert lane frames, then nodes within each lane, dashed dividers between
+tiers, and service cards in backstage + support lanes (with dashed strokes
+for support-tier).
+
 ## Storytelling pattern: choreography
 
 When designing a service blueprint, you carry the storytelling discipline's `choreography` pattern.
