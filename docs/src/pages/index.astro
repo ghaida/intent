@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SectionLabel from '../components/SectionLabel.astro';
+import HeroBackdrop from '../components/visuals/HeroBackdrop.astro';
 import { loadSkills, groupByCategory } from '../lib/skills';
 import { loadPatterns, patternStats } from '../lib/patterns';
 
@@ -36,6 +37,7 @@ const principles = [
   <div class="page">
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-heading">
+      <HeroBackdrop />
       <h1 id="hero-heading">
         Design with <span class="hero-accent">Intent</span>
       </h1>

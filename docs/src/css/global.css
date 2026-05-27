@@ -908,6 +908,23 @@ details[open] > summary::after {
 
 .hero {
   padding: var(--s16) 0 var(--s12);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero > .hero-backdrop {
+  z-index: 0;
+}
+
+/* No structural rule between the hero and the section that follows it —
+   the backdrop should flow into the next section visually. */
+.hero + .section {
+  border-top: none;
 }
 
 .hero h1 {

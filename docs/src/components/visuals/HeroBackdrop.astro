@@ -1,0 +1,128 @@
+---
+// Hero backdrop — light grey at rest, cursor reveals ink locally.
+// Composition adapted from /intent's score (the entry-point skill):
+// provisional dashed frame at center, vectors radiating outward to
+// terminal points at the canvas edges, sparse field of context dots inside.
+//
+// All marks render in --border (light grey) at rest. A cursor-following mask
+// reveals the same marks rendered in --ink within a soft radius.
+---
+
+<svg
+  class="hero-backdrop"
+  viewBox="0 0 1200 800"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+>
+  <defs>
+    <!-- Soft mask that follows the cursor; reveals the ink layer locally -->
+    <radialGradient id="hero-backdrop-pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+      <stop offset="55%"  stop-color="white" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="hero-backdrop-mask">
+      <rect width="100%" height="100%" fill="black"/>
+      <circle class="hero-backdrop__pool" cx="-400" cy="-400" r="260"
+              fill="url(#hero-backdrop-pool)"/>
+    </mask>
+
+    <!-- Reusable composition: /intent geometry, frame removed -->
+    <g id="hero-backdrop-marks">
+      <!-- Sparse field of context dots (originally inside the frame) -->
+      <g fill="currentColor" stroke="none">
+        <circle cx="488" cy="320" r="2"/>
+        <circle cx="640" cy="328" r="2"/>
+        <circle cx="712" cy="368" r="2"/>
+        <circle cx="496" cy="432" r="2"/>
+        <circle cx="660" cy="476" r="2"/>
+      </g>
+      <!-- 6 radiating vectors from center to outer terminal points -->
+      <g fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="600" y1="400" x2="200"  y2="128"/>
+        <line x1="600" y1="400" x2="600"  y2="88"/>
+        <line x1="600" y1="400" x2="1000" y2="128"/>
+        <line x1="600" y1="400" x2="1080" y2="704"/>
+        <line x1="600" y1="400" x2="600"  y2="728"/>
+        <line x1="600" y1="400" x2="120"  y2="704"/>
+      </g>
+      <!-- Terminal points -->
+      <g fill="currentColor" stroke="none">
+        <circle cx="200"  cy="128" r="5"/>
+        <circle cx="600"  cy="88"  r="5"/>
+        <circle cx="1000" cy="128" r="5"/>
+        <circle cx="1080" cy="704" r="5"/>
+        <circle cx="600"  cy="728" r="5"/>
+        <circle cx="120"  cy="704" r="5"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Layer 1: composition in light grey, always visible -->
+  <g class="hero-backdrop__resting">
+    <use href="#hero-backdrop-marks"/>
+  </g>
+
+  <!-- Layer 2: same composition in ink, masked to the cursor pool -->
+  <g class="hero-backdrop__lit" mask="url(#hero-backdrop-mask)">
+    <use href="#hero-backdrop-marks"/>
+  </g>
+</svg>
+
+<style>
+  /* Super full-bleed: SVG scales beyond the viewport edges so terminals
+     extend off-canvas. preserveAspectRatio="slice" crops gracefully. */
+  .hero-backdrop {
+    position: absolute;
+    top: -8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130vw;
+    height: 116%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-backdrop__resting {
+    color: var(--border);
+    opacity: 0.32;
+  }
+
+  .hero-backdrop__lit {
+    color: var(--blueprint-mark);
+    opacity: 0.7;
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    // Track cursor across the hero (the nearest .hero ancestor), and update
+    // the SVG pool's cx/cy in viewBox space (1200×800, preserveAspectRatio slice).
+    document.querySelectorAll('.hero-backdrop').forEach((svg) => {
+      const pool = svg.querySelector('.hero-backdrop__pool');
+      const hero = svg.closest('.hero, .hero--mark, .hero--archetype, .hero--sig, .hero--v5, .hero--compare') || svg.parentElement;
+      if (!pool || !hero) return;
+
+      const vbW = 1200, vbH = 800;
+
+      hero.addEventListener('pointermove', (e) => {
+        const rect = svg.getBoundingClientRect();
+        const scale = Math.max(rect.width / vbW, rect.height / vbH);
+        const renderedW = vbW * scale;
+        const renderedH = vbH * scale;
+        const offX = (rect.width - renderedW) / 2;
+        const offY = (rect.height - renderedH) / 2;
+        const x = (e.clientX - rect.left - offX) / scale;
+        const y = (e.clientY - rect.top - offY) / scale;
+        pool.setAttribute('cx', String(x));
+        pool.setAttribute('cy', String(y));
+      });
+
+      hero.addEventListener('pointerleave', () => {
+        pool.setAttribute('cx', '-400');
+        pool.setAttribute('cy', '-400');
+      });
+    });
+  })();
+</script>
