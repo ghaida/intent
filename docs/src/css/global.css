@@ -909,29 +909,56 @@ details[open] > summary::after {
 .hero {
   padding: var(--s16) 0 var(--s12);
   position: relative;
-  overflow: hidden;
-  /* Break out of .page's max-width so the backdrop SVG can span the full
-     viewport. The .hero-content wrapper below puts text back in the column. */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-
-.hero > .hero-backdrop {
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: var(--page-max);
-  margin: 0 auto;
-  padding: 0 var(--page-pad);
 }
 
 /* No structural rule between the hero and the section that follows it —
-   the backdrop should flow into the next section visually. */
+   the backdrop bleeds into the next section visually. */
 .hero + .section {
   border-top: none;
+}
+
+/* HeroBackdrop sits at <main> level, behind .page content. Anchored to the
+   top of <main>, it spans the full viewport width and extends down past the
+   hero into the philosophy section, so the composition is never clipped at
+   the hero's section boundary. */
+main {
+  position: relative;
+}
+
+main > .hero-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 800px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Make .page content sit above the backdrop. */
+main > .page {
+  position: relative;
+  z-index: 1;
+}
+
+/* Nav becomes transparent (with backdrop blur) so the SVG visibly extends
+   beneath it. Without this the SVG looks cut off at the nav's bottom edge. */
+.nav {
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: none;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .nav { background: var(--bg); }
 }
 
 .hero h1 {

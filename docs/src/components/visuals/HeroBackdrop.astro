@@ -69,18 +69,11 @@
 </svg>
 
 <style>
-  /* Full-bleed: fills the viewport width exactly. preserveAspectRatio="none"
-     stretches the viewBox to match the SVG box, so terminals at viewBox edges
-     land at the browser window edges. */
+  /* Positioning/size is set by the parent layout (`main > .hero-backdrop`)
+     because the backdrop sits outside any individual section and needs to
+     span the page top region. Only mark colors live in the component. */
   .hero-backdrop {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
+    display: block;
   }
 
   .hero-backdrop__resting {
@@ -98,8 +91,10 @@
   (function() {
     document.querySelectorAll('.hero-backdrop').forEach((svg) => {
       const pool = svg.querySelector('.hero-backdrop__pool');
-      const hero = svg.closest('.hero, .hero--mark, .hero--archetype, .hero--sig, .hero--v5, .hero--backdrop') || svg.parentElement;
-      if (!pool || !hero) return;
+      // The backdrop now sits at <main> level. Track pointer wherever it lands
+      // over the backdrop's visible area — use the SVG's own bounding rect.
+      const tracker = svg.closest('main') || svg.parentElement;
+      if (!pool || !tracker) return;
 
       const vbW = 1200, vbH = 800;
       // Park off-screen at start
@@ -115,11 +110,11 @@
         targetY = ((ev.clientY - rect.top) / rect.height) * vbH;
       }
 
-      hero.addEventListener('pointermove', (ev) => {
+      tracker.addEventListener('pointermove', (ev) => {
         active = true;
         setTargetFromEvent(ev);
       });
-      hero.addEventListener('pointerleave', () => {
+      tracker.addEventListener('pointerleave', () => {
         // Park off-screen on leave so the pool fades out smoothly via lerp
         targetX = -400;
         targetY = -400;
@@ -138,7 +133,7 @@
       }
       // Respect reduced-motion preference — skip the lerp entirely
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        hero.addEventListener('pointermove', (ev) => {
+        tracker.addEventListener('pointermove', (ev) => {
           setTargetFromEvent(ev);
           pool.setAttribute('cx', String(targetX));
           pool.setAttribute('cy', String(targetY));
