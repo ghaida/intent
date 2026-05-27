@@ -1137,7 +1137,7 @@ details[open] > summary::after {
   font-family: var(--display);
   font-size: var(--text-lg);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   margin-bottom: var(--s1);
 }
 
