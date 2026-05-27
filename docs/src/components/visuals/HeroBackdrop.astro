@@ -45,15 +45,10 @@
         <line x1="600" y1="400" x2="600"  y2="800"/>
         <line x1="600" y1="400" x2="0"    y2="700"/>
       </g>
-      <!-- Terminal points at the viewBox edges -->
-      <g fill="currentColor" stroke="none">
-        <circle cx="0"    cy="100" r="5"/>
-        <circle cx="600"  cy="0"   r="5"/>
-        <circle cx="1200" cy="100" r="5"/>
-        <circle cx="1200" cy="700" r="5"/>
-        <circle cx="600"  cy="800" r="5"/>
-        <circle cx="0"    cy="700" r="5"/>
-      </g>
+      <!-- Terminal points removed — they read as endpoints where lines
+           visibly "cut off." Without them the vectors simply leave the SVG
+           at its bounding box. -->
+
     </g>
   </defs>
 
@@ -78,12 +73,12 @@
 
   .hero-backdrop__resting {
     color: var(--border);
-    opacity: 0.45;
+    opacity: 0.35;
   }
 
   .hero-backdrop__lit {
     color: var(--blueprint-mark);
-    opacity: 0.55;
+    opacity: 0.45;
   }
 </style>
 
