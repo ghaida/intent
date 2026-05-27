@@ -8,11 +8,35 @@ description: >
   existing product's UX, or when the user asks about design intent,
   user experience strategy, ethical design, dark patterns, or design
   systems thinking.
-version: 1.3.0
+version: 1.4.0
 user-invocable: true
 ---
 
 # Intent
+
+## Invocation banner
+
+When `/intent` is invoked, the very first content in your response must be the invocation banner. Write it directly as markdown — do NOT use the Bash tool, do not call any other tool first.
+
+Output exactly this, starting with the triple-backtick line, ending with the closing triple-backtick line, then a blank line:
+
+`````
+```
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+
+  intent.
+
+  Make the reason behind every decision visible.
+
+  What are you designing, and for whom?
+
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+```
+`````
+
+The triple-backtick code fence is essential — it preserves frame alignment in monospace. Do not modify the content, do not paraphrase, do not skip the banner.
+
+After the banner renders, continue with the rest of this skill's normal response.
 
 ## Overview
 

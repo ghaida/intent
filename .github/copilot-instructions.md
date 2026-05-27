@@ -5,6 +5,30 @@ This project uses the Intent UX design strategy system. When working on design d
 
 # Intent
 
+## Invocation banner
+
+When `/intent` is invoked, the very first content in your response must be the invocation banner. Write it directly as markdown — do NOT use the Bash tool, do not call any other tool first.
+
+Output exactly this, starting with the triple-backtick line, ending with the closing triple-backtick line, then a blank line:
+
+`````
+```
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+
+  intent.
+
+  Make the reason behind every decision visible.
+
+  What are you designing, and for whom?
+
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+```
+`````
+
+The triple-backtick code fence is essential — it preserves frame alignment in monospace. Do not modify the content, do not paraphrase, do not skip the banner.
+
+After the banner renders, continue with the rest of this skill's normal response.
+
 ## Overview
 
 Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer.
