@@ -910,15 +910,22 @@ details[open] > summary::after {
   padding: var(--s16) 0 var(--s12);
   position: relative;
   overflow: hidden;
-}
-
-.hero > * {
-  position: relative;
-  z-index: 1;
+  /* Break out of .page's max-width so the backdrop SVG can span the full
+     viewport. The .hero-content wrapper below puts text back in the column. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .hero > .hero-backdrop {
   z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
 }
 
 /* No structural rule between the hero and the section that follows it —

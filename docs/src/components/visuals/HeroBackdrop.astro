@@ -35,24 +35,24 @@
         <circle cx="556" cy="436" r="2"/>
         <circle cx="640" cy="464" r="2"/>
       </g>
-      <!-- 6 radiating vectors from center to viewBox edges (top + bottom) -->
+      <!-- 6 radiating vectors from center to corners and edge midpoints -->
       <g fill="none" stroke="currentColor" stroke-width="1.5"
          vector-effect="non-scaling-stroke">
-        <line x1="600" y1="400" x2="200"  y2="0"/>
+        <line x1="600" y1="400" x2="0"    y2="100"/>
         <line x1="600" y1="400" x2="600"  y2="0"/>
-        <line x1="600" y1="400" x2="1000" y2="0"/>
-        <line x1="600" y1="400" x2="1000" y2="800"/>
+        <line x1="600" y1="400" x2="1200" y2="100"/>
+        <line x1="600" y1="400" x2="1200" y2="700"/>
         <line x1="600" y1="400" x2="600"  y2="800"/>
-        <line x1="600" y1="400" x2="200"  y2="800"/>
+        <line x1="600" y1="400" x2="0"    y2="700"/>
       </g>
-      <!-- Terminal points sitting on the viewBox edges -->
+      <!-- Terminal points at the viewBox edges -->
       <g fill="currentColor" stroke="none">
-        <circle cx="200"  cy="0"   r="5"/>
+        <circle cx="0"    cy="100" r="5"/>
         <circle cx="600"  cy="0"   r="5"/>
-        <circle cx="1000" cy="0"   r="5"/>
-        <circle cx="1000" cy="800" r="5"/>
+        <circle cx="1200" cy="100" r="5"/>
+        <circle cx="1200" cy="700" r="5"/>
         <circle cx="600"  cy="800" r="5"/>
-        <circle cx="200"  cy="800" r="5"/>
+        <circle cx="0"    cy="700" r="5"/>
       </g>
     </g>
   </defs>
@@ -128,7 +128,7 @@
       // requestAnimationFrame lerp for smooth tracking. The pool eases toward
       // its target each frame; per-event CSS transitions felt jumpy because
       // they kept resetting on every pointermove. Lerp gives a continuous spring.
-      const easing = 0.06;
+      const easing = 0.28;
       function loop() {
         currentX += (targetX - currentX) * easing;
         currentY += (targetY - currentY) * easing;
