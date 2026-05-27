@@ -1,0 +1,153 @@
+---
+// Intent meta-score — the brand mark for the system itself.
+// A central frame (the practice) with 16 terminals around it (the skills),
+// each in its cluster color. Hover a terminal to reveal that skill's name
+// and shape, with a vector connecting it to the frame.
+
+import { loadSkills } from '../../lib/skills';
+
+const skills = loadSkills();
+
+// Ring order: 4 strategy → 5 systems → 4 quality → 3 communication,
+// starting at the top and going clockwise.
+const CLUSTER_ORDER = ['strategy', 'systems', 'quality', 'communication'] as const;
+const ring = CLUSTER_ORDER.flatMap((cluster) =>
+  skills.filter((s) => s.cluster === cluster),
+);
+
+if (ring.length !== 16) {
+  throw new Error(
+    `IntentMetaScore expects exactly 16 skills, got ${ring.length}. ` +
+    `Check SKILL_CLUSTERS in lib/skills.ts.`,
+  );
+}
+
+// 16 positions on a circle of radius 320 centered at (400, 400),
+// starting at top (-90°), clockwise. Endpoint coords (ex,ey) sit on an
+// inner circle of radius 240 — outside the frame, so on-hover vectors
+// stay clear of the black frame stroke.
+const POSITIONS = [
+  { x: 400, y:  80, ex: 400, ey: 160 },  // 0  intent
+  { x: 524, y: 104, ex: 492, ey: 180 },  // 1  strategize
+  { x: 628, y: 172, ex: 572, ey: 228 },  // 2  investigate
+  { x: 696, y: 276, ex: 624, ey: 308 },  // 3  philosopher
+  { x: 720, y: 400, ex: 640, ey: 400 },  // 4  blueprint
+  { x: 696, y: 524, ex: 624, ey: 492 },  // 5  journey
+  { x: 628, y: 628, ex: 572, ey: 572 },  // 6  organize
+  { x: 524, y: 696, ex: 492, ey: 620 },  // 7  localize
+  { x: 400, y: 720, ex: 400, ey: 640 },  // 8  transpose
+  { x: 276, y: 696, ex: 308, ey: 620 },  // 9  evaluate
+  { x: 172, y: 628, ex: 228, ey: 572 },  // 10 fortify
+  { x: 104, y: 524, ex: 180, ey: 492 },  // 11 include
+  { x:  80, y: 400, ex: 160, ey: 400 },  // 12 measure
+  { x: 104, y: 276, ex: 180, ey: 308 },  // 13 articulate
+  { x: 172, y: 172, ex: 228, ey: 228 },  // 14 storytelling
+  { x: 276, y: 104, ex: 308, ey: 180 },  // 15 specify
+];
+
+const terminals = ring.map((skill, i) => ({ ...skill, pos: POSITIONS[i] }));
+
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
+---
+
+<figure class="intent-meta">
+  <svg
+    class="intent-meta__svg"
+    viewBox="0 0 800 800"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby="intent-meta-title intent-meta-desc"
+  >
+    <title id="intent-meta-title">Intent — the system at a glance</title>
+    <desc id="intent-meta-desc">
+      A central frame representing the practice, surrounded by sixteen
+      terminal points — one for each skill, colored by cluster. Hover a
+      terminal to reveal the skill it stands for.
+    </desc>
+
+    <!-- The practice: central frame -->
+    <rect
+      class="intent-meta__frame"
+      x="280" y="320" width="240" height="160"
+      fill="none"
+      stroke="var(--ink)"
+      stroke-width="2.5"
+    />
+
+    <!-- 16 terminals — each is an anchor that links to its skill -->
+    <g class="intent-meta__terminals">
+      {terminals.map((t) => (
+        <a
+          class="intent-meta__terminal"
+          href={`${base}skills/#${t.slug}`}
+          data-cluster={t.cluster}
+          data-slug={t.slug}
+          data-shape={t.shape}
+          aria-label={`/${t.slug} — ${t.shape}`}
+        >
+          <line
+            class="intent-meta__vector"
+            x1={t.pos.x} y1={t.pos.y}
+            x2={t.pos.ex} y2={t.pos.ey}
+            stroke="var(--c)"
+            stroke-width="2"
+          />
+          <circle
+            class="intent-meta__dot"
+            cx={t.pos.x} cy={t.pos.y}
+            r="8"
+            fill="var(--c)"
+            stroke="none"
+          />
+          <!-- Larger transparent hit target for easier hover/click -->
+          <circle
+            class="intent-meta__hit"
+            cx={t.pos.x} cy={t.pos.y}
+            r="24"
+            fill="transparent"
+          />
+        </a>
+      ))}
+    </g>
+  </svg>
+
+  <figcaption class="intent-meta__caption" aria-live="polite">
+    <span class="intent-meta__caption-slug mono"></span>
+    <span class="intent-meta__caption-shape"></span>
+    <span class="intent-meta__caption-hint muted">
+      Hover any terminal to read a skill.
+    </span>
+  </figcaption>
+</figure>
+
+<script is:inline>
+  (function() {
+    const root = document.currentScript && document.currentScript.previousElementSibling;
+    // Re-resolve robustly: find the most-recently-rendered .intent-meta
+    const fig = document.querySelector('.intent-meta');
+    if (!fig) return;
+    const slugEl = fig.querySelector('.intent-meta__caption-slug');
+    const shapeEl = fig.querySelector('.intent-meta__caption-shape');
+    const hintEl = fig.querySelector('.intent-meta__caption-hint');
+    const terminals = fig.querySelectorAll('.intent-meta__terminal');
+
+    function show(a) {
+      slugEl.textContent = '/' + a.dataset.slug;
+      shapeEl.textContent = a.dataset.shape;
+      hintEl.style.display = 'none';
+    }
+    function clear() {
+      slugEl.textContent = '';
+      shapeEl.textContent = '';
+      hintEl.style.display = '';
+    }
+
+    terminals.forEach((a) => {
+      a.addEventListener('mouseenter', () => show(a));
+      a.addEventListener('focus', () => show(a));
+      a.addEventListener('mouseleave', clear);
+      a.addEventListener('blur', clear);
+    });
+  })();
+</script>
