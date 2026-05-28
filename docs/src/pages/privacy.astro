@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+
+const lastUpdated = 'May 27, 2026';
+---
+
+<Base title="Privacy — Intent" description="Intent collects no personal data, runs no analytics, and uses no tracking cookies. This page explains exactly what that means.">
+  <div class="page">
+    <section class="how-to-use-hero" aria-labelledby="privacy-heading">
+      <h1 id="privacy-heading">Privacy</h1>
+      <p class="subtext muted">
+        Intent collects no personal data, runs no analytics, and uses no tracking cookies.
+      </p>
+      <p class="small muted" style="margin-top: var(--s4);">Last updated {lastUpdated}</p>
+    </section>
+
+    <section class="section" aria-labelledby="summary-heading">
+      <SectionLabel label="THE SHORT VERSION" />
+      <div class="section-content">
+        <h2 id="summary-heading" class="visually-hidden">Summary</h2>
+        <p class="step-narrative">
+          This website is a static site. It does not collect, store, or transmit any personal data about you. There are no analytics, no tracking pixels, no advertising scripts, no cookies set by Intent, no accounts, no newsletters, and no forms.
+        </p>
+        <p class="step-narrative">
+          The Intent skills and agents you install run locally inside your AI coding tool (Claude Code, Cursor, Codex CLI, and others). Intent itself has no servers, no telemetry, and no way to see what you do with it.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="data-heading">
+      <SectionLabel label="WHAT WE COLLECT" annotation="Nothing" />
+      <div class="section-content">
+        <h2 id="data-heading" class="visually-hidden">What we collect</h2>
+        <p class="step-narrative">
+          Nothing. No names, no email addresses, no IP addresses logged by us, no device identifiers, no behavioral data, no usage metrics, no cookies set by this site.
+        </p>
+        <p class="step-narrative">
+          There is nothing to opt out of because there is nothing to opt into.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="third-party-heading">
+      <SectionLabel label="THIRD PARTIES" annotation="The honest part" />
+      <div class="section-content">
+        <h2 id="third-party-heading" class="visually-hidden">Third parties</h2>
+        <p class="step-narrative">
+          Loading any website involves your browser making requests to servers. A few of those requests, when you visit this site, go to third parties operating under their own policies:
+        </p>
+        <ul class="privacy-list">
+          <li>
+            <strong>Hosting.</strong> The site is served as static files from a hosting provider. Your IP address is visible to that provider as part of routing the request, the same way it would be for any website.
+          </li>
+          <li>
+            <strong>Fonts.</strong> Typography loads from Fontshare and Google Fonts CDNs. Those providers see the request to fetch the font file.
+          </li>
+          <li>
+            <strong>GitHub.</strong> When you click links to the GitHub repository, you leave this site and enter GitHub, which has its own privacy policy.
+          </li>
+        </ul>
+        <p class="step-narrative">
+          We do not share data with these providers, because we do not have data to share. We do not control their logging practices. If this matters to you, a content blocker that restricts third-party requests will prevent the font CDN calls without breaking the site.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="local-heading">
+      <SectionLabel label="LOCAL STORAGE" annotation="Stays on your device" />
+      <div class="section-content">
+        <h2 id="local-heading" class="visually-hidden">Local storage</h2>
+        <p class="step-narrative">
+          The site stores one value in your browser's <code class="mono">localStorage</code>: your light/dark theme preference. This data never leaves your device. Clearing your browser storage removes it.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="skills-heading">
+      <SectionLabel label="THE SKILLS THEMSELVES" />
+      <div class="section-content">
+        <h2 id="skills-heading" class="visually-hidden">The skills themselves</h2>
+        <p class="step-narrative">
+          Intent skills and agents are plain markdown files distributed through npm and installed into your AI tool. They run inside your existing environment and have no network access of their own. Whatever data your AI tool sends to its model provider is governed by that tool's privacy policy, not Intent's.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="changes-heading">
+      <SectionLabel label="CHANGES" />
+      <div class="section-content">
+        <h2 id="changes-heading" class="visually-hidden">Changes</h2>
+        <p class="step-narrative">
+          If this policy ever changes, the updated date at the top of this page will reflect it. The full history is in the public <a href="https://github.com/ghaida/intent" class="link" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="contact-heading">
+      <SectionLabel label="QUESTIONS" />
+      <div class="section-content">
+        <h2 id="contact-heading" class="visually-hidden">Questions</h2>
+        <p class="step-narrative">
+          Open an issue at <a href="https://github.com/ghaida/intent/issues" class="link" target="_blank" rel="noopener noreferrer">github.com/ghaida/intent/issues</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>

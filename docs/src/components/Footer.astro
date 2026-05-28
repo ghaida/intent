@@ -1,16 +1,21 @@
 ---
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith('/') ? raw : raw + '/';
 ---
 
 <footer class="footer">
   <div class="footer-inner page">
     <span class="footer-license">Made by <a href="https://ghaidazahran.com" class="link" target="_blank" rel="noopener noreferrer">Ghaida</a> · CC0 1.0 — Public Domain</span>
-    <a
-      href="https://github.com/ghaida/intent"
-      class="footer-github link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      GitHub
-    </a>
+    <div class="footer-links">
+      <a href={`${base}privacy/`} class="footer-link link">Privacy</a>
+      <a
+        href="https://github.com/ghaida/intent"
+        class="footer-github link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
   </div>
 </footer>
