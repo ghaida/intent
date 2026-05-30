@@ -9,6 +9,11 @@ import { loadShowcase } from '../lib/showcase';
 const showcase = loadShowcase();
 const raw = import.meta.env.BASE_URL;
 const base = raw.endsWith('/') ? raw : raw + '/';
+
+// Walkthrough video — self-hosted on an external CDN (no third-party tracking).
+// Drop the CDN URL(s) here. Leave videoSrc empty to hide the block entirely.
+const videoSrc = 'https://pub-7b48954891414f0e9966e0416813b9f9.r2.dev/intent-how-to.mp4';
+const videoPoster = `${base}intent-poster.png`;
 ---
 
 <Base title="How to Use — Intent" description={`Follow ${showcase.name} — ${showcase.tagline.toLowerCase()} — through every Intent skill, from first question to engineering handoff.`}>
@@ -23,6 +28,25 @@ const base = raw.endsWith('/') ? raw : raw + '/';
         <strong>The project: {showcase.name}</strong> — {showcase.tagline}
       </div>
     </section>
+
+    {videoSrc && (
+      <section class="walkthrough-video" aria-label="Walkthrough video">
+        <figure>
+          <video
+            controls
+            preload="none"
+            playsinline
+            poster={videoPoster}
+            src={videoSrc}
+          >
+            <p class="muted small">
+              Your browser can't play this video.
+              <a href={videoSrc} class="link">Download it instead</a>.
+            </p>
+          </video>
+        </figure>
+      </section>
+    )}
 
     <!-- Skill chapters -->
     {showcase.steps.map((step, i) => (

@@ -1542,7 +1542,7 @@ tr[hidden] {
 /* --- How to Use --- */
 
 .how-to-use-hero {
-  padding: var(--s16) 0;
+  padding: var(--s16) 0 0;
 }
 
 .how-to-use-hero h1 {
@@ -1562,6 +1562,23 @@ tr[hidden] {
   border-radius: 0 4px 4px 0;
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
+}
+
+.walkthrough-video {
+  margin-top: var(--s8);
+}
+
+.walkthrough-video figure {
+  margin: 0;
+}
+
+.walkthrough-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
 }
 
 .step-summary {
