@@ -1,12 +1,12 @@
 # Design with Intent
 
-A comprehensive UX and design strategy system for AI tools. 16 specialized skills and 6 named agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
+A comprehensive UX and design strategy system for AI tools. 16 specialized skills and 6 agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
 
 Intent gives AI the context to approach design decisions with depth. Where visual design tools focus on how things look, Intent focuses on why they exist — research, strategy, systems thinking, flows, content, accessibility, ethics, and measurement.
 
 ## The agents
 
-Six named agents, each combining multiple skills into a specialist persona:
+Six agents, each combining multiple skills into a specialist persona:
 
 | Domain | Agent | Skills it combines |
 |--------|-------|--------------------|
@@ -75,13 +75,13 @@ npx skills add ghaida/intent --all
 ```
 /plugin marketplace add ghaida/intent
 ```
-Then open `/plugin` in Claude Code to install. You'll get all 16 skills as slash commands and all 6 named agents registered as subagents.
+Then open `/plugin` in Claude Code to install. You'll get all 16 skills as slash commands and all 6 agents registered as subagents.
 
 **Manual download:** Grab the latest zip from [releases](https://github.com/ghaida/intent/releases/latest).
 
 ## How to use
 
-**In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc. — and the 6 named agents (Noor, Ember, Wren, Vigil, Rune, Sage) are invokable as subagents via `@<name>` (e.g., `@ember help me frame this problem`).
+**In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc. — and the 6 agents (Noor, Ember, Wren, Vigil, Rune, Sage) are invokable as subagents via `@<name>` (e.g., `@ember help me frame this problem`).
 
 **Quick decision tree:**
 
