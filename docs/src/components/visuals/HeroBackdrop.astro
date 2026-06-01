@@ -3,14 +3,20 @@
 // locally. A distributed pattern using the Intent visual vocabulary: a sparse
 // dot grain, accent marks, hairline corner brackets at the surface edges, a
 // partial frame with aperture, two dashed provisional segments, and a small
-// loop-back arc. preserveAspectRatio="none" stretches the composition so
-// corner brackets always land at the viewport corners.
+// loop-back arc.
+//
+// Two overlaid layers with different scaling, so the composition never smears
+// as the window resizes:
+//   1. The marks field uses preserveAspectRatio="xMidYMid slice" — the viewBox
+//      scales uniformly and crops, so circles stay round and nothing stretches.
+//   2. The corner brackets sit in a separate overlay with
+//      preserveAspectRatio="none", so they stay pinned to the viewport corners.
 ---
 
 <svg
-  class="hero-backdrop"
+  class="hero-backdrop hero-backdrop--field"
   viewBox="0 0 1200 800"
-  preserveAspectRatio="none"
+  preserveAspectRatio="xMidYMid slice"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
 >
@@ -121,24 +127,6 @@
         <circle cx="160"  cy="320" r="6"/>
       </g>
 
-      <!-- Hairline corner brackets — surface frame, anchored to viewBox edges
-           so they land at the viewport corners under preserveAspectRatio="none" -->
-      <g fill="none" stroke="currentColor" stroke-width="1"
-         vector-effect="non-scaling-stroke">
-        <!-- Top-left -->
-        <line x1="0"  y1="40" x2="80" y2="40"/>
-        <line x1="40" y1="0"  x2="40" y2="120"/>
-        <!-- Top-right -->
-        <line x1="1120" y1="40" x2="1200" y2="40"/>
-        <line x1="1160" y1="0"  x2="1160" y2="120"/>
-        <!-- Bottom-left -->
-        <line x1="0"  y1="760" x2="80" y2="760"/>
-        <line x1="40" y1="680" x2="40" y2="800"/>
-        <!-- Bottom-right -->
-        <line x1="1120" y1="760" x2="1200" y2="760"/>
-        <line x1="1160" y1="680" x2="1160" y2="800"/>
-      </g>
-
       <!-- Registration crosses (small "+" tick marks) at interior grid points -->
       <g fill="none" stroke="currentColor" stroke-width="1"
          vector-effect="non-scaling-stroke">
@@ -239,6 +227,34 @@
   </g>
 </svg>
 
+<!-- Corner brackets — a separate overlay stretched (positions only) to the
+     viewport corners via preserveAspectRatio="none", so the frame always hugs
+     the corners while the marks field above keeps its aspect ratio. Straight
+     axis-aligned lines only change length under the stretch, never shape. -->
+<svg
+  class="hero-backdrop hero-backdrop--frame"
+  viewBox="0 0 1200 800"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <g class="hero-backdrop__brackets" fill="none" stroke="currentColor"
+     stroke-width="1" vector-effect="non-scaling-stroke">
+    <!-- Top-left -->
+    <line x1="0"  y1="40" x2="80" y2="40"/>
+    <line x1="40" y1="0"  x2="40" y2="120"/>
+    <!-- Top-right -->
+    <line x1="1120" y1="40" x2="1200" y2="40"/>
+    <line x1="1160" y1="0"  x2="1160" y2="120"/>
+    <!-- Bottom-left -->
+    <line x1="0"  y1="760" x2="80" y2="760"/>
+    <line x1="40" y1="680" x2="40" y2="800"/>
+    <!-- Bottom-right -->
+    <line x1="1120" y1="760" x2="1200" y2="760"/>
+    <line x1="1160" y1="680" x2="1160" y2="800"/>
+  </g>
+</svg>
+
 <style>
   /* Positioning/size is set by the parent layout (`main > .hero-backdrop`)
      because the backdrop sits outside any individual section and needs to
@@ -254,6 +270,11 @@
 
   .hero-backdrop__lit {
     color: var(--blueprint-mark);
+    opacity: 0.225;
+  }
+
+  .hero-backdrop__brackets {
+    color: var(--border);
     opacity: 0.225;
   }
 </style>
@@ -274,11 +295,17 @@
       let active = false;
 
       // Convert viewport-relative pointer coordinates into viewBox space.
-      // With preserveAspectRatio="none", X and Y stretch independently.
+      // The marks field uses preserveAspectRatio="xMidYMid slice": the viewBox
+      // scales uniformly by the larger axis and is centered, with overflow
+      // cropped. Undo that transform here, otherwise the cursor pool drifts away
+      // from the cursor as the window's aspect ratio diverges from the viewBox's.
       function setTargetFromEvent(ev) {
         const rect = svg.getBoundingClientRect();
-        targetX = ((ev.clientX - rect.left) / rect.width) * vbW;
-        targetY = ((ev.clientY - rect.top) / rect.height) * vbH;
+        const scale = Math.max(rect.width / vbW, rect.height / vbH);
+        const offsetX = (rect.width - vbW * scale) / 2;
+        const offsetY = (rect.height - vbH * scale) / 2;
+        targetX = ((ev.clientX - rect.left) - offsetX) / scale;
+        targetY = ((ev.clientY - rect.top) - offsetY) / scale;
       }
 
       tracker.addEventListener('pointermove', (ev) => {
