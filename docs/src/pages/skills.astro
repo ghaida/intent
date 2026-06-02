@@ -36,31 +36,15 @@ const base = raw.endsWith('/') ? raw : raw + '/';
           </h2>
 
           {cat.skills.map((skill) => (
-            <details id={skill.slug} data-cluster={skill.cluster}>
-              <summary>
-                <figure class="skill-thumb" aria-hidden="true">
-                  <SkillScore slug={skill.slug} />
-                </figure>
-                <div class="skill-header">
-                  <h3 class="skill-name">/{skill.slug}</h3>
-                  <p class="skill-desc muted">{skill.description}</p>
-                </div>
-              </summary>
-              <div class="details-content">
-                {skill.overview && (
-                  <div class="skill-detail">
-                    <span class="skill-detail-label mono muted">What it does</span>
-                    <p>{skill.overview}</p>
-                  </div>
-                )}
-                {skill.triggers && (
-                  <div class="skill-detail">
-                    <span class="skill-detail-label mono muted">When to use it</span>
-                    <p>{skill.triggers}</p>
-                  </div>
-                )}
+            <article class="skill-row" id={skill.slug} data-cluster={skill.cluster}>
+              <figure class="skill-thumb" aria-hidden="true">
+                <SkillScore slug={skill.slug} />
+              </figure>
+              <div class="skill-body">
+                <h3 class="skill-name">/{skill.slug}</h3>
+                <p class="skill-summary">{skill.summary}</p>
               </div>
-            </details>
+            </article>
           ))}
         </div>
       </section>

@@ -22,7 +22,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
     <section class="agents-table-section" aria-labelledby="agents-table-heading">
       <h2 id="agents-table-heading" class="visually-hidden">Agent roster</h2>
       <div class="table-wrap">
-        <table>
+        <table class="agents-table">
           <thead>
             <tr>
               <th>Domain</th>
@@ -35,7 +35,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
             {agents.map((agent) => (
               <tr data-cluster={agent.cluster}>
                 <td class="agent-domain mono small muted">{agent.domain}</td>
-                <td>
+                <td class="agent-col-name">
                   <span class="agent-name-cell">
                     <span class="agent-thumb" aria-hidden="true">
                       <AgentSymbol slug={agent.slug} />
@@ -43,7 +43,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
                     <span class="agent-name">{agent.name}</span>
                   </span>
                 </td>
-                <td>
+                <td class="agent-col-skills">
                   <div class="agent-skills">
                     {agent.skills.map((s) => (
                       <a href={`${base}skills/#${s}`} class="skill-tag">/{s}</a>

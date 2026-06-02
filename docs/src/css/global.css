@@ -513,50 +513,6 @@ tr.last-visible td {
   border-bottom: none;
 }
 
-/* --- Expandable Panels --- */
-
-details {
-  border-bottom: 1px solid var(--border);
-}
-
-details:last-of-type {
-  border-bottom: none;
-}
-
-summary {
-  cursor: pointer;
-  padding: var(--s4) 0;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s4);
-  user-select: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-summary::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-right: 1.5px solid var(--fg-muted);
-  border-bottom: 1.5px solid var(--fg-muted);
-  transform: rotate(-45deg);
-  transition: transform var(--duration) var(--ease-out);
-  flex-shrink: 0;
-}
-
-details[open] > summary::after {
-  transform: rotate(45deg);
-}
-
-.details-content {
-  padding: 0 0 var(--s6) 0;
-}
-
 /* --- Buttons --- */
 
 .btn {
@@ -1161,73 +1117,37 @@ body:has(main > .hero-backdrop) .nav {
   padding-top: 0;
 }
 
-.skills-page details {
-  border-bottom: none;
-}
-
 .skills-page .section-label-annotation {
   display: inline;
   margin-left: var(--s3);
 }
 
-.skills-page details > summary {
-  padding: var(--s6) 0;
+/* Skills catalog: a terse reference index. Each skill is one compact row —
+   a small blueprint glyph as a visual signature, the name, and a single
+   summary line. Depth lives on the how-to-use walkthrough, not here. */
+.skill-row {
+  display: flex;
+  align-items: center;
   gap: var(--s4);
-}
-
-/* Mobile: stack illustration above the skill text */
-.skills-page details > summary {
-  flex-direction: column;
-  align-items: stretch;
-  position: relative;
-  padding-right: var(--s8);
+  padding: var(--s4) 0;
 }
 
 .skills-page .skill-thumb {
-  width: 100%;
-  max-width: 320px;
-}
-
-.skills-page summary::after {
-  position: absolute;
-  top: var(--s6);
-  right: 0;
-}
-
-/* Mobile: details body sits flush with the text it follows */
-.skills-page .details-content {
-  padding-left: 0;
+  width: 96px;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 @media (min-width: 720px) {
-  .skills-page details > summary {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--s8);
-    padding-right: 0;
+  .skill-row {
+    gap: var(--s6);
   }
   .skills-page .skill-thumb {
-    width: 280px;
-    max-width: none;
-  }
-  .skills-page summary::after {
-    position: static;
-  }
-  .skills-page .details-content {
-    padding-left: calc(280px + var(--s8));
+    width: 120px;
   }
 }
 
-@media (min-width: 1000px) {
-  .skills-page .skill-thumb {
-    width: 360px;
-  }
-  .skills-page .details-content {
-    padding-left: calc(360px + var(--s8));
-  }
-}
-
-.skill-header {
+.skill-body {
   flex: 1;
   min-width: 0;
 }
@@ -1240,32 +1160,11 @@ body:has(main > .hero-backdrop) .nav {
   margin-bottom: var(--s1);
 }
 
-.skill-desc {
-  font-size: var(--text-xs);
+.skill-summary {
+  font-size: var(--text-sm);
   line-height: var(--lh-body);
-  max-width: 60ch;
-}
-
-.skill-detail {
-  margin-bottom: var(--s4);
-}
-
-.skill-detail:last-child {
-  margin-bottom: 0;
-}
-
-.skill-detail-label {
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: var(--s1);
-}
-
-.skill-detail p {
-  font-size: var(--text-xs);
-  line-height: var(--lh-body);
-  max-width: 60ch;
+  color: var(--fg-muted);
+  max-width: 70ch;
 }
 
 /* --- Patterns --- */
@@ -1451,6 +1350,61 @@ tr[hidden] {
   display: inline-block;
 }
 
+/* Agent roster: card reflow below desktop (mirrors .patterns-table).
+   The plain table only scrolls horizontally on small screens, pushing
+   Skills off-screen and hiding Role entirely. Stack each agent into a
+   card so domain, name, role, and skills all survive on a phone. */
+@media (max-width: 1023px) {
+  .agents-table thead {
+    display: none;
+  }
+
+  .agents-table,
+  .agents-table tbody {
+    display: block;
+  }
+
+  .agents-table tr {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    padding: var(--s4) 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .agents-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .agents-table td {
+    display: block;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .agents-table .agent-domain {
+    order: 1;
+  }
+
+  .agents-table .agent-col-name {
+    order: 2;
+  }
+
+  /* Role tagline returns in card form (hidden as a column on small screens). */
+  .agents-table .hide-mobile {
+    display: block;
+    order: 3;
+  }
+
+  .agents-table .agent-tagline {
+    max-width: none;
+  }
+
+  .agents-table .agent-col-skills {
+    order: 4;
+  }
+}
+
 .lifecycle-section {
   padding: var(--s16) 0;
   border-top: 1px solid var(--border);
@@ -1558,8 +1512,8 @@ tr[hidden] {
   margin-top: var(--s6);
   padding: var(--s4) var(--s5);
   background: var(--surface);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 4px 4px 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
 }

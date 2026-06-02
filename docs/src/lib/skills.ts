@@ -7,8 +7,7 @@ export interface Skill {
   slug: string;
   name: string;
   description: string;
-  overview: string;
-  triggers: string;
+  summary: string;
   category: string;
   cluster: Cluster;
   shape: string;
@@ -94,23 +93,14 @@ function parseFrontmatter(content: string): { data: Record<string, string>; body
   return { data, body: match[2] };
 }
 
-function extractSection(body: string, heading: string): string {
-  // Match `## Heading` followed by any content until the next H2 or end.
-  // Tolerant of an optional blank line between the heading and the body
-  // (some skill files have it, some don't).
-  const pattern = new RegExp(`^##\\s+${heading}\\s*\\n+([\\s\\S]*?)(?=\\n##\\s|$)`, 'm');
-  const match = body.match(pattern);
-  if (!match) return '';
-  // Take first 2-3 sentences
-  const text = match[1].trim();
-  const sentences = text.split(/(?<=[.!?])\s+/);
-  return sentences.slice(0, 3).join(' ');
-}
-
-function extractTriggers(body: string): string {
-  const pattern = /\*\*When to activate[^*]*\*\*\s*(.*?)(?:\n\n|$)/s;
-  const match = body.match(pattern);
-  return match ? match[1].trim() : '';
+// One-line catalog entry: the first sentence of the frontmatter `description`,
+// trimmed to its headline clause (drop an em-dash aside or a colon-led example
+// list). Keeps the reference index scannable: "what this skill does" in a line.
+function summarize(description: string): string {
+  let s = (description.split(/(?<=[.!?])\s+/)[0] || description).trim();
+  s = s.split(/\s+—\s+|:\s+/)[0].trim();
+  if (s && !/[.!?]$/.test(s)) s += '.';
+  return s;
 }
 
 export function loadSkills(): Skill[] {
@@ -126,7 +116,7 @@ export function loadSkills(): Skill[] {
     if (!fs.existsSync(filePath)) continue;
 
     const content = fs.readFileSync(filePath, 'utf-8');
-    const { data, body } = parseFrontmatter(content);
+    const { data } = parseFrontmatter(content);
 
     const slug = dir;
     const cat = CATEGORIES[slug];
@@ -145,8 +135,7 @@ export function loadSkills(): Skill[] {
       slug,
       name: data.name || slug,
       description: data.description || '',
-      overview: extractSection(body, 'Overview'),
-      triggers: extractTriggers(body),
+      summary: summarize(data.description || ''),
       category: cat.label,
       cluster,
       shape,
