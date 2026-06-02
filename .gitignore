@@ -10,6 +10,9 @@ project-plan.md
 CLAUDE.md
 .impeccable.md
 
+# Impeccable working files / critique snapshots (local only, never committed)
+.impeccable/
+
 # Internal design docs and visual companion sessions
 design-docs/
 .superpowers/
