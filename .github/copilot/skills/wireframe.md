@@ -122,6 +122,8 @@ Five tones is enough to express hierarchy and not enough to do visual design. Th
 
 **Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font (`system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface. Use a consistent structural type scale at real reading sizes (page title 22–28, section heads 16–18, body 15, captions 12–13 — never below 12) and credible component sizing — 44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
 
+**The completeness test.** A mid-fi wireframe is a grayscale version of the full product screen — not an enlarged thumbnail. If the real screen would have it, the wireframe has it: status and navigation bars, tab bars, search fields, filter chips, icons (as circles), avatars, timestamps, counts, secondary actions, footers. Density matches reality — a marketplace grid shows six listings with sellers and distances, not two bare cards; a feed shows the fold and what's below it. The test: screenshot the real product, desaturate it, strip the brand typography — your wireframe should have the same amount of stuff in the same places.
+
 Component conventions:
 
 | Element | Convention |
@@ -130,7 +132,10 @@ Component conventions:
 | Secondary button | bordered box, primary-ink label |
 | Input | bordered box, visible label above, example value inside |
 | Image / media | light gray block — surface fill, hairline border, no crossed lines |
-| Icon | circle (border tone); never pick real icons |
+| Icon | circle (surface fill, border) — never pick real icons |
+| Avatar | filled circle (border tone) |
+| Chip / filter | bordered pill with real label; active = ink-filled |
+| Tab / nav bar | full-width bar, icon circle + real label per item, active item in primary ink |
 | Chart | simplified gray shapes — bars as surface-filled rects, lines as single strokes |
 | Table | real column headers, two or three rows of real example data |
 
@@ -290,6 +295,20 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
   border: 1px solid var(--w-border); border-radius: 2px; }
 .wf .bar { height: 8px; background: var(--w-border); border-radius: 2px;
   margin-bottom: var(--s2); }
+.wf .icon { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  background: var(--w-surface); border: 1px solid var(--w-border); }
+.wf .avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  background: var(--w-border); }
+.wf .chip { display: inline-block; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--w-border); font-size: 13px; color: var(--w-ink1); }
+.wf .chip.active { background: var(--w-ink1); color: var(--w-canvas);
+  border-color: var(--w-ink1); }
+.wf .tabbar { display: flex; border-top: 1px solid var(--w-border);
+  padding: var(--s2) 0 var(--s1); background: var(--w-canvas); }
+.wf .tab { flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 2px; font-size: 12px; color: var(--w-ink2); }
+.wf .tab .icon { width: 22px; height: 22px; }
+.wf .tab.active { color: var(--w-ink1); font-weight: 600; }
 /* thumbnails — labeled zones carrying miniature structure */
 .frame.thumb .wf { padding: var(--s2); font-size: 8px; }
 .frame.thumb .zone { border: 1px solid var(--w-border); color: var(--w-ink2);
