@@ -1127,23 +1127,25 @@ body:has(main > .hero-backdrop) .nav {
    summary line. Depth lives on the how-to-use walkthrough, not here. */
 .skill-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--s4);
-  padding: var(--s4) 0;
+  padding: var(--s8) 0;
 }
 
 .skills-page .skill-thumb {
-  width: 96px;
+  width: 100%;
   flex-shrink: 0;
   align-self: center;
 }
 
 @media (min-width: 720px) {
   .skill-row {
+    flex-wrap: nowrap;
     gap: var(--s6);
   }
   .skills-page .skill-thumb {
-    width: 120px;
+    width: 290px;
   }
 }
 
