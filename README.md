@@ -1,6 +1,6 @@
 # Design with Intent
 
-A comprehensive UX and design strategy system for AI tools. 16 specialized skills and 6 agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
+A comprehensive UX and design strategy system for AI tools. 17 specialized skills and 6 agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
 
 Intent gives AI the context to approach design decisions with depth. Where visual design tools focus on how things look, Intent focuses on why they exist — research, strategy, systems thinking, flows, content, accessibility, ethics, and measurement.
 
@@ -12,7 +12,7 @@ Six agents, each combining multiple skills into a specialist persona:
 |--------|-------|--------------------|
 | Entry point | **Noor** | `/intent` — orients the project, holds UX principles and the anti-pattern catalog, routes to specialists |
 | Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
-| Experience Design | **Wren** | `/journey` + `/organize` + `/articulate` — shapes user flows, structures information, designs the words |
+| Experience Design | **Wren** | `/journey` + `/organize` + `/wireframe` + `/articulate` — shapes user flows, structures information, wireframes screens, designs the words |
 | Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
 | Engineering Handoff | **Rune** | `/specify` — carries design intent into implementation-ready specs, copy matrices, and handoff packages |
 | Cross-cutting Wisdom | **Sage** | `/philosopher` — sits with problems, expands thinking, challenges assumptions |
@@ -38,6 +38,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 - `journey/SKILL.md` — End-to-end user flow design. Task analysis, decision points, entry-to-outcome paths, device-aware design, context variation handling, multi-channel journey mapping. Offers visual companion output: rendered HTML flow diagrams, Pencil files, or structured specs for your design tool.
 - `organize/SKILL.md` — Information architecture. Navigation patterns, taxonomy design, labeling systems, wayfinding, search and browse models, card sort and tree test methodology. Offers visual companion output: rendered HTML site maps and navigation mockups, Pencil files, or structured specs for your design tool.
+- `wireframe/SKILL.md` — Structural screen design at wireframe fidelity. Thumbnail sketches, full-page grayscale wireframes, click-through prototypes, fidelity doctrine, and a three-layer wireframe language (container, content, annotation). Offers visual companion output: a self-contained HTML wireframe viewer with grid and slideshow modes, Figma frames, or pencil files.
 - `articulate/SKILL.md` — UX writing and content strategy. Voice and tone frameworks, error message design, empty states, CTA hierarchy, microcopy patterns, content models, inclusive language.
 
 ### Quality & Evaluation
@@ -75,7 +76,7 @@ npx skills add ghaida/intent --all
 ```
 /plugin marketplace add ghaida/intent
 ```
-Then open `/plugin` in Claude Code to install. You'll get all 16 skills as slash commands and all 6 agents registered as subagents.
+Then open `/plugin` in Claude Code to install. You'll get all 17 skills as slash commands and all 6 agents registered as subagents.
 
 **Manual download:** Grab the latest zip from [releases](https://github.com/ghaida/intent/releases/latest).
 
@@ -92,7 +93,7 @@ I have a design challenge
 │  └─ /strategize
 │
 ├─ "I need to design the experience"
-│  └─ /journey + /organize + /articulate
+│  └─ /journey + /organize + /wireframe + /articulate
 │
 ├─ "Does this actually work? For everyone?"
 │  └─ /evaluate + /fortify + /include
