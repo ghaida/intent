@@ -25,7 +25,7 @@ const AGENT_META: Record<string, { domain: string; skills: string[]; cluster: Cl
   },
   wren: {
     domain: 'Experience Design',
-    skills: ['journey', 'organize', 'articulate'],
+    skills: ['journey', 'organize', 'wireframe', 'articulate'],
     cluster: 'systems',
   },
   vigil: {

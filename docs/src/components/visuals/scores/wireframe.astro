@@ -1,0 +1,61 @@
+---
+// Skill score: wireframe (cluster: systems)
+// Note: wide viewBox 1600×600
+---
+<svg viewBox="0 0 1600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="score-wireframe-title" stroke="var(--ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title id="score-wireframe-title">Wireframe score — three thumbnail sketches on the left, one selected and projected into a full-page structural wireframe with a header bar, sidebar, content panels, a crossed media placeholder, and an accent annotation marker. Structure resolved before surface.</title>
+  <!-- Three thumbnails (structural) -->
+  <g stroke-width="2">
+    <rect x="120" y="200" width="160" height="120"/>
+    <rect x="120" y="440" width="160" height="120"/>
+  </g>
+  <!-- Thumbnail zone hints (structural) -->
+  <g stroke-width="1">
+    <line x1="120" y1="232" x2="280" y2="232"/>
+    <line x1="172" y1="232" x2="172" y2="320"/>
+    <line x1="120" y1="472" x2="280" y2="472"/>
+    <line x1="228" y1="472" x2="228" y2="560"/>
+  </g>
+  <!-- ACTIVE: the selected thumbnail -->
+  <g stroke="var(--c)" stroke-width="2.5">
+    <rect x="120" y="80" width="160" height="120"/>
+    <line x1="120" y1="112" x2="280" y2="112"/>
+    <line x1="226" y1="112" x2="226" y2="200"/>
+  </g>
+  <!-- ACTIVE: projection lines, thumbnail → full page -->
+  <g stroke="var(--c)" stroke-width="1.5" stroke-dasharray="8 10">
+    <line x1="280" y1="80" x2="480" y2="56"/>
+    <line x1="280" y1="200" x2="480" y2="544"/>
+  </g>
+  <!-- Full-page wireframe frame (structural, heavier) -->
+  <rect x="480" y="56" width="960" height="488" stroke-width="3"/>
+  <!-- Header bar -->
+  <line x1="480" y1="136" x2="1440" y2="136" stroke-width="2"/>
+  <!-- Sidebar boundary -->
+  <line x1="760" y1="136" x2="760" y2="544" stroke-width="2"/>
+  <!-- Sidebar items -->
+  <g stroke-width="2">
+    <line x1="528" y1="200" x2="700" y2="200"/>
+    <line x1="528" y1="256" x2="668" y2="256"/>
+    <line x1="528" y1="312" x2="688" y2="312"/>
+  </g>
+  <!-- Content panels -->
+  <g stroke-width="2">
+    <rect x="816" y="184" width="272" height="136"/>
+    <rect x="1128" y="184" width="264" height="136"/>
+    <rect x="816" y="368" width="576" height="128"/>
+  </g>
+  <!-- Media placeholder X in first panel -->
+  <g stroke-width="1">
+    <line x1="816" y1="184" x2="1088" y2="320"/>
+    <line x1="1088" y1="184" x2="816" y2="320"/>
+  </g>
+  <!-- Text bars in lower panel -->
+  <g stroke-width="2">
+    <line x1="856" y1="408" x2="1304" y2="408"/>
+    <line x1="856" y1="448" x2="1192" y2="448"/>
+  </g>
+  <!-- ACTIVE: annotation marker on the second panel -->
+  <circle cx="1392" cy="184" r="22" stroke="var(--c)" stroke-width="2.5"/>
+  <circle cx="1392" cy="184" r="6" fill="var(--c)" stroke="none"/>
+</svg>
