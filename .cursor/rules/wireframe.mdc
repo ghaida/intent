@@ -80,10 +80,11 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
 - **Backdrop:** a quiet stage surface — `#ececf0` light / `#121217` dark — deliberately cooler and flatter than any wireframe surface, so frames read as objects placed on a desk.
 - **Frame:** each screen sits in a card with a hairline border and a **title plate**: screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), and position when part of a set ("3/12"). The plate uses a small uppercase monospace label style that never appears inside wireframe content.
 - **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like title plates.
+- **One rung per artifact.** Thumbnails and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
-  - **Grid** (default) — all frames, grouped by section. Thumbnails flow many-per-row; full-page wireframes sit larger, one or two per row.
+  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact thumbnails flow many per row; in a wireframe artifact frames sit larger, one or two per row.
   - **Slideshow** — one frame at a time at comfortable size, prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews.
-  - **Theme** — a light ⇄ dark toggle in the chrome; initial state follows the OS preference. Both ramps ship in every HTML artifact. Figma and pencil artifacts are single-theme — the ask-first step records which.
+  - **Theme** — a light ⇄ dark toggle; initial state follows the OS preference. Both ramps ship in every HTML artifact. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control with a half-tone swatch, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time with annotations hidden, and the wireframes themselves interactive: clicking a trigger element (the real button, the real row) navigates to the screen it leads to, following the flow logic. Esc returns to grid. The user *uses* the wireframes as an actual prototype.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
 - In Figma, the container maps to sections and frame layout on canvas; in pencil, to grouped frames. Slideshow falls to those tools' native presentation modes.
@@ -141,7 +142,7 @@ Open with this question, with HTML as the default:
 
 > Where should these wireframes live?
 >
-> - **HTML** (default) — one self-contained file: grid/slideshow viewer, optional click-through prototype
+> - **HTML** (default) — self-contained file per fidelity stage: grid/slideshow viewer, optional click-through prototype
 > - **Figma** — frames and sections in your Figma file via MCP
 > - **pencil** — frames in pencil.dev via MCP
 > - **No** — markdown structure spec only
@@ -152,7 +153,7 @@ If the user picks **Figma or pencil**, also ask: **light or dark wireframes?** T
 
 ### HTML output
 
-Write **one self-contained file** — `wireframes-<topic>.html` — to the working directory and open it. No external CSS, fonts, or libraries; inline `<style>` and inline `<script>` only. (This skill's viewer needs JS for the view toggle, slideshow, and prototype navigation — unlike sibling skills' static diagrams, inline JS is required here, but still zero external dependencies.)
+Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.html` for lo-fi, `wireframes-<topic>.html` for full-page wireframes and prototypes — to the working directory and open it. Never mix rungs in one file: they serve different project stages. No external CSS, fonts, or libraries; inline `<style>` and inline `<script>` only. (This skill's viewer needs JS for the view toggle, slideshow, and prototype navigation — unlike sibling skills' static diagrams, inline JS is required here, but still zero external dependencies.)
 
 **Required style block** — paste verbatim into `<style>`, then add per-screen layout CSS after it:
 
@@ -195,6 +196,19 @@ body {
   border: 1px solid var(--chrome-border); border-radius: 3px; color: var(--chrome-ink);
 }
 .view-toggle button[aria-pressed="true"] { border-color: var(--chrome-ink); color: var(--w-ink1); }
+.board-controls { display: flex; align-items: center; gap: var(--s5); }
+/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
+.theme-toggle {
+  display: flex; align-items: center; gap: var(--s2);
+  background: none; border: none; cursor: pointer; padding: var(--s2) 0;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+}
+.theme-toggle .swatch {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid var(--chrome-ink);
+  background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
+}
 .board-section { margin-bottom: var(--s7); }
 .section-label {
   font-family: var(--mono); font-size: 12px; font-weight: 600;
@@ -284,13 +298,17 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 <body data-view="grid" data-theme="light">
   <header class="board-header">
     <div class="board-title">[PROJECT] — wireframes</div>
-    <nav class="view-toggle" aria-label="View">
-      <button data-setview="grid" aria-pressed="true">Grid</button>
-      <button data-setview="slides" aria-pressed="false">Slides</button>
-      <button data-toggle-theme aria-pressed="false">Dark</button>
-      <!-- Include ONLY when a prototype was requested: -->
-      <button data-setview="proto" aria-pressed="false">Prototype</button>
-    </nav>
+    <div class="board-controls">
+      <nav class="view-toggle" aria-label="View">
+        <button data-setview="grid" aria-pressed="true">Grid</button>
+        <button data-setview="slides" aria-pressed="false">Slides</button>
+        <!-- Include ONLY when a prototype was requested: -->
+        <button data-setview="proto" aria-pressed="false">Prototype</button>
+      </nav>
+      <button class="theme-toggle" data-toggle-theme aria-pressed="false">
+        <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
+      </button>
+    </div>
   </header>
 
   <section class="board-section" data-section="[SECTION NAME]">
@@ -357,10 +375,11 @@ addEventListener('keydown', e => {
   if (e.key === 'Escape') setView('grid');
 });
 const th = document.querySelector('[data-toggle-theme]');
+const thLabel = th?.querySelector('.theme-label');
 function setTheme(dark) {
   document.body.dataset.theme = dark ? 'dark' : 'light';
   th?.setAttribute('aria-pressed', String(dark));
-  if (th) th.textContent = dark ? 'Light' : 'Dark';
+  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
 }
 setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
 th?.addEventListener('click', () =>
@@ -445,7 +464,7 @@ Materialize flow logic from `/journey` as connected screens. Lay frames in flow 
 
 ### 7. Divergence practice
 
-For any new screen, thumbnails come first and come plural. Draw structurally different options — not the same layout with the sidebar moved. Different answers to "what is this screen's primary job?" produce different structures; if all your thumbnails look alike, you've decided the job without noticing. Present alternatives with the trade-off named, converge deliberately with the user, then promote the chosen structure up a rung. Keep the rejected thumbnails in the artifact under a "considered" section — the record of what was chosen against is part of the design.
+For any new screen, thumbnails come first and come plural. Draw structurally different options — not the same layout with the sidebar moved. Different answers to "what is this screen's primary job?" produce different structures; if all your thumbnails look alike, you've decided the job without noticing. Present alternatives with the trade-off named, converge deliberately with the user, then promote the chosen structure up a rung — into its own wireframe artifact. The lo-fi artifact stays behind as the decision record, rejected thumbnails and all — what was chosen against is part of the design.
 
 ## Output format
 
@@ -455,7 +474,7 @@ Structure the deliverable as the work requires. The full toolkit:
 2. **Structural rationale** — Per screen: what its primary job is, what zones exist and why, what hierarchy was chosen and why. The reasoning the wireframe renders.
 3. **The artifact** — HTML (default), Figma, or pencil, per the ask-first protocol. The wireframes themselves, in the three-layer language.
 4. **Annotations** — Numbered decisions and open questions, in the annotation layer and recapped in text.
-5. **Considered & rejected** — Thumbnails that lost, with one line each on why.
+5. **Considered & rejected** — Thumbnails that lost, with one line each on why. Lives in the lo-fi artifact.
 6. **Handoffs** — What goes to `/articulate` (flagged placeholder copy), `/fortify` (states not yet wireframed), `/journey` (flow findings), `/specify` (when structure freezes).
 7. **Pending questions** — What needs `/organize`, `/investigate`, or stakeholder input before structure can freeze.
 
