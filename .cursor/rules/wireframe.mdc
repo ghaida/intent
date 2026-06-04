@@ -43,7 +43,7 @@ Fidelity in this skill means **structural resolution**, never visual polish. The
 
 **Thumbnail (lo-fi)** — A small, fast, zone-level sketch built from silent miniature structure: text bars, gray media blocks, button slabs — no meta labels, nothing real inside. Its job is divergence: produce many structural options cheaply so the team can compare shapes of thinking, not details. Ten thumbnails that take ten minutes beat one wireframe that takes an hour, when the question is "which structure?"
 
-**Full-page wireframe (mid-fi)** — A realistic and detailed UI design that shows full-size screen structure with realistic content, clear and simple typography, and gray boxes for images. Every element that will exist on the screen exists in the wireframe, with real labels and real hierarchy expressed through size, weight, and placement — and zero visual styling: grayscale only, one neutral font. Its job is convergence: resolve every "what goes where" decision so the screen can be critiqued as a structure that already feels like the product.
+**Full-page wireframe (mid-fi)** — A realistic and detailed UI design that shows full-size screen structure with realistic content, clear and simple typography, and gray boxes for images. Every element that will exist on the screen exists in the wireframe, with real labels and real hierarchy expressed through size, weight, and placement — and it is **interactive**: inputs accept typing, buttons hover and press, chips toggle. Everything is real; it's just grayscale. Zero visual styling: grayscale only, one neutral font. Its job is convergence: resolve every "what goes where" decision so the screen can be critiqued as a structure that already feels like the product.
 
 **Prototype** — Full-page wireframes wired together with click-through navigation, following flow logic defined with `/journey`. Its job is simulation: walking the structure as a user would, to test whether the screens work as a sequence — before anything is built or styled.
 
@@ -111,17 +111,19 @@ Five tones is enough to express hierarchy and not enough to do visual design. Th
 
 **The completeness test.** A mid-fi wireframe is a grayscale version of the full product screen — not an enlarged thumbnail. If the real screen would have it, the wireframe has it: status and navigation bars, tab bars, search fields, filter chips, icons (as circles), avatars, timestamps, counts, secondary actions, footers. Density matches reality — a marketplace grid shows six listings with sellers and distances, not two bare cards; a feed shows the fold and what's below it. The test: screenshot the real product, desaturate it, strip the brand typography — your wireframe should have the same amount of stuff in the same places.
 
+**Real controls.** Wireframes are built from native interactive elements — `<button>`, `<input>`, `<textarea>`, `<select>` — never divs painted to look like controls. Text inputs focus and accept typing, buttons respond to hover and press, chips toggle, tabs react. Interaction states are mandatory and live inside the ramp: hover = surface fill (or reduced opacity on filled buttons), focus = a 2px secondary-ink ring, press = border tone. Interactivity is not polish — it's structural truth about what the screen *does* — so it belongs at this rung; only visual styling is withheld.
+
 Component conventions:
 
 | Element | Convention |
 |---|---|
-| Primary button | filled box (primary ink), canvas-colored label |
-| Secondary button | bordered box, primary-ink label |
-| Input | bordered box, visible label above, example value inside |
+| Primary button | native `<button>`, ink-filled, canvas label; hover/press via opacity |
+| Secondary button | native `<button>`, bordered; hover = surface fill, press = border fill |
+| Input | native `<input>`/`<textarea>`, visible label above, real placeholder or value; focusable and typeable, 2px ink focus ring |
 | Image / media | light gray block — surface fill, hairline border, no crossed lines |
 | Icon | circle (surface fill, border) — never pick real icons |
 | Avatar | filled circle (border tone) |
-| Chip / filter | bordered pill with real label; active = ink-filled |
+| Chip / filter | native `<button>` pill with real label; toggles on click, active = ink-filled |
 | Tab / nav bar | full-width bar, icon circle + real label per item, active item in primary ink |
 | Chart | simplified gray shapes — bars as surface-filled rects, lines as single strokes |
 | Table | real column headers, two or three rows of real example data |
@@ -269,15 +271,28 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 .wf { padding: var(--s4); font-family: var(--wf-font); color: var(--w-ink1); }
 .wf h1, .wf h2, .wf h3, .wf p { margin: 0 0 var(--s2); font-weight: 600; }
 .wf .muted { color: var(--w-ink2); font-weight: 400; }
+.wf button, .wf input, .wf textarea, .wf select { font: inherit; }
+.wf button { cursor: pointer; }
 .wf .panel { background: var(--w-surface); border: 1px solid var(--w-border);
   border-radius: 3px; padding: var(--s3); }
 .wf .btn { display: inline-block; padding: var(--s3) var(--s4); border-radius: 3px;
-  font-size: 15px; font-weight: 600; }
+  font-size: 15px; font-weight: 600; border: none; background: none;
+  transition: opacity 120ms, background 120ms; }
 .wf .btn-primary { background: var(--w-ink1); color: var(--w-canvas); }
+.wf .btn-primary:hover { opacity: 0.85; }
+.wf .btn-primary:active { opacity: 0.7; }
 .wf .btn-secondary { border: 1px solid var(--w-border); color: var(--w-ink1); }
-.wf .input { border: 1px solid var(--w-border); border-radius: 3px;
+.wf .btn-secondary:hover { background: var(--w-surface); }
+.wf .btn-secondary:active { background: var(--w-border); }
+.wf .input, .wf .textarea { border: 1px solid var(--w-border); border-radius: 3px;
   padding: var(--s3); font-size: 15px;
-  color: var(--w-ink2); background: var(--w-canvas); }
+  color: var(--w-ink1); background: var(--w-canvas); }
+.wf .textarea { min-height: 72px; resize: vertical; }
+.wf .input::placeholder, .wf .textarea::placeholder { color: var(--w-ink2); }
+.wf .input:hover, .wf .textarea:hover { border-color: var(--w-ink2); }
+.wf .input:focus, .wf .textarea:focus {
+  outline: 2px solid var(--w-ink2); outline-offset: 0;
+  border-color: var(--w-ink2); }
 .wf .media { position: relative; background: var(--w-surface);
   border: 1px solid var(--w-border); border-radius: 2px; }
 .wf .bar { height: 8px; background: var(--w-border); border-radius: 2px;
@@ -287,13 +302,17 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 .wf .avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
   background: var(--w-border); }
 .wf .chip { display: inline-block; padding: 6px 14px; border-radius: 999px;
-  border: 1px solid var(--w-border); font-size: 13px; color: var(--w-ink1); }
+  border: 1px solid var(--w-border); font-size: 13px; color: var(--w-ink1);
+  background: var(--w-canvas); transition: background 120ms; }
+.wf .chip:hover { background: var(--w-surface); }
 .wf .chip.active { background: var(--w-ink1); color: var(--w-canvas);
   border-color: var(--w-ink1); }
 .wf .tabbar { display: flex; border-top: 1px solid var(--w-border);
   padding: var(--s2) 0 var(--s1); background: var(--w-canvas); }
 .wf .tab { flex: 1; display: flex; flex-direction: column; align-items: center;
-  gap: 2px; font-size: 12px; color: var(--w-ink2); }
+  gap: 2px; font-size: 12px; color: var(--w-ink2);
+  background: none; border: none; }
+.wf .tab:hover { color: var(--w-ink1); }
 .wf .tab .icon { width: 22px; height: 22px; }
 .wf .tab.active { color: var(--w-ink1); font-weight: 600; }
 /* thumbnails — labeled zones carrying miniature structure */
@@ -345,10 +364,13 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
           <span class="frame-pos">[N/TOTAL]</span>
         </div>
         <div class="wf" style="position: relative;">
-          <!-- screen structure: ramp vars + .panel/.btn/.input/.media/.bar only.
-               When a prototype was requested, put data-go="scr-[target-slug]"
-               directly on the trigger elements (the real button, the real row):
-               <div class="btn btn-primary" data-go="scr-[target-slug]">[LABEL]</div> -->
+          <!-- screen structure: ramp vars + the component vocabulary only.
+               Controls are NATIVE elements — <button class="btn btn-primary">,
+               <input class="input">, <textarea class="textarea">, <button
+               class="chip"> — never divs painted as controls. When a prototype
+               was requested, put data-go="scr-[target-slug]" directly on the
+               trigger elements:
+               <button class="btn btn-primary" data-go="scr-[target-slug]">[LABEL]</button> -->
           <!-- annotation markers (absolute-positioned): -->
           <div class="note-marker" style="top: …; left: …;">1</div>
         </div>
@@ -414,6 +436,8 @@ document.querySelectorAll('[data-go]').forEach(el =>
     const t = document.getElementById(el.dataset.go);
     if (t) show(frames.indexOf(t));
   }));
+document.querySelectorAll('.wf .chip').forEach(c =>
+  c.addEventListener('click', () => c.classList.toggle('active')));
 ```
 
 **Rules:**
@@ -425,6 +449,7 @@ document.querySelectorAll('[data-go]').forEach(el =>
 - Self-contained: no external `<link>`, no external `<script src>`, no images.
 - Full-page wireframes at real widths: 1440 / 768 / 390. Thumbnails at ~200px (desktop aspect) or ~120px (mobile aspect).
 - Real labels, real content. No lorem ipsum, anywhere, ever.
+- Controls are native elements with working interaction states — inputs type, buttons hover and press, chips toggle. A div painted as a button is a vocabulary violation.
 
 ### Figma output
 
