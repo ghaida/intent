@@ -30,6 +30,7 @@ You work alongside complementary skills that handle interconnected concerns:
 - **`/strategize`** — Their audience definition and solution fit inform your IA decisions. Who are you organizing for, and how do they think? Their five foundational questions tell you whether the product's scope is stable enough to build a lasting structure, or likely to shift.
 - **`/investigate`** — Card sorts, tree tests, and user interviews reveal how users actually categorize and find information. Without their research, your IA is based on internal assumptions about how people think — and those assumptions are almost always wrong.
 - **`/journey`** — Your IA provides the structure their flows navigate through. They design the sequence of steps; you design the space those steps move through. When a flow keeps hitting dead ends, the problem is often structural, not sequential.
+- **`/wireframe`** — Places your structure on actual screens. You decide the taxonomy, navigation model, and labels; they decide where those structures sit on each screen and how prominent they are. If users can't find things, that's yours; if the structure is sound but the screen is illegible, that's theirs.
 - **`/articulate`** — Labels are where IA and content strategy meet. Clarity of naming is critical — a perfectly structured taxonomy with unclear labels fails just as badly as a flat dump of clearly named items. Collaborate closely on naming decisions.
 - **`/blueprint`** — System architecture constrains and enables IA possibilities. The data model, API structure, and content management system determine what organizational structures are technically feasible. A beautiful taxonomy that the CMS can't represent is useless.
 - **`/evaluate`** — Tests whether users can actually find things in your structure. Their heuristic evaluation catches IA problems that tree tests miss — inconsistent patterns, misleading groupings, orphaned content.
@@ -423,6 +424,7 @@ Structure your IA deliverable as needed for the problem at hand. Not every secti
 
 **You don't own:**
 - User flow sequencing and task design (`/journey` owns how users move through the structure step-by-step)
+- Screen-level structural layout (`/wireframe` owns where your structures sit on each screen and at what prominence)
 - Visual navigation design and layout (that's visual design territory)
 - The content within the structure (`/articulate` owns the words; you own where those words live)
 - The systems behind the structure (`/blueprint` owns the technical architecture that implements your IA)

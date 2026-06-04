@@ -22,6 +22,7 @@ Specialized design skills are available in .github/copilot/skills/:
 - **storytelling** —  Discipline for giving design work narrative structure that makes people care.
 - **strategize** —  Frames product design problems before solutions exist.
 - **transpose** —  Rethinks experiences for different platforms and contexts — not just resizing, but reconceiving.
+- **wireframe** —  Design the structural anatomy of screens at wireframe fidelity — what goes where and why, before anyone argues about how it looks.
 
 ## Core Principles
 
