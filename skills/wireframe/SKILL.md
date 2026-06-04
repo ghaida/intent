@@ -90,7 +90,7 @@ Every artifact this skill produces is built from a shared visual vocabulary with
 
 The stage every artifact sits on. One thumbnail or a six-screen wireflow renders on the same chrome:
 
-- **Backdrop:** a quiet stage surface — `#ececf0` light / `#121217` dark — deliberately cooler and flatter than any wireframe surface, so frames read as objects placed on a desk.
+- **Backdrop:** the Intent website's own neutrals — bg `#fafafc` / ink `#18182b` / muted `#65657a` / border `#d8d8e4` light; bg `#18182b` / ink `#f0f0f8` / muted `#8888a8` / border `#2a2a44` dark — so the container reads as a page from the same design system as the site. The chrome follows the website's language (cool-tinted tokens, 4px spacing grid, 8px card radius, mono label style) but stays **monochrome**: the site's indigo is reserved for the annotation layer, which keeps its exclusivity.
 - **Frame:** each screen sits in a card with a hairline border and a **title plate**: screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), and position when part of a set ("3/12"). The plate uses a small uppercase monospace label style that never appears inside wireframe content.
 - **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like title plates.
 - **One rung per artifact.** Thumbnails and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
@@ -172,8 +172,9 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 
 ```css
 :root {
-  /* chrome */
-  --stage: #ececf0; --chrome-ink: #65657a; --chrome-border: #d2d2dc;
+  /* chrome — Intent site neutrals */
+  --stage: #fafafc; --chrome-fg: #18182b;
+  --chrome-ink: #65657a; --chrome-border: #d8d8e4;
   /* wireframe ramp */
   --w-canvas: #ffffff; --w-surface: #f4f4f6; --w-border: #d6d6dd;
   --w-ink2: #6f6f7a; --w-ink1: #26262e;
@@ -184,7 +185,8 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
 }
 body[data-theme="dark"] {
-  --stage: #121217; --chrome-ink: #8888a0; --chrome-border: #2c2c3a;
+  --stage: #18182b; --chrome-fg: #f0f0f8;
+  --chrome-ink: #8888a8; --chrome-border: #2a2a44;
   --w-canvas: #1a1a20; --w-surface: #232329; --w-border: #3a3a44;
   --w-ink2: #8f8f9a; --w-ink1: #e8e8ee;
   --note: #7c6ff0;
@@ -200,7 +202,7 @@ body {
   margin-bottom: var(--s6);
 }
 .board-title { font-family: var(--mono); font-size: 14px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink); }
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-fg); }
 .view-toggle { display: flex; gap: var(--s1); }
 .view-toggle button {
   font-family: var(--mono); font-size: 12px; font-weight: 600;
@@ -208,7 +210,7 @@ body {
   padding: var(--s2) var(--s3); background: none;
   border: 1px solid var(--chrome-border); border-radius: 3px; color: var(--chrome-ink);
 }
-.view-toggle button[aria-pressed="true"] { border-color: var(--chrome-ink); color: var(--w-ink1); }
+.view-toggle button[aria-pressed="true"] { border-color: var(--chrome-ink); color: var(--chrome-fg); }
 .board-controls { display: flex; align-items: center; gap: var(--s5); }
 /* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
 .theme-toggle {
@@ -231,7 +233,7 @@ body {
 }
 .frame-grid { display: flex; flex-wrap: wrap; gap: var(--s5); align-items: flex-start; }
 .frame { background: var(--w-canvas); border: 1px solid var(--chrome-border);
-  border-radius: 4px; overflow: hidden; }
+  border-radius: 8px; overflow: hidden; }
 .frame-plate {
   display: flex; gap: var(--s2); align-items: baseline;
   font-family: var(--mono); font-size: 11px; font-weight: 600;
@@ -301,7 +303,7 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
   font-size: 12px; font-weight: 700; display: flex;
   align-items: center; justify-content: center; }
 .note-rail { max-width: 320px; margin-top: var(--s4); font-size: 14px;
-  line-height: 1.55; color: var(--w-ink2); }
+  line-height: 1.55; color: var(--chrome-ink); }
 .note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
 ```
 
@@ -419,8 +421,8 @@ document.querySelectorAll('[data-go]').forEach(el =>
 
 When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the ramp throughout:
 
-- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each frame (10px, uppercase, chrome ink `#65657a` light / `#8888a0` dark).
-- Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d2d2dc` light / `#2c2c3a` dark).
+- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each frame (10px, uppercase, chrome ink `#65657a` light / `#8888a8` dark).
+- Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d8d8e4` light / `#2a2a44` dark).
 - Wireframe content → the chosen theme's ramp values as fills/strokes exactly as in the table above; one neutral font (Inter or SF); media blocks are surface-filled rectangles with a hairline border — no crossed lines.
 - Annotation → a locked overlay group per frame: accent circles with white numbers (`#4338ca` light / `#7c6ff0` dark, or the user's override), plus a notes text block beside the frame.
 - Wireflow arrows → connectors between frames on the canvas, never inside frames.
