@@ -84,10 +84,11 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
   - **Grid** (default) — all frames, grouped by section. Thumbnails flow many-per-row; full-page wireframes sit larger, one or two per row.
   - **Slideshow** — one frame at a time at comfortable size, prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews.
   - **Theme** — a light ⇄ dark toggle in the chrome; initial state follows the OS preference. Both ramps ship in every HTML artifact. Figma and pencil artifacts are single-theme — the ask-first step records which.
+  - **Prototype** (only when requested) — one screen at a time with annotations hidden, and the wireframes themselves interactive: clicking a trigger element (the real button, the real row) navigates to the screen it leads to, following the flow logic. Esc returns to grid. The user *uses* the wireframes as an actual prototype.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
 - In Figma, the container maps to sections and frame layout on canvas; in pencil, to grouped frames. Slideshow falls to those tools' native presentation modes.
 
-**Slideshow is not prototype.** Slideshow pages through frames in section order — a presentation. Prototype mode navigates via hotspots wired to flow logic — a simulation. Slideshow is always available; prototype mode exists only when the user asked for a prototype. Both ride the same single HTML artifact.
+**Slideshow is not prototype.** Slideshow pages through frames in section order — a presentation. Prototype view makes the wireframes themselves the simulation — the actual trigger elements are clickable and navigate the flow. Slideshow is always available; prototype view exists only when the user asked for a prototype. Both ride the same single HTML artifact.
 
 ### Layer 2 — Wireframe content (grayscale structure)
 
@@ -103,9 +104,9 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
 
 Five tones is enough to express hierarchy and not enough to do visual design. The constraint is the hard stop.
 
-**Thumbnail vocabulary** — small fixed frames (~200×150 desktop aspect, ~120×210 mobile aspect). Zones with miniature structure: each zone carries its one-word label ("nav", "results", "detail") plus hint marks — thin text bars, a light gray media block, a button slab — so a thumbnail reads as a tiny sketch of the layout, not a diagram of labeled boxes. Still nothing real: no real labels, no real content. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
+**Thumbnail vocabulary** — small fixed frames (~200×150 desktop aspect, ~120×210 mobile aspect). Pure miniature structure, no words: thin text bars, light gray media blocks, dark button slabs, bordered input boxes at mini scale. The structure must communicate silently — if a zone needs a meta label like "CTA" or "fields" to be understood, the structure isn't doing its job; redraw it until it reads on its own. Still nothing real: no real labels, no real content. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
 
-**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font; size and weight express hierarchy, never typeface. Use a consistent structural type scale (page title 20–24, section heads 15–16, body 13, captions 11–12) and credible component sizing — 40–44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
+**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font; size and weight express hierarchy, never typeface. Use a consistent structural type scale at real reading sizes (page title 22–28, section heads 16–18, body 15, captions 12–13 — never below 12) and credible component sizing — 44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
 
 Component conventions:
 
@@ -124,8 +125,9 @@ Component conventions:
 Notes about the design, never part of it:
 
 - **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin.
-- **Prototype hotspots** — accent-outlined regions indicating clickable areas, with a "show hotspots" toggle in the chrome.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
+
+(Prototype interactivity is not an annotation overlay — it lives on the wireframe's own trigger elements and is invisible by design; see the Prototype view.)
 
 All annotation uses **one accent color: Intent indigo `#4338ca` light / `#7c6ff0` dark by default, overridable by the user at generation time** ("use green for annotations"). The accent appears in this layer only — never in wireframe content, never in chrome. If the user's requested accent collides with grayscale legibility, say so and suggest an alternative.
 
@@ -183,19 +185,19 @@ body {
   display: flex; align-items: baseline; justify-content: space-between;
   margin-bottom: var(--s6);
 }
-.board-title { font-family: var(--mono); font-size: 12px; font-weight: 600;
+.board-title { font-family: var(--mono); font-size: 14px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink); }
 .view-toggle { display: flex; gap: var(--s1); }
 .view-toggle button {
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-  padding: var(--s1) var(--s3); background: none;
+  padding: var(--s2) var(--s3); background: none;
   border: 1px solid var(--chrome-border); border-radius: 3px; color: var(--chrome-ink);
 }
 .view-toggle button[aria-pressed="true"] { border-color: var(--chrome-ink); color: var(--w-ink1); }
 .board-section { margin-bottom: var(--s7); }
 .section-label {
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
   border-bottom: 1px solid var(--chrome-border);
   padding-bottom: var(--s2); margin-bottom: var(--s4);
@@ -205,7 +207,7 @@ body {
   border-radius: 4px; overflow: hidden; }
 .frame-plate {
   display: flex; gap: var(--s2); align-items: baseline;
-  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
   background: var(--stage); border-bottom: 1px solid var(--chrome-border);
   padding: var(--s1) var(--s2);
@@ -225,24 +227,33 @@ body[data-view="slides"] .board-section:not(:has(.frame.active)) { display: none
 .slide-nav { display: none; }
 body[data-view="slides"] .slide-nav {
   display: flex; gap: var(--s3); align-items: center; justify-content: center;
-  margin-top: var(--s5); font-family: var(--mono); font-size: 10px;
+  margin-top: var(--s5); font-family: var(--mono); font-size: 12px;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
 }
 .slide-nav button { font: inherit; color: inherit; cursor: pointer;
   background: none; border: 1px solid var(--chrome-border); border-radius: 3px;
   padding: var(--s1) var(--s3); }
+/* ── prototype view — the wireframes ARE the prototype ── */
+body[data-view="proto"] .frame { display: none; }
+body[data-view="proto"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
+body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none; }
+body[data-view="proto"] .section-label,
+body[data-view="proto"] .note-rail,
+body[data-view="proto"] .note-marker { display: none; }
+body[data-view="proto"] [data-go] { cursor: pointer; }
 /* ── wireframe content (use ramp vars only) ── */
 .wf { padding: var(--s4); color: var(--w-ink1); }
 .wf h1, .wf h2, .wf h3, .wf p { margin: 0 0 var(--s2); font-weight: 600; }
 .wf .muted { color: var(--w-ink2); font-weight: 400; }
 .wf .panel { background: var(--w-surface); border: 1px solid var(--w-border);
   border-radius: 3px; padding: var(--s3); }
-.wf .btn { display: inline-block; padding: var(--s2) var(--s4); border-radius: 3px;
-  font-size: 13px; font-weight: 600; }
+.wf .btn { display: inline-block; padding: var(--s3) var(--s4); border-radius: 3px;
+  font-size: 15px; font-weight: 600; }
 .wf .btn-primary { background: var(--w-ink1); color: var(--w-canvas); }
 .wf .btn-secondary { border: 1px solid var(--w-border); color: var(--w-ink1); }
 .wf .input { border: 1px solid var(--w-border); border-radius: 3px;
-  padding: var(--s2) var(--s3); color: var(--w-ink2); background: var(--w-canvas); }
+  padding: var(--s3); font-size: 15px;
+  color: var(--w-ink2); background: var(--w-canvas); }
 .wf .media { position: relative; background: var(--w-surface);
   border: 1px solid var(--w-border); border-radius: 2px; }
 .wf .bar { height: 8px; background: var(--w-border); border-radius: 2px;
@@ -258,15 +269,13 @@ body[data-view="slides"] .slide-nav {
 .frame.thumb .zone .slab { height: 12px; background: var(--w-ink1);
   border-radius: 2px; opacity: 0.85; }
 /* ── annotation layer ── */
-.note-marker { position: absolute; width: 18px; height: 18px; border-radius: 50%;
+.note-marker { position: absolute; width: 22px; height: 22px; border-radius: 50%;
   background: var(--note); color: #fff; font-family: var(--mono);
-  font-size: 10px; font-weight: 700; display: flex;
+  font-size: 12px; font-weight: 700; display: flex;
   align-items: center; justify-content: center; }
-.note-rail { max-width: 280px; margin-top: var(--s4); font-size: 12px; color: var(--w-ink2); }
+.note-rail { max-width: 320px; margin-top: var(--s4); font-size: 14px;
+  line-height: 1.55; color: var(--w-ink2); }
 .note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
-.hotspot { position: absolute; border: 2px dashed var(--note); border-radius: 3px;
-  cursor: pointer; opacity: 0; transition: opacity 120ms; background: transparent; }
-body[data-hotspots="on"] .hotspot { opacity: 0.85; }
 ```
 
 **Structure template** — fill with real screens:
@@ -280,7 +289,7 @@ body[data-hotspots="on"] .hotspot { opacity: 0.85; }
       <button data-setview="slides" aria-pressed="false">Slides</button>
       <button data-toggle-theme aria-pressed="false">Dark</button>
       <!-- Include ONLY when a prototype was requested: -->
-      <button data-toggle-hotspots aria-pressed="false">Hotspots</button>
+      <button data-setview="proto" aria-pressed="false">Prototype</button>
     </nav>
   </header>
 
@@ -294,16 +303,16 @@ body[data-hotspots="on"] .hotspot { opacity: 0.85; }
           <span class="frame-pos">[N/TOTAL]</span>
         </div>
         <div class="wf" style="position: relative;">
-          <!-- screen structure: ramp vars + .panel/.btn/.input/.media/.bar only -->
+          <!-- screen structure: ramp vars + .panel/.btn/.input/.media/.bar only.
+               When a prototype was requested, put data-go="scr-[target-slug]"
+               directly on the trigger elements (the real button, the real row):
+               <div class="btn btn-primary" data-go="scr-[target-slug]">[LABEL]</div> -->
           <!-- annotation markers (absolute-positioned): -->
           <div class="note-marker" style="top: …; left: …;">1</div>
-          <!-- prototype hotspots (only when requested): -->
-          <button class="hotspot" data-go="scr-[target-slug]"
-                  style="top: …; left: …; width: …; height: …;"
-                  aria-label="Go to [target]"></button>
         </div>
       </article>
-      <!-- thumbnails use: <article class="frame thumb" style="width:160px"> with .zone divs -->
+      <!-- thumbnails use: <article class="frame thumb" style="width:200px"> with .zone divs
+           holding miniature structure (.bar/.media/.slab) — no text labels -->
     </div>
     <aside class="note-rail">
       <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
@@ -327,7 +336,7 @@ function setView(v) {
   document.body.dataset.view = v;
   document.querySelectorAll('[data-setview]').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.setview === v)));
-  if (v === 'slides') show(cur);
+  if (v !== 'grid') show(cur);
 }
 function show(i) {
   cur = (i + frames.length) % frames.length;
@@ -341,9 +350,10 @@ document.querySelectorAll('[data-setview]').forEach(b =>
 document.querySelector('[data-prev]')?.addEventListener('click', () => show(cur - 1));
 document.querySelector('[data-next]')?.addEventListener('click', () => show(cur + 1));
 addEventListener('keydown', e => {
-  if (document.body.dataset.view !== 'slides') return;
-  if (e.key === 'ArrowLeft') show(cur - 1);
-  if (e.key === 'ArrowRight') show(cur + 1);
+  const v = document.body.dataset.view;
+  if (v === 'grid') return;
+  if (v === 'slides' && e.key === 'ArrowLeft') show(cur - 1);
+  if (v === 'slides' && e.key === 'ArrowRight') show(cur + 1);
   if (e.key === 'Escape') setView('grid');
 });
 const th = document.querySelector('[data-toggle-theme]');
@@ -355,18 +365,11 @@ function setTheme(dark) {
 setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
 th?.addEventListener('click', () =>
   setTheme(document.body.dataset.theme !== 'dark'));
-const hs = document.querySelector('[data-toggle-hotspots]');
-hs?.addEventListener('click', () => {
-  const on = document.body.dataset.hotspots !== 'on';
-  document.body.dataset.hotspots = on ? 'on' : 'off';
-  hs.setAttribute('aria-pressed', String(on));
-});
-document.querySelectorAll('.hotspot').forEach(h =>
-  h.addEventListener('click', () => {
-    const t = document.getElementById(h.dataset.go);
-    if (!t) return;
-    if (document.body.dataset.view === 'slides') show(frames.indexOf(t));
-    else t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+document.querySelectorAll('[data-go]').forEach(el =>
+  el.addEventListener('click', () => {
+    if (document.body.dataset.view !== 'proto') return;
+    const t = document.getElementById(el.dataset.go);
+    if (t) show(frames.indexOf(t));
   }));
 ```
 
@@ -375,7 +378,7 @@ document.querySelectorAll('.hotspot').forEach(h =>
 - Wireframe content uses ramp variables (`--w-*`) only. Chrome uses `--stage`/`--chrome-*` only. Annotation uses `--note` only. The three layers never share a variable.
 - Don't invent class names — copy from this vocabulary verbatim. Class names are how the language stays consistent across artifacts.
 - Light + dark ship together; the chrome's Theme toggle flips `body[data-theme]`, initialized from the OS preference. Don't strip either ramp.
-- Include the Hotspots toggle and `.hotspot` elements ONLY when the user asked for a prototype.
+- Include the Prototype view button and `data-go` attributes ONLY when the user asked for a prototype. `data-go` goes on the actual trigger element — the prototype IS the wireframe, not an overlay on it.
 - Self-contained: no external `<link>`, no external `<script src>`, no images.
 - Full-page wireframes at real widths: 1440 / 768 / 390. Thumbnails at ~200px (desktop aspect) or ~120px (mobile aspect).
 - Real labels, real content. No lorem ipsum, anywhere, ever.
@@ -438,7 +441,7 @@ A wireframe shows what; annotations carry why. Annotate decisions, not inventory
 
 ### 6. Wireflow & prototype assembly
 
-Materialize flow logic from `/journey` as connected screens. Lay frames in flow order, draw connections in the container layer, and label what triggers each transition. When the user wants a prototype, wire hotspots over the actual trigger elements — the real button, the real list row — not whole-screen jumps, so walking the prototype rehearses the real interaction. Prototypes are click-through only: no conditional logic, no state simulation. When a flow needs state to be testable, that's a finding to hand back to `/journey`, not a feature to fake.
+Materialize flow logic from `/journey` as connected screens. Lay frames in flow order, draw connections in the container layer, and label what triggers each transition. When the user wants a prototype, make the actual trigger elements navigate — the real button, the real list row — not whole-screen jumps, so walking the prototype rehearses the real interaction. Prototypes are click-through only: no conditional logic, no state simulation. When a flow needs state to be testable, that's a finding to hand back to `/journey`, not a feature to fake.
 
 ### 7. Divergence practice
 
