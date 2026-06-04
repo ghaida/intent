@@ -99,7 +99,7 @@ When users feel lost: too many options, inconsistent patterns, missing landmarks
 Fidelity means structural resolution, never visual polish. Three rungs:
 
 - **Thumbnail (lo-fi):** small zone-level sketches built from pure miniature structure — thin text bars, light gray media blocks, dark button slabs — with no meta labels; the structure must communicate silently. Nothing real. For divergence: many structural options, cheaply compared.
-- **Full-page wireframe (hi-fi):** one screen at real viewport width (1440/768/390), every element present, real labels and real content, hierarchy expressed through size, weight, and position — grayscale only, one neutral font, no typography choices, no visual design. For convergence: every "what goes where" decision resolved.
+- **Full-page wireframe (mid-fi):** a realistic and detailed UI design showing full-size screen structure with realistic content, clear and simple typography, and gray boxes for images — at real viewport width (1440/768/390), every element present, hierarchy through size, weight, and position; grayscale only, one neutral font, no visual styling. For convergence: every "what goes where" decision resolved.
 - **Prototype:** a view where the wireframes themselves become the prototype — the real trigger elements (button, list row) are clickable and navigate to the screens they lead to, following the flow logic. For simulation: walking the sequence as a user would. Click-through only — no conditional logic or state.
 
 Match the rung to the decision: "which structure?" → thumbnails (plural); "is everything here, correctly weighted?" → full-page; "does the sequence work?" → prototype. Never present a higher rung than the decision requires.
