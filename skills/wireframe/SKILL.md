@@ -96,6 +96,7 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
   - **Grid** (default) — all frames, grouped by section. Thumbnails flow many-per-row; full-page wireframes sit larger, one or two per row.
   - **Slideshow** — one frame at a time at comfortable size, prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews.
+  - **Theme** — a light ⇄ dark toggle in the chrome; initial state follows the OS preference. Both ramps ship in every HTML artifact. Figma and pencil artifacts are single-theme — the ask-first step records which.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
 - In Figma, the container maps to sections and frame layout on canvas; in pencil, to grouped frames. Slideshow falls to those tools' native presentation modes.
 
@@ -115,9 +116,9 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
 
 Five tones is enough to express hierarchy and not enough to do visual design. The constraint is the hard stop.
 
-**Thumbnail vocabulary** — small fixed frames (~160×120 desktop aspect, ~90×160 mobile aspect). Zones only: labeled rectangles, two or three horizontal bars for a text region, a rectangle with an X through it for media. One or two words per zone ("nav", "results", "detail"). Nothing real. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
+**Thumbnail vocabulary** — small fixed frames (~200×150 desktop aspect, ~120×210 mobile aspect). Zones with miniature structure: each zone carries its one-word label ("nav", "results", "detail") plus hint marks — thin text bars, a light gray media block, a button slab — so a thumbnail reads as a tiny sketch of the layout, not a diagram of labeled boxes. Still nothing real: no real labels, no real content. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
 
-**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font; size and weight express hierarchy, never typeface. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
+**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font; size and weight express hierarchy, never typeface. Use a consistent structural type scale (page title 20–24, section heads 15–16, body 13, captions 11–12) and credible component sizing — 40–44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
 
 Component conventions:
 
@@ -126,7 +127,7 @@ Component conventions:
 | Primary button | filled box (primary ink), canvas-colored label |
 | Secondary button | bordered box, primary-ink label |
 | Input | bordered box, visible label above, example value inside |
-| Image / media | bordered box with corner-to-corner X |
+| Image / media | light gray block — surface fill, hairline border, no crossed lines |
 | Icon | circle (border tone); never pick real icons |
 | Chart | simplified gray shapes — bars as surface-filled rects, lines as single strokes |
 | Table | real column headers, two or three rows of real example data |
@@ -158,6 +159,8 @@ Open with this question, with HTML as the default:
 
 Skip the question if the request already states a preference — "in figma", "in pencil", "html", "just describe it", "no wireframes" preempt the prompt. If the user says yes without naming a format, default to HTML. Ask for section names if sets aren't already implied by the flow ("Should I group these as Onboarding / Checkout, or differently?").
 
+If the user picks **Figma or pencil**, also ask: **light or dark wireframes?** Those canvases are single-theme — use the chosen column of the ramp throughout. HTML needs no theme question; it ships both ramps with an in-page toggle.
+
 ### HTML output
 
 Write **one self-contained file** — `wireframes-<topic>.html` — to the working directory and open it. No external CSS, fonts, or libraries; inline `<style>` and inline `<script>` only. (This skill's viewer needs JS for the view toggle, slideshow, and prototype navigation — unlike sibling skills' static diagrams, inline JS is required here, but still zero external dependencies.)
@@ -177,13 +180,11 @@ Write **one self-contained file** — `wireframes-<topic>.html` — to the worki
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --stage: #121217; --chrome-ink: #8888a0; --chrome-border: #2c2c3a;
-    --w-canvas: #1a1a20; --w-surface: #232329; --w-border: #3a3a44;
-    --w-ink2: #8f8f9a; --w-ink1: #e8e8ee;
-    --note: #7c6ff0;
-  }
+body[data-theme="dark"] {
+  --stage: #121217; --chrome-ink: #8888a0; --chrome-border: #2c2c3a;
+  --w-canvas: #1a1a20; --w-surface: #232329; --w-border: #3a3a44;
+  --w-ink2: #8f8f9a; --w-ink1: #e8e8ee;
+  --note: #7c6ff0;
 }
 * { box-sizing: border-box; }
 body {
@@ -256,20 +257,19 @@ body[data-view="slides"] .slide-nav {
 .wf .input { border: 1px solid var(--w-border); border-radius: 3px;
   padding: var(--s2) var(--s3); color: var(--w-ink2); background: var(--w-canvas); }
 .wf .media { position: relative; background: var(--w-surface);
-  border: 1px solid var(--w-border); overflow: hidden; }
-.wf .media::before, .wf .media::after {
-  content: ''; position: absolute; left: -10%; right: -10%; top: 50%;
-  border-top: 1px solid var(--w-border);
-}
-.wf .media::before { transform: rotate(18deg); }
-.wf .media::after { transform: rotate(-18deg); }
+  border: 1px solid var(--w-border); border-radius: 2px; }
 .wf .bar { height: 8px; background: var(--w-border); border-radius: 2px;
   margin-bottom: var(--s2); }
-/* thumbnails */
+/* thumbnails — labeled zones carrying miniature structure */
 .frame.thumb .wf { padding: var(--s2); font-size: 8px; }
 .frame.thumb .zone { border: 1px solid var(--w-border); color: var(--w-ink2);
-  display: flex; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; gap: 3px; padding: 4px;
   font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.frame.thumb .zone .bar { height: 4px; margin: 0; }
+.frame.thumb .zone .bar.short { width: 60%; }
+.frame.thumb .zone .media { flex: 1; min-height: 14px; }
+.frame.thumb .zone .slab { height: 12px; background: var(--w-ink1);
+  border-radius: 2px; opacity: 0.85; }
 /* ── annotation layer ── */
 .note-marker { position: absolute; width: 18px; height: 18px; border-radius: 50%;
   background: var(--note); color: #fff; font-family: var(--mono);
@@ -285,12 +285,13 @@ body[data-hotspots="on"] .hotspot { opacity: 0.85; }
 **Structure template** — fill with real screens:
 
 ```html
-<body data-view="grid">
+<body data-view="grid" data-theme="light">
   <header class="board-header">
     <div class="board-title">[PROJECT] — wireframes</div>
     <nav class="view-toggle" aria-label="View">
       <button data-setview="grid" aria-pressed="true">Grid</button>
       <button data-setview="slides" aria-pressed="false">Slides</button>
+      <button data-toggle-theme aria-pressed="false">Dark</button>
       <!-- Include ONLY when a prototype was requested: -->
       <button data-toggle-hotspots aria-pressed="false">Hotspots</button>
     </nav>
@@ -358,6 +359,15 @@ addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') show(cur + 1);
   if (e.key === 'Escape') setView('grid');
 });
+const th = document.querySelector('[data-toggle-theme]');
+function setTheme(dark) {
+  document.body.dataset.theme = dark ? 'dark' : 'light';
+  th?.setAttribute('aria-pressed', String(dark));
+  if (th) th.textContent = dark ? 'Light' : 'Dark';
+}
+setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
+th?.addEventListener('click', () =>
+  setTheme(document.body.dataset.theme !== 'dark'));
 const hs = document.querySelector('[data-toggle-hotspots]');
 hs?.addEventListener('click', () => {
   const on = document.body.dataset.hotspots !== 'on';
@@ -377,25 +387,25 @@ document.querySelectorAll('.hotspot').forEach(h =>
 
 - Wireframe content uses ramp variables (`--w-*`) only. Chrome uses `--stage`/`--chrome-*` only. Annotation uses `--note` only. The three layers never share a variable.
 - Don't invent class names — copy from this vocabulary verbatim. Class names are how the language stays consistent across artifacts.
-- Light + dark ship together via `prefers-color-scheme`. Don't strip dark mode.
+- Light + dark ship together; the chrome's Theme toggle flips `body[data-theme]`, initialized from the OS preference. Don't strip either ramp.
 - Include the Hotspots toggle and `.hotspot` elements ONLY when the user asked for a prototype.
 - Self-contained: no external `<link>`, no external `<script src>`, no images.
-- Full-page wireframes at real widths: 1440 / 768 / 390. Thumbnails at ~160px (desktop aspect) or ~90px (mobile aspect).
+- Full-page wireframes at real widths: 1440 / 768 / 390. Thumbnails at ~200px (desktop aspect) or ~120px (mobile aspect).
 - Real labels, real content. No lorem ipsum, anywhere, ever.
 
 ### Figma output
 
-When the user picks Figma, load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language:
+When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the ramp throughout:
 
-- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each frame (10px, uppercase, `#65657a`).
-- Each screen → a frame at real viewport width, fill `#ffffff` (light ramp canvas), 1px stroke `#d2d2dc`.
-- Wireframe content → ramp values as fills/strokes exactly as in the table above; one neutral font (Inter or SF); media boxes get two crossed 1px lines.
-- Annotation → a locked overlay group per frame: accent (`#4338ca` or the user's override) circles with white numbers, plus a notes text block beside the frame.
+- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each frame (10px, uppercase, chrome ink `#65657a` light / `#8888a0` dark).
+- Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d2d2dc` light / `#2c2c3a` dark).
+- Wireframe content → the chosen theme's ramp values as fills/strokes exactly as in the table above; one neutral font (Inter or SF); media blocks are surface-filled rectangles with a hairline border — no crossed lines.
+- Annotation → a locked overlay group per frame: accent circles with white numbers (`#4338ca` light / `#7c6ff0` dark, or the user's override), plus a notes text block beside the frame.
 - Wireflow arrows → connectors between frames on the canvas, never inside frames.
 
 ### pencil output
 
-When the user picks pencil, call `mcp__pencil__open_document` with `'new'`, set the ramp + accent as variables via `mcp__pencil__set_variables`, then `mcp__pencil__batch_design`: one frame per screen at real viewport width, grouped per section, zones/panels/buttons per the component conventions, annotation markers in the accent, connectors between frames for wireflows.
+When the user picks pencil, confirm light or dark (per Ask first), call `mcp__pencil__open_document` with `'new'`, set the chosen theme's ramp + accent as variables via `mcp__pencil__set_variables`, then `mcp__pencil__batch_design`: one frame per screen at real viewport width, grouped per section, zones/panels/buttons per the component conventions (media blocks surface-filled, no crossed lines), annotation markers in the accent, connectors between frames for wireflows.
 
 ### Fidelity enforcement
 

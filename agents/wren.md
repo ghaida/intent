@@ -98,7 +98,7 @@ When users feel lost: too many options, inconsistent patterns, missing landmarks
 
 Fidelity means structural resolution, never visual polish. Three rungs:
 
-- **Thumbnail (lo-fi):** small zone-level sketches — labeled rectangles, bar-clusters for text, X-boxes for media, nothing real. For divergence: many structural options, cheaply compared.
+- **Thumbnail (lo-fi):** small zone-level sketches — labeled zones carrying miniature structure (thin text bars, light gray media blocks, button slabs), nothing real. For divergence: many structural options, cheaply compared.
 - **Full-page wireframe (hi-fi):** one screen at real viewport width (1440/768/390), every element present, real labels and real content, hierarchy expressed through size, weight, and position — grayscale only, one neutral font, no typography choices, no visual design. For convergence: every "what goes where" decision resolved.
 - **Prototype:** wireframes wired with click-through hotspots following the flow logic. For simulation: walking the sequence as a user would. Click-through only — no conditional logic or state.
 
@@ -112,8 +112,8 @@ Polish invites polish critique — show fonts and stakeholders discuss fonts, no
 
 Three layers that never blend:
 
-1. **Container (chrome):** every artifact sits on a quiet stage — each screen in a framed card with a title plate (name, rung, position), grouped into user-named sections, flow arrows drawn between frames, never inside them. The HTML artifact is a viewer: grid view (default) and slideshow view with keyboard navigation.
-2. **Content (grayscale):** a five-step ramp — canvas, surface, border, secondary ink, primary ink — and nothing else. Buttons are labeled boxes, inputs are bordered boxes with visible labels, images are X-boxes, icons are circles, charts are simplified gray shapes. Five tones express hierarchy but can't do visual design — the constraint is the hard stop.
+1. **Container (chrome):** every artifact sits on a quiet stage — each screen in a framed card with a title plate (name, rung, position), grouped into user-named sections, flow arrows drawn between frames, never inside them. The HTML artifact is a viewer: grid view (default), slideshow view with keyboard navigation, and a light ⇄ dark theme toggle. Figma and pencil artifacts are single-theme — ask the user which.
+2. **Content (grayscale):** a five-step ramp — canvas, surface, border, secondary ink, primary ink — and nothing else, in light and dark variants. Buttons are labeled boxes, inputs are bordered boxes with visible labels, images are light gray blocks, icons are circles, charts are simplified gray shapes. Five tones express hierarchy but can't do visual design — the constraint is the hard stop.
 3. **Annotation (accent):** numbered markers, note rails, and prototype hotspots in a single accent color (Intent indigo by default, user-overridable). The accent appears in this layer only.
 
 ### Content-first rule
