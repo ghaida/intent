@@ -77,7 +77,7 @@ Every artifact this skill produces is built from a shared visual vocabulary with
 
 The stage every artifact sits on. One thumbnail or a six-screen wireflow renders on the same chrome:
 
-- **Backdrop:** the Intent website's own neutrals — bg `#fafafc` / ink `#18182b` / muted `#65657a` / border `#d8d8e4` light; bg `#18182b` / ink `#f0f0f8` / muted `#8888a8` / border `#2a2a44` dark — so the container reads as a page from the same design system as the site. The chrome follows the website's language (cool-tinted tokens, 4px spacing grid, 8px card radius, mono label style) but stays **monochrome**: the site's indigo is reserved for the annotation layer, which keeps its exclusivity.
+- **Backdrop:** the Intent website's own neutrals — bg `#fafafc` / ink `#18182b` / muted `#65657a` / border `#d8d8e4` light; bg `#18182b` / ink `#f0f0f8` / muted `#8888a8` / border `#2a2a44` dark — so the container reads as a page from the same design system as the site. The chrome follows the website's language — cool-tinted tokens, 4px spacing grid, 8px card radius, and the site's typography: General Sans 700 for the board title (−0.02em, lh 1.1), Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: the site's indigo is reserved for the annotation layer, which keeps its exclusivity.
 - **Frame:** each screen sits in a card with a hairline border and a **title plate**: screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), and position when part of a set ("3/12"). The plate uses a small uppercase monospace label style that never appears inside wireframe content.
 - **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like title plates.
 - **One rung per artifact.** Thumbnails and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
@@ -107,7 +107,7 @@ Five tones is enough to express hierarchy and not enough to do visual design. Th
 
 **Thumbnail vocabulary** — small fixed frames (~200×150 desktop aspect, ~120×210 mobile aspect). Pure miniature structure, no words: thin text bars, light gray media blocks, dark button slabs, bordered input boxes at mini scale. The structure must communicate silently — if a zone needs a meta label like "CTA" or "fields" to be understood, the structure isn't doing its job; redraw it until it reads on its own. Still nothing real: no real labels, no real content. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
 
-**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font; size and weight express hierarchy, never typeface. Use a consistent structural type scale at real reading sizes (page title 22–28, section heads 16–18, body 15, captions 12–13 — never below 12) and credible component sizing — 44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
+**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font (`system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface. Use a consistent structural type scale at real reading sizes (page title 22–28, section heads 16–18, body 15, captions 12–13 — never below 12) and credible component sizing — 44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
 
 Component conventions:
 
@@ -167,8 +167,10 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
   --w-ink2: #6f6f7a; --w-ink1: #26262e;
   /* annotation accent — swap both values if the user overrides */
   --note: #4338ca;
-  --sans: "Hanken Grotesk", Inter, system-ui, -apple-system, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --display: "General Sans", system-ui, -apple-system, sans-serif;
+  --sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono: "SF Mono", "Fira Code", ui-monospace, monospace;
+  --wf-font: system-ui, -apple-system, sans-serif;
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
 }
 body[data-theme="dark"] {
@@ -188,8 +190,8 @@ body {
   display: flex; align-items: baseline; justify-content: space-between;
   margin-bottom: var(--s6);
 }
-.board-title { font-family: var(--mono); font-size: 14px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-fg); }
+.board-title { font-family: var(--display); font-size: 20px; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.1; color: var(--chrome-fg); }
 .view-toggle { display: flex; gap: var(--s1); }
 .view-toggle button {
   font-family: var(--mono); font-size: 12px; font-weight: 600;
@@ -213,7 +215,7 @@ body {
 }
 .board-section { margin-bottom: var(--s7); }
 .section-label {
-  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  font-family: var(--mono); font-size: 14px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
   border-bottom: 1px solid var(--chrome-border);
   padding-bottom: var(--s2); margin-bottom: var(--s4);
@@ -257,8 +259,9 @@ body[data-view="proto"] .section-label,
 body[data-view="proto"] .note-rail,
 body[data-view="proto"] .note-marker { display: none; }
 body[data-view="proto"] [data-go] { cursor: pointer; }
-/* ── wireframe content (use ramp vars only) ── */
-.wf { padding: var(--s4); color: var(--w-ink1); }
+/* ── wireframe content (use ramp vars only; neutral system font — brand
+      typography belongs to the chrome, never to wireframe content) ── */
+.wf { padding: var(--s4); font-family: var(--wf-font); color: var(--w-ink1); }
 .wf h1, .wf h2, .wf h3, .wf p { margin: 0 0 var(--s2); font-weight: 600; }
 .wf .muted { color: var(--w-ink2); font-weight: 400; }
 .wf .panel { background: var(--w-surface); border: 1px solid var(--w-border);
@@ -290,7 +293,7 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
   font-size: 12px; font-weight: 700; display: flex;
   align-items: center; justify-content: center; }
 .note-rail { max-width: 320px; margin-top: var(--s4); font-size: 14px;
-  line-height: 1.55; color: var(--chrome-ink); }
+  line-height: 1.714; color: var(--chrome-ink); }
 .note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
 ```
 
