@@ -91,7 +91,7 @@ Every artifact this skill produces is built from a shared visual vocabulary with
 The stage every artifact sits on. One thumbnail or a six-screen wireflow renders on the same chrome:
 
 - **Backdrop:** the Intent website's own neutrals — bg `#fafafc` / ink `#18182b` / muted `#65657a` / border `#d8d8e4` light; bg `#18182b` / ink `#f0f0f8` / muted `#8888a8` / border `#2a2a44` dark — so the container reads as a page from the same design system as the site. The chrome follows the website's language — cool-tinted tokens, 4px spacing grid, 8px card radius, and the site's typography: General Sans 700 for the board title (−0.02em, lh 1.1), Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: the site's indigo is reserved for the annotation layer, which keeps its exclusivity.
-- **Frame:** each screen sits in a card with a hairline border and a **title plate**: screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), and position when part of a set ("3/12"). The plate uses a small uppercase monospace label style that never appears inside wireframe content.
+- **Frame:** each screen's wireframe sits in its own hairline-bordered card. Its **title plate** — screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), position when part of a set ("3/12") — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content.
 - **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like title plates.
 - **One rung per artifact.** Thumbnails and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
@@ -234,15 +234,15 @@ body {
   padding-bottom: var(--s2); margin-bottom: var(--s4);
 }
 .frame-grid { display: flex; flex-wrap: wrap; gap: var(--s5); align-items: flex-start; }
-.frame { background: var(--w-canvas); border: 1px solid var(--chrome-border);
-  border-radius: 8px; overflow: hidden; }
+.frame { background: none; border: none; }
 .frame-plate {
   display: flex; gap: var(--s2); align-items: baseline;
   font-family: var(--mono); font-size: 11px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
-  background: var(--stage); border-bottom: 1px solid var(--chrome-border);
-  padding: var(--s1) var(--s2);
+  padding: 0 2px; margin-bottom: var(--s2);
 }
+.frame > .wf { background: var(--w-canvas); border: 1px solid var(--chrome-border);
+  border-radius: 8px; overflow: hidden; }
 .frame-rung { opacity: 0.65; }
 /* ── slideshow ── */
 /* The active section splits into two columns: wireframe 2/3, notes rail 1/3. */
