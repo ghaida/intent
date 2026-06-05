@@ -7,7 +7,9 @@
    View model: body[data-view] = grid | slides | proto. Slides pages
    frames in section order; proto makes the wireframes themselves the
    prototype — data-go on real trigger elements navigates the flow.
-   Esc always returns to grid.
+   Esc always returns to grid. Both stage views fit the active frame
+   to the stage by setting --slide-scale (scale down only, never up);
+   the matching transform lives in viewer.css.
 
    Theme: body[data-theme] = light | dark, initialized from the OS
    preference. Set on documentElement too so :root-scoped variables
@@ -30,7 +32,20 @@ function show(i) {
   const pos = document.querySelector('.slide-pos');
   if (pos) pos.textContent =
     `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+  fit();
 }
+/* fit the active frame to the stage — scale down only, never up */
+function fit() {
+  const f = frames[cur];
+  if (!f || document.body.dataset.view === 'grid') return;
+  const stage = f.closest('.frame-grid');
+  if (!stage) return;
+  f.style.removeProperty('--slide-scale');
+  const s = Math.min(1, stage.clientWidth / f.offsetWidth,
+    stage.clientHeight / f.offsetHeight);
+  f.style.setProperty('--slide-scale', s.toFixed(4));
+}
+addEventListener('resize', fit);
 document.querySelectorAll('[data-setview]').forEach(b =>
   b.addEventListener('click', () => setView(b.dataset.setview)));
 document.querySelector('[data-prev]')?.addEventListener('click', () => show(cur - 1));
