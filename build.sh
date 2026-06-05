@@ -78,8 +78,28 @@ for skill_dir in "$SKILLS_DIR"/*/; do
     ' "$skill_file")
 
     # If this skill has reference docs, emit each as its own .mdc file
-    # instead of inlining them (prevents context bloat in Cursor)
+    # instead of inlining them (prevents context bloat in Cursor).
+    # Embeddable reference assets (css/js) are instead inlined into the
+    # parent skill's .mdc as fenced code blocks — Cursor rules can't ship
+    # sidecar files, and skills that carry assets instruct read-and-embed.
+    # Other asset types (e.g. a styleguide .html demo) are human-viewable
+    # extras, not embed material — they stay source-only for Cursor.
+    asset_appendix=""
     if [ -d "$skill_dir/references" ]; then
+        for asset_file in "$skill_dir/references"/*; do
+            case "$asset_file" in *.css|*.js) ;; *) continue ;; esac
+            if [ -f "$asset_file" ]; then
+                asset_name=$(basename "$asset_file")
+                asset_lang="${asset_name##*.}"
+                asset_appendix="$asset_appendix
+
+## Reference asset: references/$asset_name
+
+\`\`\`$asset_lang
+$(cat "$asset_file")
+\`\`\`"
+            fi
+        done
         for ref_file in "$skill_dir/references"/*.md; do
             if [ -f "$ref_file" ]; then
                 ref_name=$(basename "$ref_file" .md)
@@ -133,7 +153,7 @@ description: $description
 alwaysApply: $always_apply
 ---
 
-$content
+$content$asset_appendix
 ENDOFMDC
 
 done
@@ -197,10 +217,11 @@ for skill_dir in "$SKILLS_DIR"/*/; do
     # Copy skill file
     cp "$skill_file" "$COPILOT_SKILLS_DIR/$skill_name.md"
 
-    # Copy reference docs if they exist
+    # Copy reference files if they exist (.md docs and any css/js/html
+    # assets the skill instructs read-and-embed for)
     if [ -d "$skill_dir/references" ]; then
         mkdir -p "$COPILOT_SKILLS_DIR/$skill_name"
-        cp "$skill_dir/references"/*.md "$COPILOT_SKILLS_DIR/$skill_name/"
+        cp "$skill_dir/references"/* "$COPILOT_SKILLS_DIR/$skill_name/"
     fi
 done
 
