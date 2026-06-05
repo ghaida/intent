@@ -160,7 +160,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 Notes about the design, never part of it:
 
-- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin.
+- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Grid view shows every group as the section's record; slides view shows only the active frame's group. Section-level notes (an idea board's decision record) sit outside any group and always show. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
 - **Idea captions** — on lo-fi vignettes, the caption's index number carries the annotation accent: the number narrates the board, it isn't UI.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
 
@@ -258,7 +258,13 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 
     </div>
     <aside class="note-rail">
-      <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
+      <!-- one group per frame; markers restart at 1 inside each frame -->
+      <div class="note-group" data-for="scr-[slug]">
+        <p class="note-frame">[SCREEN NAME]</p>
+        <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
+      </div>
+      <!-- section-level notes (e.g. the idea board's decision record)
+           sit outside any group and always show -->
     </aside>
   </section>
 

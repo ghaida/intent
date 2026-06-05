@@ -224,3 +224,19 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 }
 .note-rail p { margin: 0 0 var(--sp-3); }
 .note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
+
+/* Notes are PER WIREFRAME, never one consolidated list: each frame's
+   notes live in a .note-group whose data-for names the frame id, headed
+   by a .note-frame line. Markers number per wireframe (each frame
+   restarts at 1). Grid shows every group as the section's record;
+   slides shows only the active frame's group (viewer.js toggles
+   .active). Section-level notes (e.g. an idea board's decision record)
+   sit outside any group and always show. */
+.note-group + .note-group { margin-top: var(--sp-5); }
+.note-frame {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); margin: 0 0 var(--sp-2);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-1);
+}
+body[data-view="slides"] .note-group:not(.active) { display: none; }

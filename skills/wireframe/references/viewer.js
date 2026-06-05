@@ -32,6 +32,9 @@ function show(i) {
   const pos = document.querySelector('.slide-pos');
   if (pos) pos.textContent =
     `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+  /* notes are per wireframe — surface the active frame's group */
+  document.querySelectorAll('.note-group').forEach(g =>
+    g.classList.toggle('active', g.dataset.for === frames[cur].id));
   fit();
 }
 /* fit the active frame to the stage — scale down only, never up */
