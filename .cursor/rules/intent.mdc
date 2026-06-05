@@ -427,7 +427,7 @@ Use when: Designing specific user journeys, onboarding, checkout, settings, sear
 Use when: Site structure, navigation design, taxonomy, card sorting, tree testing, content organization.
 
 **"I need to lay out the screen"**
-→ `/wireframe` — Design screen structure at wireframe fidelity: thumbnail sketches, full-page grayscale wireframes, click-through prototypes.
+→ `/wireframe` — Design screen structure at wireframe fidelity: lo-fi idea boards, full-page interactive grayscale wireframes, click-through prototypes.
 Use when: Deciding what goes where on a screen, materializing flows from `/journey` as screens, structural exploration before visual design, assembling click-through prototypes.
 
 **"I need to write the words"**

@@ -1,5 +1,5 @@
 ---
-description:  Design the structural anatomy of screens at wireframe fidelity — what goes where and why, before anyone argues about how it looks. Part of the Intent design strategy system. Produces thumbnail sketches for divergent exploration, full-page grayscale wireframes with real labels and real hierarchy, and click-through prototypes that materialize flow logic from /journey. Trigger on: wireframe, wireframes, wireframing, thumbnails, "sketch the screen", "lay out this page", "what goes where on this screen", screen layout, page structure, lo-fi, mid-fi, click-through prototype, wireflow, "wireframe the dashboard", or any request to design the structure of a screen before its visual design. The flow through screens belongs to /journey; the information structure belongs to /organize; the words belong to /articulate — this skill owns the screen itself.
+description:  Design the structural anatomy of screens at wireframe fidelity — what goes where and why, before anyone argues about how it looks. Part of the Intent design strategy system. Produces lo-fi idea boards for divergent exploration, complete interactive grayscale wireframes with real labels and real hierarchy, and click-through prototypes that materialize flow logic from /journey. Trigger on: wireframe, wireframes, wireframing, thumbnails, "sketch the screen", "lay out this page", "what goes where on this screen", screen layout, page structure, lo-fi, mid-fi, click-through prototype, wireflow, "wireframe the dashboard", or any request to design the structure of a screen before its visual design. The flow through screens belongs to /journey; the information structure belongs to /organize; the words belong to /articulate — this skill owns the screen itself.
 alwaysApply: false
 ---
 
@@ -15,7 +15,7 @@ A wireframe answers three questions about a screen: What is on it? Where does ea
 **Trigger this skill when users ask about:**
 - Wireframing any screen, page, or view ("wireframe the dashboard", "sketch the settings page")
 - Screen layout and structure ("what goes where", "lay out this page", "how should this screen be organized")
-- Thumbnail exploration — many quick structural options for the same screen
+- Thumbnail exploration — many quick structural ideas for the same problem
 - Turning a defined flow into screens ("materialize this flow", "wireframe these steps")
 - Click-through prototypes assembled from wireframes
 - Structural review before visual design ("is this layout right before we style it?")
@@ -31,21 +31,21 @@ You work alongside complementary skills that handle interconnected concerns:
 - **`/evaluate`** — Assesses screens against heuristics. Invite them onto full-page wireframes before structure freezes — structural problems found at wireframe fidelity cost nothing to fix.
 - **`/fortify`** — Stress-tests what you wireframe. Every full-page wireframe of a stateful screen should prompt their question: what does this screen look like empty, loading, erroring, overflowing?
 - **`/include`** — Audits for accessibility. Structure decides accessibility earlier than style does — reading order, zone hierarchy, and touch target placement are wireframe decisions, not visual ones.
-- **`/philosopher`** — A cross-cutting cognitive mode. Enter when every thumbnail you sketch is the same layout you've seen a thousand times, when the "obvious" structure mirrors the org chart instead of the user's task, or when the user says "sit with this."
+- **`/philosopher`** — A cross-cutting cognitive mode. Enter when every idea you sketch is the same mechanism you've seen a thousand times, when the "obvious" structure mirrors the org chart instead of the user's task, or when the user says "sit with this."
 
-Visual design — color, typography, styling, brand expression — is outside the Intent system. You stop where it starts, and you say so explicitly when you stop.
+Visual design — color palettes, typography, styling, brand expression — is outside the Intent system. You stop where it starts, and you say so explicitly when you stop.
 
 ## Fidelity doctrine
 
-Fidelity in this skill means **structural resolution**, never visual polish. The ladder has three rungs, and the visual-design hard stop holds at every one of them.
+Fidelity in this skill means **scope, never abstraction** — and never visual polish. Every rung draws from the same design system at natural size, with real labels and working controls. Nothing is ever drawn vaguer, smaller, or more diagrammatic to signal "early": everything is real, it's just grayscale. What changes between rungs is how much of the product a frame commits to — a focused fragment, a complete screen, or a walkable sequence.
 
 ### The ladder
 
-**Thumbnail (lo-fi)** — A small, fast, zone-level sketch built from silent miniature structure: text bars, gray media blocks, button slabs — no meta labels, nothing real inside. Its job is divergence: produce many structural options cheaply so the team can compare shapes of thinking, not details. Ten thumbnails that take ten minutes beat one wireframe that takes an hour, when the question is "which structure?"
+**Thumbnail (lo-fi) — the idea vignette.** One idea, shown as the focused piece of real UI where it lives: the price field with its "Free" chip, the notification card with its claim button, the porch-pickup switch with its time chips. The fragment is built from the same kit at natural size and staged centered on a muted panel, with a caption that narrates the concept — an index number, a title, one breath of description. The vignette contains only real UI; the caption is annotation-layer narration. Its job is divergence at the **mechanism level**: many structurally different answers to one problem, compared as a board of ideas. Ten vignettes that take ten minutes beat one full screen that takes an hour, when the question is "which mechanism?"
 
-**Full-page wireframe (mid-fi)** — A realistic and detailed UI design that shows full-size screen structure with realistic content, clear and simple typography, and gray boxes for images. Every element that will exist on the screen exists in the wireframe, with real labels and real hierarchy expressed through size, weight, and placement — and it is **interactive**: inputs accept typing, buttons hover and press, chips toggle. Everything is real; it's just grayscale. Zero visual styling: grayscale only, one neutral font. Its job is convergence: resolve every "what goes where" decision so the screen can be critiqued as a structure that already feels like the product.
+**Full-page wireframe (mid-fi)** — A realistic and detailed UI design that shows full-size screen structure with realistic content, clear and simple typography, and gray boxes for images. Every element that will exist on the screen exists in the wireframe, with real labels and real hierarchy expressed through size, weight, and placement — and it is **interactive**: inputs accept typing, buttons hover and press, chips and switches toggle. No visual design beyond the system: the grayscale ramp, the system's fixed accent on primary actions and selection states, one neutral font. Its job is convergence: resolve every "what goes where" decision so the screen can be critiqued as a structure that already feels like the product.
 
-**Prototype** — Full-page wireframes wired together with click-through navigation, following flow logic defined with `/journey`. Its job is simulation: walking the structure as a user would, to test whether the screens work as a sequence — before anything is built or styled.
+**Prototype** — Not a third kind of drawing: a **view** of the mid-fi artifact in which the wireframes themselves become the prototype. The real trigger elements — the actual button, the actual list row — are clickable and navigate to the screens they lead to, following flow logic defined with `/journey`. Its job is simulation: walking the structure as a user would, to test whether the screens work as a sequence — before anything is built or styled.
 
 ### Choosing a rung
 
@@ -53,36 +53,43 @@ Match the rung to the decision being asked:
 
 | The question on the table | Rung |
 |---|---|
-| "Which overall structure should this screen have?" | Thumbnails — several of them |
+| "Which mechanism should solve this problem?" | Thumbnails — a board of them |
 | "Is everything this screen needs present and correctly weighted?" | Full-page wireframe |
-| "Does this sequence of screens work as a task?" | Prototype |
+| "Does this sequence of screens work as a task?" | Prototype view |
 | "Does it look right?" | Not this skill — that's visual design |
 
-Never present a higher rung than the decision requires. If the team hasn't agreed on structure, full-page wireframes are premature. If they haven't agreed on the flow, a prototype is premature.
+Never present a higher rung than the decision requires. If the team hasn't agreed on the mechanism, full-page wireframes are premature. If they haven't agreed on the flow, a prototype is premature.
 
 ### When fidelity misleads
 
 More fidelity is not more progress. Four failure modes to name and refuse:
 
-- **The polish critique trap.** Styled artifacts invite styling feedback. Present a screen with chosen fonts and colors, and the conversation becomes about fonts and colors — the structural questions never get asked. Grayscale is not a limitation; it is what keeps the critique pointed at structure.
-- **The done-looking artifact.** A polished-looking screen reads as finished, and people hesitate to challenge finished work. Wireframes that look deliberately provisional invite the challenges you need while changes are still cheap.
-- **The premature convergence.** Jumping straight to one full-page wireframe skips the divergence that thumbnails exist for. The first structure you draw is rarely the best one; it is just the most familiar one.
-- **The fidelity mismatch.** Presenting thumbnails when the stakeholder needs to verify completeness wastes the meeting; presenting a prototype when the team hasn't agreed on screen structure invites rework. State the rung and what feedback it is for: "These are thumbnails — react to the structure, not the details."
+- **The polish critique trap.** Styled artifacts invite styling feedback. Present a screen with chosen fonts and colors, and the conversation becomes about fonts and colors — the structural questions never get asked. The locked grayscale system is not a limitation; it is what keeps the critique pointed at structure.
+- **The done-looking artifact.** A finished-looking screen makes people hesitate to challenge it. These wireframes deliberately look real — so the provisional signal comes from the chrome, not from fake sketchiness: every frame's plate states its rung, and you name it out loud. "These are wireframes — the structure is up for debate; the styling doesn't exist yet."
+- **The premature convergence.** Jumping straight to one full-page wireframe skips the divergence that idea boards exist for. The first mechanism you draw is rarely the best one; it is just the most familiar one.
+- **The fidelity mismatch.** Presenting an idea board when the stakeholder needs to verify completeness wastes the meeting; presenting a prototype when the team hasn't agreed on screen structure invites rework. State the rung and what feedback it is for: "These are idea vignettes — react to the mechanisms, not the details."
 
 ## Wireframe language
 
-Every artifact this skill produces is built from a shared visual vocabulary with **three layers that never blend**. A viewer must never mistake chrome for proposal, or notes for content. This language is identical across all three output modes — a wireframe looks like the same wireframe whether it renders in HTML, Figma, or pencil.
+Every artifact this skill produces is built from a shared visual vocabulary with **three layers that never blend**. A viewer must never mistake chrome for proposal, or notes for content. The language is carried by this skill's reference files — they are the law, and their code comments are the rationale:
+
+- `references/design-system.css` — the wireframe content kit: tokens, palette, components, states
+- `references/viewer.css` — the container chrome: stage, frames, plates, views
+- `references/viewer.js` — the container behavior: view toggle, slideshow, theme, prototype navigation
+- `references/styleguide.html` — the kit rendered as a browsable styleguide (open it to *see* the system)
+
+The language is identical across all three output modes — a wireframe looks like the same wireframe whether it renders in HTML, Figma, or pencil.
 
 ### Layer 1 — Container (presentation chrome)
 
-The stage every artifact sits on. One thumbnail or a six-screen wireflow renders on the same chrome:
+The stage every artifact sits on (source of truth: `references/viewer.css`). One vignette or a six-screen wireflow renders on the same chrome:
 
-- **Backdrop:** the Intent website's own neutrals — bg `#fafafc` / ink `#18182b` / muted `#65657a` / border `#d8d8e4` light; bg `#18182b` / ink `#f0f0f8` / muted `#8888a8` / border `#2a2a44` dark — so the container reads as a page from the same design system as the site. The chrome follows the website's language — cool-tinted tokens, 4px spacing grid, 8px card radius, and the site's typography: General Sans 700 for the board title (−0.02em, lh 1.1), Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: the site's indigo is reserved for the annotation layer, which keeps its exclusivity.
-- **Frame:** each screen's wireframe sits in its own hairline-bordered card. Its **title plate** — screen name, fidelity rung (`THUMBNAIL` / `WIREFRAME` / `PROTOTYPE`), position when part of a set ("3/12") — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content.
-- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like title plates.
-- **One rung per artifact.** Thumbnails and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
+- **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography — General Sans 700 for the board title, Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome.
+- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — screen name, rung (`WIREFRAME`), position when part of a set ("3/12") — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (index, title, description) is their label.
+- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like plates. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
+- **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
-  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact thumbnails flow many per row; in a wireframe artifact frames sit larger, one or two per row.
+  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row; in a wireframe artifact frames sit larger, one or two per row.
   - **Slideshow** — one frame at a time at comfortable size, prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews.
   - **Theme** — a light ⇄ dark toggle; initial state follows the OS preference. Both ramps ship in every HTML artifact. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control with a half-tone swatch, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time with annotations hidden, and the wireframes themselves interactive: clicking a trigger element (the real button, the real row) navigates to the screen it leads to, following the flow logic. Esc returns to grid. The user *uses* the wireframes as an actual prototype.
@@ -91,53 +98,62 @@ The stage every artifact sits on. One thumbnail or a six-screen wireflow renders
 
 **Slideshow is not prototype.** Slideshow pages through frames in section order — a presentation. Prototype view makes the wireframes themselves the simulation — the actual trigger elements are clickable and navigate the flow. Slideshow is always available; prototype view exists only when the user asked for a prototype. Both ride the same single HTML artifact.
 
-### Layer 2 — Wireframe content (grayscale structure)
+### Layer 2 — Wireframe content (the kit)
 
-**The grayscale ramp** — five roles, cool-tinted, and nothing else:
+Source of truth: `references/design-system.css`. Wireframe content uses its variables and classes, and nothing else.
 
-| Role | Light | Dark | Used for |
+**The palette** — a five-role grayscale ramp, one working accent, one semantic exception:
+
+| Variable | Light | Dark | Used for |
 |---|---|---|---|
-| Canvas | `#ffffff` | `#1a1a20` | the screen's own background |
-| Surface | `#f4f4f6` | `#232329` | cards, panels, filled regions |
-| Border | `#d6d6dd` | `#3a3a44` | outlines, dividers, input boxes |
-| Secondary ink | `#6f6f7a` | `#8f8f9a` | supporting text, captions |
-| Primary ink | `#26262e` | `#e8e8ee` | headings, labels, primary buttons |
+| `--w-canvas` | `#ffffff` | `#1a1a20` | the screen's own background |
+| `--w-surface` | `#f4f4f6` | `#232329` | cards, panels, filled regions |
+| `--w-border` | `#d6d6dd` | `#3a3a44` | outlines, dividers, input boxes |
+| `--w-ink2` | `#62626b` | `#9a9aa6` | supporting text (guardrail: ≥4.7:1 on surface) |
+| `--w-ink1` | `#26262e` | `#e8e8ee` | headings, labels, body text |
+| `--w-accent` | `#4338ca` | `#7c6ff0` | primary actions + selection states, nothing else |
+| `--w-accent-soft` | `#edebfc` | `#2d2a4e` | tinted surfaces paired with accent/ink text |
+| `--w-error` | `#b42318` | `#f97066` | invalid states ONLY — never decorative, never emphasis |
 
-Five tones is enough to express hierarchy and not enough to do visual design. The constraint is the hard stop.
+The Intent indigo accent marks **what is primary and what is selected** — filled primary buttons, active chips, checked checkboxes and radios, switched-on switches, focus rings, the active tab underline. It expresses interaction state, not visual design: it is the system's fixed accent, not a color choice on offer. Everything else stays in the ramp — if a tone isn't telling the user "this is the primary action", "this is selected", or "this is invalid", it stays gray. The annotation layer shares the same indigo but speaks in its own shapes (numbered markers, the notes rail), never in controls.
 
-**Thumbnail vocabulary** — small fixed frames (~200×150 desktop aspect, ~120×210 mobile aspect). Pure miniature structure, no words: thin text bars, light gray media blocks, dark button slabs, bordered input boxes at mini scale. The structure must communicate silently — if a zone needs a meta label like "CTA" or "fields" to be understood, the structure isn't doing its job; redraw it until it reads on its own. Still nothing real: no real labels, no real content. If a thumbnail is acquiring real component detail, it wants to be a wireframe — step up a rung instead.
+**The token law.** Every size, margin, gap, padding, radius, control height, icon size, type size, and line-height comes from the kit's tokens — spacing `--sp-N` = N×4px (up to 92), control heights 32/40/48, icons 16/20/24/32, radii 2/4/8/full. **Raw pixel values in artifact markup are a violation.** The 4px grid is absolute.
 
-**Full-page vocabulary** — real viewport widths: 1440 (desktop), 768 (tablet), 390 (mobile). One neutral system font (`system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface. Use a consistent structural type scale at real reading sizes (page title 22–28, section heads 16–18, body 15, captions 12–13 — never below 12) and credible component sizing — 44px touch targets, list rows with media blocks and two-line text, labeled nav bars, icon circles where icons will sit. The wireframe should feel like a real screen with the styling removed, not a diagram of one. **Real labels and real content, always.** Lorem ipsum is banned — placeholder text hides labeling problems, overflow problems, and honesty problems. Write plausible content and flag it for `/articulate`.
+**The type scale** — grid-locked size/line-height pairs with legible floors (nothing under 13px): `t-caption` 13/20 · `t-small` 15/20 · `t-body` and `t-body-strong` 16/24 · `t-heading` 20/28 · `t-title` 24/32 · `t-display` 32/40. One neutral system font (`--wf-font: system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface.
 
-**The completeness test.** A mid-fi wireframe is a grayscale version of the full product screen — not an enlarged thumbnail. If the real screen would have it, the wireframe has it: status and navigation bars, tab bars, search fields, filter chips, icons (as circles), avatars, timestamps, counts, secondary actions, footers. Density matches reality — a marketplace grid shows six listings with sellers and distances, not two bare cards; a feed shows the fold and what's below it. The test: screenshot the real product, desaturate it, strip the brand typography — your wireframe should have the same amount of stuff in the same places.
+**Glyphs — two roles, one rule.** Functional icons (chevron, search, check, ×, plus, bell, camera, alert, back-arrow) are drawn SVG, alpha-masked so they render in currentColor: `.glyph .gl-search` etc. **Never use text characters (▾, ×, ⚙) as control glyphs.** The featureless `.icon` circle is the placeholder for app-specific icons that aren't decided yet. An icon-only button (`.btn-icon`) always carries an `aria-label`.
 
-**Real controls.** Wireframes are built from native interactive elements — `<button>`, `<input>`, `<textarea>`, `<select>` — never divs painted to look like controls. Text inputs focus and accept typing, buttons respond to hover and press, chips toggle, tabs react. Interaction states are mandatory and live inside the ramp: hover = surface fill (or reduced opacity on filled buttons), focus = a 2px secondary-ink ring, press = border tone. Interactivity is not polish — it's structural truth about what the screen *does* — so it belongs at this rung; only visual styling is withheld.
+**The component baseline** — the kit covers the real anatomy of screens, all with working states:
 
-Component conventions:
-
-| Element | Convention |
+| Element | Kit vocabulary |
 |---|---|
-| Primary button | native `<button>`, ink-filled, canvas label; hover/press via opacity |
-| Secondary button | native `<button>`, bordered; hover = surface fill, press = border fill |
-| Input | native `<input>`/`<textarea>`, visible label above, real placeholder or value; focusable and typeable, 2px ink focus ring |
-| Image / media | light gray block — surface fill, hairline border, no crossed lines |
-| Icon | circle (surface fill, border) — never pick real icons |
-| Avatar | filled circle (border tone) |
-| Chip / filter | native `<button>` pill with real label; toggles on click, active = ink-filled |
-| Tab / nav bar | full-width bar, icon circle + real label per item, active item in primary ink |
-| Chart | simplified gray shapes — bars as surface-filled rects, lines as single strokes |
-| Table | real column headers, two or three rows of real example data |
+| Buttons | `.btn` + `.btn-primary` (accent-filled) / `.btn-secondary` (bordered) / `.btn-ghost`, sizes `.btn-sm`/`.btn-lg`, `.btn-block`, `.btn-icon` + aria-label |
+| Form fields | `.field` > `.field-label` + `.input`/`.textarea`/`.select` + `.field-hint`; `.search` (input + leading glyph); invalid = `.error` class + `.field-error` line with `gl-alert` |
+| Choices | `.choice` rows: native checkbox / radio (accent when checked); switch = **`button.switch[role=switch]`**, never a styled checkbox |
+| Chips / tabs | `.chip` (accent-filled when active), `.tabs` > `.tab-item` (accent underline), `.tabbar` > `.tab` (mobile bottom bar) |
+| Bars | `.appbar` — back glyph, title, contextual actions |
+| Objects | `.avatar` (sm/md/lg), `.media` (light gray block — surface fill, hairline border, no crossed lines), `.badge` (+ `-muted`/`-accent`), `.link`, `.divider` |
+| Collections | `.card` (+ `.interactive`) > `.media` + `.card-body`; `.list` > `.list-row`; native `<table>` with real headers and real rows |
+| Overlays | `.scrim` + `.modal` (+ `.modal-actions`), `.sheet` + `.sheet-handle`, `.toast` — elevation is **a scrim plus a hairline border, no glow shadows** |
+| Loading | `.skeleton` for content; `.spinner` only inside controls, always with an honest label ("Posting…") — the label carries the state, motion just reinforces it, and reduced-motion users get a static treatment |
+| Layout | `.row`, `.stack`, `.grow`, `.grid-2`, `.grid-3`, `.screen-body` |
+| Vignettes | `.vignette` (+ `.dots` grid option) > `.float`; `.idea-caption` > `.idea-num` + `.idea-title` + `.idea-desc` |
+
+**The completeness test.** A mid-fi wireframe is a grayscale version of the full product screen — not an enlarged fragment. If the real screen would have it, the wireframe has it: status and navigation bars, tab bars, search fields, filter chips, icons (placeholders where undecided), avatars, timestamps, counts, secondary actions, footers. Density matches reality — a marketplace grid shows six listings with sellers and distances, not two bare cards; a feed shows the fold and what's below it. The test: screenshot the real product, desaturate it, strip the brand typography — your wireframe should have the same amount of stuff in the same places.
+
+**Real controls.** Wireframes are built from native interactive elements — `<button>`, `<input>`, `<textarea>` — never divs painted to look like controls. Text inputs focus and accept typing, buttons respond to hover and press, chips and switches toggle, tabs react. Interaction states are mandatory and live in the kit: hover, focus (2px accent ring), press, disabled, invalid, loading. Interactivity is not polish — it's structural truth about what the screen *does* — so it belongs at this rung; only visual styling is withheld.
 
 ### Layer 3 — Annotation (accent meta-layer)
 
 Notes about the design, never part of it:
 
 - **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin.
+- **Idea captions** — on lo-fi vignettes, the caption's index number carries the annotation accent: the number narrates the board, it isn't UI.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
 
 (Prototype interactivity is not an annotation overlay — it lives on the wireframe's own trigger elements and is invisible by design; see the Prototype view.)
 
-All annotation uses **one accent color: Intent indigo `#4338ca` light / `#7c6ff0` dark by default, overridable by the user at generation time** ("use green for annotations"). The accent appears in this layer only — never in wireframe content, never in chrome. If the user's requested accent collides with grayscale legibility, say so and suggest an alternative.
+Annotation uses **one accent: Intent indigo by default (`--note`), overridable by the user at generation time** ("use green for annotations"). The override swaps `--note` only — the kit's content accent (`--w-accent`) is fixed. Annotation shapes are how the layer stays distinct from content even though they share the default indigo: markers and rail text, never buttons, never fills. If the user's requested accent collides with grayscale legibility, say so and suggest an alternative.
 
 ## Visualization & output
 
@@ -156,184 +172,19 @@ Open with this question, with HTML as the default:
 
 Skip the question if the request already states a preference — "in figma", "in pencil", "html", "just describe it", "no wireframes" preempt the prompt. If the user says yes without naming a format, default to HTML. Ask for section names if sets aren't already implied by the flow ("Should I group these as Onboarding / Checkout, or differently?").
 
-If the user picks **Figma or pencil**, also ask: **light or dark wireframes?** Those canvases are single-theme — use the chosen column of the ramp throughout. HTML needs no theme question; it ships both ramps with an in-page toggle.
+If the user picks **Figma or pencil**, also ask: **light or dark wireframes?** Those canvases are single-theme — use the chosen column of the palette throughout. HTML needs no theme question; it ships both ramps with an in-page toggle.
 
 ### HTML output
 
-Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.html` for lo-fi, `wireframes-<topic>.html` for full-page wireframes and prototypes — to the working directory and open it. Never mix rungs in one file: they serve different project stages. No external CSS, fonts, or libraries; inline `<style>` and inline `<script>` only. (This skill's viewer needs JS for the view toggle, slideshow, and prototype navigation — unlike sibling skills' static diagrams, inline JS is required here, but still zero external dependencies.)
+Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.html` for the lo-fi idea board, `wireframes-<topic>.html` for full-page wireframes and prototypes — to the working directory and open it. Never mix rungs in one file: they serve different project stages. No external `<link>`, `<script src>`, fonts, or images — inline `<style>` and inline `<script>` only.
 
-**Required style block** — paste verbatim into `<style>`, then add per-screen layout CSS after it:
+**Embed the system verbatim.** Read these three files from this skill's `references/` directory and paste their full contents into the artifact — never retype them, never improvise replacements, never trim "unused" parts (the next iteration uses them):
 
-```css
-:root {
-  /* chrome — Intent site neutrals */
-  --stage: #fafafc; --chrome-fg: #18182b;
-  --chrome-ink: #65657a; --chrome-border: #d8d8e4;
-  /* wireframe ramp */
-  --w-canvas: #ffffff; --w-surface: #f4f4f6; --w-border: #d6d6dd;
-  --w-ink2: #6f6f7a; --w-ink1: #26262e;
-  /* annotation accent — swap both values if the user overrides */
-  --note: #4338ca;
-  --display: "General Sans", system-ui, -apple-system, sans-serif;
-  --sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
-  --mono: "SF Mono", "Fira Code", ui-monospace, monospace;
-  --wf-font: system-ui, -apple-system, sans-serif;
-  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
-}
-body[data-theme="dark"] {
-  --stage: #18182b; --chrome-fg: #f0f0f8;
-  --chrome-ink: #8888a8; --chrome-border: #2a2a44;
-  --w-canvas: #1a1a20; --w-surface: #232329; --w-border: #3a3a44;
-  --w-ink2: #8f8f9a; --w-ink1: #e8e8ee;
-  --note: #7c6ff0;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0; padding: var(--s6); background: var(--stage);
-  font-family: var(--sans); color: var(--w-ink1); line-height: 1.5;
-}
-/* ── chrome ── */
-.board-header {
-  display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: var(--s6);
-}
-.board-title { font-family: var(--display); font-size: 20px; font-weight: 700;
-  letter-spacing: -0.02em; line-height: 1.1; color: var(--chrome-fg); }
-.view-toggle { display: flex; gap: var(--s1); }
-.view-toggle button {
-  font-family: var(--mono); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-  padding: var(--s2) var(--s3); background: none;
-  border: 1px solid var(--chrome-border); border-radius: 3px; color: var(--chrome-ink);
-}
-.view-toggle button[aria-pressed="true"] { border-color: var(--chrome-ink); color: var(--chrome-fg); }
-.board-controls { display: flex; align-items: center; gap: var(--s5); }
-/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
-.theme-toggle {
-  display: flex; align-items: center; gap: var(--s2);
-  background: none; border: none; cursor: pointer; padding: var(--s2) 0;
-  font-family: var(--mono); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
-}
-.theme-toggle .swatch {
-  width: 14px; height: 14px; border-radius: 50%;
-  border: 1px solid var(--chrome-ink);
-  background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
-}
-.board-section { margin-bottom: var(--s7); }
-.section-label {
-  font-family: var(--mono); font-size: 14px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
-  border-bottom: 1px solid var(--chrome-border);
-  padding-bottom: var(--s2); margin-bottom: var(--s4);
-}
-.frame-grid { display: flex; flex-wrap: wrap; gap: var(--s5); align-items: flex-start; }
-.frame { background: none; border: none; }
-.frame-plate {
-  display: flex; gap: var(--s2); align-items: baseline;
-  font-family: var(--mono); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
-  padding: 0 2px; margin-bottom: var(--s2);
-}
-.frame > .wf { background: var(--w-canvas); border: 1px solid var(--chrome-border);
-  border-radius: 8px; overflow: hidden; }
-.frame-rung { opacity: 0.65; }
-/* ── slideshow ── */
-/* The active section splits into two columns: wireframe 2/3, notes rail 1/3. */
-body[data-view="slides"] .frame { display: none; }
-body[data-view="slides"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
-body[data-view="slides"] .board-section:has(.frame.active) {
-  display: grid; grid-template-columns: 2fr 1fr;
-  gap: var(--s5); align-items: start;
-}
-body[data-view="slides"] .board-section:has(.frame.active) .section-label { grid-column: 1 / -1; }
-body[data-view="slides"] .note-rail { max-width: none; margin-top: 0; }
-body[data-view="slides"] .board-section:not(:has(.frame.active)) { display: none; }
-.slide-nav { display: none; }
-body[data-view="slides"] .slide-nav {
-  display: flex; gap: var(--s3); align-items: center; justify-content: center;
-  margin-top: var(--s5); font-family: var(--mono); font-size: 12px;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
-}
-.slide-nav button { font: inherit; color: inherit; cursor: pointer;
-  background: none; border: 1px solid var(--chrome-border); border-radius: 3px;
-  padding: var(--s1) var(--s3); }
-/* ── prototype view — the wireframes ARE the prototype ── */
-body[data-view="proto"] .frame { display: none; }
-body[data-view="proto"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
-body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none; }
-body[data-view="proto"] .section-label,
-body[data-view="proto"] .note-rail,
-body[data-view="proto"] .note-marker { display: none; }
-body[data-view="proto"] [data-go] { cursor: pointer; }
-/* ── wireframe content (use ramp vars only; neutral system font — brand
-      typography belongs to the chrome, never to wireframe content) ── */
-.wf { padding: var(--s4); font-family: var(--wf-font); color: var(--w-ink1); }
-.wf h1, .wf h2, .wf h3, .wf p { margin: 0 0 var(--s2); font-weight: 600; }
-.wf .muted { color: var(--w-ink2); font-weight: 400; }
-.wf button, .wf input, .wf textarea, .wf select { font: inherit; }
-.wf button { cursor: pointer; }
-.wf .panel { background: var(--w-surface); border: 1px solid var(--w-border);
-  border-radius: 3px; padding: var(--s3); }
-.wf .btn { display: inline-block; padding: var(--s3) var(--s4); border-radius: 3px;
-  font-size: 15px; font-weight: 600; border: none; background: none;
-  transition: opacity 120ms, background 120ms; }
-.wf .btn-primary { background: var(--w-ink1); color: var(--w-canvas); }
-.wf .btn-primary:hover { opacity: 0.85; }
-.wf .btn-primary:active { opacity: 0.7; }
-.wf .btn-secondary { border: 1px solid var(--w-border); color: var(--w-ink1); }
-.wf .btn-secondary:hover { background: var(--w-surface); }
-.wf .btn-secondary:active { background: var(--w-border); }
-.wf .input, .wf .textarea { border: 1px solid var(--w-border); border-radius: 3px;
-  padding: var(--s3); font-size: 15px;
-  color: var(--w-ink1); background: var(--w-canvas); }
-.wf .textarea { min-height: 72px; resize: vertical; }
-.wf .input::placeholder, .wf .textarea::placeholder { color: var(--w-ink2); }
-.wf .input:hover, .wf .textarea:hover { border-color: var(--w-ink2); }
-.wf .input:focus, .wf .textarea:focus {
-  outline: 2px solid var(--w-ink2); outline-offset: 0;
-  border-color: var(--w-ink2); }
-.wf .media { position: relative; background: var(--w-surface);
-  border: 1px solid var(--w-border); border-radius: 2px; }
-.wf .bar { height: 8px; background: var(--w-border); border-radius: 2px;
-  margin-bottom: var(--s2); }
-.wf .icon { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
-  background: var(--w-surface); border: 1px solid var(--w-border); }
-.wf .avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-  background: var(--w-border); }
-.wf .chip { display: inline-block; padding: 6px 14px; border-radius: 999px;
-  border: 1px solid var(--w-border); font-size: 13px; color: var(--w-ink1);
-  background: var(--w-canvas); transition: background 120ms; }
-.wf .chip:hover { background: var(--w-surface); }
-.wf .chip.active { background: var(--w-ink1); color: var(--w-canvas);
-  border-color: var(--w-ink1); }
-.wf .tabbar { display: flex; border-top: 1px solid var(--w-border);
-  padding: var(--s2) 0 var(--s1); background: var(--w-canvas); }
-.wf .tab { flex: 1; display: flex; flex-direction: column; align-items: center;
-  gap: 2px; font-size: 12px; color: var(--w-ink2);
-  background: none; border: none; }
-.wf .tab:hover { color: var(--w-ink1); }
-.wf .tab .icon { width: 22px; height: 22px; }
-.wf .tab.active { color: var(--w-ink1); font-weight: 600; }
-/* thumbnails — labeled zones carrying miniature structure */
-.frame.thumb .wf { padding: var(--s2); font-size: 8px; }
-.frame.thumb .zone { border: 1px solid var(--w-border); color: var(--w-ink2);
-  display: flex; flex-direction: column; gap: 3px; padding: 4px;
-  font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
-.frame.thumb .zone .bar { height: 4px; margin: 0; }
-.frame.thumb .zone .bar.short { width: 60%; }
-.frame.thumb .zone .media { flex: 1; min-height: 14px; }
-.frame.thumb .zone .slab { height: 12px; background: var(--w-ink1);
-  border-radius: 2px; opacity: 0.85; }
-/* ── annotation layer ── */
-.note-marker { position: absolute; width: 22px; height: 22px; border-radius: 50%;
-  background: var(--note); color: #fff; font-family: var(--mono);
-  font-size: 12px; font-weight: 700; display: flex;
-  align-items: center; justify-content: center; }
-.note-rail { max-width: 320px; margin-top: var(--s4); font-size: 14px;
-  line-height: 1.714; color: var(--chrome-ink); }
-.note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
-```
+1. `references/design-system.css` → into `<style>`, first
+2. `references/viewer.css` → into the same `<style>`, after it
+3. `references/viewer.js` → into `<script>` before `</body>`
+
+(If your platform has inlined these reference files below this document, embed that copy.) After the two stylesheets, add per-artifact layout CSS — screen-specific grids, zone sizing, marker positions — using kit tokens for every value. Raw pixels are a violation; so is restyling a kit class.
 
 **Structure template** — fill with real screens:
 
@@ -357,6 +208,8 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
   <section class="board-section" data-section="[SECTION NAME]">
     <h2 class="section-label">[SECTION NAME]</h2>
     <div class="frame-grid">
+
+      <!-- mid-fi frame: plate above, complete interactive screen inside -->
       <article class="frame" id="scr-[slug]" style="width: [VIEWPORT]px">
         <div class="frame-plate">
           <span>[SCREEN NAME]</span>
@@ -364,19 +217,32 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
           <span class="frame-pos">[N/TOTAL]</span>
         </div>
         <div class="wf" style="position: relative;">
-          <!-- screen structure: ramp vars + the component vocabulary only.
-               Controls are NATIVE elements — <button class="btn btn-primary">,
-               <input class="input">, <textarea class="textarea">, <button
-               class="chip"> — never divs painted as controls. When a prototype
-               was requested, put data-go="scr-[target-slug]" directly on the
-               trigger elements:
-               <button class="btn btn-primary" data-go="scr-[target-slug]">[LABEL]</button> -->
-          <!-- annotation markers (absolute-positioned): -->
+          <!-- the full screen, kit vocabulary only. Controls are NATIVE
+               elements — <button class="btn btn-primary">, <input
+               class="input">, <button class="chip"> — never painted divs.
+               When a prototype was requested, put data-go="scr-[target-slug]"
+               directly on the real trigger elements. -->
+          <!-- annotation markers (absolute-positioned, token offsets): -->
           <div class="note-marker" style="top: …; left: …;">1</div>
         </div>
       </article>
-      <!-- thumbnails use: <article class="frame thumb" style="width:200px"> with .zone divs
-           holding miniature structure (.bar/.media/.slab) — no text labels -->
+
+      <!-- lo-fi frame: no plate — the idea caption is the label -->
+      <article class="frame" style="width: 360px">
+        <div class="wf">
+          <div class="vignette"><!-- or class="vignette dots" -->
+            <div class="float" style="max-width: 280px">
+              <!-- the focused real-UI fragment where the idea lives -->
+            </div>
+          </div>
+          <div class="idea-caption">
+            <span class="idea-num">#[N]</span>
+            <p class="idea-title">[MECHANISM NAME]</p>
+            <p class="idea-desc">[One breath: what the idea is and why it might win.]</p>
+          </div>
+        </div>
+      </article>
+
     </div>
     <aside class="note-rail">
       <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
@@ -391,86 +257,36 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 </body>
 ```
 
-**Required script block** — paste verbatim into `<script>` before `</body>`:
-
-```js
-const frames = [...document.querySelectorAll('.frame')];
-let cur = 0;
-function setView(v) {
-  document.body.dataset.view = v;
-  document.querySelectorAll('[data-setview]').forEach(b =>
-    b.setAttribute('aria-pressed', String(b.dataset.setview === v)));
-  if (v !== 'grid') show(cur);
-}
-function show(i) {
-  cur = (i + frames.length) % frames.length;
-  frames.forEach((f, n) => f.classList.toggle('active', n === cur));
-  const sec = frames[cur].closest('.board-section')?.dataset.section || '';
-  document.querySelector('.slide-pos').textContent =
-    `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
-}
-document.querySelectorAll('[data-setview]').forEach(b =>
-  b.addEventListener('click', () => setView(b.dataset.setview)));
-document.querySelector('[data-prev]')?.addEventListener('click', () => show(cur - 1));
-document.querySelector('[data-next]')?.addEventListener('click', () => show(cur + 1));
-addEventListener('keydown', e => {
-  const v = document.body.dataset.view;
-  if (v === 'grid') return;
-  if (v === 'slides' && e.key === 'ArrowLeft') show(cur - 1);
-  if (v === 'slides' && e.key === 'ArrowRight') show(cur + 1);
-  if (e.key === 'Escape') setView('grid');
-});
-const th = document.querySelector('[data-toggle-theme]');
-const thLabel = th?.querySelector('.theme-label');
-function setTheme(dark) {
-  document.body.dataset.theme = dark ? 'dark' : 'light';
-  th?.setAttribute('aria-pressed', String(dark));
-  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
-}
-setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
-th?.addEventListener('click', () =>
-  setTheme(document.body.dataset.theme !== 'dark'));
-document.querySelectorAll('[data-go]').forEach(el =>
-  el.addEventListener('click', () => {
-    if (document.body.dataset.view !== 'proto') return;
-    const t = document.getElementById(el.dataset.go);
-    if (t) show(frames.indexOf(t));
-  }));
-document.querySelectorAll('.wf .chip').forEach(c =>
-  c.addEventListener('click', () => c.classList.toggle('active')));
-```
-
 **Rules:**
 
-- Wireframe content uses ramp variables (`--w-*`) only. Chrome uses `--stage`/`--chrome-*` only. Annotation uses `--note` only. The three layers never share a variable.
-- Don't invent class names — copy from this vocabulary verbatim. Class names are how the language stays consistent across artifacts.
-- Light + dark ship together; the chrome's Theme toggle flips `body[data-theme]`, initialized from the OS preference. Don't strip either ramp.
+- Wireframe content uses kit variables and classes (`--w-*`, `.wf` vocabulary) only. Chrome uses `--stage`/`--chrome-*` only. Annotation uses `--note` only. The layers never share a variable.
+- Don't invent class names — the kit's vocabulary is the language, and the reference CSS is its law. If a screen needs something the kit lacks, compose it from kit primitives and tokens; if it's genuinely new, that's a design-system change, not an artifact improvisation.
+- Every dimension in per-artifact CSS and inline styles comes from tokens (`--sp-*`, `--h-*`, `--ic-*`, `--r-*`, `--t-*`). Viewport widths are the exception: frames render at real device widths — 1440 (desktop), 768 (tablet), 390 (mobile); vignette frames at ~360px.
+- Light + dark ship together; the chrome's Theme toggle flips both, initialized from the OS preference. Don't strip either ramp.
 - Include the Prototype view button and `data-go` attributes ONLY when the user asked for a prototype. `data-go` goes on the actual trigger element — the prototype IS the wireframe, not an overlay on it.
-- Self-contained: no external `<link>`, no external `<script src>`, no images.
-- Full-page wireframes at real widths: 1440 / 768 / 390. Thumbnails at ~200px (desktop aspect) or ~120px (mobile aspect).
 - Real labels, real content. No lorem ipsum, anywhere, ever.
-- Controls are native elements with working interaction states — inputs type, buttons hover and press, chips toggle. A div painted as a button is a vocabulary violation.
+- Controls are native elements with working interaction states — inputs type, buttons hover and press, chips and switches toggle. A div painted as a button is a vocabulary violation. The accent appears only where the kit puts it: primary actions, selection states, focus. `--w-error` appears only on invalid states.
 
 ### Figma output
 
-When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the ramp throughout:
+When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the palette throughout:
 
-- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each frame (10px, uppercase, chrome ink `#65657a` light / `#8888a8` dark).
-- Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d8d8e4` light / `#2a2a44` dark).
-- Wireframe content → the chosen theme's ramp values as fills/strokes exactly as in the table above; one neutral font (Inter or SF); media blocks are surface-filled rectangles with a hairline border — no crossed lines.
+- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each mid-fi frame (uppercase, chrome ink `#65657a` light / `#8888a8` dark).
+- Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d8d8e4` light / `#2a2a44` dark). Lo-fi vignettes → a surface-filled panel with the fragment centered and the idea caption below.
+- Wireframe content → the palette values as fills/strokes exactly as in the table above, on the 4px grid with the kit's control heights and type scale; one neutral font (Inter or SF); the accent on primary actions and selection states only; media blocks are surface-filled rectangles with a hairline border — no crossed lines; functional glyphs as simple drawn vectors, undecided icons as featureless circles.
 - Annotation → a locked overlay group per frame: accent circles with white numbers (`#4338ca` light / `#7c6ff0` dark, or the user's override), plus a notes text block beside the frame.
 - Wireflow arrows → connectors between frames on the canvas, never inside frames.
 
 ### pencil output
 
-When the user picks pencil, confirm light or dark (per Ask first), call `mcp__pencil__open_document` with `'new'`, set the chosen theme's ramp + accent as variables via `mcp__pencil__set_variables`, then `mcp__pencil__batch_design`: one frame per screen at real viewport width, grouped per section, zones/panels/buttons per the component conventions (media blocks surface-filled, no crossed lines), annotation markers in the accent, connectors between frames for wireflows.
+When the user picks pencil, confirm light or dark (per Ask first), call `mcp__pencil__get_editor_state` then create a new document, set the chosen theme's palette + annotation accent as variables via `mcp__pencil__set_variables`, then `mcp__pencil__batch_design`: one frame per screen at real viewport width (vignette panels for lo-fi), grouped per section, components per the kit's conventions (4px grid, control heights, accent on primary/selection only, media blocks surface-filled with no crossed lines), annotation markers in the accent, connectors between frames for wireflows.
 
 ### Fidelity enforcement
 
 The output stage enforces the doctrine:
 
-- A thumbnail acquiring real component detail (real nav items, real form fields) is a rung violation — say so and offer to step up: *"This is becoming a wireframe — want me to draw it at full page width instead?"*
-- A request for color, typefaces, or styling inside wireframe content is a hard-stop violation — refuse and route: *"That's visual design — the wireframe stays grayscale so the critique stays structural. Take the styled pass to your visual design tools once the structure is agreed."* The single exception is the user-configured annotation accent, which never touches content.
+- A vignette sprawling into a whole screen (nav bars, multiple zones, content beyond its one idea) is a rung violation — say so and offer to step up: *"This idea wants a full screen — should I promote it to the wireframe artifact?"* The inverse is also a violation: a vignette going abstract (gray boxes standing in for the idea itself) gets redrawn from the kit — nothing is ever drawn vaguer to look "early".
+- A request for color palettes, typefaces, or styling inside wireframe content is a hard-stop violation — refuse and route: *"That's visual design — the wireframe stays in the locked grayscale system so the critique stays structural. Take the styled pass to your visual design tools once the structure is agreed."* The single exception is the user-configured annotation accent, which never touches content.
 
 ## Core capabilities
 
@@ -478,11 +294,11 @@ The output stage enforces the doctrine:
 
 Decompose any screen into named zones with one job each: where global navigation lives, where local context lives, where the primary content sits, where actions cluster, where system status appears. A zone with two jobs is two zones drawn as one — split it. A zone you can't name by its job ("misc", "other stuff") doesn't have a reason to exist yet.
 
-Work top-down: zones first (thumbnail rung), then elements within zones (wireframe rung). Never let element-level decisions leak into zone-level conversations.
+Work top-down: name the zones and their jobs before drawing elements within them. Never let element-level decisions leak into zone-level conversations.
 
 ### 2. Hierarchy without styling
 
-Express importance using only structure: size, weight, position, and grouping. The most important thing on the screen should be findable in a five-second squint test of the grayscale wireframe. If hierarchy needs color to work, the hierarchy doesn't work — color can reinforce structural hierarchy later, but it cannot create it.
+Express importance using only structure: size, weight, position, and grouping. The most important thing on the screen should be findable in a five-second squint test of the wireframe. If hierarchy needs color to work, the hierarchy doesn't work — the kit's accent marks the primary action and what's selected, but it cannot rescue a structure where everything competes; brand color can reinforce structural hierarchy later, it cannot create it.
 
 Position carries meaning: top-left (in LTR locales) is read first; above the fold is a real boundary at real viewport heights; proximity implies relationship. Flag every position decision that assumes a locale for `/localize`.
 
@@ -501,7 +317,7 @@ Recommend by the user's task, not by what's common. The pattern is a starting st
 
 ### 4. Content-first wireframing
 
-Real content is a structural material, not a finishing touch. Wireframe with the real label ("Storage used — 14.2 GB of 15 GB"), the real edge case (the German compound word, the 47-item list, the zero-state), the real data shape. Lorem ipsum hides exactly the problems wireframes exist to find: labels that don't fit, tables that overflow, hierarchies that collapse when the real numbers arrive. When real content isn't known yet, write honest plausible content and flag it for `/articulate` — never grey bars where words will go on the wireframe rung (bars are thumbnail vocabulary).
+Real content is a structural material, not a finishing touch — at every rung, vignettes included. Wireframe with the real label ("Storage used — 14.2 GB of 15 GB"), the real edge case (the German compound word, the 47-item list, the zero-state), the real data shape. Lorem ipsum hides exactly the problems wireframes exist to find: labels that don't fit, tables that overflow, hierarchies that collapse when the real numbers arrive. When real content isn't known yet, write honest plausible content and flag it for `/articulate`.
 
 ### 5. Annotation discipline
 
@@ -513,24 +329,24 @@ Materialize flow logic from `/journey` as connected screens. Lay frames in flow 
 
 ### 7. Divergence practice
 
-For any new screen, thumbnails come first and come plural. Draw structurally different options — not the same layout with the sidebar moved. Different answers to "what is this screen's primary job?" produce different structures; if all your thumbnails look alike, you've decided the job without noticing. Present alternatives with the trade-off named, converge deliberately with the user, then promote the chosen structure up a rung — into its own wireframe artifact. The lo-fi artifact stays behind as the decision record, rejected thumbnails and all — what was chosen against is part of the design.
+For any new problem, ideas come first and come plural. Draw mechanically different vignettes — different answers to "what mechanism solves this?", not the same mechanism with the button moved. If all your ideas look alike, you've decided the answer without noticing. Present alternatives with the trade-off named in each caption, converge deliberately with the user, then promote the chosen mechanism up a rung — into the screens of its own wireframe artifact. The idea board stays behind as the decision record, rejected vignettes and all — what was chosen against is part of the design.
 
 ## Output format
 
 Structure the deliverable as the work requires. The full toolkit:
 
-1. **Screen inventory** — What screens are being wireframed, at what rung, grouped into which sections. The shared map of the artifact.
-2. **Structural rationale** — Per screen: what its primary job is, what zones exist and why, what hierarchy was chosen and why. The reasoning the wireframe renders.
+1. **Screen inventory** — What screens or ideas are in play, at what rung, grouped into which sections. The shared map of the artifact.
+2. **Structural rationale** — Per screen: what its primary job is, what zones exist and why, what hierarchy was chosen and why. Per vignette: what mechanism it proposes and what trade it makes. The reasoning the wireframe renders.
 3. **The artifact** — HTML (default), Figma, or pencil, per the ask-first protocol. The wireframes themselves, in the three-layer language.
 4. **Annotations** — Numbered decisions and open questions, in the annotation layer and recapped in text.
-5. **Considered & rejected** — Thumbnails that lost, with one line each on why. Lives in the lo-fi artifact.
+5. **Considered & rejected** — Vignettes that lost, with one line each on why. Lives in the idea-board artifact.
 6. **Handoffs** — What goes to `/articulate` (flagged placeholder copy), `/fortify` (states not yet wireframed), `/journey` (flow findings), `/specify` (when structure freezes).
 7. **Pending questions** — What needs `/organize`, `/investigate`, or stakeholder input before structure can freeze.
 
 ## Voice & approach
 
 - **Structure before surface, always.** Refuse to debate aesthetics at the wireframe rung — park those notes for visual design and keep the critique structural.
-- **Divergent first, convergent deliberately.** Offer alternatives before recommending. The first layout that comes to mind is the most familiar, not the best.
+- **Divergent first, convergent deliberately.** Offer alternatives before recommending. The first mechanism that comes to mind is the most familiar, not the best.
 - **Name the rung.** Every artifact states what fidelity it is and what feedback it wants. Mismatched feedback is the presenter's fault, not the audience's.
 - **Real content is non-negotiable.** Push back when asked to "just put placeholder text in" — explain what lorem ipsum hides, then write honest content.
 - **Decisions over inventory.** Every annotation explains a why. If a wireframe walkthrough sounds like a real estate tour, the rationale is missing.
@@ -538,9 +354,9 @@ Structure the deliverable as the work requires. The full toolkit:
 ## Scope boundaries
 
 **You own:**
-- Structural layout of individual screens at thumbnail and wireframe fidelity
+- Structural layout of individual screens at lo-fi and mid-fi
 - The fidelity ladder and choosing the right rung for the decision at hand
-- The wireframe language: container, content vocabulary, annotation layer
+- The wireframe language: container chrome, content kit, annotation layer — and its reference files
 - Wireflows and click-through prototypes assembled from defined flow logic
 - Structural hierarchy, zoning, density, and layout pattern selection
 - Annotation of structural decisions and open questions
@@ -549,10 +365,10 @@ Structure the deliverable as the work requires. The full toolkit:
 - Flow logic across screens — what screens exist, in what order, with what branches (`/journey` defines it; you materialize it)
 - Information architecture, taxonomy, and navigation models (`/organize` structures it; you place it)
 - Final copy, voice, and tone (`/articulate` — your real-content placeholders are flagged for their pass)
-- Visual design: color, typography, styling, brand (outside the Intent system entirely — you stop where it starts)
-- Edge-case and state hardening (`/fortify` — invite them before structure freezes)
+- Visual design: color palettes, typography, styling, brand (outside the Intent system entirely — you stop where it starts)
+- Edge-case and state hardening (`/fortify` — invite them before structure freezes; the kit's error, loading, and skeleton vocabulary renders what they specify)
 - Engineering specs (`/specify` — your annotated wireframes are their input)
-- Accessibility auditing (`/include` — but reading order and target placement are your structural responsibility)
+- Accessibility auditing (`/include` — but reading order, target placement, and the kit's baked-in floors: legible type, focus rings, aria-labeled icon buttons, real roles — are your structural responsibility)
 
 **Always ask:**
 - What is this screen's primary job — and does the structure make that job obvious?
@@ -564,4 +380,756 @@ Structure the deliverable as the work requires. The full toolkit:
 
 ## Working with this skill
 
-Bring the flow definition (from `/journey` or your own notes), the information being presented, any real content you have, and the device targets. Name the decision you're trying to make — "which structure?", "is everything here?", "does the sequence work?" — and the skill will pick the rung to match. Expect alternatives before recommendations, grayscale until structure is agreed, and pushback if the conversation drifts to fonts before the layout has earned them.
+Bring the flow definition (from `/journey` or your own notes), the information being presented, any real content you have, and the device targets. Name the decision you're trying to make — "which mechanism?", "is everything here?", "does the sequence work?" — and the skill will pick the rung to match. Expect alternatives before recommendations, the locked grayscale system until structure is agreed, and pushback if the conversation drifts to fonts before the layout has earned them.
+
+## Reference asset: references/design-system.css
+
+```css
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — design system
+   The component system every wireframe artifact embeds verbatim.
+
+   Every size, margin, gap, padding, radius, control height, icon
+   size, type size, and line-height comes from the tokens below. Raw
+   pixel values in artifact markup are a violation. 4px grid, absolute.
+
+   PALETTE: the five-role grayscale ramp (light + dark), the Intent
+   indigo accent (--w-accent) for primary actions and selection
+   states, and ONE semantic exception: --w-error, for invalid states
+   only. Wireframe content uses these variables and nothing else.
+   The annotation layer shares the indigo (--note) but is
+   distinguished by its own shapes: numbered circular markers and
+   the notes rail, never UI controls.
+
+   GLYPHS: functional icons (chevron, search, check, ×, …) are drawn
+   SVG, alpha-masked so they render in currentColor. The featureless
+   .icon circle is the placeholder for app-specific icons that aren't
+   decided yet — two roles, one vocabulary. Never use text characters
+   (▾, ×, ⚙) as control glyphs.
+
+   FIDELITY = SCOPE: both rungs use this same kit at natural size.
+   Lo-fi thumbnails are idea vignettes — a focused UI fragment staged
+   on a muted panel with a numbered narrating caption; mid-fi
+   wireframes are complete screens. Nothing is ever drawn vaguer.
+
+   ELEVATION: a scrim plus a hairline border. No soft glow shadows.
+
+   FONT: one neutral system stack. Brand typography belongs to the
+   viewer chrome (viewer.css), never to wireframe content.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── ramp: light ─────────────────────────────────────────────── */
+  --w-canvas:  #ffffff;
+  --w-surface: #f4f4f6;
+  --w-border:  #d6d6dd;
+  --w-ink2:    #62626b;  /* GUARDRAIL: keep ≥4.7:1 on --w-surface */
+  --w-ink1:    #26262e;
+  /* Intent indigo — primary actions + selection states             */
+  --w-accent:      #4338ca;
+  --w-on-accent:   #ffffff;
+  --w-accent-soft: #edebfc;  /* tinted surface; pair with --w-accent text */
+  /* semantic exception — invalid states ONLY                       */
+  --w-error:   #b42318;
+  /* annotation accent — annotation layer shapes, user-overridable   */
+  --note:      #4338ca;
+
+  /* ── spacing scale (4px grid, absolute; --sp-N = N × 4px) ────── */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-14: 56px; --sp-16: 64px; --sp-18: 72px;
+  --sp-20: 80px; --sp-22: 88px; --sp-23: 92px;
+
+  /* ── control heights ─────────────────────────────────────────── */
+  --h-sm: 32px; --h-md: 40px; --h-lg: 48px;
+
+  /* ── icon sizes ──────────────────────────────────────────────── */
+  --ic-sm: 16px; --ic-md: 20px; --ic-lg: 24px; --ic-xl: 32px;
+
+  /* ── radii ───────────────────────────────────────────────────── */
+  --r-sm: 2px; --r-md: 4px; --r-lg: 8px; --r-full: 999px;
+
+  /* ── type scale (size/line-height, grid-locked, legible floors) ─ */
+  --t-xs: 13px;  --t-xs-lh: 20px;   /* captions, timestamps, tab labels */
+  --t-sm: 15px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
+  --t-md: 16px;  --t-md-lh: 24px;   /* body, inputs, buttons            */
+  --t-lg: 20px;  --t-lg-lh: 28px;   /* section headings                 */
+  --t-xl: 24px;  --t-xl-lh: 32px;   /* page titles                      */
+  --t-2xl: 32px; --t-2xl-lh: 40px;  /* hero/display                     */
+
+  /* ── content font: neutral, never branded ────────────────────── */
+  --wf-font: system-ui, -apple-system, sans-serif;
+
+  /* ── drawn glyphs (alpha masks → render in currentColor) ─────── */
+  --gl-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='7' cy='7' r='4.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M10.5 10.5L14 14' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-bell: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2a4 4 0 0 0-4 4v3L2.5 11h11L12 9V6a4 4 0 0 0-4-4zM6.5 13a1.5 1.5 0 0 0 3 0' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-camera: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5h3l1-1.5h4L11 5h3v8H2z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8.75' r='2.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
+  --gl-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2L15 13.5H1z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M8 6.5v3.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11.75' r='0.9' fill='%23000'/%3E%3C/svg%3E");
+  --gl-arrow-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H3M7 4L3 8l4 4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  /* checkbox check is a background image, not a mask — it must
+     contrast the accent-filled box, so it carries a themed stroke   */
+  --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+  --w-canvas:  #1a1a20;
+  --w-surface: #232329;
+  --w-border:  #3a3a44;
+  --w-ink2:    #9a9aa6;  /* GUARDRAIL: keep ≥4.7:1 on --w-surface */
+  --w-ink1:    #e8e8ee;
+  --w-accent:      #7c6ff0;
+  --w-on-accent:   #0b0b0e;  /* dark text on the lighter dark-mode accent */
+  --w-accent-soft: #2d2a4e;  /* pair with --w-ink1 text in dark */
+  --w-error:   #f97066;
+  --note:      #7c6ff0;
+  --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%230b0b0e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ═══ base ═══════════════════════════════════════════════════════ */
+
+.wf {
+  font-family: var(--wf-font);
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  color: var(--w-ink1); background: var(--w-canvas);
+}
+.wf * { box-sizing: border-box; }
+.wf button, .wf input, .wf textarea, .wf select { font: inherit; color: inherit; }
+.wf button { cursor: pointer; background: none; border: none; padding: 0; }
+
+/* ═══ typography ═════════════════════════════════════════════════ */
+
+.wf .t-display { font-size: var(--t-2xl); line-height: var(--t-2xl-lh); font-weight: 700; }
+.wf .t-title   { font-size: var(--t-xl);  line-height: var(--t-xl-lh);  font-weight: 700; }
+.wf .t-heading { font-size: var(--t-lg);  line-height: var(--t-lg-lh);  font-weight: 600; }
+.wf .t-body    { font-size: var(--t-md);  line-height: var(--t-md-lh);  font-weight: 400; }
+.wf .t-body-strong { font-size: var(--t-md); line-height: var(--t-md-lh); font-weight: 600; }
+.wf .t-small   { font-size: var(--t-sm);  line-height: var(--t-sm-lh);  font-weight: 400; }
+.wf .t-caption { font-size: var(--t-xs);  line-height: var(--t-xs-lh);  font-weight: 400; }
+.wf .muted     { color: var(--w-ink2); }
+
+/* ═══ glyphs — drawn functional icons (currentColor) ═════════════ */
+
+.wf .glyph { display: inline-block; flex-shrink: 0;
+  width: var(--ic-md); height: var(--ic-md);
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; }
+.wf .glyph-sm { width: var(--ic-sm); height: var(--ic-sm); }
+.wf .glyph-lg { width: var(--ic-lg); height: var(--ic-lg); }
+.wf .gl-chevron    { -webkit-mask-image: var(--gl-chevron);    mask-image: var(--gl-chevron); }
+.wf .gl-search     { -webkit-mask-image: var(--gl-search);     mask-image: var(--gl-search); }
+.wf .gl-check      { -webkit-mask-image: var(--gl-check);      mask-image: var(--gl-check); }
+.wf .gl-x          { -webkit-mask-image: var(--gl-x);          mask-image: var(--gl-x); }
+.wf .gl-plus       { -webkit-mask-image: var(--gl-plus);       mask-image: var(--gl-plus); }
+.wf .gl-bell       { -webkit-mask-image: var(--gl-bell);       mask-image: var(--gl-bell); }
+.wf .gl-camera     { -webkit-mask-image: var(--gl-camera);     mask-image: var(--gl-camera); }
+.wf .gl-alert      { -webkit-mask-image: var(--gl-alert);      mask-image: var(--gl-alert); }
+.wf .gl-arrow-left { -webkit-mask-image: var(--gl-arrow-left); mask-image: var(--gl-arrow-left); }
+
+/* placeholder for app-specific icons not yet decided */
+.wf .icon { display: inline-block; flex-shrink: 0;
+  width: var(--ic-lg); height: var(--ic-lg); border-radius: var(--r-full);
+  background: var(--w-surface); border: 1px solid var(--w-border); }
+.wf .icon-sm { width: var(--ic-sm); height: var(--ic-sm); }
+.wf .icon-md { width: var(--ic-md); height: var(--ic-md); }
+.wf .icon-xl { width: var(--ic-xl); height: var(--ic-xl); }
+
+/* ═══ buttons — 3 styles × 3 sizes ═══════════════════════════════ */
+
+.wf .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--sp-2); border-radius: var(--r-md); font-weight: 600;
+  height: var(--h-md); padding: 0 var(--sp-4);
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  transition: opacity 120ms, background 120ms;
+}
+.wf .btn-sm { height: var(--h-sm); padding: 0 var(--sp-3);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); }
+.wf .btn-lg { height: var(--h-lg); padding: 0 var(--sp-6); }
+
+.wf .btn-primary { background: var(--w-accent); color: var(--w-on-accent); }
+.wf .btn-primary:hover { opacity: 0.88; }
+.wf .btn-primary:active { opacity: 0.75; }
+
+.wf .btn-secondary { border: 1px solid var(--w-border); }
+.wf .btn-secondary:hover { background: var(--w-surface); }
+.wf .btn-secondary:active { background: var(--w-border); }
+
+.wf .btn-ghost { color: var(--w-ink1); }
+.wf .btn-ghost:hover { background: var(--w-surface); }
+.wf .btn-ghost:active { background: var(--w-border); }
+
+.wf .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.wf .btn:focus-visible, .wf .chip:focus-visible, .wf .tab:focus-visible,
+.wf .btn-icon:focus-visible, .wf .switch:focus-visible {
+  outline: 2px solid var(--w-accent); outline-offset: 2px; }
+.wf .btn-block { display: flex; width: 100%; }
+
+/* icon-only button — must carry an aria-label */
+.wf .btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--h-sm); height: var(--h-sm); border-radius: var(--r-md);
+  transition: background 120ms;
+}
+.wf .btn-icon:hover { background: var(--w-surface); }
+.wf .btn-icon:active { background: var(--w-border); }
+
+/* ═══ form controls ══════════════════════════════════════════════ */
+
+.wf .field { display: block; }
+.wf .field + .field { margin-top: var(--sp-4); }
+.wf .field-label {
+  display: block; font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 600; margin-bottom: var(--sp-1);
+}
+.wf .field-hint {
+  font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  color: var(--w-ink2); margin-top: var(--sp-1);
+}
+
+.wf .input, .wf .select {
+  display: block; width: 100%; height: var(--h-md);
+  padding: 0 var(--sp-3); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-canvas);
+  font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--w-ink1);
+}
+.wf .input-lg, .wf .select-lg { height: var(--h-lg); padding: 0 var(--sp-4); }
+.wf .textarea {
+  display: block; width: 100%; min-height: calc(var(--h-md) * 2);
+  padding: var(--sp-2) var(--sp-3); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-canvas);
+  font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--w-ink1);
+  resize: vertical;
+}
+.wf .input::placeholder, .wf .textarea::placeholder { color: var(--w-ink2); }
+.wf .input:hover, .wf .textarea:hover, .wf .select:hover { border-color: var(--w-ink2); }
+.wf .input:focus, .wf .textarea:focus, .wf .select:focus {
+  outline: 2px solid var(--w-accent); outline-offset: 0; border-color: var(--w-accent); }
+.wf .input:disabled, .wf .textarea:disabled, .wf .select:disabled {
+  background: var(--w-surface); color: var(--w-ink2); cursor: not-allowed; }
+
+/* invalid state — the ramp's single semantic exception */
+.wf .input.error, .wf .textarea.error, .wf .select.error {
+  border-color: var(--w-error); }
+.wf .input.error:focus, .wf .textarea.error:focus, .wf .select.error:focus {
+  outline-color: var(--w-error); border-color: var(--w-error); }
+.wf .field-error {
+  display: flex; align-items: center; gap: var(--sp-1);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 500;
+  color: var(--w-error); margin-top: var(--sp-1);
+}
+
+/* select rendered as a button, drawn chevron (never a text glyph) */
+.wf .select { display: flex; align-items: center;
+  justify-content: space-between; text-align: left; gap: var(--sp-2); }
+.wf .select::after { content: ""; flex-shrink: 0;
+  width: var(--ic-sm); height: var(--ic-sm); background: var(--w-ink2);
+  -webkit-mask: var(--gl-chevron) center / contain no-repeat;
+  mask: var(--gl-chevron) center / contain no-repeat; }
+
+/* search = input with leading drawn glyph */
+.wf .search { position: relative; }
+.wf .search .glyph {
+  position: absolute; left: var(--sp-3); top: 50%;
+  transform: translateY(-50%); pointer-events: none; color: var(--w-ink2);
+}
+.wf .search .input { padding-left: var(--sp-10); }
+
+/* checkbox / radio */
+.wf .choice {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-sm); cursor: pointer;
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+}
+.wf .choice input { appearance: none; margin: 0; flex-shrink: 0;
+  width: var(--ic-md); height: var(--ic-md);
+  border: 1px solid var(--w-border); background: var(--w-canvas);
+  cursor: pointer; transition: background 120ms, border-color 120ms; }
+.wf .choice input[type="checkbox"] { border-radius: var(--r-sm); }
+.wf .choice input[type="radio"] { border-radius: var(--r-full); }
+.wf .choice input:hover { border-color: var(--w-ink2); }
+.wf .choice input[type="checkbox"]:checked {
+  background: var(--w-accent) var(--gl-check-on-accent) center / 14px no-repeat;
+  border-color: var(--w-accent); }
+.wf .choice input[type="radio"]:checked {
+  background: var(--w-accent); border-color: var(--w-accent);
+  box-shadow: inset 0 0 0 3px var(--w-canvas); }
+.wf .choice input:focus-visible { outline: 2px solid var(--w-accent); outline-offset: 2px; }
+
+/* switch — a real switch (button[role=switch]), not a styled checkbox */
+.wf .switch { position: relative; flex-shrink: 0; cursor: pointer;
+  width: var(--sp-10); height: var(--sp-6); border-radius: var(--r-full);
+  background: var(--w-border); transition: background 120ms; }
+.wf .switch::after { content: ""; position: absolute;
+  top: var(--sp-1); left: var(--sp-1);
+  width: var(--sp-4); height: var(--sp-4); border-radius: var(--r-full);
+  background: var(--w-canvas); transition: left 120ms; }
+.wf .switch[aria-checked="true"] { background: var(--w-accent); }
+.wf .switch[aria-checked="true"]::after { left: var(--sp-5); }
+
+/* ═══ chips ══════════════════════════════════════════════════════ */
+
+.wf .chip {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  height: var(--h-sm); padding: 0 var(--sp-4);
+  border: 1px solid var(--w-border); border-radius: var(--r-full);
+  background: var(--w-canvas); color: var(--w-ink1);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  transition: background 120ms;
+}
+.wf .chip:hover { background: var(--w-surface); }
+.wf .chip.active, .wf .chip[aria-pressed="true"] {
+  background: var(--w-accent); color: var(--w-on-accent); border-color: var(--w-accent); }
+
+/* ═══ tabs ═══════════════════════════════════════════════════════ */
+
+.wf .tabs { display: flex; gap: var(--sp-6);
+  border-bottom: 1px solid var(--w-border); }
+.wf .tabs .tab-item {
+  height: var(--h-md); display: inline-flex; align-items: center;
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  color: var(--w-ink2); border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.wf .tabs .tab-item:hover { color: var(--w-ink1); }
+.wf .tabs .tab-item.active { color: var(--w-ink1); font-weight: 600;
+  border-bottom-color: var(--w-accent); }
+
+.wf .tabbar { display: flex; border-top: 1px solid var(--w-border);
+  padding: var(--sp-2) 0 var(--sp-1); background: var(--w-canvas); }
+.wf .tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: var(--sp-1); min-height: var(--h-lg);
+  font-size: var(--t-xs); line-height: var(--t-xs-lh); color: var(--w-ink2);
+}
+.wf .tab:hover { color: var(--w-ink1); }
+.wf .tab.active { color: var(--w-accent); font-weight: 600; }
+
+/* ═══ app bar ════════════════════════════════════════════════════ */
+
+.wf .appbar {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-lg); padding: var(--sp-2) var(--sp-4);
+  background: var(--w-canvas); border-bottom: 1px solid var(--w-border);
+}
+.wf .appbar .t-title, .wf .appbar .t-heading { margin: 0; }
+
+/* ═══ avatars · media · badges · divider ═════════════════════════ */
+
+.wf .avatar { display: inline-block; flex-shrink: 0;
+  width: var(--sp-8); height: var(--sp-8); border-radius: var(--r-full);
+  background: var(--w-border); }
+.wf .avatar-sm { width: var(--sp-5); height: var(--sp-5); }
+.wf .avatar-lg { width: var(--sp-12); height: var(--sp-12); }
+
+.wf .media { background: var(--w-surface);
+  border: 1px solid var(--w-border); border-radius: var(--r-sm); }
+
+.wf .badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--sp-5); height: var(--sp-5); padding: 0 var(--sp-2);
+  border-radius: var(--r-full); background: var(--w-ink1);
+  color: var(--w-canvas); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600;
+}
+.wf .badge-muted { background: var(--w-surface); color: var(--w-ink2);
+  border: 1px solid var(--w-border); }
+.wf .badge-accent { background: var(--w-accent-soft); color: var(--w-accent); }
+[data-theme="dark"] .wf .badge-accent { color: var(--w-ink1); }
+
+.wf .link { color: var(--w-accent); text-decoration: underline;
+  text-underline-offset: 2px; cursor: pointer; }
+.wf .link:hover { text-decoration: none; }
+
+.wf .divider { border: 0; border-top: 1px solid var(--w-border);
+  margin: var(--sp-4) 0; }
+
+/* ═══ loading — skeletons · spinner ══════════════════════════════ */
+
+.wf .skeleton { background: var(--w-surface); border-radius: var(--r-sm);
+  animation: wf-pulse 1.6s ease-in-out infinite; }
+.wf .skeleton-text  { height: var(--sp-3); }
+.wf .skeleton-title { height: var(--sp-5); }
+@keyframes wf-pulse { 50% { opacity: 0.55; } }
+
+.wf .spinner { display: inline-block; flex-shrink: 0;
+  width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: wf-spin 0.7s linear infinite; }
+@keyframes wf-spin { to { transform: rotate(1turn); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .wf .skeleton { animation: none; }
+  .wf .spinner { animation: none; border-right-color: currentColor;
+    opacity: 0.55; } /* the button label ("Posting…") carries the state */
+}
+
+/* ═══ cards · list rows ══════════════════════════════════════════ */
+
+.wf .card { background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); overflow: hidden; }
+.wf .card .media { border-left: 0; border-right: 0; border-top: 0; border-radius: 0; }
+.wf .card-body { padding: var(--sp-3); }
+.wf .card.interactive { transition: border-color 120ms; cursor: pointer; }
+.wf .card.interactive:hover { border-color: var(--w-ink2); }
+
+.wf .list { display: flex; flex-direction: column; }
+.wf .list-row {
+  display: flex; align-items: center; gap: var(--sp-3);
+  width: 100%; min-height: var(--h-lg); padding: var(--sp-2) var(--sp-4);
+  border-bottom: 1px solid var(--w-border); text-align: left;
+  transition: background 120ms;
+}
+.wf .list-row:hover { background: var(--w-surface); }
+.wf .list-row .grow { flex: 1; min-width: 0; }
+
+/* ═══ tables ═════════════════════════════════════════════════════ */
+
+.wf table { width: 100%; border-collapse: collapse;
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); }
+.wf th { text-align: left; font-weight: 600;
+  padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--w-ink2); }
+.wf td { padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--w-border); }
+.wf tbody tr { transition: background 120ms; }
+.wf tbody tr:hover { background: var(--w-surface); }
+
+/* ═══ modal / sheet · toast · scrim ══════════════════════════════ */
+/* Elevation doctrine: a scrim plus a hairline border. No glow.      */
+
+.wf .scrim { background: rgba(0, 0, 0, 0.4); }
+.wf .modal {
+  background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); padding: var(--sp-6);
+  max-width: 480px;
+}
+.wf .modal-actions { display: flex; justify-content: flex-end;
+  gap: var(--sp-3); margin-top: var(--sp-6); }
+.wf .sheet { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.wf .sheet-handle { width: var(--sp-10); height: var(--sp-1);
+  border-radius: var(--r-full); background: var(--w-border);
+  margin: 0 auto var(--sp-4); }
+
+.wf .toast {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-md); padding: var(--sp-2) var(--sp-2) var(--sp-2) var(--sp-4);
+  background: var(--w-ink1); color: var(--w-canvas);
+  border-radius: var(--r-md); font-size: var(--t-sm); line-height: var(--t-sm-lh);
+}
+.wf .toast .btn-icon { color: var(--w-canvas); }
+.wf .toast .btn-icon:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ═══ layout primitives ══════════════════════════════════════════ */
+
+.wf .row { display: flex; align-items: center; gap: var(--sp-2); }
+.wf .stack > * + * { margin-top: var(--sp-3); }
+.wf .grow { flex: 1; min-width: 0; }
+.wf .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+.wf .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3); }
+.wf .screen-body { padding: var(--sp-4); }
+
+/* ═══ thumbnails (lo-fi) — idea vignettes ════════════════════════ */
+/* A thumbnail is one IDEA, not an abstraction: a focused UI fragment
+   built from this same kit at natural size, staged centered on a
+   muted panel, with a caption that narrates the concept — index,
+   title, one breath of description. A board of them is divergence at
+   the mechanism level: many different answers to one problem, each
+   shown as the piece of real UI where the idea lives. The vignette
+   itself contains only real UI; the caption is annotation-layer
+   narration (its index number carries the annotation accent). */
+
+.wf .vignette {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--w-surface); padding: var(--sp-8);
+  min-height: calc(var(--sp-12) * 5);
+}
+.wf .vignette > * { max-width: 100%; }
+.wf .vignette.dots {
+  background-image: radial-gradient(var(--w-border) 1px, transparent 1px);
+  background-size: var(--sp-4) var(--sp-4);
+}
+/* a floating piece of UI on the stage */
+.wf .vignette .float {
+  background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); padding: var(--sp-4); width: 100%;
+}
+.wf .idea-caption { padding: var(--sp-4); }
+.wf .idea-num {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 700;
+  color: var(--note); /* annotation layer: the index narrates, it isn't UI */
+}
+.wf .idea-title {
+  font-size: var(--t-lg); line-height: var(--t-lg-lh); font-weight: 700;
+  margin: var(--sp-1) 0 var(--sp-2);
+}
+.wf .idea-desc {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  color: var(--w-ink2); margin: 0;
+}
+```
+
+## Reference asset: references/viewer.css
+
+```css
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — viewer chrome
+   The stage every wireframe artifact renders on. Follows the Intent
+   website's design language (cool-tinted neutrals, General Sans
+   display, Hanken Grotesk body, SF Mono labels) and the same absolute
+   4px token law as the design system. Monochrome by rule: the site's
+   indigo belongs to the annotation layer, never to chrome.
+
+   Layer separation: chrome variables (--stage, --chrome-*) never
+   appear inside wireframe content; ramp variables (--w-*) never
+   appear in chrome.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --stage:         #fafafc;
+  --chrome-fg:     #18182b;
+  --chrome-ink:    #65657a;
+  --chrome-border: #d8d8e4;
+
+  --display: "General Sans", system-ui, -apple-system, sans-serif;
+  --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono:    "SF Mono", "Fira Code", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  --stage:         #18182b;
+  --chrome-fg:     #f0f0f8;
+  --chrome-ink:    #8888a8;
+  --chrome-border: #2a2a44;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: var(--sp-8);
+  background: var(--stage); font-family: var(--sans);
+  color: var(--chrome-fg); line-height: 1.5;
+}
+
+/* ── header ─────────────────────────────────────────────────────── */
+
+.board-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: var(--sp-8);
+}
+.board-title {
+  font-family: var(--display); font-size: var(--t-lg);
+  line-height: var(--t-lg-lh); font-weight: 700;
+  letter-spacing: -0.02em; color: var(--chrome-fg);
+}
+.board-controls { display: flex; align-items: center; gap: var(--sp-6); }
+
+.view-toggle { display: flex; gap: var(--sp-1); }
+.view-toggle button {
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  height: var(--h-sm); padding: 0 var(--sp-3); background: none;
+  border: 1px solid var(--chrome-border); border-radius: var(--r-md);
+  color: var(--chrome-ink);
+}
+.view-toggle button:hover { color: var(--chrome-fg); }
+.view-toggle button[aria-pressed="true"] {
+  border-color: var(--chrome-ink); color: var(--chrome-fg); }
+
+/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
+.theme-toggle {
+  display: flex; align-items: center; gap: var(--sp-2);
+  background: none; border: none; cursor: pointer;
+  height: var(--h-sm); padding: 0;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+}
+.theme-toggle:hover { color: var(--chrome-fg); }
+.theme-toggle .swatch {
+  width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
+  border: 1px solid var(--chrome-ink);
+  background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
+}
+
+/* ── section index (sidebar) — a reference you can jump around ──── */
+/* Two-column shell: 180px sticky label rail | content. Mirrors the
+   Intent site's own layout convention. Collapses on narrow screens. */
+
+.board-with-index { display: flex; gap: var(--sp-12); align-items: flex-start; }
+.board-main { flex: 1; min-width: 0; }
+.board-index {
+  position: sticky; top: var(--sp-8); flex-shrink: 0; width: 180px;
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  padding-right: var(--sp-4); border-right: 1px solid var(--chrome-border);
+}
+.board-index a {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); text-decoration: none;
+}
+.board-index a:hover { color: var(--chrome-fg); }
+@media (max-width: 900px) {
+  .board-with-index { display: block; }
+  .board-index {
+    position: static; width: auto; border-right: 0;
+    flex-direction: row; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4);
+    padding: 0 0 var(--sp-3); margin-bottom: var(--sp-6);
+    border-bottom: 1px solid var(--chrome-border);
+  }
+}
+
+/* ── sections · frames · plates ─────────────────────────────────── */
+
+.board-section { margin-bottom: var(--sp-16); scroll-margin-top: var(--sp-16); }
+.section-label {
+  font-family: var(--mono); font-size: var(--t-sm);
+  line-height: var(--t-sm-lh); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border);
+  padding-bottom: var(--sp-2); margin-bottom: var(--sp-4);
+}
+.frame-grid { display: flex; flex-wrap: wrap; gap: var(--sp-6);
+  align-items: flex-start; }
+.frame { background: none; border: none; }
+.frame-plate {
+  display: flex; gap: var(--sp-2); align-items: baseline;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+  padding: 0 var(--sp-1); margin-bottom: var(--sp-2);
+}
+.frame-rung { opacity: 0.65; }
+.frame > .wf {
+  border: 1px solid var(--chrome-border);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+
+/* ── slideshow view — wireframe 2/3, notes rail 1/3 ─────────────── */
+
+body[data-view="slides"] .frame { display: none; }
+body[data-view="slides"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
+body[data-view="slides"] .board-section:has(.frame.active) {
+  display: grid; grid-template-columns: 2fr 1fr;
+  gap: var(--sp-6); align-items: start;
+}
+body[data-view="slides"] .board-section:has(.frame.active) .section-label { grid-column: 1 / -1; }
+body[data-view="slides"] .note-rail { max-width: none; margin-top: 0; }
+body[data-view="slides"] .board-section:not(:has(.frame.active)) { display: none; }
+
+.slide-nav { display: none; }
+body[data-view="slides"] .slide-nav {
+  display: flex; gap: var(--sp-3); align-items: center; justify-content: center;
+  margin-top: var(--sp-6); font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--chrome-ink);
+}
+.slide-nav button { font: inherit; color: inherit; cursor: pointer;
+  background: none; border: 1px solid var(--chrome-border);
+  border-radius: var(--r-md); height: var(--h-sm); padding: 0 var(--sp-3); }
+
+/* ── prototype view — the wireframes ARE the prototype ──────────── */
+
+body[data-view="proto"] .frame { display: none; }
+body[data-view="proto"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
+body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none; }
+body[data-view="proto"] .section-label,
+body[data-view="proto"] .note-rail,
+body[data-view="proto"] .note-marker { display: none; }
+body[data-view="proto"] [data-go] { cursor: pointer; }
+
+/* ── annotation layer (accent lives here ONLY) ──────────────────── */
+
+.note-marker {
+  position: absolute; width: var(--sp-6); height: var(--sp-6);
+  border-radius: var(--r-full); background: var(--note); color: #ffffff;
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.note-rail {
+  max-width: 320px; margin-top: var(--sp-4);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); color: var(--chrome-ink);
+}
+.note-rail p { margin: 0 0 var(--sp-3); }
+.note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
+```
+
+## Reference asset: references/viewer.js
+
+```js
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — viewer behavior
+   The script every HTML wireframe artifact embeds verbatim, after
+   viewer.css. Powers the chrome (view toggle, slideshow, theme) and
+   the kit's stateful controls (chips, switches, prototype triggers).
+
+   View model: body[data-view] = grid | slides | proto. Slides pages
+   frames in section order; proto makes the wireframes themselves the
+   prototype — data-go on real trigger elements navigates the flow.
+   Esc always returns to grid.
+
+   Theme: body[data-theme] = light | dark, initialized from the OS
+   preference. Set on documentElement too so :root-scoped variables
+   theme along with body-scoped ones.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const frames = [...document.querySelectorAll('.frame')];
+let cur = 0;
+
+function setView(v) {
+  document.body.dataset.view = v;
+  document.querySelectorAll('[data-setview]').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.setview === v)));
+  if (v !== 'grid') show(cur);
+}
+function show(i) {
+  cur = (i + frames.length) % frames.length;
+  frames.forEach((f, n) => f.classList.toggle('active', n === cur));
+  const sec = frames[cur].closest('.board-section')?.dataset.section || '';
+  const pos = document.querySelector('.slide-pos');
+  if (pos) pos.textContent =
+    `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+}
+document.querySelectorAll('[data-setview]').forEach(b =>
+  b.addEventListener('click', () => setView(b.dataset.setview)));
+document.querySelector('[data-prev]')?.addEventListener('click', () => show(cur - 1));
+document.querySelector('[data-next]')?.addEventListener('click', () => show(cur + 1));
+addEventListener('keydown', e => {
+  const v = document.body.dataset.view;
+  if (v === 'grid') return;
+  if (v === 'slides' && e.key === 'ArrowLeft') show(cur - 1);
+  if (v === 'slides' && e.key === 'ArrowRight') show(cur + 1);
+  if (e.key === 'Escape') setView('grid');
+});
+
+/* theme — a stage-mode switch, initialized from the OS */
+const th = document.querySelector('[data-toggle-theme]');
+const thLabel = th?.querySelector('.theme-label');
+function setTheme(dark) {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.body.dataset.theme = dark ? 'dark' : 'light';
+  th?.setAttribute('aria-pressed', String(dark));
+  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
+}
+setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
+th?.addEventListener('click', () =>
+  setTheme(document.body.dataset.theme !== 'dark'));
+
+/* prototype — the real trigger elements navigate the flow */
+document.querySelectorAll('[data-go]').forEach(el =>
+  el.addEventListener('click', () => {
+    if (document.body.dataset.view !== 'proto') return;
+    const t = document.getElementById(el.dataset.go);
+    if (t) show(frames.indexOf(t));
+  }));
+
+/* kit controls are real — chips and switches toggle */
+document.querySelectorAll('.wf .chip').forEach(c =>
+  c.addEventListener('click', () => c.classList.toggle('active')));
+document.querySelectorAll('.wf .switch').forEach(s =>
+  s.addEventListener('click', () =>
+    s.setAttribute('aria-checked', String(s.getAttribute('aria-checked') !== 'true'))));
+```

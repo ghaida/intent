@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intent /wireframe — design system styleguide</title>
+<link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="viewer.css">
+<style>
+/* styleguide-only scaffolding (chrome palette, token law) */
+.sg-row { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: flex-end; }
+.sg-col { display: flex; flex-direction: column; gap: var(--sp-4); }
+.sg-specimen { display: flex; flex-direction: column; gap: var(--sp-2); }
+.sg-cap {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  color: var(--chrome-ink); letter-spacing: 0.04em;
+}
+.sg-block { background: var(--w-canvas); border: 1px solid var(--chrome-border);
+  border-radius: var(--r-lg); padding: var(--sp-6); }
+.sg-swatch { width: var(--sp-16); height: var(--sp-12);
+  border-radius: var(--r-md); border: 1px solid var(--chrome-border); }
+.sg-bar { background: var(--chrome-ink); height: var(--sp-3); border-radius: var(--r-sm); }
+.sg-note {
+  font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--chrome-ink);
+  max-width: 60ch; margin: 0 0 var(--sp-4);
+}
+.sg-glyph-grid { display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+</style>
+</head>
+<body data-theme="light">
+  <header class="board-header">
+    <div class="board-title">/wireframe — design system</div>
+    <div class="board-controls">
+      <button class="theme-toggle" data-toggle-theme aria-pressed="false">
+        <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="board-with-index">
+
+  <nav class="board-index" aria-label="Sections">
+    <a href="#ramp">Palette</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#type">Type</a>
+    <a href="#sizes">Sizes</a>
+    <a href="#glyphs">Glyphs</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#forms">Forms</a>
+    <a href="#errors">Errors</a>
+    <a href="#loading">Loading</a>
+    <a href="#chips-tabs">Chips · Tabs</a>
+    <a href="#objects">Objects</a>
+    <a href="#cards">Cards · Lists</a>
+    <a href="#table">Table</a>
+    <a href="#overlays">Overlays</a>
+    <a href="#thumbnails">Thumbnails</a>
+  </nav>
+
+  <main class="board-main">
+
+  <!-- ════════════════ TOKENS ════════════════ -->
+  <!-- Every size, margin, gap, padding, radius, control height, icon
+       size, type size, and line-height comes from the tokens below.
+       4px grid, absolute. Raw pixel values in artifact markup are a
+       violation. -->
+
+  <section class="board-section" id="ramp">
+    <h2 class="section-label">Tokens · palette</h2>
+    <p class="sg-note">The five-role grayscale ramp, the Intent indigo accent for
+    primary actions and selection states, and one semantic exception for invalid
+    states. Wireframe content uses these variables only. The annotation layer
+    shares the indigo but speaks in its own shapes — numbered markers and the
+    notes rail, never controls.</p>
+    <div class="sg-row">
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-canvas)"></div><span class="sg-cap">--w-canvas</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-surface)"></div><span class="sg-cap">--w-surface</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-border)"></div><span class="sg-cap">--w-border</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-ink2)"></div><span class="sg-cap">--w-ink2</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-ink1)"></div><span class="sg-cap">--w-ink1</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-accent)"></div><span class="sg-cap">--w-accent</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-accent-soft)"></div><span class="sg-cap">--w-accent-soft</span></div>
+      <div class="sg-specimen"><div class="sg-swatch" style="background: var(--w-error)"></div><span class="sg-cap">--w-error (invalid only)</span></div>
+    </div>
+  </section>
+
+  <section class="board-section" id="spacing">
+    <h2 class="section-label">Tokens · spacing scale</h2>
+    <div class="sg-col">
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-1)"></div><span class="sg-cap">--sp-1 · 4</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-2)"></div><span class="sg-cap">--sp-2 · 8</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-3)"></div><span class="sg-cap">--sp-3 · 12</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-4)"></div><span class="sg-cap">--sp-4 · 16</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-5)"></div><span class="sg-cap">--sp-5 · 20</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-6)"></div><span class="sg-cap">--sp-6 · 24</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-8)"></div><span class="sg-cap">--sp-8 · 32</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-10)"></div><span class="sg-cap">--sp-10 · 40</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-12)"></div><span class="sg-cap">--sp-12 · 48</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-14)"></div><span class="sg-cap">--sp-14 · 56</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-16)"></div><span class="sg-cap">--sp-16 · 64</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-18)"></div><span class="sg-cap">--sp-18 · 72</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-20)"></div><span class="sg-cap">--sp-20 · 80</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-22)"></div><span class="sg-cap">--sp-22 · 88</span></div>
+      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-23)"></div><span class="sg-cap">--sp-23 · 92</span></div>
+    </div>
+  </section>
+
+  <section class="board-section" id="type">
+    <h2 class="section-label">Tokens · type scale</h2>
+    <p class="sg-note">Grid-locked size/line-height pairs in the neutral content font,
+    floored for legibility (nothing under 13px). Hierarchy comes from size and
+    weight — never typeface.</p>
+    <div class="sg-block wf sg-col">
+      <div class="sg-specimen"><span class="t-display">Posted to Maplewood</span><span class="sg-cap">t-display · 32/40 · 700</span></div>
+      <div class="sg-specimen"><span class="t-title">Posted to Maplewood</span><span class="sg-cap">t-title · 24/32 · 700</span></div>
+      <div class="sg-specimen"><span class="t-heading">Near you today</span><span class="sg-cap">t-heading · 20/28 · 600</span></div>
+      <div class="sg-specimen"><span class="t-body-strong">Desk lamp — $10</span><span class="sg-cap">t-body-strong · 16/24 · 600</span></div>
+      <div class="sg-specimen"><span class="t-body">Warm brass lamp, works great. Pickup only.</span><span class="sg-cap">t-body · 16/24 · 400</span></div>
+      <div class="sg-specimen"><span class="t-small">Visible to neighbors within 1 mile. No fees, ever.</span><span class="sg-cap">t-small · 15/20 · 400</span></div>
+      <div class="sg-specimen"><span class="t-caption muted">Mara T. · 0.3 mi · 2h</span><span class="sg-cap">t-caption · 13/20 · 400</span></div>
+    </div>
+  </section>
+
+  <section class="board-section" id="sizes">
+    <h2 class="section-label">Tokens · heights, icons, radii</h2>
+    <div class="sg-block wf sg-row">
+      <div class="sg-specimen"><button class="btn btn-secondary btn-sm">32</button><span class="sg-cap">--h-sm · 32</span></div>
+      <div class="sg-specimen"><button class="btn btn-secondary">40</button><span class="sg-cap">--h-md · 40</span></div>
+      <div class="sg-specimen"><button class="btn btn-secondary btn-lg">48</button><span class="sg-cap">--h-lg · 48</span></div>
+      <div class="sg-specimen"><span class="glyph glyph-sm gl-search"></span><span class="sg-cap">--ic-sm · 16</span></div>
+      <div class="sg-specimen"><span class="glyph gl-search"></span><span class="sg-cap">--ic-md · 20</span></div>
+      <div class="sg-specimen"><span class="glyph glyph-lg gl-search"></span><span class="sg-cap">--ic-lg · 24</span></div>
+      <div class="sg-specimen"><div class="media" style="width: var(--sp-12); height: var(--sp-12); border-radius: var(--r-sm)"></div><span class="sg-cap">--r-sm · 2</span></div>
+      <div class="sg-specimen"><div class="media" style="width: var(--sp-12); height: var(--sp-12); border-radius: var(--r-md)"></div><span class="sg-cap">--r-md · 4</span></div>
+      <div class="sg-specimen"><div class="media" style="width: var(--sp-12); height: var(--sp-12); border-radius: var(--r-lg)"></div><span class="sg-cap">--r-lg · 8</span></div>
+      <div class="sg-specimen"><div class="media" style="width: var(--sp-12); height: var(--sp-12); border-radius: var(--r-full)"></div><span class="sg-cap">--r-full</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ COMPONENTS ════════════════ -->
+
+  <section class="board-section" id="glyphs">
+    <h2 class="section-label">Glyphs · icons</h2>
+    <p class="sg-note">Two roles, one rule. Functional glyphs (chevrons, search, check, ×)
+    are drawn SVG rendered in currentColor — never text characters. The featureless
+    circle is the placeholder for app-specific icons that aren't decided yet.
+    An icon-only button always carries an aria-label.</p>
+    <div class="sg-block wf sg-col">
+      <div class="sg-glyph-grid">
+        <div class="sg-specimen"><span class="glyph gl-chevron"></span><span class="sg-cap">gl-chevron</span></div>
+        <div class="sg-specimen"><span class="glyph gl-search"></span><span class="sg-cap">gl-search</span></div>
+        <div class="sg-specimen"><span class="glyph gl-check"></span><span class="sg-cap">gl-check</span></div>
+        <div class="sg-specimen"><span class="glyph gl-x"></span><span class="sg-cap">gl-x</span></div>
+        <div class="sg-specimen"><span class="glyph gl-plus"></span><span class="sg-cap">gl-plus</span></div>
+        <div class="sg-specimen"><span class="glyph gl-bell"></span><span class="sg-cap">gl-bell</span></div>
+        <div class="sg-specimen"><span class="glyph gl-camera"></span><span class="sg-cap">gl-camera</span></div>
+        <div class="sg-specimen"><span class="glyph gl-alert"></span><span class="sg-cap">gl-alert</span></div>
+        <div class="sg-specimen"><span class="glyph gl-arrow-left"></span><span class="sg-cap">gl-arrow-left</span></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-specimen"><span class="icon icon-sm"></span><span class="sg-cap">icon-sm (placeholder)</span></div>
+        <div class="sg-specimen"><span class="icon icon-md"></span><span class="sg-cap">icon-md (placeholder)</span></div>
+        <div class="sg-specimen"><span class="icon"></span><span class="sg-cap">icon (placeholder)</span></div>
+        <div class="sg-specimen"><button class="btn-icon" aria-label="Notifications"><span class="glyph gl-bell"></span></button><span class="sg-cap">btn-icon + aria-label</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="board-section" id="buttons">
+    <h2 class="section-label">Buttons · 3 styles × 3 sizes</h2>
+    <p class="sg-note">Native buttons. Hover, press, focus, and disabled states are
+    real — try them.</p>
+    <div class="sg-block wf sg-col">
+      <div class="sg-row">
+        <button class="btn btn-primary btn-sm">Post item</button>
+        <button class="btn btn-primary">Post item</button>
+        <button class="btn btn-primary btn-lg">Post item</button>
+        <button class="btn btn-primary" disabled>Post item</button>
+      </div>
+      <span class="sg-cap">btn-primary · sm / md / lg / disabled</span>
+      <div class="sg-row">
+        <button class="btn btn-secondary btn-sm">Save draft</button>
+        <button class="btn btn-secondary">Save draft</button>
+        <button class="btn btn-secondary btn-lg">Save draft</button>
+        <button class="btn btn-secondary" disabled>Save draft</button>
+      </div>
+      <span class="sg-cap">btn-secondary · sm / md / lg / disabled</span>
+      <div class="sg-row">
+        <button class="btn btn-ghost btn-sm">Cancel</button>
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-ghost btn-lg">Cancel</button>
+        <button class="btn btn-ghost" disabled>Cancel</button>
+      </div>
+      <span class="sg-cap">btn-ghost · sm / md / lg / disabled</span>
+      <button class="btn btn-primary btn-block">Post item</button>
+      <span class="sg-cap">btn-block</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="forms">
+    <h2 class="section-label">Form controls</h2>
+    <p class="sg-note">All native and functional: type in them, tab through them,
+    toggle them. Focus = 2px secondary-ink ring.</p>
+    <div class="sg-block wf sg-col" style="max-width: 480px">
+      <label class="field">
+        <span class="field-label">Title</span>
+        <input class="input" type="text" value="Desk lamp">
+        <span class="field-hint">Shown on your listing card.</span>
+      </label>
+      <label class="field">
+        <span class="field-label">Title (empty)</span>
+        <input class="input" type="text" placeholder="What are you selling?">
+      </label>
+      <label class="field">
+        <span class="field-label">Title (disabled)</span>
+        <input class="input" type="text" value="Desk lamp" disabled>
+      </label>
+      <label class="field">
+        <span class="field-label">Description</span>
+        <textarea class="textarea">Warm brass lamp, works great. Pickup only.</textarea>
+      </label>
+      <div class="field">
+        <span class="field-label">Category</span>
+        <button class="select" aria-haspopup="listbox"><span>Home &amp; furniture</span></button>
+      </div>
+      <div class="field search">
+        <span class="glyph gl-search" aria-hidden="true"></span>
+        <input class="input" type="search" placeholder="Search your neighborhood">
+      </div>
+      <span class="sg-cap">search — input with leading drawn glyph</span>
+      <label class="choice"><input type="checkbox" checked> Include sold items</label>
+      <label class="choice"><input type="checkbox"> Email me about new listings</label>
+      <label class="choice"><input type="radio" name="sg-r" checked> Pickup only</label>
+      <label class="choice"><input type="radio" name="sg-r"> Can deliver</label>
+      <div class="choice">
+        <button class="switch" role="switch" aria-checked="true" aria-label="Visible to neighbors"></button>
+        <span>Visible to neighbors</span>
+      </div>
+      <div class="choice">
+        <button class="switch" role="switch" aria-checked="false" aria-label="Auto-renew listing"></button>
+        <span>Auto-renew listing</span>
+      </div>
+      <span class="sg-cap">checkbox · radio · switch (role="switch") — all toggle</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="errors">
+    <h2 class="section-label">Error states</h2>
+    <p class="sg-note">The ramp's single semantic exception: --w-error, for invalid
+    states only. Never decorative, never for emphasis — if it isn't telling the
+    user something is wrong, it stays gray.</p>
+    <div class="sg-block wf sg-col" style="max-width: 480px">
+      <label class="field">
+        <span class="field-label">Price</span>
+        <input class="input error" type="text" value="ten dollars" aria-invalid="true" aria-describedby="sg-err-1">
+        <span class="field-error" id="sg-err-1"><span class="glyph glyph-sm gl-alert" aria-hidden="true"></span>Enter a number, like 10 — or tap Free.</span>
+      </label>
+      <label class="field">
+        <span class="field-label">Title</span>
+        <input class="input error" type="text" placeholder="What are you selling?" aria-invalid="true" aria-describedby="sg-err-2">
+        <span class="field-error" id="sg-err-2"><span class="glyph glyph-sm gl-alert" aria-hidden="true"></span>A title is required to post.</span>
+      </label>
+      <span class="sg-cap">input.error + field-error — what happened, then what to do</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="loading">
+    <h2 class="section-label">Loading · skeletons</h2>
+    <p class="sg-note">Skeletons for content, a spinner only inside controls.
+    The label carries the state ("Posting…") — motion just reinforces it, and
+    reduced-motion users get a static treatment.</p>
+    <div class="sg-block wf sg-col" style="max-width: 480px">
+      <div class="row">
+        <button class="btn btn-primary" disabled><span class="spinner" aria-hidden="true"></span>Posting…</button>
+        <button class="btn btn-secondary" disabled><span class="spinner" aria-hidden="true"></span>Loading more</button>
+      </div>
+      <span class="sg-cap">loading buttons — spinner + honest label</span>
+      <div class="card" style="max-width: 240px">
+        <div class="skeleton" style="height: var(--sp-16); border-radius: 0"></div>
+        <div class="card-body sg-col" style="gap: var(--sp-2)">
+          <div class="skeleton skeleton-title" style="width: 70%"></div>
+          <div class="skeleton skeleton-text" style="width: 40%"></div>
+          <div class="skeleton skeleton-text" style="width: 85%"></div>
+        </div>
+      </div>
+      <span class="sg-cap">skeleton card — surface-tone blocks, no spinners in content</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="chips-tabs">
+    <h2 class="section-label">Chips · tabs · app bar</h2>
+    <div class="sg-block wf sg-col">
+      <div class="sg-row">
+        <button class="chip active">All</button>
+        <button class="chip">Free</button>
+        <button class="chip">Furniture</button>
+        <button class="chip">Kids</button>
+      </div>
+      <span class="sg-cap">chips — click to toggle</span>
+      <nav class="tabs">
+        <button class="tab-item active">Listings</button>
+        <button class="tab-item">Saved</button>
+        <button class="tab-item">Archive</button>
+      </nav>
+      <span class="sg-cap">inline tabs</span>
+      <div style="max-width: 390px; border: 1px solid var(--w-border); border-radius: var(--r-md)">
+        <nav class="tabbar">
+          <button class="tab active"><span class="icon icon-md" aria-hidden="true"></span>Home</button>
+          <button class="tab"><span class="icon icon-md" aria-hidden="true"></span>Saved</button>
+          <button class="tab"><span class="icon icon-md" aria-hidden="true"></span>Post</button>
+          <button class="tab"><span class="icon icon-md" aria-hidden="true"></span>Messages</button>
+          <button class="tab"><span class="icon icon-md" aria-hidden="true"></span>Profile</button>
+        </nav>
+      </div>
+      <span class="sg-cap">bottom tab bar (mobile) — placeholder icons + real labels</span>
+      <div style="max-width: 390px; border: 1px solid var(--w-border); border-radius: var(--r-md); overflow: hidden">
+        <header class="appbar">
+          <button class="btn-icon" aria-label="Back"><span class="glyph gl-arrow-left"></span></button>
+          <span class="t-heading grow" style="font-size: var(--t-md); line-height: var(--t-md-lh)">Nearby</span>
+          <span class="t-caption muted">Maplewood · 1 mi</span>
+          <button class="btn-icon" aria-label="Notifications"><span class="glyph gl-bell"></span></button>
+        </header>
+      </div>
+      <span class="sg-cap">app bar — icon-only actions carry aria-labels</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="objects">
+    <h2 class="section-label">Avatars · media · badges · divider</h2>
+    <div class="sg-block wf sg-col">
+      <div class="sg-row">
+        <span class="avatar avatar-sm"></span>
+        <span class="avatar"></span>
+        <span class="avatar avatar-lg"></span>
+        <div class="media" style="width: var(--sp-16); height: var(--sp-12)"></div>
+        <span class="badge">3</span>
+        <span class="badge">12</span>
+        <span class="badge badge-muted">Draft</span>
+        <span class="badge badge-accent">Consented</span>
+        <button class="link" style="background:none;border:none;padding:0">nearby.app/maplewood</button>
+      </div>
+      <span class="sg-cap">avatar sm/md/lg · media block · badges · link</span>
+      <hr class="divider">
+      <span class="sg-cap">divider</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="cards">
+    <h2 class="section-label">Cards · list rows</h2>
+    <div class="sg-block wf sg-col">
+      <div class="grid-2" style="max-width: 480px">
+        <div class="card interactive">
+          <div class="media" style="height: var(--sp-16)"></div>
+          <div class="card-body">
+            <p class="t-body-strong" style="margin: 0">Desk lamp</p>
+            <p class="t-body-strong" style="margin: var(--sp-1) 0 0">$10</p>
+            <div class="row" style="margin-top: var(--sp-2)">
+              <span class="avatar avatar-sm"></span>
+              <span class="t-caption muted">Mara T. · 0.3 mi · 2h</span>
+            </div>
+          </div>
+        </div>
+        <div class="card interactive">
+          <div class="media" style="height: var(--sp-16)"></div>
+          <div class="card-body">
+            <p class="t-body-strong" style="margin: 0">Kids bike, 16-inch</p>
+            <p class="t-body-strong" style="margin: var(--sp-1) 0 0">$35</p>
+            <div class="row" style="margin-top: var(--sp-2)">
+              <span class="avatar avatar-sm"></span>
+              <span class="t-caption muted">Dev P. · 0.5 mi · 4h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="sg-cap">card.interactive — hover the border</span>
+      <div class="list" style="max-width: 480px; border: 1px solid var(--w-border); border-radius: var(--r-lg); overflow: hidden">
+        <button class="list-row">
+          <span class="avatar"></span>
+          <span class="grow">
+            <span class="t-body-strong" style="display: block">Mara T.</span>
+            <span class="t-caption muted">Is the lamp still available?</span>
+          </span>
+          <span class="t-caption muted">2h</span>
+          <span class="badge">1</span>
+        </button>
+        <button class="list-row">
+          <span class="avatar"></span>
+          <span class="grow">
+            <span class="t-body-strong" style="display: block">Dev P.</span>
+            <span class="t-caption muted">Can you do $30 for the bike?</span>
+          </span>
+          <span class="t-caption muted">1d</span>
+        </button>
+      </div>
+      <span class="sg-cap">list rows — hover fills with surface</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="table">
+    <h2 class="section-label">Table</h2>
+    <div class="sg-block wf">
+      <table style="max-width: 560px">
+        <thead>
+          <tr><th>Listing</th><th>Price</th><th>Views</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Desk lamp</td><td>$10</td><td>34</td><td>Active</td></tr>
+          <tr><td>Kids bike, 16-inch</td><td>$35</td><td>112</td><td>Active</td></tr>
+          <tr><td>Moving boxes (12)</td><td>Free</td><td>56</td><td>Claimed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="board-section" id="overlays">
+    <h2 class="section-label">Modal · sheet · toast</h2>
+    <p class="sg-note">Elevation doctrine: a scrim plus a hairline border.
+    No soft glow shadows.</p>
+    <div class="sg-block wf sg-col">
+      <div class="scrim" style="padding: var(--sp-8); border-radius: var(--r-lg); max-width: 560px">
+        <div class="modal">
+          <p class="t-heading" style="margin: 0 0 var(--sp-2)">Delete this listing?</p>
+          <p class="t-body muted" style="margin: 0">"Desk lamp" will be removed for the 842 neighbors who can see it. This can't be undone.</p>
+          <div class="modal-actions">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Delete listing</button>
+          </div>
+        </div>
+      </div>
+      <span class="sg-cap">modal on its scrim</span>
+      <div class="modal sheet" style="max-width: 390px">
+        <div class="sheet-handle"></div>
+        <p class="t-heading" style="margin: 0 0 var(--sp-2)">Share listing</p>
+        <button class="list-row" style="border: 0"><span class="glyph gl-plus" aria-hidden="true"></span><span class="grow" style="text-align: left">Share to neighborhood feed</span></button>
+        <button class="list-row" style="border: 0"><span class="glyph gl-search" aria-hidden="true"></span><span class="grow" style="text-align: left">Copy link</span></button>
+      </div>
+      <span class="sg-cap">sheet (mobile)</span>
+      <div class="toast">
+        <span class="glyph glyph-sm gl-check" aria-hidden="true" style="background: var(--w-canvas)"></span>
+        Posted to Maplewood
+        <button class="btn-icon" aria-label="Dismiss"><span class="glyph glyph-sm gl-x"></span></button>
+      </div>
+      <span class="sg-cap">toast — dismissible</span>
+    </div>
+  </section>
+
+  <section class="board-section" id="thumbnails">
+    <h2 class="section-label">Thumbnails (lo-fi) — idea vignettes</h2>
+    <p class="sg-note">A thumbnail is one idea: a focused UI fragment built from this
+    same kit at natural size, staged on a muted panel, with a caption narrating the
+    concept — index, title, one breath of description. A board of them is divergence
+    at the mechanism level: many different answers to one problem. The vignette
+    contains only real UI; the caption is annotation. Here, three ideas for
+    "how do giveaways work on Nearby?"</p>
+    <div class="frame-grid">
+
+      <div class="frame" style="width: 360px">
+        <div class="wf">
+          <div class="vignette">
+            <div class="float" style="max-width: 280px">
+              <div class="row" style="align-items: flex-end">
+                <label class="field grow">
+                  <span class="field-label">Price</span>
+                  <input class="input" type="text" inputmode="decimal" value="$10">
+                </label>
+                <button class="chip" style="height: var(--h-md)">Free</button>
+              </div>
+              <p class="t-caption muted" style="margin: var(--sp-2) 0 0">A third of neighborhood posts are giveaways.</p>
+            </div>
+          </div>
+          <div class="idea-caption">
+            <span class="idea-num">#1</span>
+            <p class="idea-title">Free as a first-class choice</p>
+            <p class="idea-desc">Price and "Free" are one decision, not two fields. Tapping Free clears the price — no validation error to recover from.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame" style="width: 360px">
+        <div class="wf">
+          <div class="vignette dots">
+            <div class="float" style="max-width: 280px">
+              <div class="row">
+                <span class="glyph gl-bell" aria-hidden="true" style="color: var(--w-ink2)"></span>
+                <span class="t-body-strong grow">Sana is giving away moving boxes</span>
+              </div>
+              <p class="t-small muted" style="margin: var(--sp-2) 0 var(--sp-3)">Free · 0.2 mi · first come, first served</p>
+              <button class="btn btn-primary btn-sm">Claim it</button>
+            </div>
+          </div>
+          <div class="idea-caption">
+            <span class="idea-num">#2</span>
+            <p class="idea-title">Giveaway alerts to the block</p>
+            <p class="idea-desc">Free items notify nearby neighbors instantly. Giveaways move in hours, not days — and the curb stays empty.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame" style="width: 360px">
+        <div class="wf">
+          <div class="vignette">
+            <div class="float" style="max-width: 280px">
+              <p class="t-body-strong" style="margin: 0 0 var(--sp-2)">Porch pickup</p>
+              <div class="choice">
+                <button class="switch" role="switch" aria-checked="true" aria-label="Porch pickup"></button>
+                <span>It's outside — just take it</span>
+              </div>
+              <div class="row" style="margin-top: var(--sp-3); flex-wrap: wrap">
+                <button class="chip active">Today</button>
+                <button class="chip">This weekend</button>
+              </div>
+            </div>
+          </div>
+          <div class="idea-caption">
+            <span class="idea-num">#3</span>
+            <p class="idea-title">Porch pickup windows</p>
+            <p class="idea-desc">No coordination chat for a $0 item. The seller sets it out; the listing says when it's there.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  </main>
+  </div>
+
+<script>
+const th = document.querySelector('[data-toggle-theme]');
+const thLabel = th?.querySelector('.theme-label');
+function setTheme(dark) {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.body.dataset.theme = dark ? 'dark' : 'light';
+  th?.setAttribute('aria-pressed', String(dark));
+  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
+}
+setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
+th?.addEventListener('click', () =>
+  setTheme(document.body.dataset.theme !== 'dark'));
+document.querySelectorAll('.wf .chip').forEach(c =>
+  c.addEventListener('click', () => c.classList.toggle('active')));
+document.querySelectorAll('.wf .switch').forEach(s =>
+  s.addEventListener('click', () =>
+    s.setAttribute('aria-checked', String(s.getAttribute('aria-checked') !== 'true'))));
+</script>
+</body>
+</html>

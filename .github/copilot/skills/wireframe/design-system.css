@@ -1,0 +1,484 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — design system
+   The component system every wireframe artifact embeds verbatim.
+
+   Every size, margin, gap, padding, radius, control height, icon
+   size, type size, and line-height comes from the tokens below. Raw
+   pixel values in artifact markup are a violation. 4px grid, absolute.
+
+   PALETTE: the five-role grayscale ramp (light + dark), the Intent
+   indigo accent (--w-accent) for primary actions and selection
+   states, and ONE semantic exception: --w-error, for invalid states
+   only. Wireframe content uses these variables and nothing else.
+   The annotation layer shares the indigo (--note) but is
+   distinguished by its own shapes: numbered circular markers and
+   the notes rail, never UI controls.
+
+   GLYPHS: functional icons (chevron, search, check, ×, …) are drawn
+   SVG, alpha-masked so they render in currentColor. The featureless
+   .icon circle is the placeholder for app-specific icons that aren't
+   decided yet — two roles, one vocabulary. Never use text characters
+   (▾, ×, ⚙) as control glyphs.
+
+   FIDELITY = SCOPE: both rungs use this same kit at natural size.
+   Lo-fi thumbnails are idea vignettes — a focused UI fragment staged
+   on a muted panel with a numbered narrating caption; mid-fi
+   wireframes are complete screens. Nothing is ever drawn vaguer.
+
+   ELEVATION: a scrim plus a hairline border. No soft glow shadows.
+
+   FONT: one neutral system stack. Brand typography belongs to the
+   viewer chrome (viewer.css), never to wireframe content.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── ramp: light ─────────────────────────────────────────────── */
+  --w-canvas:  #ffffff;
+  --w-surface: #f4f4f6;
+  --w-border:  #d6d6dd;
+  --w-ink2:    #62626b;  /* GUARDRAIL: keep ≥4.7:1 on --w-surface */
+  --w-ink1:    #26262e;
+  /* Intent indigo — primary actions + selection states             */
+  --w-accent:      #4338ca;
+  --w-on-accent:   #ffffff;
+  --w-accent-soft: #edebfc;  /* tinted surface; pair with --w-accent text */
+  /* semantic exception — invalid states ONLY                       */
+  --w-error:   #b42318;
+  /* annotation accent — annotation layer shapes, user-overridable   */
+  --note:      #4338ca;
+
+  /* ── spacing scale (4px grid, absolute; --sp-N = N × 4px) ────── */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-14: 56px; --sp-16: 64px; --sp-18: 72px;
+  --sp-20: 80px; --sp-22: 88px; --sp-23: 92px;
+
+  /* ── control heights ─────────────────────────────────────────── */
+  --h-sm: 32px; --h-md: 40px; --h-lg: 48px;
+
+  /* ── icon sizes ──────────────────────────────────────────────── */
+  --ic-sm: 16px; --ic-md: 20px; --ic-lg: 24px; --ic-xl: 32px;
+
+  /* ── radii ───────────────────────────────────────────────────── */
+  --r-sm: 2px; --r-md: 4px; --r-lg: 8px; --r-full: 999px;
+
+  /* ── type scale (size/line-height, grid-locked, legible floors) ─ */
+  --t-xs: 13px;  --t-xs-lh: 20px;   /* captions, timestamps, tab labels */
+  --t-sm: 15px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
+  --t-md: 16px;  --t-md-lh: 24px;   /* body, inputs, buttons            */
+  --t-lg: 20px;  --t-lg-lh: 28px;   /* section headings                 */
+  --t-xl: 24px;  --t-xl-lh: 32px;   /* page titles                      */
+  --t-2xl: 32px; --t-2xl-lh: 40px;  /* hero/display                     */
+
+  /* ── content font: neutral, never branded ────────────────────── */
+  --wf-font: system-ui, -apple-system, sans-serif;
+
+  /* ── drawn glyphs (alpha masks → render in currentColor) ─────── */
+  --gl-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='7' cy='7' r='4.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M10.5 10.5L14 14' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --gl-bell: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2a4 4 0 0 0-4 4v3L2.5 11h11L12 9V6a4 4 0 0 0-4-4zM6.5 13a1.5 1.5 0 0 0 3 0' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-camera: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5h3l1-1.5h4L11 5h3v8H2z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8.75' r='2.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
+  --gl-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2L15 13.5H1z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M8 6.5v3.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11.75' r='0.9' fill='%23000'/%3E%3C/svg%3E");
+  --gl-arrow-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H3M7 4L3 8l4 4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  /* checkbox check is a background image, not a mask — it must
+     contrast the accent-filled box, so it carries a themed stroke   */
+  --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+  --w-canvas:  #1a1a20;
+  --w-surface: #232329;
+  --w-border:  #3a3a44;
+  --w-ink2:    #9a9aa6;  /* GUARDRAIL: keep ≥4.7:1 on --w-surface */
+  --w-ink1:    #e8e8ee;
+  --w-accent:      #7c6ff0;
+  --w-on-accent:   #0b0b0e;  /* dark text on the lighter dark-mode accent */
+  --w-accent-soft: #2d2a4e;  /* pair with --w-ink1 text in dark */
+  --w-error:   #f97066;
+  --note:      #7c6ff0;
+  --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%230b0b0e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ═══ base ═══════════════════════════════════════════════════════ */
+
+.wf {
+  font-family: var(--wf-font);
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  color: var(--w-ink1); background: var(--w-canvas);
+}
+.wf * { box-sizing: border-box; }
+.wf button, .wf input, .wf textarea, .wf select { font: inherit; color: inherit; }
+.wf button { cursor: pointer; background: none; border: none; padding: 0; }
+
+/* ═══ typography ═════════════════════════════════════════════════ */
+
+.wf .t-display { font-size: var(--t-2xl); line-height: var(--t-2xl-lh); font-weight: 700; }
+.wf .t-title   { font-size: var(--t-xl);  line-height: var(--t-xl-lh);  font-weight: 700; }
+.wf .t-heading { font-size: var(--t-lg);  line-height: var(--t-lg-lh);  font-weight: 600; }
+.wf .t-body    { font-size: var(--t-md);  line-height: var(--t-md-lh);  font-weight: 400; }
+.wf .t-body-strong { font-size: var(--t-md); line-height: var(--t-md-lh); font-weight: 600; }
+.wf .t-small   { font-size: var(--t-sm);  line-height: var(--t-sm-lh);  font-weight: 400; }
+.wf .t-caption { font-size: var(--t-xs);  line-height: var(--t-xs-lh);  font-weight: 400; }
+.wf .muted     { color: var(--w-ink2); }
+
+/* ═══ glyphs — drawn functional icons (currentColor) ═════════════ */
+
+.wf .glyph { display: inline-block; flex-shrink: 0;
+  width: var(--ic-md); height: var(--ic-md);
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; }
+.wf .glyph-sm { width: var(--ic-sm); height: var(--ic-sm); }
+.wf .glyph-lg { width: var(--ic-lg); height: var(--ic-lg); }
+.wf .gl-chevron    { -webkit-mask-image: var(--gl-chevron);    mask-image: var(--gl-chevron); }
+.wf .gl-search     { -webkit-mask-image: var(--gl-search);     mask-image: var(--gl-search); }
+.wf .gl-check      { -webkit-mask-image: var(--gl-check);      mask-image: var(--gl-check); }
+.wf .gl-x          { -webkit-mask-image: var(--gl-x);          mask-image: var(--gl-x); }
+.wf .gl-plus       { -webkit-mask-image: var(--gl-plus);       mask-image: var(--gl-plus); }
+.wf .gl-bell       { -webkit-mask-image: var(--gl-bell);       mask-image: var(--gl-bell); }
+.wf .gl-camera     { -webkit-mask-image: var(--gl-camera);     mask-image: var(--gl-camera); }
+.wf .gl-alert      { -webkit-mask-image: var(--gl-alert);      mask-image: var(--gl-alert); }
+.wf .gl-arrow-left { -webkit-mask-image: var(--gl-arrow-left); mask-image: var(--gl-arrow-left); }
+
+/* placeholder for app-specific icons not yet decided */
+.wf .icon { display: inline-block; flex-shrink: 0;
+  width: var(--ic-lg); height: var(--ic-lg); border-radius: var(--r-full);
+  background: var(--w-surface); border: 1px solid var(--w-border); }
+.wf .icon-sm { width: var(--ic-sm); height: var(--ic-sm); }
+.wf .icon-md { width: var(--ic-md); height: var(--ic-md); }
+.wf .icon-xl { width: var(--ic-xl); height: var(--ic-xl); }
+
+/* ═══ buttons — 3 styles × 3 sizes ═══════════════════════════════ */
+
+.wf .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--sp-2); border-radius: var(--r-md); font-weight: 600;
+  height: var(--h-md); padding: 0 var(--sp-4);
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  transition: opacity 120ms, background 120ms;
+}
+.wf .btn-sm { height: var(--h-sm); padding: 0 var(--sp-3);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); }
+.wf .btn-lg { height: var(--h-lg); padding: 0 var(--sp-6); }
+
+.wf .btn-primary { background: var(--w-accent); color: var(--w-on-accent); }
+.wf .btn-primary:hover { opacity: 0.88; }
+.wf .btn-primary:active { opacity: 0.75; }
+
+.wf .btn-secondary { border: 1px solid var(--w-border); }
+.wf .btn-secondary:hover { background: var(--w-surface); }
+.wf .btn-secondary:active { background: var(--w-border); }
+
+.wf .btn-ghost { color: var(--w-ink1); }
+.wf .btn-ghost:hover { background: var(--w-surface); }
+.wf .btn-ghost:active { background: var(--w-border); }
+
+.wf .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.wf .btn:focus-visible, .wf .chip:focus-visible, .wf .tab:focus-visible,
+.wf .btn-icon:focus-visible, .wf .switch:focus-visible {
+  outline: 2px solid var(--w-accent); outline-offset: 2px; }
+.wf .btn-block { display: flex; width: 100%; }
+
+/* icon-only button — must carry an aria-label */
+.wf .btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--h-sm); height: var(--h-sm); border-radius: var(--r-md);
+  transition: background 120ms;
+}
+.wf .btn-icon:hover { background: var(--w-surface); }
+.wf .btn-icon:active { background: var(--w-border); }
+
+/* ═══ form controls ══════════════════════════════════════════════ */
+
+.wf .field { display: block; }
+.wf .field + .field { margin-top: var(--sp-4); }
+.wf .field-label {
+  display: block; font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 600; margin-bottom: var(--sp-1);
+}
+.wf .field-hint {
+  font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  color: var(--w-ink2); margin-top: var(--sp-1);
+}
+
+.wf .input, .wf .select {
+  display: block; width: 100%; height: var(--h-md);
+  padding: 0 var(--sp-3); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-canvas);
+  font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--w-ink1);
+}
+.wf .input-lg, .wf .select-lg { height: var(--h-lg); padding: 0 var(--sp-4); }
+.wf .textarea {
+  display: block; width: 100%; min-height: calc(var(--h-md) * 2);
+  padding: var(--sp-2) var(--sp-3); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-canvas);
+  font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--w-ink1);
+  resize: vertical;
+}
+.wf .input::placeholder, .wf .textarea::placeholder { color: var(--w-ink2); }
+.wf .input:hover, .wf .textarea:hover, .wf .select:hover { border-color: var(--w-ink2); }
+.wf .input:focus, .wf .textarea:focus, .wf .select:focus {
+  outline: 2px solid var(--w-accent); outline-offset: 0; border-color: var(--w-accent); }
+.wf .input:disabled, .wf .textarea:disabled, .wf .select:disabled {
+  background: var(--w-surface); color: var(--w-ink2); cursor: not-allowed; }
+
+/* invalid state — the ramp's single semantic exception */
+.wf .input.error, .wf .textarea.error, .wf .select.error {
+  border-color: var(--w-error); }
+.wf .input.error:focus, .wf .textarea.error:focus, .wf .select.error:focus {
+  outline-color: var(--w-error); border-color: var(--w-error); }
+.wf .field-error {
+  display: flex; align-items: center; gap: var(--sp-1);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 500;
+  color: var(--w-error); margin-top: var(--sp-1);
+}
+
+/* select rendered as a button, drawn chevron (never a text glyph) */
+.wf .select { display: flex; align-items: center;
+  justify-content: space-between; text-align: left; gap: var(--sp-2); }
+.wf .select::after { content: ""; flex-shrink: 0;
+  width: var(--ic-sm); height: var(--ic-sm); background: var(--w-ink2);
+  -webkit-mask: var(--gl-chevron) center / contain no-repeat;
+  mask: var(--gl-chevron) center / contain no-repeat; }
+
+/* search = input with leading drawn glyph */
+.wf .search { position: relative; }
+.wf .search .glyph {
+  position: absolute; left: var(--sp-3); top: 50%;
+  transform: translateY(-50%); pointer-events: none; color: var(--w-ink2);
+}
+.wf .search .input { padding-left: var(--sp-10); }
+
+/* checkbox / radio */
+.wf .choice {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-sm); cursor: pointer;
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+}
+.wf .choice input { appearance: none; margin: 0; flex-shrink: 0;
+  width: var(--ic-md); height: var(--ic-md);
+  border: 1px solid var(--w-border); background: var(--w-canvas);
+  cursor: pointer; transition: background 120ms, border-color 120ms; }
+.wf .choice input[type="checkbox"] { border-radius: var(--r-sm); }
+.wf .choice input[type="radio"] { border-radius: var(--r-full); }
+.wf .choice input:hover { border-color: var(--w-ink2); }
+.wf .choice input[type="checkbox"]:checked {
+  background: var(--w-accent) var(--gl-check-on-accent) center / 14px no-repeat;
+  border-color: var(--w-accent); }
+.wf .choice input[type="radio"]:checked {
+  background: var(--w-accent); border-color: var(--w-accent);
+  box-shadow: inset 0 0 0 3px var(--w-canvas); }
+.wf .choice input:focus-visible { outline: 2px solid var(--w-accent); outline-offset: 2px; }
+
+/* switch — a real switch (button[role=switch]), not a styled checkbox */
+.wf .switch { position: relative; flex-shrink: 0; cursor: pointer;
+  width: var(--sp-10); height: var(--sp-6); border-radius: var(--r-full);
+  background: var(--w-border); transition: background 120ms; }
+.wf .switch::after { content: ""; position: absolute;
+  top: var(--sp-1); left: var(--sp-1);
+  width: var(--sp-4); height: var(--sp-4); border-radius: var(--r-full);
+  background: var(--w-canvas); transition: left 120ms; }
+.wf .switch[aria-checked="true"] { background: var(--w-accent); }
+.wf .switch[aria-checked="true"]::after { left: var(--sp-5); }
+
+/* ═══ chips ══════════════════════════════════════════════════════ */
+
+.wf .chip {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  height: var(--h-sm); padding: 0 var(--sp-4);
+  border: 1px solid var(--w-border); border-radius: var(--r-full);
+  background: var(--w-canvas); color: var(--w-ink1);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  transition: background 120ms;
+}
+.wf .chip:hover { background: var(--w-surface); }
+.wf .chip.active, .wf .chip[aria-pressed="true"] {
+  background: var(--w-accent); color: var(--w-on-accent); border-color: var(--w-accent); }
+
+/* ═══ tabs ═══════════════════════════════════════════════════════ */
+
+.wf .tabs { display: flex; gap: var(--sp-6);
+  border-bottom: 1px solid var(--w-border); }
+.wf .tabs .tab-item {
+  height: var(--h-md); display: inline-flex; align-items: center;
+  font-size: var(--t-md); line-height: var(--t-md-lh);
+  color: var(--w-ink2); border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.wf .tabs .tab-item:hover { color: var(--w-ink1); }
+.wf .tabs .tab-item.active { color: var(--w-ink1); font-weight: 600;
+  border-bottom-color: var(--w-accent); }
+
+.wf .tabbar { display: flex; border-top: 1px solid var(--w-border);
+  padding: var(--sp-2) 0 var(--sp-1); background: var(--w-canvas); }
+.wf .tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: var(--sp-1); min-height: var(--h-lg);
+  font-size: var(--t-xs); line-height: var(--t-xs-lh); color: var(--w-ink2);
+}
+.wf .tab:hover { color: var(--w-ink1); }
+.wf .tab.active { color: var(--w-accent); font-weight: 600; }
+
+/* ═══ app bar ════════════════════════════════════════════════════ */
+
+.wf .appbar {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-lg); padding: var(--sp-2) var(--sp-4);
+  background: var(--w-canvas); border-bottom: 1px solid var(--w-border);
+}
+.wf .appbar .t-title, .wf .appbar .t-heading { margin: 0; }
+
+/* ═══ avatars · media · badges · divider ═════════════════════════ */
+
+.wf .avatar { display: inline-block; flex-shrink: 0;
+  width: var(--sp-8); height: var(--sp-8); border-radius: var(--r-full);
+  background: var(--w-border); }
+.wf .avatar-sm { width: var(--sp-5); height: var(--sp-5); }
+.wf .avatar-lg { width: var(--sp-12); height: var(--sp-12); }
+
+.wf .media { background: var(--w-surface);
+  border: 1px solid var(--w-border); border-radius: var(--r-sm); }
+
+.wf .badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--sp-5); height: var(--sp-5); padding: 0 var(--sp-2);
+  border-radius: var(--r-full); background: var(--w-ink1);
+  color: var(--w-canvas); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600;
+}
+.wf .badge-muted { background: var(--w-surface); color: var(--w-ink2);
+  border: 1px solid var(--w-border); }
+.wf .badge-accent { background: var(--w-accent-soft); color: var(--w-accent); }
+[data-theme="dark"] .wf .badge-accent { color: var(--w-ink1); }
+
+.wf .link { color: var(--w-accent); text-decoration: underline;
+  text-underline-offset: 2px; cursor: pointer; }
+.wf .link:hover { text-decoration: none; }
+
+.wf .divider { border: 0; border-top: 1px solid var(--w-border);
+  margin: var(--sp-4) 0; }
+
+/* ═══ loading — skeletons · spinner ══════════════════════════════ */
+
+.wf .skeleton { background: var(--w-surface); border-radius: var(--r-sm);
+  animation: wf-pulse 1.6s ease-in-out infinite; }
+.wf .skeleton-text  { height: var(--sp-3); }
+.wf .skeleton-title { height: var(--sp-5); }
+@keyframes wf-pulse { 50% { opacity: 0.55; } }
+
+.wf .spinner { display: inline-block; flex-shrink: 0;
+  width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: wf-spin 0.7s linear infinite; }
+@keyframes wf-spin { to { transform: rotate(1turn); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .wf .skeleton { animation: none; }
+  .wf .spinner { animation: none; border-right-color: currentColor;
+    opacity: 0.55; } /* the button label ("Posting…") carries the state */
+}
+
+/* ═══ cards · list rows ══════════════════════════════════════════ */
+
+.wf .card { background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); overflow: hidden; }
+.wf .card .media { border-left: 0; border-right: 0; border-top: 0; border-radius: 0; }
+.wf .card-body { padding: var(--sp-3); }
+.wf .card.interactive { transition: border-color 120ms; cursor: pointer; }
+.wf .card.interactive:hover { border-color: var(--w-ink2); }
+
+.wf .list { display: flex; flex-direction: column; }
+.wf .list-row {
+  display: flex; align-items: center; gap: var(--sp-3);
+  width: 100%; min-height: var(--h-lg); padding: var(--sp-2) var(--sp-4);
+  border-bottom: 1px solid var(--w-border); text-align: left;
+  transition: background 120ms;
+}
+.wf .list-row:hover { background: var(--w-surface); }
+.wf .list-row .grow { flex: 1; min-width: 0; }
+
+/* ═══ tables ═════════════════════════════════════════════════════ */
+
+.wf table { width: 100%; border-collapse: collapse;
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); }
+.wf th { text-align: left; font-weight: 600;
+  padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--w-ink2); }
+.wf td { padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--w-border); }
+.wf tbody tr { transition: background 120ms; }
+.wf tbody tr:hover { background: var(--w-surface); }
+
+/* ═══ modal / sheet · toast · scrim ══════════════════════════════ */
+/* Elevation doctrine: a scrim plus a hairline border. No glow.      */
+
+.wf .scrim { background: rgba(0, 0, 0, 0.4); }
+.wf .modal {
+  background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); padding: var(--sp-6);
+  max-width: 480px;
+}
+.wf .modal-actions { display: flex; justify-content: flex-end;
+  gap: var(--sp-3); margin-top: var(--sp-6); }
+.wf .sheet { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.wf .sheet-handle { width: var(--sp-10); height: var(--sp-1);
+  border-radius: var(--r-full); background: var(--w-border);
+  margin: 0 auto var(--sp-4); }
+
+.wf .toast {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  min-height: var(--h-md); padding: var(--sp-2) var(--sp-2) var(--sp-2) var(--sp-4);
+  background: var(--w-ink1); color: var(--w-canvas);
+  border-radius: var(--r-md); font-size: var(--t-sm); line-height: var(--t-sm-lh);
+}
+.wf .toast .btn-icon { color: var(--w-canvas); }
+.wf .toast .btn-icon:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ═══ layout primitives ══════════════════════════════════════════ */
+
+.wf .row { display: flex; align-items: center; gap: var(--sp-2); }
+.wf .stack > * + * { margin-top: var(--sp-3); }
+.wf .grow { flex: 1; min-width: 0; }
+.wf .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+.wf .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3); }
+.wf .screen-body { padding: var(--sp-4); }
+
+/* ═══ thumbnails (lo-fi) — idea vignettes ════════════════════════ */
+/* A thumbnail is one IDEA, not an abstraction: a focused UI fragment
+   built from this same kit at natural size, staged centered on a
+   muted panel, with a caption that narrates the concept — index,
+   title, one breath of description. A board of them is divergence at
+   the mechanism level: many different answers to one problem, each
+   shown as the piece of real UI where the idea lives. The vignette
+   itself contains only real UI; the caption is annotation-layer
+   narration (its index number carries the annotation accent). */
+
+.wf .vignette {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--w-surface); padding: var(--sp-8);
+  min-height: calc(var(--sp-12) * 5);
+}
+.wf .vignette > * { max-width: 100%; }
+.wf .vignette.dots {
+  background-image: radial-gradient(var(--w-border) 1px, transparent 1px);
+  background-size: var(--sp-4) var(--sp-4);
+}
+/* a floating piece of UI on the stage */
+.wf .vignette .float {
+  background: var(--w-canvas); border: 1px solid var(--w-border);
+  border-radius: var(--r-lg); padding: var(--sp-4); width: 100%;
+}
+.wf .idea-caption { padding: var(--sp-4); }
+.wf .idea-num {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 700;
+  color: var(--note); /* annotation layer: the index narrates, it isn't UI */
+}
+.wf .idea-title {
+  font-size: var(--t-lg); line-height: var(--t-lg-lh); font-weight: 700;
+  margin: var(--sp-1) 0 var(--sp-2);
+}
+.wf .idea-desc {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  color: var(--w-ink2); margin: 0;
+}

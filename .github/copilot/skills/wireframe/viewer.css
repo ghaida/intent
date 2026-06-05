@@ -1,0 +1,181 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — viewer chrome
+   The stage every wireframe artifact renders on. Follows the Intent
+   website's design language (cool-tinted neutrals, General Sans
+   display, Hanken Grotesk body, SF Mono labels) and the same absolute
+   4px token law as the design system. Monochrome by rule: the site's
+   indigo belongs to the annotation layer, never to chrome.
+
+   Layer separation: chrome variables (--stage, --chrome-*) never
+   appear inside wireframe content; ramp variables (--w-*) never
+   appear in chrome.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --stage:         #fafafc;
+  --chrome-fg:     #18182b;
+  --chrome-ink:    #65657a;
+  --chrome-border: #d8d8e4;
+
+  --display: "General Sans", system-ui, -apple-system, sans-serif;
+  --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono:    "SF Mono", "Fira Code", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  --stage:         #18182b;
+  --chrome-fg:     #f0f0f8;
+  --chrome-ink:    #8888a8;
+  --chrome-border: #2a2a44;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: var(--sp-8);
+  background: var(--stage); font-family: var(--sans);
+  color: var(--chrome-fg); line-height: 1.5;
+}
+
+/* ── header ─────────────────────────────────────────────────────── */
+
+.board-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: var(--sp-8);
+}
+.board-title {
+  font-family: var(--display); font-size: var(--t-lg);
+  line-height: var(--t-lg-lh); font-weight: 700;
+  letter-spacing: -0.02em; color: var(--chrome-fg);
+}
+.board-controls { display: flex; align-items: center; gap: var(--sp-6); }
+
+.view-toggle { display: flex; gap: var(--sp-1); }
+.view-toggle button {
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  height: var(--h-sm); padding: 0 var(--sp-3); background: none;
+  border: 1px solid var(--chrome-border); border-radius: var(--r-md);
+  color: var(--chrome-ink);
+}
+.view-toggle button:hover { color: var(--chrome-fg); }
+.view-toggle button[aria-pressed="true"] {
+  border-color: var(--chrome-ink); color: var(--chrome-fg); }
+
+/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
+.theme-toggle {
+  display: flex; align-items: center; gap: var(--sp-2);
+  background: none; border: none; cursor: pointer;
+  height: var(--h-sm); padding: 0;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+}
+.theme-toggle:hover { color: var(--chrome-fg); }
+.theme-toggle .swatch {
+  width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
+  border: 1px solid var(--chrome-ink);
+  background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
+}
+
+/* ── section index (sidebar) — a reference you can jump around ──── */
+/* Two-column shell: 180px sticky label rail | content. Mirrors the
+   Intent site's own layout convention. Collapses on narrow screens. */
+
+.board-with-index { display: flex; gap: var(--sp-12); align-items: flex-start; }
+.board-main { flex: 1; min-width: 0; }
+.board-index {
+  position: sticky; top: var(--sp-8); flex-shrink: 0; width: 180px;
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  padding-right: var(--sp-4); border-right: 1px solid var(--chrome-border);
+}
+.board-index a {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); text-decoration: none;
+}
+.board-index a:hover { color: var(--chrome-fg); }
+@media (max-width: 900px) {
+  .board-with-index { display: block; }
+  .board-index {
+    position: static; width: auto; border-right: 0;
+    flex-direction: row; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4);
+    padding: 0 0 var(--sp-3); margin-bottom: var(--sp-6);
+    border-bottom: 1px solid var(--chrome-border);
+  }
+}
+
+/* ── sections · frames · plates ─────────────────────────────────── */
+
+.board-section { margin-bottom: var(--sp-16); scroll-margin-top: var(--sp-16); }
+.section-label {
+  font-family: var(--mono); font-size: var(--t-sm);
+  line-height: var(--t-sm-lh); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border);
+  padding-bottom: var(--sp-2); margin-bottom: var(--sp-4);
+}
+.frame-grid { display: flex; flex-wrap: wrap; gap: var(--sp-6);
+  align-items: flex-start; }
+.frame { background: none; border: none; }
+.frame-plate {
+  display: flex; gap: var(--sp-2); align-items: baseline;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+  padding: 0 var(--sp-1); margin-bottom: var(--sp-2);
+}
+.frame-rung { opacity: 0.65; }
+.frame > .wf {
+  border: 1px solid var(--chrome-border);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+
+/* ── slideshow view — wireframe 2/3, notes rail 1/3 ─────────────── */
+
+body[data-view="slides"] .frame { display: none; }
+body[data-view="slides"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
+body[data-view="slides"] .board-section:has(.frame.active) {
+  display: grid; grid-template-columns: 2fr 1fr;
+  gap: var(--sp-6); align-items: start;
+}
+body[data-view="slides"] .board-section:has(.frame.active) .section-label { grid-column: 1 / -1; }
+body[data-view="slides"] .note-rail { max-width: none; margin-top: 0; }
+body[data-view="slides"] .board-section:not(:has(.frame.active)) { display: none; }
+
+.slide-nav { display: none; }
+body[data-view="slides"] .slide-nav {
+  display: flex; gap: var(--sp-3); align-items: center; justify-content: center;
+  margin-top: var(--sp-6); font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--chrome-ink);
+}
+.slide-nav button { font: inherit; color: inherit; cursor: pointer;
+  background: none; border: 1px solid var(--chrome-border);
+  border-radius: var(--r-md); height: var(--h-sm); padding: 0 var(--sp-3); }
+
+/* ── prototype view — the wireframes ARE the prototype ──────────── */
+
+body[data-view="proto"] .frame { display: none; }
+body[data-view="proto"] .frame.active { display: block; margin: 0 auto; max-width: 100%; }
+body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none; }
+body[data-view="proto"] .section-label,
+body[data-view="proto"] .note-rail,
+body[data-view="proto"] .note-marker { display: none; }
+body[data-view="proto"] [data-go] { cursor: pointer; }
+
+/* ── annotation layer (accent lives here ONLY) ──────────────────── */
+
+.note-marker {
+  position: absolute; width: var(--sp-6); height: var(--sp-6);
+  border-radius: var(--r-full); background: var(--note); color: #ffffff;
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.note-rail {
+  max-width: 320px; margin-top: var(--sp-4);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); color: var(--chrome-ink);
+}
+.note-rail p { margin: 0 0 var(--sp-3); }
+.note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
