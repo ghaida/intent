@@ -147,7 +147,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 Notes about the design, never part of it:
 
-- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin.
+- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Grid view shows every group as the section's record; slides view shows only the active frame's group. Section-level notes (an idea board's decision record) sit outside any group and always show. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
 - **Idea captions** — on lo-fi vignettes, the caption's index number carries the annotation accent: the number narrates the board, it isn't UI.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
 
@@ -245,7 +245,13 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 
     </div>
     <aside class="note-rail">
-      <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
+      <!-- one group per frame; markers restart at 1 inside each frame -->
+      <div class="note-group" data-for="scr-[slug]">
+        <p class="note-frame">[SCREEN NAME]</p>
+        <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
+      </div>
+      <!-- section-level notes (e.g. the idea board's decision record)
+           sit outside any group and always show -->
     </aside>
   </section>
 
@@ -1100,6 +1106,22 @@ body[data-view="proto"] [data-go] { cursor: pointer; }
 }
 .note-rail p { margin: 0 0 var(--sp-3); }
 .note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
+
+/* Notes are PER WIREFRAME, never one consolidated list: each frame's
+   notes live in a .note-group whose data-for names the frame id, headed
+   by a .note-frame line. Markers number per wireframe (each frame
+   restarts at 1). Grid shows every group as the section's record;
+   slides shows only the active frame's group (viewer.js toggles
+   .active). Section-level notes (e.g. an idea board's decision record)
+   sit outside any group and always show. */
+.note-group + .note-group { margin-top: var(--sp-5); }
+.note-frame {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); margin: 0 0 var(--sp-2);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-1);
+}
+body[data-view="slides"] .note-group:not(.active) { display: none; }
 ```
 
 ## Reference asset: references/viewer.js
@@ -1139,6 +1161,9 @@ function show(i) {
   const pos = document.querySelector('.slide-pos');
   if (pos) pos.textContent =
     `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+  /* notes are per wireframe — surface the active frame's group */
+  document.querySelectorAll('.note-group').forEach(g =>
+    g.classList.toggle('active', g.dataset.for === frames[cur].id));
   fit();
 }
 /* fit the active frame to the stage — scale down only, never up */
