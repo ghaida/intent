@@ -119,7 +119,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 **The token law.** Every size, margin, gap, padding, radius, control height, icon size, type size, and line-height comes from the kit's tokens — spacing `--sp-N` = N×4px (up to 92), control heights 32/40/48, icons 16/20/24/32, radii 2/4/8/full. **Raw pixel values in artifact markup are a violation.** The 4px grid is absolute.
 
-**The type scale** — grid-locked size/line-height pairs with legible floors (nothing under 13px): `t-caption` 13/20 · `t-small` 15/20 · `t-body` and `t-body-strong` 16/24 · `t-heading` 20/28 · `t-title` 24/32 · `t-display` 32/40. One neutral system font (`--wf-font: system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface.
+**The type scale** — grid-locked size/line-height pairs with legible floors (nothing under 12px): `t-caption` 12/16 · `t-small` 14/20 · `t-body` and `t-body-strong` 15/20 · `t-heading` 18/24 · `t-title` 22/28 · `t-display` 28/36. One neutral system font (`--wf-font: system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface.
 
 **Glyphs — two roles, one rule.** Functional icons (chevron, search, check, ×, plus, bell, camera, alert, back-arrow) are drawn SVG, alpha-masked so they render in currentColor: `.glyph .gl-search` etc. **Never use text characters (▾, ×, ⚙) as control glyphs.** The featureless `.icon` circle is the placeholder for app-specific icons that aren't decided yet. An icon-only button (`.btn-icon`) always carries an `aria-label`.
 
@@ -458,12 +458,12 @@ Bring the flow definition (from `/journey` or your own notes), the information b
   --r-sm: 2px; --r-md: 4px; --r-lg: 8px; --r-full: 999px;
 
   /* ── type scale (size/line-height, grid-locked, legible floors) ─ */
-  --t-xs: 13px;  --t-xs-lh: 20px;   /* captions, timestamps, tab labels */
-  --t-sm: 15px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
-  --t-md: 16px;  --t-md-lh: 24px;   /* body, inputs, buttons            */
-  --t-lg: 20px;  --t-lg-lh: 28px;   /* section headings                 */
-  --t-xl: 24px;  --t-xl-lh: 32px;   /* page titles                      */
-  --t-2xl: 32px; --t-2xl-lh: 40px;  /* hero/display                     */
+  --t-xs: 12px;  --t-xs-lh: 16px;   /* captions, timestamps, tab labels */
+  --t-sm: 14px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
+  --t-md: 15px;  --t-md-lh: 20px;   /* body, inputs, buttons            */
+  --t-lg: 18px;  --t-lg-lh: 24px;   /* section headings                 */
+  --t-xl: 22px;  --t-xl-lh: 28px;   /* page titles                      */
+  --t-2xl: 28px; --t-2xl-lh: 36px;  /* hero/display                     */
 
   /* ── content font: neutral, never branded ────────────────────── */
   --wf-font: system-ui, -apple-system, sans-serif;
