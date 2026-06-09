@@ -30,8 +30,9 @@ function show(i) {
   frames.forEach((f, n) => f.classList.toggle('active', n === cur));
   const sec = frames[cur].closest('.board-section')?.dataset.section || '';
   const pos = document.querySelector('.slide-pos');
-  if (pos) pos.textContent =
-    `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+  if (pos) pos.textContent = `${cur + 1}/${frames.length}`;
+  const secLabel = document.querySelector('.slide-section');
+  if (secLabel) secLabel.textContent = sec;
   /* notes are per wireframe — surface the active frame's group */
   document.querySelectorAll('.note-group').forEach(g =>
     g.classList.toggle('active', g.dataset.for === frames[cur].id));

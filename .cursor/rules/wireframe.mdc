@@ -90,7 +90,7 @@ The stage every artifact sits on (source of truth: `references/viewer.css`). One
 - **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
   - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row; in a wireframe artifact frames sit larger, one or two per row.
-  - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. Prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews — a frame must never run off the bottom of the screen.
+  - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. Prev/next controls, keyboard arrows, position indicator, section-aware order; the navigator row sits between header and stage and doubles as the section header line — section name on the left, prev/next + position ("3/12") on the right. The stage for design reviews — a frame must never run off the bottom of the screen.
   - **Theme** — a light ⇄ dark toggle; initial state follows the OS preference. Both ramps ship in every HTML artifact. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control with a half-tone swatch, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time on the same fitted stage, annotations hidden, and the wireframes themselves interactive: clicking a trigger element (the real button, the real row) navigates to the screen it leads to, following the flow logic. Esc returns to grid. The user *uses* the wireframes as an actual prototype.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
@@ -205,6 +205,14 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     </div>
   </header>
 
+  <!-- in slides view this row replaces the section label: name left, controls right -->
+  <nav class="slide-nav">
+    <span class="slide-section">[SECTION NAME]</span>
+    <button data-prev aria-label="Previous">←</button>
+    <span class="slide-pos">1/1</span>
+    <button data-next aria-label="Next">→</button>
+  </nav>
+
   <section class="board-section" data-section="[SECTION NAME]">
     <h2 class="section-label">[SECTION NAME]</h2>
     <div class="frame-grid">
@@ -254,12 +262,6 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
            sit outside any group and always show -->
     </aside>
   </section>
-
-  <nav class="slide-nav">
-    <button data-prev aria-label="Previous">←</button>
-    <span class="slide-pos">1/1</span>
-    <button data-next aria-label="Next">→</button>
-  </nav>
 </body>
 ```
 
@@ -1014,7 +1016,7 @@ body {
 }
 
 /* ── slideshow + prototype views — a fixed stage, not a long page ──
-   The page stops scrolling and becomes header / stage / nav. The
+   The page stops scrolling and becomes header / nav / stage. The
    active frame centers in the stage and scales DOWN to fit (never
    up), so the whole screen — plate included — is visible at once;
    viewer.js sets --slide-scale per slide and on resize. In slides
@@ -1025,6 +1027,9 @@ body[data-view="slides"], body[data-view="proto"] {
   height: 100vh; overflow: hidden;
   display: flex; flex-direction: column;
 }
+/* the navigator row IS the section header line: section name left
+   (the section's own label hides), prev/next + position right */
+body[data-view="slides"] .section-label { display: none; }
 body[data-view="slides"] .frame,
 body[data-view="proto"] .frame { display: none; }
 body[data-view="slides"] .board-section:not(:has(.frame.active)),
@@ -1034,8 +1039,8 @@ body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none;
 body[data-view="slides"] .board-section:has(.frame.active),
 body[data-view="proto"] .board-section:has(.frame.active) {
   flex: 1; min-height: 0; margin-bottom: 0;
-  display: grid; grid-template-rows: auto minmax(0, 1fr);
-  column-gap: var(--sp-10); row-gap: var(--sp-4);
+  display: grid; grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--sp-10);
 }
 body[data-view="slides"] .board-section:has(.frame.active) {
   grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
@@ -1043,12 +1048,10 @@ body[data-view="slides"] .board-section:has(.frame.active) {
 body[data-view="proto"] .board-section:has(.frame.active) {
   grid-template-columns: minmax(0, 1fr);
 }
-body[data-view="slides"] .section-label { grid-column: 1 / -1; margin-bottom: 0; }
-
 /* stage cell: the frame centers and fits */
 body[data-view="slides"] .frame-grid,
 body[data-view="proto"] .frame-grid {
-  grid-row: 2; grid-column: 1; position: relative; min-height: 0;
+  grid-row: 1; grid-column: 1; position: relative; min-height: 0;
 }
 body[data-view="slides"] .frame.active,
 body[data-view="proto"] .frame.active {
@@ -1058,28 +1061,34 @@ body[data-view="proto"] .frame.active {
 
 /* notes rail: a bounded rail beside the stage, scrolls on its own */
 body[data-view="slides"] .note-rail {
-  grid-row: 2; grid-column: 2; max-width: none; margin-top: 0;
+  grid-row: 1; grid-column: 2; max-width: none; margin-top: 0;
   min-height: 0; overflow-y: auto;
   border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
 }
 @media (max-width: 900px) {
   body[data-view="slides"] .board-section:has(.frame.active) {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1fr) auto;
   }
   body[data-view="slides"] .note-rail {
-    grid-row: 3; grid-column: 1; max-height: 30vh;
+    grid-row: 2; grid-column: 1; max-height: 30vh;
     border-left: 0; border-top: 1px solid var(--chrome-border);
-    padding-left: 0; padding-top: var(--sp-4);
+    padding-left: 0; padding-top: var(--sp-4); margin-top: var(--sp-4);
   }
 }
 
 .slide-nav { display: none; }
 body[data-view="slides"] .slide-nav {
-  display: flex; gap: var(--sp-3); align-items: center; justify-content: center;
-  margin-top: var(--sp-6); font-family: var(--mono); font-size: var(--t-xs);
+  display: flex; gap: var(--sp-3); align-items: center;
+  margin-bottom: var(--sp-4); font-family: var(--mono); font-size: var(--t-xs);
   line-height: var(--t-xs-lh); letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-2);
+}
+/* the section name leads the row, styled as the section label it replaces */
+.slide-nav .slide-section {
+  margin-right: auto; font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 600; letter-spacing: 0.08em;
 }
 .slide-nav button { font: inherit; color: inherit; cursor: pointer;
   background: none; border: 1px solid var(--chrome-border);
@@ -1159,8 +1168,9 @@ function show(i) {
   frames.forEach((f, n) => f.classList.toggle('active', n === cur));
   const sec = frames[cur].closest('.board-section')?.dataset.section || '';
   const pos = document.querySelector('.slide-pos');
-  if (pos) pos.textContent =
-    `${cur + 1}/${frames.length}${sec ? ' · ' + sec : ''}`;
+  if (pos) pos.textContent = `${cur + 1}/${frames.length}`;
+  const secLabel = document.querySelector('.slide-section');
+  if (secLabel) secLabel.textContent = sec;
   /* notes are per wireframe — surface the active frame's group */
   document.querySelectorAll('.note-group').forEach(g =>
     g.classList.toggle('active', g.dataset.for === frames[cur].id));
