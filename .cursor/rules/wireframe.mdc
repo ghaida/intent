@@ -65,7 +65,7 @@ Never present a higher rung than the decision requires. If the team hasn't agree
 More fidelity is not more progress. Four failure modes to name and refuse:
 
 - **The polish critique trap.** Styled artifacts invite styling feedback. Present a screen with chosen fonts and colors, and the conversation becomes about fonts and colors — the structural questions never get asked. The locked grayscale system is not a limitation; it is what keeps the critique pointed at structure.
-- **The done-looking artifact.** A finished-looking screen makes people hesitate to challenge it. These wireframes deliberately look real — so the provisional signal comes from the chrome, not from fake sketchiness: every frame's plate states its rung, and you name it out loud. "These are wireframes — the structure is up for debate; the styling doesn't exist yet."
+- **The done-looking artifact.** A finished-looking screen makes people hesitate to challenge it. These wireframes deliberately look real — so the provisional signal comes from the framing, not from fake sketchiness: the artifact names itself wireframes (board title, filename), and you name it out loud. "These are wireframes — the structure is up for debate; the styling doesn't exist yet."
 - **The premature convergence.** Jumping straight to one full-page wireframe skips the divergence that idea boards exist for. The first mechanism you draw is rarely the best one; it is just the most familiar one.
 - **The fidelity mismatch.** Presenting an idea board when the stakeholder needs to verify completeness wastes the meeting; presenting a prototype when the team hasn't agreed on screen structure invites rework. State the rung and what feedback it is for: "These are idea vignettes — react to the mechanisms, not the details."
 
@@ -85,7 +85,7 @@ The language is identical across all three output modes — a wireframe looks li
 The stage every artifact sits on (source of truth: `references/viewer.css`). One vignette or a six-screen wireflow renders on the same chrome:
 
 - **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography — General Sans 700 for the board title, Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome.
-- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — screen name, rung (`WIREFRAME`), position when part of a set ("3/12") — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (index, title, description) is their label.
+- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — screen name, position when part of a set ("3/12") — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. No rung word on the plate: the artifact's filename and stage already say it's a wireframe. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (index, title, description) is their label.
 - **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like plates. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
 - **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
@@ -221,7 +221,6 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
       <article class="frame" id="scr-[slug]" style="width: [VIEWPORT]px">
         <div class="frame-plate">
           <span>[SCREEN NAME]</span>
-          <span class="frame-rung">WIREFRAME</span>
           <span class="frame-pos">[N/TOTAL]</span>
         </div>
         <div class="wf" style="position: relative;">
@@ -1009,7 +1008,6 @@ body {
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
   padding: 0 var(--sp-1); margin-bottom: var(--sp-2);
 }
-.frame-rung { opacity: 0.65; }
 .frame > .wf {
   border: 1px solid var(--chrome-border);
   border-radius: var(--r-lg); overflow: hidden;

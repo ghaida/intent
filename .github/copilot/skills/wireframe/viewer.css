@@ -125,7 +125,6 @@ body {
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
   padding: 0 var(--sp-1); margin-bottom: var(--sp-2);
 }
-.frame-rung { opacity: 0.65; }
 .frame > .wf {
   border: 1px solid var(--chrome-border);
   border-radius: var(--r-lg); overflow: hidden;
