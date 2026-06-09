@@ -63,12 +63,12 @@
   --r-sm: 2px; --r-md: 4px; --r-lg: 8px; --r-full: 999px;
 
   /* ── type scale (size/line-height, grid-locked, legible floors) ─ */
-  --t-xs: 12px;  --t-xs-lh: 16px;   /* captions, timestamps, tab labels */
-  --t-sm: 14px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
-  --t-md: 15px;  --t-md-lh: 20px;   /* body, inputs, buttons            */
-  --t-lg: 18px;  --t-lg-lh: 24px;   /* section headings                 */
-  --t-xl: 22px;  --t-xl-lh: 28px;   /* page titles                      */
-  --t-2xl: 28px; --t-2xl-lh: 36px;  /* hero/display                     */
+  --t-xs: 11px;  --t-xs-lh: 16px;   /* captions, timestamps, tab labels */
+  --t-sm: 13px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
+  --t-md: 14px;  --t-md-lh: 20px;   /* body, inputs, buttons            */
+  --t-lg: 17px;  --t-lg-lh: 24px;   /* section headings                 */
+  --t-xl: 21px;  --t-xl-lh: 28px;   /* page titles                      */
+  --t-2xl: 27px; --t-2xl-lh: 36px;  /* hero/display                     */
 
   /* ── content font: neutral, never branded ────────────────────── */
   --wf-font: system-ui, -apple-system, sans-serif;
@@ -155,13 +155,13 @@
 .wf .btn {
   display: inline-flex; align-items: center; justify-content: center;
   gap: var(--sp-2); border-radius: var(--r-md); font-weight: 600;
-  height: var(--h-md); padding: 0 var(--sp-4);
+  height: var(--h-md); padding: 0 var(--sp-3);
   font-size: var(--t-md); line-height: var(--t-md-lh);
   transition: opacity 120ms, background 120ms;
 }
-.wf .btn-sm { height: var(--h-sm); padding: 0 var(--sp-3);
+.wf .btn-sm { height: var(--h-sm); padding: 0 var(--sp-2);
   font-size: var(--t-sm); line-height: var(--t-sm-lh); }
-.wf .btn-lg { height: var(--h-lg); padding: 0 var(--sp-6); }
+.wf .btn-lg { height: var(--h-lg); padding: 0 var(--sp-5); }
 
 .wf .btn-primary { background: var(--w-accent); color: var(--w-on-accent); }
 .wf .btn-primary:hover { opacity: 0.88; }
@@ -287,7 +287,7 @@
 
 .wf .chip {
   display: inline-flex; align-items: center; gap: var(--sp-2);
-  height: var(--h-sm); padding: 0 var(--sp-4);
+  height: var(--h-sm); padding: 0 var(--sp-3);
   border: 1px solid var(--w-border); border-radius: var(--r-full);
   background: var(--w-canvas); color: var(--w-ink1);
   font-size: var(--t-sm); line-height: var(--t-sm-lh);
