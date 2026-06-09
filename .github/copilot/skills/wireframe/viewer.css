@@ -131,6 +131,30 @@ body {
   border-radius: var(--r-lg); overflow: hidden;
 }
 
+/* in grid view the notes are a right sidebar beside the frames —
+   the section's record reads alongside its screens, not below them */
+body[data-view="grid"] .board-section:has(.note-rail) {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  column-gap: var(--sp-10);
+}
+body[data-view="grid"] .board-section:has(.note-rail) .section-label {
+  grid-column: 1 / -1;
+}
+body[data-view="grid"] .board-section:has(.note-rail) .frame-grid {
+  grid-row: 2; grid-column: 1;
+}
+body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
+  grid-row: 2; grid-column: 2; max-width: none; margin-top: 0;
+  border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
+}
+@media (max-width: 900px) {
+  body[data-view="grid"] .board-section:has(.note-rail) { display: block; }
+  body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
+    max-width: 320px; margin-top: var(--sp-4);
+    border-left: 0; padding-left: 0;
+  }
+}
+
 /* ── slideshow + prototype views — a fixed stage, not a long page ──
    The page stops scrolling and becomes header / nav / stage. The
    active frame centers in the stage and scales DOWN to fit (never
