@@ -103,7 +103,7 @@ The stage every artifact sits on (source of truth: `references/viewer.css`). One
 - **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). The lo-fi artifact is also where rejected candidates live on as the decision record.
 - **View modes (HTML):** the container is a viewer with a toggle in its chrome:
   - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row; in a wireframe artifact frames sit larger, one or two per row.
-  - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. Prev/next controls, keyboard arrows, position indicator ("3/12 · Checkout flow"), section-aware order. The stage for design reviews — a frame must never run off the bottom of the screen.
+  - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. Prev/next controls, keyboard arrows, position indicator, section-aware order; the navigator row sits between header and stage and doubles as the section header line — section name on the left, prev/next + position ("3/12") on the right. The stage for design reviews — a frame must never run off the bottom of the screen.
   - **Theme** — a light ⇄ dark toggle; initial state follows the OS preference. Both ramps ship in every HTML artifact. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control with a half-tone swatch, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time on the same fitted stage, annotations hidden, and the wireframes themselves interactive: clicking a trigger element (the real button, the real row) navigates to the screen it leads to, following the flow logic. Esc returns to grid. The user *uses* the wireframes as an actual prototype.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
@@ -218,6 +218,14 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     </div>
   </header>
 
+  <!-- in slides view this row replaces the section label: name left, controls right -->
+  <nav class="slide-nav">
+    <span class="slide-section">[SECTION NAME]</span>
+    <button data-prev aria-label="Previous">←</button>
+    <span class="slide-pos">1/1</span>
+    <button data-next aria-label="Next">→</button>
+  </nav>
+
   <section class="board-section" data-section="[SECTION NAME]">
     <h2 class="section-label">[SECTION NAME]</h2>
     <div class="frame-grid">
@@ -267,12 +275,6 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
            sit outside any group and always show -->
     </aside>
   </section>
-
-  <nav class="slide-nav">
-    <button data-prev aria-label="Previous">←</button>
-    <span class="slide-pos">1/1</span>
-    <button data-next aria-label="Next">→</button>
-  </nav>
 </body>
 ```
 

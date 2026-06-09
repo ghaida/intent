@@ -132,7 +132,7 @@ body {
 }
 
 /* ── slideshow + prototype views — a fixed stage, not a long page ──
-   The page stops scrolling and becomes header / stage / nav. The
+   The page stops scrolling and becomes header / nav / stage. The
    active frame centers in the stage and scales DOWN to fit (never
    up), so the whole screen — plate included — is visible at once;
    viewer.js sets --slide-scale per slide and on resize. In slides
@@ -143,6 +143,9 @@ body[data-view="slides"], body[data-view="proto"] {
   height: 100vh; overflow: hidden;
   display: flex; flex-direction: column;
 }
+/* the navigator row IS the section header line: section name left
+   (the section's own label hides), prev/next + position right */
+body[data-view="slides"] .section-label { display: none; }
 body[data-view="slides"] .frame,
 body[data-view="proto"] .frame { display: none; }
 body[data-view="slides"] .board-section:not(:has(.frame.active)),
@@ -152,8 +155,8 @@ body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none;
 body[data-view="slides"] .board-section:has(.frame.active),
 body[data-view="proto"] .board-section:has(.frame.active) {
   flex: 1; min-height: 0; margin-bottom: 0;
-  display: grid; grid-template-rows: auto minmax(0, 1fr);
-  column-gap: var(--sp-10); row-gap: var(--sp-4);
+  display: grid; grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--sp-10);
 }
 body[data-view="slides"] .board-section:has(.frame.active) {
   grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
@@ -161,12 +164,10 @@ body[data-view="slides"] .board-section:has(.frame.active) {
 body[data-view="proto"] .board-section:has(.frame.active) {
   grid-template-columns: minmax(0, 1fr);
 }
-body[data-view="slides"] .section-label { grid-column: 1 / -1; margin-bottom: 0; }
-
 /* stage cell: the frame centers and fits */
 body[data-view="slides"] .frame-grid,
 body[data-view="proto"] .frame-grid {
-  grid-row: 2; grid-column: 1; position: relative; min-height: 0;
+  grid-row: 1; grid-column: 1; position: relative; min-height: 0;
 }
 body[data-view="slides"] .frame.active,
 body[data-view="proto"] .frame.active {
@@ -176,28 +177,34 @@ body[data-view="proto"] .frame.active {
 
 /* notes rail: a bounded rail beside the stage, scrolls on its own */
 body[data-view="slides"] .note-rail {
-  grid-row: 2; grid-column: 2; max-width: none; margin-top: 0;
+  grid-row: 1; grid-column: 2; max-width: none; margin-top: 0;
   min-height: 0; overflow-y: auto;
   border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
 }
 @media (max-width: 900px) {
   body[data-view="slides"] .board-section:has(.frame.active) {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1fr) auto;
   }
   body[data-view="slides"] .note-rail {
-    grid-row: 3; grid-column: 1; max-height: 30vh;
+    grid-row: 2; grid-column: 1; max-height: 30vh;
     border-left: 0; border-top: 1px solid var(--chrome-border);
-    padding-left: 0; padding-top: var(--sp-4);
+    padding-left: 0; padding-top: var(--sp-4); margin-top: var(--sp-4);
   }
 }
 
 .slide-nav { display: none; }
 body[data-view="slides"] .slide-nav {
-  display: flex; gap: var(--sp-3); align-items: center; justify-content: center;
-  margin-top: var(--sp-6); font-family: var(--mono); font-size: var(--t-xs);
+  display: flex; gap: var(--sp-3); align-items: center;
+  margin-bottom: var(--sp-4); font-family: var(--mono); font-size: var(--t-xs);
   line-height: var(--t-xs-lh); letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-2);
+}
+/* the section name leads the row, styled as the section label it replaces */
+.slide-nav .slide-section {
+  margin-right: auto; font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 600; letter-spacing: 0.08em;
 }
 .slide-nav button { font: inherit; color: inherit; cursor: pointer;
   background: none; border: 1px solid var(--chrome-border);
