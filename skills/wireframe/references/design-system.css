@@ -63,12 +63,12 @@
   --r-sm: 2px; --r-md: 4px; --r-lg: 8px; --r-full: 999px;
 
   /* ── type scale (size/line-height, grid-locked, legible floors) ─ */
-  --t-xs: 13px;  --t-xs-lh: 20px;   /* captions, timestamps, tab labels */
-  --t-sm: 15px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
-  --t-md: 16px;  --t-md-lh: 24px;   /* body, inputs, buttons            */
-  --t-lg: 20px;  --t-lg-lh: 28px;   /* section headings                 */
-  --t-xl: 24px;  --t-xl-lh: 32px;   /* page titles                      */
-  --t-2xl: 32px; --t-2xl-lh: 40px;  /* hero/display                     */
+  --t-xs: 12px;  --t-xs-lh: 16px;   /* captions, timestamps, tab labels */
+  --t-sm: 14px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
+  --t-md: 15px;  --t-md-lh: 20px;   /* body, inputs, buttons            */
+  --t-lg: 18px;  --t-lg-lh: 24px;   /* section headings                 */
+  --t-xl: 22px;  --t-xl-lh: 28px;   /* page titles                      */
+  --t-2xl: 28px; --t-2xl-lh: 36px;  /* hero/display                     */
 
   /* ── content font: neutral, never branded ────────────────────── */
   --wf-font: system-ui, -apple-system, sans-serif;

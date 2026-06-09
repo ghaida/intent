@@ -132,7 +132,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 **The token law.** Every size, margin, gap, padding, radius, control height, icon size, type size, and line-height comes from the kit's tokens — spacing `--sp-N` = N×4px (up to 92), control heights 32/40/48, icons 16/20/24/32, radii 2/4/8/full. **Raw pixel values in artifact markup are a violation.** The 4px grid is absolute.
 
-**The type scale** — grid-locked size/line-height pairs with legible floors (nothing under 13px): `t-caption` 13/20 · `t-small` 15/20 · `t-body` and `t-body-strong` 16/24 · `t-heading` 20/28 · `t-title` 24/32 · `t-display` 32/40. One neutral system font (`--wf-font: system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface.
+**The type scale** — grid-locked size/line-height pairs with legible floors (nothing under 12px): `t-caption` 12/16 · `t-small` 14/20 · `t-body` and `t-body-strong` 15/20 · `t-heading` 18/24 · `t-title` 22/28 · `t-display` 28/36. One neutral system font (`--wf-font: system-ui` — never the brand fonts, which belong to the chrome); size and weight express hierarchy, never typeface.
 
 **Glyphs — two roles, one rule.** Functional icons (chevron, search, check, ×, plus, bell, camera, alert, back-arrow) are drawn SVG, alpha-masked so they render in currentColor: `.glyph .gl-search` etc. **Never use text characters (▾, ×, ⚙) as control glyphs.** The featureless `.icon` circle is the placeholder for app-specific icons that aren't decided yet. An icon-only button (`.btn-icon`) always carries an `aria-label`.
 
