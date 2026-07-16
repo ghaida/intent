@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Intent /wireframe — design system styleguide</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%234338ca'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="design-system.css">
 <link rel="stylesheet" href="viewer.css">
 <style>
@@ -20,6 +21,13 @@
 .sg-swatch { width: var(--sp-16); height: var(--sp-12);
   border-radius: var(--r-md); border: 1px solid var(--chrome-border); }
 .sg-bar { background: var(--chrome-ink); height: var(--sp-3); border-radius: var(--r-sm); }
+/* token scale: label column + bar on one line — the bars share a left
+   edge so their lengths compare directly */
+.sg-scale { display: flex; flex-direction: column; gap: var(--sp-2); }
+.sg-scale-row { display: flex; align-items: center; gap: var(--sp-4); }
+.sg-scale-row .sg-cap { flex: 0 0 var(--sp-22); }
+/* inline-sized components must not stretch to the demo column's width */
+.sg-col > .toast { align-self: flex-start; }
 .sg-note {
   font-size: var(--t-md); line-height: var(--t-md-lh); color: var(--chrome-ink);
   max-width: 60ch; margin: 0 0 var(--sp-4);
@@ -29,9 +37,12 @@
 </head>
 <body data-theme="light">
   <header class="board-header">
-    <div class="board-title">/wireframe — design system</div>
+    <div class="board-id">
+      <h1 class="board-title">/wireframe — design system</h1>
+      <p class="board-meta">Intent /wireframe · reference styleguide</p>
+    </div>
     <div class="board-controls">
-      <button class="theme-toggle" data-toggle-theme aria-pressed="false">
+      <button class="theme-toggle" data-toggle-theme>
         <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
       </button>
     </div>
@@ -54,6 +65,7 @@
     <a href="#cards">Cards · Lists</a>
     <a href="#table">Table</a>
     <a href="#overlays">Overlays</a>
+    <a href="#callout">Callout</a>
     <a href="#thumbnails">Thumbnails</a>
   </nav>
 
@@ -86,22 +98,22 @@
 
   <section class="board-section" id="spacing">
     <h2 class="section-label">Tokens · spacing scale</h2>
-    <div class="sg-col">
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-1)"></div><span class="sg-cap">--sp-1 · 4</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-2)"></div><span class="sg-cap">--sp-2 · 8</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-3)"></div><span class="sg-cap">--sp-3 · 12</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-4)"></div><span class="sg-cap">--sp-4 · 16</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-5)"></div><span class="sg-cap">--sp-5 · 20</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-6)"></div><span class="sg-cap">--sp-6 · 24</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-8)"></div><span class="sg-cap">--sp-8 · 32</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-10)"></div><span class="sg-cap">--sp-10 · 40</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-12)"></div><span class="sg-cap">--sp-12 · 48</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-14)"></div><span class="sg-cap">--sp-14 · 56</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-16)"></div><span class="sg-cap">--sp-16 · 64</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-18)"></div><span class="sg-cap">--sp-18 · 72</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-20)"></div><span class="sg-cap">--sp-20 · 80</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-22)"></div><span class="sg-cap">--sp-22 · 88</span></div>
-      <div class="sg-specimen"><div class="sg-bar" style="width: var(--sp-23)"></div><span class="sg-cap">--sp-23 · 92</span></div>
+    <div class="sg-scale">
+      <div class="sg-scale-row"><span class="sg-cap">--sp-1 · 4</span><div class="sg-bar" style="width: var(--sp-1)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-2 · 8</span><div class="sg-bar" style="width: var(--sp-2)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-3 · 12</span><div class="sg-bar" style="width: var(--sp-3)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-4 · 16</span><div class="sg-bar" style="width: var(--sp-4)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-5 · 20</span><div class="sg-bar" style="width: var(--sp-5)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-6 · 24</span><div class="sg-bar" style="width: var(--sp-6)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-8 · 32</span><div class="sg-bar" style="width: var(--sp-8)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-10 · 40</span><div class="sg-bar" style="width: var(--sp-10)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-12 · 48</span><div class="sg-bar" style="width: var(--sp-12)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-14 · 56</span><div class="sg-bar" style="width: var(--sp-14)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-16 · 64</span><div class="sg-bar" style="width: var(--sp-16)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-18 · 72</span><div class="sg-bar" style="width: var(--sp-18)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-20 · 80</span><div class="sg-bar" style="width: var(--sp-20)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-22 · 88</span><div class="sg-bar" style="width: var(--sp-22)"></div></div>
+      <div class="sg-scale-row"><span class="sg-cap">--sp-23 · 92</span><div class="sg-bar" style="width: var(--sp-23)"></div></div>
     </div>
   </section>
 
@@ -111,9 +123,9 @@
     floored for legibility (nothing under 11px). Hierarchy comes from size and
     weight — never typeface.</p>
     <div class="sg-block wf sg-col">
-      <div class="sg-specimen"><span class="t-display">Posted to Maplewood</span><span class="sg-cap">t-display · 27/36 · 700</span></div>
-      <div class="sg-specimen"><span class="t-title">Posted to Maplewood</span><span class="sg-cap">t-title · 21/28 · 700</span></div>
-      <div class="sg-specimen"><span class="t-heading">Near you today</span><span class="sg-cap">t-heading · 17/24 · 600</span></div>
+      <div class="sg-specimen"><span class="t-display">Posted to Maplewood</span><span class="sg-cap">t-display · 22/28 · 700</span></div>
+      <div class="sg-specimen"><span class="t-title">Posted to Maplewood</span><span class="sg-cap">t-title · 18/24 · 700</span></div>
+      <div class="sg-specimen"><span class="t-heading">Near you today</span><span class="sg-cap">t-heading · 16/20 · 600</span></div>
       <div class="sg-specimen"><span class="t-body-strong">Desk lamp — $10</span><span class="sg-cap">t-body-strong · 14/20 · 600</span></div>
       <div class="sg-specimen"><span class="t-body">Warm brass lamp, works great. Pickup only.</span><span class="sg-cap">t-body · 14/20 · 400</span></div>
       <div class="sg-specimen"><span class="t-small">Visible to neighbors within 1 mile. No fees, ever.</span><span class="sg-cap">t-small · 13/20 · 400</span></div>
@@ -156,6 +168,7 @@
         <div class="sg-specimen"><span class="glyph gl-camera"></span><span class="sg-cap">gl-camera</span></div>
         <div class="sg-specimen"><span class="glyph gl-alert"></span><span class="sg-cap">gl-alert</span></div>
         <div class="sg-specimen"><span class="glyph gl-arrow-left"></span><span class="sg-cap">gl-arrow-left</span></div>
+        <div class="sg-specimen"><span class="glyph gl-info"></span><span class="sg-cap">gl-info</span></div>
       </div>
       <div class="sg-row">
         <div class="sg-specimen"><span class="icon icon-sm"></span><span class="sg-cap">icon-sm (placeholder)</span></div>
@@ -200,7 +213,7 @@
   <section class="board-section" id="forms">
     <h2 class="section-label">Form controls</h2>
     <p class="sg-note">All native and functional: type in them, tab through them,
-    toggle them. Focus = 2px secondary-ink ring.</p>
+    toggle them. Focus = 2px accent ring.</p>
     <div class="sg-block wf sg-col" style="max-width: 480px">
       <label class="field">
         <span class="field-label">Title</span>
@@ -376,8 +389,8 @@
       <div class="list" style="max-width: 480px; border: 1px solid var(--w-border); border-radius: var(--r-lg); overflow: hidden">
         <button class="list-row">
           <span class="avatar"></span>
-          <span class="grow">
-            <span class="t-body-strong" style="display: block">Mara T.</span>
+          <span class="grow text-stack">
+            <span class="t-body-strong">Mara T.</span>
             <span class="t-caption muted">Is the lamp still available?</span>
           </span>
           <span class="t-caption muted">2h</span>
@@ -385,8 +398,8 @@
         </button>
         <button class="list-row">
           <span class="avatar"></span>
-          <span class="grow">
-            <span class="t-body-strong" style="display: block">Dev P.</span>
+          <span class="grow text-stack">
+            <span class="t-body-strong">Dev P.</span>
             <span class="t-caption muted">Can you do $30 for the bike?</span>
           </span>
           <span class="t-caption muted">1d</span>
@@ -444,13 +457,63 @@
     </div>
   </section>
 
+  <section class="board-section" id="callout">
+    <h2 class="section-label">Callout — persistent inline alert</h2>
+    <p class="sg-note">The in-page counterpart to the toast. Severity reads from
+    the leading glyph and the copy, not from hue — the ramp carries no success or
+    warning color. Neutral by default; accent for emphasis; error is the ramp's
+    one semantic exception. Never a left accent stripe.</p>
+    <div class="sg-block wf sg-col" style="max-width: 560px">
+      <div class="callout">
+        <span class="glyph gl-info" aria-hidden="true"></span>
+        <div class="callout-body">
+          <p class="callout-title" style="margin: 0">Giveaways are free to post</p>
+          <p class="callout-text" style="margin: 0">Marking a listing free skips the
+          price step and notifies neighbors within 0.5 mi.</p>
+        </div>
+      </div>
+      <span class="sg-cap">neutral — note</span>
+
+      <div class="callout">
+        <span class="glyph gl-info" aria-hidden="true"></span>
+        <div class="callout-body">
+          <p class="callout-text" style="margin: 0">Your draft saves automatically.</p>
+        </div>
+        <button class="btn-icon" aria-label="Dismiss"><span class="glyph glyph-sm gl-x"></span></button>
+      </div>
+      <span class="sg-cap">neutral — single line, dismissible</span>
+
+      <div class="callout accent">
+        <span class="glyph gl-bell" aria-hidden="true"></span>
+        <div class="callout-body">
+          <p class="callout-title" style="margin: 0">Post to the block, not the city</p>
+          <p class="callout-text" style="margin: 0">Listings reach the 842 neighbors
+          closest to you first — they're the ones who can pick up today.</p>
+        </div>
+      </div>
+      <span class="sg-cap">accent — emphasis / tip</span>
+
+      <div class="callout error">
+        <span class="glyph gl-alert" aria-hidden="true"></span>
+        <div class="callout-body">
+          <p class="callout-title" style="margin: 0">This listing couldn't post</p>
+          <p class="callout-text" style="margin: 0">Add at least one photo, then try
+          again. Your text is saved.</p>
+        </div>
+      </div>
+      <span class="sg-cap">error — the ramp's one semantic exception</span>
+    </div>
+  </section>
+
   <section class="board-section" id="thumbnails">
     <h2 class="section-label">Thumbnails (lo-fi) — idea vignettes</h2>
     <p class="sg-note">A thumbnail is one idea: a focused UI fragment built from this
     same kit at natural size, staged on a muted panel, with a caption narrating the
     concept — index, title, one breath of description. A board of them is divergence
     at the mechanism level: many different answers to one problem. The vignette
-    contains only real UI; the caption is annotation. Here, three ideas for
+    contains only real UI; the caption is annotation. The optional .dots stage grid
+    is a board-level choice — all vignettes or none, and only when the dots mean
+    something (a map, a canvas). Here, three ideas for
     "how do giveaways work on Nearby?"</p>
     <div class="frame-grid">
 
@@ -478,7 +541,7 @@
 
       <div class="frame" style="width: 360px">
         <div class="wf">
-          <div class="vignette dots">
+          <div class="vignette">
             <div class="float" style="max-width: 280px">
               <div class="row">
                 <span class="glyph gl-bell" aria-hidden="true" style="color: var(--w-ink2)"></span>
@@ -531,12 +594,29 @@ const thLabel = th?.querySelector('.theme-label');
 function setTheme(dark) {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   document.body.dataset.theme = dark ? 'dark' : 'light';
-  th?.setAttribute('aria-pressed', String(dark));
+  th?.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
   if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
 }
-setTheme(matchMedia('(prefers-color-scheme: dark)').matches);
-th?.addEventListener('click', () =>
-  setTheme(document.body.dataset.theme !== 'dark'));
+let savedTheme = null;
+try { savedTheme = localStorage.getItem('wf-theme'); } catch (e) {}
+setTheme(savedTheme ? savedTheme === 'dark'
+  : matchMedia('(prefers-color-scheme: dark)').matches);
+th?.addEventListener('click', () => {
+  const dark = document.body.dataset.theme !== 'dark';
+  setTheme(dark);
+  try { localStorage.setItem('wf-theme', dark ? 'dark' : 'light'); } catch (e) {}
+});
+
+/* scroll-spy: the section index answers "where am I" */
+const indexLinks = [...document.querySelectorAll('.board-index a')];
+const bySection = new Map(indexLinks.map(a => [a.getAttribute('href').slice(1), a]));
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) {
+    indexLinks.forEach(a => a.removeAttribute('aria-current'));
+    bySection.get(en.target.id)?.setAttribute('aria-current', 'true');
+  }});
+}, { rootMargin: '-10% 0px -70% 0px' });
+document.querySelectorAll('.board-section[id]').forEach(s => spy.observe(s));
 document.querySelectorAll('.wf .chip').forEach(c =>
   c.addEventListener('click', () => c.classList.toggle('active')));
 document.querySelectorAll('.wf .switch').forEach(s =>
