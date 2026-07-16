@@ -66,9 +66,9 @@
   --t-xs: 11px;  --t-xs-lh: 16px;   /* captions, timestamps, tab labels */
   --t-sm: 13px;  --t-sm-lh: 20px;   /* secondary text, field labels     */
   --t-md: 14px;  --t-md-lh: 20px;   /* body, inputs, buttons            */
-  --t-lg: 17px;  --t-lg-lh: 24px;   /* section headings                 */
-  --t-xl: 21px;  --t-xl-lh: 28px;   /* page titles                      */
-  --t-2xl: 27px; --t-2xl-lh: 36px;  /* hero/display                     */
+  --t-lg: 16px;  --t-lg-lh: 20px;   /* section headings                 */
+  --t-xl: 18px;  --t-xl-lh: 24px;   /* page titles                      */
+  --t-2xl: 22px; --t-2xl-lh: 28px;  /* hero/display                     */
 
   /* ── content font: neutral, never branded ────────────────────── */
   --wf-font: system-ui, -apple-system, sans-serif;
@@ -83,6 +83,7 @@
   --gl-camera: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5h3l1-1.5h4L11 5h3v8H2z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8.75' r='2.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
   --gl-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2L15 13.5H1z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M8 6.5v3.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11.75' r='0.9' fill='%23000'/%3E%3C/svg%3E");
   --gl-arrow-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H3M7 4L3 8l4 4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --gl-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6.25' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M8 7.25v3.75' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='4.9' r='0.9' fill='%23000'/%3E%3C/svg%3E");
   /* checkbox check is a background image, not a mask — it must
      contrast the accent-filled box, so it carries a themed stroke   */
   --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -98,7 +99,7 @@
   --w-on-accent:   #0b0b0e;  /* dark text on the lighter dark-mode accent */
   --w-accent-soft: #2d2a4e;  /* pair with --w-ink1 text in dark */
   --w-error:   #f97066;
-  --note:      #7c6ff0;
+  --note:      #8a80f4;  /* one step lighter than the content accent: rail numbers clear 4.5:1 on the stage, and stage-ink marker numerals clear it on this fill */
   --gl-check-on-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.5 3.5L13.5 4.5' fill='none' stroke='%230b0b0e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
@@ -141,6 +142,7 @@
 .wf .gl-camera     { -webkit-mask-image: var(--gl-camera);     mask-image: var(--gl-camera); }
 .wf .gl-alert      { -webkit-mask-image: var(--gl-alert);      mask-image: var(--gl-alert); }
 .wf .gl-arrow-left { -webkit-mask-image: var(--gl-arrow-left); mask-image: var(--gl-arrow-left); }
+.wf .gl-info       { -webkit-mask-image: var(--gl-info);       mask-image: var(--gl-info); }
 
 /* placeholder for app-specific icons not yet decided */
 .wf .icon { display: inline-block; flex-shrink: 0;
@@ -435,10 +437,48 @@
 .wf .toast .btn-icon { color: var(--w-canvas); }
 .wf .toast .btn-icon:hover { background: rgba(255, 255, 255, 0.15); }
 
+/* ═══ callout — persistent inline alert / note ═══════════════════ */
+/* The in-page counterpart to the transient .toast. Severity is carried
+   by the leading glyph and the copy, never by hue — the ramp has no
+   success or warning color. Neutral by default; .accent for emphasis
+   (accent-soft fill); .error is the ramp's one semantic exception
+   (red border + glyph, matching .input.error — no red wash). Never a
+   left accent stripe. */
+.wf .callout {
+  display: flex; align-items: flex-start; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--w-surface);
+  border: 1px solid var(--w-border); border-radius: var(--r-md);
+}
+.wf .callout > .glyph { flex-shrink: 0; color: var(--w-ink2); }
+.wf .callout-body { flex: 1; min-width: 0; }
+.wf .callout-title {
+  font-size: var(--t-md); line-height: var(--t-md-lh); font-weight: 600; }
+.wf .callout-title + .callout-text { margin-top: var(--sp-1); }
+.wf .callout-text {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); color: var(--w-ink2); }
+.wf .callout > .btn-icon { flex-shrink: 0; }
+
+.wf .callout.accent { background: var(--w-accent-soft); border-color: var(--w-accent); }
+.wf .callout.accent > .glyph,
+.wf .callout.accent .callout-title { color: var(--w-accent); }
+[data-theme="dark"] .wf .callout.accent > .glyph,
+[data-theme="dark"] .wf .callout.accent .callout-title { color: var(--w-ink1); }
+
+.wf .callout.error { border-color: var(--w-error); }
+.wf .callout.error > .glyph,
+.wf .callout.error .callout-title { color: var(--w-error); }
+
 /* ═══ layout primitives ══════════════════════════════════════════ */
 
 .wf .row { display: flex; align-items: center; gap: var(--sp-2); }
 .wf .stack > * + * { margin-top: var(--sp-3); }
+/* a name/title set directly over a secondary line is ONE identity unit:
+   collapse the leading to a single 16px grid step so the gap isn't two
+   line-boxes' half-leading summed to an off-grid value. For name + sub
+   (body/small/caption) only — not headings, whose leading they'd clip. */
+.wf .text-stack { display: flex; flex-direction: column; }
+.wf .text-stack > * { line-height: var(--t-xs-lh); }
 .wf .grow { flex: 1; min-width: 0; }
 .wf .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
 .wf .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3); }
