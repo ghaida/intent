@@ -1,0 +1,149 @@
+/* GENERATED CONTENT — per-artifact layout CSS lifted verbatim from the
+   /wireframe-generated Nearby artifacts (wireframe-eval-workspace/site-examples).
+   Regenerate the artifacts and re-extract rather than editing by hand. */
+
+/* annotation markers — the kit's annotation layer, restated with kit
+   tokens only (the viewer chrome stylesheet never loads on the site) */
+.wf-examples .note-marker {
+  position: absolute;
+  width: var(--sp-6);
+  height: var(--sp-6);
+  border-radius: var(--r-full);
+  background: var(--note);
+  color: #ffffff;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: var(--sp-6);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+[data-theme='dark'] .wf-examples .note-marker {
+  color: var(--w-canvas);
+}
+
+/* ── from wireframes-nearby-post-flow-thumbnails.html ── */
+/* ═══════════════════════════════════════════════════════════════════
+   Per-artifact layout — Nearby posting-mechanism idea board.
+   Focused-fragment scaffolding only. Every value is a kit token
+   (--sp-*, --h-*, --ic-*, --r-*, --t-*); frame widths and the
+   vignette float's max-width are the system's viewport exception.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* photo tiles — shared by the photo-first and form-first fragments */
+.wf .thumb-row { display: flex; align-items: center; gap: var(--sp-2);
+  margin-top: var(--sp-2); }
+.wf .thumb { width: var(--sp-14); height: var(--sp-14); flex-shrink: 0; }
+.wf .thumb-add { display: flex; align-items: center; justify-content: center;
+  width: var(--sp-14); height: var(--sp-14); flex-shrink: 0;
+  border: 1px solid var(--w-border); border-radius: var(--r-sm);
+  background: var(--w-canvas); color: var(--w-ink2); }
+.wf .thumb-add:hover { background: var(--w-surface); }
+
+/* #1 photo-first: the dominant camera zone the fields follow */
+.wf .cam-zone { display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: var(--sp-1); width: 100%;
+  height: calc(var(--sp-20) * 2); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-surface);
+  color: var(--w-ink1); }
+.wf .cam-zone:hover { border-color: var(--w-ink2); }
+.wf .cam-zone .glyph, .wf .cam-zone .t-caption { color: var(--w-ink2); }
+
+/* price row: amount input with the Free chip beside it */
+.wf .price-line { display: flex; align-items: center; gap: var(--sp-2); }
+.wf .price-line .input { flex: 1; min-width: 0; }
+
+/* #3 one-shot: the live camera IS the screen — caption floats in it */
+.wf .viewfinder { position: relative; height: calc(var(--sp-20) * 2);
+  border: 1px solid var(--w-border); border-radius: var(--r-md);
+  background: var(--w-surface); }
+.wf .viewfinder .input { position: absolute; width: auto;
+  left: var(--sp-3); right: var(--sp-3); bottom: var(--sp-3); }
+.wf .shutter-row { display: flex; align-items: center;
+  justify-content: space-between; padding: var(--sp-3) var(--sp-8) 0; }
+.wf .shutter { width: var(--sp-12); height: var(--sp-12); flex-shrink: 0;
+  border-radius: var(--r-full); border: 2px solid var(--w-ink1);
+  background: var(--w-canvas); padding: var(--sp-1); }
+.wf .shutter::after { content: ""; display: block; width: 100%; height: 100%;
+  border-radius: var(--r-full); background: var(--w-ink1); }
+.wf .shutter:hover::after { background: var(--w-ink2); }
+
+/* ── from wireframes-nearby-post-flow.html ── */
+/* ═══════════════════════════════════════════════════════════════════
+   Per-artifact layout — Nearby post flow (photo-first mechanism).
+   Screen-specific zones, grids, and marker anchors only. Every value
+   is a kit token (--sp-*, --h-*, --ic-*, --r-*, --t-*); viewport
+   widths live inline on the frames per the system's one exception.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* device status strip — composed from kit type + spacing */
+.wf .statusbar { display: flex; align-items: center; justify-content: space-between;
+  min-height: var(--sp-6); padding: 0 var(--sp-4);
+  font-size: var(--t-xs); line-height: var(--t-xs-lh); }
+.wf .statusbar .time { font-weight: 600; }
+
+.wf .pad-x { padding: var(--sp-3) var(--sp-4) 0; }
+.wf .anchor { position: relative; }
+.wf .center { text-align: center; }
+
+/* browse: category chip scroller, count/sort row, listing grid */
+.wf .chip-row { display: flex; gap: var(--sp-2); overflow-x: auto;
+  padding: var(--sp-3) var(--sp-4); }
+.wf .chip-row .chip { flex-shrink: 0; }
+.wf .chip-wrap { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.wf .result-meta { display: flex; align-items: center;
+  padding: 0 var(--sp-4) var(--sp-2); }
+.wf .listing-grid { display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3); padding: 0 var(--sp-4) var(--sp-4); }
+.wf .listing-card { display: block; width: 100%; text-align: left; }
+.wf .listing-card .media { display: block; width: 100%; height: var(--sp-22); }
+.wf .listing-card .card-body { display: block; }
+.wf .listing-card .card-body > span { display: block; }
+.wf .listing-card .card-body > .price-row { display: flex; align-items: center;
+  justify-content: space-between; gap: var(--sp-2); }
+.wf .listing-card .card-body > .badge { display: inline-flex; margin-top: var(--sp-2); }
+
+/* post: dominant camera zone, photo tiles, price row, commit bar */
+.wf .cam-zone { display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: var(--sp-1); width: 100%;
+  height: calc(var(--sp-14) * 4); border: 1px solid var(--w-border);
+  border-radius: var(--r-md); background: var(--w-surface);
+  color: var(--w-ink1); }
+.wf .cam-zone:hover { border-color: var(--w-ink2); }
+.wf .cam-zone .glyph, .wf .cam-zone .t-caption { color: var(--w-ink2); }
+.wf .thumb-row { display: flex; align-items: center; gap: var(--sp-2);
+  margin-top: var(--sp-2); }
+.wf .thumb { width: var(--sp-14); height: var(--sp-14); flex-shrink: 0; }
+.wf .thumb-wrap { position: relative; flex-shrink: 0; display: inline-flex; }
+.wf .thumb-wrap .badge { position: absolute; bottom: var(--sp-1); left: var(--sp-1); }
+.wf .thumb-add { display: flex; align-items: center; justify-content: center;
+  width: var(--sp-14); height: var(--sp-14); flex-shrink: 0;
+  border: 1px solid var(--w-border); border-radius: var(--r-sm);
+  background: var(--w-canvas); color: var(--w-ink2); }
+.wf .thumb-add:hover { background: var(--w-surface); }
+.wf .price-line { display: flex; align-items: center; gap: var(--sp-2); }
+.wf .price-line .input { flex: 1; min-width: 0; }
+.wf .action-bar { display: flex; flex-direction: column; gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  border-top: 1px solid var(--w-border); }
+
+/* posted: centered confirmation mark + receipt spec rows */
+.wf .confirm-hero { display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: var(--sp-8) var(--sp-6) var(--sp-2); }
+.wf .confirm-mark { display: flex; align-items: center; justify-content: center;
+  width: var(--sp-16); height: var(--sp-16); border-radius: var(--r-full);
+  background: var(--w-accent-soft); color: var(--w-accent);
+  margin-bottom: var(--sp-4); }
+[data-theme="dark"] .wf .confirm-mark { color: var(--w-ink1); }
+.wf .spec-row { display: flex; gap: var(--sp-3); align-items: baseline; }
+.wf .spec-label { flex-shrink: 0; width: var(--sp-20); }
+.wf .thumb-sm { width: var(--sp-10); height: var(--sp-10); flex-shrink: 0; }
+
+/* tab bar: Post is the center tab — an accent mark, the app's one
+   always-reachable primary action */
+.wf .post-mark { display: inline-flex; align-items: center; justify-content: center;
+  width: var(--ic-md); height: var(--ic-md); border-radius: var(--r-full);
+  background: var(--w-accent); color: var(--w-on-accent); flex-shrink: 0; }

@@ -13,7 +13,7 @@ Output exactly this, starting with the triple-backtick line, ending with the clo
 
 `````
 ```
-◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
 
   intent.
 
@@ -21,7 +21,7 @@ Output exactly this, starting with the triple-backtick line, ending with the clo
 
   What are you designing, and for whom?
 
-◆ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
 ```
 `````
 
@@ -401,7 +401,7 @@ Never fill gaps with silent assumptions. If you're guessing, say you're guessing
 
 ## Skill Routing Logic
 
-Intent routes to 14 specialized skills based on what the user needs done. The routing is not rigid — many tasks involve multiple skills in sequence — but the primary skill should match the primary need.
+Intent routes to 15 specialized skills based on what the user needs done. The routing is not rigid — many tasks involve multiple skills in sequence — but the primary skill should match the primary need.
 
 ### By what the user needs done
 
@@ -424,6 +424,10 @@ Use when: Designing specific user journeys, onboarding, checkout, settings, sear
 **"I need to organize information"**
 → `/organize` — Structure information architecture, navigation, taxonomy, content hierarchy.
 Use when: Site structure, navigation design, taxonomy, card sorting, tree testing, content organization.
+
+**"I need to lay out the screen"**
+→ `/wireframe` — Design screen structure at wireframe fidelity: lo-fi idea boards, full-page interactive grayscale wireframes, click-through prototypes.
+Use when: Deciding what goes where on a screen, materializing flows from `/journey` as screens, structural exploration before visual design, assembling click-through prototypes.
 
 **"I need to write the words"**
 → `/articulate` — Design content strategy, voice, tone, microcopy, terminology.
@@ -473,6 +477,7 @@ When a user brings an existing design for improvement, follow this pipeline:
    - System architecture issues → `/blueprint`
    - Flow breakdowns → `/journey`
    - Information architecture problems → `/organize`
+   - Screen structure and layout problems → `/wireframe`
    - Content/copy issues → `/articulate`
    - Accessibility failures → `/include`
    - Platform adaptation issues → `/transpose`
@@ -486,7 +491,7 @@ When a user brings an existing design for improvement, follow this pipeline:
 
 Common workflows that involve multiple skills in sequence:
 
-**New product design:** `/strategize` → `/investigate` → `/blueprint` → `/journey` → `/organize` → `/articulate` → `/include` → `/specify`
+**New product design:** `/strategize` → `/investigate` → `/blueprint` → `/journey` → `/organize` → `/wireframe` → `/articulate` → `/include` → `/specify`
 
 **UX audit and remediation:** `/evaluate` → (route by findings) → `/evaluate` (verify)
 

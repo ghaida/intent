@@ -1,0 +1,341 @@
+---
+// GENERATED WIREFRAMES — lifted verbatim from artifacts produced by the
+// /wireframe skill itself (wireframe-eval-workspace/site-examples/outputs).
+// Do not hand-edit the frame markup: regenerate the artifacts and re-extract.
+// The kit styles come from wireframe-kit.css (synced copy of the skill's
+// design-system.css); frame-specific layout from wireframe-examples.css
+// (the artifacts' own per-artifact CSS, also lifted verbatim). The site's
+// [data-theme] themes everything with no JavaScript.
+import '../../css/wireframe-kit.css';
+import '../../css/wireframe-examples.css';
+---
+
+<div class="wf-examples">
+  <div class="visual-label">The idea board — three posting mechanisms</div>
+  <div class="wf-ex-row">
+
+    <div class="wf-ex wf-ex-vignette">
+      <div class="wf">
+                <div class="vignette">
+                  <div class="float" style="max-width: 280px">
+                    <button class="cam-zone">
+                      <span class="glyph glyph-lg gl-camera"></span>
+                      <span class="t-body-strong">Add photos</span>
+                      <span class="t-caption">First photo is the cover</span>
+                    </button>
+                    <div class="thumb-row">
+                      <span class="media thumb"></span>
+                      <span class="media thumb"></span>
+                      <button class="thumb-add" aria-label="Add another photo"><span class="glyph gl-plus"></span></button>
+                      <span class="t-caption muted">2 of 8</span>
+                    </div>
+                    <div class="field" style="margin-top: var(--sp-4);">
+                      <label class="field-label" for="pf-title">Title</label>
+                      <input class="input" id="pf-title" value="Solid oak bookshelf">
+                    </div>
+                    <div class="field">
+                      <label class="field-label" for="pf-price">Price</label>
+                      <div class="price-line">
+                        <input class="input" id="pf-price" value="$40">
+                        <button class="chip">Free</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="idea-caption">
+                  <span class="idea-num">#1</span>
+                  <p class="idea-title">Photo-first</p>
+                  <p class="idea-desc">The camera leads and the fields follow — the photo does the describing before any typing starts, which is how buyers judge anyway. Trade: a neighbor without a decent shot stalls at step one.</p>
+                </div>
+              </div>
+    </div>
+
+    <div class="wf-ex wf-ex-vignette">
+      <div class="wf">
+                <div class="vignette">
+                  <div class="float" style="max-width: 280px">
+                    <div class="field">
+                      <label class="field-label" for="ff-title">Title</label>
+                      <input class="input" id="ff-title" value="Solid oak bookshelf">
+                    </div>
+                    <div class="field">
+                      <label class="field-label" for="ff-price">Price</label>
+                      <div class="price-line">
+                        <input class="input" id="ff-price" value="$40">
+                        <button class="chip">Free</button>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <span class="field-label">Category</span>
+                      <button class="select">Furniture</button>
+                    </div>
+                    <div class="field">
+                      <span class="field-label">Photos</span>
+                      <div class="thumb-row" style="margin-top: 0;">
+                        <button class="thumb-add" aria-label="Add a photo"><span class="glyph gl-plus"></span></button>
+                        <button class="thumb-add" aria-label="Add a photo"><span class="glyph gl-plus"></span></button>
+                        <button class="thumb-add" aria-label="Add a photo"><span class="glyph gl-plus"></span></button>
+                      </div>
+                      <span class="field-hint">Optional to start — the listing can go live without one</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="idea-caption">
+                  <span class="idea-num">#2</span>
+                  <p class="idea-title">Form-first</p>
+                  <p class="idea-desc">Title and price lead — the listing is scannable text from the first keystroke, and photos attach at the end. Fastest for the keyboard thinker; trade: the photo becomes an afterthought, and photo-less listings erode browse trust.</p>
+                </div>
+              </div>
+    </div>
+
+    <div class="wf-ex wf-ex-vignette">
+      <div class="wf">
+                <div class="vignette">
+                  <div class="float" style="max-width: 280px">
+                    <div class="viewfinder">
+                      <input class="input" value="Oak bookshelf · $40" aria-label="Caption — one line carries title and price">
+                    </div>
+                    <span class="field-hint">One caption carries title and price</span>
+                    <div class="shutter-row">
+                      <span class="icon icon-md"></span>
+                      <button class="shutter" aria-label="Take the photo and post"></button>
+                      <span class="icon icon-md"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="idea-caption">
+                  <span class="idea-num">#3</span>
+                  <p class="idea-title">One-shot camera</p>
+                  <p class="idea-desc">The live camera is the screen — one shot, one caption line, posted. A single gesture from garage to listed; trade: the parser owns the title/price split, and with no category or description, browsing gets messier.</p>
+                </div>
+              </div>
+    </div>
+
+  </div>
+
+  <div class="visual-label wf-ex-second">The wireframes — Photo-first, resolved into screens</div>
+  <div class="wf-ex-row">
+
+    <div class="wf-ex wf-ex-screen">
+      <p class="wf-ex-plate">Browse — Maplewood 1/3</p>
+      <div class="wf">
+                <div class="statusbar"><span class="time">9:41</span><span class="muted">5G · 87%</span></div>
+                <header class="appbar">
+                  <div class="text-stack grow">
+                    <span class="t-heading">Maplewood</span>
+                    <span class="t-caption muted">Listings within 1 mile</span>
+                  </div>
+                  <button class="btn-icon" aria-label="Notifications"><span class="glyph gl-bell"></span></button>
+                </header>
+                <div class="pad-x">
+                  <div class="search">
+                    <span class="glyph gl-search"></span>
+                    <input class="input" type="search" placeholder="Search Maplewood — dresser, bike, plants">
+                  </div>
+                </div>
+                <div class="chip-row">
+                  <button class="chip active" aria-pressed="true">All</button>
+                  <button class="chip">Furniture</button>
+                  <button class="chip">Kids &amp; baby</button>
+                  <button class="chip">Plants &amp; garden</button>
+                  <button class="chip">Electronics</button>
+                  <button class="chip">Free</button>
+                </div>
+                <div class="result-meta">
+                  <span class="t-small muted grow">38 listings within 1 mile</span>
+                  <button class="btn btn-ghost btn-sm">Newest first <span class="glyph glyph-sm gl-chevron"></span></button>
+                </div>
+                <div class="listing-grid">
+                  <div class="anchor">
+                    <button class="card interactive listing-card">
+                      <span class="media"></span>
+                      <span class="card-body">
+                        <span class="price-row"><span class="t-body-strong">$40</span><span class="t-caption muted">2h ago</span></span>
+                        <span class="t-small">Solid oak bookshelf</span>
+                        <span class="t-caption muted">Priya S. · 0.2 mi</span>
+                      </span>
+                    </button>
+                    <div class="note-marker" style="top: var(--sp-2); left: var(--sp-2);">1</div>
+                  </div>
+                  <button class="card interactive listing-card">
+                    <span class="media"></span>
+                    <span class="card-body">
+                      <span class="price-row"><span class="t-body-strong">$25</span><span class="t-caption muted">5h ago</span></span>
+                      <span class="t-small">Kids balance bike</span>
+                      <span class="t-caption muted">Marcus T. · 0.4 mi</span>
+                    </span>
+                  </button>
+                  <div class="anchor">
+                    <button class="card interactive listing-card">
+                      <span class="media"></span>
+                      <span class="card-body">
+                        <span class="price-row"><span class="badge badge-accent">Free</span><span class="t-caption muted">1h ago</span></span>
+                        <span class="t-small">Monstera cuttings, rooted</span>
+                        <span class="t-caption muted">Alma G. · 0.3 mi</span>
+                      </span>
+                    </button>
+                    <div class="note-marker" style="top: var(--sp-2); left: var(--sp-2);">2</div>
+                  </div>
+                  <div class="anchor">
+                    <button class="card interactive listing-card">
+                      <span class="media"></span>
+                      <span class="card-body">
+                        <span class="price-row"><span class="t-body-strong muted">$60</span><span class="t-caption muted">1d ago</span></span>
+                        <span class="t-small">IKEA Malm dresser, 6-drawer</span>
+                        <span class="t-caption muted">Dana W. · 0.6 mi</span>
+                        <span class="badge badge-muted">Pending pickup</span>
+                      </span>
+                    </button>
+                    <div class="note-marker" style="top: var(--sp-2); left: var(--sp-2);">3</div>
+                  </div>
+                  <button class="card interactive listing-card">
+                    <span class="media"></span>
+                    <span class="card-body">
+                      <span class="price-row"><span class="t-body-strong">$30</span><span class="t-caption muted">3h ago</span></span>
+                      <span class="t-small">Air fryer — barely used</span>
+                      <span class="t-caption muted">Theo B. · 0.5 mi</span>
+                    </span>
+                  </button>
+                  <button class="card interactive listing-card">
+                    <span class="media"></span>
+                    <span class="card-body">
+                      <span class="price-row"><span class="t-body-strong">$45</span><span class="t-caption muted">6h ago</span></span>
+                      <span class="t-small">Patio chairs, set of two</span>
+                      <span class="t-caption muted">Rosa M. · 0.8 mi</span>
+                    </span>
+                  </button>
+                </div>
+                <nav class="tabbar anchor">
+                  <button class="tab active"><span class="icon icon-md"></span>Browse</button>
+                  <button class="tab"><span class="icon icon-md"></span>Saved</button>
+                  <button class="tab" data-go="scr-post"><span class="post-mark"><span class="glyph glyph-sm gl-plus"></span></span>Post</button>
+                  <button class="tab"><span class="icon icon-md"></span>Messages</button>
+                  <button class="tab"><span class="icon icon-md"></span>Profile</button>
+                  <div class="note-marker" style="top: var(--sp-1); left: calc(50% + var(--sp-6));">4</div>
+                </nav>
+              </div>
+    </div>
+
+    <div class="wf-ex wf-ex-screen">
+      <p class="wf-ex-plate">Post an item 2/3</p>
+      <div class="wf">
+                <div class="statusbar"><span class="time">9:41</span><span class="muted">5G · 87%</span></div>
+                <header class="appbar">
+                  <button class="btn-icon" data-go="scr-browse" aria-label="Close and return to browse"><span class="glyph gl-x"></span></button>
+                  <span class="t-heading grow">Post an item</span>
+                  <span class="t-caption muted">Maplewood</span>
+                </header>
+                <div class="screen-body">
+                  <div class="anchor">
+                    <button class="cam-zone">
+                      <span class="glyph glyph-lg gl-camera"></span>
+                      <span class="t-body-strong">Add photos</span>
+                      <span class="t-caption">Take or choose up to 8 — first photo is the cover</span>
+                    </button>
+                    <div class="thumb-row">
+                      <span class="thumb-wrap"><span class="media thumb"></span><span class="badge">Cover</span></span>
+                      <span class="media thumb"></span>
+                      <button class="thumb-add" aria-label="Add another photo"><span class="glyph gl-plus"></span></button>
+                      <span class="t-caption muted">2 of 8</span>
+                    </div>
+                    <div class="note-marker" style="top: var(--sp-2); left: var(--sp-2);">1</div>
+                  </div>
+                  <div class="field" style="margin-top: var(--sp-5);">
+                    <label class="field-label" for="post-title">Title</label>
+                    <input class="input" id="post-title" value="Solid oak bookshelf — 3 shelves">
+                  </div>
+                  <div class="field anchor">
+                    <label class="field-label" for="post-price">Price</label>
+                    <div class="price-line">
+                      <input class="input" id="post-price" value="$40">
+                      <button class="chip">Free</button>
+                    </div>
+                    <span class="field-hint">Neighbors see the price on the card — Free listings get a Free badge</span>
+                    <div class="note-marker" style="top: calc(-1 * var(--sp-1)); right: 0;">2</div>
+                  </div>
+                  <div class="field">
+                    <span class="field-label">Category</span>
+                    <button class="select">Furniture</button>
+                  </div>
+                  <div class="field">
+                    <span class="field-label">Condition</span>
+                    <div class="chip-wrap">
+                      <button class="chip">Like new</button>
+                      <button class="chip active" aria-pressed="true">Good</button>
+                      <button class="chip">Fair</button>
+                      <button class="chip">For parts</button>
+                    </div>
+                  </div>
+                  <div class="field anchor">
+                    <label class="field-label" for="post-desc">Description <span class="muted">— optional</span></label>
+                    <textarea class="textarea" id="post-desc" rows="3">36 × 12 × 48 in, three fixed shelves. Light wear on the top edge. Porch pickup on Birch St.</textarea>
+                    <span class="field-hint">A line on size, wear, and pickup saves a message round-trip</span>
+                    <div class="note-marker" style="top: calc(-1 * var(--sp-1)); right: 0;">3</div>
+                  </div>
+                </div>
+                <div class="action-bar anchor">
+                  <p class="t-caption muted center" style="margin: 0;">Visible to neighbors within 1 mile · no fees</p>
+                  <button class="btn btn-primary btn-lg btn-block" data-go="scr-posted">Post to Maplewood</button>
+                  <div class="note-marker" style="top: calc(-1 * var(--sp-3)); right: var(--sp-4);">4</div>
+                </div>
+              </div>
+    </div>
+
+    <div class="wf-ex wf-ex-screen">
+      <p class="wf-ex-plate">Posted 3/3</p>
+      <div class="wf">
+                <div class="statusbar"><span class="time">9:41</span><span class="muted">5G · 87%</span></div>
+                <header class="appbar">
+                  <span class="t-heading grow">Posted</span>
+                  <button class="btn-icon" data-go="scr-browse" aria-label="Close and return to browse"><span class="glyph gl-x"></span></button>
+                </header>
+                <div class="confirm-hero anchor">
+                  <span class="confirm-mark"><span class="glyph glyph-lg gl-check"></span></span>
+                  <h2 class="t-title" style="margin: 0;">You're live in Maplewood</h2>
+                  <p class="t-small muted" style="margin: var(--sp-2) 0 0;">842 neighbors within 1 mile can see your listing right now.</p>
+                  <div class="note-marker" style="top: var(--sp-4); right: var(--sp-6);">1</div>
+                </div>
+                <div class="screen-body">
+                  <div class="card anchor">
+                    <div class="card-body">
+                      <div class="row">
+                        <span class="media thumb-sm"></span>
+                        <span class="text-stack grow">
+                          <span class="t-body-strong">Solid oak bookshelf — 3 shelves</span>
+                          <span class="t-caption muted">$40 · Furniture · Good</span>
+                        </span>
+                        <span class="badge badge-accent">Live</span>
+                      </div>
+                      <hr class="divider" style="margin: var(--sp-3) 0;">
+                      <div class="stack">
+                        <div class="spec-row"><span class="spec-label t-small muted">Visible to</span><span class="t-body">842 neighbors · 1 mile radius</span></div>
+                        <div class="spec-row"><span class="spec-label t-small muted">Posted</span><span class="t-body">Today, 9:41 AM</span></div>
+                        <div class="spec-row"><span class="spec-label t-small muted">Fees</span><span class="t-body">None — Nearby is free</span></div>
+                      </div>
+                    </div>
+                    <div class="note-marker" style="top: var(--sp-2); right: var(--sp-2);">2</div>
+                  </div>
+                  <div class="callout" style="margin-top: var(--sp-4);">
+                    <span class="glyph gl-info"></span>
+                    <div class="callout-body">
+                      <p class="callout-text" style="margin: 0;">Interested neighbors message you directly — replies land in Messages, and the first usually arrives within a day.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="action-bar anchor">
+                  <button class="btn btn-primary btn-lg btn-block">View my listing</button>
+                  <button class="btn btn-secondary btn-block">Share to nearby groups</button>
+                  <div class="note-marker" style="top: calc(-1 * var(--sp-3)); right: var(--sp-4);">3</div>
+                </div>
+                <nav class="tabbar">
+                  <button class="tab" data-go="scr-browse"><span class="icon icon-md"></span>Browse</button>
+                  <button class="tab"><span class="icon icon-md"></span>Saved</button>
+                  <button class="tab active"><span class="post-mark"><span class="glyph glyph-sm gl-plus"></span></span>Post</button>
+                  <button class="tab"><span class="icon icon-md"></span>Messages</button>
+                  <button class="tab"><span class="icon icon-md"></span>Profile</button>
+                </nav>
+              </div>
+    </div>
+
+  </div>
+</div>

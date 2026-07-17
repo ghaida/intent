@@ -1,0 +1,398 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Intent /wireframe — viewer chrome
+   The stage every wireframe artifact renders on. Follows the Intent
+   website's design language (cool-tinted neutrals, General Sans
+   display, Hanken Grotesk body, SF Mono labels) and the same absolute
+   4px token law as the design system. Monochrome by rule: the site's
+   indigo belongs to the annotation layer, never to chrome.
+
+   Layer separation: chrome variables (--stage, --chrome-*) never
+   appear inside wireframe content; ramp variables (--w-*) never
+   appear in chrome.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --stage:         #fafafc;
+  --chrome-fg:     #18182b;
+  --chrome-ink:    #65657a;
+  --chrome-border: #d8d8e4;
+
+  --display: "General Sans", system-ui, -apple-system, sans-serif;
+  --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono:    "SF Mono", "Fira Code", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  --stage:         #18182b;
+  --chrome-fg:     #f0f0f8;
+  --chrome-ink:    #8888a8;
+  --chrome-border: #2a2a44;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: var(--sp-8);
+  background: var(--stage); font-family: var(--sans);
+  color: var(--chrome-fg); line-height: 1.5;
+}
+@media (max-width: 600px) {
+  body { padding: var(--sp-4); } /* the gutter yields width to the mocks on phones */
+}
+
+/* ── header ─────────────────────────────────────────────────────── */
+
+.board-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; row-gap: var(--sp-3); /* controls drop below the title on narrow screens — the chrome never causes page overflow */
+  margin-bottom: var(--sp-8);
+}
+/* the stage signs its work: an h1 title at display size, and a quiet
+   mono provenance line (who staged it · when · which rung) beneath */
+.board-title {
+  font-family: var(--display); font-size: var(--t-xl);
+  line-height: var(--t-xl-lh); font-weight: 700;
+  letter-spacing: -0.02em; color: var(--chrome-fg); margin: 0;
+}
+.board-meta {
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); margin: var(--sp-1) 0 0;
+}
+.board-controls { display: flex; align-items: center; gap: var(--sp-6); }
+
+.view-toggle { display: flex; gap: var(--sp-1); }
+.view-toggle button {
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  height: var(--h-sm); padding: 0 var(--sp-3); background: none;
+  border: 1px solid var(--chrome-border); border-radius: var(--r-md);
+  color: var(--chrome-ink);
+}
+.view-toggle button:hover { color: var(--chrome-fg); }
+/* active inverts — state reads at a glance, monochrome-native */
+.view-toggle button[aria-pressed="true"] {
+  background: var(--chrome-fg); border-color: var(--chrome-fg);
+  color: var(--stage); }
+
+/* chrome focus is designed, not UA-default — same ring grammar everywhere */
+.view-toggle button:focus-visible, .theme-toggle:focus-visible,
+.slide-nav button:focus-visible, .board-index a:focus-visible,
+.plate-open:focus-visible,
+body[data-view="proto"] [data-go]:focus-visible {
+  outline: 2px solid var(--chrome-fg); outline-offset: 2px;
+}
+
+/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
+.theme-toggle {
+  display: flex; align-items: center; gap: var(--sp-2);
+  background: none; border: none; cursor: pointer;
+  height: var(--h-sm); padding: 0;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+}
+.theme-toggle:hover { color: var(--chrome-fg); }
+.theme-toggle .swatch {
+  width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
+  border: 1px solid var(--chrome-ink);
+  background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
+}
+/* the swatch leads with the current mode — it reads as state, not
+   just a pictogram of the concept */
+[data-theme="dark"] .theme-toggle .swatch {
+  background: linear-gradient(90deg, #1a1a20 50%, #ffffff 50%);
+}
+
+/* ── section index (sidebar) — a reference you can jump around ──── */
+/* Two-column shell: 180px sticky label rail | content. Mirrors the
+   Intent site's own layout convention. Collapses on narrow screens. */
+
+.board-with-index { display: flex; gap: var(--sp-12); align-items: flex-start; }
+.board-main { flex: 1; min-width: 0; }
+.board-index {
+  position: sticky; top: var(--sp-8); flex-shrink: 0; width: 180px;
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  padding-right: var(--sp-4); border-right: 1px solid var(--chrome-border);
+}
+.board-index a {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); text-decoration: none;
+}
+.board-index a:hover { color: var(--chrome-fg); }
+.board-index a[aria-current="true"] { color: var(--chrome-fg); }
+@media (max-width: 900px) {
+  .board-with-index { display: block; }
+  .board-index {
+    position: static; width: auto; border-right: 0;
+    flex-direction: row; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4);
+    padding: 0 0 var(--sp-3); margin-bottom: var(--sp-6);
+    border-bottom: 1px solid var(--chrome-border);
+  }
+}
+
+/* ── sections · frames · plates ─────────────────────────────────── */
+
+.board-section { margin-bottom: var(--sp-16); scroll-margin-top: var(--sp-16); }
+.section-label {
+  font-family: var(--mono); font-size: var(--t-sm);
+  line-height: var(--t-sm-lh); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border);
+  padding-bottom: var(--sp-2); margin-bottom: var(--sp-4);
+}
+.frame-grid { display: flex; flex-wrap: wrap; gap: var(--sp-6);
+  align-items: flex-start; }
+/* idea boards: cards share row lines via subgrid, so every caption
+   starts on the same line across a row regardless of fragment
+   height — stage heights equalize to the row's tallest */
+.frame-grid:has(.vignette) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 360px));
+  column-gap: var(--sp-6); row-gap: 0;
+}
+.frame-grid:has(.vignette) > .frame { width: auto !important; /* the track owns the width */ }
+.frame:has(.vignette) {
+  display: grid; grid-row: span 2; grid-template-rows: subgrid;
+  gap: 0; margin-bottom: var(--sp-6);
+}
+.frame:has(.vignette) > .wf {
+  display: grid; grid-row: span 2; grid-template-rows: subgrid; gap: 0;
+}
+.frame:has(.vignette) .vignette { min-height: 100%; }
+.frame { background: none; border: none; }
+.frame-plate {
+  display: flex; gap: var(--sp-2); align-items: baseline;
+  font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+  padding: 0 var(--sp-1); margin: 0 0 var(--sp-2); /* plates are h3s — reset heading margin */
+}
+/* viewer.js wraps the plate in a real button: in grid it's the frame's
+   handle (click opens that frame in slides); elsewhere it's inert */
+.plate-open {
+  display: flex; gap: var(--sp-2); align-items: baseline;
+  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  color: inherit; background: none; border: 0; padding: 0;
+  cursor: default;
+}
+body[data-view="grid"] .plate-open { cursor: pointer; }
+body[data-view="grid"] .plate-open:hover { color: var(--chrome-fg); }
+/* the navigator row already shows the position — the plate drops its
+   copy in the stage views instead of duplicating it */
+body[data-view="slides"] .frame-pos,
+body[data-view="proto"] .frame-pos { display: none; }
+.frame > .wf {
+  border: 1px solid var(--chrome-border);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+
+/* in grid view the notes are a right sidebar beside the frames —
+   the section's record reads alongside its screens, not below them */
+body[data-view="grid"] .board-section:has(.note-rail) {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  column-gap: var(--sp-10);
+}
+body[data-view="grid"] .board-section:has(.note-rail) .section-label {
+  grid-column: 1 / -1;
+}
+body[data-view="grid"] .board-section:has(.note-rail) .frame-grid {
+  grid-row: 2; grid-column: 1;
+}
+body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
+  grid-row: 2; grid-column: 2; max-width: none; margin-top: 0;
+  border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
+  align-self: start; /* the rail's rule ends with its notes — no empty hairline trailing down the gutter */
+}
+/* mid widths: the rail compresses toward its floor before the frames
+   give up their 2-up layout — no dead gutter beside stacked frames */
+@media (max-width: 1208px) {
+  body[data-view="grid"] .board-section:has(.note-rail) {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 240px);
+  }
+}
+@media (max-width: 900px) {
+  body[data-view="grid"] .board-section:has(.note-rail) { display: block; }
+  body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
+    max-width: 320px; margin-top: var(--sp-4);
+    border-left: 0; padding-left: 0;
+  }
+}
+
+/* ── slideshow + prototype views — a fixed stage, not a long page ──
+   The page stops scrolling and becomes header / nav / stage. The
+   active frame centers in the stage and scales DOWN to fit (never
+   up), so the whole screen — plate included — is visible at once;
+   viewer.js sets --slide-scale per slide and on resize. In slides
+   the notes rail is a bounded column with its own scroll, not
+   floating text; prototype hides annotation entirely. */
+
+body[data-view="slides"], body[data-view="proto"] {
+  height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+/* the navigator row IS the section header line: section name left
+   (the section's own label hides), prev/next + position right */
+body[data-view="slides"] .section-label { display: none; }
+body[data-view="slides"] .frame,
+body[data-view="proto"] .frame { display: none; }
+body[data-view="slides"] .board-section:not(:has(.frame.active)),
+body[data-view="proto"] .board-section:not(:has(.frame.active)) { display: none; }
+
+/* the active section becomes the stage */
+body[data-view="slides"] .board-section:has(.frame.active),
+body[data-view="proto"] .board-section:has(.frame.active) {
+  flex: 1; min-height: 0; margin-bottom: 0;
+  display: grid; grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--sp-10);
+}
+body[data-view="slides"] .board-section:has(.frame.active) {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+}
+body[data-view="proto"] .board-section:has(.frame.active) {
+  grid-template-columns: minmax(0, 1fr);
+}
+/* stage cell: spans the FULL section so the frame can page-center
+   (viewer.js keeps it clear of the rail); the stage stays bare —
+   the frame is the only thing on it */
+body[data-view="slides"] .frame-grid,
+body[data-view="proto"] .frame-grid {
+  grid-row: 1; grid-column: 1 / -1; position: relative; min-height: 0;
+}
+body[data-view="slides"] .frame.active,
+body[data-view="proto"] .frame.active {
+  display: block; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(var(--slide-scale, 1));
+}
+
+/* notes rail: a bounded rail beside the stage, scrolls on its own;
+   align-self + max-height let its rule end with short notes while
+   long notes still cap at the stage and scroll. It overlays the
+   full-width stage (later in the DOM, so it paints above) and
+   carries the stage tone so the blueprint field stops beneath it */
+body[data-view="slides"] .note-rail {
+  grid-row: 1; grid-column: 2; max-width: none; margin-top: 0;
+  min-height: 0; overflow-y: auto;
+  align-self: start; max-height: 100%;
+  background: var(--stage);
+  border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
+}
+@media (max-width: 900px) {
+  body[data-view="slides"] .board-section:has(.frame.active) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+  body[data-view="slides"] .note-rail {
+    grid-row: 2; grid-column: 1; max-height: 30vh;
+    border-left: 0; border-top: 1px solid var(--chrome-border);
+    padding-left: 0; padding-top: var(--sp-4); margin-top: var(--sp-4);
+  }
+}
+
+/* the navigator row shows in both stage views: name · position grouped
+   left (the wayfinding reads as one phrase), arrows right */
+.slide-nav { display: none; }
+body[data-view="slides"] .slide-nav,
+body[data-view="proto"] .slide-nav {
+  display: flex; gap: var(--sp-3); align-items: center;
+  margin-bottom: var(--sp-4); font-family: var(--mono); font-size: var(--t-xs);
+  line-height: var(--t-xs-lh); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--chrome-ink);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-2);
+}
+/* the section name leads the row, styled as the section label it replaces */
+.slide-nav .slide-section {
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 600; letter-spacing: 0.08em;
+}
+.slide-nav [data-prev] { margin-left: auto; }
+/* each stage view instructs itself — one quiet mono line in the row's
+   slot. Sentence case: this is help copy, not a tracked label */
+.nav-hint {
+  display: none; text-transform: none; letter-spacing: 0;
+}
+body[data-view="slides"] .slides-hint { display: inline; }
+body[data-view="proto"] .proto-hint { display: inline; }
+/* prev/next carry the kit's drawn arrow, never a text character —
+   the --gl-* masks are theme-free alpha shapes, so borrowing them
+   here doesn't breach the chrome/ramp color separation */
+.slide-nav button {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: inherit; cursor: pointer; background: none;
+  border: 1px solid var(--chrome-border); border-radius: var(--r-md);
+  height: var(--h-sm); padding: 0;
+}
+.slide-nav [data-prev], .slide-nav [data-next] { width: var(--h-sm); }
+.slide-nav button:hover { color: var(--chrome-fg); }
+/* the ends of a flow are information — arrows stop, never wrap */
+.slide-nav button:disabled { opacity: 0.45; cursor: default; }
+.slide-nav button:disabled:hover { color: inherit; }
+.slide-nav [data-prev]::before, .slide-nav [data-next]::before {
+  content: ""; width: var(--ic-sm); height: var(--ic-sm);
+  background: currentColor;
+  -webkit-mask: var(--gl-arrow-left) center / contain no-repeat;
+  mask: var(--gl-arrow-left) center / contain no-repeat;
+}
+.slide-nav [data-next]::before { transform: scaleX(-1); }
+/* proto navigation is flow-shaped: prev = back through visited
+   screens, Restart = the flow's entry; sequential next and the
+   linear position belong to slides and hide here */
+.slide-nav [data-restart] {
+  display: none; font: inherit; letter-spacing: inherit;
+  text-transform: inherit; padding: 0 var(--sp-3);
+}
+body[data-view="proto"] .slide-nav [data-restart] { display: inline-flex; }
+body[data-view="proto"] .slide-nav [data-next],
+body[data-view="proto"] .slide-pos { display: none; }
+
+/* prototype hides annotation; the triggers are live. A hovered
+   trigger shows a hairline ring — the wired controls distinguish
+   themselves from decoration; a dead tap flashes the same hairline
+   as a "nothing here" acknowledgment (viewer.js toggles .dead-tap).
+   Chrome ink on content elements is allowed here: both rings are
+   the stage commenting on the mock, not mock styling. */
+body[data-view="proto"] .section-label,
+body[data-view="proto"] .note-rail,
+body[data-view="proto"] .note-marker { display: none; }
+body[data-view="proto"] [data-go] { cursor: pointer; }
+body[data-view="proto"] [data-go]:hover {
+  outline: 1px solid var(--chrome-ink); outline-offset: 2px; }
+.wf .dead-tap { outline: 1px solid var(--chrome-ink); outline-offset: 2px; }
+
+/* ── annotation layer (accent lives here ONLY) ──────────────────── */
+
+.note-marker {
+  position: absolute; width: var(--sp-6); height: var(--sp-6);
+  border-radius: var(--r-full); background: var(--note); color: #ffffff;
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+/* dark: numeral flips to stage ink on the lighter dark-mode indigo —
+   mirrors the kit's own dark on-accent choice and clears AA (5.4:1;
+   white on the dark indigo was 3.9:1) */
+[data-theme="dark"] .note-marker { color: var(--stage); }
+.note-rail {
+  max-width: 320px; margin-top: var(--sp-4);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); color: var(--chrome-ink);
+}
+.note-rail p { margin: 0 0 var(--sp-3); }
+.note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
+
+/* Notes are PER WIREFRAME, never one consolidated list: each frame's
+   notes live in a .note-group whose data-for names the frame id, headed
+   by a .note-frame line. Markers number per wireframe (each frame
+   restarts at 1). Grid shows every group as the section's record;
+   slides shows only the active frame's group (viewer.js toggles
+   .active). Section-level notes (e.g. an idea board's decision record)
+   sit outside any group and always show. */
+.note-group + .note-group { margin-top: var(--sp-5); }
+.note-frame {
+  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--chrome-ink); margin: 0 0 var(--sp-2);
+  border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-1);
+}
+body[data-view="slides"] .note-group:not(.active) { display: none; }

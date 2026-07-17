@@ -44,6 +44,7 @@ CATEGORY_MAP=(
   "journey:experience"
   "organize:experience"
   "articulate:experience"
+  "wireframe:experience"
   "evaluate:quality"
   "fortify:quality"
   "include:quality"
