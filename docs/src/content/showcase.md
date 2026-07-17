@@ -533,6 +533,24 @@ Users must always know three things: *where they are, what they're seeing, and h
 - **How to see more:** Radius adjustment via pinch-to-zoom on map, or tap presets (5 / 10 / 20 min). Items beyond current radius shown as faded pins, visible but clearly "further away," inviting expansion without cluttering the primary view.
 - **Orientation cue on return:** When opening the app after >24 hours, brief overlay: "3 new items since you last checked" with a tap to see them.
 
+## /wireframe
+agent: Wren
+summary: Diverged on posting mechanisms with a lo-fi idea board, then drew the chosen flow as interactive grayscale wireframes and a click-through prototype.
+
+The flows said what happens; now the screens had to say where. But before drawing the posting screen, we drew the disagreement about it. "How does posting work" had mechanically different answers — not one layout moved around, but different machines. So the first artifact was an idea board: each candidate drawn as a focused fragment of real UI, compared side by side, decided deliberately. The winner got promoted into full wireframes — complete screens built from a fixed grayscale kit where every control is real. Inputs type, chips toggle, buttons press. Nothing is a sketch of UI; everything is UI, just grayscale.
+
+### Output
+
+These are wireframes from the kit itself, not pictures of wireframes — the inputs take typing, the controls are native, and the site's theme flows straight through them. On the idea board, three mechanically different answers to "how does posting work," each a fragment of real UI with its trade-off in the caption. Photo-first won and moved up a rung; the losers stay on the board, so "why isn't it a form?" has an artifact for an answer.
+
+The indigo markers are the annotation layer — each anchors to the element whose decision it records. A few from the set:
+
+**Browse ②** Free is a first-class price, not a $0 hack — a badge on the card and a chip in the taxonomy. Free exchange is the social glue of a walking-distance market, so it gets its own scan channel. **③** Pending items stay visible instead of vanishing — a market that visibly moves reads as alive.
+
+**Post an item ①** The camera zone owns the top of the screen — the photo-first mechanism from the idea board. The photo does the describing, so fields follow it. **④** Audience and cost — "within 1 mile · no fees" — sit directly above the commit button, answered at the moment of commitment, never after it.
+
+**Posted ①** The confirmation names the real audience — 842 neighbors — turning an abstract "posted!" into a concrete expectation of replies from actual people nearby.
+
 ## /articulate
 agent: Wren
 summary: Established voice and tone, wrote microcopy for empty states, errors, and trust signals.

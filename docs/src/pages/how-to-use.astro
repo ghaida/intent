@@ -4,6 +4,7 @@ import SectionLabel from '../components/SectionLabel.astro';
 import JourneyFlow from '../components/visuals/JourneyFlow.astro';
 import BlueprintDiagram from '../components/visuals/BlueprintDiagram.astro';
 import SiteMap from '../components/visuals/SiteMap.astro';
+import WireframeBoard from '../components/visuals/WireframeBoard.astro';
 import { loadShowcase } from '../lib/showcase';
 
 const showcase = loadShowcase();
@@ -144,6 +145,7 @@ const videoPoster = `${base}intent-poster.png`;
           {step.skill === 'journey' && <JourneyFlow />}
           {step.skill === 'blueprint' && <BlueprintDiagram />}
           {step.skill === 'organize' && <SiteMap />}
+          {step.skill === 'wireframe' && <WireframeBoard />}
           <Fragment set:html={step.output} />
         </div>
       )

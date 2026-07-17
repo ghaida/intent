@@ -25,6 +25,7 @@ const SKILL_CATEGORIES: Record<string, string> = {
   blueprint: 'Strategy & Research',
   journey: 'Experience Design',
   organize: 'Experience Design',
+  wireframe: 'Experience Design',
   articulate: 'Experience Design',
   evaluate: 'Quality & Evaluation',
   fortify: 'Quality & Evaluation',
