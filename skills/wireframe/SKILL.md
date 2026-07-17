@@ -13,7 +13,7 @@ description: >
   screen before its visual design. The flow through screens belongs to
   /journey; the information structure belongs to /organize; the words belong
   to /articulate — this skill owns the screen itself.
-version: 1.5.0
+version: 1.6.0
 user-invocable: true
 ---
 
