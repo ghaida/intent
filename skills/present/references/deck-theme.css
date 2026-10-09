@@ -1,12 +1,24 @@
-/* /present default theme for reveal.js decks. Tokens mirror build_deck.py. */
+/* /present default theme for reveal.js decks. Tokens mirror build_deck.py.
+   The --r-* overrides below must stay in this inline <style>, which comes after the
+   white.css <link>, so these same-selector :root declarations win the cascade. */
 :root {
   --ink: #1a1a2e; --muted: #5b5b72; --rule: #b8b8c8; --surface: #f1f1f6;
   --canvas: #ffffff; --accent: #4338ca;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --t-title: 36pt; --t-hero: 44pt; --t-body: 24pt; --t-small: 18pt;
+  --r-background-color: var(--canvas); --r-main-color: var(--ink); --r-heading-color: var(--ink);
+  --r-link-color: var(--accent); --r-link-color-hover: var(--accent);
+  --r-selection-background-color: var(--accent); --r-selection-color: var(--canvas);
+  --r-main-font: var(--font); --r-heading-font: var(--font);
+  --r-overlay-element-bg-color: 0, 0, 0; --r-overlay-element-fg-color: 255, 255, 255;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --ink: #ececf4; --muted: #a0a0b8; --rule: #3a3a52; --surface: #1f1f33; --canvas: #12121f; --accent: #7c6ff0; }
+  :root { --ink: #ececf4; --muted: #a0a0b8; --rule: #3a3a52; --surface: #1f1f33; --canvas: #12121f; --accent: #7c6ff0;
+    --r-background-color: var(--canvas); --r-main-color: var(--ink); --r-heading-color: var(--ink);
+    --r-link-color: var(--accent); --r-link-color-hover: var(--accent);
+    --r-selection-background-color: var(--accent); --r-selection-color: var(--canvas);
+    --r-main-font: var(--font); --r-heading-font: var(--font);
+    --r-overlay-element-bg-color: 255, 255, 255; --r-overlay-element-fg-color: 0, 0, 0; }
 }
 .read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; }
 
@@ -25,5 +37,5 @@
 .layout-quote cite { display: block; margin-top: 0.6em; color: var(--muted); font-size: var(--t-small); font-style: normal; }
 .layout-ask h2 { color: var(--accent); }
 .placeholder { display: flex; align-items: center; justify-content: center; min-height: 8em; background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: var(--t-small); }
-.reveal img { max-height: 60vh; margin: 0; }
+.reveal img { max-height: 480px; margin: 0; }
 @media (prefers-reduced-motion: reduce) { .reveal .slides section { transition: none !important; } }
