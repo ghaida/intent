@@ -10,7 +10,7 @@ from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.chart.data import CategoryChartData
-from pptx.enum.chart import XL_CHART_TYPE, XL_LEGEND_POSITION
+from pptx.enum.chart import XL_CHART_TYPE
 from pptx.enum.shapes import MSO_SHAPE, PP_PLACEHOLDER
 
 LAYOUTS = {"title", "claim_visual", "claim_chart", "claim_bullets", "quote", "section", "ask"}
@@ -69,7 +69,7 @@ def _bullets(slide, items, left, top, width, height, size):
             r.font.size, r.font.color.rgb = Pt(size), INK
     return tb
 
-def _chart(slide, c, left, top, width, height, alt):
+def _chart(slide, c, left, top, width, height, alt, label_size):
     data = CategoryChartData(); data.categories = c["categories"]
     for s in c["series"]:
         data.add_series(s["name"], s["values"])
@@ -78,9 +78,12 @@ def _chart(slide, c, left, top, width, height, alt):
     ch = gf.chart
     if c["type"] == "bar":
         ch.value_axis.minimum_scale = 0
-    ch.has_legend = len(c["series"]) > 1
-    if ch.has_legend:
-        ch.legend.position, ch.legend.include_in_layout = XL_LEGEND_POSITION.BOTTOM, False
+    ch.has_legend = False  # label directly: values on the marks, series identity from the accent + the claim title
+    plot = ch.plots[0]
+    plot.has_data_labels = True
+    dl = plot.data_labels
+    dl.show_value, dl.number_format, dl.number_format_is_linked = True, "General", False
+    dl.font.size, dl.font.color.rgb = Pt(label_size), INK
     ch.value_axis.has_major_gridlines = False
     hi = c.get("highlight", 0)
     for i, series in enumerate(ch.series):
@@ -155,7 +158,7 @@ def build(spec, out_path):
         bleft = M + vw + Inches(0.3) if both else M
         bw = cw - vw - Inches(0.3) if both else cw
         if s.get("chart"):
-            _chart(slide, s["chart"], M, y, vw, room, s["alt"])
+            _chart(slide, s["chart"], M, y, vw, room, s["alt"], sz["small"])
         elif s.get("image"):
             pic = slide.shapes.add_picture(s["image"], M, y, height=room)
             if pic.width > vw:  # keep aspect ratio, fit the allotted width

@@ -66,7 +66,7 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **End on the ask.** Restate the governing message, then make the ask concrete: what, from whom, by when. Keep it on screen during Q&A so the discussion stays anchored to it. A deck that is genuinely just informing ends on the key takeaway instead. Read decks put the ask on page one as well, because readers stop early.
 
-**Story makes people care; evidence makes them right.** Story moves an audience; it does not prove anything. So: no invented numbers, quotes or findings. No cherry-picked time windows or hand-picked quotes that hide the rest of the data. Bar charts start at zero. Show n, and use counts rather than percentages for small samples — "4 of 6 participants", not "67%". No urgency the evidence doesn't support. No vanity metrics without a baseline to compare against.
+**Story makes people care; evidence makes them right.** Story moves an audience; it does not prove anything. So: no invented numbers, quotes or findings. No cherry-picked time windows or hand-picked quotes that hide the rest of the data. Bar charts start at zero. Show n, and use counts rather than percentages for small samples — "4 of 6 participants", not "67%". That applies when the source gives counts. When it gives a percentage with its n, show it as stated — "18% of 412 responses" — and never compute a number the source doesn't contain. A derived figure is an invented one. No urgency the evidence doesn't support. No vanity metrics without a baseline to compare against.
 
 **Accessible by default.** Contrast at or above WCAG minimums, with headroom for washed-out projectors. Projected body text at 24pt or larger, 18pt as the absolute floor. Color is never the only signal — label it, shape it, or position it too. Every slide title unique, reading order logical. Alt text describes what a visual means, not what it looks like. No motion beyond builds that segment content.
 
@@ -242,7 +242,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
 }
 ```
 
-`mode` is `live` or `read`. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
+`mode` is `live` or `read`. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
 
 The builder rejects missing titles, nested bullets, missing alt text on any image, placeholder or chart, and malformed chart specs, and it pins bar-chart axes to zero. When it rejects the spec, fix the spec — never work around the builder. Its rules are the stance made mechanical.
 
@@ -250,7 +250,7 @@ The builder rejects missing titles, nested bullets, missing alt text on any imag
 
 ### Figma Slides
 
-Load `/figma-use` first — mandatory before any write to Figma — and the Slides guidance it points to. Create the file with `create_new_file` using the `slides` editor type, then build slide by slide through `use_figma` with the theme tokens. Speaker notes go in each slide's `speakerNotes` field, which accepts simple markdown (lists, bold, italic — no headings or links).
+Load `/figma-use` and its Slides guide `figma-use-slides` first — both are mandatory before any write to a Slides file — and include `figma-use-slides` alongside `figma-use` in every `use_figma` call's `skillNames`. Create the file with `create_new_file` using the `slides` editor type, then build slide by slide through `use_figma` with the theme tokens. Speaker notes go in each slide's `speakerNotes` field, which accepts simple markdown (lists, bold, italic — no headings or links).
 
 If the Figma connector isn't available, say so before building and offer another format. Never switch formats silently.
 

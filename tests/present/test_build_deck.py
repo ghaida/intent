@@ -104,3 +104,19 @@ def test_chart_spec_validated(tmp_path):
         build_deck.build(spec([{"layout": "claim_chart", "title": "A claim title here", "chart": bad, "alt": "x"}]), tmp_path / "d.pptx")
     with pytest.raises(ValueError, match="chart"):
         build_deck.build(spec([{"layout": "claim_chart", "title": "A claim title here", "chart": {"type": "pie"}, "alt": "x"}]), tmp_path / "d.pptx")
+
+def test_chart_labeled_directly_without_legend(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_chart", "title": "Redesign cut errors in both regions",
+        "chart": {"type": "bar", "categories": ["EU", "US"],
+                  "series": [{"name": "After", "values": [12, 9]}, {"name": "Before", "values": [30, 28]}], "highlight": 0},
+        "alt": "Errors fell in both regions after the redesign"}], mode="read"), out)
+    ch = next(s for s in Presentation(out).slides[0].shapes if s.has_chart).chart
+    assert len(list(ch.series)) == 2
+    assert ch.has_legend is False
+    plot = ch.plots[0]
+    assert plot.has_data_labels
+    dl = plot.data_labels
+    assert dl.show_value
+    assert dl.number_format == "General"
+    assert dl.font.size.pt == build_deck.SIZES["read"]["small"]
