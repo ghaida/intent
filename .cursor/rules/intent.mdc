@@ -462,6 +462,10 @@ Use when: Defining KPIs, designing A/B tests, building measurement frameworks, e
 → `/philosopher` — Enter expansive thinking mode. Cross-domain connections, assumption challenging, problem reframing.
 Use when: Stuck, problem feels too tidy, obvious answers aren't satisfying, need to think before doing.
 
+**"I need to find the story"**
+→ `/storytelling` — Give design work narrative structure that makes people care, without letting story stand in for evidence.
+Use when: A journey, brief, blueprint or review feels lifeless; stakeholders need to see the user's experience as a story; "what's the story here?"
+
 **"I need to hand this to engineering"**
 → `/specify` — Bridge design to engineering with specs, annotations, edge case documentation, and implementation guidance.
 Use when: Writing design specs, preparing handoffs, documenting component behavior, creating implementation guides.
