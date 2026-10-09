@@ -31,6 +31,7 @@ const CATEGORIES: Record<string, { label: string; order: number }> = {
   philosopher: { label: 'Cross-cutting',           order: 6 },
   storytelling: { label: 'Cross-cutting',           order: 6 },
   specify:     { label: 'Handoff',                 order: 7 },
+  present:     { label: 'Handoff',                 order: 7 },
 };
 
 const SKILL_CLUSTERS: Record<string, Cluster> = {
