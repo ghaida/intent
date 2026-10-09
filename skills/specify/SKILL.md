@@ -5,10 +5,10 @@ description: >
   handoff packages, asset inventories, and cross-functional documentation.
   Part of the Intent design strategy system. Trigger when: writing design
   specs, preparing engineering handoffs, documenting for development,
-  creating design reviews, writing test plans, building copy matrices,
-  addressing edge cases, aligning stakeholders, packaging designs
-  "for engineering," or saying "write the spec," "prepare the handoff,"
-  "document this," or "what do we need for design review?"
+  writing the spec material behind a design review (the deck itself goes
+  to /present), writing test plans, building copy matrices, addressing
+  edge cases, packaging designs "for engineering," or saying "write the
+  spec," "prepare the handoff," or "document this."
 version: 1.6.0
 user-invocable: true
 ---
@@ -310,7 +310,7 @@ Trigger Specify when:
 - **"Write the spec"** — Comprehensive design specification needed
 - **"Prepare the handoff"** — Engineering needs everything ready to build
 - **"Document this for engineering"** — Translate design into actionable specs
-- **"What do we need for the design review?"** — Prepare materials for alignment meetings
+- **"What spec does the design review need?"** — Prepare the spec material behind the review; the deck itself goes to `/present`
 - **"Build the test plan"** — Define success criteria and test audiences
 - **"Write the copy matrix"** — Document all variations in one place
 - **"What are the edge cases?"** — Design scenarios and copy for unusual situations
