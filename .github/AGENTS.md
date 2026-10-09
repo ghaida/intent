@@ -18,6 +18,7 @@ Specialized design skills are available in .github/copilot/skills/:
 - **measure** —  Defines and tracks UX success through metrics, measurement frameworks, and experimentation.
 - **organize** —  Structure information so people can find what they need, understand where they are, and navigate confidently.
 - **philosopher** —  A cross-cutting cognitive mode for sitting with design problems before rushing to solve them.
+- **present** —  Build presentations of design work — design reviews, research readouts, strategy pitches, case studies — that land one message with a clear story and an honest ask.
 - **specify** —  Bridges design and engineering by producing detailed specs, organized handoff packages, asset inventories, and cross-functional documentation.
 - **storytelling** —  Discipline for giving design work narrative structure that makes people care.
 - **strategize** —  Frames product design problems before solutions exist.
