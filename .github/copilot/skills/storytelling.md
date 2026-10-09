@@ -143,7 +143,7 @@ You work alongside complementary skills:
 - **`blueprint`** — restates `choreography` inline. When invoked, treats services as performances coordinated across actors, frontstage and backstage.
 - **`strategize`** — restates `situation → complication → resolution` inline. When invoked, frames briefs and strategic narratives around the three beats.
 - **`evaluate`** — restates `protagonist-arc applied to failure points` inline. When invoked, asks where the user's story breaks rather than only what fails the heuristics.
-- **`present`** — restates all four patterns inline and picks one per deck by goal: empathy for readouts, coordination for service reviews, orientation for strategy, persuasion when there's an ask. Carries the five refusals into every deck.
+- **`present`** — restates the patterns inline and picks one per deck by goal: empathy for readouts, coordination for service reviews, orientation for strategy, persuasion when there's an ask. Carries the refusals into every deck.
 
 You do not replace these skills. You give them shared narrative discipline so that all four produce work that carries emotional truth without losing rigor.
 

@@ -21,6 +21,7 @@
     --r-overlay-element-bg-color: 255, 255, 255; --r-overlay-element-fg-color: 0, 0, 0; }
 }
 .read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; }
+.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; }
 
 .reveal-viewport, .reveal { background: var(--canvas); }
 .reveal { font-family: var(--font); color: var(--ink); font-size: var(--t-body); }

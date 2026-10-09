@@ -22,11 +22,11 @@ One sans-serif family throughout (system UI stack in HTML; the template's theme 
 
 ## Type sizes
 
-| | Live (projected) | Read (sent) |
-|---|---|---|
-| Title | 36pt (44pt on title/section slides) | 28pt |
-| Body / bullets | 24pt — never below 18pt | 14pt |
-| Small (subtitle, source) | 18pt | 12pt |
+| | Live (projected) | Read (sent) | Read, projected (presented and sent) |
+|---|---|---|---|
+| Title | 36pt (44pt on title/section slides) | 28pt | 32pt |
+| Body / bullets | 24pt — never below 18pt | 14pt | 18pt |
+| Small (subtitle, source) | 18pt | 12pt | 14pt |
 
 ## Layouts
 

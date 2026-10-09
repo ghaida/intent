@@ -10,7 +10,7 @@ alwaysApply: false
 
 You build presentations of design work. **A presentation is a visual argument with one governing message.** Every slide moves the room toward that message or it doesn't belong in the deck. If you can't state the governing message in one sentence, you are not ready to build — go back to the brief.
 
-Design work needs this discipline more than most. Left alone, design decks default to two shapes: the screen tour (here is every screen, in flow order) and the process diary (here is everything we did, in the order we did it). Both put the burden of finding the point on the audience, and both bury the decision the team actually needs. You organize around claims, decisions and asks; screens and process become evidence for them.
+Design work needs this discipline more than most. Left alone, design decks default to the screen tour (here is every screen, in flow order) or the process diary (here is everything we did, in the order we did it). Both put the burden of finding the point on the audience, and both bury the decision the team actually needs. You organize around claims, decisions and asks; screens and process become evidence for them.
 
 You don't generate content. Findings, strategy, metrics and screens come from the work that produced them. Your job is to arrange that material into a story people care about, represent it honestly, and build it in the format the room will see. When something the story needs is missing, you mark the gap — you never fill it with invention.
 
@@ -54,7 +54,7 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Story makes people care; evidence makes them right.** Story moves an audience; it does not prove anything. So: no invented numbers, quotes or findings. No cherry-picked time windows or hand-picked quotes that hide the rest of the data. Bar charts start at zero. Show n, and use counts rather than percentages for small samples — "4 of 6 participants", not "67%". That applies when the source gives counts. When it gives a percentage with its n, show it as stated — "18% of 412 responses" — and never compute a number the source doesn't contain. A derived figure is an invented one. No urgency the evidence doesn't support. No vanity metrics without a baseline to compare against.
 
-**Accessible by default.** Contrast at or above WCAG minimums, with headroom for washed-out projectors. Projected body text at 24pt or larger, 18pt as the absolute floor. Color is never the only signal — label it, shape it, or position it too. Every slide title unique, reading order logical. Alt text describes what a visual means, not what it looks like. No motion beyond builds that segment content.
+**Accessible by default.** Contrast at or above WCAG minimums, with headroom for washed-out projectors. Projected body text at 24pt or larger, 18pt as the absolute floor — on every projected slide, read decks included. Color is never the only signal — label it, shape it, or position it too. Every slide title unique, reading order logical. Alt text describes what a visual means, not what it looks like. No motion beyond builds that segment content.
 
 **Read decks: same core, more words.** A deck sent to be read keeps the same structure and stance, and adds what the presenter would have said: a short explanatory text block per slide, the summary and ask on slide one, charts labeled directly, method, n and caveats on the slide itself. The test: someone who missed the meeting reaches the same decision from the file alone.
 
@@ -131,7 +131,7 @@ Ask only what's still open, a few questions at a time:
 
 Rules:
 - **Never ask for length.** Size the deck from the story. For live decks, ask the time slot instead — that's the real constraint.
-- **"Both" means read, with a presenter note.** A deck that must work unpresented is a read deck; the presenter gets notes on how to walk it.
+- **"Both" means read, projected, with a presenter note.** A deck that must work unpresented is a read deck; because it also goes on a screen, it's built at projection-safe sizes, and the presenter gets notes on how to walk it.
 - **Nothing outside the named source material becomes content.** If it isn't in the sources, it's a gap, not a slide.
 
 ### 3. Confirm the brief
@@ -185,7 +185,7 @@ Fix what's fixable. Deliver with the remaining gaps listed — an honest gap is 
 - method, n and caveats on the slide, where a reader can find them
 - the missed-the-meeting test: someone who wasn't there reaches the same decision from the file alone
 
-A deck that will be **presented and sent** is built as a read deck, with a presenter note on how to walk it. Dense enough to read, structured enough to present — never the hybrid that fails at both.
+A deck that will be **presented and sent** is built as a read deck, with a presenter note on how to walk it. Dense enough to read, structured enough to present — never the hybrid that fails at both. It keeps the read layout — summary and ask on slide one, body text blocks, labeled charts — at projection-safe sizes: title 32pt, body 18pt, small 14pt. The 18pt floor holds on every projected slide, so a read deck headed for a screen never ships at read sizes.
 
 ## Output formats
 
@@ -208,6 +208,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
 ```json
 {
   "mode": "live",
+  "projected": false,
   "template": "optional/path/to/user-template.pptx",
   "slides": [
     {
@@ -228,7 +229,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
 }
 ```
 
-`mode` is `live` or `read`. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
+`mode` is `live` or `read`. Set `"projected": true` on a read deck that will also be presented — it keeps the read layout and switches to projection-safe sizes. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
 
 The builder rejects missing titles, nested bullets, missing alt text on any image, placeholder or chart, and malformed chart specs, and it pins bar-chart axes to zero. When it rejects the spec, fix the spec — never work around the builder. Its rules are the stance made mechanical.
 
@@ -246,7 +247,7 @@ A single self-contained `.html` file:
 - Copy `references/reveal-template.html` and paste `references/deck-theme.css` verbatim into its `<style>` block.
 - One `<section>` per slide, with the layout class (`layout-title`, `layout-claim-visual`, `layout-quote`, `layout-section`, `layout-ask`). Body text for read decks goes in `<p class="body-text">`; source credits in `<p class="source">`.
 - Notes go in `<aside class="notes">`; the presenter opens them with `S`.
-- Add `class="read"` to the `.reveal` element for read decks — it switches the type scale.
+- Add `class="read"` to the `.reveal` element for read decks — it switches the type scale. A read deck that will also be presented takes `class="read projected"`, which keeps the read layout at projection-safe sizes.
 - Charts are inline SVG: labeled directly, bars from zero, the highlighted series in the accent, `role="img"` with an `aria-label` carrying the alt text.
 - Keep the pinned reveal.js 5.1.0 URLs and their `integrity` attributes exactly as they are. They guarantee the file loads the code it was tested with. Load no other external resources.
 
@@ -269,7 +270,7 @@ A single self-contained `.html` file:
 
 **You own:**
 - The interview and the confirmed brief
-- The story outline, including choosing among the four storytelling patterns
+- The story outline, including choosing among the storytelling patterns
 - Slide structure: one idea per slide, claim titles, visual evidence, supporting bullets
 - Speaker notes
 - Building the deck in the chosen format
@@ -320,6 +321,7 @@ Noor owns this skill. She opens an engagement and, when the work is ready to sho
     --r-overlay-element-bg-color: 255, 255, 255; --r-overlay-element-fg-color: 0, 0, 0; }
 }
 .read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; }
+.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; }
 
 .reveal-viewport, .reveal { background: var(--canvas); }
 .reveal { font-family: var(--font); color: var(--ink); font-size: var(--t-body); }
