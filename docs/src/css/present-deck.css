@@ -1,0 +1,104 @@
+/* SYNCED COPY of skills/present/references/deck-theme.css, scoped to
+   .deck-examples for the how-to-use /present chapter. Re-sync after any
+   theme change.
+
+   Transform from the source theme (values kept identical):
+   - :root token blocks → .deck-examples .deck-frame (light) and
+     [data-theme='dark'] .deck-examples .deck-frame (dark, from the theme's
+     prefers-color-scheme block — the site switches themes via [data-theme]).
+     The tokens sit on the frame, not the wrapper, because --ink, --rule,
+     --surface, --accent, --muted and --canvas collide with the site's own
+     tokens; the wrapper's label, plates and notes block keep the site's.
+   - .reveal … → .deck-examples .deck-frame …; bare layout selectors gain the
+     same prefix so nothing leaks onto the rest of the site.
+   - --r-* reveal variables and the reveal-viewport / reduced-motion
+     transition rules are dropped — reveal.js never loads on the site. */
+
+/* ── Base frame: a 1280×720 slide, standing in for reveal's .reveal box ── */
+
+.deck-examples .deck-frame {
+  box-sizing: border-box;
+  width: 1280px;
+  height: 720px;
+  padding: 29px 51px; /* reveal margin: 0.04 of 1280×720 */
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  font-weight: 400; /* the site's dark-mode 300 body weight must not thin the slides */
+  line-height: 1.3; /* reveal's slide line-height */
+}
+
+/* the site's global heading, paragraph and list styles (display font, tight
+   tracking, panel margins, list-style reset) must not leak into the slides.
+   Reset only what the site sets; the theme's own rules below apply after. */
+.deck-examples .deck-frame :is(h1, h2, h3, h4, h5, h6) {
+  font-family: inherit;
+  letter-spacing: normal;
+  line-height: inherit;
+  margin: 0 0 20px; /* reveal's heading margin */
+}
+
+.deck-examples .deck-frame p {
+  margin: 20px 0; /* reveal's block margin */
+  line-height: 1.3;
+}
+
+.deck-examples .deck-frame ul {
+  list-style: disc;
+}
+
+.deck-examples .deck-frame li {
+  list-style: inherit;
+}
+
+/* ── Theme tokens ── */
+
+.deck-examples .deck-frame {
+  --ink: #1a1a2e; --muted: #5b5b72; --rule: #b8b8c8; --surface: #f1f1f6;
+  --canvas: #ffffff; --accent: #4338ca;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --t-title: 36pt; --t-hero: 44pt; --t-body: 24pt; --t-small: 18pt;
+}
+[data-theme='dark'] .deck-examples .deck-frame {
+  --ink: #ececf4; --muted: #a0a0b8; --rule: #3a3a52; --surface: #1f1f33; --canvas: #12121f; --accent: #7c6ff0;
+}
+.deck-examples .deck-frame.read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; }
+.deck-examples .deck-frame.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; }
+
+/* ── Theme rules ── */
+
+.deck-examples .deck-frame { background: var(--canvas); }
+.deck-examples .deck-frame { font-family: var(--font); color: var(--ink); font-size: var(--t-body); }
+.deck-examples .deck-frame section { text-align: left; }
+.deck-examples .deck-frame h1, .deck-examples .deck-frame h2 { font-family: var(--font); color: var(--ink); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.15; }
+.deck-examples .deck-frame h2 { font-size: var(--t-title); margin: 0 0 0.6em; }
+.deck-examples .deck-frame .layout-title h1, .deck-examples .deck-frame .layout-section h2 { font-size: var(--t-hero); }
+.deck-examples .deck-frame .subtitle, .deck-examples .deck-frame .source { color: var(--muted); font-size: var(--t-small); }
+.deck-examples .deck-frame ul { margin: 0; padding-left: 1.1em; }
+.deck-examples .deck-frame ul ul { display: none; } /* nested bullets are not allowed */
+.deck-examples .deck-frame li { margin: 0.3em 0; }
+.deck-examples .deck-frame .body-text { font-size: var(--t-body); max-width: 60ch; margin: 0 0 1em; }
+.deck-examples .deck-frame .layout-quote blockquote { width: auto; margin: 0; padding: 0.8em 1em; background: var(--surface); box-shadow: none; font-style: normal; font-size: calc(var(--t-body) * 1.15); }
+.deck-examples .deck-frame .layout-quote cite { display: block; margin-top: 0.6em; color: var(--muted); font-size: var(--t-small); font-style: normal; }
+.deck-examples .deck-frame .layout-ask h2 { color: var(--accent); }
+.deck-examples .deck-frame .placeholder { display: flex; align-items: center; justify-content: center; min-height: 8em; background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: var(--t-small); }
+.deck-examples .deck-frame img { max-height: 480px; margin: 0; }
+
+/* ── from nearby-mvp-go-decision.html ── */
+/* Deck-specific layout helpers (added after the verbatim theme). */
+.deck-examples .deck-frame .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.2em; align-items: start; }
+.deck-examples .deck-frame .split .placeholder { min-height: 13em; }
+.deck-examples .deck-frame .split ul { font-size: var(--t-body); }
+.deck-examples .deck-frame svg.viz { display: block; width: 100%; height: auto; font-family: var(--font); }
+.deck-examples .deck-frame .viz .ink { fill: var(--ink); }
+.deck-examples .deck-frame .viz .muted { fill: var(--muted); }
+.deck-examples .deck-frame .viz .accent { fill: var(--accent); }
+.deck-examples .deck-frame .viz .bar { fill: var(--rule); }
+.deck-examples .deck-frame .viz .bar-hi { fill: var(--accent); }
+.deck-examples .deck-frame .viz .box { fill: var(--surface); stroke: var(--rule); stroke-width: 2; }
+.deck-examples .deck-frame .viz .box-hi { fill: var(--surface); stroke: var(--accent); stroke-width: 3; }
+.deck-examples .deck-frame .viz .line { stroke: var(--ink); stroke-width: 2; fill: none; }
+.deck-examples .deck-frame .viz .line-accent { stroke: var(--accent); stroke-width: 3; fill: none; stroke-dasharray: 10 8; }
+.deck-examples .deck-frame .viz .arrow { stroke: var(--muted); stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+.deck-examples .deck-frame .viz .arrowhead { fill: var(--muted); }
+.deck-examples .deck-frame .layout-ask .scope { margin-top: 1.4em; font-size: var(--t-body); max-width: none; }

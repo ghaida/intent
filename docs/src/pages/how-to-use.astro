@@ -5,6 +5,7 @@ import JourneyFlow from '../components/visuals/JourneyFlow.astro';
 import BlueprintDiagram from '../components/visuals/BlueprintDiagram.astro';
 import SiteMap from '../components/visuals/SiteMap.astro';
 import WireframeBoard from '../components/visuals/WireframeBoard.astro';
+import DeckBoard from '../components/visuals/DeckBoard.astro';
 import { loadShowcase } from '../lib/showcase';
 
 const showcase = loadShowcase();
@@ -146,6 +147,7 @@ const videoPoster = `${base}intent-poster.png`;
           {step.skill === 'blueprint' && <BlueprintDiagram />}
           {step.skill === 'organize' && <SiteMap />}
           {step.skill === 'wireframe' && <WireframeBoard />}
+          {step.skill === 'present' && <DeckBoard />}
           <Fragment set:html={step.output} />
         </div>
       )

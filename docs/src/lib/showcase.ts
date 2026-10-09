@@ -34,6 +34,7 @@ const SKILL_CATEGORIES: Record<string, string> = {
   localize: 'Adaptation & Context',
   measure: 'Measurement',
   specify: 'Handoff',
+  present: 'Handoff',
 };
 
 function escapeHtml(text: string): string {
