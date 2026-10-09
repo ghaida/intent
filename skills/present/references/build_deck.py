@@ -11,7 +11,7 @@ from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.chart.data import CategoryChartData
 from pptx.enum.chart import XL_CHART_TYPE, XL_LEGEND_POSITION
-from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.shapes import MSO_SHAPE, PP_PLACEHOLDER
 
 LAYOUTS = {"title", "claim_visual", "claim_chart", "claim_bullets", "quote", "section", "ask"}
 INK, MUTED, RULE, SURFACE = RGBColor(0x1A, 0x1A, 0x2E), RGBColor(0x5B, 0x5B, 0x72), RGBColor(0xB8, 0xB8, 0xC8), RGBColor(0xF1, 0xF1, 0xF6)
@@ -33,6 +33,19 @@ def _validate(spec):
             raise ValueError(f"slide {i}: bullets must be a flat list of strings — no nesting")
         if (s.get("image") or s.get("placeholder") or s.get("chart")) and not str(s.get("alt", "")).strip():
             raise ValueError(f"slide {i}: alt text is required for every image, placeholder or chart")
+        c = s.get("chart")
+        if c is not None:
+            if not isinstance(c, dict) or c.get("type") not in ("bar", "line"):
+                raise ValueError(f"slide {i}: chart type must be 'bar' or 'line'")
+            cats, series = c.get("categories"), c.get("series")
+            if not isinstance(cats, list) or not cats:
+                raise ValueError(f"slide {i}: chart needs a non-empty categories list")
+            if not isinstance(series, list) or not series:
+                raise ValueError(f"slide {i}: chart needs a non-empty series list")
+            for ser in series:
+                if not isinstance(ser, dict) or not str(ser.get("name", "")).strip() \
+                        or not isinstance(ser.get("values"), list) or len(ser["values"]) != len(cats):
+                    raise ValueError(f"slide {i}: each chart series needs a name and one value per category")
 
 def _set_alt(shape, alt):
     shape._element.xpath("./*[1]/p:cNvPr")[0].set("descr", alt)
@@ -96,6 +109,11 @@ def _new_slide(prs, templated, layout):
             lay = names.get("Title Slide") or names.get("Section Header") or prs.slide_layouts[0]
         else:
             lay = names.get("Title Only") or prs.slide_layouts[min(5, len(prs.slide_layouts) - 1)]
+        has_title = lambda l: any(ph.placeholder_format.type in (PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE) for ph in l.placeholders)
+        if not has_title(lay):
+            lay = next((l for l in prs.slide_layouts if has_title(l)), None)
+            if lay is None:
+                raise ValueError("template has no layout with a title placeholder")
         return prs.slides.add_slide(lay)
     return prs.slides.add_slide(prs.slide_layouts[5])  # default template "Title Only"
 
@@ -118,7 +136,9 @@ def build(spec, out_path):
     for s in spec["slides"]:
         lay = s["layout"]
         slide = _new_slide(prs, templated, lay)
-        _title(slide, s, sz["title"] + (8 if lay in ("title", "section") else 0))
+        t = _title(slide, s, sz["title"] + (8 if lay in ("title", "section") else 0))
+        if not templated:
+            t.left, t.top, t.width, t.height = M, Inches(0.5), cw, Inches(1.2)
         y = Inches(1.9)
         if s.get("subtitle"):
             _text(slide, s["subtitle"], M, y, cw, Inches(0.8), sz["small"], MUTED); y += Inches(0.9)
@@ -129,15 +149,22 @@ def build(spec, out_path):
             _text(slide, f"“{s['quote']}”", M, y, cw, Inches(2), sz["body"] + 4, INK)
             if s.get("attribution"):
                 _text(slide, f"— {s['attribution']}", M, y + Inches(2.1), cw, Inches(0.6), sz["small"], MUTED)
+        visual = s.get("chart") or s.get("image") or s.get("placeholder")
+        both = bool(visual and s.get("bullets"))
+        vw = int(cw * 0.6) if both else cw
+        bleft = M + vw + Inches(0.3) if both else M
+        bw = cw - vw - Inches(0.3) if both else cw
         if s.get("chart"):
-            _chart(slide, s["chart"], M, y, cw, room, s["alt"])
+            _chart(slide, s["chart"], M, y, vw, room, s["alt"])
         elif s.get("image"):
             pic = slide.shapes.add_picture(s["image"], M, y, height=room)
+            if pic.width > vw:  # keep aspect ratio, fit the allotted width
+                pic.height = int(pic.height * vw / pic.width); pic.width = vw
             _set_alt(pic, s["alt"])
         elif s.get("placeholder"):
-            _placeholder(slide, s["placeholder"], s["alt"], M, y, cw, room)
+            _placeholder(slide, s["placeholder"], s["alt"], M, y, vw, room)
         if s.get("bullets"):
-            _bullets(slide, s["bullets"], M, y, cw, room, sz["body"])
+            _bullets(slide, s["bullets"], bleft, y, bw, room, sz["body"])
         if s.get("notes"):
             slide.notes_slide.notes_text_frame.text = s["notes"]
     prs.save(out_path)

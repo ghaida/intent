@@ -72,3 +72,35 @@ def test_template_layouts_used(tmp_path):
     prs = Presentation(out)
     assert prs.slides[0].slide_layout.name == "Title Slide"
     assert prs.slides[0].shapes.title.text == "Templated deck"
+
+def test_visual_and_bullets_do_not_overlap(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_visual", "title": "Option B removes the ambiguity",
+        "placeholder": "SCREENSHOT: step 2", "alt": "Step two screen", "bullets": ["one", "two"]}]), out)
+    shapes = list(Presentation(out).slides[0].shapes)
+    frame = next(s for s in shapes if s.has_text_frame and "SCREENSHOT" in s.text_frame.text)
+    bul = next(s for s in shapes if s.has_text_frame and s.text_frame.text.startswith("•"))
+    assert frame.left + frame.width <= bul.left
+
+def test_template_without_title_placeholder_rejected(tmp_path):
+    # Layout removal is feasible via SlideLayouts.remove (python-pptx 1.0).
+    p = Presentation()
+    for lay in list(p.slide_layouts):
+        if lay.name != "Blank":
+            p.slide_layouts.remove(lay)
+    tpl = tmp_path / "blank.pptx"; p.save(tpl)
+    with pytest.raises(ValueError, match="title placeholder"):
+        build_deck.build(spec([{"layout": "title", "title": "X deck"}], template=str(tpl)), tmp_path / "d.pptx")
+
+def test_default_title_spans_content_width(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "title", "title": "Wide title"}]), out)
+    prs = Presentation(out)
+    assert prs.slides[0].shapes.title.width == prs.slide_width - 2 * build_deck.M
+
+def test_chart_spec_validated(tmp_path):
+    bad = {"type": "bar", "categories": ["a", "b"], "series": [{"name": "s", "values": [1]}]}
+    with pytest.raises(ValueError, match="slide 1"):
+        build_deck.build(spec([{"layout": "claim_chart", "title": "A claim title here", "chart": bad, "alt": "x"}]), tmp_path / "d.pptx")
+    with pytest.raises(ValueError, match="chart"):
+        build_deck.build(spec([{"layout": "claim_chart", "title": "A claim title here", "chart": {"type": "pie"}, "alt": "x"}]), tmp_path / "d.pptx")
