@@ -1,6 +1,6 @@
 ---
 // Intent meta-score — the brand mark for the system itself.
-// A central frame (the practice — /intent itself) with 16 terminals around
+// A central frame (the practice — /intent itself) with 17 terminals around
 // it (the discipline skills), each in its cluster color. Hover a terminal
 // to reveal that skill's name and shape, with a vector connecting it to
 // the frame. The foundation skill lives at the center, not on the ring.
@@ -9,7 +9,7 @@ import { loadSkills } from '../../lib/skills';
 
 const skills = loadSkills();
 
-// Ring order: 3 strategy → 6 systems → 4 quality → 3 communication,
+// Ring order: 3 strategy → 6 systems → 4 quality → 4 communication,
 // starting at the top and going clockwise. /intent is excluded — the
 // central frame is its representation.
 const CLUSTER_ORDER = ['strategy', 'systems', 'quality', 'communication'] as const;
@@ -17,34 +17,35 @@ const ring = CLUSTER_ORDER.flatMap((cluster) =>
   skills.filter((s) => s.cluster === cluster && s.slug !== 'intent'),
 );
 
-if (ring.length !== 16) {
+if (ring.length !== 17) {
   throw new Error(
-    `IntentMetaScore expects exactly 16 ring skills (all skills except intent), got ${ring.length}. ` +
+    `IntentMetaScore expects exactly 17 ring skills (all skills except intent), got ${ring.length}. ` +
     `Check SKILL_CLUSTERS in lib/skills.ts.`,
   );
 }
 
-// 16 positions on a circle of radius 320 centered at (400, 400),
+// 17 positions on a circle of radius 320 centered at (400, 400),
 // starting at top (-90°), clockwise. Endpoint coords (ex,ey) sit on an
 // inner circle of radius 240 — outside the frame, so on-hover vectors
 // stay clear of the black frame stroke.
 const POSITIONS = [
   { x: 400, y:  80, ex: 400, ey: 160 },  // 0  investigate
-  { x: 524, y: 104, ex: 492, ey: 180 },  // 1  strategize
-  { x: 628, y: 172, ex: 572, ey: 228 },  // 2  philosopher
-  { x: 696, y: 276, ex: 624, ey: 308 },  // 3  blueprint
-  { x: 720, y: 400, ex: 640, ey: 400 },  // 4  journey
-  { x: 696, y: 524, ex: 624, ey: 492 },  // 5  organize
-  { x: 628, y: 628, ex: 572, ey: 572 },  // 6  wireframe
-  { x: 524, y: 696, ex: 492, ey: 620 },  // 7  localize
-  { x: 400, y: 720, ex: 400, ey: 640 },  // 8  transpose
-  { x: 276, y: 696, ex: 308, ey: 620 },  // 9  evaluate
-  { x: 172, y: 628, ex: 228, ey: 572 },  // 10 fortify
-  { x: 104, y: 524, ex: 180, ey: 492 },  // 11 include
-  { x:  80, y: 400, ex: 160, ey: 400 },  // 12 measure
-  { x: 104, y: 276, ex: 180, ey: 308 },  // 13 articulate
-  { x: 172, y: 172, ex: 228, ey: 228 },  // 14 storytelling
-  { x: 276, y: 104, ex: 308, ey: 180 },  // 15 specify
+  { x: 516, y: 102, ex: 487, ey: 176 },  // 1  strategize
+  { x: 616, y: 164, ex: 562, ey: 223 },  // 2  philosopher
+  { x: 686, y: 257, ex: 615, ey: 293 },  // 3  blueprint
+  { x: 719, y: 370, ex: 639, ey: 378 },  // 4  journey
+  { x: 708, y: 488, ex: 631, ey: 466 },  // 5  organize
+  { x: 655, y: 593, ex: 592, ey: 545 },  // 6  wireframe
+  { x: 568, y: 672, ex: 526, ey: 604 },  // 7  localize
+  { x: 459, y: 715, ex: 444, ey: 636 },  // 8  transpose
+  { x: 341, y: 715, ex: 356, ey: 636 },  // 9  evaluate
+  { x: 232, y: 672, ex: 274, ey: 604 },  // 10 fortify
+  { x: 145, y: 593, ex: 208, ey: 545 },  // 11 include
+  { x:  92, y: 488, ex: 169, ey: 466 },  // 12 measure
+  { x:  81, y: 370, ex: 161, ey: 378 },  // 13 articulate
+  { x: 114, y: 257, ex: 185, ey: 293 },  // 14 storytelling
+  { x: 184, y: 164, ex: 238, ey: 223 },  // 15 present
+  { x: 284, y: 102, ex: 313, ey: 176 },  // 16 specify
 ];
 
 const terminals = ring.map((skill, i) => ({ ...skill, pos: POSITIONS[i] }));
@@ -77,7 +78,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
       stroke-width="2.5"
     />
 
-    <!-- 16 terminals — each is an anchor that links to its skill -->
+    <!-- 17 terminals — each is an anchor that links to its skill -->
     <g class="intent-meta__terminals">
       {terminals.map((t) => (
         <a

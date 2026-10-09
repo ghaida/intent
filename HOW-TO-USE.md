@@ -10,7 +10,7 @@ The core thesis: every design decision should have a reason, and that reason sho
 
 | Agent | File | Use when... |
 |-------|------|-------------|
-| **Noor** (Entry Point) | `noor.md` | Starting a project, setting context, routing to specialists |
+| **Noor** (Entry Point) | `noor.md` | Starting a project, setting context, routing to specialists, presenting the work |
 | **Ember** (Strategy + Research) | `ember.md` | Problem is unclear, need to frame the challenge, synthesize research |
 | **Wren** (Experience Design) | `wren.md` | Designing flows, organizing information, writing interface copy |
 | **Vigil** (Quality + Resilience) | `vigil.md` | Evaluating quality, hardening for edge cases, ensuring accessibility |
@@ -60,7 +60,7 @@ Start a new Project (or conversation) for each agent. Carry the prior agent's ou
 
 ### Option 4: Claude Code plugin
 
-If you use Claude Code, install the Intent plugin — all 6 agents and 17 skills register automatically:
+If you use Claude Code, install the Intent plugin — all 6 agents and 18 skills register automatically:
 
 ```
 /plugin marketplace add ghaida/intent
@@ -72,7 +72,7 @@ Then in any Claude Code session:
 - **Invoke agents** as subagents via `@<name>` — e.g., `@ember help me frame this problem`, `@vigil audit this flow`, `@wren design the signup`.
 - **Invoke skills** as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc.
 
-**Tip:** This is the fastest path for Claude Code users. No per-project copy-paste. All 6 agents and 17 skills are one plugin install away.
+**Tip:** This is the fastest path for Claude Code users. No per-project copy-paste. All 6 agents and 18 skills are one plugin install away.
 
 ---
 

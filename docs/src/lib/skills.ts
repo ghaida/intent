@@ -52,6 +52,7 @@ const SKILL_CLUSTERS: Record<string, Cluster> = {
   articulate:   'communication',
   storytelling: 'communication',
   specify:      'communication',
+  present:      'communication',
 };
 
 const SKILL_SHAPES: Record<string, string> = {
@@ -72,6 +73,7 @@ const SKILL_SHAPES: Record<string, string> = {
   articulate:   'Noise → signal.',
   storytelling: 'An arc — a designed sequence with felt rhythm.',
   specify:      'Design rendered into instruction, every element accounted for.',
+  present:      'A sequence of frames, each holding one mark, building to a single point.',
 };
 
 function parseFrontmatter(content: string): { data: Record<string, string>; body: string } {
