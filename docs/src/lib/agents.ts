@@ -14,7 +14,7 @@ export interface Agent {
 
 const AGENT_META: Record<string, { domain: string; skills: string[]; cluster: Cluster }> = {
   noor: {
-    domain: 'Foundation & Context',
+    domain: 'Foundation & Presentation',
     skills: ['intent', 'present'],
     cluster: 'strategy',
   },

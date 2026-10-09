@@ -10,7 +10,7 @@ Six agents, each combining multiple skills into a specialist persona:
 
 | Domain | Agent | Skills it combines |
 |--------|-------|--------------------|
-| Entry point | **Noor** | `/intent` + `/present` — orients the project, holds UX principles and the anti-pattern catalog, routes to specialists, and presents the finished work |
+| Entry point + Presentation | **Noor** | `/intent` + `/present` — orients the project, holds UX principles and the anti-pattern catalog, routes to specialists, and presents the finished work |
 | Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
 | Experience Design | **Wren** | `/journey` + `/organize` + `/wireframe` + `/articulate` — shapes user flows, structures information, wireframes screens, designs the words |
 | Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
