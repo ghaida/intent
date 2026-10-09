@@ -1207,7 +1207,7 @@ These are guardrails. If a primary metric improves while a counter-metric degrad
 **Experiment governance:** No experiment ships without a pre-registered hypothesis, primary metric, counter-metric, and minimum sample size. Results are reviewed by product and design together: "did it go up for the right reasons?" matters as much as "did the number go up?"
 
 ## /specify
-agent: Sage
+agent: Rune
 summary: Produced engineering handoff specs for the item card component, interest flow, and walking radius algorithm.
 
 We translated design decisions into engineering-ready specifications. Every component got exact measurements, state definitions, interaction details, and API contract requirements. The walking radius algorithm — the core product differentiator — got its own specification with inputs, fallback logic, and performance requirements.
