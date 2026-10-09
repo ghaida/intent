@@ -20,6 +20,8 @@ design-docs/
 
 # Skill eval runs and generated test artifacts (local only)
 wireframe-eval-workspace/
+present-eval-workspace/
+.venv-present/
 /wireframes-*.html
 
 # Local worktrees
