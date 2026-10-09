@@ -120,3 +120,38 @@ def test_chart_labeled_directly_without_legend(tmp_path):
     assert dl.show_value
     assert dl.number_format == "General"
     assert dl.font.size.pt == build_deck.SIZES["read"]["small"]
+
+def _body_sizes(out, text):
+    shp = next(s for s in Presentation(out).slides[0].shapes if s.has_text_frame and s.text_frame.text == text)
+    return {r.font.size.pt for p in shp.text_frame.paragraphs for r in p.runs}
+
+def test_projected_read_deck_uses_projection_sizes(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "Self-serve downgrades cut support load",
+        "body": "Customers must contact support today."}], mode="read", projected=True), out)
+    assert _body_sizes(out, "Customers must contact support today.") == {18}
+
+def test_plain_read_deck_keeps_read_sizes(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "Self-serve downgrades cut support load",
+        "body": "Customers must contact support today."}], mode="read"), out)
+    assert _body_sizes(out, "Customers must contact support today.") == {14}
+
+def test_projected_must_be_bool(tmp_path):
+    with pytest.raises(ValueError, match="projected"):
+        build_deck.build(spec([{"layout": "title", "title": "X deck"}], mode="read", projected="yes"), tmp_path / "d.pptx")
+
+def _chart_slide(chart):
+    return spec([{"layout": "claim_chart", "title": "A claim title here", "chart": chart, "alt": "x"}])
+
+def test_chart_values_must_be_numbers(tmp_path):
+    for bad in (["12", 9], [True, 9], [None, 9]):
+        c = {"type": "bar", "categories": ["a", "b"], "series": [{"name": "s", "values": bad}]}
+        with pytest.raises(ValueError, match="slide 1"):
+            build_deck.build(_chart_slide(c), tmp_path / "d.pptx")
+
+def test_chart_highlight_must_index_a_series(tmp_path):
+    for hi in (1, -1, "0", True, 0.0):
+        c = {"type": "bar", "categories": ["a", "b"], "series": [{"name": "s", "values": [1, 2.5]}], "highlight": hi}
+        with pytest.raises(ValueError, match="highlight"):
+            build_deck.build(_chart_slide(c), tmp_path / "d.pptx")

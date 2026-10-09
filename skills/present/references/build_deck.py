@@ -17,12 +17,15 @@ LAYOUTS = {"title", "claim_visual", "claim_chart", "claim_bullets", "quote", "se
 INK, MUTED, RULE, SURFACE = RGBColor(0x1A, 0x1A, 0x2E), RGBColor(0x5B, 0x5B, 0x72), RGBColor(0xB8, 0xB8, 0xC8), RGBColor(0xF1, 0xF1, 0xF6)
 ACCENT = RGBColor(0x43, 0x38, 0xCA)
 SIZES = {"live": {"title": 36, "body": 24, "small": 18}, "read": {"title": 28, "body": 14, "small": 12}}
+PROJECTED_READ = {"title": 32, "body": 18, "small": 14}  # read layout, projection-safe sizes: nothing on a projected slide drops below 18pt body
 W, H = Inches(13.333), Inches(7.5)
 M = Inches(0.75)
 
 def _validate(spec):
     if spec.get("mode", "live") not in SIZES:
         raise ValueError("mode must be 'live' or 'read'")
+    if not isinstance(spec.get("projected", False), bool):
+        raise ValueError("projected must be true or false")
     for i, s in enumerate(spec.get("slides", []), 1):
         if s.get("layout") not in LAYOUTS:
             raise ValueError(f"slide {i}: unknown layout {s.get('layout')!r}; use one of {sorted(LAYOUTS)}")
@@ -46,6 +49,11 @@ def _validate(spec):
                 if not isinstance(ser, dict) or not str(ser.get("name", "")).strip() \
                         or not isinstance(ser.get("values"), list) or len(ser["values"]) != len(cats):
                     raise ValueError(f"slide {i}: each chart series needs a name and one value per category")
+                if any(isinstance(v, bool) or not isinstance(v, (int, float)) for v in ser["values"]):
+                    raise ValueError(f"slide {i}: chart values must be numbers, as stated in the source")
+            hi = c.get("highlight", 0)
+            if isinstance(hi, bool) or not isinstance(hi, int) or hi not in range(len(series)):
+                raise ValueError(f"slide {i}: chart highlight must be the index of one series (0 to {len(series) - 1})")
 
 def _set_alt(shape, alt):
     shape._element.xpath("./*[1]/p:cNvPr")[0].set("descr", alt)
@@ -130,7 +138,8 @@ def _title(slide, s, size):
 
 def build(spec, out_path):
     _validate(spec)
-    mode = spec.get("mode", "live"); sz = SIZES[mode]
+    mode = spec.get("mode", "live")
+    sz = PROJECTED_READ if mode == "read" and spec.get("projected") else SIZES[mode]
     templated = bool(spec.get("template"))
     prs = Presentation(spec["template"]) if templated else Presentation()
     if not templated:
