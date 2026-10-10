@@ -44,6 +44,34 @@ jobs:
           zip -r "intent-skills-${TAG}.zip" \
             skills/
 
+      - name: Compose release notes
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          # Notes written for this version (release-notes/<tag>.md) go first,
+          # then the install instructions every release carries.
+          {
+            if [ -f "release-notes/${TAG}.md" ]; then
+              cat "release-notes/${TAG}.md"
+              echo
+            fi
+            cat <<'INSTALL'
+          ## Install
+
+          **Claude Code (plugin):**
+          ```
+          /plugin marketplace add ghaida/intent
+          ```
+          Then open `/plugin` in Claude Code to install.
+
+          **Cursor:** Download the cursor zip and extract to your project root.
+
+          **VS Code Copilot:** Download the copilot zip and extract to your project root.
+
+          See [README](https://github.com/ghaida/intent#readme) for full documentation.
+          INSTALL
+          } > release-body.md
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -53,17 +81,4 @@ jobs:
             intent-cursor-*.zip
             intent-copilot-*.zip
             intent-skills-*.zip
-          body: |
-            ## Install
-
-            **Claude Code (plugin):**
-            ```
-            /plugin marketplace add ghaida/intent
-            ```
-            Then open `/plugin` in Claude Code to install.
-
-            **Cursor:** Download the cursor zip and extract to your project root.
-
-            **VS Code Copilot:** Download the copilot zip and extract to your project root.
-
-            See [README](https://github.com/ghaida/intent#readme) for full documentation.
+          body_path: release-body.md
