@@ -62,6 +62,8 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Cut anything that doesn't carry meaning.** No stock imagery, decorative icons, logo on every slide, agenda slides that only list section names, or "Thank you / Questions?" endings. Each costs attention and returns nothing.
 
+**One frame on every slide.** Every slide shares the same margins and an invisible 12-column grid; elements snap to it and nothing touches the edge. The shared frame is what makes slides read as one argument instead of a stack of pages, and content at the edge looks cramped and gets cropped by projectors.
+
 **Present decisions, not screens.** Organize around the decisions and tradeoffs; screens are evidence for them. Show process only when it makes a disputed claim credible — "we tested this with eleven users" earns its slide when someone doubts the finding, not otherwise. Options always come with a recommendation; a menu without one hands your job to the room. Review slides state the feedback wanted and the feedback not wanted, so the room critiques the decision on the table rather than the font. Fidelity matches the decision: structural questions get wireframes, not polished comps.
 
 **End on the ask.** Restate the governing message, then make the ask concrete: what, from whom, by when. Keep it on screen during Q&A so the discussion stays anchored to it. A deck that is genuinely just informing ends on the key takeaway instead. Read decks put the ask on page one as well, because readers stop early.
@@ -184,6 +186,7 @@ Before delivering, check:
 - **No nested bullets**
 - **Chart honesty** — zero baselines on bar charts, n shown, no cherry-picked windows or quotes
 - **Accessibility basics** — type sizes, contrast, color not the only signal, unique titles, alt text on every visual
+- **On the grid** — everything sits inside the margins and on the grid, the same frame on every slide
 - **Named-pitfall scan** — every row of the table above
 
 Fix what's fixable. Deliver with the remaining gaps listed — an honest gap is more useful than a confident hole.
@@ -207,7 +210,7 @@ Ask which format if the request doesn't say. Default to reveal.js HTML if the us
 
 ### Look
 
-Use the user's template, brand kit or prior deck when they have one. Otherwise read `references/deck-theme.md` before building and use its tokens, type sizes and layouts. A user template replaces the visual layer; the structural rules stay.
+Use the user's template, brand kit or prior deck when they have one. Otherwise read `references/deck-theme.md` before building and use its tokens, type sizes, layouts and grid. A user template replaces the visual layer; the structural rules — the grid's margins and columns among them — stay.
 
 ### PowerPoint and Google Slides
 
@@ -243,7 +246,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
 }
 ```
 
-`mode` is `live` or `read`. Set `"projected": true` on a read deck that will also be presented — it keeps the read layout and switches to projection-safe sizes. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
+`mode` is `live` or `read`. Set `"projected": true` on a read deck that will also be presented — it keeps the read layout and switches to projection-safe sizes. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. The builder places every shape on the grid — a visual with bullets splits seven columns to five, visual first. With a user template it keeps the template's title placeholder and scales the grid to the template's slide size for everything else. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
 
 The builder rejects missing titles, nested bullets, missing alt text on any image, placeholder or chart, and malformed chart specs, and it pins bar-chart axes to zero. When it rejects the spec, fix the spec — never work around the builder. Its rules are the stance made mechanical.
 
@@ -253,13 +256,15 @@ The builder rejects missing titles, nested bullets, missing alt text on any imag
 
 Load `/figma-use` and its Slides guide `figma-use-slides` first — both are mandatory before any write to a Slides file — and include `figma-use-slides` alongside `figma-use` in every `use_figma` call's `skillNames`. Create the file with `create_new_file` using the `slides` editor type, then build slide by slide through `use_figma` with the theme tokens. Speaker notes go in each slide's `speakerNotes` field, which accepts simple markdown (lists, bold, italic — no headings or links).
 
+Place every frame by the grid's numbers in `references/deck-theme.md` — margins, columns, title band, body region. Add them as a Figma layout grid on each slide if the API allows it, as a guide only, never visible in presentation.
+
 If the Figma connector isn't available, say so before building and offer another format. Never switch formats silently.
 
 ### reveal.js
 
 A single self-contained `.html` file:
 - Copy `references/reveal-template.html` and paste `references/deck-theme.css` verbatim into its `<style>` block.
-- One `<section>` per slide, with the layout class (`layout-title`, `layout-claim-visual`, `layout-quote`, `layout-section`, `layout-ask`). Body text for read decks goes in `<p class="body-text">`; source credits in `<p class="source">`.
+- One `<section>` per slide, with the layout class (`layout-title`, `layout-section`, `layout-claim-visual`, `layout-claim-chart`, `layout-claim-bullets`, `layout-quote`, `layout-ask`), plus `with-bullets` when a visual sits beside bullets. Everything on the slide goes in one `<div class="slide">` inside the section — that wrapper carries the margins and the 12-column grid, and the layout class places each element on it. Notes stay outside the wrapper. Body text for read decks goes in `<p class="body-text">`; source credits in `<p class="source">`.
 - Notes go in `<aside class="notes">`; the presenter opens them with `S`.
 - Add `class="read"` to the `.reveal` element for read decks — it switches the type scale. A read deck that will also be presented takes `class="read projected"`, which keeps the read layout at projection-safe sizes.
 - Charts are inline SVG: labeled directly, bars from zero, the highlighted series in the accent, `role="img"` with an `aria-label` carrying the alt text.

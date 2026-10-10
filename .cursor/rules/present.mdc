@@ -48,6 +48,8 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Cut anything that doesn't carry meaning.** No stock imagery, decorative icons, logo on every slide, agenda slides that only list section names, or "Thank you / Questions?" endings. Each costs attention and returns nothing.
 
+**One frame on every slide.** Every slide shares the same margins and an invisible 12-column grid; elements snap to it and nothing touches the edge. The shared frame is what makes slides read as one argument instead of a stack of pages, and content at the edge looks cramped and gets cropped by projectors.
+
 **Present decisions, not screens.** Organize around the decisions and tradeoffs; screens are evidence for them. Show process only when it makes a disputed claim credible — "we tested this with eleven users" earns its slide when someone doubts the finding, not otherwise. Options always come with a recommendation; a menu without one hands your job to the room. Review slides state the feedback wanted and the feedback not wanted, so the room critiques the decision on the table rather than the font. Fidelity matches the decision: structural questions get wireframes, not polished comps.
 
 **End on the ask.** Restate the governing message, then make the ask concrete: what, from whom, by when. Keep it on screen during Q&A so the discussion stays anchored to it. A deck that is genuinely just informing ends on the key takeaway instead. Read decks put the ask on page one as well, because readers stop early.
@@ -170,6 +172,7 @@ Before delivering, check:
 - **No nested bullets**
 - **Chart honesty** — zero baselines on bar charts, n shown, no cherry-picked windows or quotes
 - **Accessibility basics** — type sizes, contrast, color not the only signal, unique titles, alt text on every visual
+- **On the grid** — everything sits inside the margins and on the grid, the same frame on every slide
 - **Named-pitfall scan** — every row of the table above
 
 Fix what's fixable. Deliver with the remaining gaps listed — an honest gap is more useful than a confident hole.
@@ -193,7 +196,7 @@ Ask which format if the request doesn't say. Default to reveal.js HTML if the us
 
 ### Look
 
-Use the user's template, brand kit or prior deck when they have one. Otherwise read `references/deck-theme.md` before building and use its tokens, type sizes and layouts. A user template replaces the visual layer; the structural rules stay.
+Use the user's template, brand kit or prior deck when they have one. Otherwise read `references/deck-theme.md` before building and use its tokens, type sizes, layouts and grid. A user template replaces the visual layer; the structural rules — the grid's margins and columns among them — stay.
 
 ### PowerPoint and Google Slides
 
@@ -229,7 +232,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
 }
 ```
 
-`mode` is `live` or `read`. Set `"projected": true` on a read deck that will also be presented — it keeps the read layout and switches to projection-safe sizes. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. A visual with bullets is laid out side by side, visual first. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
+`mode` is `live` or `read`. Set `"projected": true` on a read deck that will also be presented — it keeps the read layout and switches to projection-safe sizes. `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. Use one visual per slide — a chart, an image or a placeholder. Charts are `bar` or `line`; `highlight` is the index of the series drawn in the accent, and every other series is gray. The builder labels values directly on the marks and draws no legend, so the claim title has to say which series matters. The builder places every shape on the grid — a visual with bullets splits seven columns to five, visual first. With a user template it keeps the template's title placeholder and scales the grid to the template's slide size for everything else. Pass `"template"` when the user supplied a `.pptx`; it must contain a layout with a title placeholder.
 
 The builder rejects missing titles, nested bullets, missing alt text on any image, placeholder or chart, and malformed chart specs, and it pins bar-chart axes to zero. When it rejects the spec, fix the spec — never work around the builder. Its rules are the stance made mechanical.
 
@@ -239,13 +242,15 @@ The builder rejects missing titles, nested bullets, missing alt text on any imag
 
 Load `/figma-use` and its Slides guide `figma-use-slides` first — both are mandatory before any write to a Slides file — and include `figma-use-slides` alongside `figma-use` in every `use_figma` call's `skillNames`. Create the file with `create_new_file` using the `slides` editor type, then build slide by slide through `use_figma` with the theme tokens. Speaker notes go in each slide's `speakerNotes` field, which accepts simple markdown (lists, bold, italic — no headings or links).
 
+Place every frame by the grid's numbers in `references/deck-theme.md` — margins, columns, title band, body region. Add them as a Figma layout grid on each slide if the API allows it, as a guide only, never visible in presentation.
+
 If the Figma connector isn't available, say so before building and offer another format. Never switch formats silently.
 
 ### reveal.js
 
 A single self-contained `.html` file:
 - Copy `references/reveal-template.html` and paste `references/deck-theme.css` verbatim into its `<style>` block.
-- One `<section>` per slide, with the layout class (`layout-title`, `layout-claim-visual`, `layout-quote`, `layout-section`, `layout-ask`). Body text for read decks goes in `<p class="body-text">`; source credits in `<p class="source">`.
+- One `<section>` per slide, with the layout class (`layout-title`, `layout-section`, `layout-claim-visual`, `layout-claim-chart`, `layout-claim-bullets`, `layout-quote`, `layout-ask`), plus `with-bullets` when a visual sits beside bullets. Everything on the slide goes in one `<div class="slide">` inside the section — that wrapper carries the margins and the 12-column grid, and the layout class places each element on it. Notes stay outside the wrapper. Body text for read decks goes in `<p class="body-text">`; source credits in `<p class="source">`.
 - Notes go in `<aside class="notes">`; the presenter opens them with `S`.
 - Add `class="read"` to the `.reveal` element for read decks — it switches the type scale. A read deck that will also be presented takes `class="read projected"`, which keeps the read layout at projection-safe sizes.
 - Charts are inline SVG: labeled directly, bars from zero, the highlighted series in the accent, `role="img"` with an `aria-label` carrying the alt text.
@@ -306,6 +311,7 @@ Noor owns this skill. She opens an engagement and, when the work is ready to sho
   --canvas: #ffffff; --accent: #4338ca;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --t-title: 36pt; --t-hero: 44pt; --t-body: 24pt; --t-small: 18pt;
+  --l-title: 56px; --l-hero: 64px; --l-body: 40px; --l-small: 32px; /* line heights on the 8-unit rhythm */
   --r-background-color: var(--canvas); --r-main-color: var(--ink); --r-heading-color: var(--ink);
   --r-link-color: var(--accent); --r-link-color-hover: var(--accent);
   --r-selection-background-color: var(--accent); --r-selection-color: var(--canvas);
@@ -320,24 +326,61 @@ Noor owns this skill. She opens an engagement and, when the work is ready to sho
     --r-main-font: var(--font); --r-heading-font: var(--font);
     --r-overlay-element-bg-color: 255, 255, 255; --r-overlay-element-fg-color: 0, 0, 0; }
 }
-.read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; }
-.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; }
+.read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; --l-title: 48px; --l-hero: 48px; --l-body: 24px; --l-small: 24px; }
+.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; --l-title: 48px; --l-hero: 48px; --l-body: 32px; --l-small: 24px; }
 
 .reveal-viewport, .reveal { background: var(--canvas); }
 .reveal { font-family: var(--font); color: var(--ink); font-size: var(--t-body); }
 .reveal .slides section { text-align: left; }
-.reveal h1, .reveal h2 { font-family: var(--font); color: var(--ink); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.15; }
-.reveal h2 { font-size: var(--t-title); margin: 0 0 0.6em; }
-.layout-title h1, .layout-section h2 { font-size: var(--t-hero); }
-.reveal .subtitle, .reveal .source { color: var(--muted); font-size: var(--t-small); }
-.reveal ul { margin: 0; padding-left: 1.1em; }
+.reveal h1, .reveal h2 { font-family: var(--font); color: var(--ink); font-weight: 700; text-transform: none; letter-spacing: 0; }
+.reveal h2 { font-size: var(--t-title); line-height: var(--l-title); }
+.layout-title h1, .layout-section h2 { font-size: var(--t-hero); line-height: var(--l-hero); }
+.reveal .subtitle, .reveal .source { color: var(--muted); font-size: var(--t-small); line-height: var(--l-small); }
+.reveal ul { padding-left: 1.1em; }
 .reveal ul ul { display: none; } /* nested bullets are not allowed */
-.reveal li { margin: 0.3em 0; }
-.body-text { font-size: var(--t-body); max-width: 60ch; margin: 0 0 1em; }
-.layout-quote blockquote { width: auto; margin: 0; padding: 0.8em 1em; background: var(--surface); box-shadow: none; font-style: normal; font-size: calc(var(--t-body) * 1.15); }
-.layout-quote cite { display: block; margin-top: 0.6em; color: var(--muted); font-size: var(--t-small); font-style: normal; }
+.reveal li { margin: 0 0 8px; }
+.reveal .body-text { font-size: var(--t-body); line-height: var(--l-body); }
+.layout-quote blockquote { width: auto; padding: 24px 32px; background: var(--surface); box-shadow: none; font-style: normal; font-size: calc(var(--t-body) * 1.15); line-height: calc(var(--l-body) + 8px); }
+.layout-quote cite { display: block; margin-top: 16px; color: var(--muted); font-size: var(--t-small); line-height: var(--l-small); font-style: normal; }
 .layout-ask h2 { color: var(--accent); }
-.placeholder { display: flex; align-items: center; justify-content: center; min-height: 8em; background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: var(--t-small); }
-.reveal img { max-height: 480px; margin: 0; }
+.placeholder { display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: var(--t-small); }
+
+/* The grid. Every slide is the same frame: 1280 x 720 stage, 64/80 margins, 12 columns of 64
+   with 32 gutters, a 128-tall title band (row 1), a 32 gap (row 2), then the body region
+   (rows 3-5, y 224-656). Rows 3 and 4 collapse to nothing unless a subtitle or read-deck body
+   text fills them, so a visual, bullets or quote always starts at the top of whatever body
+   space is left. Line heights and gaps are multiples of 8 to keep the vertical rhythm.
+   The grid lives on .slide, never on <section>: reveal shows and hides slides through
+   section's display. minmax(0, 1fr) is 1fr that can't grow past the frame. */
+.reveal .slides > section { padding: 0; }
+.reveal .slide { box-sizing: border-box; width: 1280px; height: 720px; padding: 64px 80px; line-height: var(--l-body); display: grid;
+  grid-template-columns: repeat(12, 64px); column-gap: 32px; row-gap: 0;
+  grid-template-rows: 128px 32px auto auto minmax(0, 1fr); }
+.reveal .slide > * { margin: 0; min-width: 0; min-height: 0; grid-column: 1 / span 8; align-self: start; }
+.reveal .slide > h1, .reveal .slide > h2 { grid-row: 1; grid-column: 1 / span 10; }
+.reveal .slide > .subtitle { grid-row: 3; margin-bottom: 16px; }
+.reveal .slide > .body-text { grid-row: 4; margin-bottom: 24px; }
+.reveal .slide > :is(.placeholder, img, svg, figure, .visual, ul, blockquote) { grid-row: 5; }
+.reveal .slide > :is(.placeholder, img, svg, figure, .visual) { grid-column: 1 / span 12; max-width: 100%; max-height: 100%; }
+.reveal .slide > .placeholder, .reveal .slide > figure, .reveal .slide > .visual { align-self: stretch; }
+.reveal .slide > img, .reveal .slide > svg { object-fit: contain; }
+.reveal .slide > .source { grid-row: 5; align-self: end; grid-column: 1 / span 12; }
+
+/* title, section: the hero is the title, at the top of the body region; subtitle directly below */
+.reveal .layout-title .slide > h1, .reveal .layout-section .slide > h2 { grid-row: 3; grid-column: 1 / span 10; margin-bottom: 16px; }
+.reveal .layout-title .slide > .subtitle, .reveal .layout-section .slide > .subtitle { grid-row: 4; grid-column: 1 / span 10; }
+.reveal .layout-title .slide > .body-text, .reveal .layout-section .slide > .body-text { grid-row: 5; }
+/* ask: the ask is the title; what/who/by-when at the top of the body region */
+.reveal .layout-ask .slide > .subtitle { grid-column: 1 / span 8; }
+/* claim_bullets: eight columns keep line length readable */
+.reveal .layout-claim-bullets .slide > ul { grid-column: 1 / span 8; }
+/* quote: quote and attribution share nine columns */
+.reveal .layout-quote .slide > blockquote { grid-column: 1 / span 9; }
+/* claim_visual, claim_chart with bullets: visual takes seven columns, bullets the last five */
+.reveal .with-bullets .slide > :is(.placeholder, img, svg, figure, .visual) { grid-column: 1 / span 7; }
+.reveal .with-bullets .slide > ul { grid-column: 8 / span 5; }
+/* read decks: the body text block always sits in eight columns, above what follows */
+.reveal.read .slide > .body-text { grid-column: 1 / span 8; }
+
 @media (prefers-reduced-motion: reduce) { .reveal .slides section { transition: none !important; } }
 ```

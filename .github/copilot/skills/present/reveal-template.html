@@ -15,19 +15,37 @@
   <!-- add class="read" to .reveal for decks sent to read -->
   <div class="reveal">
     <div class="slides">
+      <!-- One <div class="slide"> per section: it carries the margins and the 12-column grid. -->
       <section class="layout-title">
-        <h1>The deck's governing message as a sentence</h1>
-        <p class="subtitle">Audience · date</p>
+        <div class="slide">
+          <h1>The deck's governing message as a sentence</h1>
+          <p class="subtitle">Audience · date</p>
+        </div>
         <aside class="notes">What to say while this is up.</aside>
       </section>
       <section class="layout-claim-visual">
-        <h2>Each title states the slide's one claim</h2>
-        <div class="placeholder" role="img" aria-label="Alt text: what the visual shows">[SCREENSHOT: describe the screen]</div>
+        <div class="slide">
+          <h2>Each title states the slide's one claim</h2>
+          <div class="placeholder" role="img" aria-label="Alt text: what the visual shows">[SCREENSHOT: describe the screen]</div>
+        </div>
         <aside class="notes">Claim, two or three supporting points, transition.</aside>
       </section>
+      <section class="layout-claim-visual with-bullets">
+        <div class="slide">
+          <h2>A visual with bullets splits seven columns to five</h2>
+          <div class="placeholder" role="img" aria-label="Alt text: what the visual shows">[SCREENSHOT: describe the screen]</div>
+          <ul>
+            <li>A short point backing the claim</li>
+            <li>Another, flat, never nested</li>
+          </ul>
+        </div>
+        <aside class="notes">Claim, then the two points, then the transition.</aside>
+      </section>
       <section class="layout-ask">
-        <h2>Approve direction B so engineering can start</h2>
-        <p class="subtitle">Decision needed from the review group by Friday</p>
+        <div class="slide">
+          <h2>Approve direction B so engineering can start</h2>
+          <p class="subtitle">Decision needed from the review group by Friday</p>
+        </div>
         <aside class="notes">Restate the governing message, then make the ask.</aside>
       </section>
     </div>
@@ -38,7 +56,7 @@
     Reveal.initialize({
       width: 1280,
       height: 720,
-      margin: 0.04,
+      margin: 0,
       center: false,
       hash: true,
       transition: 'none',
