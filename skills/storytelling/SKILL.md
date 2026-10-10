@@ -11,7 +11,7 @@ description: >
   story", "story mode", "narrative mode". Refuses to smooth user data into clean
   arcs, manufacture strategic tension, substitute emotional appeal for evidence,
   assume conflict arcs are universal, or engineer stakeholder assent by shortcut.
-version: 1.7.0
+version: 1.7.1
 user-invocable: true
 ---
 

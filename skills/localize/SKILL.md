@@ -12,7 +12,7 @@ description: >
   test plans, or when someone says "we need to launch in [country]" and
   the plan is "just translate it." Also trigger for compliance reviews
   across markets (GDPR, PIPL, accessibility laws).
-version: 1.7.0
+version: 1.7.1
 user-invocable: true
 ---
 

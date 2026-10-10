@@ -13,7 +13,7 @@ description: >
   request to systematically assess the quality of a user experience. This is
   the diagnostic entry point of the Intent system — the UX doctor that
   diagnoses issues and refers to specialists.
-version: 1.7.0
+version: 1.7.1
 user-invocable: true
 ---
 
