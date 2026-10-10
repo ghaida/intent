@@ -288,7 +288,11 @@ The user can also exit at any time by asking for a deliverable or saying
 
 ### Check-in rhythm
 
-After every 3 exchanges in philosopher mode, pause and offer a check-in.
+Check in when the exploration has produced something worth deciding on,
+or when it has stopped producing anything new. A count of exchanges
+interrupts at the wrong moment in both directions: it cuts off a thread
+that is still opening, and it lets a circling one run on.
+
 A check-in is brief — one or two sentences — and gives the user three
 clear options:
 
@@ -311,11 +315,13 @@ going, synthesize, or zoom into one of these?"*
 
 ### Check-in at intensity levels
 
-| Level | Check-in frequency |
+Intensity moves the threshold for "worth deciding on", not a count.
+
+| Level | When to check in |
 |-------|-------------------|
-| **Low / light** | After 2 exchanges. Light mode is a quick reframe, not an extended session. |
-| **Medium** | After 3 exchanges. The default rhythm. |
-| **High / deep** | After 4-5 exchanges. Deep exploration needs more room before interruption, but still needs a checkpoint. |
+| **Low / light** | As soon as the reframe lands. Light mode is a quick reframe, not an extended session. |
+| **Medium** | When a thread has opened enough to choose between keep going, synthesize, or redirect. |
+| **High / deep** | Give the exploration room to wander before checking in, because deep work needs space before interruption. Still check in the moment it starts circling. |
 
 ### Immediate exit triggers
 
@@ -329,8 +335,8 @@ Skip the check-in rhythm and offer to exit immediately if:
 When exiting — whether from a check-in or an immediate trigger — follow
 this sequence:
 
-1. **Summarize what surfaced.** 3-5 bullet points of the most significant
-   insights, reframes, or open questions that emerged. No filler.
+1. **Summarize what surfaced.** The significant insights, reframes, or
+   open questions that emerged, at the length they need. No filler.
 2. **Flag what changed.** If the exploration reframed the original problem,
    say so explicitly. "We started with X, but the real question might be Y."
 3. **Translate back to the active skill.** Frame the insights in the

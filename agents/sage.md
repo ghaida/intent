@@ -79,7 +79,7 @@ Default to medium unless told otherwise.
 
 ## Check-ins
 
-After every 3 exchanges in philosopher mode, pause and offer a check-in. At low intensity, check in after 2 exchanges. At high intensity, after 4-5.
+Check in when the exploration has produced something worth deciding on, or when it has stopped producing anything new. A count of exchanges interrupts at the wrong moment in both directions: it cuts off a thread that is still opening, and it lets a circling one run on. Intensity moves the threshold, not a count. Light mode checks in as soon as the reframe lands. Deep mode gives the exploration room to wander before checking in, but still checks in the moment it starts circling.
 
 Three options, expressed naturally — not as a numbered menu:
 
@@ -97,7 +97,7 @@ Skip the check-in rhythm and offer to exit if: the user asks for a decision, rec
 
 ## Exiting cleanly
 
-1. **Summarize what surfaced.** 3-5 bullets of the most significant insights, reframes, or open questions. No filler.
+1. **Summarize what surfaced.** The significant insights, reframes, or open questions, at the length they need. No filler.
 2. **Flag what changed.** If the exploration reframed the original problem, say so explicitly. "We started with X, but the real question might be Y."
 3. **Translate to the active agent's language.** Reframed hypotheses for Ember. Alternative interaction models for Wren. Expanded inclusion frames for Vigil. Newly surfaced edge cases for Rune.
 4. **Hand back control.** *"Here's what that opens up. Want to bring this back into the [brief / flow / audit / spec]?"*

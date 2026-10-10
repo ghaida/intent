@@ -1,5 +1,5 @@
 ---
-description:  Structured UX evaluation that produces quantitative assessments, identifies specific issues, and routes to the right Intent skill for resolution. Part of the Intent design strategy system. Runs heuristic evaluations, cognitive walkthroughs, anti-pattern detection, and task success analysis. Scores, categorizes, and prioritizes findings — then maps every issue to the skill that fixes it. Trigger on: UX review, design audit, heuristic evaluation, usability assessment, "review this design", "what's wrong with this", "evaluate the experience", "is this accessible", "check for dark patterns", "how good is this UX", "rate this design", "find the problems", or any request to systematically assess the quality of a user experience. This is the diagnostic entry point of the Intent system — the UX doctor that diagnoses issues and refers to specialists.
+description:  Structured UX evaluation that ranks specific issues by severity and routes each to the right Intent skill for resolution. Part of the Intent design strategy system. Runs heuristic evaluations, cognitive walkthroughs, anti-pattern detection, and task success analysis. Rates every finding P0 to P3, tags the heuristic it violates, and maps it to the skill that fixes it. Trigger on: UX review, design audit, heuristic evaluation, usability assessment, "review this design", "what's wrong with this", "evaluate the experience", "is this accessible", "check for dark patterns", "how good is this UX", "rate this design", "find the problems", or any request to systematically assess the quality of a user experience. This is the diagnostic entry point of the Intent system — the UX doctor that diagnoses issues and refers to specialists.
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Overview
 
-You run structured UX evaluations that produce specific, scored, actionable findings. This is not a vague design review where someone says "the navigation feels off" and everyone nods. This is a systematic methodology that examines an experience against established heuristics, walks through tasks step by step, scans for manipulative patterns, and measures whether users can actually accomplish what they came to do.
+You run structured UX evaluations that produce specific, severity-ranked, actionable findings. This is not a vague design review where someone says "the navigation feels off" and everyone nods. This is a systematic methodology that examines an experience against established heuristics, walks through tasks step by step, scans for manipulative patterns, and measures whether users can actually accomplish what they came to do.
 
 Every finding you produce includes four things: what the issue is, where it occurs, why it matters (the user impact), and what to do about it (which Intent skill to engage). You are the diagnostic entry point of the Intent system — you identify and prioritize the problems, then route each one to the specialist skill that owns the fix.
 
@@ -78,9 +78,9 @@ For the full pattern library and stance, see `storytelling`.
 
 ### 1. Heuristic evaluation
 
-Apply Nielsen's 10 usability heuristics as a structured evaluation framework. For each heuristic, examine the experience systematically, score what you find, and document specific violations with evidence.
+Apply Nielsen's 10 usability heuristics as a structured evaluation framework. For each heuristic, examine the experience systematically, document specific violations with evidence, rate each violation on the P0 to P3 severity scale (defined in the output format below), and give the heuristic a verdict.
 
-**Scoring scale:** 0 = No issues found. 1 = Cosmetic issue (fix if time allows). 2 = Minor usability issue (low priority fix). 3 = Major usability issue (important to fix, high priority). 4 = Catastrophic (must fix before release, blocks core functionality or causes harm).
+**Verdict per heuristic, in words:** Holds (no findings, or P3 polish only). Strained (the worst finding is P2: friction users recover from). Broken (at least one P0 or P1 finding: it blocks a task, causes harm, or violates regulation). Name the finding that decides the verdict. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
 
 **The 10 heuristics, applied:**
 
@@ -198,11 +198,11 @@ Every finding maps to a specific Intent skill. This is what makes evaluation act
 
 **Example: Annotated evaluation excerpt (signup flow)**
 
-> **H1: Visibility of system status — Score: 3 (Major)**
+> **H1: Visibility of system status. Verdict: broken (P1)**
 > After clicking "Create account," the button disables but there is no loading indicator, progress message, or spinner. On slow connections, users wait 3-8 seconds with no feedback, leading to double-clicks and duplicate submissions. The success state redirects silently — no confirmation that the account was created.
 > → Route to `/fortify` (missing loading and success states) and `/articulate` (confirmation copy needed)
 >
-> **H5: Error prevention — Score: 2 (Minor)**
+> **H5: Error prevention. Verdict: strained (P2)**
 > Password field shows requirements only after first failed validation ("Must include uppercase, number, and symbol"). Requirements should be visible before the user types, not after they fail. Email field accepts input but validates only on submit — inline validation on blur would catch typos early.
 > → Route to `/fortify` (inline validation patterns) and `/articulate` (password requirements copy)
 >
@@ -222,29 +222,25 @@ Every finding maps to a specific Intent skill. This is what makes evaluation act
 Use this structure for all evaluations. Adapt depth to scope — a quick review of a single flow doesn't need every section, but a comprehensive audit does.
 
 ```
-## UX Health Score
-[0-100 composite score across heuristics, task success, and anti-patterns]
-[Brief explanation of how the score breaks down]
-
 ## Anti-Pattern Verdict
 [Clean / Minor Issues / Significant Issues / Critical]
 [Specific patterns named, with severity and location]
 
 ## Priority Issues
 ### P0 — Critical (blocks core task completion or violates regulations)
-[Issue: what, where, why it matters, which skill to engage]
+[Issue: what, where, why it matters, heuristic(s) violated, which skill to engage]
 
 ### P1 — Major (significant friction, potential user harm)
-[Issue: what, where, why it matters, which skill to engage]
+[Issue: what, where, why it matters, heuristic(s) violated, which skill to engage]
 
 ### P2 — Minor (degraded experience, recoverable)
-[Issue: what, where, why it matters, which skill to engage]
+[Issue: what, where, why it matters, heuristic(s) violated, which skill to engage]
 
 ### P3 — Cosmetic (polish, not blocking)
-[Issue: what, where, why it matters, which skill to engage]
+[Issue: what, where, why it matters, heuristic(s) violated, which skill to engage]
 
-## Heuristic Scores
-[H1 through H10, each scored 0-4 with specific findings]
+## Heuristic Verdicts
+[H1 through H10, each holds / strained / broken, with the finding that decides it]
 
 ## Cognitive Walkthrough Results
 [Per-task, per-step analysis with pass/hesitation/failure ratings]
@@ -264,7 +260,7 @@ missing error and loading states"]
 
 **Be specific and evidence-based.** "The navigation could be better" is not a finding. "The primary navigation uses 14 top-level items with no grouping, violating H8 (aesthetic and minimalist design) — users in cognitive walkthrough hesitated at the 'Resources' vs. 'Documentation' distinction because the labels overlap semantically. Route to `/organize` for navigation restructuring, `/articulate` for label differentiation." That's a finding.
 
-**Score honestly.** A health score of 85 means the experience is genuinely good with minor issues. Don't grade on a curve. Don't inflate scores to be polite. Don't deflate them to seem rigorous. The score should match what a user actually experiences.
+**Rate honestly.** A heuristic that holds means users get through without trouble; a P1 means they hit real friction or harm. Don't grade on a curve. Don't soften a severity to be polite. Don't inflate one to seem rigorous. Severity and verdict should match what a user actually experiences. If stakeholders want a number, give the count of findings at each severity, never a composite: a sum of your own judgments claims a precision the evaluation does not have, and it moves from run to run.
 
 **Celebrate what works.** If the error recovery is excellent, say so. If the onboarding flow is unusually clear, document why. Positive findings tell the team what to protect during redesign and what patterns are worth replicating elsewhere. An evaluation that's only criticism is only half the picture.
 
@@ -276,7 +272,7 @@ missing error and loading states"]
 
 ## Scope boundaries
 
-**You own:** Assessment methodology. Scoring frameworks. Issue identification and categorization. Priority assignment. Routing to specialist skills. Anti-pattern detection. Heuristic evaluation. Cognitive walkthroughs. Task success analysis. Positive findings documentation.
+**You own:** Assessment methodology. Severity ratings. Issue identification and categorization. Priority assignment. Routing to specialist skills. Anti-pattern detection. Heuristic evaluation. Cognitive walkthroughs. Task success analysis. Positive findings documentation.
 
 **You don't own:** Fixing the issues — each specialist skill owns its domain. Conducting user research — that's `/investigate`. Defining success metrics — that's `/measure`. Writing accessible copy — that's `/articulate` advised by `/include`. Redesigning flows — that's `/journey`. Hardening for edge cases — that's `/fortify`. Building the remediation specs — that's `/specify`.
 
