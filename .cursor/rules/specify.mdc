@@ -1,5 +1,5 @@
 ---
-description:  Bridges design and engineering by producing detailed specs, organized handoff packages, asset inventories, and cross-functional documentation. Part of the Intent design strategy system. Trigger when: writing design specs, preparing engineering handoffs, documenting for development, creating design reviews, writing test plans, building copy matrices, addressing edge cases, aligning stakeholders, packaging designs "for engineering," or saying "write the spec," "prepare the handoff," "document this," or "what do we need for design review?"
+description:  Bridges design and engineering by producing detailed specs, organized handoff packages, asset inventories, and cross-functional documentation. Part of the Intent design strategy system. Trigger when: writing design specs, preparing engineering handoffs, documenting for development, writing the spec material behind a design review (the deck itself goes to /present), writing test plans, building copy matrices, addressing edge cases, packaging designs "for engineering," or saying "write the spec," "prepare the handoff," or "document this."
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Overview
 
-This skill transforms design work into actionable, implementation-ready documentation. It produces structured specs, asset packages, test plans, and stakeholder presentations that ensure design intent survives to production. Use this when design needs to move into engineering, when cross-functional clarity is required, or when you must document decisions in a way that prevents rework.
+This skill turns design work into implementation-ready documentation: structured specs, asset packages, and test plans that carry design intent to production. Use it when design moves into engineering, when cross-functional clarity is required, or when decisions must be documented to prevent rework.
 
 ---
 
@@ -77,15 +77,9 @@ Write out specific, not generic use cases:
 - "User has 200+ items in cart" vs. "User has items in cart"
 - Document how the design behaves in each case, what copy appears, what happens next
 
-### 6. Stakeholder presentations
+### 6. Decks go to `/present`
 
-Structure presentations that align cross-functional teams:
-- Problem statement (from `/strategize`)
-- Design approach and constraints considered
-- Key decisions and what was intentionally NOT done
-- Test plan: what we're measuring and why (from `/measure`)
-- Open questions: what we still need to resolve
-- Timeline and dependencies
+This skill doesn't build presentations. When the handoff needs a stakeholder deck (a review, an alignment walkthrough, a pitch for the build), hand the spec to `/present` as source material. It owns the story, the slides and the ask; this skill owns the precision underneath them.
 
 ### 7. Test plans with success criteria
 
@@ -284,7 +278,6 @@ Before marking a handoff as complete, verify:
 - Document design decisions (don't make them)
 - Organize and structure existing design work for implementation
 - Write comprehensive specs, test plans, and asset packages
-- Produce cross-functional presentations and alignment documents
 - Flag open questions and dependencies transparently
 - Map edge cases and write copy variations
 - Conduct ethical review against Intent's anti-pattern catalog
@@ -298,6 +291,7 @@ Before marking a handoff as complete, verify:
 - Provide implementation estimates (that's engineering's role)
 - Define success metrics from scratch (`/measure` owns metric selection)
 - Assess UX quality or heuristic compliance (`/evaluate`)
+- Build presentation decks (that's `/present`)
 
 ---
 
@@ -307,7 +301,7 @@ Trigger Specify when:
 - **"Write the spec"** — Comprehensive design specification needed
 - **"Prepare the handoff"** — Engineering needs everything ready to build
 - **"Document this for engineering"** — Translate design into actionable specs
-- **"What do we need for the design review?"** — Prepare materials for alignment meetings
+- **"What spec does the design review need?"**: prepare the spec material behind the review; the deck itself goes to `/present`
 - **"Build the test plan"** — Define success criteria and test audiences
 - **"Write the copy matrix"** — Document all variations in one place
 - **"What are the edge cases?"** — Design scenarios and copy for unusual situations

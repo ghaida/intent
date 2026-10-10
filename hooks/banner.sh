@@ -54,6 +54,7 @@ CATEGORY_MAP=(
   "philosopher:crosscutting"
   "storytelling:crosscutting"
   "specify:handoff"
+  "present:handoff"
 )
 
 # Order categories appear in the frame (left to right).

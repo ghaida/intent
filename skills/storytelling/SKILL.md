@@ -9,7 +9,7 @@ description: >
   design rationale to non-design audiences, or when a journey, blueprint, brief,
   or deck feels lifeless. Trigger phrases: "what's the story here?", "tell the
   story", "story mode", "narrative mode". Restated inline in journey, blueprint,
-  strategize, evaluate (and presentation when that skill ships). Refuses to smooth user data into clean
+  strategize, evaluate, and present. Refuses to smooth user data into clean
   arcs, manufacture strategic tension, substitute emotional appeal for evidence,
   assume conflict arcs are universal, or engineer stakeholder assent by shortcut.
 version: 1.6.0
@@ -52,7 +52,7 @@ Four patterns. Each has a goal (what it's for), a shape (how it's structured), a
 | **Protagonist-arc** | **Empathy.** Make a real user's experience legible to the team as a coherent whole, with feeling. | A user with a goal moves through stages with rising/falling tension toward a resolution. Carries an emotional curve. | `journey` (and `evaluate`, applied to failure points) | **False coherence.** The arc replaces messy data instead of organizing it. The team empathizes with a smoothed fictional version of the user. |
 | **Choreography** | **Coordination.** Make a service legible as a performance across multiple actors, frontstage and backstage, over time. | Actors × time × handoffs and dependencies. **No single protagonist.** Story is the lived service. | `blueprint` | **Role reduction.** Coordination clarity bought at the cost of human visibility. People disappear into system roles; the choreography is clear but no human can locate themselves in it. |
 | **Situation → Complication → Resolution** | **Orient.** Help readers locate themselves in the strategic landscape — where we are, what changed, what we propose, why now. | Three beats: present state → tension that broke equilibrium → proposed change. | `strategize` (briefs, strategy) | **False orientation.** Manufactured complication — the tension is sized to fit the proposal, not the evidence. Readers are oriented to a reality that isn't accurate. |
-| **What-is / What-could-be** | **Persuade / inspire.** Move stakeholders from current-state acceptance to desired-future commitment. | Recurring oscillation between today's pain and tomorrow's vision. Ends on the gap that calls for action. | `presentation` (forthcoming) | **Manipulation.** Emotional shortcut substituted for evidence. The future is pre-decided for the audience; their assent is engineered, not earned. |
+| **What-is / What-could-be** | **Persuade / inspire.** Move stakeholders from current-state acceptance to desired-future commitment. | Recurring oscillation between today's pain and tomorrow's vision. Ends on the gap that calls for action. | `present` | **Manipulation.** Emotional shortcut substituted for evidence. The future is pre-decided for the audience; their assent is engineered, not earned. |
 
 ### Notes on the set
 
@@ -131,7 +131,7 @@ If the user's project clearly needs more than one pattern (e.g., a journey AND a
 
 1. Pick the primary pattern for the immediate ask.
 2. Produce that pattern's output.
-3. Mention the second pattern as a follow-up: *"Once the journey is solid, we'll want to compose a what-is / what-could-be deck for the executive review. Different pattern, different work — happy to do that next."*
+3. Mention the second pattern as a follow-up: *"Once the journey is solid, we'll want to compose a what-is / what-could-be deck for the executive review. Different pattern, different work. Happy to do that next."* When the second artifact is a deck, that's `/present`.
 
 Don't try to compose two patterns into one artifact. They have different shapes and conflicting them produces incoherent output.
 
@@ -143,7 +143,7 @@ You work alongside complementary skills:
 - **`blueprint`** — restates `choreography` inline. When invoked, treats services as performances coordinated across actors, frontstage and backstage.
 - **`strategize`** — restates `situation → complication → resolution` inline. When invoked, frames briefs and strategic narratives around the three beats.
 - **`evaluate`** — restates `protagonist-arc applied to failure points` inline. When invoked, asks where the user's story breaks rather than only what fails the heuristics.
-- **`presentation`** (forthcoming) — will restate `what-is / what-could-be` inline.
+- **`present`** restates the patterns inline and picks one per deck by goal: empathy for readouts, coordination for service reviews, orientation for strategy, persuasion when there's an ask. Carries the refusals into every deck.
 
 You do not replace these skills. You give them shared narrative discipline so that all four produce work that carries emotional truth without losing rigor.
 

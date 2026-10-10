@@ -9,6 +9,7 @@ project-plan.md
 # Project config (local only)
 CLAUDE.md
 .impeccable.md
+PRODUCT.md
 
 # Impeccable working files / critique snapshots (local only, never committed)
 .impeccable/
@@ -16,6 +17,12 @@ CLAUDE.md
 # Internal design docs and visual companion sessions
 design-docs/
 .superpowers/
+
+# Skill eval runs and generated test artifacts (local only)
+wireframe-eval-workspace/
+present-eval-workspace/
+.venv-present/
+/wireframes-*.html
 
 # Local worktrees
 .worktrees/

@@ -22,7 +22,7 @@ Output exactly this, starting with the triple-backtick line, ending with the clo
 
 `````
 ```
-◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ─ ◆
 
   intent.
 
@@ -30,7 +30,7 @@ Output exactly this, starting with the triple-backtick line, ending with the clo
 
   What are you designing, and for whom?
 
-◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ◆
+◆ ─ │ ─ ─ ─ │ ─ ─ ─ ─ │ ─ ─ ─ │ ─ ─ │ ─ │ ─ ─ │ ─ ─ ◆
 ```
 `````
 
@@ -410,7 +410,7 @@ Never fill gaps with silent assumptions. If you're guessing, say you're guessing
 
 ## Skill Routing Logic
 
-Intent routes to 15 specialized skills based on what the user needs done. The routing is not rigid — many tasks involve multiple skills in sequence — but the primary skill should match the primary need.
+Intent routes to 17 specialized skills based on what the user needs done. The routing is not rigid (many tasks involve multiple skills in sequence), but the primary skill should match the primary need.
 
 ### By what the user needs done
 
@@ -470,9 +470,17 @@ Use when: Defining KPIs, designing A/B tests, building measurement frameworks, e
 → `/philosopher` — Enter expansive thinking mode. Cross-domain connections, assumption challenging, problem reframing.
 Use when: Stuck, problem feels too tidy, obvious answers aren't satisfying, need to think before doing.
 
+**"I need to find the story"**
+→ `/storytelling`: give design work narrative structure that makes people care, without letting story stand in for evidence.
+Use when: A journey, brief, blueprint or review feels lifeless; stakeholders need to see the user's experience as a story; "what's the story here?"
+
 **"I need to hand this to engineering"**
 → `/specify` — Bridge design to engineering with specs, annotations, edge case documentation, and implementation guidance.
 Use when: Writing design specs, preparing handoffs, documenting component behavior, creating implementation guides.
+
+**"I need to present the work"**
+→ `/present`: build a deck that lands one message. Interview, story outline, then slides in Google Slides, PowerPoint, Figma Slides or reveal.js.
+Use when: Design reviews, research readouts, strategy pitches, case studies, any "turn this into a deck."
 
 ### Assessment-to-action pipeline
 
@@ -494,6 +502,7 @@ When a user brings an existing design for improvement, follow this pipeline:
    - Measurement problems → `/measure`
    - Resilience/edge case gaps → `/fortify`
    - Spec/handoff gaps → `/specify`
+   - Communication gaps (the work is right but isn't landing) → `/present`
 4. **Verify** — After remediation, re-evaluate to confirm the fix worked and didn't introduce new issues.
 
 ### Multi-skill sequences
@@ -509,6 +518,8 @@ Common workflows that involve multiple skills in sequence:
 **Platform expansion:** `/evaluate` (current platform) → `/transpose` (adaptation) → `/include` (platform-specific accessibility) → `/specify` (engineering handoff)
 
 **International launch:** `/investigate` (cultural research) → `/localize` (adaptation) → `/articulate` (content) → `/include` (accessibility for new contexts)
+
+**Stakeholder review:** `/evaluate` (evidence) → `/present` (story and ask)
 
 ### Loop-backs and exit conditions
 

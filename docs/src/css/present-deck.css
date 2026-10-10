@@ -1,0 +1,183 @@
+/* SYNCED COPY of skills/present/references/deck-theme.css, scoped to
+   .deck-examples for the how-to-use /present chapter. Re-sync after any
+   theme change.
+
+   Transform from the source theme (values kept identical):
+   - :root token blocks → .deck-examples .deck-frame (light) and
+     [data-theme='dark'] .deck-examples .deck-frame (dark, from the theme's
+     prefers-color-scheme block — the site switches themes via [data-theme]).
+     The tokens sit on the frame, not the wrapper, because --ink, --rule,
+     --surface, --accent, --muted and --canvas collide with the site's own
+     tokens; the wrapper's label, plates and notes block keep the site's.
+   - .reveal … → .deck-examples .deck-frame … (.reveal .slides … likewise);
+     bare layout selectors gain the same prefix so nothing leaks onto the
+     rest of the site.
+   - --r-* reveal variables and the reveal-viewport / reduced-motion
+     transition rules are dropped — reveal.js never loads on the site.
+   The slide's margins and 12-column grid come from the synced .slide rule
+   below; the frame itself has no padding, so margins are never doubled. */
+
+/* ── Base frame: a 1280×720 stage, standing in for reveal's .reveal box
+   (the deck runs reveal with margin: 0 and center: false) ── */
+
+.deck-examples .deck-frame {
+  box-sizing: content-box; /* the 1280×720 stage sits inside the hairline border */
+  width: 1280px;
+  height: 720px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  font-weight: 400; /* the site's dark-mode 300 body weight must not thin the slides */
+  line-height: 1.3; /* reveal's slide line-height */
+}
+
+/* reveal's own base rules that the deck relies on, and guards so the site's
+   heading, paragraph, list and table styles (display font, tight tracking,
+   panel margins, list-style reset, table padding) don't leak into slides.
+   The theme's own rules below apply after. */
+.deck-examples .deck-frame :is(h1, h2, h3, h4, h5, h6) {
+  font-family: inherit;
+  letter-spacing: normal;
+  line-height: inherit;
+  margin: 0 0 20px; /* reveal's heading margin */
+}
+
+.deck-examples .deck-frame p {
+  margin: 20px 0; /* reveal's block margin */
+  line-height: 1.3;
+}
+
+.deck-examples .deck-frame p > strong:only-child {
+  display: inline;
+  font-size: inherit;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.deck-examples .deck-frame ul {
+  list-style: disc;
+}
+
+.deck-examples .deck-frame li {
+  list-style: inherit;
+}
+
+.deck-examples .deck-frame table {
+  margin: auto; /* reveal's table base */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.deck-examples .deck-frame :is(th, td) {
+  text-align: left;
+  padding: 0.2em 0.5em;
+  border-bottom: 1px solid;
+}
+
+.deck-examples .deck-frame table {
+  font-variant-numeric: normal;
+}
+
+.deck-examples .deck-frame th {
+  font-weight: bold;
+  /* the site's base th is mono, 0.75rem, uppercase, tracked, nowrap */
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  color: inherit;
+}
+
+/* ── Theme tokens ── */
+
+.deck-examples .deck-frame {
+  --ink: #1a1a2e; --muted: #5b5b72; --rule: #b8b8c8; --surface: #f1f1f6;
+  --canvas: #ffffff; --accent: #4338ca;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --t-title: 36pt; --t-hero: 44pt; --t-body: 24pt; --t-small: 18pt;
+  --l-title: 56px; --l-hero: 64px; --l-body: 40px; --l-small: 32px; /* line heights on the 8-unit rhythm */
+}
+[data-theme='dark'] .deck-examples .deck-frame {
+  --ink: #ececf4; --muted: #a0a0b8; --rule: #3a3a52; --surface: #1f1f33; --canvas: #12121f; --accent: #7c6ff0;
+}
+
+/* ── Theme rules ── */
+
+.deck-examples .deck-frame { background: var(--canvas); }
+.deck-examples .deck-frame.read { --t-title: 28pt; --t-hero: 28pt; --t-body: 14pt; --t-small: 12pt; --l-title: 48px; --l-hero: 48px; --l-body: 24px; --l-small: 24px; }
+.deck-examples .deck-frame.read.projected { --t-title: 32pt; --t-hero: 32pt; --t-body: 18pt; --t-small: 14pt; --l-title: 48px; --l-hero: 48px; --l-body: 32px; --l-small: 24px; }
+
+.deck-examples .deck-frame { font-family: var(--font); color: var(--ink); font-size: var(--t-body); }
+.deck-examples .deck-frame section { text-align: left; }
+.deck-examples .deck-frame h1, .deck-examples .deck-frame h2 { font-family: var(--font); color: var(--ink); font-weight: 700; text-transform: none; letter-spacing: 0; }
+.deck-examples .deck-frame h2 { font-size: var(--t-title); line-height: var(--l-title); }
+.deck-examples .deck-frame .layout-title h1, .deck-examples .deck-frame .layout-section h2 { font-size: var(--t-hero); line-height: var(--l-hero); }
+.deck-examples .deck-frame .subtitle, .deck-examples .deck-frame .source { color: var(--muted); font-size: var(--t-small); line-height: var(--l-small); }
+.deck-examples .deck-frame ul { padding-left: 1.1em; }
+.deck-examples .deck-frame ul ul { display: none; } /* nested bullets are not allowed */
+.deck-examples .deck-frame li { margin: 0 0 8px; }
+.deck-examples .deck-frame .body-text { font-size: var(--t-body); line-height: var(--l-body); }
+.deck-examples .deck-frame .layout-quote blockquote { width: auto; padding: 24px 32px; background: var(--surface); box-shadow: none; font-style: normal; font-size: calc(var(--t-body) * 1.15); line-height: calc(var(--l-body) + 8px); }
+.deck-examples .deck-frame .layout-quote cite { display: block; margin-top: 16px; color: var(--muted); font-size: var(--t-small); line-height: var(--l-small); font-style: normal; }
+.deck-examples .deck-frame .layout-ask h2 { color: var(--accent); }
+.deck-examples .deck-frame .placeholder { display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: var(--t-small); }
+
+/* The grid. Every slide is the same frame: 1280 x 720 stage, 64/80 margins, 12 columns of 64
+   with 32 gutters, a 128-tall title band (row 1), a 32 gap (row 2), then the body region
+   (rows 3-5, y 224-656). Rows 3 and 4 collapse to nothing unless a subtitle or read-deck body
+   text fills them, so a visual, bullets or quote always starts at the top of whatever body
+   space is left. Line heights and gaps are multiples of 8 to keep the vertical rhythm.
+   The grid lives on .slide, never on <section>: reveal shows and hides slides through
+   section's display. minmax(0, 1fr) is 1fr that can't grow past the frame. */
+.deck-examples .deck-frame > section { padding: 0; }
+.deck-examples .deck-frame .slide { box-sizing: border-box; width: 1280px; height: 720px; padding: 64px 80px; line-height: var(--l-body); display: grid;
+  grid-template-columns: repeat(12, 64px); column-gap: 32px; row-gap: 0;
+  grid-template-rows: 128px 32px auto auto minmax(0, 1fr); }
+.deck-examples .deck-frame .slide > * { margin: 0; min-width: 0; min-height: 0; grid-column: 1 / span 8; align-self: start; }
+.deck-examples .deck-frame .slide > h1, .deck-examples .deck-frame .slide > h2 { grid-row: 1; grid-column: 1 / span 10; }
+.deck-examples .deck-frame .slide > .subtitle { grid-row: 3; margin-bottom: 16px; }
+.deck-examples .deck-frame .slide > .body-text { grid-row: 4; margin-bottom: 24px; }
+.deck-examples .deck-frame .slide > :is(.placeholder, img, svg, figure, .visual, ul, blockquote) { grid-row: 5; }
+.deck-examples .deck-frame .slide > :is(.placeholder, img, svg, figure, .visual) { grid-column: 1 / span 12; max-width: 100%; max-height: 100%; }
+.deck-examples .deck-frame .slide > .placeholder, .deck-examples .deck-frame .slide > figure, .deck-examples .deck-frame .slide > .visual { align-self: stretch; }
+.deck-examples .deck-frame .slide > img, .deck-examples .deck-frame .slide > svg { object-fit: contain; }
+.deck-examples .deck-frame .slide > .source { grid-row: 5; align-self: end; grid-column: 1 / span 12; }
+
+/* title, section: the hero is the title, at the top of the body region; subtitle directly below */
+.deck-examples .deck-frame .layout-title .slide > h1, .deck-examples .deck-frame .layout-section .slide > h2 { grid-row: 3; grid-column: 1 / span 10; margin-bottom: 16px; }
+.deck-examples .deck-frame .layout-title .slide > .subtitle, .deck-examples .deck-frame .layout-section .slide > .subtitle { grid-row: 4; grid-column: 1 / span 10; }
+.deck-examples .deck-frame .layout-title .slide > .body-text, .deck-examples .deck-frame .layout-section .slide > .body-text { grid-row: 5; }
+/* ask: the ask is the title; what/who/by-when at the top of the body region */
+.deck-examples .deck-frame .layout-ask .slide > .subtitle { grid-column: 1 / span 8; }
+/* claim_bullets: eight columns keep line length readable */
+.deck-examples .deck-frame .layout-claim-bullets .slide > ul { grid-column: 1 / span 8; }
+/* quote: quote and attribution share nine columns */
+.deck-examples .deck-frame .layout-quote .slide > blockquote { grid-column: 1 / span 9; }
+/* claim_visual, claim_chart with bullets: visual takes seven columns, bullets the last five */
+.deck-examples .deck-frame .with-bullets .slide > :is(.placeholder, img, svg, figure, .visual) { grid-column: 1 / span 7; }
+.deck-examples .deck-frame .with-bullets .slide > ul { grid-column: 8 / span 5; }
+/* read decks: the body text block always sits in eight columns, above what follows */
+.deck-examples .deck-frame.read .slide > .body-text { grid-column: 1 / span 8; }
+
+/* ── from nearby-mvp-ready-to-build-and-test-in-one-neighborhood.html ── */
+/* Deck-specific additions. Visuals stop 48 above the frame bottom so the source line never overlaps them. */
+.deck-examples .deck-frame .slide > .placeholder, .deck-examples .deck-frame .slide > .visual { margin-bottom: 48px; }
+.deck-examples .deck-frame .deck-svg text { fill: var(--ink); font-family: var(--font); }
+.deck-examples .deck-frame .deck-svg .t-muted { fill: var(--muted); }
+.deck-examples .deck-frame .deck-svg .t-accent { fill: var(--accent); }
+.deck-examples .deck-frame .deck-svg .bar { fill: var(--rule); }
+.deck-examples .deck-frame .deck-svg .bar-hi { fill: var(--accent); }
+.deck-examples .deck-frame .deck-svg .axis { stroke: var(--muted); stroke-width: 2; }
+.deck-examples .deck-frame .deck-svg .target { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 8; }
+.deck-examples .deck-frame .deck-svg .box { fill: var(--surface); stroke: var(--rule); stroke-width: 2; }
+.deck-examples .deck-frame .deck-svg .box-hi { fill: var(--canvas); stroke: var(--accent); stroke-width: 3; }
+.deck-examples .deck-frame .deck-svg .arrow { stroke: var(--muted); stroke-width: 2; fill: none; }
+.deck-examples .deck-frame .deck-svg .head { fill: var(--muted); }
+.deck-examples .deck-frame .deck-table { width: 100%; border-collapse: collapse; font-size: var(--t-small); line-height: var(--l-small); margin: 0; }
+.deck-examples .deck-frame .deck-table th, .deck-examples .deck-frame .deck-table td { text-align: left; vertical-align: top; padding: 8px 32px 8px 0; border: 0; border-bottom: 1px solid var(--rule); }
+.deck-examples .deck-frame .deck-table th { color: var(--muted); font-weight: 400; }
+.deck-examples .deck-frame .deck-table td.strong { font-weight: 700; }
+.deck-examples .deck-frame .deck-table tr.refused td { color: var(--muted); border-bottom: 0; padding-top: 16px; }
+  

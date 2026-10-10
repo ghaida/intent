@@ -54,6 +54,18 @@ if git rev-parse "$TAG" >/dev/null 2>&1; then
     exit 1
 fi
 
+# Release notes: the workflow puts release-notes/<tag>.md above the install
+# instructions. It only sees committed files, so check before tagging.
+NOTES="release-notes/$TAG.md"
+if ! git ls-files --error-unmatch "$NOTES" >/dev/null 2>&1; then
+    echo -e "${YELLOW}Warning:${NC} no committed release notes at $NOTES."
+    echo "  The release will carry install instructions only."
+    read -r -p "Continue without notes? [y/N] " notes_ok
+    if [[ ! "$notes_ok" =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
 # Get current version from plugin.json
 CURRENT=$(grep '"version"' "$SCRIPT_DIR/.claude-plugin/plugin.json" | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/')
 
