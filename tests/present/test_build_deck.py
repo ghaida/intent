@@ -300,3 +300,35 @@ def test_three_sentence_notes_accepted(tmp_path):
     build_deck.build(spec([{"layout": "claim_bullets", "title": "A claim title goes right here",
         "bullets": ["a"], "notes": notes}]), out)
     assert Presentation(out).slides[0].notes_slide.notes_text_frame.text == notes
+
+
+def test_em_dash_rejected_in_slide_text_and_notes(tmp_path):
+    for field in ({"title": "Option B wins — by a lot"}, {"bullets": ["fast — and clear"]}, {"notes": "B wins — clearly."}):
+        s = {"layout": "claim_bullets", "title": "A claim title goes right here", "bullets": ["a"], **field}
+        with pytest.raises(ValueError, match="em-dash"):
+            build_deck.build(spec([s]), tmp_path / "d.pptx")
+
+
+def test_en_dash_ranges_allowed(tmp_path):
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "Marketplaces finish 15–25% of local exchanges",
+        "bullets": ["a"]}]), tmp_path / "d.pptx")
+
+
+def test_source_line_sits_at_bottom_of_body_region(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_chart", "title": "A third of sessions abandon at step 2",
+        "chart": {"type": "bar", "categories": ["Step 1", "Step 2"], "series": [{"name": "s", "values": [8, 34]}]},
+        "alt": "Step 2 abandons at 34%", "source": "Analytics, last 90 days, n = 5,820 sessions"}]), out)
+    shapes = list(Presentation(out).slides[0].shapes)
+    src = next(s for s in shapes if s.has_text_frame and s.text_frame.text.startswith("Analytics"))
+    chart = next(s for s in shapes if s.has_chart)
+    assert src.top + src.height <= build_deck.BODY_BOTTOM
+    assert chart.top + chart.height <= src.top
+
+
+def test_quote_attribution_has_no_em_dash(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "quote", "title": "Once a sync fails, trust is gone",
+        "quote": "Once it ate one, I stopped trusting it.", "attribution": "P7"}]), out)
+    texts = [s.text_frame.text for s in Presentation(out).slides[0].shapes if s.has_text_frame]
+    assert "P7" in texts and not any("—" in t for t in texts)
