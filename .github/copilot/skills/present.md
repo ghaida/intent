@@ -52,7 +52,7 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **A presentation is a visual argument with one governing message.** State it in one sentence before outlining. If you can't, return to the brief — a deck built without a governing message becomes a pile of slides that each make sense and together say nothing.
 
-**One idea per slide, titled as a claim.** Titles are full sentences that state the takeaway: "Checkout drop-off is concentrated at the shipping step", not "Checkout analysis". A topic title makes the audience do the synthesis; a claim title does it for them. The test: read the titles alone, in order. They should tell the whole story.
+**One idea per slide, titled as a claim.** Titles are full sentences that state the takeaway: "Checkout drop-off is concentrated at the shipping step", not "Checkout analysis". A topic title makes the audience do the synthesis; a claim title does it for them. The test: read the titles alone, in order. They should tell the whole story. Two lines at most — the title band holds two, and a claim that needs three hasn't been sharpened yet.
 
 **Lead with visuals; text supports.** Show the screen, the chart, the diagram, the quote with its context — whenever there is something to show. Pictures paired with words are understood and remembered better than words alone, and design work almost always has something to show. Text-only slides are rare.
 
