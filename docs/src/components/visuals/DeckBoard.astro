@@ -1,9 +1,10 @@
 ---
 // GENERATED SLIDES — lifted verbatim from a deck produced by the /present
-// skill itself (present-eval-workspace/site-examples/run-2). Do not hand-edit
+// skill itself (present-eval-workspace/site-examples/run-3). Do not hand-edit
 // the slide markup: regenerate the deck and re-extract. Each frame holds the
-// deck's own <section>, minus its <aside class="notes"> (notes aren't on
-// screen); one slide's notes are shown below the frames, lifted verbatim.
+// deck's own <section> and its <div class="slide"> grid wrapper, minus the
+// <aside class="notes"> (notes aren't on screen); one slide's notes are shown
+// below the frames, lifted verbatim.
 // Theme and per-deck styles come from present-deck.css (synced copy of the
 // skill's deck-theme.css plus the deck's own CSS, scoped to .deck-examples).
 // No reveal.js and no JavaScript — the site's [data-theme] themes the slides.
@@ -14,77 +15,107 @@ import '../../css/present-deck.css';
   <div class="visual-label">The deck — Nearby's MVP go decision</div>
   <div class="deck-ex-grid">
     <div class="deck-ex">
-      <p class="deck-ex-plate">01 / 11</p>
+      <p class="deck-ex-plate">01 / 12</p>
       <div class="deck-frame">
           <section class="layout-title">
-            <h1>Nearby's MVP is ready to build as a test of one bet: walking distance makes local exchange complete</h1>
-            <p class="subtitle">Go decision on the MVP build · Nearby leadership · Monday</p>
+            <div class="slide">
+              <h1>Nearby is ready to build as a test of one bet: walking distance lifts completion to 60%</h1>
+              <p class="subtitle">MVP go decision · Nearby leadership team · Monday</p>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">02 / 11</p>
+      <p class="deck-ex-plate">02 / 12</p>
       <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <h2>Walkable trust already works inside Buy Nothing groups; broad platforms complete far fewer local exchanges</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="Horizontal bar chart of estimated local exchange completion rates, axis from 0 to 100 percent. Craigslist about 15 percent, Facebook Marketplace about 25 percent, Buy Nothing groups about 60 percent, highlighted. Nextdoor: very low, no estimate given. A dashed line marks Nearby's target of 60 percent or more.">
-              <!-- plot area x 360..1120 = 0..100% (7.6px per %) -->
-              <text class="muted" x="360" y="28" font-size="26">Estimated listing-to-exchange completion (0–100%)</text>
-              <line class="line" x1="360" y1="50" x2="360" y2="360"/>
-              <text class="ink" x="340" y="98" font-size="30" text-anchor="end">Craigslist</text>
-              <rect class="bar" x="360" y="70" width="114" height="44"/>
-              <text class="ink" x="486" y="102" font-size="30">~15%</text>
-              <text class="ink" x="340" y="168" font-size="30" text-anchor="end">FB Marketplace</text>
-              <rect class="bar" x="360" y="140" width="190" height="44"/>
-              <text class="ink" x="562" y="172" font-size="30">~25%</text>
-              <text class="ink" x="340" y="238" font-size="30" text-anchor="end" font-weight="700">Buy Nothing groups</text>
-              <rect class="bar-hi" x="360" y="210" width="456" height="44"/>
-              <text class="accent" x="828" y="242" font-size="30" font-weight="700">~60%</text>
-              <text class="ink" x="340" y="308" font-size="30" text-anchor="end">Nextdoor</text>
-              <text class="muted" x="376" y="308" font-size="28">Very low · no estimate given</text>
-              <line class="line-accent" x1="816" y1="50" x2="816" y2="360"/>
-              <text class="accent" x="830" y="352" font-size="26">Nearby target: 60%+</text>
-              <text class="muted" x="360" y="392" font-size="24">0%</text>
-            </svg>
+          <section class="layout-claim-chart">
+            <div class="slide">
+              <h2>Broad platforms complete ~15–25% of local exchanges; Buy Nothing ~60%</h2>
+              <svg role="img" aria-label="Bar chart of estimated exchange completion for local items: Craigslist about 15 percent, Facebook Marketplace about 25 percent, Buy Nothing groups about 60 percent. Nearby's 60 percent target equals what Buy Nothing groups reach within their groups. All three figures are estimates." viewBox="0 0 1120 432" width="1120" height="432">
+                <text class="f-muted t24" x="1120" y="28" text-anchor="end">All figures are estimates</text>
+                <line class="s-accent" x1="40" y1="86" x2="700" y2="86" stroke-width="3" stroke-dasharray="10 8"/>
+                <text class="f-accent t24 b" x="40" y="72">Nearby target: 60%+</text>
+                <rect class="f-rule" x="140" y="291" width="200" height="69"/>
+                <rect class="f-rule" x="460" y="246" width="200" height="114"/>
+                <rect class="f-accent" x="780" y="86" width="200" height="274"/>
+                <text class="f-ink t28 b" x="240" y="279" text-anchor="middle">~15%</text>
+                <text class="f-ink t28 b" x="560" y="234" text-anchor="middle">~25%</text>
+                <text class="f-ink t28 b" x="880" y="74" text-anchor="middle">~60%</text>
+                <line class="s-ink" x1="40" y1="360" x2="1120" y2="360" stroke-width="2"/>
+                <text class="f-ink t24" x="240" y="400" text-anchor="middle">Craigslist</text>
+                <text class="f-ink t24" x="560" y="400" text-anchor="middle">Facebook Marketplace</text>
+                <text class="f-ink t24" x="880" y="400" text-anchor="middle">Buy Nothing groups</text>
+              </svg>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">03 / 11</p>
+      <p class="deck-ex-plate">03 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
-            <h2>The bet: if proximity removes the logistics and neighborhood removes the doubt, 60%+ of listings complete</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="Diagram of the MVP hypothesis. Constraining to walking distance removes logistics friction. Building trust from tenure, proximity and mutual connections removes trust friction. Together they lead to the target: 60 percent or more of listings complete, versus an estimated 20 to 30 percent on broad platforms.">
-              <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-              <rect class="box" x="10" y="30" width="470" height="150" rx="6"/>
-              <text class="ink" x="36" y="88" font-size="30" font-weight="700">Walking distance only</text>
-              <text class="muted" x="36" y="134" font-size="28">removes logistics friction</text>
-              <rect class="box" x="10" y="220" width="470" height="150" rx="6"/>
-              <text class="ink" x="36" y="278" font-size="30" font-weight="700">Trust from tenure + proximity</text>
-              <text class="muted" x="36" y="324" font-size="28">removes trust friction</text>
-              <path class="arrow" d="M490,105 L700,185"/>
-              <path class="arrow" d="M490,295 L700,215"/>
-              <rect class="box-hi" x="720" y="110" width="450" height="180" rx="6"/>
-              <text class="accent" x="746" y="182" font-size="44" font-weight="700">60%+ complete</text>
-              <text class="ink" x="746" y="236" font-size="28">vs. est. 20–30% on broad platforms</text>
-            </svg>
+            <div class="slide">
+              <h2>We bet proximity removes both frictions: logistics and trust</h2>
+              <svg role="img" aria-label="Hypothesis diagram: walking distance removes logistics friction, and neighborhood familiarity (tenure, proximity, mutual connections) removes trust friction. Together they are expected to lift exchange completion to 60 percent or more, against 20 to 30 percent on broad platforms." viewBox="0 0 1120 432" width="1120" height="432">
+                <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="f-ink" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+                <rect class="f-surface s-rule" x="2" y="24" width="480" height="152" stroke-width="2"/>
+                <text class="f-ink t28 b" x="32" y="76">Walking distance</text>
+                <text class="f-ink t24" x="32" y="120">removes logistics friction:</text>
+                <text class="f-ink t24" x="32" y="152">no shipping, no driving</text>
+                <rect class="f-surface s-rule" x="2" y="256" width="480" height="152" stroke-width="2"/>
+                <text class="f-ink t28 b" x="32" y="308">Neighborhood familiarity</text>
+                <text class="f-ink t24" x="32" y="352">removes trust friction: tenure,</text>
+                <text class="f-ink t24" x="32" y="384">proximity, mutual connections</text>
+                <path class="s-ink" d="M482,100 C560,100 560,216 632,216" fill="none" stroke-width="3" marker-end="url(#arr)"/>
+                <path class="s-ink" d="M482,332 C560,332 560,216 632,216" fill="none" stroke-width="3" marker-end="url(#arr)"/>
+                <rect class="s-accent" x="640" y="128" width="478" height="176" fill="none" stroke-width="3"/>
+                <text class="f-muted t24" x="672" y="172">Hypothesis</text>
+                <text class="f-ink t28 b" x="672" y="220">Exchange completion 60%+</text>
+                <text class="f-ink t24" x="672" y="264">vs. 20–30% on broad platforms</text>
+              </svg>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">04 / 11</p>
+      <p class="deck-ex-plate">04 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
-            <h2>Posting is photo-first: four taps, built to take under 30 seconds</h2>
-            <div class="split">
-              <div class="placeholder" role="img" aria-label="Grayscale wireframe of the Post an item screen: the camera zone fills the top, fields follow the photo, and the line 'within 1 mile, no fees' sits above the Post button.">[WIREFRAME: Post an item, from /wireframe]</div>
+            <div class="slide">
+              <h2>A neighborhood is a walk, not a zip code: the radius adapts to density</h2>
+              <svg role="img" aria-label="Three circles drawn to scale showing the walking radius by housing density: urban core above 5,000 households per square kilometer gets 400 meters, about a 5-minute walk; medium density gets 800 meters, about 10 minutes; low density below 1,000 households per square kilometer gets 1,600 meters, about 20 minutes. In the product the area follows streets and stops at highways, rivers and railways, so it is a polygon, not a circle." viewBox="0 0 1120 432" width="1120" height="432">
+                <circle class="f-surface s-ink" cx="187" cy="176" r="37.5" stroke-width="2"/>
+                <circle class="f-surface s-ink" cx="560" cy="176" r="75" stroke-width="2"/>
+                <circle class="f-surface s-ink" cx="933" cy="176" r="150" stroke-width="2"/>
+                <circle class="f-ink" cx="187" cy="176" r="5"/>
+                <circle class="f-ink" cx="560" cy="176" r="5"/>
+                <circle class="f-ink" cx="933" cy="176" r="5"/>
+                <text class="f-ink t28 b" x="187" y="376" text-anchor="middle">5-min walk · 400 m</text>
+                <text class="f-muted t24" x="187" y="416" text-anchor="middle">Urban core, &gt;5,000 hh/km²</text>
+                <text class="f-ink t28 b" x="560" y="376" text-anchor="middle">10-min walk · 800 m</text>
+                <text class="f-muted t24" x="560" y="416" text-anchor="middle">Medium density</text>
+                <text class="f-ink t28 b" x="933" y="376" text-anchor="middle">20-min walk · 1,600 m</text>
+                <text class="f-muted t24" x="933" y="416" text-anchor="middle">Low density, &lt;1,000 hh/km²</text>
+              </svg>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">05 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual with-bullets">
+            <div class="slide">
+              <h2>Posting is photo-first: four taps, designed to take under 30 seconds</h2>
+              <div class="placeholder" role="img" aria-label="Grayscale wireframe of the Post an item screen: the camera zone fills the top of the screen, the title and price follow the photo, and the audience and cost line sits directly above the Post button.">[WIREFRAME: Post an item, from the /wireframe set]</div>
               <ul>
-                <li>Tap + and the camera opens. No menu.</li>
-                <li>The photo suggests the title</li>
-                <li>Chosen over the other mechanisms on the idea board</li>
+                <li>Tap +, the camera opens</li>
+                <li>The photo does the describing</li>
+                <li>Audience and cost shown before Post</li>
               </ul>
             </div>
           </section>
@@ -92,16 +123,22 @@ import '../../css/present-deck.css';
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">05 / 11</p>
+      <p class="deck-ex-plate">06 / 12</p>
       <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <h2>Buyers browse what's within a 10-minute walk, and free items are first-class, not a $0 hack</h2>
-            <div class="split">
-              <div class="placeholder" role="img" aria-label="Grayscale wireframe of the Browse screen: item cards show walking time and seller tenure, Free items carry their own badge, and pending items stay visible.">[WIREFRAME: Browse, from /wireframe]</div>
+          <section class="layout-claim-visual with-bullets">
+            <div class="slide">
+              <h2>Trust comes from tenure and proximity; there are no star ratings</h2>
+              <div class="visual trust-card" role="img" aria-label="Grayscale card showing the trust signals a buyer sees about a seller, in Nearby's own copy: Your neighbor since March 2025; Lives about a 3-minute walk from you; 12 exchanges in Capitol Hill; Also known to a mutual connection. No rating or score appears.">
+                <div class="tc-head"><span class="tc-avatar" aria-hidden="true"></span><span class="tc-name">[Neighbor name]</span></div>
+                <p>Your neighbor since March 2025</p>
+                <p>Lives about a 3-minute walk from you</p>
+                <p>12 exchanges in Capitol Hill</p>
+                <p>Also known to [mutual connection]</p>
+              </div>
               <ul>
-                <li>Distance in walking minutes, never an address</li>
-                <li>"Your neighbor since March" instead of stars</li>
-                <li>Free has its own badge and category</li>
+                <li>No stars, scores or public reviews</li>
+                <li>Exact address hidden until both agree</li>
+                <li>New accounts say so for four weeks</li>
               </ul>
             </div>
           </section>
@@ -109,136 +146,115 @@ import '../../css/present-deck.css';
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">06 / 11</p>
+      <p class="deck-ex-plate">07 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
-            <h2>Buyers commit with one tap, and messaging stays locked until the seller accepts</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="Flow diagram of an exchange. The buyer taps I want this, with a 5-second undo. The seller accepts; interest alerts are batched every 15 minutes. Both coordinate with quick replies only. Both confirm Exchanged. Free text unlocks only after 3 completed exchanges between the same two people.">
-              <defs><marker id="arrowhead2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-              <rect class="box-hi" x="10" y="40" width="250" height="180" rx="6"/>
-              <text class="ink" x="30" y="100" font-size="30" font-weight="700">"I want this"</text>
-              <text class="muted" x="30" y="146" font-size="26">one tap</text>
-              <text class="muted" x="30" y="180" font-size="26">5-second undo</text>
-              <path d="M268,130 L302,130" class="arrow" style="marker-end:url(#arrowhead2)"/>
-              <rect class="box" x="310" y="40" width="270" height="180" rx="6"/>
-              <text class="ink" x="330" y="100" font-size="30" font-weight="700">Seller accepts</text>
-              <text class="muted" x="330" y="146" font-size="26">alerts batched</text>
-              <text class="muted" x="330" y="180" font-size="26">every 15 min</text>
-              <path d="M588,130 L622,130" class="arrow" style="marker-end:url(#arrowhead2)"/>
-              <rect class="box" x="630" y="40" width="270" height="180" rx="6"/>
-              <text class="ink" x="650" y="100" font-size="30" font-weight="700">Coordinate</text>
-              <text class="muted" x="650" y="146" font-size="26">quick replies only</text>
-              <text class="muted" x="650" y="180" font-size="26">at an intersection</text>
-              <path d="M908,130 L942,130" class="arrow" style="marker-end:url(#arrowhead2)"/>
-              <rect class="box" x="950" y="40" width="220" height="180" rx="6"/>
-              <text class="ink" x="970" y="100" font-size="30" font-weight="700">Exchanged</text>
-              <text class="muted" x="970" y="146" font-size="26">both confirm</text>
-              <text class="ink" x="10" y="300" font-size="30">Free text unlocks after 3 completed exchanges between the same two people.</text>
-              <text class="muted" x="10" y="350" font-size="26">Messages auto-delete 48 hours after the exchange.</text>
-            </svg>
+            <div class="slide">
+              <h2>Ship pickup coordination as quick replies only; free-text messaging waits</h2>
+              <div class="visual options" role="img" aria-label="Scope decision with two options. Option A, from the strategy brief: one-tap interest and no messaging in the MVP. Option B, recommended, from the flows: after the seller accepts, both people get a suggested meeting point and pre-written quick replies; free text unlocks only after three completed exchanges between the same two people.">
+                <div class="opt">
+                  <p class="opt-label">A · Strategy brief scope</p>
+                  <p class="opt-title">One-tap interest, no messaging</p>
+                  <p class="opt-body">Nothing to coordinate pickup once the seller says yes</p>
+                </div>
+                <div class="opt opt-rec">
+                  <p class="opt-label">B · Recommended · from the flows</p>
+                  <p class="opt-title">Meeting point and quick replies</p>
+                  <p class="opt-body">"On my way" · "Need to reschedule" · free text only after 3 exchanges together</p>
+                </div>
+              </div>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">07 / 11</p>
+      <p class="deck-ex-plate">08 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
-            <h2>The evaluation found the happy path strong but the design not yet shippable, with three launch blockers</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="UX health score 68 out of 100. Three P0 launch blockers: cold start, where new neighborhoods have zero listings and never activate; no onboarding, where first-time users land on an empty map; and map-first browsing that excludes screen reader users. Stress tests: 9 of 10 scenarios pass; the failure is a new user in an empty neighborhood.">
-              <text class="ink" x="10" y="70" font-size="64" font-weight="700">68</text>
-              <text class="muted" x="100" y="70" font-size="30">/ 100 UX health</text>
-              <rect class="box-hi" x="10" y="110" width="370" height="200" rx="6"/>
-              <text class="accent" x="30" y="156" font-size="26" font-weight="700">P0 BLOCKER</text>
-              <text class="ink" x="30" y="204" font-size="30" font-weight="700">Cold start</text>
-              <text class="muted" x="30" y="248" font-size="26">Empty neighborhoods</text>
-              <text class="muted" x="30" y="280" font-size="26">never activate</text>
-              <rect class="box-hi" x="405" y="110" width="370" height="200" rx="6"/>
-              <text class="accent" x="425" y="156" font-size="26" font-weight="700">P0 BLOCKER</text>
-              <text class="ink" x="425" y="204" font-size="30" font-weight="700">No onboarding</text>
-              <text class="muted" x="425" y="248" font-size="26">New users land on</text>
-              <text class="muted" x="425" y="280" font-size="26">an empty map</text>
-              <rect class="box-hi" x="800" y="110" width="370" height="200" rx="6"/>
-              <text class="accent" x="820" y="156" font-size="26" font-weight="700">P0 BLOCKER</text>
-              <text class="ink" x="820" y="204" font-size="30" font-weight="700">Map-first browsing</text>
-              <text class="muted" x="820" y="248" font-size="26">Excludes screen</text>
-              <text class="muted" x="820" y="280" font-size="26">reader users</text>
-              <text class="ink" x="10" y="372" font-size="28">Stress tests: 9 of 10 pass. The failure is a new user in an empty neighborhood.</text>
-            </svg>
+            <div class="slide">
+              <h2>Evaluation found three launch blockers; each has a designed fix, none tested yet</h2>
+              <div class="visual blockers" role="img" aria-label="Table of the three launch blockers from the heuristic evaluation and their designed fixes. Empty neighborhoods never start: seed with contacts, imported Buy Nothing listings, a featured first post, and a nearest-neighborhood fallback. New users land on an empty map: three onboarding screens, then the three closest items. Map-first shuts out screen reader users: the list view becomes an equal citizen and the default when VoiceOver or TalkBack is on.">
+                <table>
+                  <thead><tr><th>Blocker</th><th>Designed fix</th></tr></thead>
+                  <tbody>
+                    <tr><td>Empty neighborhoods never start</td><td>Seed listings and neighbors before the map goes live</td></tr>
+                    <tr><td>New users land on an empty map</td><td>Three onboarding screens, then the three closest items</td></tr>
+                    <tr><td>The map shuts out screen reader users</td><td>List view as an equal; default when a screen reader is on</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">08 / 11</p>
+      <p class="deck-ex-plate">09 / 12</p>
       <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <h2>Each blocker already has a designed fix, so the MVP scope includes all three</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="Each P0 blocker mapped to its designed fix. Cold start: seed new neighborhoods with contact import, imported Buy Nothing listings with admin permission, a featured first post, and items from the nearest active neighborhood. No onboarding: a three-screen first run, then the map with the three closest items highlighted. Map-first: list view becomes an equal citizen and is the default when VoiceOver or TalkBack is on.">
-              <defs><marker id="arrowhead3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-              <text class="ink" x="10" y="80" font-size="30" font-weight="700">Cold start</text>
-              <path d="M290,72 L350,72" class="arrow" style="marker-end:url(#arrowhead3)"/>
-              <text class="ink" x="370" y="80" font-size="28">Seed it: contacts, imported Buy Nothing listings,</text>
-              <text class="ink" x="370" y="116" font-size="28">a featured first post, the nearest active area</text>
-              <line x1="10" y1="150" x2="1170" y2="150" stroke="var(--rule)" stroke-width="2"/>
-              <text class="ink" x="10" y="210" font-size="30" font-weight="700">No onboarding</text>
-              <path d="M290,202 L350,202" class="arrow" style="marker-end:url(#arrowhead3)"/>
-              <text class="ink" x="370" y="210" font-size="28">Three-screen first run, then the map with</text>
-              <text class="ink" x="370" y="246" font-size="28">the closest items highlighted</text>
-              <line x1="10" y1="280" x2="1170" y2="280" stroke="var(--rule)" stroke-width="2"/>
-              <text class="ink" x="10" y="340" font-size="30" font-weight="700">Map-first</text>
-              <path d="M290,332 L350,332" class="arrow" style="marker-end:url(#arrowhead3)"/>
-              <text class="ink" x="370" y="340" font-size="28">List view as an equal citizen; the default</text>
-              <text class="ink" x="370" y="376" font-size="28">when VoiceOver or TalkBack is on</text>
-            </svg>
+          <section class="layout-claim-visual with-bullets">
+            <div class="slide">
+              <h2>Cold start decides the MVP: an empty map ends a neighborhood before it starts</h2>
+              <div class="visual layers" role="img" aria-label="The four-layer cold start plan, in order: personal, import contacts to surface neighbors already on Nearby; content, import listings from local Buy Nothing groups with admin permission; incentive, feature a new member's first post at the top of neighbors' feeds for 24 hours; fallback, show the nearest active neighborhood with its distance.">
+                <div class="layer"><span class="layer-k">Personal</span><span>Find neighbors you already know</span></div>
+                <div class="layer"><span class="layer-k">Content</span><span>Import Buy Nothing listings, with admin permission</span></div>
+                <div class="layer"><span class="layer-k">Incentive</span><span>First post featured for 24 hours</span></div>
+                <div class="layer"><span class="layer-k">Fallback</span><span>Show the nearest active neighborhood</span></div>
+              </div>
+              <ul>
+                <li>Target: 40% of new neighborhoods reach 10+ active users in 30 days</li>
+                <li>No baseline yet</li>
+              </ul>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">09 / 11</p>
+      <p class="deck-ex-plate">10 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
-            <h2>We'll judge the MVP by completed exchanges per 1,000 households, and refuse to chase time in app</h2>
-            <svg class="viz" viewBox="0 0 1180 400" role="img" aria-label="Two columns. What we measure, all targets: north star of 15 or more completed exchanges per 1,000 households per week in neighborhoods active 3 or more months; 60 percent listing-to-exchange; median time to exchange under 48 hours; 25 percent or more of listings free. What we refuse to optimize: time in app, GMV, DAU to MAU ratio, notification open rate.">
-              <text class="accent" x="10" y="40" font-size="26" font-weight="700">WE MEASURE (TARGETS)</text>
-              <text class="ink" x="10" y="100" font-size="40" font-weight="700">15+ exchanges</text>
-              <text class="muted" x="10" y="140" font-size="26">per 1,000 households per week, mature areas</text>
-              <text class="ink" x="10" y="210" font-size="28">60% of listings complete</text>
-              <text class="ink" x="10" y="260" font-size="28">Median under 48 hours to exchange</text>
-              <text class="ink" x="10" y="310" font-size="28">25%+ of listings free</text>
-              <line x1="700" y1="20" x2="700" y2="380" stroke="var(--rule)" stroke-width="2"/>
-              <text class="muted" x="740" y="40" font-size="26" font-weight="700">WE REFUSE TO OPTIMIZE</text>
-              <text class="ink" x="740" y="110" font-size="28">Time in app</text>
-              <text class="ink" x="740" y="160" font-size="28">GMV</text>
-              <text class="ink" x="740" y="210" font-size="28">DAU/MAU</text>
-              <text class="ink" x="740" y="260" font-size="28">Notification open rate</text>
-            </svg>
+            <div class="slide">
+              <h2>We'll judge the MVP on completed exchanges, not time in app or GMV</h2>
+              <div class="visual metrics" role="img" aria-label="Measurement plan. North star: 15 or more completed exchanges per 1,000 households per week, in neighborhoods active three months or more. Supporting targets: 60 percent of listings end in an exchange; median under 48 hours from listing to pickup; 40 percent of signups post or show interest within 7 days. Counter-metrics the team refuses to optimize: time in app, notification open rate, GMV, and DAU to MAU ratio.">
+                <div class="m-star"><span class="m-k">North star</span><span class="m-v">15+ completed exchanges per 1,000 households per week</span></div>
+                <div class="m-row">
+                  <div class="m-tile"><span class="m-v">60%</span><span>of listings end in an exchange</span></div>
+                  <div class="m-tile"><span class="m-v">&lt;48 h</span><span>median listing to pickup</span></div>
+                  <div class="m-tile"><span class="m-v">40%</span><span>of signups act within 7 days</span></div>
+                </div>
+                <p class="m-refuse"><strong>Refuse to optimize:</strong> time in app · notification opens · GMV · DAU/MAU</p>
+              </div>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">10 / 11</p>
+      <p class="deck-ex-plate">11 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-bullets">
-            <h2>The core assumptions are still unproven: the interviews are planned but haven't run</h2>
-            <ul>
-              <li>Low-density areas may not have enough supply within a walk</li>
-              <li>Proximity can raise safety concerns, especially for vulnerable neighbors</li>
-              <li>No interview findings exist yet to back the user arcs</li>
-            </ul>
+            <div class="slide">
+              <h2>What we don't know yet: the user interviews are planned, not run</h2>
+              <ul>
+                <li>13 interviews across two neighborhoods: no findings yet [NEEDS EVIDENCE]</li>
+                <li>Competitor completion rates have no cited source [NEEDS EVIDENCE]</li>
+                <li>A walking radius may be too small in low-density areas</li>
+                <li>Proximity may worry vulnerable neighbors more, not less</li>
+              </ul>
+            </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">11 / 11</p>
+      <p class="deck-ex-plate">12 / 12</p>
       <div class="deck-frame">
           <section class="layout-ask">
-            <h2>Approve building the MVP, with the three blocker fixes in scope</h2>
-            <p class="subtitle">Go decision needed from Nearby leadership, today</p>
-            <p class="scope">Post, browse within a walk, one-tap interest, neighborhood trust signals<br>plus first run, cold-start seeding and list-view parity</p>
+            <div class="slide">
+              <h2>Approve the MVP for one neighborhood, with the three blockers in scope</h2>
+              <p class="subtitle">What: build the scoped MVP with option B and the blocker fixes, and run the planned interviews before launch<br>Who: Nearby's leadership team<br>When: a go or no-go in this meeting</p>
+            </div>
           </section>
       </div>
     </div>
@@ -247,16 +263,16 @@ import '../../css/present-deck.css';
   <figure class="deck-notes">
     <figcaption class="deck-ex-plate">Speaker notes · slide 7</figcaption>
     <blockquote>
-      <p>Claim — the hinge of the deck: as designed today, Nearby isn't shippable. The happy path is well designed; about 40% of real-world use is underspecified.</p>
+      <p>Claim: the sources disagree on messaging, and this is the one scope call we need from you. Recommend B.</p>
       <ul>
-        <li>The evaluator's verdict, in substance: strong concept and information design, with real gaps in error prevention, onboarding, accessibility and cold-start resilience.</li>
-        <li>Cold start is the existential one. No listings → no engagement → no word of mouth → the neighborhood never activates. Strategy named it too: "cold start is existential."</li>
-        <li>Map-first isn't a bug to patch. Map pins can't be used with a screen reader, so the primary interface shuts those users out.</li>
-        <li>Also clean: no manipulative patterns found. One watch item — the daily digest could drift toward engagement optimization.</li>
-        <li>Nine further issues are P1–P3 (duplicate listings, weak post-publish confirmation, the 15-minute confirmation gap, and others). None blocks launch on its own.</li>
+        <li>The strategy brief scoped messaging out of the MVP. The flows and the service blueprint both assume a coordination step after the seller accepts: a suggested meeting point at the nearest intersection, plus quick replies.</li>
+        <li>Why B: without it, an accepted interest has no way to become a pickup, and completion is the number the MVP exists to prove. Quick replies also keep harassment structurally impossible: no free text between people with fewer than three completed exchanges.</li>
+        <li>What B doesn't add: open chat, payments, delivery or multi-neighborhood browsing. Those stay out.</li>
+        <li>Known design debt: evaluation flagged the pickup screen as overloaded (meeting point, time window and messaging in one view). The fix is progressive disclosure.</li>
       </ul>
-      <p>Source: /evaluate — UX Health Score, Anti-Pattern Verdict, Priority Issues E-01 to E-03; /fortify Stress Test Results.</p>
-      <p>Transition: the good news is that none of these is open-ended.</p>
+      <p>Feedback wanted: A or B. Not wanted today: quick-reply wording.</p>
+      <p>Source: /strategize, Proposed Scope; /journey, Flows 3 and 4; /blueprint, Decision Documentation; /evaluate, E-11; /fortify, stress test.</p>
+      <p>Transition: here's what the evaluation found before anything was built.</p>
     </blockquote>
   </figure>
 </div>

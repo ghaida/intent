@@ -1347,38 +1347,39 @@ Latency: p50 <50ms, p99 <200ms
 
 ## /present
 agent: Noor
-summary: Turned the whole engagement into an 11-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
+summary: Turned the whole engagement into a 12-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and the one thing we needed from them: a go on the MVP build. A go decision is a pitch, so the story moves between where local exchange breaks today and what Nearby makes possible — and that outline was approved before anything was drawn. Then we refused to dress the plan up. The evaluation's "not yet shippable" verdict gets a slide of its own, the research that hasn't run is said out loud, and the competitor completion rates are labeled as the estimates they are. The deck ends where the meeting has to: approve the build, with the blocker fixes in scope.
+The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and the one thing we needed from them: a go on the MVP build. The story runs situation, complication, resolution, because the strategy brief already stands on that spine with its complication checked against evidence, and a what-could-be pitch would lean on emotional pull the unrun research can't back. That outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor completion rates are labeled as the estimates they are, the launch blockers sit on a slide with "none tested yet" in the title, and the interviews that haven't happened get a slide of their own, said before the ask rather than after it. The deck ends where the meeting has to: approve one neighborhood, with the blocker fixes in scope and the interviews run before launch.
 
 ### Output
 
-These are the deck's own slides, not pictures of slides — the markup and theme come straight from the file /present produced, and the site's theme flows through them. Read only the titles, top to bottom, and the argument still holds; that's the headlines test a deck has to pass before it's built.
+These are the deck's own slides, not pictures of slides. The markup comes straight from the file /present produced, the 12-column grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument still holds; that's the headlines test a deck has to pass before it's built.
 
-Every number on them comes from an earlier chapter, and every one is marked as an estimate or a target — nothing is shown against a baseline that doesn't exist. Where the wireframe exports belong, the deck holds a labeled frame instead of a faked screen. The notes carry the reasoning the slides leave out: the claim, the caveats to say out loud, the objections likely to come up.
+Every number on them comes from an earlier chapter, and each is marked as an estimate or a target. Nothing is shown against a baseline that doesn't exist. Where the Post an item wireframe belongs, the deck holds a labeled frame instead of a faked screen. Where the sources disagree on messaging, the slide asks the room to choose instead of quietly picking. The notes carry the reasoning the slides leave out: the claim, the caveats to say out loud, the objections likely to come up.
 
 **The approved outline**
 
-**Pattern:** What-is / what-could-be — a go decision is a pitch. The deck moves between where local exchange breaks today and what Nearby makes possible, then ends on the gap the build closes. The "what-is" moments come only from the source, and that includes the evaluation's verdict that the design isn't shippable yet.
+**Pattern:** Situation → complication → resolution. This is a go decision for leadership, and the strategy brief is already built on S/C/R with its complication checked against evidence. What-is/what-could-be would lean on emotional pull that the missing research can't back up.
 
-**Governing message:** Nearby's MVP is ready to build as a test of one bet (walking distance makes local exchange complete), as long as the three launch blockers are in scope.
+**Governing message:** Nearby's design is ready to build as a one-neighborhood test of whether walking distance can lift exchange completion to 60%.
 
-1. **Nearby's MVP is ready to build as a test of one bet: walking distance makes local exchange complete** — Visual: title — Source: /strategize hypothesis
-2. **Walkable trust already works inside Buy Nothing groups; broad platforms complete far fewer local exchanges** — Visual: bar chart of estimated completion from zero, Buy Nothing highlighted, Nearby's 60% target as a dashed line, Nextdoor shown as "no estimate given" — Source: /strategize competitive table
-3. **The bet: if proximity removes the logistics and neighborhood removes the doubt, 60%+ of listings complete** — Visual: hypothesis diagram — Source: /strategize Measurable Hypothesis
-4. **Posting is photo-first: four taps, built to take under 30 seconds** — Visual: [WIREFRAME: Post an item] — Source: /journey Flow 1, /wireframe idea board
-5. **Buyers browse what's within a 10-minute walk, and free items are first-class, not a $0 hack** — Visual: [WIREFRAME: Browse] — Source: /journey Flow 2, /organize, /articulate trust signals
-6. **Buyers commit with one tap, and messaging stays locked until the seller accepts** — Visual: exchange flow diagram — Source: /journey Flows 3–4, /blueprint decisions
-7. **The evaluation found the happy path strong but the design not yet shippable, with three launch blockers** — Visual: 68/100 plus the three P0 blockers, and the 9-of-10 stress-test result — Source: /evaluate, /fortify
-8. **Each blocker already has a designed fix, so the MVP scope includes all three** — Visual: blocker → fix diagram — Source: /fortify first-run and cold start, /include
-9. **We'll judge the MVP by completed exchanges per 1,000 households, and refuse to chase time in app** — Visual: targets vs refused metrics — Source: /measure
-10. **The core assumptions are still unproven: the interviews are planned but haven't run** — Visual: short bullets — Source: /strategize assumptions, /investigate plan
-11. **Approve building the MVP, with the three blocker fixes in scope** — ask slide, kept up during Q&A
+1. **Nearby is ready to build as a test of one bet: walking distance lifts completion to 60%** — Visual: title — Source: /strategize hypothesis
+2. **Broad platforms complete ~15–25% of local exchanges; Buy Nothing ~60%** — Visual: bar chart from zero, labeled as estimates, 60% target line — Source: /strategize competitive table
+3. **We bet proximity removes both frictions: logistics and trust** — Visual: hypothesis diagram — Source: /strategize Measurable Hypothesis
+4. **A neighborhood is a walk, not a zip code: the radius adapts to density** — Visual: radius tiers drawn to scale — Source: /specify walking radius, /blueprint
+5. **Posting is photo-first: four taps, designed to take under 30 seconds** — Visual: [WIREFRAME: Post an item] — Source: /journey Flow 1, /wireframe
+6. **Trust comes from tenure and proximity; there are no star ratings** — Visual: trust card in Nearby's own copy — Source: /articulate, /blueprint
+7. **Ship pickup coordination as quick replies only; free-text messaging waits** — Visual: option A vs. B, B recommended — Source: /strategize scope vs. /journey Flows 3–4
+8. **Evaluation found three launch blockers; each has a designed fix, none tested yet** — Visual: blocker → fix table — Source: /evaluate E-01–E-03, /fortify, /include
+9. **Cold start decides the MVP: an empty map ends a neighborhood before it starts** — Visual: four-layer seed plan — Source: /fortify, /measure
+10. **We'll judge the MVP on completed exchanges, not time in app or GMV** — Visual: north star, targets, counter-metrics — Source: /measure
+11. **What we don't know yet: the user interviews are planned, not run** — Bullets — Source: /investigate plan, /strategize assumptions
+12. **Approve the MVP for one neighborhood, with the three blockers in scope** — Ask: what / who / when
 
 **Gaps:**
 
-- [NEEDS EVIDENCE: interview findings — the research plan exists, but no findings do] → /investigate
-- [NEEDS EVIDENCE: sources for the competitor completion rates] → /strategize or /measure
-- [NEEDS EVIDENCE: wireframe exports for slides 4–5] → /wireframe
+- [NEEDS EVIDENCE: interview findings] → /investigate
+- [NEEDS EVIDENCE: source for competitor completion rates] → /strategize
+- [NEEDS EVIDENCE: the "pilot data" the IA mentions] → /organize or /measure
 
-**Refusal checks:** passed, with one adjustment. The user arcs are ones the team wrote, not research participants, so the deck never presents them as evidence and the notes say so. The "what-is" pain comes from the brief's own trimmed complication ("existing tools are wrong-shaped"), not the earlier "compete with Marketplace" version.
+**Refusal checks:** passed. The complication stays with the evidence ("wrong-shaped tools") and isn't framed as a crisis. The persona arcs aren't presented as research. No baselines are invented for the metric targets.
