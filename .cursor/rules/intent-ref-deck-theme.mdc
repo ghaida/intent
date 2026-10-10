@@ -16,7 +16,7 @@ Use this theme only when the user supplies no template, brand kit or prior deck.
 | rule | `#b8b8c8` | `#3a3a52` | hairlines, de-emphasized chart series |
 | surface | `#f1f1f6` | `#1f1f33` | placeholder frames, quote panels |
 | canvas | `#ffffff` | `#12121f` | slide background |
-| accent | `#4338ca` | `#7c6ff0` | the one highlighted series, the ask — nothing decorative |
+| accent | `#4338ca` | `#7c6ff0` | the one highlighted series, the ask; nothing decorative |
 
 One sans-serif family throughout (system UI stack in HTML; the template's theme font in .pptx). Weight carries hierarchy: titles bold, everything else regular.
 
@@ -25,7 +25,7 @@ One sans-serif family throughout (system UI stack in HTML; the template's theme 
 | | Live (projected) | Read (sent) | Read, projected (presented and sent) |
 |---|---|---|---|
 | Title | 36pt (44pt on title/section slides) | 28pt | 32pt |
-| Body / bullets | 24pt — never below 18pt | 14pt | 18pt |
+| Body / bullets | 24pt, never below 18pt | 14pt | 18pt |
 | Small (subtitle, source) | 18pt | 12pt | 14pt |
 
 ## Layouts
@@ -37,14 +37,14 @@ One sans-serif family throughout (system UI stack in HTML; the template's theme 
 | `claim_chart` | claim title + one chart, highlighted series in accent | data |
 | `claim_bullets` | claim title + up to a few short flat bullets | when there's nothing to show |
 | `quote` | claim title + one quote + attribution | research evidence; the title states the insight |
-| `section` | section claim | turning points in a long deck — not an agenda |
+| `section` | section claim | turning points in a long deck, not an agenda |
 | `ask` | the ask as the title + what/who/by-when as subtitle | last slide (or the takeaway, if just informing) |
 
 Read decks add a body-text block under the title on every content slide.
 
 ## Grid
 
-The same frame on every slide is what makes a deck read as one argument rather than a stack of pages. Content that touches the edge reads as cramped, and projectors crop it. The grid is invisible — it decides where things sit, it never draws.
+The same frame on every slide makes a deck read as one argument, not a stack of pages. Content that touches the edge reads as cramped, and projectors crop it. The grid is invisible: it decides where things sit and never draws.
 
 Stage 1280 × 720 (16:9). In PowerPoint that's 13.333 × 7.5 in, 96 units per inch.
 
@@ -59,7 +59,7 @@ Stage 1280 × 720 (16:9). In PowerPoint that's 13.333 × 7.5 in, 96 units per in
 
 | Layout | Placement |
 |---|---|
-| `title`, `section` | hero title in columns 1–10 at the top of the body region (y 224), subtitle directly below; no title-band title — the hero is the title |
+| `title`, `section` | hero title in columns 1–10 at the top of the body region (y 224), subtitle directly below; no title-band title; the hero is the title |
 | `ask` | the ask as the title in the band, columns 1–10; what/who/by-when at the top of the body region, columns 1–8 |
 | `claim_visual`, `claim_chart` alone | the visual spans columns 1–12 and the full body region |
 | visual with bullets | visual columns 1–7, bullets columns 8–12 |

@@ -131,7 +131,7 @@ If the user's project clearly needs more than one pattern (e.g., a journey AND a
 
 1. Pick the primary pattern for the immediate ask.
 2. Produce that pattern's output.
-3. Mention the second pattern as a follow-up: *"Once the journey is solid, we'll want to compose a what-is / what-could-be deck for the executive review. Different pattern, different work — happy to do that next."* When the second artifact is a deck, that's `/present`.
+3. Mention the second pattern as a follow-up: *"Once the journey is solid, we'll want to compose a what-is / what-could-be deck for the executive review. Different pattern, different work. Happy to do that next."* When the second artifact is a deck, that's `/present`.
 
 Don't try to compose two patterns into one artifact. They have different shapes and conflicting them produces incoherent output.
 
@@ -143,7 +143,7 @@ You work alongside complementary skills:
 - **`blueprint`** — restates `choreography` inline. When invoked, treats services as performances coordinated across actors, frontstage and backstage.
 - **`strategize`** — restates `situation → complication → resolution` inline. When invoked, frames briefs and strategic narratives around the three beats.
 - **`evaluate`** — restates `protagonist-arc applied to failure points` inline. When invoked, asks where the user's story breaks rather than only what fails the heuristics.
-- **`present`** — restates the patterns inline and picks one per deck by goal: empathy for readouts, coordination for service reviews, orientation for strategy, persuasion when there's an ask. Carries the refusals into every deck.
+- **`present`** restates the patterns inline and picks one per deck by goal: empathy for readouts, coordination for service reviews, orientation for strategy, persuasion when there's an ask. Carries the refusals into every deck.
 
 You do not replace these skills. You give them shared narrative discipline so that all four produce work that carries emotional truth without losing rigor.
 

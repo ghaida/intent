@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Overview
 
-This skill transforms design work into actionable, implementation-ready documentation. It produces structured specs, asset packages, and test plans that ensure design intent survives to production. Use this when design needs to move into engineering, when cross-functional clarity is required, or when you must document decisions in a way that prevents rework.
+This skill turns design work into implementation-ready documentation: structured specs, asset packages, and test plans that carry design intent to production. Use it when design moves into engineering, when cross-functional clarity is required, or when decisions must be documented to prevent rework.
 
 ---
 
@@ -79,7 +79,7 @@ Write out specific, not generic use cases:
 
 ### 6. Decks go to `/present`
 
-This skill doesn't build presentations. When the handoff needs a stakeholder deck — a review, an alignment walkthrough, a pitch for the build — hand the spec to `/present` as source material. It owns the story, the slides and the ask; this skill owns the precision underneath them.
+This skill doesn't build presentations. When the handoff needs a stakeholder deck (a review, an alignment walkthrough, a pitch for the build), hand the spec to `/present` as source material. It owns the story, the slides and the ask; this skill owns the precision underneath them.
 
 ### 7. Test plans with success criteria
 
@@ -301,7 +301,7 @@ Trigger Specify when:
 - **"Write the spec"** — Comprehensive design specification needed
 - **"Prepare the handoff"** — Engineering needs everything ready to build
 - **"Document this for engineering"** — Translate design into actionable specs
-- **"What spec does the design review need?"** — Prepare the spec material behind the review; the deck itself goes to `/present`
+- **"What spec does the design review need?"**: prepare the spec material behind the review; the deck itself goes to `/present`
 - **"Build the test plan"** — Define success criteria and test audiences
 - **"Write the copy matrix"** — Document all variations in one place
 - **"What are the edge cases?"** — Design scenarios and copy for unusual situations
