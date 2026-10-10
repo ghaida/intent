@@ -4,8 +4,8 @@ Google Slides (import the .pptx into Slides). Usage: build_deck.py deck.json out
 
 Requires python-pptx (pip install python-pptx). Enforces the /present rules that
 can be enforced mechanically: every slide titled, flat bullets only, alt text on
-every visual, bar charts from zero, speaker notes in the notes field."""
-import json, sys
+every visual, bar charts from zero, speaker notes in the notes field, three sentences at most."""
+import json, re, sys
 from pptx import Presentation
 from pptx.util import Emu, Inches, Pt
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
@@ -51,6 +51,12 @@ def _validate(spec):
             raise ValueError(f"slide {i}: unknown layout {s.get('layout')!r}; use one of {sorted(LAYOUTS)}")
         if not str(s.get("title", "")).strip():
             raise ValueError(f"slide {i}: every slide needs a title")
+        notes = str(s.get("notes", "")).strip()
+        if notes:
+            if re.search(r"^\s*([-*•]|\d+[.)])\s", notes, re.M):
+                raise ValueError(f"slide {i}: notes are plain prose — no bullets or numbered lines")
+            if len(re.findall(r"[^.!?]+[.!?]+(?=\s|$)", notes)) > 3:
+                raise ValueError(f"slide {i}: notes hold three sentences at most — the presenter reads them at a glance")
         b = s.get("bullets", [])
         if not isinstance(b, list) or any(not isinstance(x, str) for x in b):
             raise ValueError(f"slide {i}: bullets must be a flat list of strings — no nesting")

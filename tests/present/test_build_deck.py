@@ -279,3 +279,24 @@ def test_chart_has_no_automatic_title(tmp_path):
     ch = next(s for s in Presentation(out).slides[0].shapes if s.has_chart)
     deleted = ch.chart._chartSpace.xpath('c:chart/c:autoTitleDeleted')
     assert deleted and deleted[0].get('val') in ('1', 'true')
+
+
+def test_notes_over_three_sentences_rejected(tmp_path):
+    notes = "One claim. Two reasons hold it. Three is the transition. Four is too many."
+    with pytest.raises(ValueError, match="three sentences"):
+        build_deck.build(spec([{"layout": "claim_bullets", "title": "A claim title goes right here",
+            "bullets": ["a"], "notes": notes}]), tmp_path / "d.pptx")
+
+
+def test_bulleted_notes_rejected(tmp_path):
+    with pytest.raises(ValueError, match="plain prose"):
+        build_deck.build(spec([{"layout": "claim_bullets", "title": "A claim title goes right here",
+            "bullets": ["a"], "notes": "- point one\n- point two"}]), tmp_path / "d.pptx")
+
+
+def test_three_sentence_notes_accepted(tmp_path):
+    out = tmp_path / "d.pptx"
+    notes = "Step 2 loses a third of sessions. Testers couldn't tell visit types apart. That's what option B fixes."
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "A claim title goes right here",
+        "bullets": ["a"], "notes": notes}]), out)
+    assert Presentation(out).slides[0].notes_slide.notes_text_frame.text == notes
