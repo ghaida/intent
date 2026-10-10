@@ -1407,47 +1407,44 @@ Latency: p50 <50ms, p99 <200ms
 agent: Noor
 summary: Turned the whole engagement into a 13-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The story runs situation, complication, resolution, because leadership has to see where the bet stands before deciding. A what-could-be pitch would rest on user pain, and the interviews that would show that pain haven't run. The outline was approved before anything was drawn. Then we refused to dress the plan up. The competitor completion rates appear only as labeled estimates, and the market size and "why now" urgency, which had no source, stayed out. The evaluation's "not yet shippable" verdict gets its own slide, and so does the bet nobody has tested. The ask shows what it still lacks: the engineering estimate is marked missing on the slide, and the open messaging scope goes to the room instead of being settled quietly.
+The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, and an unconditional go would have won its yes by leaving them out, so the deck asks to start building from the written specs now and to hold the launch until the handoff works. The story runs situation, complication, resolution, and the complication is the evaluation's own finding, not one sized to fit the ask. The outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor rates appear only as labeled estimates, the unsourced market size and "why now" stayed out, and the seller in the walkthrough is labeled as a design scenario, not a research participant.
 
 ### Output
 
 These are the deck's own slides, not pictures of slides. The markup is the file /present produced, the grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
 
-Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Where a wireframe belongs, the slide holds a labeled frame instead of a faked screen. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
+Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Missing evidence stays visible: the plan says no engineering estimate exists yet. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
 
 **The approved outline**
 
-**Pattern:** Situation → complication → resolution. Leadership needs to see where the bet stands before deciding. What-is/what-could-be would rest on user pain, and the evidence for that pain is thin because the interviews haven't run.
+**Pattern:** Situation → complication → resolution. Leadership has to see where the design stands before it can decide, and the complication is the evaluation's own finding, not one sized to fit the ask.
 
-**Governing message:** Nearby's MVP is designed and its launch blockers have designed fixes; building it for one neighborhood is how we test whether walking distance lifts exchange completion to 60%.
+**Governing message:** Start building Nearby's MVP now, and launch once the handoff between neighbors works.
 
-1. **Nearby's MVP is ready to build and test in one neighborhood** | Visual: title | Source: /strategize hypothesis
-2. **Exchange completes near 60% only where community, not search, organizes it** | Visual: bar chart of estimated completion rates, Buy Nothing highlighted, 60% target line | Source: /strategize competitive landscape
-3. **Organizers already run local exchange by hand and want better tools for it** | Visual: none (short bullets) | Source: /intent user types
-4. **Walking replaces logistics, and neighborhood tenure replaces star ratings** | Visual: hypothesis diagram | Source: /strategize hypothesis
-5. **The MVP lets neighbors post, browse and claim an item, and nothing more** | Visual: none (scope bullets) | Source: /strategize MVP scope
-6. **Posting takes four taps because the photo does the describing** | Visual: [WIREFRAME: Post an item] | Source: /wireframe, /journey Flow 1
-7. **Trust comes from tenure and distance, never star ratings** | Visual: [WIREFRAME: Browse cards] + trust copy | Source: /articulate, /blueprint
-8. **Strangers get quick replies only, so harassment by free text can't start** | Visual: messaging unlock diagram | Source: /journey Flow 4, /fortify
-9. **Evaluation scored the design 68 of 100: strong happy path, not yet shippable** | Visual: bar chart of the 12 issues by severity, P0 highlighted | Source: /evaluate
-10. **Each launch blocker has a designed fix, and none has been re-evaluated** | Visual: blocker → fix table | Source: /evaluate, /fortify, /include
-11. **The pilot is judged on completed exchanges, never time in app or GMV** | Visual: targets table with refused metrics | Source: /measure
-12. **The core bet is untested: no interviews have run and benchmarks are estimates** | Visual: none (bullets) | Source: /investigate, /strategize assumptions
-13. **Approve the MVP build, blocker fixes included, for a one-neighborhood pilot** | Visual: ask with what/who/when | Source: /intent growth model
+1. **Start building Nearby's MVP now, and launch once the handoff between neighbors works** | Visual: title slide | Source: /evaluate summary
+2. **The MVP tests one bet: walking distance lifts completion to 60%+** | Visual: bar chart from zero of estimated completion by platform, Nearby's target as a dashed outline | Source: /strategize competitive landscape, measurable hypothesis
+3. **The foundations hold: no dark patterns, and trust without star ratings** | Visual: two panels quoting the interface copy | Source: /evaluate anti-pattern verdict and positive findings; /wireframe; /articulate trust signal copy
+4. **Two findings block launch, and both sit in the handoff between neighbors** | Visual: unit chart, one square per finding, by severity | Source: /evaluate priority issues
+5. **A seller can list her couch, then can't get it picked up** | Visual: the eight walkthrough steps with their verdicts | Source: /evaluate cognitive walkthrough
+6. **The brief, the flows and the screens start an exchange three ways** | Visual: three panels side by side | Source: /evaluate #1; /strategize MVP scope; /journey flows 3 and 4; /wireframe
+7. **On a first exchange, nothing gets the buyer to the seller's door** | Visual: three closed paths for an address, one outcome | Source: /evaluate #2; /intent hard constraints; /journey flows 3 and 4
+8. **Decide today: quick replies once the seller accepts, no open messaging** | Visual: the recommended option beside the drawn one | Source: /blueprint decision documentation; /journey flow 4; /evaluate #1 and #2
+9. **The bet's assumptions are untested: the interviews were written, not run** | Visual: the hypothesis's "because" clause, quoted | Source: /strategize measurable hypothesis; /investigate research plan
+10. **Beyond the blockers, two major issues need new design** | Visual: the five major issues, grouped into new design and redraws | Source: /evaluate #3 to #7
+11. **Engineering starts on the written specs while design fixes the handoff** | Visual: plan in three stages: today, in parallel, before launch | Source: /evaluate recommended actions; /investigate timeline; /specify
+12. **The MVP is judged on completed exchanges, never time in app** | Visual: four target tiles and the counter-metrics | Source: /measure framework
+13. **Approve the build today; launch once the handoff between neighbors works** | Visual: the ask, with go, gate and scope | Source: /evaluate recommended actions; /investigate timeline
 
 **Gaps:**
 
-- [NEEDS EVIDENCE: research findings. The 13 interviews are planned but haven't run] → /investigate
-- [NEEDS EVIDENCE: sourced competitor completion rates. The brief's figures are uncited estimates] → /strategize
-- [NEEDS EVIDENCE: baselines for every metric. All of them are targets] → /measure (after launch)
-- [NEEDS EVIDENCE: a re-evaluation that covers the three P0 fixes] → /evaluate
-- [NEEDS EVIDENCE: exported wireframe screens for slides 6 and 7] → /wireframe
-- [NEEDS EVIDENCE: engineering estimate, team and launch date for the ask] → engineering (outside Intent)
-- Scope conflict: the brief puts messaging in v2, but the flows and blueprint use quick-reply coordination after acceptance → leadership decides on slide 13; /strategize records it
+- [NEEDS EVIDENCE: research findings; the interviews are planned, not run, so the trust model, the reply-time promise and pickup safety rest on assumptions] → /investigate
+- [NEEDS EVIDENCE: a sourced completion benchmark; the brief's platform rates are estimates with no source, and its "20-30%" range doesn't match its own table, which puts Craigslist at ~15%] → /strategize
+- [NEEDS EVIDENCE: an engineering estimate for the build and the handoff; nothing in the material says when launch could happen] → engineering, outside Intent
+- [NEEDS DECISION: whether Trade and Wanted ship in the MVP (#8); the material has no recommendation, so it stays off the ask] → /strategize
 
 **Refusal checks:**
 
-- The persona scenarios are design work, not research participants. The deck doesn't present them as user evidence or build a protagonist arc on them.
-- The complication uses the brief's trimmed version ("existing tools are wrong-shaped"), not the earlier "compete with Marketplace" framing. The competitor rates appear only as labeled estimates.
-- The brief's "why now" and its market size have no source. They're left out so they can't create urgency.
-- The evaluation's "not yet shippable" verdict gets its own slide, and so do the unrun research and the untested bet.
+- An unconditional go would engineer assent by leaving out the launch blockers, so the deck asks for a gated go instead.
+- The brief's "why now" and its market size have no source. They stay out so they can't create urgency.
+- The walkthrough's seller is the evaluation's design scenario, labeled on the slide as not a research participant.
+- The completion chart keeps Buy Nothing's ~60% instead of showing only the platforms Nearby would beat.
