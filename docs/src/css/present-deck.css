@@ -161,23 +161,67 @@
 /* read decks: the body text block always sits in eight columns, above what follows */
 .deck-examples .deck-frame.read .slide > .body-text { grid-column: 1 / span 8; }
 
-/* ── from nearby-mvp-ready-to-build-and-test-in-one-neighborhood.html ── */
-/* Deck-specific additions. Visuals stop 48 above the frame bottom so the source line never overlaps them. */
-.deck-examples .deck-frame .slide > .placeholder, .deck-examples .deck-frame .slide > .visual { margin-bottom: 48px; }
-.deck-examples .deck-frame .deck-svg text { fill: var(--ink); font-family: var(--font); }
-.deck-examples .deck-frame .deck-svg .t-muted { fill: var(--muted); }
-.deck-examples .deck-frame .deck-svg .t-accent { fill: var(--accent); }
-.deck-examples .deck-frame .deck-svg .bar { fill: var(--rule); }
-.deck-examples .deck-frame .deck-svg .bar-hi { fill: var(--accent); }
-.deck-examples .deck-frame .deck-svg .axis { stroke: var(--muted); stroke-width: 2; }
-.deck-examples .deck-frame .deck-svg .target { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 8; }
-.deck-examples .deck-frame .deck-svg .box { fill: var(--surface); stroke: var(--rule); stroke-width: 2; }
-.deck-examples .deck-frame .deck-svg .box-hi { fill: var(--canvas); stroke: var(--accent); stroke-width: 3; }
-.deck-examples .deck-frame .deck-svg .arrow { stroke: var(--muted); stroke-width: 2; fill: none; }
-.deck-examples .deck-frame .deck-svg .head { fill: var(--muted); }
-.deck-examples .deck-frame .deck-table { width: 100%; border-collapse: collapse; font-size: var(--t-small); line-height: var(--l-small); margin: 0; }
-.deck-examples .deck-frame .deck-table th, .deck-examples .deck-frame .deck-table td { text-align: left; vertical-align: top; padding: 8px 32px 8px 0; border: 0; border-bottom: 1px solid var(--rule); }
-.deck-examples .deck-frame .deck-table th { color: var(--muted); font-weight: 400; }
-.deck-examples .deck-frame .deck-table td.strong { font-weight: 700; }
-.deck-examples .deck-frame .deck-table tr.refused td { color: var(--muted); border-bottom: 0; padding-top: 16px; }
-  
+/* ── from nearby-mvp-go-decision.html ── */
+/* Diagrams for this deck. Built only from the theme tokens above; each sits inside the
+   slide grid, and every label stays at or above the 18pt floor. A source line keeps the
+   last band of the body region, so a stretched visual stops above it. */
+.deck-examples .deck-frame .slide:has(> .source) > :is(.placeholder, figure, .visual) { margin-bottom: 48px; }
+/* Balanced wrapping keeps titles and short blocks from stranding one word on a last line. */
+.deck-examples .deck-frame .slide > :is(h1, h2, .subtitle), .deck-examples .deck-frame .slide > ul li, .deck-examples .deck-frame .visual { text-wrap: balance; }
+.deck-examples .deck-frame .visual { color: var(--ink); font-size: var(--t-small); line-height: var(--l-small); }
+.deck-examples .deck-frame .visual * { box-sizing: border-box; }
+.deck-examples .deck-frame .cols-2, .deck-examples .deck-frame .cols-3, .deck-examples .deck-frame .cols-4 { display: grid; column-gap: 32px; row-gap: 24px; align-content: start; }
+.deck-examples .deck-frame .cols-2 { grid-template-columns: repeat(2, 544px); }
+.deck-examples .deck-frame .cols-3 { grid-template-columns: repeat(3, 352px); }
+.deck-examples .deck-frame .cols-4 { grid-template-columns: repeat(4, 256px); }
+.deck-examples .deck-frame .wide { grid-column: 1 / -1; }
+.deck-examples .deck-frame .card { background: var(--surface); border: 1px solid var(--rule); padding: 16px 24px 24px; }
+.deck-examples .deck-frame .card.pick { border: 2px solid var(--accent); }
+.deck-examples .deck-frame .card > * + * { margin-top: 8px; }
+.deck-examples .deck-frame .label { font-weight: 700; color: var(--muted); }
+.deck-examples .deck-frame .visual .accent { color: var(--accent); }
+.deck-examples .deck-frame .visual .muted { color: var(--muted); }
+.deck-examples .deck-frame .head { font-size: var(--t-body); line-height: var(--l-body); font-weight: 700; }
+.deck-examples .deck-frame .text { font-size: var(--t-body); line-height: var(--l-body); }
+.deck-examples .deck-frame .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+.deck-examples .deck-frame .card > .chips { margin-top: 16px; }
+.deck-examples .deck-frame .chip { background: var(--canvas); border: 1px solid var(--rule); padding: 4px 16px; }
+
+/* charts: bars from zero, values labeled on the marks, the highlighted series in the accent */
+.deck-examples .deck-frame svg.chart text { font-family: var(--font); font-size: 24px; fill: var(--ink); }
+.deck-examples .deck-frame svg.chart .value { font-size: 32px; font-weight: 700; }
+.deck-examples .deck-frame svg.chart .big { font-size: 32px; }
+.deck-examples .deck-frame svg.chart .muted { fill: var(--muted); }
+.deck-examples .deck-frame svg.chart .accent { fill: var(--accent); }
+.deck-examples .deck-frame svg.chart .bar { fill: var(--rule); stroke: var(--muted); stroke-width: 1; }
+.deck-examples .deck-frame svg.chart .bar.hi { fill: var(--accent); stroke: none; }
+.deck-examples .deck-frame svg.chart .target { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 12 8; }
+.deck-examples .deck-frame svg.chart .axis { stroke: var(--muted); stroke-width: 2; }
+
+/* walkthrough: each step names its verdict in words, so color is never the only signal */
+.deck-examples .deck-frame .walk .stage { font-weight: 700; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+.deck-examples .deck-frame .walk .step { display: grid; grid-template-columns: 40px 1fr; column-gap: 16px; margin-top: 8px; }
+.deck-examples .deck-frame .walk .n { grid-column: 1; grid-row: 1 / span 2; color: var(--muted); font-size: var(--t-body); line-height: var(--l-body); }
+.deck-examples .deck-frame .walk .name { grid-column: 2; font-size: var(--t-body); line-height: var(--l-body); }
+.deck-examples .deck-frame .walk .verdict { grid-column: 2; color: var(--muted); }
+.deck-examples .deck-frame .walk .fail .verdict b { color: var(--accent); }
+.deck-examples .deck-frame .walk .hesitation .verdict b { color: var(--ink); }
+
+/* closed paths: three cards feed one outcome */
+.deck-examples .deck-frame .paths { row-gap: 8px; }
+.deck-examples .deck-frame .down { text-align: center; color: var(--muted); font-size: var(--t-body); line-height: var(--l-body); }
+.deck-examples .deck-frame .outcome { border: 2px solid var(--accent); padding: 16px 24px; font-size: var(--t-body); line-height: var(--l-body); }
+
+/* grouped issues */
+.deck-examples .deck-frame .group-head { font-weight: 700; color: var(--muted); padding-bottom: 8px; border-bottom: 2px solid var(--rule); }
+.deck-examples .deck-frame .visual .group-head.accent { border-bottom-color: var(--accent); }
+.deck-examples .deck-frame .item { margin-top: 16px; }
+
+/* plan */
+.deck-examples .deck-frame .phase > * + * { margin-top: 16px; }
+.deck-examples .deck-frame .phase .card { padding: 16px 24px; }
+
+/* metric tiles */
+.deck-examples .deck-frame .tile { padding: 16px; }
+.deck-examples .deck-frame .tile .num { font-size: 48pt; line-height: 72px; font-weight: 700; }
+.deck-examples .deck-frame .tile.north .num { color: var(--accent); }

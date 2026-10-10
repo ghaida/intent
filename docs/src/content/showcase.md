@@ -654,68 +654,126 @@ These replace traditional reputation systems. No stars, no scores, no public rev
 
 ## /evaluate
 agent: Vigil
-summary: Ran heuristic evaluation scoring 8 categories, identified 12 issues across severity levels.
+summary: Found two launch blockers in the handoff between neighbors, ranked every issue by severity, and routed each to the skill that fixes it.
 
-We put the emerging design through a structured evaluation before anyone built anything. Scoring across eight UX heuristics revealed strong fundamentals in simplicity and learnability, but exposed gaps in feedback visibility, error prevention, and the trust model's cold-start vulnerability. Twelve specific issues were logged, categorized, and routed to the skills that own them.
+We put the emerging design through a structured evaluation before anyone built anything. Each heuristic got a verdict in words instead of a score, and every issue got a severity, the heuristic it breaks and the skill that owns the fix. Both launch blockers sit in the handoff between neighbors: the strategy, the flows and the wireframes each describe a different way for an exchange to start, and no step gets a buyer to the seller's door.
 
 ### Output
 
-**UX Health Score: 68 / 100**
-Strong conceptual foundation and information design. Significant gaps in error prevention, onboarding, accessibility, and cold-start resilience. The design is promising but not shippable: the happy path is well-designed, but the other 40% of real-world usage is underspecified.
+This evaluation covers the Nearby MVP on paper, before build: everything the team has produced from project context to copy deck, with the wireframes' numbered markers read as recorded design decisions. Only browsing and posting are drawn, so the exchange from interest to handoff is judged from the flow tables and the blueprint. Not evaluated: visual design, contrast and screen reader behavior, which grayscale wireframes can't show, and signup, which no artifact designs. The research section is an interview plan without findings, so anything that depends on what neighbors will trust or expect goes to /investigate.
 
-**Anti-Pattern Verdict: Clean**
-No manipulative patterns detected. No false urgency, no dark patterns in the interest flow, no engagement tricks. The design respects user autonomy. One watch item: the daily digest notification could drift toward engagement optimization if not carefully managed. Flag for ongoing review.
+Two P0 issues block launch, both in the handoff between neighbors. Findings by severity: P0 2, P1 5, P2 7, P3 2.
 
 ---
 
-**Heuristic Evaluation (H1–H10)**
+**Anti-Pattern Verdict**
 
-| ID | Heuristic | Score (0-4) | Key Finding | Evidence |
-|---|---|---|---|---|
-| H1 | Visibility of system status | 2 | Batched notifications create a 15-minute uncertainty gap. User taps "I want this" and gets no server confirmation for up to 15 minutes. Client-side feedback exists but server state is ambiguous. | Interest flow, step 3 |
-| H2 | Match between system and real world | 0 | Strong. Walking time instead of miles. Neighborhood names instead of coordinates. "Your neighbor since March" instead of "4.2 stars." Language matches the casual, sidewalk-transaction mental model throughout. | All screens |
-| H3 | User control and freedom | 2 | No undo on interest expression. No ability to retract after the 5-second toast expires. No "hide this item" for previously seen listings. No way to unsee a category (persistent filter instead). | Interest flow, browse experience |
-| H4 | Consistency and standards | 1 | Map + list views follow platform conventions. Tab bar is standard iOS/Android. Minor issue: "I want this" as a CTA is non-standard for marketplace apps (most use "Message seller" or "Buy now"). Intentionally non-standard, but may cause hesitation. | Navigation, item detail |
-| H5 | Error prevention | 3 | **Major gap.** No confirmation before posting (one-tap publish). No duplicate detection: seller can accidentally post same item twice. No price validation ("$0" vs. tapping "Free" are different paths to the same result but feel different). Photo-only moderation catches prohibited items but not misleading photos. | Posting flow, listing management |
-| H6 | Recognition over recall | 1 | Previous pickup preferences auto-fill. Categories are visible (not hidden behind search). Map pins with thumbnails reduce memory load for spatial browsing. Minor: no "recently viewed" for items the user looked at but didn't act on. | Posting flow, browse |
-| H7 | Flexibility and efficiency | 2 | No batch posting for power users (someone decluttering a whole house). No keyboard shortcuts on web. No saved searches. No "post again" for expired listings. Returning sellers still go through the full posting flow even though their patterns are predictable. | Posting flow, web experience |
-| H8 | Aesthetic and minimalist design | 1 | Clean visual hierarchy. Map view is focused. Item cards show only essential info. One concern: the pickup coordination screen packs meeting point, time window, and messaging into a single view; may need progressive disclosure. | All screens |
-| H9 | Help users recover from errors | 2 | Error messages are well-written but inconsistently applied. Photo upload failure has good recovery. Network loss during posting has good draft preservation. However, expired listing error has no path to re-post. Failed interest has no retry. Server errors show generic fallback. | Error states across flows |
-| H10 | Help and documentation | 3 | **Major gap.** No onboarding flow. New users land on an empty map with no guidance. No contextual help anywhere. No explanation of how the radius works, what "interest" means, or what happens after they tap "I want this." Experienced users are fine; first-time users are abandoned. | First launch, all screens |
-
----
-
-**Cognitive Walkthrough: "Post Your First Item"**
-
-| Step | Will they try? | Will they see how? | Will they understand? | Will they see progress? | Verdict |
-|---|---|---|---|---|---|
-| 1. Tap "+" | Yes, prominent FAB | Yes, center of tab bar | Yes, universal "add" affordance | N/A | Pass |
-| 2. Take photo | Yes | Yes, camera opens immediately | Yes, camera is obvious | Yes, photo appears in preview | Pass |
-| 3. Confirm AI title | Hesitation: first-time users may not expect AI suggestion | Yes, title field is prominent | Maybe: "Looks right?" is ambiguous. Right about what? | Yes, title appears in field | Hesitation |
-| 4. Set price | Yes | Yes, clear input | Yes, "Free" and "Trade" buttons are visible alternatives | Yes, price appears | Pass |
-| 5. Set pickup prefs | Maybe: first-time users have no prior preference to auto-fill | Yes, three clear options | Yes, labels are descriptive | Yes, selection highlighted | Hesitation |
-| 6. Preview and publish | Yes | Yes, "Post it" button is clear | Yes, preview shows exactly what neighbors see | **No**: after publishing, confirmation is brief and map-based. User may not be sure it worked if map is zoomed out. | Failure |
-
-**Walkthrough finding:** Step 6 needs stronger publish confirmation. The current "Live in your neighborhood" text is easily missed. Recommend: full-screen confirmation with the listing card, a share prompt, and a clear "what happens next" explanation for first-time posters.
+**Minor Issues.** No deceptive, consent or urgency pattern: there are no fees, no fabricated scarcity, Free is a first-class price, and a Pending pickup badge reports status without applying pressure. The daily "What's new on your block" push and the new-item dots on both browse tabs have no stated default (Medium, #14): opt-in, they inform; on by default, they become the re-engagement the ethical stance rules out. "842 neighbors within 1 mile can see your listing right now" is Low (#7): honest if it counts active neighbors, inflated if it counts every account in range. From the catalog's common failures, declining location is a dead end (#11), and harassment reports and over-budget notifications fail silently (#5, #6).
 
 ---
 
 **Priority Issues**
 
-| ID | Severity | Issue | User impact | Route to |
-|---|---|---|---|---|
-| E-01 | P0 | Cold start death spiral | New neighborhoods have zero listings. No listings, no engagement, no word-of-mouth, neighborhood never activates. This is an existential product risk. | /fortify |
-| E-02 | P0 | No onboarding flow | First-time users land on an empty map with no explanation of what Nearby is, how it works, or what to do. Every other quality in the design is wasted if users bounce at first launch. | /fortify |
-| E-03 | P0 | Map-first excludes screen reader users | Map view is the primary interface but is fundamentally inaccessible to screen reader users. List view exists but is positioned as secondary. Must be promoted to equal citizen. | /include |
-| E-04 | P1 | Interest confirmation gap | 15-minute batch delay between client-side "Interest sent" and server-side notification to seller creates anxiety. Users don't know if it worked. | /journey |
-| E-05 | P1 | No duplicate listing detection | Sellers can accidentally post the same item twice. No photo comparison, no title similarity check, no "you posted something like this 10 minutes ago" prompt. | /fortify |
-| E-06 | P1 | No error prevention on publish | One-tap publish with no confirmation. For a first-time poster, accidental publish of an incomplete listing erodes trust. | /journey |
-| E-07 | P1 | Post-publish confirmation too weak | "Live in your neighborhood" text is easily missed. First-time posters need stronger confirmation that their listing is visible to neighbors. | /articulate |
-| E-08 | P2 | No undo on interest after toast | After the 5-second undo window, interest cannot be retracted. Need either extended undo or explicit "withdraw interest." | /journey |
-| E-09 | P2 | No batch posting for power users | Someone decluttering an entire house has to post items one by one. No multi-photo upload, no batch mode, no "post another" shortcut. | /journey |
-| E-10 | P2 | No recently viewed items | Users who browse, leave, and return have no way to find items they looked at previously. Relying on spatial memory of map pins is insufficient. | /organize |
-| E-11 | P2 | Pickup coordination screen overloaded | Meeting point map, time window, and messaging in one view. Needs progressive disclosure: show meeting point first, then time, then messaging. | /journey |
-| E-12 | P3 | "I want this" CTA may cause hesitation | Non-standard marketplace CTA. Users accustomed to "Message seller" or "Make offer" may hesitate. Intentionally designed but untested. | /investigate |
+*P0, critical: blocks a core task or violates a regulation*
+
+**#1 The artifacts disagree on how an exchange starts.** The brief's MVP has one-tap interest and defers messaging to v2; Flows 3 and 4 run interest through an Activity tab and unlock quick replies only after the seller accepts; the wireframes replace Activity with a Messages tab, and Posted tells sellers that interested neighbors "message you directly". No screen shows where an interest lands or where the seller says "It's yours", and the drawn version brings back the open messaging the blueprint ruled out to stop spam, lowballing and harassment. *Violates H4, H1. Engage /strategize, then /journey and /wireframe.*
+
+**#2 A pickup at the seller's door can't be arranged.** Flow 3 sends both people to the "nearest intersection" whatever the pickup type, and although the constraints keep addresses hidden "until both parties agree", no step marks that agreement or releases an address. No quick reply can carry one, and free text unlocks only after three exchanges (each person's in Flow 3, the same pair's in Flow 4), so no first exchange ever qualifies. Porch pickup can't complete, and Sarah's arc, where "she never had to leave the building", ends with her carrying a couch to the corner. *Violates H2. Engage /journey and /blueprint.*
+
+*P1, major: significant friction or potential harm*
+
+**#3 Browse is drawn as the marketplace the brief argues against.** The wireframe opens on a search bar and a newest-first grid, with no map, no radius control and distances in miles ("0.2 mi"), where Flow 2 and the IA make the map home, sort by distance, speak in walking minutes, put seller tenure on every card and keep search out of the way. Its tab bar swaps the IA's Explore, List and Activity for Browse, Saved and Messages, and Saved has no flow behind it. Geography becomes a filter, the failure the brief pins on existing tools. *Violates H4, H2. Engage /wireframe and /organize.*
+
+**#4 The post screen invites the seller's street into public text.** On Post an item, the description hint asks for "a line on size, wear, and pickup" and the sample answer ends "Porch pickup on Birch St."; Flow 1's pickup-preference step, and its map preview of the location neighbors will see, are both missing. The product's own example teaches sellers to name their street in public, the outcome the brief warns against: "a stranger knows where you live". *Violates H5. Engage /wireframe and /articulate.*
+
+**#5 Sarah's moving week hits two limits nobody designed for.** New accounts are capped at 3 active listings until a first exchange completes, and every account at 5 pushes a day, while the seller the posting flow is built for posts in bursts: Sarah, three weeks in the neighborhood, has a couch, a coffee table and three lamps to clear by Saturday, each with its own interests and pickup reminder. Neither limit has copy, a screen or a priority order, so her fourth listing fails without explanation and a pickup reminder can drop silently on the day she needs it most. *Violates H9, H1. Engage /blueprint and /fortify.*
+
+**#6 Reports go to an organizer with no screen.** The blueprint makes organizers the first line of moderation and Flow 4 flags harassment to them silently, but no flow, tab or wireframe gives Diane a place to see a flag, hide a listing or warn a user, and the only safety control anyone else has is the report button on messages. Reported users lose messaging "pending review" that nobody can perform, and the people most likely to bring their neighborhood onto Nearby find no place for their work. *Violates H3, H1. Engage /journey, /organize and /blueprint.*
+
+**#7 Only a busy neighborhood is drawn.** Browse shows 38 listings and Posted counts 842 neighbors and promises a first reply that "usually arrives within a day", yet every neighborhood launches below the density the blueprint calls a precondition, and the quiet states ("You're early", "Your neighborhood is quiet right now") exist only as copy. The first sellers, the ones a cold start depends on, get a promise no data supports yet. *Violates H1. Engage /fortify, /wireframe and /articulate, with /investigate for what reply time to promise.*
+
+*P2, minor: degraded but recoverable*
+
+**#8 Trade and Wanted can't be posted.** Onboarding promises things "for sale, for free, or for trade" and the search empty state offers "Post a Wanted", but the drawn price field has only a Free chip (Flow 1's Trade option is gone), and a camera-first form can't photograph something you're looking for. Wanted is the IA's own cold-start lever, and the buyer who follows that empty state lands on a camera. *Violates H4. Engage /strategize, then /journey.*
+
+**#9 Between "I want this" and "It's yours", nobody can say no.** Once the 5-second undo closes, a buyer can't withdraw, and an undo that lasts 5 seconds is a time limit WCAG 2.2.1 asks to be adjustable. The seller's documented choices are "It's yours" or silence, so a pass costs the buyer the 48-hour timeout (Flow 3 shows a "Passed" status no step produces), and nothing says how a seller chooses among several interested neighbors or what the others see. Marcus's whole arc lasts 20 minutes to 2 hours, so two days of silence reads as a dead app, and unwanted interests become the ghosted pickups the success criteria cap at 10%. *Violates H3, H1. Engage /journey and /fortify, with /include for the time limit.*
+
+**#10 Nothing says how a neighbor gets paid.** Payments are out of scope as "platform-agnostic", but no listing, pickup screen or quick reply says whether a seller takes cash or an app. With free text locked, that gets settled on the sidewalk, or not at all. *Violates H10, H2. Engage /journey and /articulate.*
+
+**#11 Location is all or nothing.** "Not now" on onboarding screen 3 leaves an app that "can't show you anything", and nothing covers a phone sharing only approximate location, which can't meet the blueprint's 100-meter accuracy, let alone a 400-meter urban radius. Privacy-minded neighbors, the people a privacy-first product courts, must hand over precise location or leave, and approximate location quietly shows the wrong blocks. *Violates H3, H9. Engage /fortify and /blueprint.*
+
+**#12 "Neighborhood" is a name on screen and a radius underneath.** The brief left "what defines a neighborhood?" open; the blueprint answers with a per-person walking radius that stops at highways and rivers, while the screens answer with a name ("Post to Maplewood") and a flat "within 1 mile". A listing posted to Maplewood reaches people outside it and misses residents across a barrier, and organizers moderating "for their neighborhood" have no boundary to apply. *Violates H2, H4. Engage /blueprint, then /articulate.*
+
+**#13 Trust signals claim to know where people live.** "Your neighbor since March 2025" and "Lives about a 3-minute walk from you" state residence, but signup has no verification by design, so the system knows only where a phone has been. Tenure carries the trust model, and whether it builds trust at all is the research plan's second assumption, untested until /investigate runs the interviews. *Violates H2. Engage /articulate and /investigate.*
+
+**#14 Engagement mechanics have no defaults.** The daily "What's new on your block" push, new-item dots on both the Explore and List tabs, and the "3 new items since you last checked" overlay have no stated default, and no notification settings are designed. Opt-in, they serve Marcus; on by default, they are the re-engagement loop the ethical stance rules out, and this finding becomes P1. *Violates H7. Engage /blueprint and /measure.*
+
+*P3, cosmetic: polish*
+
+**#15 Category names drift.** Browse chips read "Plants & garden", "Electronics" and "Free"; the taxonomy says "Garden & Outdoor", "Electronics & Gadgets" and "Free Stuff". Settle one vocabulary before filters and posting are built from different lists. *Violates H4. Engage /organize.*
+
+**#16 Two error messages misdiagnose.** The upload failure ends "Good lighting helps it sell faster anyway", blaming the photo for a network fault, and "This photo was flagged" doesn't say which rule it broke. Both leave the seller guessing what to fix. *Violates H9. Engage /articulate.*
+
+---
+
+**Heuristic Verdicts**
+
+- **H1 Visibility of system status: Broken.** #1: Posted tells sellers to expect messages while interests go to an Activity tab the wireframes don't have. #5, #7 and #9 add silent limits, unbacked promises and a 48-hour quiet.
+- **H2 Match between system and real world: Broken.** #2: a pickup at someone's door is routed to the nearest intersection. #12 and #13 describe neighborhoods and residence in terms the system can't back.
+- **H3 User control and freedom: Broken.** #6: no one can report a listing, and organizers can't act on the reports that exist. #9 and #11 strain it further.
+- **H4 Consistency and standards: Broken.** #1: messaging means something different in the brief, the flows and the wireframes. #3 and #15 repeat the drift in navigation and labels.
+- **H5 Error prevention: Broken.** #4: the description hint walks sellers into publishing their street.
+- **H6 Recognition rather than recall: Holds.** Labeled tabs, quick replies and filter chips that persist across map and list keep options in view. If the IA's pull-down-only search wins over the wireframe's visible bar, this strains.
+- **H7 Flexibility and efficiency of use: Strained.** #14: no notification settings and no digest default. Flow 1's pickup autofill from the last listing is the right accelerator for repeat sellers, and it went missing with the pickup step (#4).
+- **H8 Aesthetic and minimalist design: Holds.** One primary action per screen, and cards carry only price, title, seller, distance and age.
+- **H9 Help users recognize, diagnose, and recover from errors: Broken.** #5: the listing cap fails with no message. Everywhere else this is the material's strongest heuristic (see Positive Findings), and #16 is polish.
+- **H10 Help and documentation: Strained.** #10: nothing tells either neighbor how payment works. Onboarding and field hints otherwise carry what a casual app needs.
+
+---
+
+**Cognitive Walkthrough Results**
+
+*Task: Sarah gets the couch picked up before Saturday without leaving her building.* Steps follow Flow 1, Flow 3 and the blueprint's seller arc, on the drawn screens where they exist.
+
+1. **Start a listing. Pass.** The raised Post tab sits in every drawn tab bar and opens Post an item with the camera zone first.
+2. **Photograph and describe the couch. Pass.** The fields follow the photo, and the Cover badge and "2 of 8" confirm the shots took.
+3. **Say how pickup works. Failure.** Visibility: no, Post an item has no pickup field. Understanding: no, the hint points her to the description, which publishes her building to everyone (#4).
+4. **Post. Pass.** "You're live in Maplewood" confirms it and names the audience.
+5. **Find out who wants it. Failure.** Visibility: no, no drawn screen shows an incoming interest. Understanding: no, Posted told her to watch Messages, and under Flow 4 nobody can message her before she accepts (#1).
+6. **Pick a buyer. Hesitation.** Visibility: no, "It's yours" exists only in the blueprint's seller table, with no way to compare several interested neighbors (#9).
+7. **Get the buyer to her door. Failure.** Visibility: no, the pickup screen offers the nearest intersection. Understanding: no, no quick reply can carry her address or a time, and free text is locked (#2).
+8. **Close it out. Pass.** "Did you get the [item]?" offers "Yes, got it" or "It fell through", and a confirmed exchange leaves the map.
+
+Sarah gets the couch listed and then can't finish what she came to do: on Saturday it is still in the apartment, or out on the corner. Each failure sits on a seam where two artifacts disagree. The story breaks differently for the others: Marcus's at the 48-hour silence after "I want this" (#9), Diane's before it starts, because nothing in the product is hers (#6).
+
+Task success: posting completes and recovers well from network failures; the exchange stops at step 7 for any pickup at the seller's door. The drawn form adds Condition and Description to Flow 1's four-tap path, so time-to-post needs instrumenting before anyone quotes the 30-second target.
+
+---
+
+**Positive Findings**
+
+- **Posting fails gracefully.** A failed upload keeps the draft, a lost connection queues the listing with a pending indicator, a denied camera falls back to the gallery, and every error message says what happened, why it matters and what to do. Give the pickup step the same treatment.
+- **The buyer gets instant feedback despite batching.** The checkmark and "Interest sent" toast land at once while sellers hear in 15-minute batches, and the blueprint records that trade-off instead of hiding it.
+- **Trust without scores.** Tenure, distance and exchange counts replace star ratings, and newness is labeled ("New to Nearby") rather than hidden. Keep the model; fix the wording (#13).
+- **The ethics show up at the moment of decision.** "Visible to neighbors within 1 mile · no fees" sits directly above the commit button (Post ④), Free has its own badge and filter chip (Browse ②), and Pending listings stay visible as plain status (Browse ③).
+- **Browsing has an end.** List view groups items by walking distance ("On your block", "5-min walk", "10-min walk") inside the radius, so the scroll can't turn into an endless feed, and every empty state ends in an action.
+
+---
+
+**Recommended Actions**
+
+Sequenced so both P0s clear first. /investigate can start today, in parallel.
+
+1. **/strategize for #1 and #8.** Decide whether any messaging ships in the MVP, and whether Trade and Wanted do. The flows, IA and screens all wait on these answers.
+2. **/journey for #1, #2, #6, #9 and #10.** Write one coordination flow from interest to handoff: where interests land, how a seller passes or chooses, when the address is released, how payment is agreed. Then an organizer flow for flags, hidden listings and warnings.
+3. **/blueprint for #2, #5, #6, #11, #12 and #14.** Set the rules those flows need: when an address is released and when it expires, limits that survive a moving week with pickup reminders ranked above the digest, moderation where no organizer exists yet, behavior under approximate location, one definition of neighborhood, and the digest default.
+4. **/wireframe for #1, #3, #4 and #7.** Redraw Browse from Flow 2 with the map as home and the IA's tab bar, restore the pickup step and location preview on Post, and draw what exists only as tables or copy: item detail, Activity, the pickup screen and the quiet-neighborhood states.
+5. **/fortify for #5, #7, #9 and #11.** Cover the limit states, the cold start, the 48-hour wait and the location fallbacks.
+6. **/articulate for #4, #7, #10, #12, #13 and #16.** Rewrite the description hint and the reply-time promise, add payment wording, say what the radius covers, reword tenure as time on Nearby, and fix the two error messages.
+7. **/organize for #3, #6 and #15.** Settle one tab bar, give moderation a home, and use one category vocabulary.
+8. **/include for #9.** Let a buyer withdraw interest from Activity after the toast closes.
+9. **/investigate for #7 and #13.** Run the interviews the research plan already describes: the trust model, the reply-time promise and the pickup safety questions rest on what they were written to test.
+10. **/measure for #14 and the walkthrough.** Judge the digest by the exchanges it leads to, not by opens, and instrument time-to-post and time-to-exchange against the 30-second and 48-hour targets.
 
 ## /fortify
 agent: Vigil
@@ -776,7 +834,7 @@ Every state the item card can be in, across the full lifecycle: every messy in-b
 
 **First-Run Experience Design**
 
-The current design drops new users onto an empty map with no guidance. This is a P0 issue from /evaluate. Here's the fix:
+The current design drops new users onto an empty map with no guidance. Here's the fix:
 
 **Progressive onboarding (3 screens, then value):**
 1. "Nearby shows you what's for sale, for free, or for trade within walking distance." (Map illustration)
@@ -1349,47 +1407,44 @@ Latency: p50 <50ms, p99 <200ms
 agent: Noor
 summary: Turned the whole engagement into a 13-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The story runs situation, complication, resolution, because leadership has to see where the bet stands before deciding. A what-could-be pitch would rest on user pain, and the interviews that would show that pain haven't run. The outline was approved before anything was drawn. Then we refused to dress the plan up. The competitor completion rates appear only as labeled estimates, and the market size and "why now" urgency, which had no source, stayed out. The evaluation's "not yet shippable" verdict gets its own slide, and so does the bet nobody has tested. The ask shows what it still lacks: the engineering estimate is marked missing on the slide, and the open messaging scope goes to the room instead of being settled quietly.
+The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, and an unconditional go would have won its yes by leaving them out, so the deck asks to start building from the written specs now and to hold the launch until the handoff works. The story runs situation, complication, resolution, and the complication is the evaluation's own finding, not one sized to fit the ask. The outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor rates appear only as labeled estimates, the unsourced market size and "why now" stayed out, and the seller in the walkthrough is labeled as a design scenario, not a research participant.
 
 ### Output
 
 These are the deck's own slides, not pictures of slides. The markup is the file /present produced, the grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
 
-Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Where a wireframe belongs, the slide holds a labeled frame instead of a faked screen. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
+Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Missing evidence stays visible: the plan says no engineering estimate exists yet. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
 
 **The approved outline**
 
-**Pattern:** Situation → complication → resolution. Leadership needs to see where the bet stands before deciding. What-is/what-could-be would rest on user pain, and the evidence for that pain is thin because the interviews haven't run.
+**Pattern:** Situation → complication → resolution. Leadership has to see where the design stands before it can decide, and the complication is the evaluation's own finding, not one sized to fit the ask.
 
-**Governing message:** Nearby's MVP is designed and its launch blockers have designed fixes; building it for one neighborhood is how we test whether walking distance lifts exchange completion to 60%.
+**Governing message:** Start building Nearby's MVP now, and launch once the handoff between neighbors works.
 
-1. **Nearby's MVP is ready to build and test in one neighborhood** | Visual: title | Source: /strategize hypothesis
-2. **Exchange completes near 60% only where community, not search, organizes it** | Visual: bar chart of estimated completion rates, Buy Nothing highlighted, 60% target line | Source: /strategize competitive landscape
-3. **Organizers already run local exchange by hand and want better tools for it** | Visual: none (short bullets) | Source: /intent user types
-4. **Walking replaces logistics, and neighborhood tenure replaces star ratings** | Visual: hypothesis diagram | Source: /strategize hypothesis
-5. **The MVP lets neighbors post, browse and claim an item, and nothing more** | Visual: none (scope bullets) | Source: /strategize MVP scope
-6. **Posting takes four taps because the photo does the describing** | Visual: [WIREFRAME: Post an item] | Source: /wireframe, /journey Flow 1
-7. **Trust comes from tenure and distance, never star ratings** | Visual: [WIREFRAME: Browse cards] + trust copy | Source: /articulate, /blueprint
-8. **Strangers get quick replies only, so harassment by free text can't start** | Visual: messaging unlock diagram | Source: /journey Flow 4, /fortify
-9. **Evaluation scored the design 68 of 100: strong happy path, not yet shippable** | Visual: bar chart of the 12 issues by severity, P0 highlighted | Source: /evaluate
-10. **Each launch blocker has a designed fix, and none has been re-evaluated** | Visual: blocker → fix table | Source: /evaluate, /fortify, /include
-11. **The pilot is judged on completed exchanges, never time in app or GMV** | Visual: targets table with refused metrics | Source: /measure
-12. **The core bet is untested: no interviews have run and benchmarks are estimates** | Visual: none (bullets) | Source: /investigate, /strategize assumptions
-13. **Approve the MVP build, blocker fixes included, for a one-neighborhood pilot** | Visual: ask with what/who/when | Source: /intent growth model
+1. **Start building Nearby's MVP now, and launch once the handoff between neighbors works** | Visual: title slide | Source: /evaluate summary
+2. **The MVP tests one bet: walking distance lifts completion to 60%+** | Visual: bar chart from zero of estimated completion by platform, Nearby's target as a dashed outline | Source: /strategize competitive landscape, measurable hypothesis
+3. **The foundations hold: no dark patterns, and trust without star ratings** | Visual: two panels quoting the interface copy | Source: /evaluate anti-pattern verdict and positive findings; /wireframe; /articulate trust signal copy
+4. **Two findings block launch, and both sit in the handoff between neighbors** | Visual: unit chart, one square per finding, by severity | Source: /evaluate priority issues
+5. **A seller can list her couch, then can't get it picked up** | Visual: the eight walkthrough steps with their verdicts | Source: /evaluate cognitive walkthrough
+6. **The brief, the flows and the screens start an exchange three ways** | Visual: three panels side by side | Source: /evaluate #1; /strategize MVP scope; /journey flows 3 and 4; /wireframe
+7. **On a first exchange, nothing gets the buyer to the seller's door** | Visual: three closed paths for an address, one outcome | Source: /evaluate #2; /intent hard constraints; /journey flows 3 and 4
+8. **Decide today: quick replies once the seller accepts, no open messaging** | Visual: the recommended option beside the drawn one | Source: /blueprint decision documentation; /journey flow 4; /evaluate #1 and #2
+9. **The bet's assumptions are untested: the interviews were written, not run** | Visual: the hypothesis's "because" clause, quoted | Source: /strategize measurable hypothesis; /investigate research plan
+10. **Beyond the blockers, two major issues need new design** | Visual: the five major issues, grouped into new design and redraws | Source: /evaluate #3 to #7
+11. **Engineering starts on the written specs while design fixes the handoff** | Visual: plan in three stages: today, in parallel, before launch | Source: /evaluate recommended actions; /investigate timeline; /specify
+12. **The MVP is judged on completed exchanges, never time in app** | Visual: four target tiles and the counter-metrics | Source: /measure framework
+13. **Approve the build today; launch once the handoff between neighbors works** | Visual: the ask, with go, gate and scope | Source: /evaluate recommended actions; /investigate timeline
 
 **Gaps:**
 
-- [NEEDS EVIDENCE: research findings. The 13 interviews are planned but haven't run] → /investigate
-- [NEEDS EVIDENCE: sourced competitor completion rates. The brief's figures are uncited estimates] → /strategize
-- [NEEDS EVIDENCE: baselines for every metric. All of them are targets] → /measure (after launch)
-- [NEEDS EVIDENCE: a re-evaluation that covers the three P0 fixes] → /evaluate
-- [NEEDS EVIDENCE: exported wireframe screens for slides 6 and 7] → /wireframe
-- [NEEDS EVIDENCE: engineering estimate, team and launch date for the ask] → engineering (outside Intent)
-- Scope conflict: the brief puts messaging in v2, but the flows and blueprint use quick-reply coordination after acceptance → leadership decides on slide 13; /strategize records it
+- [NEEDS EVIDENCE: research findings; the interviews are planned, not run, so the trust model, the reply-time promise and pickup safety rest on assumptions] → /investigate
+- [NEEDS EVIDENCE: a sourced completion benchmark; the brief's platform rates are estimates with no source, and its "20-30%" range doesn't match its own table, which puts Craigslist at ~15%] → /strategize
+- [NEEDS EVIDENCE: an engineering estimate for the build and the handoff; nothing in the material says when launch could happen] → engineering, outside Intent
+- [NEEDS DECISION: whether Trade and Wanted ship in the MVP (#8); the material has no recommendation, so it stays off the ask] → /strategize
 
 **Refusal checks:**
 
-- The persona scenarios are design work, not research participants. The deck doesn't present them as user evidence or build a protagonist arc on them.
-- The complication uses the brief's trimmed version ("existing tools are wrong-shaped"), not the earlier "compete with Marketplace" framing. The competitor rates appear only as labeled estimates.
-- The brief's "why now" and its market size have no source. They're left out so they can't create urgency.
-- The evaluation's "not yet shippable" verdict gets its own slide, and so do the unrun research and the untested bet.
+- An unconditional go would engineer assent by leaving out the launch blockers, so the deck asks for a gated go instead.
+- The brief's "why now" and its market size have no source. They stay out so they can't create urgency.
+- The walkthrough's seller is the evaluation's design scenario, labeled on the slide as not a research participant.
+- The completion chart keeps Buy Nothing's ~60% instead of showing only the platforms Nearby would beat.
