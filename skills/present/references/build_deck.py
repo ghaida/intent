@@ -2,8 +2,8 @@
 """Build a .pptx from a /present deck spec (JSON). Shared path for PowerPoint and
 Google Slides (import the .pptx into Slides). Usage: build_deck.py deck.json out.pptx
 
-Requires python-pptx (pip install python-pptx). Enforces the /present rules that
-can be enforced mechanically: every slide titled, flat bullets only, alt text on
+Requires python-pptx (pip install python-pptx). Enforces the /present rules a
+machine can check: every slide titled, flat bullets only, alt text on
 every visual, bar charts from zero, speaker notes in the notes field, three sentences at most."""
 import json, re, sys
 from pptx import Presentation
@@ -59,12 +59,12 @@ def _validate(spec):
         notes = str(s.get("notes", "")).strip()
         if notes:
             if re.search(r"^\s*([-*•]|\d+[.)])\s", notes, re.M):
-                raise ValueError(f"slide {i}: notes are plain prose — no bullets or numbered lines")
+                raise ValueError(f"slide {i}: notes are plain prose, no bullets or numbered lines")
             if len(re.findall(r"[^.!?]+[.!?]+(?=\s|$)", notes)) > 3:
-                raise ValueError(f"slide {i}: notes hold three sentences at most — the presenter reads them at a glance")
+                raise ValueError(f"slide {i}: notes hold three sentences at most; the presenter reads them at a glance")
         b = s.get("bullets", [])
         if not isinstance(b, list) or any(not isinstance(x, str) for x in b):
-            raise ValueError(f"slide {i}: bullets must be a flat list of strings — no nesting")
+            raise ValueError(f"slide {i}: bullets must be a flat list of strings, no nesting")
         if (s.get("image") or s.get("placeholder") or s.get("chart")) and not str(s.get("alt", "")).strip():
             raise ValueError(f"slide {i}: alt text is required for every image, placeholder or chart")
         c = s.get("chart")

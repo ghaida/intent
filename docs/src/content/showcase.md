@@ -1349,32 +1349,32 @@ Latency: p50 <50ms, p99 <200ms
 agent: Noor
 summary: Turned the whole engagement into a 12-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and the one thing we needed from them: a go on the MVP build. The story runs situation, complication, resolution, because the strategy brief already stands on that spine with its complication checked against evidence, and a what-could-be pitch would lean on emotional pull the unrun research can't back. That outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor completion rates are labeled as the estimates they are, the launch blockers sit on a slide with "none tested yet" in the title, and the interviews that haven't happened get a slide of their own, said before the ask rather than after it. The deck ends where the meeting has to: approve one neighborhood, with the blocker fixes in scope and the interviews run before launch.
+The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and the one thing we needed from them: a go on the MVP build. The story runs situation, complication, resolution: the strategy brief already stands on that spine, and a what-could-be pitch would lean on emotional pull the unrun research can't back. That outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor completion rates are labeled as the estimates they are, the launch blockers sit on a slide with "none tested yet" in the title, and the interviews that haven't happened get a slide of their own, said before the ask rather than after it. The deck ends where the meeting has to: approve one neighborhood, with the blocker fixes in scope and the interviews run before launch.
 
 ### Output
 
-These are the deck's own slides, not pictures of slides. The markup comes straight from the file /present produced, the 12-column grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument still holds; that's the headlines test a deck has to pass before it's built.
+These are the deck's own slides, not pictures of slides. The markup is the file /present produced, the 12-column grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument still holds; that's the headlines test a deck has to pass before it's built.
 
 Every number on them comes from an earlier chapter, and each is marked as an estimate or a target. Nothing is shown against a baseline that doesn't exist. Where the Post an item wireframe belongs, the deck holds a labeled frame instead of a faked screen. Where the sources disagree on messaging, the slide asks the room to choose instead of quietly picking. The notes carry the reasoning the slides leave out: the claim, the caveats to say out loud, the objections likely to come up.
 
 **The approved outline**
 
-**Pattern:** Situation → complication → resolution. This is a go decision for leadership, and the strategy brief is already built on S/C/R with its complication checked against evidence. What-is/what-could-be would lean on emotional pull that the missing research can't back up.
+**Pattern:** Situation → complication → resolution. This is a go decision for leadership, and the strategy brief is already built on S/C/R with its complication checked against evidence. What-is/what-could-be would lean on emotional pull the missing research can't back.
 
 **Governing message:** Nearby's design is ready to build as a one-neighborhood test of whether walking distance can lift exchange completion to 60%.
 
-1. **Nearby is ready to build as a test of one bet: walking distance lifts completion to 60%** — Visual: title — Source: /strategize hypothesis
-2. **Broad platforms complete ~15–25% of local exchanges; Buy Nothing ~60%** — Visual: bar chart from zero, labeled as estimates, 60% target line — Source: /strategize competitive table
-3. **We bet proximity removes both frictions: logistics and trust** — Visual: hypothesis diagram — Source: /strategize Measurable Hypothesis
-4. **A neighborhood is a walk, not a zip code: the radius adapts to density** — Visual: radius tiers drawn to scale — Source: /specify walking radius, /blueprint
-5. **Posting is photo-first: four taps, designed to take under 30 seconds** — Visual: [WIREFRAME: Post an item] — Source: /journey Flow 1, /wireframe
-6. **Trust comes from tenure and proximity; there are no star ratings** — Visual: trust card in Nearby's own copy — Source: /articulate, /blueprint
-7. **Ship pickup coordination as quick replies only; free-text messaging waits** — Visual: option A vs. B, B recommended — Source: /strategize scope vs. /journey Flows 3–4
-8. **Evaluation found three launch blockers; each has a designed fix, none tested yet** — Visual: blocker → fix table — Source: /evaluate E-01–E-03, /fortify, /include
-9. **Cold start decides the MVP: an empty map ends a neighborhood before it starts** — Visual: four-layer seed plan — Source: /fortify, /measure
-10. **We'll judge the MVP on completed exchanges, not time in app or GMV** — Visual: north star, targets, counter-metrics — Source: /measure
-11. **What we don't know yet: the user interviews are planned, not run** — Bullets — Source: /investigate plan, /strategize assumptions
-12. **Approve the MVP for one neighborhood, with the three blockers in scope** — Ask: what / who / when
+1. **Nearby is ready to build as a test of one bet: walking distance lifts completion to 60%** | Visual: title | Source: /strategize hypothesis
+2. **Broad platforms complete ~15–25% of local exchanges; Buy Nothing ~60%** | Visual: bar chart from zero, labeled as estimates, 60% target line | Source: /strategize competitive table
+3. **We bet proximity removes both frictions: logistics and trust** | Visual: hypothesis diagram | Source: /strategize Measurable Hypothesis
+4. **A neighborhood is a walk, not a zip code: the radius adapts to density** | Visual: radius tiers drawn to scale | Source: /specify walking radius, /blueprint
+5. **Posting is photo-first: four taps, designed to take under 30 seconds** | Visual: [WIREFRAME: Post an item] | Source: /journey Flow 1, /wireframe
+6. **Trust comes from tenure and proximity; there are no star ratings** | Visual: trust card in Nearby's own copy | Source: /articulate, /blueprint
+7. **Ship pickup coordination as quick replies only; free-text messaging waits** | Visual: option A vs. B, B recommended | Source: /strategize scope vs. /journey Flows 3–4
+8. **Evaluation found three launch blockers; each has a designed fix, none tested yet** | Visual: blocker → fix table | Source: /evaluate E-01–E-03, /fortify, /include
+9. **Cold start decides the MVP: an empty map ends a neighborhood before it starts** | Visual: four-layer seed plan | Source: /fortify, /measure
+10. **We'll judge the MVP on completed exchanges, not time in app or GMV** | Visual: north star, targets, counter-metrics | Source: /measure
+11. **What we don't know yet: the user interviews are planned, not run** | Bullets | Source: /investigate plan, /strategize assumptions
+12. **Approve the MVP for one neighborhood, with the three blockers in scope** | Ask: what / who / when
 
 **Gaps:**
 

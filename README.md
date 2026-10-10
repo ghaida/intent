@@ -1,6 +1,6 @@
 # Design with Intent
 
-A comprehensive UX and design strategy system for AI tools. 18 specialized skills and 6 agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
+A comprehensive UX and design strategy system for AI tools. 18 specialized skills and 6 agents that cover the full product design practice, from early strategy and research through experience design, quality assurance, and engineering handoff.
 
 Intent gives AI the context to approach design decisions with depth. Where visual design tools focus on how things look, Intent focuses on why they exist — research, strategy, systems thinking, flows, content, accessibility, ethics, and measurement.
 
@@ -10,7 +10,7 @@ Six agents, each combining multiple skills into a specialist persona:
 
 | Domain | Agent | Skills it combines |
 |--------|-------|--------------------|
-| Entry point + Presentation | **Noor** | `/intent` + `/present` — orients the project, holds UX principles and the anti-pattern catalog, routes to specialists, and presents the finished work |
+| Entry point + Presentation | **Noor** | `/intent` + `/present`: orients the project, holds UX principles and the anti-pattern catalog, routes to specialists, and presents the finished work |
 | Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
 | Experience Design | **Wren** | `/journey` + `/organize` + `/wireframe` + `/articulate` — shapes user flows, structures information, wireframes screens, designs the words |
 | Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
@@ -63,8 +63,8 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 ### Handoff
 
-- `specify/SKILL.md` — Design-to-engineering bridge. Detailed specs, copy matrices, interactive HTML documentation, use case and edge case documentation, test plans with success criteria. Includes ethical review against the anti-pattern catalog.
-- `present/SKILL.md` — Story-first decks for design work. Interviews for audience, feeling, action and sources; gets a story outline approved; builds in Google Slides (via .pptx), PowerPoint, Figma Slides or reveal.js. Carries a stance on what makes a good presentation and refuses invented evidence.
+- `specify/SKILL.md`: design-to-engineering bridge. Detailed specs, copy matrices, interactive HTML documentation, use case and edge case documentation, test plans with success criteria. Includes ethical review against the anti-pattern catalog.
+- `present/SKILL.md`: story-first decks for design work. Interviews for audience, feeling, action and sources; gets a story outline approved; builds in Google Slides (via .pptx), PowerPoint, Figma Slides or reveal.js. Carries a stance on what makes a good presentation and refuses invented evidence.
 
 ## Install
 

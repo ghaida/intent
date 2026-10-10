@@ -60,7 +60,7 @@ Start a new Project (or conversation) for each agent. Carry the prior agent's ou
 
 ### Option 4: Claude Code plugin
 
-If you use Claude Code, install the Intent plugin — all 6 agents and 18 skills register automatically:
+If you use Claude Code, install the Intent plugin; all 6 agents and 18 skills register automatically:
 
 ```
 /plugin marketplace add ghaida/intent
