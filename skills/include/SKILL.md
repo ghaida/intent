@@ -11,9 +11,7 @@ description: >
   assistive technology, "is this accessible", "check accessibility", "design
   for everyone", "who are we excluding", ADA compliance, Section 508, EAA,
   reduced motion, or any question about whether all users can perceive,
-  operate, understand, and benefit from the experience. One billion people
-  worldwide have a disability. Everyone experiences situational impairment.
-  Designing inclusively makes the experience better for everyone.
+  operate, understand, and benefit from the experience.
 version: 1.7.0
 user-invocable: true
 ---
