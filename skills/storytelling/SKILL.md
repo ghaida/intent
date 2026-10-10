@@ -8,8 +8,7 @@ description: >
   when stakeholders need to see the user's experience as a story, when presenting
   design rationale to non-design audiences, or when a journey, blueprint, brief,
   or deck feels lifeless. Trigger phrases: "what's the story here?", "tell the
-  story", "story mode", "narrative mode". Restated inline in journey, blueprint,
-  strategize, evaluate, and present. Refuses to smooth user data into clean
+  story", "story mode", "narrative mode". Refuses to smooth user data into clean
   arcs, manufacture strategic tension, substitute emotional appeal for evidence,
   assume conflict arcs are universal, or engineer stakeholder assent by shortcut.
 version: 1.7.0
