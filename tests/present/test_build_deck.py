@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 import pytest
 from pptx import Presentation
+from pptx.enum.text import PP_ALIGN
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "skills/present/references"))
 import build_deck
@@ -92,11 +93,11 @@ def test_template_without_title_placeholder_rejected(tmp_path):
     with pytest.raises(ValueError, match="title placeholder"):
         build_deck.build(spec([{"layout": "title", "title": "X deck"}], template=str(tpl)), tmp_path / "d.pptx")
 
-def test_default_title_spans_content_width(tmp_path):
+def test_default_title_spans_ten_columns(tmp_path):
     out = tmp_path / "d.pptx"
-    build_deck.build(spec([{"layout": "title", "title": "Wide title"}]), out)
-    prs = Presentation(out)
-    assert prs.slides[0].shapes.title.width == prs.slide_width - 2 * build_deck.M
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "Wide title", "bullets": ["a"]}]), out)
+    t = Presentation(out).slides[0].shapes.title
+    assert (t.left, t.width) == build_deck.span(1, 10)
 
 def test_chart_spec_validated(tmp_path):
     bad = {"type": "bar", "categories": ["a", "b"], "series": [{"name": "s", "values": [1]}]}
@@ -155,3 +156,116 @@ def test_chart_highlight_must_index_a_series(tmp_path):
         c = {"type": "bar", "categories": ["a", "b"], "series": [{"name": "s", "values": [1, 2.5]}], "highlight": hi}
         with pytest.raises(ValueError, match="highlight"):
             build_deck.build(_chart_slide(c), tmp_path / "d.pptx")
+
+
+# --- The grid: same margins and 12-column structure on every slide ---
+
+def _png(path, w=400, h=300):
+    from PIL import Image
+    Image.new("RGB", (w, h), (200, 200, 220)).save(path)
+    return str(path)
+
+def _mixed_slides(img):
+    chart = {"type": "bar", "categories": ["A", "B"], "series": [{"name": "n", "values": [4, 2]}]}
+    body = "What the presenter would have said, in two or three sentences."
+    return [
+        {"layout": "title", "title": "The deck's governing message", "subtitle": "Review group, Friday", "body": body},
+        {"layout": "section", "title": "The second half turns on cost", "subtitle": "Why it matters"},
+        {"layout": "claim_visual", "title": "Option B removes the ambiguity", "placeholder": "SCREENSHOT: step 2", "alt": "x", "body": body},
+        {"layout": "claim_visual", "title": "Option B with its reasons", "placeholder": "SCREENSHOT: step 2", "alt": "x", "bullets": ["one", "two"], "body": body},
+        {"layout": "claim_visual", "title": "A wide screenshot fits its span", "image": _png(img, 2400, 400), "alt": "x"},
+        {"layout": "claim_visual", "title": "A tall screenshot fits the body", "image": _png(img.with_name("tall.png"), 300, 1200), "alt": "x", "bullets": ["a"]},
+        {"layout": "claim_chart", "title": "Downgrades dominate tickets", "chart": chart, "alt": "x", "body": body},
+        {"layout": "claim_chart", "title": "Downgrades with context", "chart": chart, "alt": "x", "bullets": ["a", "b"], "subtitle": "n = 412", "body": body},
+        {"layout": "claim_bullets", "title": "Technicians write notes later", "bullets": ["7 of 9 in the van"], "subtitle": "Diary study", "body": body},
+        {"layout": "quote", "title": "Notes are written from memory", "quote": "I write it all up in the van after.", "attribution": "P4, technician", "subtitle": "Diary study", "body": body},
+        {"layout": "ask", "title": "Approve direction B so engineering can start", "subtitle": "Review group, by Friday", "body": body},
+    ]
+
+def _grid_decks(tmp_path):
+    img = tmp_path / "wide.png"
+    slides = _mixed_slides(img)
+    for kw in ({"mode": "live"}, {"mode": "read"}, {"mode": "read", "projected": True}):
+        live = kw["mode"] == "live"
+        out = tmp_path / f"{'-'.join(map(str, kw.values()))}.pptx"
+        build_deck.build(spec([{k: v for k, v in s.items() if not (live and k == "body")} for s in slides], **kw), out)
+        yield Presentation(out)
+
+def test_grid_span_math():
+    px = build_deck._px
+    assert build_deck.span(1, 12) == (px(80), px(1120))
+    assert build_deck.span(8, 5) == (px(80 + 7 * 96), px(5 * 64 + 4 * 32))
+    assert (build_deck.MARGIN_X, build_deck.MARGIN_Y) == (px(80), px(64))
+    assert (build_deck.TITLE_TOP, build_deck.BODY_TOP, build_deck.BODY_BOTTOM) == (px(64), px(224), px(656))
+
+def test_every_shape_inside_the_content_box(tmp_path):
+    px = build_deck._px
+    for prs in _grid_decks(tmp_path):
+        assert (prs.slide_width, prs.slide_height) == (build_deck.SLIDE_W, build_deck.SLIDE_H)
+        for n, slide in enumerate(prs.slides, 1):
+            for shp in slide.shapes:
+                assert shp.left >= px(80) and shp.top >= px(64), (n, shp.name)
+                assert shp.left + shp.width <= px(1200), (n, shp.name)
+                assert shp.top + shp.height <= px(656), (n, shp.name)
+
+def test_titles_sit_in_the_title_band(tmp_path):
+    for prs in _grid_decks(tmp_path):
+        for slide, s in zip(prs.slides, _mixed_slides(tmp_path / "wide.png")):
+            t = slide.shapes.title
+            assert t.left == build_deck.MARGIN_X
+            hero = s["layout"] in ("title", "section")
+            assert t.top == (build_deck.BODY_TOP if hero else build_deck.TITLE_TOP), s["layout"]
+            assert t.width == build_deck.span(1, 10)[1]
+            assert all(p.alignment == PP_ALIGN.LEFT for p in t.text_frame.paragraphs)
+
+def _named(slide, pred):
+    return next(s for s in slide.shapes if pred(s))
+
+def test_visual_and_bullets_split_on_column_boundaries(tmp_path):
+    for prs in _grid_decks(tmp_path):
+        for idx in (3, 7):  # placeholder + bullets, chart + bullets
+            slide = prs.slides[idx]
+            vis = _named(slide, lambda s: s.has_chart or (s.has_text_frame and s.text_frame.text.startswith("[")))
+            bul = _named(slide, lambda s: s.has_text_frame and s.text_frame.text.startswith("•"))
+            assert (vis.left, vis.width) == build_deck.span(1, 7)
+            assert (bul.left, bul.width) == build_deck.span(8, 5)
+            assert vis.left + vis.width + build_deck.GUTTER == bul.left
+
+def test_lone_visual_spans_all_twelve_columns(tmp_path):
+    for prs in _grid_decks(tmp_path):
+        for idx in (2, 6):
+            vis = _named(prs.slides[idx], lambda s: s.has_chart or (s.has_text_frame and s.text_frame.text.startswith("[")))
+            assert (vis.left, vis.width) == build_deck.span(1, 12)
+            assert vis.top + vis.height == build_deck.BODY_BOTTOM
+
+def test_claim_bullets_and_quote_keep_readable_spans(tmp_path):
+    for prs in _grid_decks(tmp_path):
+        bul = _named(prs.slides[8], lambda s: s.has_text_frame and s.text_frame.text.startswith("•"))
+        assert bul.width == build_deck.span(1, 8)[1]
+        q = _named(prs.slides[9], lambda s: s.has_text_frame and s.text_frame.text.startswith("“"))
+        assert (q.left, q.width) == build_deck.span(1, 9)
+
+def test_body_content_on_the_eight_unit_rhythm(tmp_path):
+    for prs in _grid_decks(tmp_path):
+        for slide in prs.slides:
+            for shp in slide.shapes:
+                if shp.top >= build_deck.BODY_TOP:
+                    assert (shp.top - build_deck.BODY_TOP) % build_deck._px(8) == 0, shp.name
+
+def test_read_body_text_tops_the_body_region(tmp_path):
+    prs = list(_grid_decks(tmp_path))[1]
+    body = _named(prs.slides[2], lambda s: s.has_text_frame and s.text_frame.text.startswith("What the presenter"))
+    assert body.top == build_deck.BODY_TOP
+    assert (body.left, body.width) == build_deck.span(1, 8)
+
+def test_template_body_scales_with_the_slide(tmp_path):
+    tpl = tmp_path / "tpl.pptx"
+    Presentation().save(tpl)  # default python-pptx template: 10 x 7.5 in, 4:3
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_bullets", "title": "Templated claim", "bullets": ["a"]}], template=str(tpl)), out)
+    prs = Presentation(out)
+    bul = _named(prs.slides[0], lambda s: s.has_text_frame and s.text_frame.text.startswith("•"))
+    sx = prs.slide_width / build_deck.SLIDE_W
+    left, width = build_deck.span(1, 8)
+    assert abs(bul.left - left * sx) <= 1 and abs(bul.width - width * sx) <= 1
+    assert bul.left + bul.width <= prs.slide_width - build_deck.MARGIN_X * sx + 1
