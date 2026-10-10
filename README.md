@@ -43,7 +43,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 ### Quality & Evaluation
 
-- `evaluate/SKILL.md` — Structured UX assessment. Heuristic evaluation (Nielsen's 10, scored), cognitive walkthroughs, anti-pattern detection, task success analysis. Routes findings to specific skills for resolution.
+- `evaluate/SKILL.md` — Structured UX assessment. Heuristic evaluation (Nielsen's 10, severity-ranked findings), cognitive walkthroughs, anti-pattern detection, task success analysis. Routes findings to specific skills for resolution.
 - `fortify/SKILL.md` — Edge cases and resilience. State inventory (9 states per screen), error recovery patterns, first-run experience design, stress testing, i18n readiness, timeout and latency handling.
 - `include/SKILL.md` — Accessibility as a design discipline. WCAG 2.2 for designers, screen reader flow design, keyboard navigation, cognitive and motor accessibility, inclusive design beyond compliance, testing methodology.
 

@@ -172,7 +172,7 @@ START: I have a design challenge
 - Interaction specs with state documentation
 
 ### Vigil (Quality + Resilience)
-- UX health scores (0-100) with heuristic breakdowns
+- Severity-ranked findings (P0-P3) with a verdict per heuristic
 - Anti-pattern verdicts with regulatory context
 - Cognitive walkthrough results (per-task, per-step)
 - Edge case and error recovery documentation
