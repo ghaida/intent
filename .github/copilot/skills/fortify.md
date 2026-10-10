@@ -10,8 +10,7 @@ description: >
   "what happens when", "what if the user", "stress test this", "what could go
   wrong", "harden this design", "edge case review", "what are the failure
   modes", zero states, timeout handling, or any question about how a design
-  behaves outside ideal conditions. The happy path is a fantasy — this skill
-  designs for the world your users actually live in.
+  behaves outside ideal conditions.
 version: 1.7.0
 user-invocable: true
 ---
