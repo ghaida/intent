@@ -9,7 +9,7 @@ description: >
   to /present), writing test plans, building copy matrices, addressing
   edge cases, packaging designs "for engineering," or saying "write the
   spec," "prepare the handoff," or "document this."
-version: 1.6.0
+version: 1.7.0
 user-invocable: true
 ---
 

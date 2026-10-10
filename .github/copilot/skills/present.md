@@ -14,7 +14,7 @@ description: >
   strategy from /strategize, metrics from /measure, screens from /wireframe;
   engineering specs belong to /specify. This skill arranges and represents
   existing work, and marks gaps instead of inventing evidence.
-version: 1.6.0
+version: 1.7.0
 user-invocable: true
 ---
 
