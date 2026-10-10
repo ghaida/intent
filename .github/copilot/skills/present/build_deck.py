@@ -32,7 +32,7 @@ MARGIN_X, MARGIN_Y = _px(80), _px(64)
 COL, GUTTER = _px(64), _px(32)
 TITLE_TOP, TITLE_H = _px(64), _px(128)
 BODY_TOP, BODY_BOTTOM = _px(224), _px(656)
-HERO_H, SUB_H, BODY_H, QUOTE_H, ATTR_H, STEP = 160, 48, 128, 192, 48, 16  # stage units, all on the 8-unit rhythm
+HERO_H, SUB_H, BODY_H, QUOTE_H, ATTR_H, SRC_H, STEP = 160, 48, 128, 192, 48, 32, 16  # stage units, all on the 8-unit rhythm
 
 def span(first_col, n_cols, sx=1.0):
     """(left, width) in EMU of n_cols columns starting at first_col (1-based).
@@ -51,6 +51,11 @@ def _validate(spec):
             raise ValueError(f"slide {i}: unknown layout {s.get('layout')!r}; use one of {sorted(LAYOUTS)}")
         if not str(s.get("title", "")).strip():
             raise ValueError(f"slide {i}: every slide needs a title")
+        for key in ("title", "subtitle", "body", "quote", "attribution", "source", "notes"):
+            if "\u2014" in str(s.get(key, "")):
+                raise ValueError(f"slide {i}: no em-dash in {key}; use a period, a colon or a comma")
+        if any("\u2014" in str(x) for x in s.get("bullets", []) if isinstance(x, str)):
+            raise ValueError(f"slide {i}: no em-dash in bullets; use a period, a colon or a comma")
         notes = str(s.get("notes", "")).strip()
         if notes:
             if re.search(r"^\s*([-*•]|\d+[.)])\s", notes, re.M):
@@ -212,14 +217,15 @@ def build(spec, out_path):
         if mode == "read" and s.get("body"):
             top, h = place(BODY_H)
             _text(slide, s["body"], X(1, 8)[0], top, X(1, 8)[1], h, sz["body"], INK)
-        room = max(656 - y, 48)  # stage units from the cursor to the bottom of the body region
+        src = SRC_H + STEP if s.get("source") else 0  # the source line keeps the last band of the body region
+        room = max(656 - src - y, 48)  # stage units from the cursor to the bottom of the body region
         top = Y(y)
         if lay == "quote" and s.get("quote"):
             qh = min(QUOTE_H, room - (ATTR_H + STEP if s.get("attribution") else 0))
             left, w = X(1, 9)
             _text(slide, f"“{s['quote']}”", left, top, w, Y(qh), sz["body"] + 4, INK)
             if s.get("attribution"):
-                _text(slide, f"— {s['attribution']}", left, Y(y + qh + STEP), w, Y(ATTR_H), sz["small"], MUTED)
+                _text(slide, s["attribution"], left, Y(y + qh + STEP), w, Y(ATTR_H), sz["small"], MUTED)
         visual = s.get("chart") or s.get("image") or s.get("placeholder")
         both = bool(visual and s.get("bullets"))
         vleft, vw = X(1, 7) if both else X(1, 12)
@@ -236,6 +242,9 @@ def build(spec, out_path):
             _placeholder(slide, s["placeholder"], s["alt"], vleft, top, vw, vh)
         if s.get("bullets"):
             _bullets(slide, s["bullets"], bleft, top, bw, vh, sz["body"])
+        if s.get("source"):
+            left, w = X(1, 12)
+            _text(slide, s["source"], left, Y(656 - SRC_H), w, Y(SRC_H), sz["small"], MUTED)
         if s.get("notes"):
             slide.notes_slide.notes_text_frame.text = s["notes"]
     prs.save(out_path)

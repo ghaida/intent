@@ -62,6 +62,8 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Cut anything that doesn't carry meaning.** No stock imagery, decorative icons, logo on every slide, agenda slides that only list section names, or "Thank you / Questions?" endings. Each costs attention and returns nothing.
 
+**Every word earns its place.** Slide copy and notes say the thing once, in the fewest words that keep it precise. Cut what the context already supplies ("in this meeting", "today we'll look at"), hedges, intensifiers, throat-clearing, and stock phrases that sound written by a machine ("delve", "leverage", "it's worth noting", "not just X but Y"). No em-dashes: use a period, a colon, or a comma. A padded slide reads as unsure of its own claim.
+
 **One frame on every slide.** Every slide shares the same margins and an invisible 12-column grid; elements snap to it and nothing touches the edge. The shared frame is what makes slides read as one argument instead of a stack of pages, and content at the edge looks cramped and gets cropped by projectors.
 
 **Present decisions, not screens.** Organize around the decisions and tradeoffs; screens are evidence for them. Show process only when it makes a disputed claim credible — "we tested this with eleven users" earns its slide when someone doubts the finding, not otherwise. Options always come with a recommendation; a menu without one hands your job to the room. Review slides state the feedback wanted and the feedback not wanted, so the room critiques the decision on the table rather than the font. Fidelity matches the decision: structural questions get wireframes, not polished comps.
@@ -85,6 +87,7 @@ Check every deck against these at pre-flight. Each has a recognition test so the
 | **Topic titles** | Titles are noun phrases; read alone, the headlines say nothing |
 | **Teleprompter slide** | The slide carries the sentences that will be said aloud |
 | **Essay notes** | Notes run past three sentences or into bullets; the presenter can't find their place mid-sentence |
+| **Filler copy** | A word could go without changing the meaning: context the room already has, hedges, stock phrases, em-dashes |
 | **Bullet cascade** | Indentation stands in for logic the slide never states |
 | **Buried lede** | The fact that changes the decision sits low on a slide, or in the appendix under a neutral title |
 | **Screen tour** | Titles are screen names, in flow order |
@@ -189,6 +192,7 @@ Before delivering, check:
 - **Accessibility basics** — type sizes, contrast, color not the only signal, unique titles, alt text on every visual
 - **On the grid** — everything sits inside the margins and on the grid, the same frame on every slide
 - **Glanceable notes** — three sentences at most per slide, plain prose, no bullets
+- **Word-level cut** — read every title, bullet and note once more and delete any word the meaning survives without
 - **Named-pitfall scan** — every row of the table above
 
 Fix what's fixable. Deliver with the remaining gaps listed — an honest gap is more useful than a confident hole.
@@ -234,7 +238,7 @@ Install `python-pptx` with pip if it's missing. The spec shape:
       "layout": "claim_chart",
       "title": "A full-sentence claim",
       "subtitle": "optional",
-      "body": "read decks only — the explanatory text block",
+      "body": "read decks only: the explanatory text block",
       "bullets": ["flat", "strings", "only"],
       "chart": {"type": "bar", "categories": ["A", "B"], "series": [{"name": "n", "values": [4, 2]}], "highlight": 0},
       "image": "path/to/screen.png",
@@ -242,7 +246,8 @@ Install `python-pptx` with pip if it's missing. The spec shape:
       "quote": "for the quote layout",
       "attribution": "P4, ops lead",
       "alt": "what the visual means",
-      "notes": "three sentences at most, plain prose — the builder rejects more, or bullets"
+      "source": "the source line, small, at the foot of the slide",
+      "notes": "three sentences at most, plain prose; the builder rejects more, bullets, or em-dashes"
     }
   ]
 }
