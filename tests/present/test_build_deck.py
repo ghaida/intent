@@ -269,3 +269,13 @@ def test_template_body_scales_with_the_slide(tmp_path):
     left, width = build_deck.span(1, 8)
     assert abs(bul.left - left * sx) <= 1 and abs(bul.width - width * sx) <= 1
     assert bul.left + bul.width <= prs.slide_width - build_deck.MARGIN_X * sx + 1
+
+
+def test_chart_has_no_automatic_title(tmp_path):
+    out = tmp_path / "d.pptx"
+    build_deck.build(spec([{"layout": "claim_chart", "title": "A third of sessions abandon at step 2",
+        "chart": {"type": "bar", "categories": ["Step 1", "Step 2"], "series": [{"name": "Abandon %", "values": [8, 34]}]},
+        "alt": "Step 2 abandons at 34%"}]), out)
+    ch = next(s for s in Presentation(out).slides[0].shapes if s.has_chart)
+    deleted = ch.chart._chartSpace.xpath('c:chart/c:autoTitleDeleted')
+    assert deleted and deleted[0].get('val') in ('1', 'true')

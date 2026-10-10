@@ -111,6 +111,7 @@ def _chart(slide, c, left, top, width, height, alt, label_size):
     ch = gf.chart
     if c["type"] == "bar":
         ch.value_axis.minimum_scale = 0
+    ch.has_title = False   # the slide's claim title is the chart's title
     ch.has_legend = False  # label directly: values on the marks, series identity from the accent + the claim title
     plot = ch.plots[0]
     plot.has_data_labels = True
