@@ -75,8 +75,19 @@
   border-bottom: 1px solid;
 }
 
+.deck-examples .deck-frame table {
+  font-variant-numeric: normal;
+}
+
 .deck-examples .deck-frame th {
   font-weight: bold;
+  /* the site's base th is mono, 0.75rem, uppercase, tracked, nowrap */
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  color: inherit;
 }
 
 /* ── Theme tokens ── */
@@ -150,38 +161,23 @@
 /* read decks: the body text block always sits in eight columns, above what follows */
 .deck-examples .deck-frame.read .slide > .body-text { grid-column: 1 / span 8; }
 
-/* ── from nearby-mvp-go-decision.html ── */
-/* Deck-specific visuals. Theme tokens only; text never below 18pt (24px). */
-.deck-examples .deck-frame svg text { font-family: var(--font); }
-.deck-examples .deck-frame .f-ink { fill: var(--ink); } .deck-examples .deck-frame .f-muted { fill: var(--muted); } .deck-examples .deck-frame .f-rule { fill: var(--rule); }
-.deck-examples .deck-frame .f-accent { fill: var(--accent); } .deck-examples .deck-frame .f-surface { fill: var(--surface); }
-.deck-examples .deck-frame .s-ink { stroke: var(--ink); } .deck-examples .deck-frame .s-rule { stroke: var(--rule); } .deck-examples .deck-frame .s-accent { stroke: var(--accent); }
-.deck-examples .deck-frame .t24 { font-size: 24px; } .deck-examples .deck-frame .t28 { font-size: 28px; } .deck-examples .deck-frame .b { font-weight: 700; }
-.deck-examples .deck-frame .visual p { margin: 0; }
-.deck-examples .deck-frame .trust-card { align-self: start !important; background: var(--surface); border: 1px solid var(--rule); padding: 32px; font-size: var(--t-body); line-height: var(--l-body); }
-.deck-examples .deck-frame .trust-card .tc-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; font-weight: 700; }
-.deck-examples .deck-frame .trust-card .tc-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--rule); flex: none; }
-.deck-examples .deck-frame .trust-card p + p { margin-top: 8px; }
-.deck-examples .deck-frame .options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; align-self: start !important; }
-.deck-examples .deck-frame .opt { border: 2px solid var(--rule); padding: 32px; }
-.deck-examples .deck-frame .opt-rec { border: 4px solid var(--accent); padding: 30px; }
-.deck-examples .deck-frame .opt-label { color: var(--muted); font-size: var(--t-small); line-height: var(--l-small); }
-.deck-examples .deck-frame .opt-rec .opt-label { color: var(--accent); font-weight: 700; }
-.deck-examples .deck-frame .opt-title { font-weight: 700; font-size: var(--t-body); line-height: var(--l-body); margin-top: 8px !important; }
-.deck-examples .deck-frame .opt-body { font-size: var(--t-small); line-height: var(--l-small); margin-top: 16px !important; }
-.deck-examples .deck-frame .blockers table { width: 100%; border-collapse: collapse; font-size: var(--t-small); line-height: var(--l-small); }
-.deck-examples .deck-frame .blockers th { text-align: left; color: var(--muted); font-weight: 400; border-bottom: 2px solid var(--ink); padding: 0 16px 8px 0; }
-.deck-examples .deck-frame .blockers td { border-bottom: 1px solid var(--rule); padding: 16px 16px 16px 0; vertical-align: top; }
-.deck-examples .deck-frame .blockers td:first-child { font-weight: 700; width: 40%; }
-.deck-examples .deck-frame .layers { display: flex; flex-direction: column; gap: 8px; align-self: start !important; font-size: var(--t-small); line-height: var(--l-small); }
-.deck-examples .deck-frame .layer { display: grid; grid-template-columns: 136px 1fr; gap: 16px; background: var(--surface); border: 1px solid var(--rule); padding: 16px 24px; }
-.deck-examples .deck-frame .layer-k { font-weight: 700; }
-.deck-examples .deck-frame .metrics { display: flex; flex-direction: column; gap: 24px; align-self: start !important; }
-.deck-examples .deck-frame .m-star { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; border: 4px solid var(--accent); padding: 20px 28px; }
-.deck-examples .deck-frame .m-star .m-k { color: var(--accent); font-weight: 700; font-size: var(--t-small); }
-.deck-examples .deck-frame .m-star .m-v { font-weight: 700; font-size: var(--t-body); line-height: var(--l-body); }
-.deck-examples .deck-frame .m-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.deck-examples .deck-frame .m-tile { display: flex; flex-direction: column; border-top: 2px solid var(--ink); padding-top: 8px; font-size: var(--t-small); line-height: var(--l-small); }
-.deck-examples .deck-frame .m-tile .m-v { font-weight: 700; font-size: var(--t-title); line-height: var(--l-title); }
-.deck-examples .deck-frame .m-refuse { font-size: var(--t-small); line-height: var(--l-small); color: var(--muted); }
-.deck-examples .deck-frame .m-refuse strong { color: var(--ink); }
+/* ── from nearby-mvp-ready-to-build-and-test-in-one-neighborhood.html ── */
+/* Deck-specific additions. Visuals stop 48 above the frame bottom so the source line never overlaps them. */
+.deck-examples .deck-frame .slide > .placeholder, .deck-examples .deck-frame .slide > .visual { margin-bottom: 48px; }
+.deck-examples .deck-frame .deck-svg text { fill: var(--ink); font-family: var(--font); }
+.deck-examples .deck-frame .deck-svg .t-muted { fill: var(--muted); }
+.deck-examples .deck-frame .deck-svg .t-accent { fill: var(--accent); }
+.deck-examples .deck-frame .deck-svg .bar { fill: var(--rule); }
+.deck-examples .deck-frame .deck-svg .bar-hi { fill: var(--accent); }
+.deck-examples .deck-frame .deck-svg .axis { stroke: var(--muted); stroke-width: 2; }
+.deck-examples .deck-frame .deck-svg .target { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 8; }
+.deck-examples .deck-frame .deck-svg .box { fill: var(--surface); stroke: var(--rule); stroke-width: 2; }
+.deck-examples .deck-frame .deck-svg .box-hi { fill: var(--canvas); stroke: var(--accent); stroke-width: 3; }
+.deck-examples .deck-frame .deck-svg .arrow { stroke: var(--muted); stroke-width: 2; fill: none; }
+.deck-examples .deck-frame .deck-svg .head { fill: var(--muted); }
+.deck-examples .deck-frame .deck-table { width: 100%; border-collapse: collapse; font-size: var(--t-small); line-height: var(--l-small); margin: 0; }
+.deck-examples .deck-frame .deck-table th, .deck-examples .deck-frame .deck-table td { text-align: left; vertical-align: top; padding: 8px 32px 8px 0; border: 0; border-bottom: 1px solid var(--rule); }
+.deck-examples .deck-frame .deck-table th { color: var(--muted); font-weight: 400; }
+.deck-examples .deck-frame .deck-table td.strong { font-weight: 700; }
+.deck-examples .deck-frame .deck-table tr.refused td { color: var(--muted); border-bottom: 0; padding-top: 16px; }
+  
