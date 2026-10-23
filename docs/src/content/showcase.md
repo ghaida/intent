@@ -226,7 +226,7 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 Findings will be organized by theme, not by participant. Each states how many of the 13 interviews showed it, with anonymized quotes and the design implication.
 
 ## /blueprint
-agent: Sage
+agent: Wren
 summary: Mapped the full service blueprint — actors, frontstage actions, backstage processes, and critical dependencies.
 
 We mapped the invisible machinery behind a simple exchange. What looks like "I want that, here's $5" actually involves geolocation, notification timing, trust inference, content moderation, and a handoff that happens on a physical sidewalk with no platform involvement. The blueprint revealed three critical failure points we hadn't considered.
@@ -678,7 +678,7 @@ Two findings block launch, both in the handoff between neighbors. Five more caus
 
 **The post screen invites the seller's street into public text.** On Post an item, the description hint asks for "a line on size, wear, and pickup" and the sample answer ends "Porch pickup on Birch St."; Flow 1's pickup-preference step, and its map preview of the location neighbors will see, are both missing. The product's own example teaches sellers to name their street in public, the outcome the brief warns against: "a stranger knows where you live". *Violates error prevention. Restore the pickup step and the location preview on Post, and rewrite the description hint so it never asks for a street.*
 
-**Sarah's moving week hits two limits no one designed for.** New accounts are capped at 3 active listings until a first exchange completes, and every account at 5 pushes a day, while the seller the posting flow is built for posts in bursts: Sarah, three weeks in the neighborhood, has a couch, a coffee table and three lamps to clear by Saturday, each with its own interests and pickup reminder. Neither limit has copy, a screen or a priority order, so her fourth listing fails without explanation and a pickup reminder can drop silently on the day she needs it most. *Violates error recovery, and visibility of system status. Give the listing cap and the push cap copy, a screen and a priority order, with pickup reminders ranked above the digest.*
+**Sarah's moving week hits two limits the design did not cover.** New accounts are capped at 3 active listings until a first exchange completes, and every account at 5 pushes a day, while the seller the posting flow is built for posts in bursts: Sarah, three weeks in the neighborhood, has a couch, a coffee table and three lamps to clear by Saturday, each with its own interests and pickup reminder. Neither limit has copy, a screen or a priority order, so her fourth listing fails without explanation and a pickup reminder can drop silently on the day she needs it most. *Violates error recovery, and visibility of system status. Give the listing cap and the push cap copy, a screen and a priority order, with pickup reminders ranked above the digest.*
 
 **Reports go to an organizer with no screen.** The blueprint makes organizers the first line of moderation and Flow 4 flags harassment to them silently, but no flow, tab or wireframe gives Diane a place to see a flag, hide a listing or warn a user, and the only safety control anyone else has is the report button on messages. Reported users lose messaging "pending review" that nobody can perform, and the people most likely to bring their neighborhood onto Nearby find no place for their work. *Violates user control and freedom, and visibility of system status. Give organizers a place to see a flag, hide a listing and warn a user, and let anyone report a listing.*
 
@@ -1007,7 +1007,7 @@ Example: "Blue IKEA bookshelf, free, 4 minutes away, posted by Jake, your neighb
 - **Low vision and map readability:** Map pins use high-contrast colors with luminance differentiation, not just hue. Price labels on pins use minimum 14px text. "Free" items use a distinct pin shape to be distinguishable without color perception.
 
 ## /transpose
-agent: Rune
+agent: Wren
 summary: Analyzed mobile-first vs. web experience, designed for offline scenarios and cross-device continuity.
 
 We designed Nearby for the reality that most exchanges happen on phones, on the move — someone walking past a "FREE" sign, someone browsing while sitting on their porch. But we also designed for the laptop-at-kitchen-table moment: batch-posting after a decluttering weekend, or browsing casually on a bigger screen. And we confronted the offline problem head-on, because not every sidewalk has signal.
@@ -1083,7 +1083,7 @@ Nearby must work on sidewalks, in basements, and on subway platforms. "No signal
 **Cross-device anti-pattern avoided:** No "continue where you left off" interstitials. The state just syncs. If you open the laptop and the app shows your neighborhood, you don't need a modal telling you it synced. Seamless is the point.
 
 ## /localize
-agent: Rune
+agent: Wren
 summary: Mapped cultural adaptation needs for trust signals, payment norms, content, and RTL support.
 
 We examined what happens when Nearby crosses cultural boundaries. A hyperlocal marketplace is deeply embedded in local norms — how people negotiate, how they build trust, what they're comfortable exchanging with strangers, and what "neighbor" even means. We mapped the changes needed for five distinct cultural contexts and surfaced the assumptions baked into the current design.
@@ -1168,7 +1168,7 @@ Full layout mirroring for Arabic, Hebrew, and Urdu. The entire spatial model fli
 Does the Western marketplace model — individual sellers, posted prices, bilateral exchange — translate across cultures? In many communities, exchange is communal, not transactional. Things circulate through extended family networks, religious institutions, or community centers without ever being "listed." The bazaar model assumes negotiation. The gift economy model assumes reciprocity over time, not transaction by transaction. By building a marketplace app, are we importing a cultural frame that only fits some of our users? What would Nearby look like if it were designed for circular exchange rather than linear transactions?
 
 ## /measure
-agent: Rune
+agent: Vigil
 summary: Defined success metrics focused on community health and trust density, not just transaction volume.
 
 We rejected GMV as a north star. For Nearby, gross merchandise value is meaningless — a neighborhood where everyone gives things away for free is a more successful neighborhood than one where everyone haggles. Instead, we designed a measurement framework around exchange density, trust formation, and community health, with explicit counter-metrics to catch growth patterns that harm the product.
@@ -1258,15 +1258,15 @@ These are guardrails. If a primary metric improves while a counter-metric degrad
 
 ## /specify
 agent: Rune
-summary: Packaged the posting and browsing scope for the build: the brief, blueprint, flows, site map, wireframes, copy, states, accessibility and metrics, with one page that says how they fit.
+summary: Packaged the posting scope for the build: the brief, blueprint, flows, site map, wireframes, copy, states, accessibility and metrics, with one page that says how they fit.
 
-The design was approved for posting and browsing, and that scope had to be built while the exchange between neighbors was still being redesigned. Nothing was re-described: the brief, the blueprint, the flows, the site map, the wireframes, the copy deck, the state inventory, the accessibility audit and the measurement framework are the handoff, and the only new writing is the page in front of them. It says what Nearby is, what is in the package and in what order to read it, how each drawn screen maps onto its flow step, its place in the navigation, the service behind it and the states drawn for it, and what the builder decides. No pixel specs and no API contracts: the stack, the visual design and the walking-radius implementation are the builder's, with the design's inputs and tiers fixed. The readiness check ran first: the brief approved, Browse, Post an item and Posted drawn and approved, and every screen the two flows name accounted for. The exchange's screens are not drawn, so they are not in this package; they wait for the coordination flow the evaluation asked for, and a second package. The ethical review went to the decision log.
+The design was approved for posting, and that scope had to be built while browsing's item detail and the exchange between neighbors were still being redesigned. Nothing was re-described: the brief, the blueprint, the flows, the site map, the wireframes, the copy deck, the state inventory, the accessibility audit and the measurement framework are the handoff, and the only new writing is the page in front of them. It says what Nearby is, what is in the package and in what order to read it, how each drawn screen maps onto its flow step, its place in the navigation, the service behind it and the states drawn for it, and what the builder decides. No pixel specs and no API contracts: the stack, the visual design and the walking-radius implementation are the builder's, with the design's inputs and tiers fixed. The readiness check ran first: the brief approved; Post an item, with the pickup step and the location preview restored after the evaluation, and Posted drawn and approved; every screen Flow 1 names accounted for. Browse rides along as the home the flow returns to. Item detail, Activity and the pickup screen are not drawn, so browsing in full and the exchange are not in this package; they wait for the coordination flow the evaluation asked for, and a second package. The ethical review went to the decision log.
 
 ### Output
 
-# Nearby: posting and browsing
+# Nearby: posting
 
-Nearby is a hyperlocal marketplace for the people within walking distance: neighbors post what they are getting rid of, neighbors nearby see it on a map and in a list, and an exchange ends at someone's door. This package covers posting and browsing, for sellers clearing a home under time pressure and buyers looking on the walk home. The exchange from interest to pickup is packaged separately once its flow is settled.
+Nearby is a hyperlocal marketplace for the people within walking distance: neighbors post what they are getting rid of, neighbors nearby see it on a map and in a list, and an exchange ends at someone's door. This package covers posting, for sellers clearing a home under time pressure, and Browse as the home the flow returns to. Browsing in full and the exchange from interest to pickup are packaged separately once item detail and the coordination flow are settled.
 
 ## Contents
 
@@ -1274,9 +1274,9 @@ Nearby is a hyperlocal marketplace for the people within walking distance: neigh
 |---|---|---|
 | Brief | ../brief-nearby.md | The opportunity, the hypothesis, the MVP scope, the guiding principles |
 | Service blueprint | ../blueprint-nearby.html | Actors, frontstage and backstage, the walking radius, moderation, dependencies |
-| Flows | ../journey-nearby.html | Posting and discovering, with the three arcs they were designed against; buying and messaging, still moving |
+| Flows | ../journey-nearby.html | Posting, with the three arcs it was designed against; discovering, buying and messaging, still moving |
 | Site map | ../sitemap-nearby.html | The tab bar, the category taxonomy, search and browse |
-| Wireframes | ../wireframes-nearby.html | Browse, Post an item, Posted, with the prototype view of the posting flow |
+| Wireframes | ../wireframes-nearby.html | Post an item with its pickup step and preview, Posted, and Browse, with the prototype view of the posting flow |
 | Copy deck | ../copy-nearby.md | Voice, empty states, errors, trust signals |
 | State inventory | ../states-nearby.md | Ghost sellers, misrepresentation, cold start, abuse, limits, offline |
 | Accessibility audit | ../accessibility-nearby.md | Screen reader flow, keyboard map, remediation plan |
@@ -1289,8 +1289,8 @@ Nearby is a hyperlocal marketplace for the people within walking distance: neigh
 
 | Screen | Wireframe | Flow step | Navigation | Service behind it | States | Copy |
 |---|---|---|---|---|---|---|
-| Browse | Browse, map and list | Flow 2, discovering | Explore and List tabs | Walking-radius query; the listing feed | Empty neighborhood, approximate location, offline | Empty states; the Free badge; Pending as plain status |
-| Post an item | Post an item | Flow 1, steps 1 to 5 | Post tab | Photo upload; listing creation; the listing cap | Failed upload, lost connection, denied camera, cap reached | Field hints; the audience line above the commit button |
+| Browse | Browse, map and list | Home; Flow 2's entry, the rest of discovering waits on item detail | Explore and List tabs | Walking-radius query; the listing feed | Empty neighborhood, approximate location, offline | Empty states; the Free badge; Pending as plain status |
+| Post an item | Post an item, with pickup and preview | Flow 1, steps 1 to 5 | Post tab | Photo upload; listing creation; the listing cap | Failed upload, lost connection, denied camera, cap reached | Field hints; the audience line above the commit button |
 | Posted | Posted | Flow 1, confirmation | Post tab | Seller notification batching | Quiet neighborhood | The confirmation that names the audience |
 
 ## Left to the builder
@@ -1306,13 +1306,13 @@ Nearby is a hyperlocal marketplace for the people within walking distance: neigh
 - Do Trade and Wanted ship? (brief; Flow 1, step 3)
 - What defines a neighborhood: the walking radius or the named area? (blueprint; site map)
 - Are the daily digest and the new-item dots opt-in? (blueprint; measurement framework)
-- Item detail, Activity and the pickup screen are not drawn; the exchange is packaged once the coordination flow exists (evaluation; flows 3 and 4)
+- When are item detail, Activity and the pickup screen drawn, so browsing and the exchange can be packaged? (evaluation; flows 2 to 4)
 
 ## /present
 agent: Noor
 summary: Turned the whole engagement into a 13-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, and an unconditional go would have won its yes by leaving them out, so the deck asks to start building the posting and browsing scope from its package now and to hold the launch until the handoff works. The story runs situation, complication, resolution, and the complication is the evaluation's own finding, not one sized to fit the ask. The outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor rates appear only as labeled estimates, the unsourced market size and "why now" stayed out, and the seller in the walkthrough is labeled as a design scenario, not a research participant.
+The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, and an unconditional go would have won its yes by leaving them out, so the deck asks to start building the posting scope from its package now and to hold the launch until the handoff works. The story runs situation, complication, resolution, and the complication is the evaluation's own finding, not one sized to fit the ask. The outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor rates appear only as labeled estimates, the unsourced market size and "why now" stayed out, and the seller in the walkthrough is labeled as a design scenario, not a research participant.
 
 ### Output
 
@@ -1331,11 +1331,11 @@ Every number traces to an earlier chapter, and the source line at the foot of ea
 3. **The foundations hold: no dark patterns, and trust without star ratings** | Visual: two panels quoting the interface copy | Source: /evaluate anti-pattern verdict and positive findings; /wireframe; /articulate trust signal copy
 4. **Two findings block launch, and both sit in the handoff between neighbors** | Visual: unit chart, one square per finding, by severity | Source: /evaluate priority issues
 5. **A seller can list her couch, then can't get it picked up** | Visual: the eight walkthrough steps with their verdicts | Source: /evaluate cognitive walkthrough
-6. **The brief, the flows and the screens start an exchange three ways** | Visual: three panels side by side | Source: /evaluate #1; /strategize MVP scope; /journey flows 3 and 4; /wireframe
-7. **On a first exchange, nothing gets the buyer to the seller's door** | Visual: three closed paths for an address, one outcome | Source: /evaluate #2; /intent hard constraints; /journey flows 3 and 4
-8. **Decide today: quick replies once the seller accepts, no open messaging** | Visual: the recommended option beside the drawn one | Source: /blueprint decision documentation; /journey flow 4; /evaluate #1 and #2
+6. **The brief, the flows and the screens start an exchange three ways** | Visual: three panels side by side | Source: /evaluate, the exchange-start finding; /strategize MVP scope; /journey flows 3 and 4; /wireframe
+7. **On a first exchange, nothing gets the buyer to the seller's door** | Visual: three closed paths for an address, one outcome | Source: /evaluate, the pickup finding; /intent hard constraints; /journey flows 3 and 4
+8. **Decide today: quick replies once the seller accepts, no open messaging** | Visual: the recommended option beside the drawn one | Source: /blueprint decision documentation; /journey flow 4; /evaluate, both blocking findings
 9. **The bet's assumptions are untested: the interviews were written, not run** | Visual: the hypothesis's "because" clause, quoted | Source: /strategize measurable hypothesis; /investigate research plan
-10. **Beyond the blockers, two major issues need new design** | Visual: the five major issues, grouped into new design and redraws | Source: /evaluate #3 to #7
+10. **Beyond the blockers, two major issues need new design** | Visual: the five major issues, grouped into new design and redraws | Source: /evaluate, the five major findings
 11. **Engineering starts on the packaged scope while design fixes the handoff** | Visual: plan in three stages: today, in parallel, before launch | Source: /evaluate recommended actions; /investigate timeline; /specify
 12. **The MVP is judged on completed exchanges, never time in app** | Visual: four target tiles and the counter-metrics | Source: /measure framework
 13. **Approve the build today; launch once the handoff between neighbors works** | Visual: the ask, with go, gate and scope | Source: /evaluate recommended actions; /investigate timeline

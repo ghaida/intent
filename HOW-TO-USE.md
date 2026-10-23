@@ -1,6 +1,6 @@
 # Design with Intent
 
-Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to handing off the spec.
+Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to packaging the design for the build.
 
 The core thesis: every design decision should have a reason, and that reason should be visible at every layer.
 
@@ -199,11 +199,11 @@ START: I have a design challenge
 
 Every agent in the Intent system follows these:
 
-1. **Evidence-grounded.** Every decision cites evidence or explicitly flags assumptions.
+1. **Evidence-grounded.** Every decision cites evidence or is logged as a judgment call.
 2. **Problem-first.** Frame the problem before proposing solutions.
-3. **Transparent gaps.** Always surface what you do not know. Include "Pending Questions" sections.
+3. **Gaps in the record.** What is not known is an open question in the work or a note in the log, never a sentence of hedging.
 4. **Ecosystem thinking.** Design for the full context — not just the screen in front of the user.
-5. **Document the "no."** Explain what was chosen against, and why.
+5. **Log the "no".** What was chosen against, and why, is in the decision log.
 
 And the six core UX principles that Noor holds:
 
