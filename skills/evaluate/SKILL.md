@@ -54,7 +54,7 @@ Evaluate is unique in the Intent system because it routes to every other skill. 
 
 - **`/strategize`** — Problem framing unclear? The experience seems well-built but aimed at the wrong problem? The five foundational questions haven't been asked? In the reply, point to `/strategize` for strategic reframing.
 
-- **`/specify`** — Findings need to become engineering specs? Remediation requires detailed handoff documentation? In the reply, point to `/specify` for implementation-ready documentation.
+- **`/specify`** — The design is approved and someone needs to build it? In the reply, point to `/specify` to package it.
 
 - **`/philosopher`** — Something feels wrong but you can't name it? The experience is technically sound but emotionally hollow? The design is competent but forgettable? Enter `/philosopher` mode to sit with the discomfort before diagnosing.
 
