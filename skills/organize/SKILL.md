@@ -407,7 +407,7 @@ Structure your IA deliverable as needed for the problem at hand. Not every secti
    Category definitions, hierarchy rules, polyhierarchy decisions, scalability notes. How new content gets classified.
 
 5. **Labeling Guide**
-   Approved labels with rationale. Naming conventions. Labels that were tested and rejected (and why). Guidelines for naming new items.
+   Approved labels with rationale. Naming conventions. Labels tested and rejected, with the test result that rejected them. Guidelines for naming new items.
 
 6. **Search/Browse Strategy**
    When users search vs. browse. Autocomplete behavior. Filter design. Zero-results handling. Browse entry points.

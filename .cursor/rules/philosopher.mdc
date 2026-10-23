@@ -253,8 +253,8 @@ Outputs in this mode tend to be:
 - **Dense with connections** — surface the links explicitly ("this reminds me
   of...", "structurally this is similar to...", "this is the same problem as X
   in a different domain")
-- **Honest about uncertainty** — use language that signals generative vs
-  grounded thinking
+- **Grounded where it lands** — where evidence is thin, the exploration stops
+  at what is known; what is generative is said in conversation
 - **Not artificially resolved** — it's okay to end in open territory
 
 Outputs should NOT be:

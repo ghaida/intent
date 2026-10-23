@@ -187,7 +187,7 @@ Structure your content deliverable as needed for the problem at hand. Not every 
    Product attributes, voice principles with boundaries, tone spectrum across contexts, do/don't examples for each principle. Real product copy examples, not abstract rules.
 
 2. **Copy Deck**
-   Screen-by-screen copy with variants. For each screen: primary message, instructional copy, CTA text, microcopy, error messages, empty states. Flag localization concerns. Note where copy depends on system state or user data.
+   Screen-by-screen copy with variants. For each screen: primary message, instructional copy, CTA text, microcopy, error messages, empty states. Mark the strings that expand in translation and the ones that depend on system state or user data.
 
 3. **Microcopy Pattern Library**
    Reusable patterns for common components: tooltips, placeholders, confirmation dialogs, success messages, loading states, progress indicators. Each pattern with usage guidelines, character limits, and examples.
