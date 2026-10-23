@@ -514,15 +514,15 @@ Cut to the request: the sections it calls for and no others. Scalability and evo
 
 ### Process architecture
 
-- Process flows with decision points and branching logic
+- Process flows with decision points and branching logic; a decision point that is a failure names it by title
 - Handoff points between teams/systems
 - Timing constraints and sequencing dependencies
-- Exception handling and escalation paths
+- Exception handling and escalation paths, each failure named by title; the failure table is its only description
 - Operational feasibility assessment
 
 ### State & failure analysis
 
-Each failure is described once, here; other sections name it without describing it again. Where a rule is unsettled, the table cell carries the chosen default and the log records why; no cell says open or proposed, and Open questions hold only what only the designer can answer.
+Each failure is described once, here; other sections name it without describing it again. Where a rule is unsettled, the table cell carries the chosen default and the log records why; no cell says open or proposed, and Open questions hold only what only the designer can answer. How a session or record ends, and when its data is deleted, is a row of its own, including a session left open with every player gone.
 
 - System states and transition triggers
 - Failure modes with user impact and blast radius

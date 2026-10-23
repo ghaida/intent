@@ -231,8 +231,10 @@ touch targets, skip navigation]
 
 ## Screen Reader Flow Documentation
 [Reading order only where it departs from the visual order]
-[Live region behavior: what is announced, how politely, where focus goes]
-[Landmarks, headings and form labels only where no finding covers them]
+[Live region behavior: what is announced, how politely, where focus goes,
+for every state change; this table is the only home for announcements]
+[Each labelling fix is part of its finding; the landmark structure is a
+line in the Robust findings]
 
 ## Keyboard Navigation Map
 [Tab order only where it departs from the visual order]

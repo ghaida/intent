@@ -227,7 +227,7 @@ The rule binds product strings as much as prose. A round number on every header 
 
 **No filler.** Nothing that announces what comes next, sums up what was just said, or classifies the sentence it sits in. No line about the document itself, no section lede that classifies what follows, no sentence that points at another section.
 
-**As long as the content.** Each fact appears once, in the section it belongs to; a failure described in one table is not described again in the next. Cutting a restatement never cuts a condition, a test or a citation.
+**As long as the content.** Each fact appears once, in the section it belongs to; a failure described in one table is not described again in the next. Cutting a restatement never cuts a condition, a test, a citation, or a value a builder sets: a timing, a size, a threshold, a string. A fact only a trimmed section held moves into the section that owns its subject.
 
 ## Scope boundaries
 

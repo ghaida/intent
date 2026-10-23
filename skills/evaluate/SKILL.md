@@ -261,7 +261,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
 [One line per heuristic: its name, holds / strained / broken, and the title of the finding that decides it]
 
 ## Cognitive Walkthrough Results
-[Per-task table of the steps that hesitate or fail, each naming the finding it supports or recording a failure no finding has; passing steps get no row, the four questions are its columns, and no paragraph explains the method]
+[Per-task table of the steps that hesitate or fail, each naming the finding it supports; a failure no finding has becomes a finding; passing steps get no row, the four questions are its columns, and no paragraph explains the method]
 
 ## Positive Findings
 [What to protect during redesign, a sentence each, nothing a verdict already said]

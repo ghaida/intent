@@ -240,7 +240,7 @@ behavior, recommended behavior, priority]
 
 **Prioritize ruthlessly.** Not every edge case is equally likely or equally damaging. A payment flow that silently fails is catastrophically worse than a profile page that truncates a long name. Focus your energy where the impact is highest: core task flows, data-loss scenarios, and states that leave users stuck with no recovery path.
 
-**Be specific about what "handle it" means.** "Handle the error state" is not a recommendation. "Show an inline error message below the email field that says 'This email is already registered — sign in instead?' with a link to the sign-in page" is a recommendation. Define the state, the message, and the recovery action, once, in the inventory.
+**Be specific about what "handle it" means.** "Handle the error state" is not a recommendation. "Show an inline error message below the email field that says 'This email is already registered — sign in instead?' with a link to the sign-in page" is a recommendation. Define the state, the message, and the recovery action, once, in the inventory, with its timings.
 
 **Respect the user's time and context.** Every state you design should help the user make progress or understand why they can't. Empty states should guide. Error states should suggest next steps. Loading states should set expectations. No state should be a dead end.
 
