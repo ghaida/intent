@@ -388,7 +388,7 @@ Model how a system behaves — including when things go wrong:
 - **State transitions**: What triggers each state change? (user action, system
   event, time-based trigger, external dependency change)
 - **Failure modes**: What are the ways this system can fail? For each failure
-  mode, what does the user experience? What does the operations team see?
+  mode, what does the user experience? What does the operations team see, when there is one?
 - **Cascade analysis**: When one component fails, what else breaks? Map the
   blast radius of failures.
 - **Recovery paths**: How does the system return to a healthy state? Is it
@@ -419,12 +419,12 @@ Think about how systems grow, break, and need to change:
 
 ### 6. The decision log
 
-Record the structural decisions that shape the system in the decision log:
-what was chosen and why, what was chosen against and why (so future teams do
-not re-litigate settled questions), the assumptions and which carry the most
-risk, the dependencies on other work, teams or systems, and what is deferred
-and when to revisit it. In the blueprint itself, open questions are the only
-one of these that appears, each a plain question.
+Record in the decision log the structural decisions someone might reopen:
+what was chosen and what was chosen against, and why, so future teams do not
+re-litigate settled questions. Dependencies belong in the blueprint's
+dependency section, and what is deferred is a line of scope in the overview.
+In the blueprint itself, open questions hold only what only the designer can
+answer, each a plain question.
 
 ## Systems that enable dark patterns
 
@@ -476,7 +476,7 @@ artifacts include:
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`blueprint-larkspur-refills.html`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Adapt depth to problem scope. Not every section applies to every engagement.
+Cut to the request: the sections it calls for and no others. Scalability and evolution, governance and ownership appear only when the request asks for them. Each failure is described once, in State & failure analysis.
 
 ### System overview
 
@@ -490,7 +490,7 @@ Adapt depth to problem scope. Not every section applies to every engagement.
 - Backstage: organizational processes and team actions
 - Support processes: tools, infrastructure, third-party dependencies
 - Lines of interaction and visibility
-- Pain points, bottlenecks, and failure points identified
+- Pain points and bottlenecks, each named in a line; failures are described in State & failure analysis
 
 ### Ecosystem & dependencies
 
@@ -509,12 +509,12 @@ Adapt depth to problem scope. Not every section applies to every engagement.
 
 ### State & failure analysis
 
-Each failure is described once, here; other sections name it without describing it again. Where a rule is unsettled, a table cell carries the chosen default, logged, and the question goes to Open questions; no cell says open or proposed.
+Each failure is described once, here; other sections name it without describing it again. Where a rule is unsettled, the table cell carries the chosen default and the log records why; no cell says open or proposed, and Open questions hold only what only the designer can answer.
 
 - System states and transition triggers
 - Failure modes with user impact and blast radius
 - Recovery paths and timelines
-- Graceful degradation tiers
+- Graceful degradation, inside the recovery paths rather than a table of its own
 
 ### Scalability & evolution
 

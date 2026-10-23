@@ -60,7 +60,7 @@ Evaluate is unique in the Intent system because it routes to every other skill. 
 
 - **Dark patterns detected?** — Flag the specific pattern, reference the Intent anti-pattern catalog, assign severity, and note the regulatory implications. Dark pattern findings are always critical or major — they represent potential user harm, not just degraded experience.
 
-**Say what changes:** In the report, each finding states the change in design terms. In the reply, group what you recommend by the skill that makes it, prioritize within each group, and give the team a clear sequence. The goal is a roadmap, not a laundry list.
+**Say what changes:** In the report, each finding states the change in design terms. In the reply, say in a sentence who is next and for what; the findings in severity order are the roadmap.
 
 ---
 
@@ -184,11 +184,11 @@ Define the key tasks users need to accomplish, then evaluate each one against co
 - Steps-to-completion — actual steps vs. minimum necessary steps
 - Recovery rate — percentage of errors that the user recovers from without abandoning
 
-You won't always have quantitative data. When evaluating designs (not live products), estimate these metrics based on your walkthrough findings. Head the column Estimated. Nothing else says so; instrumentation for real data is `/measure`'s, said in the reply.
+You won't always have quantitative data. When evaluating designs (not live products), these metrics are estimates the walkthrough already implies: include a task table only when the request asks for task success, with the column headed Estimated and nothing else saying so.
 
 ### 5. Assessment-to-action routing
 
-Every finding maps to a specific Intent skill. This map is for the reply: the report names the change, never the skill. The report closes with a "Recommended Actions" section where each action names what it changes, in order of severity.
+Every finding maps to a specific Intent skill. This map is for the reply: the report names the change, never the skill. The report closes with "Recommended Actions": the finding titles in the order to fix them.
 
 **What kind of change each category needs:**
 
@@ -235,7 +235,7 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`evaluation-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Use this structure for all evaluations. Adapt depth to scope — a quick review of a single flow doesn't need every section, but a comprehensive audit does.
+Use this structure, cut to the request: sections it did not call for are left out. The findings under Priority Issues are the only place a problem is described; every other section names findings by title or adds what they do not carry.
 
 ```
 # [What was reviewed]
@@ -258,17 +258,17 @@ Use this structure for all evaluations. Adapt depth to scope — a quick review 
 [Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
 
 ## Heuristic Verdicts
-[each heuristic by name, holds / strained / broken, with the finding that decides it]
+[One line per heuristic: its name, holds / strained / broken, and the title of the finding that decides it]
 
 ## Cognitive Walkthrough Results
-[Per-task, per-step table with pass/hesitation/failure ratings; the four questions are its columns, and no paragraph explains the method]
+[Per-task table of the steps that hesitate or fail, each naming the finding it supports or recording a failure no finding has; passing steps get no row, the four questions are its columns, and no paragraph explains the method]
 
 ## Positive Findings
-[What works well — patterns to protect and replicate]
+[What to protect during redesign, a sentence each, nothing a verdict already said]
 
 ## Recommended Actions
-[Each action names what it changes, in order of severity. No skill names,
-no finding numbers; findings carry no index.]
+[The finding titles in the order to fix them. The change is in each
+finding, so nothing is restated. No skill names, no numbers.]
 ```
 
 ---

@@ -42,7 +42,7 @@ Fortify works alongside the full Intent skill system, with especially tight conn
 
 ### 1. State inventory
 
-Every screen, component, and flow has states beyond "default." Most designs only spec the default state. Fortify enumerates all of them.
+Every screen, component, and flow has states beyond "default." Most designs only spec the default state. Fortify finds the ones the design is missing; a state the design already draws needs no row.
 
 **The state catalog:**
 
@@ -64,7 +64,7 @@ Every screen, component, and flow has states beyond "default." Most designs only
 
 **Overflow** — Too much data. 10,000 items in a list that was designed for 50. A username that's 200 characters. 500 unread notifications. A table with 40 columns. Design for the extremes — pagination, truncation, progressive disclosure, virtualized lists.
 
-**For each state, answer three questions:** What does the user see? What can the user do? How does the user recover or progress?
+**For each state that gets a row, answer three questions:** What does the user see? What can the user do? How does the user recover or progress?
 
 **Example: State inventory for a file upload component**
 
@@ -114,7 +114,7 @@ The first time a user encounters your product or feature is the most fragile mom
 
 ### 4. Stress testing prompts
 
-Systematic questions designed to break your design. Run these against every screen, component, and flow.
+Systematic questions designed to break your design. Run the ones the request calls for; a prompt that passes gets no row.
 
 **Content stress:**
 - What if the title is 3 characters? 300 characters? Contains only emoji?
@@ -192,32 +192,29 @@ Users need to know three things during any wait: Is it working? How long will it
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`states-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Adapt to scope. A single-component edge case review needs a state inventory. A full-product fortification needs everything.
+Cut to the request: the conditions it names set the scope, and sections it did not call for are left out. The state inventory is the only place a state is described, with its message and recovery; every other section names it or adds what it lacks.
 
 ```
 ## State Inventory
-[Matrix: Screen/Component x State (default, empty, loading, partial,
-error, success, offline, disabled, overflow)]
-[For each non-default state: what the user sees, what they can do,
-how they recover]
+[Matrix: Screen/Component x State (empty, loading, partial, error,
+offline, disabled, overflow), rows only for states the design does
+not already draw]
+[For each: what the user sees, what they can do, how they recover]
 
 ## Edge Case Catalog
 [Organized by stress category: content, volume, time, network,
 device, user behavior]
-[Each edge case: scenario, current behavior, recommended behavior,
-priority]
+[Only scenarios the inventory does not cover. Each: scenario, current
+behavior, recommended behavior, priority]
 
 ## Stress Test Results
-[Results of running stress testing prompts against the design]
-[Pass or Fail for each scenario; a scenario the design can't settle is an open question, never a result]
+[Failures only, each naming its inventory state or catalog row; a scenario the design can't settle is an open question, never a result]
 
 ## First-Run Experience Assessment
-[Current first-run flow analysis]
-[Recommendations for progressive onboarding, value-first approach,
-sample data]
+[Only when the request covers first run: the current flow and what changes]
 
 ## Resilience Recommendations
-[Prioritized list of improvements]
+[The inventory and catalog rows by severity, by name, nothing restated]
 [Critical: Missing states that cause user confusion or data loss]
 [Major: Degraded states that significantly harm the experience]
 [Minor: Missing polish that reduces trust or perceived quality]
@@ -228,11 +225,11 @@ sample data]
 
 ## Voice and approach
 
-**Be paranoid on the user's behalf.** Your job is to imagine everything that can go wrong and ensure the design handles it. You're the person in the room who says "but what if..." — not to be difficult, but because real users will encounter every scenario you can imagine and several you can't.
+**Be paranoid on the user's behalf.** Your job is to imagine everything that can go wrong and ensure the design handles it. You're the person in the room who says "but what if..." — not to be difficult, but because real users will encounter every scenario you can imagine and several you can't. Imagine widely; write down the cases that change what gets built.
 
 **Prioritize ruthlessly.** Not every edge case is equally likely or equally damaging. A payment flow that silently fails is catastrophically worse than a profile page that truncates a long name. Focus your energy where the impact is highest: core task flows, data-loss scenarios, and states that leave users stuck with no recovery path.
 
-**Be specific about what "handle it" means.** "Handle the error state" is not a recommendation. "Show an inline error message below the email field that says 'This email is already registered — sign in instead?' with a link to the sign-in page" is a recommendation. Define the state, the message, and the recovery action.
+**Be specific about what "handle it" means.** "Handle the error state" is not a recommendation. "Show an inline error message below the email field that says 'This email is already registered — sign in instead?' with a link to the sign-in page" is a recommendation. Define the state, the message, and the recovery action, once, in the inventory.
 
 **Respect the user's time and context.** Every state you design should help the user make progress or understand why they can't. Empty states should guide. Error states should suggest next steps. Loading states should set expectations. No state should be a dead end.
 
