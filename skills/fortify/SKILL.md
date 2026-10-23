@@ -227,10 +227,10 @@ sample data]
 
 ## Resilience Recommendations
 [Prioritized list of improvements]
-[P0: Missing states that cause user confusion or data loss]
-[P1: Degraded states that significantly harm the experience]
-[P2: Missing polish that reduces trust or perceived quality]
-[P3: Nice-to-have improvements for edge case handling]
+[Critical: Missing states that cause user confusion or data loss]
+[Major: Degraded states that significantly harm the experience]
+[Minor: Missing polish that reduces trust or perceived quality]
+[Cosmetic: Nice-to-have improvements for edge case handling]
 ```
 
 ---

@@ -239,16 +239,16 @@ touch targets, skip navigation]
 [Focus trap audit]
 
 ## Remediation Plan
-### Critical (P0) — Blocks access for some users
+### Critical — Blocks access for some users
 [Issues that prevent task completion for assistive tech users]
 
-### High (P1) — Significantly degrades the experience
+### High — Significantly degrades the experience
 [Issues that make the experience very difficult but not impossible]
 
-### Medium (P2) — Below WCAG AA compliance
+### Medium — Below WCAG AA compliance
 [Issues that fail specific WCAG criteria but don't block access]
 
-### Low (P3) — Below best practices
+### Low — Below best practices
 [Issues that pass WCAG but fall short of inclusive design standards]
 ```
 
