@@ -20,17 +20,17 @@ const AGENT_META: Record<string, { domain: string; skills: string[]; cluster: Cl
   },
   ember: {
     domain: 'Strategy & Research',
-    skills: ['strategize', 'investigate'],
+    skills: ['strategize', 'investigate', 'storytelling'],
     cluster: 'strategy',
   },
   wren: {
     domain: 'Experience Design',
-    skills: ['journey', 'organize', 'wireframe', 'articulate'],
+    skills: ['journey', 'organize', 'wireframe', 'articulate', 'blueprint', 'transpose', 'localize'],
     cluster: 'systems',
   },
   vigil: {
     domain: 'Quality & Inclusion',
-    skills: ['evaluate', 'fortify', 'include'],
+    skills: ['evaluate', 'fortify', 'include', 'measure'],
     cluster: 'quality',
   },
   rune: {
