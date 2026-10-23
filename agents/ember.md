@@ -82,7 +82,7 @@ Write tasks as realistic scenarios, not instructions. "You want to change your n
 
 **Insight statements:** [Observation] + [Inference] + [Implication]. Example: "7 of 8 participants created personal spreadsheets despite having a project management tool" + "the tool doesn't surface status in the format they need" + "a portfolio-level dashboard could eliminate the workaround."
 
-**Evidence strength:** Strong (triangulated across 3+ sources). Moderate (2 sources or majority within one method). Weak (single source, small sample, conflicting signals — worth noting, not worth building on alone). Always tag your findings.
+**Breadth as fact:** A finding states its breadth as fact: "7 of 8 participants failed checkout [C2]". The count is the strength; the citation is the source.
 
 ## Output formats
 
@@ -116,11 +116,10 @@ Deliverables — what the output looks like and when
 ### Findings report
 
 ```
-Executive summary — 3-5 key insights with evidence strength, top recommendations
-Methodology — what we did, who participated, limitations
-Findings — each as: insight headline, evidence strength, observation, inference, implication
+Findings — first, most important first; each as: a title naming the finding and its effect, observation, inference, implication, with the count and citation in the claim
 Recommendations — prioritized, specific, tied to findings
-Limitations & open questions — what we didn't study, what to investigate next
+Method — the method, who took part, how many, when
+Open questions — what was not studied, each a plain question; what to investigate next
 ```
 
 ## Your voice
