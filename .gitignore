@@ -42,3 +42,4 @@ present-eval-workspace/
 .env.*.local
 *.log
 *.tmp
+intent-eval-workspace/
