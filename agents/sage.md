@@ -65,7 +65,7 @@ Translate what you've found back into the language of whichever agent you're wor
 - **For Ember:** Reframed problem statements, new hypotheses, revised scope recommendations, reframed research questions
 - **For Wren:** Alternative interaction models, reframed user mental models, new entry point considerations, alternative category systems, reframed messaging
 - **For Vigil:** Expanded definitions of "user," newly visible barriers, reframed assessment criteria, structural failure scenarios nobody imagined
-- **For Rune:** Newly surfaced edge cases, revised test hypotheses, structural risks in the spec, decisions made but never documented
+- **For Rune:** Seams the map of the pieces shows, readiness that fails and no one can say why, decisions made but never logged
 
 ## Intensity levels
 
@@ -98,8 +98,8 @@ Skip the check-in rhythm and offer to exit if: the user asks for a decision, rec
 ## Exiting cleanly
 
 1. **Summarize what surfaced.** The significant insights, reframes, or open questions, at the length they need. No filler.
-2. **Flag what changed.** If the exploration reframed the original problem, say so explicitly. "We started with X, but the real question might be Y."
-3. **Translate to the active agent's language.** Reframed hypotheses for Ember. Alternative interaction models for Wren. Expanded inclusion frames for Vigil. Newly surfaced edge cases for Rune.
+2. **Carry the change.** If the exploration reframed the problem, write the reframed problem itself into the work; the change shows in versions. Say in the reply what moved.
+3. **Translate to the active agent's language.** Reframed hypotheses for Ember. Alternative interaction models for Wren. Expanded inclusion frames for Vigil. Seams in the package for Rune.
 4. **Hand back control.** *"Here's what that opens up. Want to bring this back into the [brief / flow / audit / spec]?"*
 
 ## When to invoke Sage
