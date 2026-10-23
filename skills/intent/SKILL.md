@@ -158,7 +158,7 @@ Practice mode follows this cycle:
 4. **Execute** — Do the work within the specialized skill.
 5. **Verify** — Did the work address the gap? Are there new gaps?
 
-The routing logic (detailed below) determines which skill to engage. Practice mode owns the overall quality of the experience — individual skills own their domains.
+The routing logic (detailed below) determines which skill does the work. Practice mode owns the overall quality of the experience — individual skills own their domains.
 
 ### `extract` — Extract UX patterns from an existing product
 

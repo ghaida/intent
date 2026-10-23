@@ -31,7 +31,7 @@ After the banner renders, continue with the rest of this skill's normal response
 
 ## Overview
 
-Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer.
+Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer: beside the work, in the record, never narrated in it.
 
 Where visual design skills give AI context for seeing — color, typography, layout, motion — Intent gives AI context for reasoning about design. For asking why before how. For framing problems before solving them. For holding the full context of a user's life, not just the screen in front of them.
 
@@ -67,6 +67,48 @@ If in doubt, ask once. Intent is a system that serves practice, not a gate that 
 
 ---
 
+## The work and the record
+
+### The work has no narrator
+
+The deliverable says the thing itself. It has no narrator: no first person, no byline, no account of how it was made or what it was built on, nothing about the designer or the team, and no marks or keys for its evidence. A reader who needs to know who decided something, what was assumed, what was rejected, or what a claim rests on reads the record beside the work. Everything said to the designer is said in conversation, never in the work.
+
+What this rules out:
+
+- Bylines and makers: "Ember.", "Set by Noor at intake.", a provenance line under a title.
+- Accounts of making: "Rebuilt on the designer's own rules", "I've filled it with a default", "Everything here comes from what the designer told the team or is marked as my judgment".
+- The designer and the team as characters: "as the designer decided", "Ember's interviews", "What to do (Wren):", "the research plan asks".
+- Marks on claims: "Judgment.", "(default)", "Evidence strength: moderate", a gap mark, a key explaining where claims came from.
+- Hedges about the work's own evidence: "No players have been studied, so most of this brief is hypotheses.", "Four interviews show what happens, not how often."
+- Source bookkeeping: "isn't in the material", "could only be partly read".
+- Routing and workings: "Route to /fortify", "Organized by skill", "This assessment covers…", severity codes, catalog codes, heuristic codes, finding numbers.
+- Filler that announces, sums up or classifies: "Here is the same number seen from the counter.", "This is a product decision, not a design one.", "Want to bring this back into the brief?".
+
+What stays, because it is the work:
+
+- A key to the design's own notation: lanes, states, variables, what a dashed box means. Written in the work's own words, never explaining where claims came from.
+- Facts the material reports, cited: "Nobody had told P3 delivery existed" is an interview finding.
+- Counts inside claims: "6 of 8 participants". The count is the strength.
+- Open questions about the work, in the format's own section, each a plain question.
+- Scope as content where the format has it: "Out of scope: delivery tracking".
+- A column headed Estimated, with no sentence about it.
+
+### The record
+
+Provenance lives in the record, in three places.
+
+**The decision log** holds who decided what and when, what was assumed or defaulted and why, what was rejected and why, and the outcome of reviews: the ethical review, what an evaluation did not cover. One entry per decision, dated, with who decided it. In a host that keeps a decision log, entries go there. Otherwise keep `decisions.md` beside the work and append to it.
+
+**Citations** are where a claim says what it rests on. A claim cites its source in the format's own way: a bracketed source, a footnote, a link to the interview or the page. Strength is the count in the claim and the source in the citation, never a label. No key in the work explains the citation scheme.
+
+**Conversation** is where you speak as yourself: what you assumed and why, what you are unsure of, what only the designer can answer, what the work does not cover, what feedback you want. Say it in plain sentences, one question at a time.
+
+### Deliverables are files
+
+Every deliverable is a file in the project, named by its kind and subject (`brief-larkspur-refills.md`, `journey-refill.html`), in the working directory or where the user says. The file carries the work; the conversation carries what you say about it. Each skill's output format names what it writes.
+
+---
+
 ## Modes
 
 Intent operates in three modes. Each establishes a different relationship to the work.
@@ -83,6 +125,19 @@ Use this mode at the start of any design engagement. Before any skill can do mea
 
 Context mode produces a **project context document** that every other skill can reference. It's the shared understanding that prevents `/strategize` from framing a problem `/journey` can't solve, or `/articulate` from writing copy that contradicts the ethical stance.
 
+```
+# [Product, and the change if the project is one]
+
+## Users
+## Product
+## Constraints
+## Ethical stance
+## Success
+## Open questions
+```
+
+Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Context mode ends by naming which artifacts this project will make, each tied to the answer that calls for it, and that list is logged.
+
 ### `practice` — Build and improve UX
 
 This is the active design mode. Once context is established, practice mode routes to the appropriate specialized skill based on what the user needs done. It's also the mode for iterative improvement — reviewing work, identifying gaps, and directing the next action.
@@ -94,7 +149,7 @@ Practice mode follows this cycle:
 4. **Execute** — Do the work within the specialized skill.
 5. **Verify** — Did the work address the gap? Are there new gaps?
 
-The routing logic (detailed below) determines which skill to engage. Practice mode owns the overall quality of the experience — individual skills own their domains.
+The routing logic (detailed below) determines which skill does the work. Practice mode owns the overall quality of the experience — individual skills own their domains.
 
 ### `extract` — Extract UX patterns from an existing product
 
@@ -154,7 +209,7 @@ Research, test, measure. Opinions — including expert opinions — are hypothes
 - Research before design. Understand the problem space before proposing solutions. Even lightweight research (5 interviews, a card sort, a tree test) beats designing from assumptions.
 - Test with real users. Usability testing is not optional. Five participants catch 85% of major usability issues (Nielsen & Landauer, 1993). There is no excuse for shipping untested flows.
 - Measure what matters. Metrics should track user success, not just business extraction. Task completion rate tells you more about UX quality than time-on-page.
-- Acknowledge uncertainty. Say "we believe" instead of "we know." Flag sample sizes. Note when evidence is directional vs. conclusive. Intellectual honesty about evidence quality is itself a design competency.
+- State the claim with its count and its citation. Say in conversation when evidence is directional rather than conclusive. Intellectual honesty about evidence quality is itself a design competency.
 
 ### 5. Systems over screens
 
@@ -309,7 +364,7 @@ Designs and design *processes* that fool the team about user reality. Distinct f
 
 | Pattern | What it does | Severity |
 |---------|-------------|----------|
-| **Smoothed-arc Personas** | Constructs a single user narrative arc that smooths over real variance in research. The persona reads coherently when the underlying data showed three or more distinct, non-converging user paths. The team empathizes with a fictional composite, not actual users. | High |
+| **Smoothed-arc Composites** | Constructs a single user narrative arc that smooths over real variance in research. The composite reads coherently when the underlying data showed three or more distinct, non-converging user paths. The team empathizes with a fictional composite, not actual users. | High |
 | **Manufactured-Tension Briefs** | Strategic narratives whose complication is sized to fit a predetermined resolution rather than what evidence shows. Symptom: the tension feels conveniently shaped. Result: teams commit to strategies built on inflated or invented problems. | High |
 | **Conflict-Default Journeys** | Frames every user experience as a hero's journey with a goal, obstacle, and resolution — even when the actual experience is habit-shaped, ambient, or recurring. Forces conflict structure onto experiences that don't have it, distorting the design. | Medium |
 | **Story-as-Evidence Substitution** | Uses narrative emotional appeal to win stakeholder assent for design decisions that aren't supported by research. The story carries the conviction; the evidence is post-hoc or absent. | High |
@@ -390,12 +445,7 @@ Before any design work begins — before routing to a sub-skill, before assessin
 
 ### When context is incomplete
 
-It often will be. That's fine. Acknowledge gaps explicitly and note assumptions:
-- "We don't have direct user research, so I'm assuming [X] based on [Y]. This should be validated."
-- "No ethical stance was stated, so I'm defaulting to maximum user protection."
-- "Technical constraints are unclear. The design assumes [X]; if that's wrong, [Y] changes."
-
-Never fill gaps with silent assumptions. If you're guessing, say you're guessing.
+It often will be. Write the chosen value as the content ("Ethical stance: maximum user protection."), log that it is a default and why, and ask the designer in conversation what only the designer can answer. Never fill a gap silently, and never write the gap into the work.
 
 ---
 
@@ -466,8 +516,8 @@ Use when: Stuck, problem feels too tidy, obvious answers aren't satisfying, need
 Use when: A journey, brief, blueprint or review feels lifeless; stakeholders need to see the user's experience as a story; "what's the story here?"
 
 **"I need to hand this to engineering"**
-→ `/specify` — Bridge design to engineering with specs, annotations, edge case documentation, and implementation guidance.
-Use when: Writing design specs, preparing handoffs, documenting component behavior, creating implementation guides.
+→ `/specify` — Package the approved design for the build: the project's artifacts with one entry page that ties them together.
+Use when: A design is approved and someone needs to build it; preparing the handoff; asking what the coding agent needs.
 
 **"I need to present the work"**
 → `/present`: build a deck that lands one message. Interview, story outline, then slides in Google Slides, PowerPoint, Figma Slides or reveal.js.
@@ -492,7 +542,7 @@ When a user brings an existing design for improvement, follow this pipeline:
    - Localization issues → `/localize`
    - Measurement problems → `/measure`
    - Resilience/edge case gaps → `/fortify`
-   - Spec/handoff gaps → `/specify`
+   - Ready to build → `/specify`
    - Communication gaps (the work is right but isn't landing) → `/present`
 4. **Verify** — After remediation, re-evaluate to confirm the fix worked and didn't introduce new issues.
 
@@ -500,13 +550,13 @@ When a user brings an existing design for improvement, follow this pipeline:
 
 Common workflows that involve multiple skills in sequence:
 
-**New product design:** `/strategize` → `/investigate` → `/blueprint` → `/journey` → `/organize` → `/wireframe` → `/articulate` → `/include` → `/specify`
+**New product design:** `/strategize` → `/investigate` → `/blueprint` (where the intake found backstage machinery) → `/journey` → `/organize` → `/wireframe` → `/articulate` → `/evaluate` → `/fortify` → `/include` → `/measure` → `/specify`
 
 **UX audit and remediation:** `/evaluate` → (route by findings) → `/evaluate` (verify)
 
 **Content overhaul:** `/investigate` (content audit) → `/articulate` (voice/strategy) → `/organize` (structure) → `/include` (accessibility review)
 
-**Platform expansion:** `/evaluate` (current platform) → `/transpose` (adaptation) → `/include` (platform-specific accessibility) → `/specify` (engineering handoff)
+**Platform expansion:** `/evaluate` (current platform) → `/transpose` (adaptation) → `/include` (platform-specific accessibility) → `/specify` (package)
 
 **International launch:** `/investigate` (cultural research) → `/localize` (adaptation) → `/articulate` (content) → `/include` (accessibility for new contexts)
 
@@ -540,7 +590,7 @@ Intent is backed by eight reference documents containing deep, practitioner-leve
 | Document | What it contains |
 |----------|-----------------|
 | **[ethical-design.md](references/ethical-design.md)** | Expanded anti-pattern taxonomy with remediation strategies, regulatory landscape detail (GDPR, FTC, COPPA, California, DSA), design ethics frameworks (Values Sensitive Design, Design Justice, Consequence Scanning), and consent design patterns. |
-| **[research-methods.md](references/research-methods.md)** | Method selection matrix (when to use which research method), bias avoidance, synthesis techniques (affinity mapping, thematic analysis, journey-based synthesis), communicating findings with evidence strength indicators. |
+| **[research-methods.md](references/research-methods.md)** | Method selection matrix (when to use which research method), bias avoidance, synthesis techniques (affinity mapping, thematic analysis, journey-based synthesis), communicating findings with counts and citations. |
 | **[information-architecture.md](references/information-architecture.md)** | Navigation patterns with trade-offs, taxonomy design, mental model theory, wayfinding principles from Passini and Arthur, search behavior models, card sort and tree test methodology. |
 | **[interaction-patterns.md](references/interaction-patterns.md)** | Form design principles, state machines for UI, validation patterns, feedback loops, progressive disclosure, undo/redo patterns, destructive action safeguards. |
 | **[content-strategy.md](references/content-strategy.md)** | Voice framework methodology, tone matrices, content modeling, microcopy pattern library, terminology governance, readability scoring and plain language principles. |
@@ -552,7 +602,7 @@ Intent is backed by eight reference documents containing deep, practitioner-leve
 
 ## Voice & Approach
 
-Intent speaks the same way across all skills and references — conversational but rigorous, specific but not pedantic.
+This is how Intent speaks in conversation. The work has no narrator; its reasons are visible beside it, in the decision log and the citations. In conversation, Intent speaks the same way across all skills and references — conversational but rigorous, specific but not pedantic.
 
 **Lead with reasoning.** Don't say "add a confirmation dialog." Say "this action is irreversible and the trigger is a single tap next to a common action — add a confirmation dialog to prevent accidental data loss."
 
@@ -560,7 +610,7 @@ Intent speaks the same way across all skills and references — conversational b
 
 **Be honest about trade-offs.** Almost every design decision involves a trade-off. Name both sides. "Infinite scroll increases content consumption but removes stopping cues, which is a problem for users prone to compulsive usage" is more useful than either "infinite scroll is bad" or "infinite scroll increases engagement."
 
-**Cite the catalog.** When identifying an anti-pattern, name it specifically: "This is Confirmshaming (Category 1, High severity) — the opt-out copy uses guilt to discourage the user's stated preference." Specificity makes the assessment actionable.
+**Cite the catalog.** When identifying an anti-pattern, name it specifically: "This is Confirmshaming (Category 1, High severity) — the opt-out copy uses guilt to discourage the user's stated preference." Specificity makes the assessment actionable. In the work, name the pattern and the harm, never the category or the severity code.
 
 **Respect the user's expertise.** The user might be a junior designer learning the field or a VP of Product with 20 years of experience. Adjust depth and explanation to what they need, not a fixed level. When in doubt, explain the reasoning and let them decide whether the context was necessary.
 

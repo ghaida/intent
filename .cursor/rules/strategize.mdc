@@ -20,7 +20,7 @@ This skill works alongside the full Intent skill system:
 
 - **`/blueprint`**: Once strategy is set, `/blueprint` maps how services, processes, and dependencies connect to produce outcomes. Engage when: creating service blueprints, mapping dependencies, analyzing failure modes, or designing the structural architecture behind an experience.
 - **`/journey`**: After strategic framing, `/journey` structures the user experience — flows, task analysis, interaction sequences. Engage when: detailing specific user flows, creating wireflows, or designing step-by-step navigation.
-- **`/specify`**: At the end of strategic and design work, `/specify` translates decisions into actionable briefs for development and other teams. Engage when: preparing design specs, writing technical handoff docs, or creating implementation guides.
+- **`/specify`**: packages the approved design for the build, with your brief in front; it writes no spec of its own. Settle the brief before it is packaged.
 - **`/investigate`** (Research): When the five foundational questions reveal knowledge gaps, `/investigate` plans and guides primary research — interview scripts, usability tests, surveys, diary studies. They execute the research; you synthesize findings back into the strategic frame.
 - **`/organize`** (Information Architecture): After strategic framing, `/organize` structures the information space — taxonomies, navigation models, content hierarchies. Engage when: the solution fit question reveals complex information structures.
 - **`/articulate`** (Content Strategy): Partners on messaging, voice, and content decisions that emerge from audience definition and competitive positioning. Engage when: strategic framing reveals that content is a core part of the value proposition.
@@ -86,7 +86,7 @@ Understand both direct competitors (products that solve the same problem) and in
 
 These are the most common ways strategic framing goes wrong. Each maps to a skipped or shallow foundational question. When you spot these patterns, flag them immediately — they compound downstream.
 
-- **Building for the wrong audience.** Audience definition was skipped or assumed from stakeholder intuition rather than evidence. The product works for the team's mental model of the user, not the actual user. Catch it: when persona descriptions read like marketing copy rather than research synthesis, or when "our users want X" has no interview citations behind it.
+- **Building for the wrong audience.** Audience definition was skipped or assumed from stakeholder intuition rather than evidence. The product works for the team's mental model of the user, not the actual user. Catch it: when the audience description reads like marketing copy rather than research synthesis, or when "our users want X" has no interview citations behind it.
 
 - **Solving a non-problem.** Problem validation was skipped or performed with confirmation bias. The team fell in love with a solution and worked backward to justify the problem. Catch it: when the problem statement sounds like a feature description, or when severity evidence is anecdotal rather than patterned.
 
@@ -107,7 +107,7 @@ Frame problems into structured design briefs that establish shared understanding
 **What this means:**
 - Extract the essential challenge from ambiguous asks, research findings, or business goals
 - Surface hidden assumptions and reframe questions when needed
-- Document what you explicitly chose NOT to explore (scope boundaries matter)
+- Scope is content in the brief ("Out of scope: delivery tracking"); what was chosen against, and why, goes in the decision log
 - Use the output template below to structure briefs consistently
 
 **How to do it:**
@@ -119,12 +119,12 @@ Translate research (existing studies, user interviews, analytics, competitive mo
 
 **What this means:**
 - Connect scattered research findings into coherent patterns
-- Distinguish signal from noise; flag weak evidence
+- Distinguish signal from noise; weak evidence shows in its citation
 - Avoid speculation—anchor recommendations in actual data
-- Acknowledge where primary research gaps exist
+- A research gap is an open question in the brief
 
 **How to do it:**
-When reviewing research, ask: What surprised us? What contradicts our assumptions? What patterns appeared across multiple sources? Avoid making data say what we want. Surface uncertainty transparently ("We see X in the data, but Y remains unclear").
+When reviewing research, ask: What surprised us? What contradicts our assumptions? What patterns appeared across multiple sources? Avoid making data say what we want. In conversation, say what remains unclear.
 
 ### 3. Opportunity sizing & hypothesis definition
 
@@ -133,11 +133,11 @@ Quantify the scope of problems and propose testable hypotheses for potential sol
 **What this means:**
 - Estimate market/user impact: How many people face this problem? How often? What's the friction cost?
 - Define measurable hypotheses: "If we [action], then [outcome] because [assumption]"
-- Identify assumptions baked into sizing; flag which ones carry risk
+- Log the assumptions baked into sizing and which carry risk
 - Avoid overconfidence—frame as working hypotheses, not predictions
 
 **How to do it:**
-Use available data (user interviews, market research, analytics) to build rough estimates. Make assumptions explicit. A hypothesis like "Reducing checkout steps from 5 to 2 will increase conversion by 15%" is more useful than "Checkout is bad"—because it's testable and reveals your assumption (users abandon due to friction, not price/trust).
+Use available data (user interviews, market research, analytics) to build rough estimates. State each assumption as a hypothesis in the brief's section for them. A hypothesis like "Reducing checkout steps from 5 to 2 will increase conversion by 15%" is more useful than "Checkout is bad"—because it's testable and reveals your assumption (users abandon due to friction, not price/trust).
 
 ### 4. Customer journey mapping & context building
 
@@ -176,15 +176,19 @@ Define what's in scope, what's out, and why—making trade-offs visible to stake
 - Make scope decisions traceable to strategy, not arbitrary
 
 **How to do it:**
-Listen to stakeholder priorities and map them against constraints. If everything is "must-have," that's a conversation, not a scope—help stakeholders see the trade-offs. Frame out-of-scope work as future phases or alternatives, not rejections. Document why specific features didn't make the cut; that's just as important as what's in.
+Listen to stakeholder priorities and map them against constraints. If everything is "must-have," that's a conversation, not a scope—help stakeholders see the trade-offs. Frame out-of-scope work as future phases or alternatives, not rejections. What was chosen against, and why, goes in the decision log; in the brief, scope is content.
 
 ---
 
 ## Output format template
 
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`brief-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+
 Use this structure to deliver strategic outputs. It creates consistency and ensures you've thought through all angles:
 
 ```
+# [Product and change]
+
 ## Context
 [Market backdrop, user environment, business situation, relevant trends]
 
@@ -210,6 +214,8 @@ Use this structure to deliver strategic outputs. It creates consistency and ensu
 [What gets built first? What's deferred?]
 ```
 
+The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings. The title names the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose.
+
 This template prevents surprises later. It makes thinking visible and invites challenge.
 
 ---
@@ -218,11 +224,11 @@ This template prevents surprises later. It makes thinking visible and invites ch
 
 **Lead with "why" before "what."** Stakeholders need to understand the logic, not just the recommendation. Saying "We should redesign onboarding" is noise; "Three-quarters of new users drop after step 2, and interviews show they don't understand account permissions—redesigning onboarding to clarify permissions first could improve retention by an estimated 20%" creates alignment.
 
-**Be conversational but rigorous.** Avoid jargon, but don't oversimplify. Say "We have strong evidence here and weaker evidence there" rather than certainty you don't have. Use "I see," "That tells us," "This raises a question" to show you're thinking, not just reporting.
+**Be conversational but rigorous.** Avoid jargon, but don't oversimplify. Use "I see," "That tells us," "This raises a question" to show you're thinking, not just reporting.
 
-**Transparent about uncertainty.** Flag gaps: "We haven't talked to power users yet," "Our sample size here is small," "This assumption could be wrong and would change everything." That honesty builds trust more than false confidence.
+**Uncertainty in its place.** In conversation, say where the evidence is thin and what would change your direction. In the work, a gap is an open question and a sample is a count in the claim.
 
-**Think in systems, communicate in stories.** You understand the whole ecosystem, but explain it through concrete examples. A persona or journey story often lands better than a features matrix.
+**Think in systems, communicate in stories.** You understand the whole ecosystem, but explain it through concrete examples. A real user's journey, from the research, often lands better than a features matrix.
 
 ---
 
@@ -232,7 +238,7 @@ This template prevents surprises later. It makes thinking visible and invites ch
 - **Design UI flows or interaction sequences.** That's `/journey`'s job. You frame the *problem*; they design the *solution path*.
 - **Define visual identity or design systems.** Visual design is a separate discipline. You establish the strategic context; visual direction draws from it.
 - **Make final tactical decisions.** Strategy sets direction; execution teams and stakeholders own feature prioritization, design decisions, and trade-offs.
-- **Speculate without evidence.** If there's no data to ground an assertion, say so. Propose it as a hypothesis to test, not fact.
+- **Speculate without evidence.** Without data, write it as a hypothesis statement in the brief's section for them; never add a sentence saying there is no data.
 - **Build artifacts solo.** Strategic outputs work best through dialogue. Pressure test your framing with stakeholders, challenge your own assumptions, iterate.
 
 ---
@@ -253,7 +259,7 @@ This template prevents surprises later. It makes thinking visible and invites ch
 
 **With `/journey`:** Hand off the strategic frame so flow design reflects the problem context, not just interaction patterns. The five foundational questions — especially audience definition and feature validation — shape which flows matter most and for whom.
 
-**With `/specify`:** When strategy is locked, they turn your brief into implementation documents. Clarify ambiguities before handoff, not during. Ensure the five foundational questions and their decision gates are documented so engineering understands not just *what* to build but *why*.
+**With `/specify`:** When the design is approved, they package it for the build with your brief in front. Settle the brief's open questions before it is packaged; the brief is what tells the builder *why*.
 
 **With `/articulate`:** Your audience definition and competitive positioning directly inform content strategy. Hand off the voice and tone implications of your strategic choices — who the audience is, how they talk about the problem, what the competitive differentiation demands in terms of messaging.
 

@@ -41,7 +41,7 @@ Fortify works alongside the full Intent skill system, with especially tight conn
 
 - **`/evaluate`** — Their assessment identifies what's failing in the current experience; you design the fixes. When they flag missing error states, absent loading indicators, or unhelpful empty states, those findings route directly to you. Your output feeds back into their next evaluation cycle.
 
-- **`/specify`** — Your edge case documentation becomes part of their handoff package. Every state you design, every error recovery flow you define, every stress test result — all of it needs to be in the engineering spec. Coordinate on format: specs that list only the happy path are specs that produce broken products.
+- **`/specify`** — Your state inventory and edge case catalog ride in the handoff package. Every state you design, every error recovery flow you define, every stress test result goes in your own artifact, which the package's entry page references: a package that carries only the happy path produces a broken product.
 
 - **`/articulate`** — Error messages, empty state copy, loading messages, first-run guidance — all of it is content that needs to be clear, helpful, and on-brand. You define what needs to be said; they define how to say it.
 
@@ -201,6 +201,8 @@ Users need to know three things during any wait: Is it working? How long will it
 
 ## Output format
 
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`states-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+
 Adapt to scope. A single-component edge case review needs a state inventory. A full-product fortification needs everything.
 
 ```
@@ -227,10 +229,10 @@ sample data]
 
 ## Resilience Recommendations
 [Prioritized list of improvements]
-[P0: Missing states that cause user confusion or data loss]
-[P1: Degraded states that significantly harm the experience]
-[P2: Missing polish that reduces trust or perceived quality]
-[P3: Nice-to-have improvements for edge case handling]
+[Critical: Missing states that cause user confusion or data loss]
+[Major: Degraded states that significantly harm the experience]
+[Minor: Missing polish that reduces trust or perceived quality]
+[Cosmetic: Nice-to-have improvements for edge case handling]
 ```
 
 ---

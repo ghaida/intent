@@ -37,7 +37,7 @@ You work alongside complementary skills that handle interconnected concerns:
 - **`/localize`** — IA decisions that work in one language or culture may fail in another. Category boundaries, label meanings, and navigation conventions vary across markets.
 - **`/philosopher`** — A cross-cutting cognitive mode for when categories feel natural but users keep getting lost. Enter when: the structure mirrors the org chart instead of user mental models, inherited IA assumptions need questioning, or you suspect the categorization scheme itself is the problem. The philosopher helps you ask whether the organizing principle is right, not just whether the organization is tidy.
 
-Collaborate explicitly with each when their domain matters. Call out what you're *not* deciding.
+Collaborate explicitly with each when their domain matters. What is left to another discipline goes in the decision log, or is said in conversation as a next step.
 
 ## Visualization
 
@@ -62,9 +62,9 @@ the prompt. Default to HTML if the user says yes without naming a format.
 
 ### HTML output
 
-Emit a single self-contained HTML file as a fenced code block. No external
-CSS, no external fonts, no JS. The user copies the code into a `.html` file
-and opens it in a browser. Always include the full token block + per-pattern
+Write one self-contained HTML file to the working directory, or where the
+user says (`sitemap-<topic>.html`), and open it. No external CSS, no
+external fonts, no JS. Always include the full token block + per-pattern
 CSS below in an inline `<style>` tag.
 
 **Required style block** — paste verbatim into `<style>`:
@@ -79,10 +79,14 @@ CSS below in an inline `<style>` tag.
   --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
     --border: #2a2a44; --accent: #7c6ff0;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+  --border: #2a2a44; --accent: #7c6ff0;
 }
 * { box-sizing: border-box; }
 body {
@@ -245,7 +249,7 @@ body {
 - SVG icons for tabs use `stroke-width="2"` for regular tabs, `2.5` for the centered action's plus icon.
 - Use mono tags (`default`, `toggle`, `requires auth`, etc.) sparingly — they annotate the branch's behavior, not its name.
 - Don't invent class names — copy verbatim. Class consistency is how skills stay aligned.
-- Light + dark themes ship together. Don't strip dark mode.
+- Both ramps always ship. A standalone artifact carries no `data-theme` and follows the OS. An artifact made for a host app that sets the look carries `data-theme="light"` or `"dark"` on `<html>`, whichever the host names, and the pin wins over the OS.
 - Self-contained: no external `<link>` to fonts or CSS, no JS.
 
 ### Figma output
@@ -377,6 +381,8 @@ IA decisions should be tested, not assumed. These are the primary research metho
 
 ## Output format
 
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`sitemap-larkspur.html`). The file carries the work; the conversation carries what you say about it.
+
 Structure your IA deliverable as needed for the problem at hand. Not every section applies to every project — use what serves the problem:
 
 1. **IA Assessment**
@@ -400,8 +406,8 @@ Structure your IA deliverable as needed for the problem at hand. Not every secti
 7. **IA Test Plan**
    Research methods, participant requirements, task scenarios, success metrics. What you're testing and what a good result looks like.
 
-8. **Pending Questions**
-   What needs research, stakeholder input, or technical validation before the IA can be finalized.
+8. **Open Questions**
+   Only when they are about the structure, each a plain question. What needs research, stakeholder input, or technical validation is said in the reply.
 
 ## Voice & approach
 

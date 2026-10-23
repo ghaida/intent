@@ -55,9 +55,9 @@ own a different dimension of the design problem:
   system, `/organize` determines how users find, navigate, and make sense
   of that information.
 
-- **`/specify`** — Translates your architecture into implementation-ready specs,
-  engineering documentation, and cross-team implementation plans. Hand off
-  when your systems architecture needs to become buildable.
+- **`/specify`** — Packages the approved design for the build; your blueprint
+  rides in the package, referenced from its entry page. They write no spec of
+  their own.
 
 - **`/philosopher`** — A cross-cutting cognitive mode — not a phase — that you
   can enter when the problem needs more exploration before the next move.
@@ -75,7 +75,7 @@ own a different dimension of the design problem:
 You provide the structural foundation that other Intent skills build on.
 `/strategize` defines *what* to solve and *why*. You define *how the system
 needs to work*. `/journey` defines *what the user experiences*. `/specify`
-makes it *buildable*. `/philosopher` can be entered from any skill when the
+packages it for the build. `/philosopher` can be entered from any skill when the
 problem needs more exploration before the next move.
 
 ## Visualization
@@ -101,9 +101,9 @@ the prompt. Default to HTML if the user says yes without naming a format.
 
 ### HTML output
 
-Emit a single self-contained HTML file as a fenced code block. No external
-CSS, no external fonts, no JS. The user copies the code into a `.html` file
-and opens it in a browser. Always include the full token block + per-pattern
+Write one self-contained HTML file to the working directory, or where the
+user says (`blueprint-<topic>.html`), and open it. No external CSS, no
+external fonts, no JS. Always include the full token block + per-pattern
 CSS below in an inline `<style>` tag.
 
 **Required style block** — paste verbatim into `<style>`:
@@ -118,10 +118,14 @@ CSS below in an inline `<style>` tag.
   --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
     --border: #2a2a44; --accent: #7c6ff0;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+  --border: #2a2a44; --accent: #7c6ff0;
 }
 * { box-sizing: border-box; }
 body {
@@ -260,8 +264,9 @@ body {
 - Backstage services use solid borders; support-tier services use `blueprint-service-infra` (dashed border, transparent bg).
 - End node uses `blueprint-node-end` (accent border).
 - Don't invent class names — copy verbatim. Class consistency is how skills stay aligned.
-- Light + dark themes ship together. Don't strip dark mode.
+- Both ramps always ship. A standalone artifact carries no `data-theme` and follows the OS. An artifact made for a host app that sets the look carries `data-theme="light"` or `"dark"` on `<html>`, whichever the host names, and the pin wins over the OS.
 - Self-contained: no external `<link>` to fonts or CSS, no JS.
+- The page carries no account of how it was made and no first person; a key to its lanes and marks is written in the work's own words.
 
 ### Figma output
 
@@ -412,21 +417,14 @@ Think about how systems grow, break, and need to change:
 - **Governance**: Who can modify, extend, or override parts of the system?
   What review or approval structures exist?
 
-### 6. Decision documentation
+### 6. The decision log
 
-Record the structural decisions that shape the system:
-
-- **What was chosen and why**: Evidence-grounded reasoning for architectural
-  decisions
-- **What was NOT chosen and why**: Rejected alternatives with clear rationale —
-  this prevents future teams from re-litigating settled questions
-- **Open questions**: What hasn't been decided yet, and what's blocking the
-  decision?
-- **Assumptions**: What are you betting on? Which assumptions carry the most
-  risk if they're wrong?
-- **Dependencies**: What other work, teams, or systems does this depend on?
-- **Future considerations**: What's explicitly deferred, and when should it be
-  revisited?
+Record the structural decisions that shape the system in the decision log:
+what was chosen and why, what was chosen against and why (so future teams do
+not re-litigate settled questions), the assumptions and which carry the most
+risk, the dependencies on other work, teams or systems, and what is deferred
+and when to revisit it. In the blueprint itself, open questions are the only
+one of these that appears, each a plain question.
 
 ## Systems that enable dark patterns
 
@@ -476,6 +474,8 @@ artifacts include:
 
 ## Output format
 
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`blueprint-larkspur-refills.html`). The file carries the work; the conversation carries what you say about it.
+
 Adapt depth to problem scope. Not every section applies to every engagement.
 
 ### System overview
@@ -483,7 +483,6 @@ Adapt depth to problem scope. Not every section applies to every engagement.
 - What system or service are we examining?
 - What is its purpose and who does it serve?
 - How does it fit into the broader product/organizational ecosystem?
-- What prompted this analysis? (new feature, known problem, scaling need, etc.)
 
 ### Service blueprint
 
@@ -522,12 +521,11 @@ Adapt depth to problem scope. Not every section applies to every engagement.
 - Migration path from current state to target state
 - Extensibility and governance model
 
-### Pending questions
+### Open questions
 
-- Open architectural decisions and their implications
-- Assumptions needing validation
-- Dependencies on other teams or work streams
-- Technical unknowns requiring engineering input
+- About the system, each a plain question. Assumptions needing validation and
+  dependencies on other teams go in the decision log; technical unknowns
+  needing engineering input are said in the reply.
 
 ## Voice and approach
 
@@ -544,17 +542,17 @@ systems-oriented. Follow these principles:
   was intended; the failure path shows what was actually built.
 - **Be transparent about trade-offs.** Every architectural decision optimizes
   for something and sacrifices something else. Name both.
-- **Record non-decisions.** Why was option B rejected? Document this so future
+- **Log the no.** Why option B was rejected goes in the decision log, so future
   teams understand the reasoning, not just the outcome.
 - **Ground in evidence.** Use support tickets, operational data, stakeholder
-  interviews, and technical documentation to build your maps. Flag where
-  you're working from assumption rather than evidence.
+  interviews, and technical documentation to build your maps. Cite what each
+  part of the map rests on; log what rests on judgment.
 - **Design for the organization, not just the user.** A system that serves
   users beautifully but is operationally unsustainable will fail. Account for
   the people and processes behind the experience.
-- **Collaborate explicitly.** Name when you need `/strategize` research,
-  `/journey` design detail, or `/specify` specification. Don't work in
-  isolation.
+- **Ask in the reply.** When the map needs `/strategize` research or `/journey`
+  design detail, ask for it in conversation, never in the blueprint. Don't work
+  in isolation.
 
 ## Scope boundaries
 
@@ -573,7 +571,7 @@ systems-oriented. Follow these principles:
 - Screen-by-screen user flow design (`/journey` leads this)
 - Visual design, component libraries, or UI pattern documentation
 - Marketing, brand, or consumer creative work
-- Implementation code or API specifications (`/specify` leads this)
+- Implementation code or API specifications (the builder's, from the package `/specify` assembles)
 - User research or strategic framing (`/strategize` leads this)
 - Interaction design, animation, or microinteractions (`/journey` leads this)
 

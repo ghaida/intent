@@ -46,18 +46,11 @@ body {
   flex-wrap: wrap; row-gap: var(--sp-3); /* controls drop below the title on narrow screens — the chrome never causes page overflow */
   margin-bottom: var(--sp-8);
 }
-/* the stage signs its work: an h1 title at display size, and a quiet
-   mono provenance line (who staged it · when · which rung) beneath */
+/* the board header: an h1 title at display size, alone */
 .board-title {
   font-family: var(--display); font-size: var(--t-xl);
   line-height: var(--t-xl-lh); font-weight: 700;
   letter-spacing: -0.02em; color: var(--chrome-fg); margin: 0;
-}
-.board-meta {
-  font-family: var(--mono); font-size: var(--t-xs);
-  line-height: var(--t-xs-lh); font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--chrome-ink); margin: var(--sp-1) 0 0;
 }
 .board-controls { display: flex; align-items: center; gap: var(--sp-6); }
 

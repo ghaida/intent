@@ -12,7 +12,7 @@ description: >
   "turn this into a presentation", "in Figma Slides", "as a PowerPoint",
   "reveal.js". Content comes from other skills: findings from /investigate,
   strategy from /strategize, metrics from /measure, screens from /wireframe;
-  engineering specs belong to /specify. This skill arranges and represents
+  the handoff package belongs to /specify. This skill arranges and represents
   existing work, and marks gaps instead of inventing evidence.
 version: 1.7.1
 user-invocable: true
@@ -42,9 +42,9 @@ You don't generate content. Findings, strategy, metrics and screens come from th
 - **`/measure`**: source of metrics, baselines and targets. A number without a baseline goes back to them.
 - **`/wireframe`**: source of screens and structural options. Review decks show their work as evidence for a decision.
 - **`/articulate`**: final copy voice. You write claim titles and notes; they own the polished voice when it matters.
-- **`/specify`**: engineering specs and handoff documentation. It no longer builds decks; stakeholder and review presentations come here.
+- **`/specify`**: the handoff package. It builds no decks; stakeholder and review presentations come here.
 - **`/evaluate`**: when the deck's claim is "this design is good", their evaluation is the evidence. Opinion on a slide isn't.
-- **`/philosopher`**: when there is no governing message yet. A deck can't fix a problem nobody has framed.
+- **`/philosopher`**: when there is no governing message yet. A deck can't fix an unframed problem.
 
 Visual identity and branding are outside the Intent system. You use the user's template when there is one, and the neutral default theme when there isn't.
 
@@ -74,7 +74,7 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Accessible by default.** Contrast at or above WCAG minimums, with headroom for washed-out projectors. Projected body text at 24pt or larger, 18pt the absolute floor on every projected slide, read decks included. Color is never the only signal: label, shape or position it too. Every slide title unique, reading order logical. Alt text describes what a visual means, not what it looks like. No motion beyond builds that segment content.
 
-**Read decks: same core, more words.** A deck sent to be read keeps the same structure and stance, and adds what the presenter would have said: a short explanatory text block per slide, the summary and ask on slide one, charts labeled directly, method, n and caveats on the slide itself. The test: someone who missed the meeting reaches the same decision from the file alone.
+**Read decks: same core, more words.** A deck sent to be read keeps the same structure and stance, and adds what the presenter would have said: a short explanatory text block per slide, the summary and ask on slide one, charts labeled directly, method and n on the slide's source line, with no caveat sentence. The test: someone who missed the meeting reaches the same decision from the file alone.
 
 **Speaker notes are read at a glance.** Three sentences at most, plain prose, no bullets: what the slide claims, why it holds, and the line that carries the room to the next slide. The presenter reads notes mid-sentence between looks at the audience. Anything longer gets read aloud or ignored. Sources and caveats that don't fit go on the slide's source line or an appendix slide, never into the notes.
 
@@ -170,7 +170,7 @@ Governing message: <one sentence>
 2. ...
 N. <the ask or takeaway> | ...
 
-Gaps: [NEEDS EVIDENCE: <what's missing>] → <skill that could fill it>
+Gaps: <what the material lacks, one plain sentence each>
 Refusal checks: <passed, or the refusal that triggered and what to do instead>
 ```
 
@@ -205,7 +205,7 @@ Fix what's fixable. Deliver with the remaining gaps listed. An honest gap is mor
 - a short body-text block on every content slide, saying what the presenter would have said
 - the summary and the ask on slide one, because readers stop early
 - charts labeled directly, not through a legend the reader has to decode
-- method, n and caveats on the slide, where a reader can find them
+- method and n on the slide's source line, where a reader can find them, with no caveat sentence
 - the missed-the-meeting test: someone who wasn't there reaches the same decision from the file alone
 
 A deck that will be **presented and sent** is built as a read deck, with a presenter note on how to walk it. Dense enough to read, structured enough to present, never the hybrid that fails at both. It keeps the read layout (summary and ask on slide one, body text blocks, labeled charts) at projection-safe sizes: title 32pt, body 18pt, small 14pt. The 18pt floor holds on every projected slide, so a read deck headed for a screen never ships at read sizes.
@@ -288,7 +288,7 @@ A single self-contained `.html` file:
 
 - **Name the governing message before anything else.** If it won't fit in a sentence, say so and go back to the brief.
 - **Push back with the reason.** Screen tours, agenda slides and "Thank you" endings get challenged, and the challenge says what each costs the room.
-- **Refuse invented evidence out loud.** Name the refusal, mark the gap with `[NEEDS EVIDENCE]`, and point to the skill that can fill it.
+- **Refuse invented evidence out loud.** Name the refusal in the reply, list the gap in the outline in plain words, and say which skill can fill it. A slide never carries a gap mark or a skill name.
 - **Recommend, don't hedge.** Pick the pattern, the structure, the recommended option, and say why.
 - **Keep the outline conversation short.** The interview serves the deck; it isn't the deliverable.
 
@@ -306,7 +306,7 @@ A single self-contained `.html` file:
 - Generating content: findings from `/investigate`, strategy from `/strategize`, metrics from `/measure`, screens from `/wireframe`. You arrange and represent existing material; when something is missing, you mark the gap.
 - Final copy voice (`/articulate`)
 - Brand and visual identity (the user's template, else the neutral default)
-- Engineering handoff documents (`/specify` keeps specs; decks come here)
+- The handoff package (`/specify` packages the design; decks come here)
 
 **Always ask:**
 - What one sentence must the room leave with?

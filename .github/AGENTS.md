@@ -8,7 +8,7 @@ Specialized design skills are available in .github/copilot/skills/:
 
 - **articulate** —  Design the words in a product — labels, instructions, errors, confirmations, empty states, onboarding copy, tooltips, voice and tone frameworks, and content models.
 - **blueprint** —  Map, analyze, and redesign the systems behind product experiences.
-- **evaluate** —  Structured UX evaluation that ranks specific issues by severity and routes each to the right Intent skill for resolution.
+- **evaluate** —  Structured UX evaluation that ranks specific issues by severity and states the change that fixes each.
 - **fortify** —  Harden designs for real-world use by systematically identifying and designing for every condition outside the happy path.
 - **include** —  Design for everyone by treating accessibility as a first-class design discipline, not a compliance checklist.
 - **intent** —  The entry point for Intent, a UX and design strategy system.
@@ -19,7 +19,7 @@ Specialized design skills are available in .github/copilot/skills/:
 - **organize** —  Structure information so people can find what they need, understand where they are, and navigate confidently.
 - **philosopher** —  A cross-cutting cognitive mode for sitting with design problems before rushing to solve them.
 - **present** —  Build presentations of design work: design reviews, research readouts, strategy pitches, case studies.
-- **specify** —  Bridges design and engineering by producing detailed specs, organized handoff packages, asset inventories, and cross-functional documentation.
+- **specify** —  Packages an approved design for the people or agents who will build it.
 - **storytelling** —  Discipline for giving design work narrative structure that makes people care.
 - **strategize** —  Frames product design problems before solutions exist.
 - **transpose** —  Rethinks experiences for different platforms and contexts — not just resizing, but reconceiving.

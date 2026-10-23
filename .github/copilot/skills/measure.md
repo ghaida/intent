@@ -33,10 +33,10 @@ But measurement is not neutral. Every metric you choose shapes what gets optimiz
 
 Measure works alongside the full Intent skill system:
 
-- **`/strategize`**: Their hypotheses need measurable success criteria. Every strategic bet should connect to a metric that tells you whether the bet paid off. `/strategize` defines "we believe X"; `/measure` defines "we'll know X is true when Y." When metrics contradict a strategic assumption, measure loops back to reopen strategy — with guardrails (see "When measurement points back to strategy" below).
+- **`/strategize`**: Their hypotheses need measurable success criteria. Every strategic bet should connect to a metric that tells you whether the bet paid off. `/strategize` states the hypothesis; `/measure` defines when it is true. When metrics contradict a strategic assumption, measure loops back to reopen strategy — with guardrails (see "When measurement points back to strategy" below).
 - **`/investigate`**: Qualitative research complements quantitative measurement. When the numbers say users drop off at step 3, investigate tells you why. When satisfaction scores drop after a redesign, investigate interviews users to understand the experience behind the number. Never make major design decisions from metrics alone.
 - **`/evaluate`**: UX assessment produces scores and findings that inform what to measure. Evaluation identifies usability issues; measurement tracks whether fixes actually resolved them.
-- **`/specify`**: Test plans and success metrics go into handoff specs. Every feature spec should include what success looks like and how to measure it, so engineering can instrument accordingly.
+- **`/specify`**: packages the design for the build; the measurement framework rides in the package when the project made one, so the builder can instrument what success looks like.
 - **`/philosopher`**: A cross-cutting cognitive mode for questioning your metrics before they become targets. Invoke when: a metric feels too easy to game, the dashboard looks green but users are complaining, you're not sure whether you're measuring user success or business extraction, or you need the question: "What if measuring this changes the behavior we're trying to measure?"
 
 ---
@@ -244,6 +244,8 @@ At most one strategy reopen per project iteration based on post-launch metrics. 
 
 ## Output format
 
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`metrics-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+
 ### Measurement framework (GSM map)
 Goal-Signal-Metric chains for each major feature or initiative, including counter-metrics and ethical considerations.
 
@@ -263,11 +265,11 @@ Post-launch measurement cadence: what to measure at day 1, week 1, month 1, quar
 
 ## Voice and approach
 
-Precise about what data does and doesn't prove. "The data suggests" not "the data proves." Statistical significance does not mean practical significance. A p-value under 0.05 means the result is unlikely to be due to chance — it does not mean the result matters.
+Precise about what data does and doesn't prove. Keep the interval and drop the hedge: "Conversion rises 1 to 3 points (95% CI), n=4,100." Statistical significance does not mean practical significance. A p-value under 0.05 means the result is unlikely to be due to chance — it does not mean the result matters.
 
-Transparent about limitations. Sample size, selection bias, survivorship bias, confounding variables — name them. Honest uncertainty is more useful than false confidence.
+Limitations in the work are numbers: the n, the interval, the segment. Selection bias, survivorship bias and confounding variables are named in conversation and logged. Honest uncertainty is more useful than false confidence.
 
-Resist false certainty. When the data is ambiguous, say so. When the sample is too small, say so. When you need qualitative research to interpret the numbers, say so. The most dangerous metric is the one that looks conclusive but isn't.
+Resist false certainty. In conversation, say what the data cannot settle and what research would. In the work, the interval and the n say it. The most dangerous metric is the one that looks conclusive but isn't.
 
 Advocate for measuring what matters to users, not just what's easy to track. Clicks are easy to count. Satisfaction is harder. Task completion is meaningful. Time-on-site is ambiguous. Advocate for the metrics that reflect user success, even when they're harder to instrument.
 
