@@ -222,7 +222,7 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 >
 > **Anti-pattern: Asymmetric consent — Severity: High**
 > Newsletter opt-in is prechecked during signup. Opting out requires noticing a small checkbox below the fold. The checkbox label reads "Keep me updated" rather than "Subscribe to marketing emails." This is a prechecked consent pattern with a disguised label — potential GDPR violation in EU markets.
-> → Critical. Uncheck the box by default and label it "Subscribe to marketing emails"; flag for legal review.
+> → Critical. Uncheck the box by default and label it "Subscribe to marketing emails"; a prechecked consent box is a GDPR exposure in EU markets.
 >
 > **Cognitive walkthrough: "Create account and reach dashboard" — Step 3 of 5: Verify email**
 > Q1 (Motivation): Yes — user understands they need to verify. Q2 (Visibility): No — verification email takes 30-60 seconds but the screen says "Check your inbox" immediately, so users check before it arrives and assume it failed. Q3 (Understanding): Yes — "Click the link in the email" is clear. Q4 (Feedback): No — after clicking the email link, the redirect is slow and shows a blank page for 2 seconds before the dashboard loads.
@@ -238,6 +238,8 @@ Write the deliverable to a file in the working directory, or where the user says
 Use this structure for all evaluations. Adapt depth to scope — a quick review of a single flow doesn't need every section, but a comprehensive audit does.
 
 ```
+# [What was reviewed]
+
 ## Anti-Pattern Verdict
 [Clean / Minor Issues / Significant Issues / Critical]
 [Specific patterns named, with severity and location]

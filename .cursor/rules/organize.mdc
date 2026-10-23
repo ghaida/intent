@@ -251,6 +251,7 @@ body {
 - Don't invent class names — copy verbatim. Class consistency is how skills stay aligned.
 - Both ramps always ship. A standalone artifact carries no `data-theme` and follows the OS. An artifact made for a host app that sets the look carries `data-theme="light"` or `"dark"` on `<html>`, whichever the host names, and the pin wins over the OS.
 - Self-contained: no external `<link>` to fonts or CSS, no JS.
+- The page carries no account of how it was made and no first person; a key to its marks is written in the work's own words.
 
 ### Figma output
 

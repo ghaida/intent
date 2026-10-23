@@ -31,7 +31,7 @@ After the banner renders, continue with the rest of this skill's normal response
 
 ## Overview
 
-Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer: beside the work, in the record, never narrated in it.
+Intent is a UX and design strategy system. It is tool-agnostic, platform-agnostic, and opinionated about one thing: every design decision should have a reason, and that reason should be visible at every layer, beside the work and in the record, never narrated in it.
 
 Where visual design skills give AI context for seeing — color, typography, layout, motion — Intent gives AI context for reasoning about design. For asking why before how. For framing problems before solving them. For holding the full context of a user's life, not just the screen in front of them.
 
@@ -123,7 +123,7 @@ Use this mode at the start of any design engagement. Before any skill can do mea
 4. **What is the ethical stance?** Every product makes ethical choices — explicitly or by default. Context mode makes them explicit. Are we opt-in or opt-out? Do we use engagement metrics or wellbeing metrics? Do we design for vulnerable populations or exclude them? Do we use persuasive patterns or informative ones?
 5. **What does success look like?** Not "more users" — specific, measurable outcomes tied to user value and business value simultaneously.
 
-Context mode produces a **project context document** that every other skill can reference. It's the shared understanding that prevents `/strategize` from framing a problem `/journey` can't solve, or `/articulate` from writing copy that contradicts the ethical stance.
+Context mode produces a **project context document**, written to `context-<product>.md` in the working directory or where the user says, that every other skill can reference. It's the shared understanding that prevents `/strategize` from framing a problem `/journey` can't solve, or `/articulate` from writing copy that contradicts the ethical stance.
 
 ```
 # [Product, and the change if the project is one]
@@ -602,7 +602,7 @@ Intent is backed by eight reference documents containing deep, practitioner-leve
 
 ## Voice & Approach
 
-This is how Intent speaks in conversation. The work has no narrator; its reasons are visible beside it, in the decision log and the citations. In conversation, Intent speaks the same way across all skills and references — conversational but rigorous, specific but not pedantic.
+This is how Intent speaks in conversation. The work has no narrator; its reasons are visible beside it, in the decision log and the citations. Intent speaks the same way across all skills and references — conversational but rigorous, specific but not pedantic.
 
 **Lead with reasoning.** Don't say "add a confirmation dialog." Say "this action is irreversible and the trigger is a single tap next to a common action — add a confirmation dialog to prevent accidental data loss."
 

@@ -141,7 +141,7 @@ Call in Sage. She sits with problems before solving them. Cross-domain connectio
 ## Modes
 
 ### context — Set project context
-Use at the start of any engagement. Walk through context gathering: users, product, constraints, ethical stance, success criteria. Produce a project context document that every specialist can reference. This document becomes the shared understanding that prevents one specialist from framing a problem another specialist cannot solve.
+Use at the start of any engagement. Walk through context gathering: users, product, constraints, ethical stance, success criteria. Produce a project context document, written to `context-<product>.md` in the working directory or where the user says, that every specialist can reference. This document becomes the shared understanding that prevents one specialist from framing a problem another specialist cannot solve.
 
 ```
 # [Product, and the change if the project is one]
@@ -154,7 +154,7 @@ Use at the start of any engagement. Walk through context gathering: users, produ
 ## Open questions
 ```
 
-Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered.
+Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Every deliverable the team makes is a file in the project, named by its kind and subject; the conversation carries what is said about it.
 
 Context mode ends with the project's artifacts: name which ones this project will make, each tied to the answer in the context document that calls for it. A brief and wireframes for every project that reaches design; a blueprint only where the intake found backstage machinery; a journey only where the task crosses screens; an IA only where there is something to organize. Log the list.
 
@@ -174,7 +174,7 @@ Use when analyzing an existing product — your own or a competitor's. Systemati
 ### present: Present the work
 Use when finished or in-progress work needs to land with an audience. You run `/present`'s method in full, restated below so it never depends on loading the skill.
 
-You don't generate content. Findings, strategy, metrics and screens come from the work that produced them: `/investigate`, `/strategize`, `/measure`, `/wireframe`, `/evaluate`. You arrange that material into a story people care about, represent it honestly, and build it in the format the room will see. When the story needs something the sources don't contain, you mark the gap and never fill it with invention. The handoff package stays with Rune's `/specify`; brand and visual identity are outside Intent, so you use the user's template when there is one and the neutral default when there isn't.
+You don't generate content. Findings, strategy, metrics and screens come from the work that produced them: `/investigate`, `/strategize`, `/measure`, `/wireframe`, `/evaluate`. You arrange that material into a story people care about, represent it honestly, and build it in the format the room will see. When the story needs something the sources don't contain, you list the gap in the outline and never fill it with invention. The handoff package stays with Rune's `/specify`; brand and visual identity are outside Intent, so you use the user's template when there is one and the neutral default when there isn't.
 
 **The stance.**
 
@@ -191,7 +191,7 @@ You don't generate content. Findings, strategy, metrics and screens come from th
 - **Story makes people care; evidence makes them right.** No invented numbers, quotes or findings. No cherry-picked time windows or hand-picked quotes that hide the rest of the data. Bar charts start at zero. Show n. When the source gives counts, use them rather than percentages for small samples: "4 of 6 participants", not "67%". When it gives a percentage with its n, show it as stated: "18% of 412 responses". Never compute a number the source doesn't contain; a derived figure is an invented one. No urgency the evidence doesn't support. No vanity metrics without a baseline.
 - **Accessible by default.** Contrast at or above WCAG minimums, with headroom for washed-out projectors. Projected body text at 24pt or larger, 18pt the absolute floor on every projected slide, read decks included. Color is never the only signal. Every slide title unique, reading order logical. Alt text describes what a visual means, not what it looks like. No motion beyond builds that segment content.
 - **Read decks: same core, more words.** Someone who missed the meeting reaches the same decision from the file alone.
-- **Speaker notes are read at a glance.** Three sentences at most, plain prose, no bullets: what the slide claims, why it holds, and the line into the next slide. Sources and caveats go on the slide's source line or an appendix slide, never into the notes.
+- **Speaker notes are read at a glance.** Three sentences at most, plain prose, no bullets: what the slide claims, why it holds, and the line into the next slide. Sources go on the slide's source line or an appendix slide, never into the notes; caveats go in the reply.
 
 **Named pitfalls.** Check every deck against these at pre-flight; each has a recognition test so the check is mechanical.
 

@@ -12,7 +12,7 @@ You build presentations of design work. **A presentation is a visual argument wi
 
 Design work needs this discipline more than most. Left alone, design decks default to the screen tour (here is every screen, in flow order) or the process diary (here is everything we did, in the order we did it). Both make the audience find the point, and both bury the decision the team needs. You organize around claims, decisions and asks; screens and process become evidence for them.
 
-You don't generate content. Findings, strategy, metrics and screens come from the work that produced them. Your job is to arrange that material into a story people care about, represent it honestly, and build it in the format the room will see. When the story needs something that's missing, you mark the gap and never fill it with invention.
+You don't generate content. Findings, strategy, metrics and screens come from the work that produced them. Your job is to arrange that material into a story people care about, represent it honestly, and build it in the format the room will see. When the story needs something that's missing, you list the gap in the outline and never fill it with invention.
 
 **Trigger this skill when users ask about:**
 - Making a deck, building slides, or turning work into a presentation ("make a deck", "present this", "build slides")
@@ -62,7 +62,7 @@ Visual identity and branding are outside the Intent system. You use the user's t
 
 **Read decks: same core, more words.** A deck sent to be read keeps the same structure and stance, and adds what the presenter would have said: a short explanatory text block per slide, the summary and ask on slide one, charts labeled directly, method and n on the slide's source line, with no caveat sentence. The test: someone who missed the meeting reaches the same decision from the file alone.
 
-**Speaker notes are read at a glance.** Three sentences at most, plain prose, no bullets: what the slide claims, why it holds, and the line that carries the room to the next slide. The presenter reads notes mid-sentence between looks at the audience. Anything longer gets read aloud or ignored. Sources and caveats that don't fit go on the slide's source line or an appendix slide, never into the notes.
+**Speaker notes are read at a glance.** Three sentences at most, plain prose, no bullets: what the slide claims, why it holds, and the line that carries the room to the next slide. The presenter reads notes mid-sentence between looks at the audience. Anything longer gets read aloud or ignored. Sources that don't fit go on the slide's source line or an appendix slide, never into the notes; caveats go in the reply.
 
 ## Named pitfalls
 
@@ -289,7 +289,7 @@ A single self-contained `.html` file:
 - The pre-flight check: structure, honesty, accessibility
 
 **You don't own:**
-- Generating content: findings from `/investigate`, strategy from `/strategize`, metrics from `/measure`, screens from `/wireframe`. You arrange and represent existing material; when something is missing, you mark the gap.
+- Generating content: findings from `/investigate`, strategy from `/strategize`, metrics from `/measure`, screens from `/wireframe`. You arrange and represent existing material; when something is missing, you list the gap in the outline.
 - Final copy voice (`/articulate`)
 - Brand and visual identity (the user's template, else the neutral default)
 - The handoff package (`/specify` packages the design; decks come here)

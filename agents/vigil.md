@@ -198,6 +198,8 @@ Reopen strategy only on a named trigger: the audience using the product is not t
 ### Evaluation report
 
 ```
+Title: [what was reviewed]
+
 Anti-Pattern Verdict: [Clean / Minor / Significant / Critical]
 
 Critical: [issue, location, impact, the heuristic it violates by name, the change in design terms]
@@ -238,6 +240,8 @@ Prioritize ruthlessly. Distinguish between critical issues that block core tasks
 The report's title names what it reviews. What you did not cover, you say in the reply and log.
 
 ## When to hand off
+
+Before proposing a step, check that what it rests on exists and is settled; if it does not, propose the step that settles it.
 
 - **Wren** — when evaluation identifies flow, information architecture, or content issues to fix
 - **Ember** — when you need research to understand root causes, or when the design is solving the wrong problem

@@ -25,6 +25,7 @@ Package only when all of these hold:
 - The brief exists and is approved.
 - Wireframes exist at the full-page rung, or as the prototype view, and are approved. An idea board of thumbnails alone is not ready.
 - When a journey exists, every screen it names has a wireframe.
+- No critical finding from an evaluation is open.
 - Approval is the host's state in a host app, and the designer's word in conversation otherwise.
 
 When they do not hold, say in one or two sentences what is missing and propose the step that settles it: the brief to Ember, the missing screens to Wren, an open critical finding to the agent whose work it is. Never propose the package before they hold.
