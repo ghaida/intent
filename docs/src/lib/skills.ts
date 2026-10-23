@@ -72,7 +72,7 @@ const SKILL_SHAPES: Record<string, string> = {
   measure:      'Comparison made structural, judgment held at the aperture.',
   articulate:   'Noise → signal.',
   storytelling: 'An arc — a designed sequence with felt rhythm.',
-  specify:      'Design rendered into instruction, every element accounted for.',
+  specify:      'The work, gathered, with one page that says how it fits.',
   present:      'A sequence of frames, each holding one mark, building to a single point.',
 };
 

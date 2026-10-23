@@ -6,18 +6,18 @@ Intent gives AI the context to approach design decisions with depth. Where visua
 
 ## The agents
 
-Six agents, each combining multiple skills into a specialist persona:
+Six agents, each combining multiple skills into one specialist:
 
 | Domain | Agent | Skills it combines |
 |--------|-------|--------------------|
 | Entry point + Presentation | **Noor** | `/intent` + `/present`: orients the project, holds UX principles and the anti-pattern catalog, routes to specialists, and presents the finished work |
-| Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
-| Experience Design | **Wren** | `/journey` + `/organize` + `/wireframe` + `/articulate` — shapes user flows, structures information, wireframes screens, designs the words |
-| Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
-| Engineering Handoff | **Rune** | `/specify` — carries design intent into implementation-ready specs, copy matrices, and handoff packages |
+| Strategy + Research | **Ember** | `/strategize` + `/investigate` + `/storytelling` — frames problems, demands evidence, gives the work its narrative shape |
+| Experience Design | **Wren** | `/journey` + `/organize` + `/wireframe` + `/articulate` + `/blueprint` + `/transpose` + `/localize` — shapes user flows, structures information, wireframes screens, designs the words, maps the service behind them, and adapts the design across platforms and markets |
+| Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` + `/measure` — evaluates UX quality, hardens for edge cases, ensures accessibility, measures whether it worked |
+| Engineering Handoff | **Rune** | `/specify` — checks the design is ready, runs the ethical review, and packages the project's artifacts with one entry page that says how they fit |
 | Cross-cutting Wisdom | **Sage** | `/philosopher` — sits with problems, expands thinking, challenges assumptions |
 
-For larger projects, chain agents in sequence: Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered at any point when the problem needs more exploration.
+For larger projects, chain agents in sequence: Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to package it for the build. Sage can be entered at any point when the problem needs more exploration.
 
 ## The skills
 
@@ -31,7 +31,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 ### Strategy & Research
 
 - `strategize/SKILL.md` — Problem framing through the Five Foundational Questions (problem validation, audience definition, solution fit, feature validation, competitive landscape). Research synthesis, opportunity sizing, hypothesis definition, competitive analysis.
-- `investigate/SKILL.md` — Primary research execution and synthesis. Interview guide construction, usability test planning, survey design, diary studies, card sorts, tree tests. Synthesis frameworks: affinity mapping, thematic analysis, insight statements with evidence strength indicators.
+- `investigate/SKILL.md` — Primary research execution and synthesis. Interview guide construction, usability test planning, survey design, diary studies, card sorts, tree tests. Synthesis frameworks: affinity mapping, thematic analysis, insight statements with counts and citations.
 - `blueprint/SKILL.md` — Service blueprints, ecosystem maps, process architecture, dependency diagrams, system state and failure mode analysis, scalability planning. Offers visual companion output: rendered HTML diagrams, Pencil files, or structured specs for your design tool.
 
 ### Experience Design
@@ -63,7 +63,7 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 ### Handoff
 
-- `specify/SKILL.md`: design-to-engineering bridge. Detailed specs, copy matrices, interactive HTML documentation, use case and edge case documentation, test plans with success criteria. Includes ethical review against the anti-pattern catalog.
+- `specify/SKILL.md`: packages an approved design for the build. The handoff is the project's own artifacts, with one entry page in front that says what the product is, what is in the package, how the pieces fit, and what is left to the builder. Checks readiness and runs the ethical review against the anti-pattern catalog first.
 - `present/SKILL.md`: story-first decks for design work. Interviews for audience, feeling, action and sources; gets a story outline approved; builds in Google Slides (via .pptx), PowerPoint, Figma Slides or reveal.js. Carries a stance on what makes a good presentation and refuses invented evidence.
 
 ## Install
@@ -99,7 +99,7 @@ I have a design challenge
 ├─ "Does this actually work? For everyone?"
 │  └─ /evaluate + /fortify + /include
 │
-├─ "Ready for engineering"
+├─ "Ready to build"
 │  └─ /specify
 │
 ├─ "I'm stuck / brainstorm / sit with this"

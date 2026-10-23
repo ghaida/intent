@@ -164,7 +164,7 @@ A systematic method for identifying, analyzing, and reporting patterns across qu
 5. **Define** — Name and define each theme. What story does each tell?
 6. **Report** — Select compelling examples, relate themes to research questions.
 
-**Key distinction:** Themes don't "emerge from the data" passively. The researcher makes active choices about what to code, how to group, and what to name. Be transparent about those choices.
+**Key distinction:** Themes don't "emerge from the data" passively. The researcher makes active choices about what to code, how to group, and what to name. Log the coding choices as decisions.
 
 ### Journey-Based Synthesis
 
@@ -178,16 +178,9 @@ Organize findings around the user's journey rather than by theme. Especially use
 
 Research that doesn't change decisions is wasted research. Communication is the last mile.
 
-### Evidence Strength Indicators
+### Breadth as Fact
 
-Not all findings carry equal weight. Be explicit about confidence levels:
-
-| Indicator | Meaning | Example |
-|-----------|---------|---------|
-| **Strong evidence** | Multiple sources, multiple methods, consistent pattern | "7 of 8 participants failed to complete checkout. Analytics show 62% drop-off at the same step." |
-| **Moderate evidence** | Single method with clear pattern, or multiple methods with partial agreement | "Interview participants consistently mentioned confusion with pricing tiers. We haven't tested this quantitatively." |
-| **Directional evidence** | Small sample or single source, but worth noting | "Two participants mentioned this pain point. It's not a pattern yet, but it's worth monitoring." |
-| **Hypothesis** | Researcher interpretation, not directly observed | "Based on the drop-off data and interview themes, we believe the root cause is X. This needs validation." |
+Not all findings carry equal weight, and the weight is in the claim itself: the count and the citation. "7 of 8 participants failed to complete checkout [C1]; analytics show 62% drop-off at the same step [A2]" carries its own weight. "Two participants mentioned this pain point [C4]" carries its own. A researcher's inference is written as a hypothesis with the study that would test it, never as a labeled confidence level.
 
 ### Findings Format
 
@@ -195,9 +188,8 @@ Structure findings for decision-making:
 
 1. **What we observed** — Factual description of the finding. No interpretation yet.
 2. **What it means** — Interpretation. What does this observation tell us about user needs, behaviors, or the design?
-3. **How confident we are** — Evidence strength indicator. How much weight should this finding carry?
-4. **What we recommend** — Actionable recommendation tied to the finding.
-5. **What we still need to learn** — Open questions that this finding raises.
+3. **What we recommend** — Actionable recommendation tied to the finding.
+4. **What we still need to learn** — Open questions that this finding raises.
 
 ### Common Communication Failures
 

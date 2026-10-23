@@ -12,7 +12,7 @@ description: >
   this", "brainstorm", "explore this problem", or says things like "go
   weird with it", "don't filter yourself", "what connections are you not
   making", "think about this differently", or "I'm stuck". This is a
-  reasoning protocol, not a persona — Claude's voice stays grounded but
+  reasoning protocol, not a character — Claude's voice stays grounded but
   the cognitive process changes significantly.
 version: 1.7.1
 user-invocable: true
@@ -121,13 +121,12 @@ just what's convenient to count.
 
 ### Handoff
 
-**With `/specify`** — when edge cases keep surfacing that the spec doesn't
-cover, when something about the design feels fragile under real conditions,
-or when the "pending questions" section keeps growing. The philosopher helps
-the specification process think through what could go wrong that nobody has
-imagined yet, and whether the spec is documenting the right thing. "What
-decisions did we make that we forgot to document, and what happens when
-someone asks 'why?'"
+**With `/specify`** — when readiness keeps failing and no one can say why,
+when the map of how the pieces fit shows a seam the design papered over, or
+when the design looks finished and something still feels fragile under real
+conditions. The philosopher helps ask whether the design is ready to build or
+only looks finished. "What did we decide without noticing, and what happens
+when the builder asks 'why?'"
 
 ### Invoking the philosopher
 
@@ -251,8 +250,8 @@ the language of whichever skill you're working alongside:
   definitions
 - For `/fortify`: newly surfaced failure scenarios, structural risks
 - For `/include`: expanded definitions of "user", newly visible barriers
-- For `/specify`: newly surfaced edge cases, revised test hypotheses,
-  structural risks in the spec
+- For `/specify`: seams the map of the pieces shows, readiness that fails
+  and no one can say why
 
 You can offer: *"Want to start pulling on what's actually useful here?"*
 But don't collapse into synthesis unasked. Let the check-in system handle
@@ -268,8 +267,9 @@ Outputs in this mode tend to be:
 - **Dense with connections** — surface the links explicitly ("this reminds me
   of...", "structurally this is similar to...", "this is the same problem as X
   in a different domain")
-- **Honest about uncertainty** — use language that signals generative vs
-  grounded thinking
+- **Grounded where it lands** — where evidence is thin, the exploration stops
+- **Cited, not narrated** — what rests on the brief, the review or research cites it in brackets; no piece is the subject of a sentence
+  at what is known; what is generative is said in conversation
 - **Not artificially resolved** — it's okay to end in open territory
 
 Outputs should NOT be:
@@ -288,7 +288,7 @@ If the user specifies or implies intensity, modulate accordingly:
 |-------|----------|
 | **Low / light** | Slightly wider associations, less filtering. Still fairly linear output. Good for a quick reframe before continuing with the primary skill. |
 | **Medium** | Full protocol active. Cross-domain, multi-framing, resonance-following. The default when a designer says "I'm stuck" or "brainstorm with me." |
-| **High / deep** | Maximize associative width. Treat everything as potentially significant. Structure loosens. Connections become the point. Be explicit that you're in deep generative territory. Reserve for early-stage exploration or when the problem feels fundamentally misframed. |
+| **High / deep** | Maximize associative width. Treat everything as potentially significant. Structure loosens. Connections become the point. Say in conversation that you are in deep generative territory; the work carries the reframed problem itself. Reserve for early-stage exploration or when the problem feels fundamentally misframed. |
 
 Default to **medium** unless told otherwise.
 
@@ -351,13 +351,14 @@ this sequence:
 
 1. **Summarize what surfaced.** The significant insights, reframes, or
    open questions that emerged, at the length they need. No filler.
-2. **Flag what changed.** If the exploration reframed the original problem,
-   say so explicitly. "We started with X, but the real question might be Y."
+2. **Carry the change.** If the exploration reframed the problem, write the
+   reframed problem itself into the work; the change shows in versions. Say
+   in the reply what moved.
 3. **Translate back to the active skill.** Frame the insights in the
    language of whichever Intent skill is active — reframed hypotheses for
    `/strategize`, alternative structural models for `/blueprint`, new
    reference directions for `/articulate`, revised interaction assumptions
-   for `/journey`, newly surfaced edge cases for `/specify`, reframed
+   for `/journey`, seams in the package for `/specify`, reframed
    assessment criteria for `/evaluate`, expanded inclusion frames for
    `/include`, structural failure insights for `/fortify`.
 4. **Hand back control.** *"Here's what that opens up. Want to bring this

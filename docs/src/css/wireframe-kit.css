@@ -517,13 +517,10 @@
   border-radius: var(--r-lg); padding: var(--sp-4); width: 100%;
 }
 .wf .idea-caption { padding: var(--sp-4); }
-.wf .idea-num {
-  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 700;
-  color: var(--note); /* annotation layer: the index narrates, it isn't UI */
-}
 .wf .idea-title {
   font-size: var(--t-lg); line-height: var(--t-lg-lh); font-weight: 700;
-  margin: var(--sp-1) 0 var(--sp-2);
+  color: var(--note); /* annotation layer: the caption narrates, it isn't UI */
+  margin: 0 0 var(--sp-2);
 }
 .wf .idea-desc {
   font-size: var(--t-sm); line-height: var(--t-sm-lh);

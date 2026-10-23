@@ -1,6 +1,6 @@
 # Design with Intent
 
-Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to handing off the spec.
+Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to packaging the design for the build.
 
 The core thesis: every design decision should have a reason, and that reason should be visible at every layer.
 
@@ -12,9 +12,9 @@ The core thesis: every design decision should have a reason, and that reason sho
 |-------|------|-------------|
 | **Noor** (Entry Point) | `noor.md` | Starting a project, setting context, routing to specialists, presenting the work |
 | **Ember** (Strategy + Research) | `ember.md` | Problem is unclear, need to frame the challenge, synthesize research |
-| **Wren** (Experience Design) | `wren.md` | Designing flows, organizing information, writing interface copy |
-| **Vigil** (Quality + Resilience) | `vigil.md` | Evaluating quality, hardening for edge cases, ensuring accessibility |
-| **Rune** (Handoff) | `rune.md` | Ready to hand off to engineering |
+| **Wren** (Experience Design) | `wren.md` | Designing flows, organizing information, wireframing screens, writing interface copy, mapping the service behind it |
+| **Vigil** (Quality + Resilience) | `vigil.md` | Evaluating quality, hardening for edge cases, ensuring accessibility, measuring whether it worked |
+| **Rune** (Handoff) | `rune.md` | The design is approved and someone needs to build it |
 | **Sage** (Philosopher) | `sage.md` | Stuck, need to brainstorm, problem feels underexplored |
 
 ---
@@ -52,7 +52,7 @@ For complex projects, use agents in sequence. Each agent's output becomes the ne
 2. **Ember** — Frame the problem, synthesize research, define scope
 3. **Wren** — Design flows, structure information, write the interface copy
 4. **Vigil** — Evaluate the design, harden for edge cases, check accessibility
-5. **Rune** — Write engineering specs and handoff documentation
+5. **Rune** — Check readiness, run the ethical review, and package the artifacts for the build
 
 Start a new Project (or conversation) for each agent. Carry the prior agent's output forward as context.
 
@@ -93,9 +93,9 @@ START: I have a design challenge
 │   └── Vigil
 │      Evaluates quality, hardens for real conditions, ensures access
 │
-├── "Ready for engineering"
+├── "Ready to build"
 │   └── Rune
-│      Specs, annotations, edge case documentation, handoff packages
+│      Readiness, the ethical review, the handoff package
 │
 ├── "I'm stuck / brainstorm / what am I missing?"
 │   └── Sage
@@ -119,7 +119,7 @@ START: I have a design challenge
 - Noor: Establish context — users, constraints, ethical stance
 - Ember: Quick 2-page brief with problem framing and scope
 - Wren: Design the flow, write the copy
-- Rune: Write the spec
+- Rune: Package the design for the build
 - Sage: Available at any point if the team gets stuck or the framing feels shallow
 
 ### Medium project (6-12 weeks)
@@ -130,7 +130,7 @@ START: I have a design challenge
 - Ember: Complete brief with research synthesis, hypothesis, five foundational questions
 - Wren: User flows across devices, information architecture, content strategy
 - Vigil: Heuristic evaluation, accessibility audit, edge case hardening
-- Rune: Comprehensive specs with test plans
+- Rune: The handoff package, with the ethical review logged
 - Sage: Enter from any agent when exploration is needed — when the brief feels too tidy or the direction is not clicking
 
 ### Large project (12-26 weeks)
@@ -141,7 +141,7 @@ START: I have a design challenge
 - Ember: Brief, hypothesis, market analysis, five foundational questions
 - Wren: Flows across all devices and audience contexts, full IA, content strategy
 - Vigil: Quality evaluation, resilience testing, accessibility audit, anti-pattern scan
-- Rune: Full specs, test plans, handoff packages
+- Rune: The handoff package, readiness checked and the ethical review logged
 - Sage: Use at project kickoff, at phase transitions, or whenever the team senses the problem is being solved too quickly
 - Loop back to Ember if testing reveals new insights
 
@@ -170,22 +170,21 @@ START: I have a design challenge
 - Content strategy and voice guidelines
 - Copy specifications and microcopy
 - Interaction specs with state documentation
+- Service blueprints: frontstage, backstage, support, dependencies, failure modes
 
 ### Vigil (Quality + Resilience)
-- Severity-ranked findings (P0-P3) with a verdict per heuristic
+- Severity-ranked findings with a verdict per heuristic
 - Anti-pattern verdicts with regulatory context
 - Cognitive walkthrough results (per-task, per-step)
 - Edge case and error recovery documentation
 - Accessibility audits against WCAG
 - Prioritized remediation roadmaps
+- Measurement frameworks: Goal-Signal-Metric chains, A/B test plans, learning plans
 
 ### Rune (Handoff)
-- Engineering specifications with interaction logic
-- Edge case documentation
-- Asset inventories and component annotations
-- Test plans with audience criteria and success metrics
-- Stakeholder presentations translating design decisions
-- Cross-functional ownership documentation
+- A readiness check: the brief and the full-page wireframes approved, every journey screen drawn
+- The ethical review, logged as a decision
+- The handoff package: the project's artifacts with one entry page that says what the product is, what is in the package, how the pieces fit, and what is left to the builder
 
 ### Sage (Philosopher)
 - Reframed problem statements
@@ -200,11 +199,11 @@ START: I have a design challenge
 
 Every agent in the Intent system follows these:
 
-1. **Evidence-grounded.** Every decision cites evidence or explicitly flags assumptions.
+1. **Evidence-grounded.** Every decision cites evidence or is logged as a judgment call.
 2. **Problem-first.** Frame the problem before proposing solutions.
-3. **Transparent gaps.** Always surface what you do not know. Include "Pending Questions" sections.
+3. **Gaps in the record.** What is not known is an open question in the work or a note in the log, never a sentence of hedging.
 4. **Ecosystem thinking.** Design for the full context — not just the screen in front of the user.
-5. **Document the "no."** Explain what was chosen against, and why.
+5. **Log the "no".** What was chosen against, and why, is in the decision log.
 
 And the six core UX principles that Noor holds:
 
@@ -249,7 +248,7 @@ Each agent has a default output structure. You can also ask:
 ### Use agents to cross-review
 
 - Have Vigil review Wren's flows for quality and accessibility
-- Have Ember review Rune's specs for strategic alignment
+- Have Ember check Rune's package against the brief
 - Have Vigil check Ember's brief for assumption gaps
 - Have Sage question any agent's framing when it feels too tidy
 
@@ -262,7 +261,7 @@ agents/noor.md   — Entry point. Context, principles, anti-patterns, routing.
 agents/ember.md  — Strategy and research. Problem framing, briefs, synthesis.
 agents/wren.md   — Experience design. Flows, IA, content, interaction.
 agents/vigil.md  — Quality and resilience. Evaluation, hardening, accessibility.
-agents/rune.md   — Handoff. Engineering specs, documentation, test plans.
+agents/rune.md   — Handoff. Readiness, the ethical review, the package.
 agents/sage.md   — Philosopher. Expansive thinking, assumption challenging.
 HOW-TO-USE.md    — This file.
 ```

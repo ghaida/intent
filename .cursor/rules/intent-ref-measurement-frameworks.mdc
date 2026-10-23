@@ -119,7 +119,7 @@ You don't need to be a statistician. You need to know enough to ask the right qu
 
 **Why designers should care:** Confidence intervals communicate uncertainty. A conversion rate of "4.2%" feels precise. "Between 3.8% and 4.6%" communicates that there's a range of plausible values — and that range might overlap with the other variant's range, meaning the difference might not be real.
 
-**Design implication:** When presenting data to stakeholders, include confidence intervals or some expression of uncertainty. "We believe the new design improves conversion by 1-3 percentage points" is more honest and more useful than "the new design improves conversion by 2.1%."
+**Design implication:** When presenting data to stakeholders, include confidence intervals or some expression of uncertainty. "Conversion rises 1 to 3 points (95% CI), n=4,100" is more honest and more useful than "the new design improves conversion by 2.1%."
 
 ### Effect Size
 
@@ -135,9 +135,9 @@ You don't need to be a statistician. You need to know enough to ask the right qu
 
 Every A/B test should start with a written hypothesis, not "let's try this and see what happens."
 
-**Format:** "We believe that [change] will cause [effect] because [reasoning]. We'll measure this by [metric] and consider it successful if [threshold]."
+**Format:** "If we [change], then [effect], because [reasoning]. We'll measure this by [metric] and consider it successful if [threshold]."
 
-**Example:** "We believe that reducing the checkout flow from 5 steps to 3 steps will increase checkout completion rate because usability testing showed users abandoning at steps 3 and 4 due to form fatigue. We'll measure checkout completion rate and consider a 5% improvement (from 62% to 67%) as the minimum meaningful effect."
+**Example:** "If we reduce the checkout flow from 5 steps to 3 steps, then checkout completion rate will increase, because usability testing showed users abandoning at steps 3 and 4 due to form fatigue. We'll measure checkout completion rate and consider a 5% improvement (from 62% to 67%) as the minimum meaningful effect."
 
 **Why the hypothesis matters:** Without it, you can't distinguish between "the test showed nothing" (null result) and "we didn't know what we were looking for" (undefined success criteria). The hypothesis also prevents post-hoc rationalization — deciding after the test what the "real" metric was.
 
