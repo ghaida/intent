@@ -342,7 +342,7 @@ Recommend by the user's task, not by what's common. The pattern is a starting st
 
 Real content is a structural material, not a finishing touch — at every rung, vignettes included. Wireframe with the real label ("Storage used — 14.2 GB of 15 GB"), the real edge case (the German compound word, the 47-item list, the zero-state), the real data shape. Lorem ipsum hides exactly the problems wireframes exist to find: labels that don't fit, tables that overflow, hierarchies that collapse when the real numbers arrive. When real content isn't known yet, write honest, plausible content with no flag; what the copy pass should revisit, say in the reply.
 
-A number appears in a screen only where the person using it needs the number: never to fill a label ("Your hand · 5 cards"), never as a count beside every name, never as a scoreboard of zeros. Placeholder tallies make the screen about bookkeeping instead of the moment it is for.
+A number appears in a screen only where the person using it needs the number: never to fill a label ("Your hand · 5 cards"), never as a count beside every name, never as a scoreboard of zeros. Placeholder tallies make the screen about bookkeeping instead of the moment it is for. The rule holds for strings taken from a flow, a spec or an earlier board: "Mo · 6 left" beside every played card, "Round 3" in every bar and "6 cards in hand" under a name are furniture even when the flow prescribes them. Draw the moment without them and log that the inherited string was dropped.
 
 ### 5. Annotation discipline
 

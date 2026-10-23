@@ -378,7 +378,7 @@ Structure your design deliverable as needed for the flow at hand. Not every sect
    Show how the flow adapts across different entry points, user types, or triggering contexts. Note what's fixed vs. flexible.
 
 6. **Copy Specifications**
-   Headline, body, CTA, instructional text, microcopy, strings that expand in translation, error messages, empty states. Prioritize clarity over voice. A number appears in a string only where the person needs it at that moment: no round number on every stage line, no count beside every name.
+   Headline, body, CTA, instructional text, microcopy, strings that expand in translation, error messages, empty states. Prioritize clarity over voice. A number appears in a string only where the person needs it at that moment: no round number on every stage line, no count beside every name, including strings inherited from an earlier flow or spec.
 
 7. **Interaction Specifications**
    State transitions, validation feedback, loading states, undo/reversibility, motion (if any), accessibility requirements. Motion that must exist is specified here; the package carries it.

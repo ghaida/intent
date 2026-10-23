@@ -125,7 +125,7 @@ Provenance lives in the record, in three places.
 
 ### Removing the narrator removes no content
 
-Only the sentences about the work go. Every condition, test, threshold, citation, path and open question the work needs stays. When a sentence about the work carries a fact, rewrite it as the fact: "Most of this brief is hypotheses" goes, and each hypothesis stays with its test and the result that would prove it wrong.
+Only the sentences about the work go. Every condition, test, threshold, citation, path and open question the work needs stays. Before delivering, check the work against the request and the inputs: every condition the request names and every rule the inputs set has its place in the work, or its question in the open questions. When a sentence about the work carries a fact, rewrite it as the fact: "Most of this brief is hypotheses" goes, and each hypothesis stays with its test and the result that would prove it wrong.
 
 ### Deliverables are files
 
