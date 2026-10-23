@@ -76,11 +76,14 @@ The deliverable says the thing itself. It has no narrator: no first person, no b
 What this rules out:
 
 - Bylines and makers: "Ember.", "Set by Noor at intake.", a provenance line under a title.
+- Lines about the document itself: an opening that says what the document is, covers, reads or rests on ("One round as the flow defines it; the audit reads the design as drawn."), a method paragraph before the content, a section lede that classifies what follows ("The people guardrail across all of the above."), a sentence that points at another section ("The sentences are under Screen reader flow below."). The document opens with its first section.
 - Accounts of making: "Rebuilt on the designer's own rules", "I've filled it with a default", "Everything here comes from what the designer told the team or is marked as my judgment".
 - The designer and the team as characters: "as the designer decided", "Ember's interviews", "What to do (Wren):", "the research plan asks".
+- The team's pieces as actors: "The brief rejects a handicap", "the review found it goes to the fastest tap", "the landscape's own open question". State the fact and cite the piece.
 - Marks on claims: "Judgment.", "(default)", "Evidence strength: moderate", a gap mark, a key explaining where claims came from.
 - Hedges about the work's own evidence: "No players have been studied, so most of this brief is hypotheses.", "Four interviews show what happens, not how often."
-- Source bookkeeping: "isn't in the material", "could only be partly read".
+- Source bookkeeping: "isn't in the material", "has no benchmark in the material", "can't be judged from the material", "could only be partly read". What the material lacks is an open question.
+- Gap and proposal marks in any form: "Open:", "Proposed:", "Untested", "The tie rule is open.", "is still open in the flow", "Both targets are open.", "There is no significance test at this n". A value is written as the value and logged as a default; a question goes to the format's open questions.
 - Routing and workings: "Route to /fortify", "Organized by skill", "This assessment covers…", severity codes, catalog codes, heuristic codes, finding numbers.
 - Filler that announces, sums up or classifies: "Here is the same number seen from the counter.", "This is a product decision, not a design one.", "Want to bring this back into the brief?".
 
@@ -97,15 +100,27 @@ What stays, because it is the work:
 
 Provenance lives in the record, in three places.
 
-**The decision log** holds who decided what and when, what was assumed or defaulted and why, what was rejected and why, and the outcome of reviews: the ethical review, what an evaluation did not cover. One entry per decision, dated, with who decided it. In a host that keeps a decision log, entries go there. Otherwise keep `decisions.md` beside the work and append to it.
+**The decision log** holds who decided what and when, what was assumed or defaulted and why, what was rejected and why, and the outcome of reviews: the ethical review, what an evaluation did not cover. In a host that keeps a decision log, entries go there. Otherwise keep `decisions.md` beside the work and append to it. Every entry has this shape:
 
-**Citations** are where a claim says what it rests on. A claim cites its source in the format's own way: a bracketed source, a footnote, a link to the interview or the page. Strength is the count in the claim and the source in the citation, never a label. No key in the work explains the citation scheme.
+```
+## YYYY-MM-DD · [the decision, stated as a fact]
+- Decided by: [the designer, or the agent's name with "default" while the designer has not answered]
+- Why: [the reason]
+- Rejected: [the alternatives, and why]
+- Rests on: [the citation]
+```
 
-**Conversation** is where you speak as yourself: what you assumed and why, what you are unsure of, what only the designer can answer, what the work does not cover, what feedback you want. Say it in plain sentences, one question at a time.
+**Citations** are where a claim says what it rests on, and they stay in the work. Ruling out marks and keys never rules out citations: every claim that rests on a source cites it in the format's own way, a bracketed source, a footnote, a link to the interview or the page. Strength is the count in the claim and the source in the citation, never a label. No key in the work explains the citation scheme, and no piece is named in the prose as the one who found or decided something.
+
+**Conversation** is where you speak as yourself: what you assumed and why, what you are unsure of, what only the designer can answer, what the work does not cover, what feedback you want. Say it in plain sentences. Ask one question per reply, the one whose answer unblocks the next step, with options short enough to pick from. Every other question waits in the work's open questions and comes one per exchange, never as a stack, numbered or not. The reply does not re-argue the work it sits beside.
+
+### Removing the narrator removes no content
+
+Only the sentences about the work go. Every condition, test, threshold, citation, path and open question the work needs stays. When a sentence about the work carries a fact, rewrite it as the fact: "Most of this brief is hypotheses" goes, and each hypothesis stays with its test and the result that would prove it wrong.
 
 ### Deliverables are files
 
-Every deliverable is a file in the project, named by its kind and subject (`brief-larkspur-refills.md`, `journey-refill.html`), in the working directory or where the user says. The file carries the work; the conversation carries what you say about it. Each skill's output format names what it writes.
+Every deliverable is a file in the project, named by its kind and subject (`brief-larkspur-refills.md`, `journey-refill.html`), in the working directory or where the user says. The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself. Each skill's output format names what it writes.
 
 ---
 

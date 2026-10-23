@@ -241,7 +241,7 @@ Tie every recommendation to a specific design decision, not a vague direction. N
 
 ## Output format templates
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`research-plan-larkspur-refills.md`, `findings-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`research-plan-larkspur-refills.md`, `findings-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 ### Research plan
 
@@ -348,7 +348,7 @@ Write the deliverable to a file in the working directory, or where the user says
 [Prioritized, specific, tied to findings — not opinions]
 
 ## Method
-[The method, who took part, how many, when]
+[One or two sentences stating the study: the method, who took part, how many, when. Never an inventory of what was read.]
 
 ## Open questions
 [What was not studied, each a plain question; what to investigate next]

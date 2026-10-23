@@ -358,7 +358,7 @@ Users don't complete flows in one sitting. They get interrupted, lose interest, 
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`journey-refill.html`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`journey-refill.html`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Structure your design deliverable as needed for the flow at hand. Not every section applies to every flow — use what serves the problem. Here's the full toolkit:
 
@@ -378,7 +378,7 @@ Structure your design deliverable as needed for the flow at hand. Not every sect
    Show how the flow adapts across different entry points, user types, or triggering contexts. Note what's fixed vs. flexible.
 
 6. **Copy Specifications**
-   Headline, body, CTA, instructional text, microcopy, strings that expand in translation, error messages, empty states. Prioritize clarity over voice.
+   Headline, body, CTA, instructional text, microcopy, strings that expand in translation, error messages, empty states. Prioritize clarity over voice. A number appears in a string only where the person needs it at that moment: no round number on every stage line, no count beside every name.
 
 7. **Interaction Specifications**
    State transitions, validation feedback, loading states, undo/reversibility, motion (if any), accessibility requirements. Motion that must exist is specified here; the package carries it.

@@ -259,7 +259,7 @@ Run before any real translation. Replace all strings with accented/extended char
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`localization-larkspur-de.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`localization-larkspur-de.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 ### Localization readiness checklist
 Audit of current design and codebase against i18n requirements: string externalization, layout flexibility, format handling, RTL support, cultural assumptions.

@@ -268,6 +268,7 @@ Outputs in this mode tend to be:
   of...", "structurally this is similar to...", "this is the same problem as X
   in a different domain")
 - **Grounded where it lands** — where evidence is thin, the exploration stops
+- **Cited, not narrated** — what rests on the brief, the review or research cites it in brackets; no piece is the subject of a sentence
   at what is known; what is generative is said in conversation
 - **Not artificially resolved** — it's okay to end in open territory
 

@@ -201,7 +201,7 @@ Users need to know three things during any wait: Is it working? How long will it
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`states-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`states-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Adapt to scope. A single-component edge case review needs a state inventory. A full-product fortification needs everything.
 
@@ -220,7 +220,7 @@ priority]
 
 ## Stress Test Results
 [Results of running stress testing prompts against the design]
-[Pass / Fail / Untested for each scenario]
+[Pass or Fail for each scenario; a scenario the design can't settle is an open question, never a result]
 
 ## First-Run Experience Assessment
 [Current first-run flow analysis]

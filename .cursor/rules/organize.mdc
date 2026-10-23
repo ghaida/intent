@@ -382,7 +382,7 @@ IA decisions should be tested, not assumed. These are the primary research metho
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`sitemap-larkspur.html`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`sitemap-larkspur.html`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Structure your IA deliverable as needed for the problem at hand. Not every section applies to every project — use what serves the problem:
 

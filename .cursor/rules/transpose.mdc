@@ -212,7 +212,7 @@ Map disclosure strategy per context for every major feature. Don't assume what w
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`adaptation-larkspur-mobile.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`adaptation-larkspur-mobile.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 ### Context analysis matrix
 For each platform/context, document: input method, attention model, screen real estate, connectivity, environment, session length, and their UX implications.

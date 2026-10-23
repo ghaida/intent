@@ -189,7 +189,7 @@ Listen to stakeholder priorities and map them against constraints. If everything
 
 ## Output format template
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`brief-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`brief-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Use this structure to deliver strategic outputs. It creates consistency and ensures you've thought through all angles:
 

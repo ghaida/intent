@@ -173,10 +173,6 @@ body[data-view="proto"] [data-go]:focus-visible {
 }
 body[data-view="grid"] .plate-open { cursor: pointer; }
 body[data-view="grid"] .plate-open:hover { color: var(--chrome-fg); }
-/* the navigator row already shows the position — the plate drops its
-   copy in the stage views instead of duplicating it */
-body[data-view="slides"] .frame-pos,
-body[data-view="proto"] .frame-pos { display: none; }
 .frame > .wf {
   border: 1px solid var(--chrome-border);
   border-radius: var(--r-lg); overflow: hidden;

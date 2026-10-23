@@ -474,7 +474,7 @@ artifacts include:
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`blueprint-larkspur-refills.html`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`blueprint-larkspur-refills.html`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Adapt depth to problem scope. Not every section applies to every engagement.
 
@@ -508,6 +508,8 @@ Adapt depth to problem scope. Not every section applies to every engagement.
 - Operational feasibility assessment
 
 ### State & failure analysis
+
+Each failure is described once, here; other sections name it without describing it again. Where a rule is unsettled, a table cell carries the chosen default, logged, and the question goes to Open questions; no cell says open or proposed.
 
 - System states and transition triggers
 - Failure modes with user impact and blast radius

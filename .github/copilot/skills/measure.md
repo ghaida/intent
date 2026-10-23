@@ -244,7 +244,7 @@ At most one strategy reopen per project iteration based on post-launch metrics. 
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`metrics-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`metrics-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 ### Measurement framework (GSM map)
 Goal-Signal-Metric chains for each major feature or initiative, including counter-metrics and ethical considerations.

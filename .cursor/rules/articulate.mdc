@@ -179,7 +179,7 @@ Inclusive language and clear writing are the same thing. Every guideline here ma
 
 ## Output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`copy-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`copy-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Structure your content deliverable as needed for the problem at hand. Not every format applies to every project — use what serves the problem:
 
@@ -213,17 +213,21 @@ Structure your content deliverable as needed for the problem at hand. Not every 
 
 These rules cover everything an agent writes: deliverables and conversation alike.
 
-**No counting for its own sake.** A number appears where the person reading needs it, never to fill a label, introduce a list, or enumerate. Not "six friends: Dee, Mo, Sam…", not "third of six", not "Your hand · 5 cards", not a scoreboard of zeros, not an index number on a caption, not "four parts, one story".
+**No counting for its own sake.** A number appears where the person reading needs it, never to fill a label, introduce a list, or enumerate. Not "six friends: Dee, Mo, Sam…", not "third of six", not "Your hand · 5 cards", not a scoreboard of zeros, not an index number on a caption, not "four parts, one story". In conversation, not "That tells us two things.", "Three things would change my direction:", "Two calls in the design are mine".
 
-**No "a [thing] nobody has [done]".** The construction "would [verb] a [thing] nobody has [done]" ends on a flourish instead of the fact. Say what happens and to whom: "Auto-refill on by default charges the copay before the person has seen the price." Facts the material reports keep their wording: "Nobody had told P3 delivery existed" is an interview finding.
+The rule binds product strings as much as prose. A round number on every header ("Round 3 · Play a card") and a count beside every name ("Mo · 5 left") are furniture, not information. A number that matters to the game, such as cards left in a race to empty a hand, appears once, where the player looks for it at the moment it matters.
+
+**No sentence that rests on nobody.** The shape is any sentence whose weight rests on nobody or no one doing something: "a copay nobody has seen", "a screen nobody controls", "a round decided by nobody", "a ruling nobody can follow", "a moderator nobody asked for". It ends on a flourish instead of the fact. Say who does what: "Auto-refill on by default charges the copay before the person has seen the price." "The timer ends the round before any player rules." Facts the material reports keep their wording: "Nobody had told P3 delivery existed" is an interview finding.
 
 **Titles name the subject.** The product and the change, in a few plain words: "Larkspur Pharmacy's refill redesign", never a phrase about purpose. The same for every artifact and every finding: a finding's title names the problem and its effect.
 
-**Plain sentences, in conversation too.** Standard technical English. No framing openers ("Before I write the handoff:"), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"), one plain question at a time, options short enough to pick from.
+**Plain sentences, in conversation too.** Standard technical English. No framing openers ("Before I write the handoff:", "One question before that pass starts:"), no labels that announce a part ("One question.", "Where the evidence is thin."), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"). One question per reply, the one whose answer unblocks the next step, with options short enough to pick from; the rest wait in the work's open questions.
 
 **No hedging in the work.** "We believe", "the data suggests", "it's not a pattern yet" go. The claim carries its count and its citation: "Conversion rises 1 to 3 points (95% CI), n=4,100." Where the evidence is thin, the work stops at what is known and the gap is an open question.
 
-**No filler.** Nothing that announces what comes next, sums up what was just said, or classifies the sentence it sits in.
+**No filler.** Nothing that announces what comes next, sums up what was just said, or classifies the sentence it sits in. No line about the document itself, no section lede that classifies what follows, no sentence that points at another section.
+
+**As long as the content.** Each fact appears once, in the section it belongs to; a failure described in one table is not described again in the next. Cutting a restatement never cuts a condition, a test or a citation.
 
 ## Scope boundaries
 

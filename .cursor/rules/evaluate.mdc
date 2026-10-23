@@ -219,7 +219,7 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 
 ## Evaluation output format
 
-Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`evaluation-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it.
+Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`evaluation-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 Use this structure for all evaluations. Adapt depth to scope — a quick review of a single flow doesn't need every section, but a comprehensive audit does.
 
@@ -247,7 +247,7 @@ Use this structure for all evaluations. Adapt depth to scope — a quick review 
 [each heuristic by name, holds / strained / broken, with the finding that decides it]
 
 ## Cognitive Walkthrough Results
-[Per-task, per-step analysis with pass/hesitation/failure ratings]
+[Per-task, per-step table with pass/hesitation/failure ratings; the four questions are its columns, and no paragraph explains the method]
 
 ## Positive Findings
 [What works well — patterns to protect and replicate]

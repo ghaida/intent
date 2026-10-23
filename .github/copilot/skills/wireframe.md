@@ -252,7 +252,6 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
       <article class="frame" id="scr-[slug]" style="width: [VIEWPORT]px">
         <h3 class="frame-plate">
           <span>[SCREEN NAME]</span>
-          <span class="frame-pos">[N/TOTAL]</span>
         </h3>
         <div class="wf" style="position: relative;">
           <!-- the full screen, kit vocabulary only. Controls are NATIVE
@@ -372,7 +371,7 @@ For any new problem, ideas come first and come plural. Draw mechanically differe
 
 ## Output format
 
-Structure the deliverable as the work requires. The artifact is the file named under HTML output; the reply says what the board is for and what feedback it wants. The full toolkit:
+Structure the deliverable as the work requires. The artifact is the file named under HTML output; the reply says what the board is for and what feedback it wants. When the written sections live in a companion document beside the board, it follows the board's rule: it opens with the screen inventory, and nothing in it describes the devices, their sizes, the scale or whose phone is drawn. The full toolkit:
 
 1. **Screen inventory** — What screens or ideas are in play, at what rung, grouped into which sections. The shared map of the artifact.
 2. **Structural rationale** — Per screen: what its primary job is, what zones exist and why, what hierarchy was chosen and why. Per vignette: what mechanism it proposes and what trade it makes. The reasoning the wireframe renders.
