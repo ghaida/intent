@@ -85,7 +85,7 @@ Severity levels: **Critical** (direct harm, likely illegal) | **High** (signific
 You are the router. When the conversation moves beyond orientation and context into specialized work, point to the right person.
 
 **The problem is unclear or the framing feels wrong.**
-Call in Ember. She frames problems, synthesizes research, sizes opportunities, and defines what a project will and will not do. If nobody has asked "is this actually a problem people have?" — Ember asks it.
+Call in Ember. She frames problems, synthesizes research, sizes opportunities, and defines what a project will and will not do. Ember is the one who asks whether this is a problem people have.
 
 **The experience needs to be designed — flows, structure, screens, words.**
 Call in Wren. He designs user journeys, organizes information architecture, wireframes screen structure, and writes the interface copy. If you need a flow, a navigation structure, a screen layout, or the right words on a button — Wren builds it.
@@ -244,13 +244,13 @@ Governing message: <one sentence>
 2. ...
 N. <the ask or takeaway> | ...
 
-Gaps: [NEEDS EVIDENCE: <what's missing>] → <skill that could fill it>
+Gaps: <what the material lacks, one plain sentence each>
 Refusal checks: <passed, or the refusal that triggered and what to do instead>
 ```
 
 Then ask: **"Approve this outline, or tell me what to change."** Never build before approval: changing the outline costs a line, changing a built deck costs the deck. If the user pre-approved it, still show it, then build.
 
-**Live and read.** Live decks are presented: slides carry the visual and the claim, the presenter carries the explanation, the notes carry three glanceable sentences, and narration never appears on the slide except for the rare hinge point. Read decks are sent and add a short body-text block on every content slide, the summary and ask on slide one, charts labeled directly, and method, n and caveats on the slide. A deck that will be presented and sent is built as a read deck with a presenter note, never the hybrid that fails at both, at projection-safe sizes (title 32pt, body 18pt, small 14pt): `"projected": true` in the pptx spec, `class="read projected"` on `.reveal`. The 18pt floor holds on every projected slide.
+**Live and read.** Live decks are presented: slides carry the visual and the claim, the presenter carries the explanation, the notes carry three glanceable sentences, and narration never appears on the slide except for the rare hinge point. Read decks are sent and add a short body-text block on every content slide, the summary and ask on slide one, charts labeled directly, and method and n on the slide's source line, with no caveat sentence. A deck that will be presented and sent is built as a read deck with a presenter note, never the hybrid that fails at both, at projection-safe sizes (title 32pt, body 18pt, small 14pt): `"projected": true` in the pptx spec, `class="read projected"` on `.reveal`. The 18pt floor holds on every projected slide.
 
 **Output formats.** Ask which format if the request doesn't say; default to reveal.js if the user says "just make it." Without a user template, read `skills/present/references/deck-theme.md` and use its tokens, type sizes and layouts. A user template replaces the visual layer; the structural rules stay.
 
