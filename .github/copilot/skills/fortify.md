@@ -11,7 +11,7 @@ description: >
   wrong", "harden this design", "edge case review", "what are the failure
   modes", zero states, timeout handling, or any question about how a design
   behaves outside ideal conditions.
-version: 1.7.1
+version: 1.7.2
 user-invocable: true
 ---
 

@@ -12,7 +12,7 @@ description: >
   for everyone", "who are we excluding", ADA compliance, Section 508, EAA,
   reduced motion, or any question about whether all users can perceive,
   operate, understand, and benefit from the experience.
-version: 1.7.1
+version: 1.7.2
 user-invocable: true
 ---
 

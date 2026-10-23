@@ -13,7 +13,7 @@ description: >
   and someone needs to build it, "prepare the handoff", "package this for
   the build", "what does the coding agent need", "write the handoff",
   "is this ready to build".
-version: 1.7.1
+version: 1.7.2
 user-invocable: true
 ---
 

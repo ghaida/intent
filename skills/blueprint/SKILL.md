@@ -13,7 +13,7 @@ description: >
   dependencies?", or any question about the structural machinery behind a
   product experience. Use this skill broadly — whenever someone needs to
   understand or redesign how a system works, not just what a user sees.
-version: 1.7.1
+version: 1.7.2
 user-invocable: true
 ---
 
