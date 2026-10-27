@@ -13,8 +13,7 @@
 .sg-col { display: flex; flex-direction: column; gap: var(--sp-4); }
 .sg-specimen { display: flex; flex-direction: column; gap: var(--sp-2); }
 .sg-cap {
-  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
-  color: var(--chrome-ink); letter-spacing: 0.04em;
+  font-size: var(--t-xs); line-height: var(--t-xs-lh); color: var(--chrome-ink);
 }
 .sg-block { background: var(--w-canvas); border: 1px solid var(--chrome-border);
   border-radius: var(--r-lg); padding: var(--sp-6); }
@@ -42,7 +41,7 @@
     </div>
     <div class="board-controls">
       <button class="theme-toggle" data-toggle-theme>
-        <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
+        <span class="swatch" aria-hidden="true"></span>
       </button>
     </div>
   </header>
@@ -586,12 +585,10 @@
 
 <script>
 const th = document.querySelector('[data-toggle-theme]');
-const thLabel = th?.querySelector('.theme-label');
 function setTheme(dark) {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   document.body.dataset.theme = dark ? 'dark' : 'light';
   th?.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
 }
 let savedTheme = null;
 try { savedTheme = localStorage.getItem('wf-theme'); } catch (e) {}
