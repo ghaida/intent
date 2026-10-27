@@ -75,7 +75,7 @@ Every artifact this skill produces is built from a shared visual vocabulary with
 
 - `references/design-system.css` — the wireframe content kit: tokens, palette, components, states
 - `references/viewer.css` — the container chrome: stage, frames, plates, views
-- `references/viewer.js` — the container behavior: view toggle, slideshow, theme, prototype navigation
+- `references/viewer.js` — the container behavior: view toggle, grid scaling, slideshow, notes, theme, prototype navigation
 - `references/styleguide.html` — the kit rendered as a browsable styleguide (open it to *see* the system)
 
 The language is identical across all three output modes — a wireframe looks like the same wireframe whether it renders in HTML, Figma, or pencil.
@@ -84,15 +84,16 @@ The language is identical across all three output modes — a wireframe looks li
 
 The stage every artifact sits on (source of truth: `references/viewer.css`). One vignette or a six-screen wireflow renders on the same chrome:
 
-- **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography — General Sans 700 for the board title, Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome. The board header is the title alone, an `h1` at display size. No line beneath it describes the board, its devices, their sizes or the scale they are drawn at; the screens show that.
-- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — the screen's name — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. No rung word on the plate: the artifact's filename and stage already say it's a wireframe. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (title, description) is their label.
-- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like plates. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
+- **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography: General Sans for the board title and section headings, Hanken Grotesk for everything else (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). Chrome text is sentence case. No monospace, and no tracked uppercase eyebrow labels. The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome. The board header is the title alone, an `h1` at display size. No line beneath it describes the board, its devices, their sizes or the scale they are drawn at; the screens show that.
+- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — the screen's name — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. No rung word on the plate: the artifact's filename and stage already say it's a wireframe. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate is small chrome-ink text above the card, outside it, and never styled like anything inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (title, description) is their label.
+- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome: General Sans headings over a hairline rule. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
 - **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). Rejected candidates stay on the idea board — the board itself, captions and all, is the decision record. **Idea boards carry no notes rail and no decision note: the caption is the annotation, and the board stays a clean grid.**
-- **View modes (HTML):** the container is a viewer with a toggle in its chrome:
-  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row; in a wireframe artifact frames sit larger, one or two per row. A section's notes sit as a right sidebar beside its frames — the record reads alongside the screens, never below them.
+- **View modes (HTML):** the container is a viewer; a segmented control of view icons in its chrome switches views:
+  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row. In a wireframe artifact screens sit 3-up, each drawn at its real device width and scaled down to its column, never up: 2-up in a narrower window, 1-up on a phone. The plate stays full size, and a desktop screen becomes a thumbnail you open in slides to read.
+  - **Notes**: one notes rail for the whole board, beside the frames, grouped by section and then by screen. In grid it scrolls on its own and follows the section in view. The reviewer controls it from icons in the header beside the theme toggle, styled like it: a sidebar toggle, last in the row above the rail, collapses the rail while the markers stay on the screens, and a notes switch removes the rail and every marker, leaving the screens alone. Both choices persist like the theme. A marker scrolls the open rail to its note and tints it; with the rail collapsed, it opens its note in place beside the marker. Below 900px there is no rail and no sidebar toggle: a marker opens its note in place, and the notes switch still shows or hides the markers. viewer.js builds both switches and the rail's title, so a board without notes shows none of them. Every icon button names itself in a tooltip on hover and keyboard focus.
   - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. The frame **page-centers** when its width stays clear of the rail (viewer.js decides); the stage stays bare — the frame is the only thing on it. Prev/next controls, keyboard arrows (a quiet sentence-case hint in the navigator row says so), position indicator, section-aware order; the navigator row sits between header and stage and doubles as the section header line — section name and position grouped on the left as one wayfinding phrase, controls on the right; the plate carries only the screen's name. **Bounds are real:** the sequence never wraps — prev disables at the first frame, next at the last; the ends of a flow are information. The stage for design reviews — a frame must never run off the bottom of the screen.
   - **The reviewer's place is never lost.** Clicking a frame's plate in grid opens *that* frame in slides; leaving slides restores the grid scroll position; the current view + frame mirror into `location.hash` (`#slides-2`, `#proto-1`) so any review state is linkable — "look at slide 2" is a URL, not directions.
-  - **Theme** — a light ⇄ dark toggle. Precedence: the reviewer's own last choice (localStorage) wins, then an authored `data-theme` on `<body>` (a presenter's choice survives the room's OS), then the OS preference. The half-tone swatch leads with the current mode — it reads as state. Both ramps ship in every HTML artifact. The toggle ships in a standalone artifact; when the artifact is made for a host app that sets the look (the request says so, or the host's instructions do), omit the toggle control and pin `data-theme` on `<body>` to the theme the host names. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
+  - **Theme** — a light ⇄ dark toggle. Precedence: the reviewer's own last choice (localStorage) wins, then an authored `data-theme` on `<body>` (a presenter's choice survives the room's OS), then the OS preference. The half-tone swatch leads with the current mode — it reads as state. It is an icon button, named by its tooltip. Both ramps ship in every HTML artifact. The toggle ships in a standalone artifact; when the artifact is made for a host app that sets the look (the request says so, or the host's instructions do), omit the toggle control and pin `data-theme` on `<body>` to the theme the host names. Visually distinct from the view icons — it's a mode switch on the stage, not a way of looking at the frames: a borderless control, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time on the same fitted stage, annotations hidden, and the wireframes themselves interactive: activating a trigger element (the real button, the real row — click, or Tab + Enter/Space) navigates to the screen it leads to, following the flow logic. **Navigation is flow-shaped, not document-shaped:** ←/prev steps back through *visited* screens, Restart returns to the flow's entry, and sequential paging (next, the linear position) hides — arrows that walk document order would let a reviewer traverse paths the flow never connects. Only the wired triggers are tabbable; the mock's unwired controls leave the tab order, and a dead tap flashes a hairline "nothing here" acknowledgment. Hovered triggers show the same hairline ring — wired controls distinguish themselves from decoration. The view instructs itself: the navigator row carries a one-line sentence-case hint — the demo moment must never be an unlabeled room.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
 - In Figma, the container maps to sections and frame layout on canvas; in pencil, to grouped frames. Slideshow falls to those tools' native presentation modes.
@@ -149,7 +150,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 Notes about the design, never part of it:
 
-- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Grid view shows every group as the section's record, in a right sidebar beside the frames; slides view shows only the active frame's group. Section-level notes sit outside any group and always show. **The notes rail is a mid-fi feature** — idea boards carry no rail; their captions are the annotation. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
+- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in the board's notes rail. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Groups sit inside a `.note-section` whose `data-section` matches its board section, headed by a `.note-section-label`. Grid view shows every section; slides view shows only the active frame's group. Section-level notes sit in their `.note-section` outside any group and show whenever their section does. **The notes rail is a mid-fi feature** — idea boards carry no rail; their captions are the annotation. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
 - **Idea captions** — on lo-fi vignettes, the caption's title carries the annotation accent: the caption narrates the board, it isn't UI.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
 
@@ -204,14 +205,19 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     </div>
     <div class="board-controls">
       <nav class="view-toggle" aria-label="View">
-        <button data-setview="grid" aria-pressed="true">Grid</button>
-        <button data-setview="slides" aria-pressed="false">Slides</button>
+        <!-- icon buttons: viewer.css draws each icon and shows the
+             aria-label as its tooltip on hover and focus -->
+        <button data-setview="grid" aria-pressed="true" aria-label="Grid"></button>
+        <button data-setview="slides" aria-pressed="false" aria-label="Slides"></button>
         <!-- Include ONLY when a prototype was requested: -->
-        <button data-setview="proto" aria-pressed="false">Prototype</button>
+        <button data-setview="proto" aria-pressed="false" aria-label="Prototype"></button>
       </nav>
+      <!-- viewer.js adds the notes switch here, and the sidebar toggle
+           last, when the board has notes; it names every switch for
+           its tooltip -->
       <!-- Omit for a host app that sets the look; pin data-theme on <body> instead -->
       <button class="theme-toggle" data-toggle-theme>
-        <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
+        <span class="swatch" aria-hidden="true"></span>
       </button>
     </div>
   </header>
@@ -229,13 +235,19 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     <button data-restart>Restart</button>
   </nav>
 
+  <!-- the board body: the main column, then (mid-fi only) the board's
+       one notes rail beside it -->
+  <div class="board-body">
+  <main class="board-main">
+
   <section class="board-section" data-section="[SECTION NAME]">
     <h2 class="section-label">[SECTION NAME]</h2>
     <div class="frame-grid">
 
       <!-- mid-fi frame: plate above (an h3 — screen readers jump frame
            to frame by heading; viewer.js makes it the click-to-open-in-
-           slides handle), complete interactive screen inside -->
+           slides handle), complete interactive screen inside. The inline
+           width is the real device width; grid scales from it -->
       <article class="frame" id="scr-[slug]" style="width: [VIEWPORT]px">
         <h3 class="frame-plate">
           <span>[SCREEN NAME]</span>
@@ -267,16 +279,25 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
       </article>
 
     </div>
-    <!-- MID-FI ONLY — idea boards carry no rail; the board stays a clean grid -->
-    <aside class="note-rail">
+  </section>
+
+  </main>
+  <!-- MID-FI ONLY: idea boards carry no rail; the board stays a clean grid.
+       One rail for the whole board, after the main column. viewer.js
+       builds its title and collapse control. -->
+  <aside class="note-rail">
+    <!-- one block per board section; data-section matches the section's -->
+    <div class="note-section" data-section="[SECTION NAME]">
+      <p class="note-section-label">[SECTION NAME]</p>
       <!-- one group per frame; markers restart at 1 inside each frame -->
       <div class="note-group" data-for="scr-[slug]">
         <p class="note-frame">[SCREEN NAME]</p>
         <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
       </div>
-      <!-- section-level notes sit outside any group and always show -->
-    </aside>
-  </section>
+      <!-- section-level notes sit outside any group and show with their section -->
+    </div>
+  </aside>
+  </div>
 </body>
 ```
 
@@ -286,6 +307,7 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 - Don't invent class names — the kit's vocabulary is the language, and the reference CSS is its law. If a screen needs something the kit lacks, compose it from kit primitives and tokens; if it's genuinely new, that's a design-system change, not an artifact improvisation.
 - Every dimension in per-artifact CSS and inline styles comes from tokens (`--sp-*`, `--h-*`, `--ic-*`, `--r-*`, `--t-*`). Viewport widths are the exception: frames render at real device widths — 1440 (desktop), 768 (tablet), 390 (mobile); vignette frames at ~360px.
 - Light + dark ship together; the chrome's Theme toggle flips both. Initial theme: the reviewer's saved choice, then an authored `data-theme` on `<body>`, then the OS. Don't strip either ramp. For a host app that sets the look, omit the toggle control and pin `data-theme` to the host's theme; both ramps still ship.
+- A mid-fi board carries one notes rail, after `.board-main` inside `.board-body`, never one per section. Don't author the notes switch, the sidebar toggle or the rail's title; viewer.js builds them.
 - Include the Prototype view button and `data-go` attributes ONLY when the user asked for a prototype. `data-go` goes on the actual trigger element — the prototype IS the wireframe, not an overlay on it.
 - Real labels, real content. No lorem ipsum, anywhere, ever.
 - Controls are native elements with working interaction states — inputs type, buttons hover and press, chips and switches toggle. A div painted as a button is a vocabulary violation. The accent appears only where the kit puts it: primary actions, selection states, focus. `--w-error` appears only on invalid states.
@@ -294,7 +316,7 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 
 When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the palette throughout:
 
-- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each mid-fi frame (uppercase, chrome ink `#65657a` light / `#8888a8` dark).
+- Container sections → Figma sections named per user-defined groups; title plates → small sentence-case sans text labels above each mid-fi frame (chrome ink `#65657a` light / `#8888a8` dark).
 - Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d8d8e4` light / `#2a2a44` dark). Lo-fi vignettes → a surface-filled panel with the fragment centered and the idea caption below.
 - Wireframe content → the palette values as fills/strokes exactly as in the table above, on the 4px grid with the kit's control heights and type scale; one neutral font (Inter or SF); the accent on primary actions and selection states only; media blocks are surface-filled rectangles with a hairline border — no crossed lines; functional glyphs as simple drawn vectors, undecided icons as featureless circles.
 - Annotation → a locked overlay group per frame: accent circles with white numbers (`#4338ca` light / `#7c6ff0` dark, or the user's override), plus a notes text block beside the frame.
@@ -939,9 +961,11 @@ Bring the flow definition (from `/journey` or your own notes), the information b
    Intent /wireframe — viewer chrome
    The stage every wireframe artifact renders on. Follows the Intent
    website's design language (cool-tinted neutrals, General Sans
-   display, Hanken Grotesk body, SF Mono labels) and the same absolute
+   display, Hanken Grotesk for everything else) and the same absolute
    4px token law as the design system. Monochrome by rule: the site's
-   indigo belongs to the annotation layer, never to chrome.
+   indigo belongs to the annotation layer, never to chrome. Labels are
+   sentence case in the sans: no monospace, no tracked uppercase
+   eyebrows.
 
    Layer separation: chrome variables (--stage, --chrome-*) never
    appear inside wireframe content; ramp variables (--w-*) never
@@ -956,7 +980,15 @@ Bring the flow definition (from `/journey` or your own notes), the information b
 
   --display: "General Sans", system-ui, -apple-system, sans-serif;
   --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
-  --mono:    "SF Mono", "Fira Code", ui-monospace, monospace;
+
+  /* chrome icons: theme-free alpha masks drawn in currentColor */
+  --icon-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='2.5' y='2.5' width='4.5' height='4.5' rx='1'/%3E%3Crect x='9' y='2.5' width='4.5' height='4.5' rx='1'/%3E%3Crect x='2.5' y='9' width='4.5' height='4.5' rx='1'/%3E%3Crect x='9' y='9' width='4.5' height='4.5' rx='1'/%3E%3C/svg%3E");
+  --icon-slides: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.75' y='2.5' width='12.5' height='8.5' rx='1.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='5.5' cy='13.75' r='0.9' fill='%23000'/%3E%3Ccircle cx='8' cy='13.75' r='0.9' fill='%23000'/%3E%3Ccircle cx='10.5' cy='13.75' r='0.9' fill='%23000'/%3E%3C/svg%3E");
+  --icon-proto: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 2.5v10.5l2.9-2.7 1.9 4.2 1.8-.8-1.9-4.1 3.9-.2z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-notes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 2.75h10a1.25 1.25 0 0 1 1.25 1.25v6a1.25 1.25 0 0 1-1.25 1.25H8.25L5 13.75v-2.5H3A1.25 1.25 0 0 1 1.75 10V4A1.25 1.25 0 0 1 3 2.75z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-notes-off: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath d='M3 2.75h10a1.25 1.25 0 0 1 1.25 1.25v6a1.25 1.25 0 0 1-1.25 1.25H8.25L5 13.75v-2.5H3A1.25 1.25 0 0 1 1.75 10V4A1.25 1.25 0 0 1 3 2.75z' stroke-linejoin='round'/%3E%3Cpath d='M1.5 1.5l13 13' stroke-linecap='round'/%3E%3C/svg%3E");
+  --icon-sidebar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='1.75' y='2.75' width='12.5' height='10.5' rx='1.5'/%3E%3Cpath d='M10 2.75v10.5'/%3E%3C/svg%3E");
+  --icon-sidebar-open: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.75' y='2.75' width='12.5' height='10.5' rx='1.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M10 2.75h2.75a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5H10z' fill='%23000'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] {
@@ -989,44 +1021,105 @@ body {
   line-height: var(--t-xl-lh); font-weight: 700;
   letter-spacing: -0.02em; color: var(--chrome-fg); margin: 0;
 }
-.board-controls { display: flex; align-items: center; gap: var(--sp-6); }
+.board-controls {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--sp-3) var(--sp-1);
+}
+/* the views are one group; the stage switches sit apart as a pair */
+.view-toggle { margin-right: var(--sp-5); }
 
-.view-toggle { display: flex; gap: var(--sp-1); }
-.view-toggle button {
-  font-family: var(--mono); font-size: var(--t-xs);
-  line-height: var(--t-xs-lh); font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-  height: var(--h-sm); padding: 0 var(--sp-3); background: none;
+/* the chrome's buttons are icons: each carries an aria-label, and the
+   label shows as a tooltip (below) */
+/* the views are one segmented control: a single hairline track at
+   control height, the active segment filled inside it */
+.view-toggle {
+  display: inline-flex; height: var(--h-sm);
+  padding: calc(var(--sp-1) / 2); /* the 2px fine-detail step */
   border: 1px solid var(--chrome-border); border-radius: var(--r-md);
+}
+.view-toggle button {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--sp-8); height: 100%; padding: 0; cursor: pointer;
+  background: none; border: 0; border-radius: var(--r-sm);
   color: var(--chrome-ink);
 }
+/* one icon rule: each button names its mask in --icon */
+:is(.view-toggle button, .notes-toggle, .note-collapse)::before {
+  content: ""; width: var(--ic-sm); height: var(--ic-sm);
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.view-toggle [data-setview="grid"]   { --icon: var(--icon-grid); }
+.view-toggle [data-setview="slides"] { --icon: var(--icon-slides); }
+.view-toggle [data-setview="proto"]  { --icon: var(--icon-proto); }
 .view-toggle button:hover { color: var(--chrome-fg); }
-/* active inverts — state reads at a glance, monochrome-native */
+
+/* icon buttons name themselves: any chrome button with an aria-label
+   shows it as a tooltip on hover and on keyboard focus, inverted like
+   the active view, after a beat so it doesn't flicker as the pointer
+   crosses the row */
+:is(.board-controls, .slide-nav) button[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute; top: calc(100% + var(--sp-2)); left: 50%; z-index: 20;
+  transform: translateX(-50%); white-space: nowrap; pointer-events: none;
+  padding: var(--sp-1) var(--sp-2); border-radius: var(--r-md);
+  background: var(--chrome-fg); color: var(--stage);
+  font-family: var(--sans); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 500;
+  opacity: 0; visibility: hidden;
+}
+:is(.board-controls, .slide-nav) button[aria-label]:is(:hover, :focus-visible)::after {
+  opacity: 1; visibility: visible;
+}
+/* the last button in the header sits at the page edge: its tooltip
+   aligns right, inside the page */
+.board-controls > button:last-child::after { left: auto; right: 0; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  :is(.board-controls, .slide-nav) button[aria-label]:is(:hover, :focus-visible)::after {
+    transition: opacity 0.12s ease 0.3s, visibility 0s linear 0.3s;
+  }
+}
+/* the active segment inverts — state reads at a glance, monochrome-native */
 .view-toggle button[aria-pressed="true"] {
-  background: var(--chrome-fg); border-color: var(--chrome-fg);
-  color: var(--stage); }
+  background: var(--chrome-fg); color: var(--stage); }
 
 /* chrome focus is designed, not UA-default — same ring grammar everywhere */
 .view-toggle button:focus-visible, .theme-toggle:focus-visible,
+.notes-toggle:focus-visible, .note-collapse:focus-visible,
 .slide-nav button:focus-visible, .board-index a:focus-visible,
-.plate-open:focus-visible,
+.plate-open:focus-visible, .note-marker:focus-visible, .note-pop:focus-visible,
 body[data-view="proto"] [data-go]:focus-visible {
   outline: 2px solid var(--chrome-fg); outline-offset: 2px;
 }
 
-/* Theme is a stage-mode switch, not a view tab: borderless, half-tone swatch */
-.theme-toggle {
-  display: flex; align-items: center; gap: var(--sp-2);
-  background: none; border: none; cursor: pointer;
-  height: var(--h-sm); padding: 0;
-  font-family: var(--mono); font-size: var(--t-xs);
-  line-height: var(--t-xs-lh); font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+/* Notes, theme and the sidebar are stage-mode switches, not views:
+   borderless icon buttons, each icon reading as its current state.
+   The sidebar toggle comes last, above the rail it opens and closes */
+.theme-toggle, .notes-toggle, .note-collapse {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--h-sm); height: var(--h-sm); padding: 0; cursor: pointer;
+  background: none; border: none; border-radius: var(--r-md);
+  color: var(--chrome-ink);
 }
-.theme-toggle:hover { color: var(--chrome-fg); }
+.theme-toggle:hover, .notes-toggle:hover, .note-collapse:hover { color: var(--chrome-fg); }
+/* notes: a speech bubble while the notes show, struck through while
+   hidden. Chrome ink: indigo stays with the annotations */
+.notes-toggle { --icon: var(--icon-notes); }
+body[data-notes="hidden"] .notes-toggle { --icon: var(--icon-notes-off); }
+/* the sidebar: its right pane fills while the rail is open */
+.note-collapse { --icon: var(--icon-sidebar-open); }
+body[data-notes="collapsed"] .note-collapse { --icon: var(--icon-sidebar); }
+/* a switch with nothing to act on keeps its place, so the header
+   doesn't shift: prototype hides the notes, and hidden notes leave
+   no rail to collapse */
+body[data-view="proto"] :is(.notes-toggle, .note-collapse),
+body[data-notes="hidden"] .note-collapse { visibility: hidden; }
 .theme-toggle .swatch {
   width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
-  border: 1px solid var(--chrome-ink);
+  border: 1px solid currentColor;
   background: linear-gradient(90deg, #ffffff 50%, #1a1a20 50%);
 }
 /* the swatch leads with the current mode — it reads as state, not
@@ -1035,26 +1128,33 @@ body[data-view="proto"] [data-go]:focus-visible {
   background: linear-gradient(90deg, #1a1a20 50%, #ffffff 50%);
 }
 
-/* ── section index (sidebar) — a reference you can jump around ──── */
-/* Two-column shell: 180px sticky label rail | content. Mirrors the
-   Intent site's own layout convention. Collapses on narrow screens. */
+/* ── board shell · section index ────────────────────────────────── */
+/* .board-body holds the main column and, on a board with notes, the
+   notes rail beside it — one rail for the whole board, so the notes
+   collapse or hide once for every screen. A long board may lead with
+   the section index: a 180px sticky label rail you can jump around,
+   mirroring the Intent site's own layout convention (.board-with-index
+   is the same shell without notes). Both collapse on narrow screens. */
 
+.board-body { display: flex; gap: var(--sp-10); align-items: flex-start; }
 .board-with-index { display: flex; gap: var(--sp-12); align-items: flex-start; }
-.board-main { flex: 1; min-width: 0; }
+/* the main column is a size container: the grid's column count
+   follows its width, so collapsing or hiding the rail gives the
+   screens room */
+.board-main { flex: 1; min-width: 0; container-type: inline-size; }
 .board-index {
   position: sticky; top: var(--sp-8); flex-shrink: 0; width: 180px;
   display: flex; flex-direction: column; gap: var(--sp-2);
   padding-right: var(--sp-4); border-right: 1px solid var(--chrome-border);
 }
 .board-index a {
-  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
-  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 500;
   color: var(--chrome-ink); text-decoration: none;
 }
 .board-index a:hover { color: var(--chrome-fg); }
 .board-index a[aria-current="true"] { color: var(--chrome-fg); }
 @media (max-width: 900px) {
-  .board-with-index { display: block; }
+  .board-body, .board-with-index { display: block; }
   .board-index {
     position: static; width: auto; border-right: 0;
     flex-direction: row; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4);
@@ -1067,9 +1167,9 @@ body[data-view="proto"] [data-go]:focus-visible {
 
 .board-section { margin-bottom: var(--sp-16); scroll-margin-top: var(--sp-16); }
 .section-label {
-  font-family: var(--mono); font-size: var(--t-sm);
-  line-height: var(--t-sm-lh); font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--chrome-ink);
+  font-family: var(--display); font-size: var(--t-lg);
+  line-height: var(--t-lg-lh); font-weight: 600;
+  letter-spacing: -0.01em; color: var(--chrome-fg);
   border-bottom: 1px solid var(--chrome-border);
   padding-bottom: var(--sp-2); margin-bottom: var(--sp-4);
 }
@@ -1095,18 +1195,16 @@ body[data-view="proto"] [data-go]:focus-visible {
 .frame { background: none; border: none; }
 .frame-plate {
   display: flex; gap: var(--sp-2); align-items: baseline;
-  font-family: var(--mono); font-size: var(--t-xs);
-  line-height: var(--t-xs-lh); font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-ink);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  font-weight: 500; color: var(--chrome-ink);
   padding: 0 var(--sp-1); margin: 0 0 var(--sp-2); /* plates are h3s — reset heading margin */
 }
 /* viewer.js wraps the plate in a real button: in grid it's the frame's
    handle (click opens that frame in slides); elsewhere it's inert */
 .plate-open {
   display: flex; gap: var(--sp-2); align-items: baseline;
-  font: inherit; letter-spacing: inherit; text-transform: inherit;
-  color: inherit; background: none; border: 0; padding: 0;
-  cursor: default;
+  font: inherit; color: inherit; background: none; border: 0; padding: 0;
+  text-align: left; cursor: default;
 }
 body[data-view="grid"] .plate-open { cursor: pointer; }
 body[data-view="grid"] .plate-open:hover { color: var(--chrome-fg); }
@@ -1115,35 +1213,37 @@ body[data-view="grid"] .plate-open:hover { color: var(--chrome-fg); }
   border-radius: var(--r-lg); overflow: hidden;
 }
 
-/* in grid view the notes are a right sidebar beside the frames —
-   the section's record reads alongside its screens, not below them */
-body[data-view="grid"] .board-section:has(.note-rail) {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
-  column-gap: var(--sp-10);
+/* ── grid — full-page screens 3-up ──────────────────────────────────
+   Every screen keeps its real device width and scales DOWN to its
+   column, never up: viewer.js reads the authored width into
+   --frame-w and sets --grid-scale per frame. zoom rather than
+   transform, so the scaled screen's layout box shrinks with it and
+   rows pack tight. The plate stays full size — chrome never scales.
+   The column count follows the main column (2-up, then 1-up on a
+   phone). Idea boards keep their own grid above. */
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-10) var(--sp-6); align-items: start;
 }
-body[data-view="grid"] .board-section:has(.note-rail) .section-label {
-  grid-column: 1 / -1;
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame {
+  width: auto !important; min-width: 0; /* the track owns the width */
 }
-body[data-view="grid"] .board-section:has(.note-rail) .frame-grid {
-  grid-row: 2; grid-column: 1;
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame > .wf {
+  width: var(--frame-w); zoom: var(--grid-scale, 1);
 }
-body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
-  grid-row: 2; grid-column: 2; max-width: none; margin-top: 0;
-  border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
-  align-self: start; /* the rail's rule ends with its notes — no empty hairline trailing down the gutter */
+/* markers stay legible on a scaled screen: they counter-scale about
+   their own center, so they keep their anchor and their size */
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) .note-marker {
+  transform: scale(calc(1 / var(--grid-scale, 1)));
 }
-/* mid widths: the rail compresses toward its floor before the frames
-   give up their 2-up layout — no dead gutter beside stacked frames */
-@media (max-width: 1208px) {
-  body[data-view="grid"] .board-section:has(.note-rail) {
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 240px);
+@container (max-width: 839px) {
+  body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 900px) {
-  body[data-view="grid"] .board-section:has(.note-rail) { display: block; }
-  body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
-    max-width: 320px; margin-top: var(--sp-4);
-    border-left: 0; padding-left: 0;
+@container (max-width: 479px) {
+  body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1152,13 +1252,23 @@ body[data-view="grid"] .board-section:has(.note-rail) .note-rail {
    active frame centers in the stage and scales DOWN to fit (never
    up), so the whole screen — plate included — is visible at once;
    viewer.js sets --slide-scale per slide and on resize. In slides
-   the notes rail is a bounded column with its own scroll, not
-   floating text; prototype hides annotation entirely. */
+   the notes rail overlays the stage's right edge, bounded and
+   self-scrolling; prototype hides annotation entirely. */
 
 body[data-view="slides"], body[data-view="proto"] {
   height: 100vh; overflow: hidden;
   display: flex; flex-direction: column;
 }
+body[data-view="slides"] .board-body,
+body[data-view="proto"] .board-body {
+  display: flex; flex: 1; min-height: 0; position: relative; align-items: stretch;
+}
+body[data-view="slides"] .board-main,
+body[data-view="proto"] .board-main {
+  display: flex; flex-direction: column; min-height: 0;
+}
+body[data-view="slides"] .board-index,
+body[data-view="proto"] .board-index { display: none; }
 /* the navigator row IS the section header line: section name left
    (the section's own label hides), prev/next + position right */
 body[data-view="slides"] .section-label { display: none; }
@@ -1172,20 +1282,13 @@ body[data-view="slides"] .board-section:has(.frame.active),
 body[data-view="proto"] .board-section:has(.frame.active) {
   flex: 1; min-height: 0; margin-bottom: 0;
   display: grid; grid-template-rows: minmax(0, 1fr);
-  column-gap: var(--sp-10);
 }
-body[data-view="slides"] .board-section:has(.frame.active) {
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
-}
-body[data-view="proto"] .board-section:has(.frame.active) {
-  grid-template-columns: minmax(0, 1fr);
-}
-/* stage cell: spans the FULL section so the frame can page-center
+/* stage cell: spans the FULL main column so the frame can page-center
    (viewer.js keeps it clear of the rail); the stage stays bare —
    the frame is the only thing on it */
 body[data-view="slides"] .frame-grid,
 body[data-view="proto"] .frame-grid {
-  grid-row: 1; grid-column: 1 / -1; position: relative; min-height: 0;
+  grid-row: 1; position: relative; min-height: 0;
 }
 body[data-view="slides"] .frame.active,
 body[data-view="proto"] .frame.active {
@@ -1193,28 +1296,12 @@ body[data-view="proto"] .frame.active {
   transform: translate(-50%, -50%) scale(var(--slide-scale, 1));
 }
 
-/* notes rail: a bounded rail beside the stage, scrolls on its own;
-   align-self + max-height let its rule end with short notes while
-   long notes still cap at the stage and scroll. It overlays the
-   full-width stage (later in the DOM, so it paints above) and
-   carries the stage tone so the blueprint field stops beneath it */
+/* slides: the rail overlays the full-width stage at its right edge
+   (later in the DOM, so it paints above, in the stage tone so the
+   stage stops beneath it); max-height lets its rule end with short
+   notes while long notes cap at the stage and scroll */
 body[data-view="slides"] .note-rail {
-  grid-row: 1; grid-column: 2; max-width: none; margin-top: 0;
-  min-height: 0; overflow-y: auto;
-  align-self: start; max-height: 100%;
-  background: var(--stage);
-  border-left: 1px solid var(--chrome-border); padding-left: var(--sp-6);
-}
-@media (max-width: 900px) {
-  body[data-view="slides"] .board-section:has(.frame.active) {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto;
-  }
-  body[data-view="slides"] .note-rail {
-    grid-row: 2; grid-column: 1; max-height: 30vh;
-    border-left: 0; border-top: 1px solid var(--chrome-border);
-    padding-left: 0; padding-top: var(--sp-4); margin-top: var(--sp-4);
-  }
+  position: absolute; top: 0; right: 0; max-height: 100%;
 }
 
 /* the navigator row shows in both stage views: name · position grouped
@@ -1223,28 +1310,27 @@ body[data-view="slides"] .note-rail {
 body[data-view="slides"] .slide-nav,
 body[data-view="proto"] .slide-nav {
   display: flex; gap: var(--sp-3); align-items: center;
-  margin-bottom: var(--sp-4); font-family: var(--mono); font-size: var(--t-xs);
-  line-height: var(--t-xs-lh); letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--chrome-ink);
+  margin-bottom: var(--sp-4); font-size: var(--t-sm);
+  line-height: var(--t-sm-lh); color: var(--chrome-ink);
   border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-2);
 }
 /* the section name leads the row, styled as the section label it replaces */
 .slide-nav .slide-section {
-  font-size: var(--t-sm); line-height: var(--t-sm-lh);
-  font-weight: 600; letter-spacing: 0.08em;
+  font-family: var(--display); font-size: var(--t-lg);
+  line-height: var(--t-lg-lh); font-weight: 600;
+  letter-spacing: -0.01em; color: var(--chrome-fg);
 }
+.slide-pos { font-variant-numeric: tabular-nums; }
 .slide-nav [data-prev] { margin-left: auto; }
-/* each stage view instructs itself — one quiet mono line in the row's
-   slot. Sentence case: this is help copy, not a tracked label */
-.nav-hint {
-  display: none; text-transform: none; letter-spacing: 0;
-}
+/* each stage view instructs itself — one quiet line in the row's slot */
+.nav-hint { display: none; }
 body[data-view="slides"] .slides-hint { display: inline; }
 body[data-view="proto"] .proto-hint { display: inline; }
 /* prev/next carry the kit's drawn arrow, never a text character —
    the --gl-* masks are theme-free alpha shapes, so borrowing them
    here doesn't breach the chrome/ramp color separation */
 .slide-nav button {
+  position: relative;
   display: inline-flex; align-items: center; justify-content: center;
   color: inherit; cursor: pointer; background: none;
   border: 1px solid var(--chrome-border); border-radius: var(--r-md);
@@ -1266,8 +1352,7 @@ body[data-view="proto"] .proto-hint { display: inline; }
    screens, Restart = the flow's entry; sequential next and the
    linear position belong to slides and hide here */
 .slide-nav [data-restart] {
-  display: none; font: inherit; letter-spacing: inherit;
-  text-transform: inherit; padding: 0 var(--sp-3);
+  display: none; font: inherit; font-weight: 500; padding: 0 var(--sp-3);
 }
 body[data-view="proto"] .slide-nav [data-restart] { display: inline-flex; }
 body[data-view="proto"] .slide-nav [data-next],
@@ -1289,39 +1374,102 @@ body[data-view="proto"] [data-go]:hover {
 
 /* ── annotation layer (accent lives here ONLY) ──────────────────── */
 
+/* markers are buttons (viewer.js gives them the role): with the rail
+   open, one scrolls the rail to its note; with the rail collapsed or
+   absent, it opens its note in place */
 .note-marker {
   position: absolute; width: var(--sp-6); height: var(--sp-6);
   border-radius: var(--r-full); background: var(--note); color: #ffffff;
-  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
-  font-weight: 700; display: flex; align-items: center; justify-content: center;
-  z-index: 2;
+  font-family: var(--sans); font-size: var(--t-xs); line-height: var(--t-xs-lh);
+  font-weight: 700; font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; cursor: pointer;
 }
 /* dark: numeral flips to stage ink on the lighter dark-mode indigo —
    mirrors the kit's own dark on-accent choice and clears AA (5.4:1;
    white on the dark indigo was 3.9:1) */
 [data-theme="dark"] .note-marker { color: var(--stage); }
+
+/* the notes rail — one per board, beside the main column. Sticky and
+   self-scrolling; in grid it follows the section in view (viewer.js).
+   align-self + max-height let its rule end with its notes — no empty
+   hairline trailing down the gutter */
 .note-rail {
-  max-width: 320px; margin-top: var(--sp-4);
+  position: sticky; top: var(--sp-8); flex: none; width: 300px;
+  align-self: flex-start; max-height: calc(100vh - 2 * var(--sp-8));
+  overflow-y: auto; background: var(--stage);
+  border-left: 1px solid var(--chrome-border);
+  padding: 0 0 var(--sp-6) var(--sp-6);
   font-size: var(--t-sm); line-height: var(--t-sm-lh); color: var(--chrome-ink);
 }
 .note-rail p { margin: 0 0 var(--sp-3); }
-.note-rail .note-num { color: var(--note); font-family: var(--mono); font-weight: 700; }
+.note-rail .note-num, .note-pop .note-num {
+  color: var(--note); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* Notes are PER WIREFRAME, never one consolidated list: each frame's
-   notes live in a .note-group whose data-for names the frame id, headed
-   by a .note-frame line. Markers number per wireframe (each frame
-   restarts at 1). Grid shows every group as the section's record;
+/* the rail's title is built by viewer.js and stays pinned while the
+   notes scroll beneath it */
+.note-rail-title {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--stage); padding-bottom: var(--sp-3); margin: 0;
+  font-family: var(--display); font-size: var(--t-lg); line-height: var(--t-lg-lh);
+  font-weight: 600; letter-spacing: -0.01em; color: var(--chrome-fg);
+}
+
+/* Notes are PER WIREFRAME, never one consolidated list: each section's
+   notes sit in a .note-section whose data-section matches its board
+   section, and each frame's notes in a .note-group whose data-for names
+   the frame id, headed by a .note-frame line. Markers number per
+   wireframe (each frame restarts at 1). Grid shows every section;
    slides shows only the active frame's group (viewer.js toggles
-   .active). Section-level notes (e.g. an idea board's decision record)
-   sit outside any group and always show. */
+   .active). Section-level notes sit outside any group and always show. */
+.note-section + .note-section { margin-top: var(--sp-8); }
+.note-section-label {
+  font-family: var(--display); font-size: var(--t-md); line-height: var(--t-md-lh);
+  font-weight: 600; color: var(--chrome-fg); margin: 0 0 var(--sp-3);
+}
 .note-group + .note-group { margin-top: var(--sp-5); }
 .note-frame {
-  font-family: var(--mono); font-size: var(--t-xs); line-height: var(--t-xs-lh);
-  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--chrome-ink); margin: 0 0 var(--sp-2);
+  font-size: var(--t-sm); line-height: var(--t-sm-lh); font-weight: 600;
+  color: var(--chrome-fg); margin: 0 0 var(--sp-2);
   border-bottom: 1px solid var(--chrome-border); padding-bottom: var(--sp-1);
 }
+body[data-view="slides"] .note-section:not(.active),
 body[data-view="slides"] .note-group:not(.active) { display: none; }
+/* the navigator row already names the section */
+body[data-view="slides"] .note-section-label { display: none; }
+/* a marker's note, found from the marker: a brief tint in the rail */
+.note-rail .note-target {
+  background: color-mix(in srgb, var(--note) 12%, transparent);
+  box-shadow: 0 0 0 var(--sp-1) color-mix(in srgb, var(--note) 12%, transparent);
+  border-radius: var(--r-sm);
+}
+
+/* three states on body[data-notes]: open (rail + markers), collapsed
+   (no rail; the markers stay and open their notes in place), hidden
+   (no rail, no markers — the screens alone) */
+body[data-notes="collapsed"] .note-rail,
+body[data-notes="hidden"] .note-rail,
+body[data-notes="hidden"] .note-marker { display: none; }
+
+/* a note opened in place — chrome on the stage, never part of the
+   screen: stage tone, hairline, no glow. viewer.js positions it
+   beside its marker */
+.note-pop {
+  position: absolute; z-index: 10;
+  width: min(300px, calc(100vw - 2 * var(--sp-4)));
+  background: var(--stage); border: 1px solid var(--chrome-border);
+  border-radius: var(--r-lg); padding: var(--sp-3) var(--sp-4);
+  font-family: var(--sans); font-size: var(--t-sm); line-height: var(--t-sm-lh);
+  color: var(--chrome-ink);
+}
+.note-pop p { margin: 0; }
+.note-pop .note-frame { margin-bottom: var(--sp-2); }
+
+/* phones and narrow windows carry no rail: a marker opens its note in
+   place, and the header switch still shows or hides the markers */
+@media (max-width: 900px) {
+  .note-rail, .note-collapse { display: none; }
+}
 ```
 
 ## Reference asset: references/viewer.js
@@ -1330,26 +1478,36 @@ body[data-view="slides"] .note-group:not(.active) { display: none; }
 /* ═══════════════════════════════════════════════════════════════════
    Intent /wireframe — viewer behavior
    The script every HTML wireframe artifact embeds verbatim, after
-   viewer.css. Powers the chrome (view toggle, slideshow, theme) and
-   the kit's stateful controls (chips, switches, prototype triggers).
+   viewer.css. Powers the chrome (view toggle, slideshow, theme, notes)
+   and the kit's stateful controls (chips, switches, prototype triggers).
 
-   View model: body[data-view] = grid | slides | proto. Slides pages
-   frames in section order with prev/next + arrow keys. Proto makes
-   the wireframes themselves the prototype — data-go on real trigger
-   elements navigates the flow, and those triggers join the tab order
-   (Enter/Space activate) while the mock's unwired controls leave it.
-   Proto navigation is FLOW-shaped, not document-shaped: ←/prev steps
-   back through visited screens, Restart returns to the flow's start —
-   sequential paging belongs to slides, where linear order is real.
-   Esc always returns to grid. Both stage views fit the active frame
-   to the stage by setting --slide-scale (scale down only, never up);
-   the frame page-centers when it can do so clear of the notes rail.
+   View model: body[data-view] = grid | slides | proto. Grid sets
+   full-page screens 3-up, each scaled down to its column (--grid-scale,
+   never up). Slides pages frames in section order with prev/next +
+   arrow keys. Proto makes the wireframes themselves the prototype —
+   data-go on real trigger elements navigates the flow, and those
+   triggers join the tab order (Enter/Space activate) while the mock's
+   unwired controls leave it. Proto navigation is FLOW-shaped, not
+   document-shaped: ←/prev steps back through visited screens, Restart
+   returns to the flow's start — sequential paging belongs to slides,
+   where linear order is real. Esc always returns to grid. Both stage
+   views fit the active frame to the stage by setting --slide-scale
+   (scale down only, never up); the frame page-centers when it can do
+   so clear of the notes rail.
 
    The reviewer's place is never lost: grid scroll is restored on
    return, a plate click in grid opens THAT frame in slides, and the
    view + frame index mirror into location.hash (#slides-2, #proto-1)
    so any state is linkable. Slide bounds are real — no silent
    wrap-around; prev/next disable at the ends.
+
+   Notes: body[data-notes] = open | collapsed | hidden. The header's
+   sidebar toggle collapses the rail (markers stay); the notes switch
+   hides the rail and every marker. Both choices persist like the
+   theme. A marker scrolls the open rail to its note; with the rail
+   collapsed, or below 900px where there is no rail, it opens its note
+   in place. viewer.js builds the rail's title and both header
+   switches, so they exist only on a board that carries notes.
 
    Theme: body[data-theme] = light | dark. The reviewer's own last
    choice (localStorage) wins; then an authored data-theme on <body>
@@ -1364,6 +1522,10 @@ let protoStart = 0;   /* the flow's entry frame, for Restart */
 
 const prevBtn = document.querySelector('[data-prev]');
 const nextBtn = document.querySelector('[data-next]');
+const rail = document.querySelector('.note-rail');
+const markers = [...document.querySelectorAll('.note-marker')];
+const motion = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+const sp = n => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(`--sp-${n}`));
 
 function view() { return document.body.dataset.view || 'grid'; }
 
@@ -1371,6 +1533,7 @@ function setView(v) {
   const was = view();
   if (was === 'grid' && v !== 'grid') gridScroll = scrollY;
   if (v === 'proto') { protoHist = []; protoStart = cur; }
+  closeNote();
   document.body.dataset.view = v;
   document.querySelectorAll('[data-setview]').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.setview === v)));
@@ -1389,12 +1552,13 @@ function setView(v) {
   document.querySelectorAll('.plate-open').forEach(b =>
     v === 'grid' ? b.removeAttribute('tabindex') : b.setAttribute('tabindex', '-1'));
   if (v !== 'grid') show(cur);
-  else requestAnimationFrame(() => scrollTo(0, gridScroll));
+  else requestAnimationFrame(() => { scrollTo(0, gridScroll); inView = null; spy(); });
   syncHash();
 }
 function show(i) {
   /* clamp, never wrap — the ends of a flow are information */
   cur = Math.max(0, Math.min(frames.length - 1, i));
+  closeNote();
   frames.forEach((f, n) => f.classList.toggle('active', n === cur));
   const sec = frames[cur].closest('.board-section')?.dataset.section || '';
   const pos = document.querySelector('.slide-pos');
@@ -1403,24 +1567,25 @@ function show(i) {
   if (secLabel) secLabel.textContent = sec;
   if (prevBtn) prevBtn.disabled = view() === 'proto' ? protoHist.length === 0 : cur === 0;
   if (nextBtn) nextBtn.disabled = cur === frames.length - 1;
-  /* notes are per wireframe — surface the active frame's group */
+  /* notes are per wireframe — surface the active frame's section and group */
+  document.querySelectorAll('.note-section').forEach(s =>
+    s.classList.toggle('active', s.dataset.section === sec));
   document.querySelectorAll('.note-group').forEach(g =>
     g.classList.toggle('active', g.dataset.for === frames[cur].id));
   syncHash();
   fit();
 }
 /* fit the active frame to the stage — scale down only, never up.
-   The stage spans the full section; the frame page-centers when its
-   scaled width stays clear of the notes rail, else centers in the
+   The stage spans the full main column; the frame page-centers when
+   its scaled width stays clear of the notes rail, else centers in the
    space beside it. */
 function fit() {
   const f = frames[cur];
   if (!f || view() === 'grid') return;
   const stage = f.closest('.frame-grid');
   if (!stage) return;
-  const rail = view() === 'slides'
-    ? f.closest('.board-section')?.querySelector('.note-rail') : null;
-  const railW = rail ? rail.offsetWidth : 0;
+  /* the rail's width plus a gutter — a scaled frame never meets its rule */
+  const railW = view() === 'slides' && rail?.offsetWidth ? rail.offsetWidth + sp(6) : 0;
   const avail = stage.clientWidth - railW;
   f.style.removeProperty('--slide-scale');
   const s = Math.min(1, avail / f.offsetWidth, stage.clientHeight / f.offsetHeight);
@@ -1436,7 +1601,10 @@ function syncHash() {
   if (h !== location.hash)
     history.replaceState(null, '', h || location.pathname + location.search);
 }
-addEventListener('resize', fit);
+addEventListener('resize', () => {
+  fit();
+  if (noteFor) placeNote(noteFor);
+});
 document.querySelectorAll('[data-setview]').forEach(b =>
   b.addEventListener('click', () => setView(b.dataset.setview)));
 prevBtn?.addEventListener('click', () =>
@@ -1450,12 +1618,30 @@ function histBack() {
   if (protoHist.length) show(protoHist.pop());
 }
 addEventListener('keydown', e => {
+  /* Esc closes an open note before it leaves the view */
+  if (e.key === 'Escape' && noteFor) { closeNote(); return; }
   const v = view();
   if (v === 'grid') return;
   if (e.key === 'ArrowLeft') v === 'proto' ? histBack() : show(cur - 1);
   if (e.key === 'ArrowRight' && v === 'slides') show(cur + 1);
   if (e.key === 'Escape') setView('grid');
 });
+
+/* grid — each full-page screen keeps its real width and scales down
+   to its column. The authored width becomes --frame-w; a resize of
+   the column (window, rail collapsed or hidden) rescales it */
+const screens = frames.filter(f => !f.querySelector('.vignette'));
+screens.forEach(f => {
+  const w = parseFloat(f.style.width) || f.querySelector('.wf')?.offsetWidth;
+  if (w) f.style.setProperty('--frame-w', `${w}px`);
+});
+function fitGrid(f) {
+  const w = parseFloat(f.style.getPropertyValue('--frame-w'));
+  if (view() !== 'grid' || !w || !f.clientWidth) return;
+  f.style.setProperty('--grid-scale', Math.min(1, f.clientWidth / w).toFixed(4));
+}
+const gridFit = new ResizeObserver(entries => entries.forEach(en => fitGrid(en.target)));
+screens.forEach(f => gridFit.observe(f));
 
 /* a plate is its frame's handle — in grid, clicking it opens that
    frame in slides. The plate's content is wrapped in a real button
@@ -1478,13 +1664,11 @@ document.querySelectorAll('.frame-plate').forEach(p => {
 /* theme — a stage-mode switch. The reviewer's saved choice wins,
    then the authored data-theme pin, then the OS */
 const th = document.querySelector('[data-toggle-theme]');
-const thLabel = th?.querySelector('.theme-label');
 function setTheme(dark) {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   document.body.dataset.theme = dark ? 'dark' : 'light';
   th?.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
   th?.removeAttribute('aria-pressed');
-  if (thLabel) thLabel.textContent = dark ? 'Light' : 'Dark';
 }
 let saved = null;
 try { saved = localStorage.getItem('wf-theme'); } catch (e) {}
@@ -1497,6 +1681,133 @@ th?.addEventListener('click', () => {
   setTheme(dark);
   try { localStorage.setItem('wf-theme', dark ? 'dark' : 'light'); } catch (e) {}
 });
+
+/* notes — the sidebar toggle collapses the rail; the notes switch
+   hides rail and markers together. Both are built here, so a board
+   without notes (an idea board) never shows either */
+let notesHidden = false;
+let railCollapsed = false;
+try {
+  notesHidden = localStorage.getItem('wf-notes') === 'hidden';
+  railCollapsed = localStorage.getItem('wf-notes-rail') === 'collapsed';
+} catch (e) {}
+let notesBtn = null;
+let railTitle = null;
+let collapseBtn = null;
+if (rail || markers.length) {
+  notesBtn = document.createElement('button');
+  notesBtn.className = 'notes-toggle';
+  const controls = document.querySelector('.board-controls');
+  controls?.insertBefore(notesBtn, controls.querySelector('[data-toggle-theme]'));
+  notesBtn.addEventListener('click', () => {
+    notesHidden = !notesHidden;
+    try { localStorage.setItem('wf-notes', notesHidden ? 'hidden' : 'shown'); } catch (e) {}
+    setNotes();
+  });
+}
+if (rail) {
+  rail.setAttribute('aria-label', 'Notes');
+  railTitle = document.createElement('h2');
+  railTitle.className = 'note-rail-title';
+  railTitle.textContent = 'Notes';
+  rail.prepend(railTitle);
+  /* the sidebar toggle joins the header's tools, last, above the rail */
+  collapseBtn = document.createElement('button');
+  collapseBtn.className = 'note-collapse';
+  document.querySelector('.board-controls')?.append(collapseBtn);
+  collapseBtn.addEventListener('click', () => {
+    railCollapsed = !railCollapsed;
+    try { localStorage.setItem('wf-notes-rail', railCollapsed ? 'collapsed' : 'open'); } catch (e) {}
+    setNotes();
+  });
+}
+function setNotes() {
+  if (!notesBtn) return;
+  document.body.dataset.notes = notesHidden ? 'hidden' : railCollapsed ? 'collapsed' : 'open';
+  notesBtn.setAttribute('aria-label', notesHidden ? 'Show notes' : 'Hide notes');
+  collapseBtn?.setAttribute('aria-expanded', String(!railCollapsed));
+  collapseBtn?.setAttribute('aria-label', railCollapsed ? 'Expand notes panel' : 'Collapse notes panel');
+  closeNote();
+  fit();
+  inView = null; /* a rail that opens again finds the section in view */
+  spy();
+}
+
+/* a note opened in place: one popover, beside its marker. A click
+   anywhere else closes it */
+let noteFor = null;
+const pop = document.createElement('div');
+pop.className = 'note-pop';
+pop.hidden = true;
+pop.tabIndex = -1;
+pop.setAttribute('role', 'dialog');
+document.body.appendChild(pop);
+addEventListener('click', e => {
+  if (noteFor && !pop.contains(e.target)) closeNote();
+});
+
+/* a marker finds its note: same frame, same number */
+function noteOf(m) {
+  const id = m.closest('.frame')?.id;
+  const group = [...document.querySelectorAll('.note-group')].find(g => g.dataset.for === id);
+  const n = m.textContent.trim();
+  const note = group && [...group.querySelectorAll('p')].find(p =>
+    p.querySelector('.note-num')?.textContent.trim() === n);
+  return { group, note };
+}
+/* with the rail open, a marker scrolls the rail to its note and tints
+   it; with the rail collapsed or absent, it opens the note in place */
+function openNote(m) {
+  const { group, note } = noteOf(m);
+  if (!note) return;
+  if (rail?.offsetWidth && document.body.dataset.notes === 'open') {
+    rail.scrollTo({ top: note.offsetTop - railTitle.offsetHeight - sp(3), behavior: motion });
+    note.classList.add('note-target');
+    setTimeout(() => note.classList.remove('note-target'), 1600);
+    return;
+  }
+  if (noteFor === m) { closeNote(); return; }
+  closeNote();
+  pop.replaceChildren(
+    ...[group.querySelector('.note-frame'), note].filter(Boolean).map(el => el.cloneNode(true)));
+  pop.setAttribute('aria-label', m.getAttribute('aria-label'));
+  pop.hidden = false;
+  noteFor = m;
+  placeNote(m);
+  pop.focus({ preventScroll: true });
+}
+/* in place: below the marker, or above it when the viewport runs out;
+   always inside the viewport's gutters */
+function placeNote(m) {
+  const r = m.getBoundingClientRect();
+  const gap = sp(2), edge = sp(4);
+  let left = Math.min(Math.max(edge, r.left), innerWidth - pop.offsetWidth - edge);
+  let top = r.bottom + gap;
+  if (top + pop.offsetHeight > innerHeight - edge && r.top - gap - pop.offsetHeight > edge)
+    top = r.top - gap - pop.offsetHeight;
+  pop.style.left = `${left + scrollX}px`;
+  pop.style.top = `${top + scrollY}px`;
+}
+function closeNote() {
+  if (!noteFor) return;
+  const m = noteFor;
+  const hadFocus = pop.contains(document.activeElement);
+  noteFor = null;
+  pop.hidden = true;
+  if (hadFocus) m.focus({ preventScroll: true });
+}
+
+/* the annotation layer announces itself — markers are buttons */
+markers.forEach(m => {
+  m.setAttribute('role', 'button');
+  m.setAttribute('tabindex', '0');
+  m.setAttribute('aria-label', 'Note ' + m.textContent.trim());
+  m.addEventListener('click', e => { e.stopPropagation(); openNote(m); });
+  m.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openNote(m); }
+  });
+});
+document.querySelector('.slide-pos')?.setAttribute('aria-live', 'polite');
 
 /* prototype — the real trigger elements navigate the flow;
    Enter/Space work wherever tap does; Back steps through history */
@@ -1524,25 +1835,32 @@ addEventListener('click', e => {
   setTimeout(() => ctl.classList.remove('dead-tap'), 450);
 });
 
-/* the annotation layer announces itself */
-document.querySelectorAll('.note-marker').forEach(m => {
-  m.setAttribute('role', 'img');
-  m.setAttribute('aria-label', 'Note ' + m.textContent.trim());
-});
-document.querySelector('.slide-pos')?.setAttribute('aria-live', 'polite');
-
-/* section index (when present): scroll-spy answers "where am I" */
+/* where am I: the section in view is the last one whose top has
+   passed the upper third of the viewport, or the last section once the
+   page bottoms out, so a short final section still counts. The section
+   index (when present) marks it; in grid the open rail follows it to
+   that section's notes */
+const sections = [...document.querySelectorAll('.board-section')];
 const indexLinks = [...document.querySelectorAll('.board-index a')];
-if (indexLinks.length) {
-  const bySection = new Map(indexLinks.map(a => [a.getAttribute('href').slice(1), a]));
-  const spy = new IntersectionObserver(entries => {
-    entries.forEach(en => { if (en.isIntersecting) {
-      indexLinks.forEach(a => a.removeAttribute('aria-current'));
-      bySection.get(en.target.id)?.setAttribute('aria-current', 'true');
-    }});
-  }, { rootMargin: '-10% 0px -70% 0px' });
-  document.querySelectorAll('.board-section[id]').forEach(s => spy.observe(s));
+let inView = null;
+function spy() {
+  if (view() !== 'grid' || !sections.length) return;
+  const bottomed = innerHeight + scrollY >= document.documentElement.scrollHeight - 1;
+  const s = bottomed ? sections[sections.length - 1]
+    : sections.filter(el => el.getBoundingClientRect().top <= innerHeight / 3).pop() || sections[0];
+  if (s === inView) return;
+  inView = s;
+  indexLinks.forEach(a => a.getAttribute('href') === `#${s.id}`
+    ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+  if (rail?.offsetWidth && document.body.dataset.notes === 'open') {
+    const notes = [...rail.querySelectorAll('.note-section')]
+      .find(n => n.dataset.section === s.dataset.section);
+    if (notes) rail.scrollTo({ top: notes.offsetTop - railTitle.offsetHeight, behavior: motion });
+  }
 }
+addEventListener('scroll', () => requestAnimationFrame(spy), { passive: true });
+setNotes();
+spy();
 
 /* restore a linked review state (#slides-2, #proto-1) */
 const linked = location.hash.match(/^#(slides|proto)-(\d+)$/);

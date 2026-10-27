@@ -88,7 +88,7 @@ Every artifact this skill produces is built from a shared visual vocabulary with
 
 - `references/design-system.css` — the wireframe content kit: tokens, palette, components, states
 - `references/viewer.css` — the container chrome: stage, frames, plates, views
-- `references/viewer.js` — the container behavior: view toggle, slideshow, theme, prototype navigation
+- `references/viewer.js` — the container behavior: view toggle, grid scaling, slideshow, notes, theme, prototype navigation
 - `references/styleguide.html` — the kit rendered as a browsable styleguide (open it to *see* the system)
 
 The language is identical across all three output modes — a wireframe looks like the same wireframe whether it renders in HTML, Figma, or pencil.
@@ -97,15 +97,16 @@ The language is identical across all three output modes — a wireframe looks li
 
 The stage every artifact sits on (source of truth: `references/viewer.css`). One vignette or a six-screen wireflow renders on the same chrome:
 
-- **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography — General Sans 700 for the board title, Hanken Grotesk for notes, SF Mono for plates and labels (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome. The board header is the title alone, an `h1` at display size. No line beneath it describes the board, its devices, their sizes or the scale they are drawn at; the screens show that.
-- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — the screen's name — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. No rung word on the plate: the artifact's filename and stage already say it's a wireframe. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate uses a small uppercase monospace label style that never appears inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (title, description) is their label.
-- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome, styled like plates. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
+- **Backdrop:** the Intent website's own neutrals — the container reads as a page from the same design system as the site. The chrome follows the site's language: cool-tinted tokens, the same absolute 4px grid as the kit, and the site's typography: General Sans for the board title and section headings, Hanken Grotesk for everything else (brand fonts referenced by name with system fallbacks, never loaded from a CDN — self-containment wins over font fidelity). Chrome text is sentence case. No monospace, and no tracked uppercase eyebrow labels. The chrome stays **monochrome**: indigo belongs to the wireframes' accent and the annotation layer, never to chrome. The board header is the title alone, an `h1` at display size. No line beneath it describes the board, its devices, their sizes or the scale they are drawn at; the screens show that.
+- **Frame:** each wireframe sits in its own hairline-bordered card. A mid-fi frame's **title plate** — the screen's name — floats *above* the card as a separate chrome caption, the way a canvas tool labels its frames. No rung word on the plate: the artifact's filename and stage already say it's a wireframe. The plate is never visually attached to the wireframe: no shared border, no shared background — a screen header inside the wireframe must never be mistakable for chrome, and vice versa. The plate is small chrome-ink text above the card, outside it, and never styled like anything inside wireframe content. Lo-fi frames carry no plate — the vignette's own idea caption (title, description) is their label.
+- **Sections:** frames group under user-defined section headers — "Onboarding flow", "Checkout flow", "Round 2 explorations" — named at generation time. Section headers are chrome: General Sans headings over a hairline rule. Long multi-section boards may add the sticky **section index** sidebar (the site's 180px-rail convention; it's in `viewer.css`).
 - **One rung per artifact.** Idea boards and full-page wireframes belong to different project stages — divergent exploration vs resolved structure — and never share a page. Lo-fi ships as its own artifact (`wireframes-<topic>-thumbnails.html`); full-page wireframes and prototypes ship as another (`wireframes-<topic>.html`). Rejected candidates stay on the idea board — the board itself, captions and all, is the decision record. **Idea boards carry no notes rail and no decision note: the caption is the annotation, and the board stays a clean grid.**
-- **View modes (HTML):** the container is a viewer with a toggle in its chrome:
-  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row; in a wireframe artifact frames sit larger, one or two per row. A section's notes sit as a right sidebar beside its frames — the record reads alongside the screens, never below them.
+- **View modes (HTML):** the container is a viewer; a segmented control of view icons in its chrome switches views:
+  - **Grid** (default) — all frames, grouped by section. In a lo-fi artifact vignettes flow several per row. In a wireframe artifact screens sit 3-up, each drawn at its real device width and scaled down to its column, never up: 2-up in a narrower window, 1-up on a phone. The plate stays full size, and a desktop screen becomes a thumbnail you open in slides to read.
+  - **Notes**: one notes rail for the whole board, beside the frames, grouped by section and then by screen. In grid it scrolls on its own and follows the section in view. The reviewer controls it from icons in the header beside the theme toggle, styled like it: a sidebar toggle, last in the row above the rail, collapses the rail while the markers stay on the screens, and a notes switch removes the rail and every marker, leaving the screens alone. Both choices persist like the theme. A marker scrolls the open rail to its note and tints it; with the rail collapsed, it opens its note in place beside the marker. Below 900px there is no rail and no sidebar toggle: a marker opens its note in place, and the notes switch still shows or hides the markers. viewer.js builds both switches and the rail's title, so a board without notes shows none of them. Every icon button names itself in a tooltip on hover and keyboard focus.
   - **Slideshow** — a fixed stage, not a long page: the page stops scrolling and the active frame centers and scales *down* to fit the viewport whole (plate included, never scaled up), with the notes rail as a bounded column beside it. The frame **page-centers** when its width stays clear of the rail (viewer.js decides); the stage stays bare — the frame is the only thing on it. Prev/next controls, keyboard arrows (a quiet sentence-case hint in the navigator row says so), position indicator, section-aware order; the navigator row sits between header and stage and doubles as the section header line — section name and position grouped on the left as one wayfinding phrase, controls on the right; the plate carries only the screen's name. **Bounds are real:** the sequence never wraps — prev disables at the first frame, next at the last; the ends of a flow are information. The stage for design reviews — a frame must never run off the bottom of the screen.
   - **The reviewer's place is never lost.** Clicking a frame's plate in grid opens *that* frame in slides; leaving slides restores the grid scroll position; the current view + frame mirror into `location.hash` (`#slides-2`, `#proto-1`) so any review state is linkable — "look at slide 2" is a URL, not directions.
-  - **Theme** — a light ⇄ dark toggle. Precedence: the reviewer's own last choice (localStorage) wins, then an authored `data-theme` on `<body>` (a presenter's choice survives the room's OS), then the OS preference. The half-tone swatch leads with the current mode — it reads as state. Both ramps ship in every HTML artifact. The toggle ships in a standalone artifact; when the artifact is made for a host app that sets the look (the request says so, or the host's instructions do), omit the toggle control and pin `data-theme` on `<body>` to the theme the host names. Visually distinct from the view tabs — it's a mode switch on the stage, not a way of looking at the frames: a borderless control, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
+  - **Theme** — a light ⇄ dark toggle. Precedence: the reviewer's own last choice (localStorage) wins, then an authored `data-theme` on `<body>` (a presenter's choice survives the room's OS), then the OS preference. The half-tone swatch leads with the current mode — it reads as state. It is an icon button, named by its tooltip. Both ramps ship in every HTML artifact. The toggle ships in a standalone artifact; when the artifact is made for a host app that sets the look (the request says so, or the host's instructions do), omit the toggle control and pin `data-theme` on `<body>` to the theme the host names. Visually distinct from the view icons — it's a mode switch on the stage, not a way of looking at the frames: a borderless control, separated from the view group. Figma and pencil artifacts are single-theme — the ask-first step records which.
   - **Prototype** (only when requested) — one screen at a time on the same fitted stage, annotations hidden, and the wireframes themselves interactive: activating a trigger element (the real button, the real row — click, or Tab + Enter/Space) navigates to the screen it leads to, following the flow logic. **Navigation is flow-shaped, not document-shaped:** ←/prev steps back through *visited* screens, Restart returns to the flow's entry, and sequential paging (next, the linear position) hides — arrows that walk document order would let a reviewer traverse paths the flow never connects. Only the wired triggers are tabbable; the mock's unwired controls leave the tab order, and a dead tap flashes a hairline "nothing here" acknowledgment. Hovered triggers show the same hairline ring — wired controls distinguish themselves from decoration. The view instructs itself: the navigator row carries a one-line sentence-case hint — the demo moment must never be an unlabeled room.
 - **Wireflow arrows** connecting screens render on the backdrop, between frames — flow logic lives in the container layer, never inside a screen.
 - In Figma, the container maps to sections and frame layout on canvas; in pencil, to grouped frames. Slideshow falls to those tools' native presentation modes.
@@ -162,7 +163,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 
 Notes about the design, never part of it:
 
-- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in a rail in the container margin. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Grid view shows every group as the section's record, in a right sidebar beside the frames; slides view shows only the active frame's group. Section-level notes sit outside any group and always show. **The notes rail is a mid-fi feature** — idea boards carry no rail; their captions are the annotation. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
+- **Numbered markers** — small accent-colored circles with white numerals, placed on the wireframe; each pairs with a note in the board's notes rail. **Notes are per wireframe, never one consolidated list:** markers number per frame (each wireframe restarts at 1), and each frame's notes live in a `.note-group` carrying `data-for="<frame-id>"`, headed by a `.note-frame` line naming the frame. Groups sit inside a `.note-section` whose `data-section` matches its board section, headed by a `.note-section-label`. Grid view shows every section; slides view shows only the active frame's group. Section-level notes sit in their `.note-section` outside any group and show whenever their section does. **The notes rail is a mid-fi feature** — idea boards carry no rail; their captions are the annotation. Anchor markers to the element they annotate (a `position: relative` container, token offsets) — never frame-level percentage positions that drift over the content.
 - **Idea captions** — on lo-fi vignettes, the caption's title carries the annotation accent: the caption narrates the board, it isn't UI.
 - **Flow indicators** — "links to →" labels on wireflow arrows.
 
@@ -217,14 +218,19 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     </div>
     <div class="board-controls">
       <nav class="view-toggle" aria-label="View">
-        <button data-setview="grid" aria-pressed="true">Grid</button>
-        <button data-setview="slides" aria-pressed="false">Slides</button>
+        <!-- icon buttons: viewer.css draws each icon and shows the
+             aria-label as its tooltip on hover and focus -->
+        <button data-setview="grid" aria-pressed="true" aria-label="Grid"></button>
+        <button data-setview="slides" aria-pressed="false" aria-label="Slides"></button>
         <!-- Include ONLY when a prototype was requested: -->
-        <button data-setview="proto" aria-pressed="false">Prototype</button>
+        <button data-setview="proto" aria-pressed="false" aria-label="Prototype"></button>
       </nav>
+      <!-- viewer.js adds the notes switch here, and the sidebar toggle
+           last, when the board has notes; it names every switch for
+           its tooltip -->
       <!-- Omit for a host app that sets the look; pin data-theme on <body> instead -->
       <button class="theme-toggle" data-toggle-theme>
-        <span class="swatch" aria-hidden="true"></span><span class="theme-label">Dark</span>
+        <span class="swatch" aria-hidden="true"></span>
       </button>
     </div>
   </header>
@@ -242,13 +248,19 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
     <button data-restart>Restart</button>
   </nav>
 
+  <!-- the board body: the main column, then (mid-fi only) the board's
+       one notes rail beside it -->
+  <div class="board-body">
+  <main class="board-main">
+
   <section class="board-section" data-section="[SECTION NAME]">
     <h2 class="section-label">[SECTION NAME]</h2>
     <div class="frame-grid">
 
       <!-- mid-fi frame: plate above (an h3 — screen readers jump frame
            to frame by heading; viewer.js makes it the click-to-open-in-
-           slides handle), complete interactive screen inside -->
+           slides handle), complete interactive screen inside. The inline
+           width is the real device width; grid scales from it -->
       <article class="frame" id="scr-[slug]" style="width: [VIEWPORT]px">
         <h3 class="frame-plate">
           <span>[SCREEN NAME]</span>
@@ -280,16 +292,25 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
       </article>
 
     </div>
-    <!-- MID-FI ONLY — idea boards carry no rail; the board stays a clean grid -->
-    <aside class="note-rail">
+  </section>
+
+  </main>
+  <!-- MID-FI ONLY: idea boards carry no rail; the board stays a clean grid.
+       One rail for the whole board, after the main column. viewer.js
+       builds its title and collapse control. -->
+  <aside class="note-rail">
+    <!-- one block per board section; data-section matches the section's -->
+    <div class="note-section" data-section="[SECTION NAME]">
+      <p class="note-section-label">[SECTION NAME]</p>
       <!-- one group per frame; markers restart at 1 inside each frame -->
       <div class="note-group" data-for="scr-[slug]">
         <p class="note-frame">[SCREEN NAME]</p>
         <p><span class="note-num">1</span> [WHY this element is here / open question]</p>
       </div>
-      <!-- section-level notes sit outside any group and always show -->
-    </aside>
-  </section>
+      <!-- section-level notes sit outside any group and show with their section -->
+    </div>
+  </aside>
+  </div>
 </body>
 ```
 
@@ -299,6 +320,7 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 - Don't invent class names — the kit's vocabulary is the language, and the reference CSS is its law. If a screen needs something the kit lacks, compose it from kit primitives and tokens; if it's genuinely new, that's a design-system change, not an artifact improvisation.
 - Every dimension in per-artifact CSS and inline styles comes from tokens (`--sp-*`, `--h-*`, `--ic-*`, `--r-*`, `--t-*`). Viewport widths are the exception: frames render at real device widths — 1440 (desktop), 768 (tablet), 390 (mobile); vignette frames at ~360px.
 - Light + dark ship together; the chrome's Theme toggle flips both. Initial theme: the reviewer's saved choice, then an authored `data-theme` on `<body>`, then the OS. Don't strip either ramp. For a host app that sets the look, omit the toggle control and pin `data-theme` to the host's theme; both ramps still ship.
+- A mid-fi board carries one notes rail, after `.board-main` inside `.board-body`, never one per section. Don't author the notes switch, the sidebar toggle or the rail's title; viewer.js builds them.
 - Include the Prototype view button and `data-go` attributes ONLY when the user asked for a prototype. `data-go` goes on the actual trigger element — the prototype IS the wireframe, not an overlay on it.
 - Real labels, real content. No lorem ipsum, anywhere, ever.
 - Controls are native elements with working interaction states — inputs type, buttons hover and press, chips and switches toggle. A div painted as a button is a vocabulary violation. The accent appears only where the kit puts it: primary actions, selection states, focus. `--w-error` appears only on invalid states.
@@ -307,7 +329,7 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 
 When the user picks Figma, confirm light or dark (per Ask first), load the `/figma-use` skill first (mandatory), then call `mcp__claude_ai_Figma__use_figma`. Translate the language using the chosen theme's column of the palette throughout:
 
-- Container sections → Figma sections named per user-defined groups; title plates → small mono text labels above each mid-fi frame (uppercase, chrome ink `#65657a` light / `#8888a8` dark).
+- Container sections → Figma sections named per user-defined groups; title plates → small sentence-case sans text labels above each mid-fi frame (chrome ink `#65657a` light / `#8888a8` dark).
 - Each screen → a frame at real viewport width, fill = the chosen theme's canvas, 1px stroke = the chrome border (`#d8d8e4` light / `#2a2a44` dark). Lo-fi vignettes → a surface-filled panel with the fragment centered and the idea caption below.
 - Wireframe content → the palette values as fills/strokes exactly as in the table above, on the 4px grid with the kit's control heights and type scale; one neutral font (Inter or SF); the accent on primary actions and selection states only; media blocks are surface-filled rectangles with a hairline border — no crossed lines; functional glyphs as simple drawn vectors, undecided icons as featureless circles.
 - Annotation → a locked overlay group per frame: accent circles with white numbers (`#4338ca` light / `#7c6ff0` dark, or the user's override), plus a notes text block beside the frame.
