@@ -62,7 +62,7 @@ const principles = [
               </svg>
             </button>
           </div>
-          <span class="code-block-followup muted small mono">Works with Cursor, Claude Code, Codex CLI, and more</span>
+          <span class="code-block-followup muted small">Works with Cursor, Claude Code, Codex CLI, and more</span>
         </div>
         <div class="code-block">
           <span class="code-block-hint">Claude Code</span>
@@ -75,9 +75,9 @@ const principles = [
               </svg>
             </button>
           </div>
-          <span class="code-block-followup muted small mono">Then open <code class="mono">/plugin</code> in Claude Code</span>
+          <span class="code-block-followup muted small">Then open <code class="mono">/plugin</code> in Claude Code</span>
         </div>
-        <p class="hero-platforms muted small mono">
+        <p class="hero-platforms muted small">
           Or <a href="#install" class="link">download manually</a>
         </p>
       </div>
@@ -86,7 +86,7 @@ const principles = [
 
     <!-- Philosophy -->
     <section class="section" aria-labelledby="philosophy-heading">
-      <SectionLabel label="PHILOSOPHY" annotation="Core thesis" icon="brain" />
+      <SectionLabel label="Philosophy" annotation="Core thesis" icon="brain" />
       <div class="section-content">
         <h2 id="philosophy-heading" class="visually-hidden">Philosophy</h2>
         <p class="lead">
@@ -100,7 +100,7 @@ const principles = [
 
     <!-- Principles -->
     <section class="section" aria-labelledby="principles-heading">
-      <SectionLabel label="PRINCIPLES" annotation="6 core positions" icon="shield" />
+      <SectionLabel label="Principles" annotation="6 core positions" icon="shield" />
       <div class="section-content">
         <h2 id="principles-heading" class="visually-hidden">Principles</h2>
         <div class="principles-grid">
@@ -116,13 +116,13 @@ const principles = [
 
     <!-- Skills -->
     <section class="section" aria-labelledby="skills-heading">
-      <SectionLabel label={`${skills.length} SKILLS`} annotation="7 categories" icon="grid" />
+      <SectionLabel label={`${skills.length} skills`} annotation="7 categories" icon="grid" />
       <div class="section-content">
         <h2 id="skills-heading" class="visually-hidden">Skills</h2>
         <div class="skill-categories">
           {categories.map((cat) => (
             <div class="skill-category">
-              <span class="skill-category-label mono">{cat.label}</span>
+              <span class="skill-category-label">{cat.label}</span>
               <div class="skill-category-tags">
                 {cat.skills.map((s) => (
                   <a href={`${base}skills/#${s.slug}`} class="skill-tag">/{s.slug}</a>
@@ -140,7 +140,7 @@ const principles = [
     <!-- Anti-Patterns -->
     <section class="section" aria-labelledby="patterns-heading">
       <SectionLabel
-        label="ANTI-PATTERNS"
+        label="Anti-patterns"
         annotation={`${pStats.categories} categories · ${pStats.total}+ patterns`}
         icon="warning"
       />
@@ -178,12 +178,12 @@ const principles = [
 
     <!-- Install -->
     <section class="section" id="install" aria-labelledby="install-heading">
-      <SectionLabel label="INSTALL" annotation="3 methods" icon="terminal" />
+      <SectionLabel label="Install" annotation="3 methods" icon="terminal" />
       <div class="section-content">
         <h2 id="install-heading" class="visually-hidden">Install</h2>
         <div class="install-methods">
           <div class="install-method">
-            <h3 class="install-method-name mono">All platforms</h3>
+            <h3 class="install-method-name">All platforms</h3>
             <div class="code-block">
               <div class="code-block-row">
                 <code>npx skills add ghaida/intent --all</code>
@@ -194,11 +194,11 @@ const principles = [
                   </svg>
                 </button>
               </div>
-              <span class="code-block-followup muted small mono">Works with Cursor, Claude Code, Codex CLI, and more</span>
+              <span class="code-block-followup muted small">Works with Cursor, Claude Code, Codex CLI, and more</span>
             </div>
           </div>
           <div class="install-method">
-            <h3 class="install-method-name mono">Claude Code plugin</h3>
+            <h3 class="install-method-name">Claude Code plugin</h3>
             <div class="code-block">
               <div class="code-block-row">
                 <code>/plugin marketplace add ghaida/intent</code>
@@ -209,13 +209,13 @@ const principles = [
                   </svg>
                 </button>
               </div>
-              <span class="code-block-followup muted small mono">Then open <code class="mono">/plugin</code> in Claude Code</span>
+              <span class="code-block-followup muted small">Then open <code class="mono">/plugin</code> in Claude Code</span>
             </div>
           </div>
           <div class="install-method">
-            <h3 class="install-method-name mono">Manual download</h3>
+            <h3 class="install-method-name">Manual download</h3>
             <div class="install-downloads">
-              <a href="https://github.com/ghaida/intent/releases/latest" class="install-download-link link mono" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/ghaida/intent/releases/latest" class="install-download-link link" target="_blank" rel="noopener noreferrer">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>

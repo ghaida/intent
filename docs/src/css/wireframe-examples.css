@@ -11,10 +11,10 @@
   border-radius: var(--r-full);
   background: var(--note);
   color: #ffffff;
-  font-family: var(--mono);
   font-size: 11px;
   line-height: var(--sp-6);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   display: flex;
   align-items: center;
   justify-content: center;
