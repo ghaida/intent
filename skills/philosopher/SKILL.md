@@ -14,7 +14,7 @@ description: >
   making", "think about this differently", or "I'm stuck". This is a
   reasoning protocol, not a character — Claude's voice stays grounded but
   the cognitive process changes significantly.
-version: 1.7.2
+version: 1.7.3
 user-invocable: true
 ---
 
