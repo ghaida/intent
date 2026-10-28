@@ -1674,8 +1674,9 @@ tr[hidden] {
   color: var(--fg);
 }
 
-/* Bold-only paragraphs act as section headings */
-.step-output p > strong:only-child {
+/* Bold-only paragraphs and an output's own headings act as section headings */
+.step-output p > strong:only-child,
+.step-output :is(h4, h5, h6) {
   display: block;
   font-size: var(--text-sm);
   margin-top: var(--s5);
@@ -1683,7 +1684,13 @@ tr[hidden] {
   letter-spacing: 0.01em;
 }
 
-.step-output p:first-child > strong:only-child {
+.step-output :is(h4, h5, h6) {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.step-output p:first-child > strong:only-child,
+.step-output > :is(h4, h5, h6):first-child {
   margin-top: 0;
 }
 
@@ -1693,10 +1700,14 @@ tr[hidden] {
   margin: var(--s5) 0;
 }
 
+.step-output .table-scroll {
+  overflow-x: auto;
+  margin: var(--s3) 0;
+}
+
 .step-output table {
   width: 100%;
   border-collapse: collapse;
-  margin: var(--s3) 0;
   font-size: var(--text-xs);
 }
 
