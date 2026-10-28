@@ -115,7 +115,8 @@ function simpleMarkdown(text: string): string {
         if (isHeader) isHeader = false;
         i++;
       }
-      html.push(`<table>${rows.join('')}</table>`);
+      // Wrapped so a wide table scrolls on its own instead of the panel
+      html.push(`<div class="table-scroll"><table>${rows.join('')}</table></div>`);
       continue;
     }
 
@@ -153,8 +154,9 @@ export function loadShowcase(): ShowcaseProject {
 
   const body = fmMatch[2];
 
-  // Split into step blocks by ## headings
-  const stepBlocks = body.split(/^## /m).filter(b => b.trim());
+  // Split into step blocks by ## /skill headings. Only a slash heading
+  // starts a step, so an output may carry its own ## headings.
+  const stepBlocks = body.split(/^## (?=\/)/m).filter(b => b.trim());
 
   const steps: ShowcaseStep[] = [];
 
