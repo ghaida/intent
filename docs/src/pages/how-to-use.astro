@@ -16,18 +16,19 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 // Drop the CDN URL(s) here. Leave videoSrc empty to hide the block entirely.
 const videoSrc = 'https://pub-7b48954891414f0e9966e0416813b9f9.r2.dev/intent-how-to.mp4';
 const videoPoster = `${base}intent-poster.png`;
+const taglineLower = showcase.tagline.charAt(0).toLowerCase() + showcase.tagline.slice(1).replace(/\.$/, '');
 ---
 
-<Base title="How to Use — Intent" description={`Follow ${showcase.name} — ${showcase.tagline.toLowerCase()} — through every Intent skill, from first question to engineering handoff.`}>
+<Base title="How to Use — Intent" description={`Follow ${showcase.name}, ${taglineLower}, through every Intent skill, from the first question to the engineering handoff.`}>
   <div class="page">
     <!-- Hero -->
     <section class="how-to-use-hero" aria-labelledby="how-to-use-heading">
       <h1 id="how-to-use-heading">How to Use</h1>
       <p class="subtext muted">
-        Follow one project through every Intent skill — from first question to engineering handoff.
+        Follow one project through every Intent skill, from the first question to the engineering handoff.
       </p>
       <div class="showcase-premise">
-        <strong>The project: {showcase.name}</strong> — {showcase.tagline}
+        <strong>The project:</strong> {showcase.name}, {taglineLower}.
       </div>
     </section>
 
@@ -101,7 +102,7 @@ const videoPoster = `${base}intent-poster.png`;
       <div class="section-content">
         <h2 id="get-started-heading" class="visually-hidden">Get Started</h2>
         <p class="step-narrative">
-          This is what Intent does for every project. Eighteen skills, six agents, one cohesive design practice.
+          Bring the same practice to your own project.
         </p>
         <div class="code-block">
           <span class="code-block-hint">All platforms</span>

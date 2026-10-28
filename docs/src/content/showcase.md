@@ -5,16 +5,16 @@ tagline: A neighborhood marketplace for buying, selling, and trading within walk
 
 ## /intent
 agent: Noor
-summary: Established project context, user types, design principles, and constraints for a hyperlocal marketplace.
+summary: Set the project's context: who Nearby serves, its design principles and its constraints.
 
-We started by grounding the project in reality. Nearby isn't another e-commerce platform — it's a tool for neighbors. That distinction shapes everything: trust is built through proximity, not star ratings. We defined three core user types, set design principles that prioritize safety and simplicity, and named the constraints that would keep us honest.
+Nearby is a tool for neighbors, and its trust comes from proximity: the person selling lives down the street. The principles put safety and simplicity first.
 
 ### Output
 
 **Project Context Document: Nearby**
 
 **Product & Business Context**
-Nearby is a hyperlocal marketplace for buying, selling, and trading within walking distance. It is a neighborhood infrastructure tool, not an e-commerce platform. The business model is density-dependent: value accrues as exchange volume increases per square mile. Revenue comes from optional promoted listings and neighborhood business partnerships, never from transaction fees. The product must reach critical mass within a single neighborhood before expanding geographically; growth is concentric, radiating outward from each activated neighborhood.
+Nearby is a hyperlocal marketplace for buying, selling, and trading within walking distance. It is built as infrastructure for a neighborhood. The business model is density-dependent: value accrues as exchange volume increases per square mile. Revenue comes from optional promoted listings and neighborhood business partnerships, never from transaction fees. The product must reach critical mass within a single neighborhood before expanding geographically; growth is concentric, radiating outward from each activated neighborhood.
 
 **Users**
 - **Sellers:** People with stuff they want gone: moving, decluttering, upgrading. They want minimal effort: snap a photo, name a price, done. Key context: most have tried Craigslist or Facebook Marketplace and found it too heavy for a $10 lamp. They post in bursts (moving weekend, garage cleanout). Tolerance for friction is near zero; if posting takes more than 60 seconds, they'll just leave it on the curb with a "FREE" sign.
@@ -22,7 +22,7 @@ Nearby is a hyperlocal marketplace for buying, selling, and trading within walki
 - **Organizers:** Block captains, community garden coordinators, buy-nothing group admins. They facilitate exchanges that aren't strictly transactional: lending, gifting, sharing. Key context: they are currently managing this work through Facebook Groups, group texts, or paper flyers. Their pain is "I need better tools for what I'm already doing." They are the most likely early evangelists and the hardest to disappoint.
 
 **Design Principles**
-1. **Proximity is the product.** Everything flows from physical nearness. If it doesn't leverage walking distance, it doesn't belong.
+1. **Proximity is the product.** Everything flows from physical nearness. If a feature doesn't depend on walking distance, it doesn't belong.
 2. **Lower the stakes.** This isn't a $500 transaction. Most items are under $20. The UX should match that casualness.
 3. **Trust through transparency.** Show the neighborhood. "3 blocks away" builds more trust than "4.8 stars."
 4. **Respect the asymmetry.** Sellers want speed. Buyers want discovery. Don't optimize for one at the expense of the other.
@@ -38,7 +38,7 @@ Nearby is a hyperlocal marketplace for buying, selling, and trading within walki
 **Ethical Stance**
 - No engagement tricks. No "3 others are looking at this" urgency. No notification spam. If users open the app less often because they found what they needed quickly, that's success.
 - No data harvesting beyond what's needed for core function. Location data is sensitive in a neighborhood context; "where you live" is not a data point to monetize.
-- No public shaming. Feedback is private, constructive, and designed to improve behavior, not punish it.
+- No public shaming. Feedback is private, constructive, and meant to improve behavior.
 - No dark patterns. If the business model requires manipulating neighbors into transactions, the business model is wrong.
 
 **Success Definition**
@@ -46,21 +46,21 @@ Success is exchange density: the number of completed exchanges per 1,000 househo
 
 ## /strategize
 agent: Ember
-summary: Framed the market opportunity, mapped competitors, defined a testable hypothesis, and scoped the MVP.
+summary: Framed the opportunity, mapped competitors, wrote a testable hypothesis and scoped the MVP.
 
-We stepped back to ask whether this idea has legs. The hyperlocal exchange space is littered with failures — Yerdle, OfferUp's local push, Facebook Marketplace's neighborhood tab. Each solved the wrong problem. We mapped what they got wrong, sized the opportunity differently (not by GMV but by exchange density per square mile), and wrote a hypothesis we could actually test.
+Marketplace, Craigslist and Nextdoor treat location as a search filter. In Nearby, walking distance is the product, so the opportunity is sized by exchanges per square mile, and the hypothesis names a completion rate a pilot can check.
 
 ### Output
 
 **Design Brief: Nearby**
 
-**Situation.** Peer-to-peer exchange is a $200B+ US activity. Existing tools — Marketplace, Craigslist, Buy Nothing groups — treat geography as a filter, not the organizing principle.
+**Situation.** Peer-to-peer exchange is a $200B+ US activity. Existing tools (Marketplace, Craigslist, Buy Nothing groups) use geography only as a filter.
 
-**Complication.** Sub-block exchange completes at 20–30% on these platforms. The tools aren't absent; they're wrong-shaped for walking-distance trust and logistics.
+**Complication.** Sub-block exchange completes at 20–30% on these platforms. The tools exist, but they're the wrong shape for walking-distance trust and logistics.
 
 **Resolution.** A marketplace whose only feature is proximity. Trust shifts to neighborhood familiarity. Discovery becomes spatial. Logistics collapse to walking. *Why now:* the hyperlocal shift is accelerating, and the architectural retrofit broad platforms would need takes years.
 
-*Discipline note:* the first draft sized the complication to fit "compete with Marketplace." Evidence trimmed it to "existing tools are wrong-shaped." Same resolution — but the brief now orients the team to a reality it can verify.
+*Discipline note:* the first draft sized the complication to fit "compete with Marketplace." Evidence trimmed it to "existing tools are wrong-shaped." The resolution stayed the same, and the brief now rests on a claim the team can verify.
 
 **Goals**
 1. Achieve 15+ completed exchanges per 1,000 households per week in mature neighborhoods
@@ -76,7 +76,7 @@ We stepped back to ask whether this idea has legs. The hyperlocal exchange space
 **Guiding Principles**
 1. Density before breadth: one thriving neighborhood is worth more than 100 empty ones
 2. The walking radius is the product: every feature decision flows from it
-3. Casual over transactional: the UX should feel like putting a sign in your yard, not listing on eBay
+3. Casual over transactional: the UX should feel like putting a sign in your yard
 4. Trust is ambient, built from tenure and proximity rather than star ratings
 
 **Key Assumptions & Open Questions**
@@ -107,17 +107,17 @@ If we constrain a marketplace to walking distance and build trust signals around
 
 ### Philosopher
 
-What does "neighborhood" actually mean? In a dense urban block, walking distance might be 0.2 miles — you can see the seller's building from your window. In a suburban subdivision, it's the development itself, maybe a mile across. In a rural town, it might be the whole town. The product assumes a shared definition of "nearby" that doesn't exist. Are we building for a radius, a census tract, a zip code, or a felt sense of community? The answer changes the entire trust model.
+What does "neighborhood" mean? On a dense city block, walking distance might be 0.2 miles, and you can see the seller's building from your window. In a suburb it might be the subdivision, a mile across. In a rural town it might be the whole town. Nearby assumes everyone shares one definition of "nearby", and they don't. Whether it means a radius, a census tract, a zip code or a felt sense of community changes the whole trust model.
 
 ### Storytelling
 
-S/C/R framing isn't decoration. The discipline is: validate the complication against evidence *before* composing the brief — not after. If the complication can't survive that check, the resolution it implies probably can't either. The first draft of Nearby's complication was sized to fit a "compete with Marketplace" resolution. It didn't survive scrutiny, and the resolution wouldn't have either.
+Situation, complication, resolution works only if the complication is checked against evidence before the brief is written. Nearby's first complication was sized to fit a plan to compete with Marketplace. The evidence cut it down to what holds: existing tools are the wrong shape for walking distance.
 
 ## /investigate
 agent: Ember
-summary: Designed a research plan with interview scripts for buyers, sellers, and community organizers.
+summary: Planned the research, with interview scripts for buyers, sellers and community organizers.
 
-Before designing anything, we needed to hear from people who already do this — the ones selling furniture on their stoop, the buy-nothing group admins managing chaos in Facebook comments, the people who walk past "FREE" signs and wonder what they're missing. We wrote three interview scripts, each tuned to a different relationship with local exchange.
+Before any design, the research goes to people who already trade locally: neighbors selling furniture from their stoops, buy-nothing admins sorting requests in Facebook comments, and people who walk past "FREE" signs and wonder what they're missing.
 
 ### Output
 
@@ -127,13 +127,13 @@ Before designing anything, we needed to hear from people who already do this —
 Validate three assumptions from the strategic brief: (1) walking distance is a meaningful constraint that creates differentiated exchange behavior, (2) neighborhood familiarity generates more trust than platform-mediated reputation, and (3) the current tools (Facebook Marketplace, Buy Nothing groups, Craigslist) are failing hyperlocal exchange in specific, designable ways.
 
 **Method Rationale**
-Semi-structured interviews, not surveys. We're in generative territory and don't yet know what to ask about at scale. Surveys would force premature structure on questions we haven't validated. Interviews let participants tell us things we didn't know to ask about. 45 minutes each, with 5 minutes for warm-up and consent, 35 minutes for core questions, and 5 minutes for open-ended close.
+Semi-structured interviews. The questions worth asking at scale aren't known yet, and a survey would force structure onto them too early. Interviews let participants tell us things we didn't know to ask about. 45 minutes each, with 5 minutes for warm-up and consent, 35 minutes for core questions, and 5 minutes for open-ended close.
 
 **Participant Criteria**
 - **Sellers (n=5):** Must have sold or given away 3+ items locally in the past 6 months. Mix of platforms used (Facebook, Craigslist, curb alerts, word of mouth). Exclude professional resellers and business accounts.
 - **Buyers (n=5):** Must have picked up or purchased an item from a local stranger in the past 3 months. Mix of active seekers and casual browsers.
 - **Community Organizers (n=3):** Must currently admin or moderate a Buy Nothing group, neighborhood exchange group, or community swap. Must manage a group of 50+ members.
-- **Geographic split:** 2 neighborhoods, one urban (density >5,000 hh/km²) and one suburban (density 1,000-3,000 hh/km²). This tests whether "walking distance" means fundamentally different things in different contexts.
+- **Geographic split:** 2 neighborhoods, one urban (density >5,000 hh/km²) and one suburban (density 1,000-3,000 hh/km²). This tests whether "walking distance" means different things in different contexts.
 
 **Recruitment:** Buy Nothing group admin outreach, Nextdoor posts, flyers at coffee shops and community boards. $50 gift card incentive. Screen for recency and frequency of local exchange: we want active practitioners, not people who sold one thing on Craigslist in 2019.
 
@@ -145,11 +145,11 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 **Interview Guide: Sellers**
 
 *Opening (5 min)*
-- Introduce purpose: "We're exploring how people in neighborhoods exchange things — sell, give away, trade. We're not testing anything, just learning from your experience. There are no wrong answers."
+- Introduce purpose: "We're exploring how people in neighborhoods sell, give away and trade things. We're not testing anything, just learning from your experience. There are no wrong answers."
 - Obtain consent for recording. Confirm they can stop at any time.
 - Warm-up: "Tell me a bit about your neighborhood. How long have you lived there?"
 
-*Core Questions — organized by theme:*
+*Core questions, by theme:*
 
 **Current behavior (10 min)**
 1. Tell me about the last thing you sold or gave away locally. Walk me through what happened from the moment you decided to get rid of it.
@@ -159,7 +159,7 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 **Friction and failure (10 min)**
 4. What was the most annoying part of the process?
 5. Have you ever decided *not* to sell or give away something locally, even though you wanted to? What stopped you?
-6. Have you ever had a bad experience — someone who ghosted, showed up and the item wasn't what they expected, anything uncomfortable?
+6. Have you ever had a bad experience: someone who ghosted, a buyer who found the item wasn't what they expected, anything uncomfortable?
 
 **Trust and proximity (10 min)**
 7. Did you know the buyer/recipient beforehand? How did that affect the interaction?
@@ -167,7 +167,7 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 9. Would knowing someone lives on your block change how you interact with them in an exchange?
 
 **Probing techniques:**
-- *Silence* — after each answer, wait 5-7 seconds before the next question. Let them fill the space.
+- *Silence:* after each answer, wait 5-7 seconds before the next question. Let them fill the space.
 - *"Walk me through that step by step"*: when they summarize, push for the sequential details.
 - *"What made you choose that over..."*: surfaces decision criteria they may not articulate unprompted.
 - *Reflecting back*: "So it sounds like the hardest part was [X]. Is that right?" Confirms understanding and often triggers correction or elaboration.
@@ -178,9 +178,9 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 
 **Interview Guide: Buyers**
 
-*Opening (5 min)* — Same structure as sellers.
+*Opening (5 min):* same structure as sellers.
 
-*Core Questions — organized by theme:*
+*Core questions, by theme:*
 
 **Discovery and motivation (10 min)**
 1. When was the last time you bought or picked up something from a neighbor? What was it?
@@ -188,22 +188,22 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 3. How often do you browse for local items? Is it a habit or occasional?
 
 **The exchange experience (10 min)**
-4. Describe the actual exchange — where did you meet? How did payment work? How did it feel?
+4. Describe the exchange itself. Where did you meet? How did payment work? How did it feel?
 5. What made you trust the seller enough to show up?
-6. Have you ever been burned — item not as described, uncomfortable interaction, no-show?
+6. Have you ever been burned: an item not as described, an uncomfortable interaction, a no-show?
 
 **Proximity and behavior (10 min)**
 7. If you could browse everything available within a 10-minute walk right now, would you? How often would you check?
 8. Does distance change what you'd be willing to pick up? Would you walk 2 blocks for something you wouldn't drive 10 minutes for?
 9. Have you ever walked past a "FREE" sign on someone's curb? What happened?
 
-*Close (5 min)* — Same structure as sellers.
+*Close (5 min):* same structure as sellers.
 
 **Interview Guide: Community Organizers**
 
-*Opening (5 min)* — Same structure, plus: "Tell me about the group you run and how you got involved."
+*Opening (5 min):* same structure, plus: "Tell me about the group you run and how you got involved."
 
-*Core Questions — organized by theme:*
+*Core questions, by theme:*
 
 **Operations and process (10 min)**
 1. Walk me through a typical week of managing exchanges in your group. What do you actually do?
@@ -211,7 +211,7 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 3. What rules have you had to create that surprised you?
 
 **Failure modes and moderation (10 min)**
-4. How do you handle people who don't follow through — ghost pickups, no-shows, flaky commitments?
+4. How do you handle people who don't follow through: ghost pickups, no-shows, flaky commitments?
 5. Have you ever had to remove someone from the group? What happened?
 6. What's the worst thing that's happened in your group, and how did you handle it?
 
@@ -220,16 +220,16 @@ Semi-structured interviews, not surveys. We're in generative territory and don't
 8. Do you think your community would use a dedicated app, or is "good enough" inside Facebook actually fine?
 9. What would a dedicated tool need to do to be worth switching? What's the minimum?
 
-*Close (5 min)* — Same structure.
+*Close (5 min):* same structure.
 
 **Findings Report Format**
 Findings will be organized by theme, not by participant. Each states how many of the 13 interviews showed it, with anonymized quotes and the design implication.
 
 ## /blueprint
 agent: Wren
-summary: Mapped the full service blueprint — actors, frontstage actions, backstage processes, and critical dependencies.
+summary: Mapped the service blueprint: the actors, what each one sees, the work behind it and the dependencies.
 
-We mapped the invisible machinery behind a simple exchange. What looks like "I want that, here's $5" actually involves geolocation, notification timing, trust inference, content moderation, and a handoff that happens on a physical sidewalk with no platform involvement. The blueprint revealed three critical failure points we hadn't considered.
+A $5 exchange runs on geolocation, notification timing, trust signals and moderation, and ends with a handoff on the sidewalk that the app never sees. The blueprint maps each of those and what happens when one fails.
 
 ### Output
 
@@ -237,21 +237,21 @@ We mapped the invisible machinery behind a simple exchange. What looks like "I w
 
 **The choreography**
 
-This blueprint is a performance, not an org chart. Five actors enter and exit at different moments, and the service exists in the coordination between them — not in any single role's path.
+The service lives in the coordination between its actors, who enter and exit at different moments.
 
 - **Sarah, the seller.** Moving-week panicked. Enters the service when she opens the app to post the couch. Stays present through pickup coordination. Exits when the couch is gone. Her arc is 4–48 hours; the service can't slow her down without losing her.
-- **Marcus, the buyer.** Casual, ambient. Enters by accident — he opens the app while walking home. Stays present briefly: see, decide, walk over, pick up. His arc is 20 minutes to 2 hours. The service can't ask him to commit upfront.
-- **Diane, the community organizer.** Operational, sustained. Always present in the background. Enters reactively when something breaks — a flagged listing, a harassment report, a stale post. Her arc is the lifetime of the neighborhood instance.
-- **The neighborhood density itself.** Not a person, but an actor — the service has no value below a threshold of active users per square mile. Without it, Sarah posts and nobody sees; Marcus opens the app and finds nothing. The choreography depends on density existing as a precondition.
+- **Marcus, the buyer.** Casual, ambient. Enters by accident: he opens the app while walking home. Stays present briefly: see, decide, walk over, pick up. His arc is 20 minutes to 2 hours. The service can't ask him to commit upfront.
+- **Diane, the community organizer.** Operational, sustained. Always present in the background. Enters reactively when something breaks: a flagged listing, a harassment report, a stale post. Her arc is the lifetime of the neighborhood instance.
+- **The neighborhood's density.** The service has no value below a threshold of active users per square mile. Without it, Sarah's post goes unseen and Marcus opens the app to find nothing.
 - **Future buyers, present in absence.** Sarah's first exchange affects the third buyer who hasn't joined yet. Trust and tenure compound across handoffs that haven't happened. Their absence is structural; designing for them means designing the service so the first ten exchanges are visibly trustworthy enough to recruit the eleventh.
 
-The systems below — Notification Service, Trust Inference Engine, Content Moderation, Neighborhood Graph — exist to support this human choreography, not to define it. Where the blueprint started flattening Sarah and Marcus into "the seller" and "the buyer," we re-introduced who they are at each step so the team could feel the coordination across real human moments rather than abstract roles.
+The systems below (Notification Service, Trust Inference Engine, Content Moderation, Neighborhood Graph) support the people above. Where the blueprint started flattening Sarah and Marcus into "the seller" and "the buyer," it went back to who they are at each step.
 
 **Actors (full list):** Sarah/Marcus/Diane (named representative humans), the buyer-population, the seller-population, Platform (client + server), Neighborhood Graph Service, Trust Inference Engine, Content Moderation System, Notification Service.
 
 ---
 
-**Frontstage — Seller Touchpoints (Sarah's arc)**
+**Frontstage: Seller Touchpoints (Sarah's arc)**
 
 | Step | User action | Sees/hears | Channel |
 |---|---|---|---|
@@ -263,7 +263,7 @@ The systems below — Notification Service, Trust Inference Engine, Content Mode
 | 6. Accept/decline | Taps "It's yours" or ignores | Pickup coordination screen with suggested meeting point and time | Mobile app |
 | 7. Complete exchange | Meets buyer in person, taps "Exchanged" | "Nice, that's your 8th exchange in Capitol Hill" | Mobile app |
 
-**Frontstage — Buyer Touchpoints (Marcus's arc)**
+**Frontstage: Buyer Touchpoints (Marcus's arc)**
 
 | Step | User action | Sees/hears | Channel |
 |---|---|---|---|
@@ -276,7 +276,7 @@ The systems below — Notification Service, Trust Inference Engine, Content Mode
 
 ---
 
-**Backstage — Organizational Processes (Diane's arc + system actors)**
+**Backstage: Organizational Processes (Diane's arc + system actors)**
 
 **Neighborhood Graph Service**
 - Determines walking radius per user based on housing density, street network graph, and physical barriers
@@ -304,7 +304,7 @@ The systems below — Notification Service, Trust Inference Engine, Content Mode
 
 ---
 
-**Support Processes — Infrastructure**
+**Support Processes: Infrastructure**
 
 | System | Purpose | SLA | Failure impact |
 |---|---|---|---|
@@ -333,27 +333,27 @@ The systems below — Notification Service, Trust Inference Engine, Content Mode
 
 ### Storytelling
 
-A blueprint without choreography is an org chart. The temptation here was to draw a clean handoff: buyer → frontend → backend → seller. But the real Nearby service is choreographed across actors who don't yet know each other — the buyer, the seller, the neighborhood density that makes any exchange viable, the moderator catching abuse before it escalates, the future buyers whose trust depends on this exchange working out. Each enters and exits at different moments. Story emerges from the coordination itself, not from any one character's path. Where the blueprint started flattening "the seller" into a system role, we re-introduced who the sellers actually are at each step — a moving-week panicked Sarah, a buy-nothing organizer juggling fifteen DMs — so the team could feel the choreography across real human moments.
+The easy drawing is a straight line from buyer to backend to seller. The service runs across people who don't know each other yet: the buyer, the seller, the moderator catching abuse, and the future buyers whose trust depends on this exchange going well. Where the blueprint flattened the seller into a system role, it went back to who sellers are at each step: Sarah in her moving week, a buy-nothing organizer answering fifteen messages.
 
 ## /journey
 agent: Wren
-summary: Designed four core flows — posting an item, discovering nearby listings, buying, and messaging.
+summary: Designed the core flows: posting, discovering, buying and messaging.
 
-We traced the four paths people actually take through Nearby. Each flow was designed to feel lighter than existing alternatives — fewer taps to post, less scrolling to find, less negotiation to buy. The key insight: in a walking-distance marketplace, the transaction is almost an afterthought. Discovery and coordination are the real product.
+Each flow takes fewer taps than the alternatives. When the seller lives down the street, paying is the easy part. Finding things and arranging the pickup are the hard ones, and the flows spend their effort there.
 
 ### Output
 
 **The user arcs**
 
-Three protagonists shaped these flows. We mapped them as separate arcs rather than one composite — the variance is the design constraint.
+Sarah, Marcus and Diane each have their own arc, because the differences between them are the design constraint.
 
-*Sarah, seller, moving-week.* It's Thursday. Parents arrive Saturday. There's a couch, a coffee table, and three lamps that need to be gone — not sold for top dollar, just gone. She's standing in a hallway with bad reception, moving boxes piling up around her, opening her phone in spare moments between packing. *Goal:* clear the apartment before Saturday. *Obstacle:* every existing tool wants her to write a description, set up a meet-up, message back and forth. *Turning point:* the app posts in 30 seconds and her downstairs neighbor messages "I'll come by at 6." *Resolution:* the couch is gone before dinner; she never had to leave the building.
+*Sarah, seller, moving-week.* It's Thursday. Parents arrive Saturday. There's a couch, a coffee table, and three lamps that need to be gone, at any price. She's standing in a hallway with bad reception, moving boxes piling up around her, opening her phone in spare moments between packing. *Goal:* clear the apartment before Saturday. *Obstacle:* every existing tool wants her to write a description, set up a meet-up, message back and forth. *Turning point:* the app posts in 30 seconds and her downstairs neighbor messages "I'll come by at 6." *Resolution:* the couch is gone before dinner; she never had to leave the building.
 
 *Marcus, buyer, casual.* He's walking home from the train. He opens Nearby out of habit, the way he checks Twitter. He's not shopping for anything. *Goal:* none, until the app shows him something. *Obstacle:* discovery has to compete with passive scrolling, not a search query. *Turning point:* a $15 desk lamp two blocks away, posted twenty minutes ago, picture good enough. *Resolution:* he taps "interested," walks the long way home, and carries it back.
 
 *Diane, organizer, buy-nothing veteran.* She runs the neighborhood Facebook group with 800 members. She is drowning in DMs, missing handoffs, and tired of being the only moderator. *Goal:* keep the gift economy alive without losing her weekends to it. *Obstacle:* the platform must support generosity as a first-class flow, not just commerce-with-a-free-checkbox. *Turning point:* she sees the "Free" pickup-prefs flow and recognizes her work in it. *Resolution:* she moves her group's exchanges into Nearby and recruits two co-organizers within the first month.
 
-These are not composites. The arcs are honest about the variance — Sarah's experience is panicked and time-bounded, Marcus's is ambient and serendipitous, Diane's is operational and sustained. Each flow below was designed against all three; where they diverge, we noted which arc the design optimizes for.
+Sarah's experience is panicked and time-bound, Marcus's ambient and serendipitous, Diane's operational and sustained. Each flow below was designed against every arc; where they diverge, the flow names the arc it favors.
 
 ---
 
@@ -365,7 +365,7 @@ These are not composites. The arcs are honest about the variance — Sarah's exp
 
 | Step | Screen | Layout & Key Elements | Copy | CTA |
 |---|---|---|---|---|
-| 1. Capture | Camera viewfinder | Full-screen camera, gallery shortcut (bottom-left), flash toggle (top-right) | — | Shutter button |
+| 1. Capture | Camera viewfinder | Full-screen camera, gallery shortcut (bottom-left), flash toggle (top-right) | None | Shutter button |
 | 2. Confirm photo | Photo preview | Full-bleed photo, retake (top-left), AI-suggested title below: *"Blue IKEA bookshelf"* | "Looks right?" | "Use this photo" / "Retake" |
 | 3. Set details | Item form | Title field (pre-filled, editable), price input with "Free" and "Trade" quick-select, category auto-suggested | "What are you getting rid of?" | "Next" |
 | 4. Pickup prefs | Pickup options | Three options: "Porch pickup" / "Meet outside" / "Flexible," auto-filled from last listing. Date/time picker for availability window. | "How should they pick it up?" | "Preview" |
@@ -386,7 +386,7 @@ These are not composites. The arcs are honest about the variance — Sarah's exp
 
 **Flow 2: Discovering Nearby Items**
 
-*Primary arc: Marcus's. The flow is optimized for ambient browsing, not intentional search.*
+*Primary arc: Marcus's. The flow is built for ambient browsing.*
 
 *Entry:* App launch defaults to map view. Deep links from notifications or shares land on item detail.
 
@@ -423,7 +423,7 @@ These are not composites. The arcs are honest about the variance — Sarah's exp
 
 | Step | Screen | What happens | State transitions |
 |---|---|---|---|
-| 1. View item | Item detail | Full photo, description, price, distance ("2 min walk"), seller tenure ("Your neighbor since March"), pickup type | — |
+| 1. View item | Item detail | Full photo, description, price, distance ("2 min walk"), seller tenure ("Your neighbor since March"), pickup type | None |
 | 2. Express interest | Same screen | Tap "I want this" → button transitions to checkmark + "Interest sent" (150ms spring animation) | Optimistic update. Undo toast for 5 seconds. |
 | 3. Undo window | Toast overlay | "Interest sent. Undo" with 5-second countdown | If tapped: reverts to pre-interest state. If expired: interest confirmed server-side. |
 | 4. Waiting | Activity tab | "Waiting for [Seller name]" with approximate response time based on seller's historical pattern | Status updates: "Seen" / "Accepted" / "Passed" |
@@ -454,17 +454,17 @@ These are not composites. The arcs are honest about the variance — Sarah's exp
 
 ### Philosopher
 
-The buy/sell mental model assumes every exchange has a price. But in real neighborhoods, the most common local exchange isn't commerce — it's generosity. A bag of lemons from someone's tree. A kid's bike they outgrew. Moving boxes you'll never use again. If Nearby only supports buying and selling, it misses the gift economy that actually builds neighborhood trust. Should "Free" be a price option, or should gifting be an entirely separate mode with different social mechanics?
+Buying and selling assume every exchange has a price. In real neighborhoods, the most common exchange is a gift: lemons from someone's tree, a bike a kid outgrew, moving boxes. If Nearby only supports buying and selling, it misses the giving that builds trust between neighbors. Should Free be a price, or should giving be its own mode with its own social rules?
 
 ### Storytelling
 
-The protagonist-arc pattern keeps the journey work honest about whose experience we're designing. Sarah moved into the neighborhood three weeks ago, has a couch she needs gone before her parents visit Saturday, and is opening Nearby on her phone in a hallway with bad reception while moving boxes pile up around her. That's the protagonist, the goal, the time pressure. The arc isn't "user posts → buyer arrives → transaction completes." It's the felt experience of hoping someone in her building will save her from a Goodwill run. But there are also Sarahs who are excited, Sarahs who are anxious, Sarahs who aren't moving at all but have a kid's bike that needs a new home. We mapped them as separate arcs rather than smoothing them into one composite — false coherence would hide the real variance from the team.
+The protagonist arc keeps the journey honest about whose experience it is. Sarah moved in three weeks ago, needs her couch gone before her parents visit on Saturday, and is posting from a hallway with bad reception, hoping someone in her building saves her a trip to Goodwill. Other sellers are excited, or anxious, or not moving at all and have a bike to pass on. Each kept its own arc, since one blended arc would hide the differences the team needs to see.
 
 ## /organize
 agent: Wren
-summary: Defined information architecture — categories, navigation structure, search strategy, and wayfinding.
+summary: Defined the information architecture: categories, navigation, search and wayfinding.
 
-We organized Nearby around a simple principle: proximity first, category second. Unlike Amazon or even Craigslist, nobody comes to Nearby looking for a specific item. They come to see what's around. The IA reflects browsing behavior, not shopping behavior — the map is the primary navigation, categories are filters, and search is a secondary path.
+People open Nearby to see what's around, so proximity comes first and category second. The map is the main navigation, categories filter it, and search is a second way in.
 
 ### Output
 
@@ -473,7 +473,7 @@ We organized Nearby around a simple principle: proximity first, category second.
 **Pattern selected: Hub-and-spoke with spatial primary**
 - **Why this pattern:** Nearby's tasks are distinct and self-contained (browse, post, coordinate, manage). Hub-and-spoke keeps each mode clean. The spatial twist: the "hub" is a map, with the user's physical location as the organizing principle.
 - **Trade-off analysis:** Hub-and-spoke means users return to the map between tasks. This is intentional; the map reorients them spatially. But it adds one tap when moving between activity and posting. Acceptable because these transitions are infrequent (most sessions are browse-only or post-only, rarely both).
-- **Rejected alternative:** Flat tab bar with no hierarchy (like Instagram). Rejected because Nearby's modes have fundamentally different interaction models: map browsing vs. feed scrolling vs. form entry. Flat tabs would force visual consistency where interaction divergence is needed.
+- **Rejected alternative:** Flat tab bar with no hierarchy (like Instagram). Rejected because Nearby's modes have different interaction models: map browsing vs. feed scrolling vs. form entry. Flat tabs would force visual consistency where interaction divergence is needed.
 
 **Bottom tab bar:** 5 items. Map is leftmost and default. Post (+) is center with elevated visual treatment (FAB-style).
 
@@ -494,13 +494,13 @@ We organized Nearby around a simple principle: proximity first, category second.
 | Furniture & Home | Tables, chairs, shelves, lamps, decor | Appliances (see Kitchen) | Largest category in pilot data |
 | Electronics & Gadgets | Phones, laptops, cables, small devices | TVs over 40" (see Furniture) | Condition important; prompt for "working?" |
 | Clothing & Accessories | Wearable items, bags, jewelry | Kids' clothing (see Kids) | Low exchange rate in pilot; monitor |
-| Kids & Baby | Clothing, toys, gear, strollers, cribs | — | High free-item rate; combine with "Free Stuff" tag often |
-| Books & Media | Books, vinyl, games, DVDs | — | Lightweight, high-volume, ideal for porch pickup |
-| Kitchen & Dining | Appliances, cookware, dishes | — | Often bundled ("moving, take it all") |
-| Garden & Outdoor | Plants, tools, patio furniture | — | Seasonal variation significant |
-| Sports & Fitness | Equipment, bikes, weights | — | Bikes are the #1 individual item; may need sub-treatment |
-| Free Stuff | Anything priced at $0 | — | **Elevated to top-level** rather than buried as a price filter. |
-| Wanted | Reverse listings: "Looking for X" | — | Demand signal. Helps cold-start neighborhoods. |
+| Kids & Baby | Clothing, toys, gear, strollers, cribs | None | High free-item rate; combine with "Free Stuff" tag often |
+| Books & Media | Books, vinyl, games, DVDs | None | Lightweight, high-volume, ideal for porch pickup |
+| Kitchen & Dining | Appliances, cookware, dishes | None | Often bundled ("moving, take it all") |
+| Garden & Outdoor | Plants, tools, patio furniture | None | Seasonal variation significant |
+| Sports & Fitness | Equipment, bikes, weights | None | Bikes are the #1 individual item; may need sub-treatment |
+| Free Stuff | Anything priced at $0 | None | **Elevated to top-level** rather than buried as a price filter. |
+| Wanted | Reverse listings: "Looking for X" | None | Demand signal. Helps cold-start neighborhoods. |
 
 **Hierarchy rules:** Maximum one level deep. No sub-categories. Items belong to exactly one category. If an item could be two categories (a kid's bike), seller chooses; the system doesn't force polyhierarchy on a 10-category taxonomy. Fewer choices, faster posting.
 
@@ -529,27 +529,27 @@ Users must always know three things: *where they are, what they're seeing, and h
 
 ## /wireframe
 agent: Wren
-summary: Diverged on posting mechanisms with a lo-fi idea board, then drew the chosen flow as interactive grayscale wireframes and a click-through prototype.
+summary: Compared posting mechanisms on an idea board, then drew the chosen one as interactive grayscale wireframes and a click-through prototype.
 
-The flows said what happens; now the screens had to say where. But before drawing the posting screen, we drew the disagreement about it. "How does posting work" had mechanically different answers — not one layout moved around, but different machines. So the first artifact was an idea board: each candidate drawn as a focused fragment of real UI, compared side by side, decided deliberately. The winner got promoted into full wireframes — complete screens built from a fixed grayscale kit where every control is real. Inputs type, chips toggle, buttons press. Nothing is a sketch of UI; everything is UI, just grayscale.
+Posting could work in mechanically different ways, so the first artifact was an idea board: each candidate drawn as a small piece of real UI, side by side. Photo-first won and became full wireframes from a grayscale kit where every control works: inputs take typing, chips toggle and buttons press.
 
 ### Output
 
-These are wireframes from the kit itself, not pictures of wireframes — the inputs take typing, the controls are native, and the site's theme flows straight through them. On the idea board, three mechanically different answers to "how does posting work," each a fragment of real UI with its trade-off in the caption. Photo-first won and moved up a rung; the losers stay on the board, so "why isn't it a form?" has an artifact for an answer.
+The wireframes below are live markup from the kit: the inputs take typing, the controls are native, and the site's theme flows through them. The idea board holds mechanically different answers to "how does posting work," each a fragment of real UI with its trade-off in the caption. Photo-first won and moved up a rung; the losers stay on the board, so "why isn't it a form?" has an artifact for an answer.
 
-The indigo markers are the annotation layer — each anchors to the element whose decision it records. A few from the set:
+The indigo markers are annotations, each anchored to the element whose decision it records. A few of them:
 
-**Browse ②** Free is a first-class price, not a $0 hack — a badge on the card and a chip in the taxonomy. Free exchange is the social glue of a walking-distance market, so it gets its own scan channel. **③** Pending items stay visible instead of vanishing — a market that visibly moves reads as alive.
+**Browse ②** Free is a first-class price, with a badge on the card and a chip in the taxonomy. Free exchange is the social glue of a walking-distance market, so it gets its own scan channel. **③** Pending items stay visible: a market that visibly moves reads as alive.
 
-**Post an item ①** The camera zone owns the top of the screen — the photo-first mechanism from the idea board. The photo does the describing, so fields follow it. **④** Audience and cost — "within 1 mile · no fees" — sit directly above the commit button, answered at the moment of commitment, never after it.
+**Post an item ①** The camera owns the top of the screen: this is the photo-first mechanism from the idea board. The photo does the describing, so fields follow it. **④** Audience and cost ("within 1 mile · no fees") sit directly above the commit button, answered at the moment of commitment.
 
-**Posted ①** The confirmation names the real audience — 842 neighbors — turning an abstract "posted!" into a concrete expectation of replies from actual people nearby.
+**Posted ①** The confirmation names the audience (842 neighbors), so the seller knows real people nearby will see the listing.
 
 ## /articulate
 agent: Wren
-summary: Established voice and tone, wrote microcopy for empty states, errors, and trust signals.
+summary: Set the voice and tone and wrote the copy for empty states, errors and trust signals.
 
-We defined how Nearby speaks. The voice is casual, warm, and neighborhood-specific — it should feel like a note on a bulletin board, not a corporate app notification. We wrote copy for the moments that matter most: when nothing's there yet, when something goes wrong, and when someone needs to trust a stranger enough to walk to their house.
+Nearby sounds casual and warm, like a note on a neighborhood bulletin board. The copy covers the hard moments: an empty neighborhood, an error, and deciding to trust a stranger enough to walk to their house.
 
 ### Output
 
@@ -600,11 +600,11 @@ We defined how Nearby speaks. The voice is casual, warm, and neighborhood-specif
 
 | Location | Headline | Body | CTA |
 |---|---|---|---|
-| Map — no listings | "Your neighborhood is quiet right now." | "Post something and get it started. Someone nearby probably wants it." | "Post an item" |
-| Search — no results | "Nothing matching within walking distance." | "Try a wider radius, or post a Wanted listing and let it come to you." | "Expand radius" / "Post a Wanted" |
-| Activity — no exchanges | "No exchanges yet." | "Your first one is the hardest. After that, you'll wonder why you ever drove to Goodwill." | "Browse what's nearby" |
-| Cold start — new neighborhood | "You're early." | "Nearby works best when neighbors join together. Share with 3 people on your block and watch what happens." | "Invite neighbors" |
-| My listings — empty | "Nothing posted yet." | "Got anything you don't need? Your neighbors might." | "Post your first item" |
+| Map: no listings | "Your neighborhood is quiet right now." | "Post something and get it started. Someone nearby probably wants it." | "Post an item" |
+| Search: no results | "Nothing matching within walking distance." | "Try a wider radius, or post a Wanted listing and let it come to you." | "Expand radius" / "Post a Wanted" |
+| Activity: no exchanges | "No exchanges yet." | "Your first one is the hardest. After that, you'll wonder why you ever drove to Goodwill." | "Browse what's nearby" |
+| Cold start: new neighborhood | "You're early." | "Nearby works best when neighbors join together. Share with 3 people on your block and watch what happens." | "Invite neighbors" |
+| My listings: empty | "Nothing posted yet." | "Got anything you don't need? Your neighbors might." | "Post your first item" |
 
 ---
 
@@ -648,9 +648,9 @@ These replace traditional reputation systems. No stars, no scores, no public rev
 
 ## /evaluate
 agent: Vigil
-summary: Found two launch blockers in the handoff between neighbors, ranked every issue by severity, and said what changes.
+summary: Found the launch blockers, ranked every issue by severity and named the fix for each.
 
-We put the emerging design through a structured evaluation before anyone built anything. Each heuristic got a verdict in words instead of a score, and every issue got a severity, the heuristic it breaks and the change that fixes it. Both launch blockers sit in the handoff between neighbors: the strategy, the flows and the wireframes each describe a different way for an exchange to start, and no step gets a buyer to the seller's door.
+Each heuristic got a verdict in words, and each issue its severity, the heuristic it breaks and its fix. Both launch blockers are in the handoff between neighbors: the strategy, the flows and the wireframes each start an exchange a different way, and no step gets the buyer to the seller's door.
 
 ### Output
 
@@ -769,9 +769,9 @@ Sequenced so both blocking findings clear first. The interviews can start today,
 
 ## /fortify
 agent: Vigil
-summary: Identified and designed for 9 edge cases — ghost sellers, misrepresentation, cold starts, and abuse scenarios.
+summary: Designed for what goes wrong: ghost sellers, misdescribed items, empty neighborhoods and abuse.
 
-We stress-tested the design against real-world human behavior. People ghost. People misrepresent items. People use platforms to harass neighbors. Neighborhoods start with zero content. We designed for each of these — not with heavy-handed moderation, but with lightweight friction that makes bad behavior harder and good behavior easier.
+People ghost, misdescribe items and harass neighbors, and every neighborhood starts empty. The design answers with light friction that makes bad behavior harder and good behavior easier.
 
 ### Output
 
@@ -781,7 +781,7 @@ Every state the item card can be in, across the full lifecycle: every messy in-b
 
 | State | What the user sees | What the user can do | How they recover/progress |
 |---|---|---|---|
-| Default | Photo, title, price, distance, seller tenure | Tap to view detail, swipe to express interest | — |
+| Default | Photo, title, price, distance, seller tenure | Tap to view detail, swipe to express interest | None |
 | Loading | Skeleton placeholder (gray shapes matching card layout) | Wait | Auto-resolves in <2s; timeout at 5s → error state |
 | Partial load | Photo loaded but text pending (or vice versa) | Tap to view detail (data will load in detail view) | Text populates on load; stale after 10s → show "Refresh" |
 | Empty (no photo) | Placeholder image + title and price | Tap to view detail | Seller prompted to add photo in notification |
@@ -797,13 +797,13 @@ Every state the item card can be in, across the full lifecycle: every messy in-b
 
 | State | What the user sees | What the user can do | How they recover/progress |
 |---|---|---|---|
-| Default | Camera viewfinder | Take photo or select from gallery | — |
+| Default | Camera viewfinder | Take photo or select from gallery | None |
 | Photo captured | Photo preview with AI-suggested title | Confirm, edit, or retake | Retake returns to camera |
 | Photo upload in progress | Upload spinner on photo thumbnail | Cancel upload | Cancel preserves photo locally, can retry |
 | Photo upload failed | "That photo didn't make it" + retry icon | Retry or select different photo | Draft preserved; offline queue if no connection |
 | Draft saved (offline) | Full form with pending indicator | Edit all fields; view "will post when online" message | Auto-publish on reconnection |
 | Moderation hold | "Your listing is being reviewed" | Wait, edit, or withdraw | Review within 2 hours; edit resubmits to review |
-| Published | "Live in your neighborhood" confirmation | Share, view on map, post another | — |
+| Published | "Live in your neighborhood" confirmation | Share, view on map, post another | None |
 | Duplicate detected | "You posted something similar 10 minutes ago. Is this different?" | Confirm as different item, or cancel | Confirm publishes; cancel returns to listing management |
 
 ---
@@ -838,7 +838,7 @@ The current design drops new users onto an empty map with no guidance. Here's th
 **Cold start first-run (empty neighborhood):**
 - "You're early, and that matters. The first neighbors to join set the tone."
 - "Post your first item and we'll feature it at the top of your neighbors' feeds for 24 hours."
-- Contact import: "See if anyone you know is already on Nearby." (Optional, not required)
+- Contact import: "See if anyone you know is already on Nearby." (Optional)
 - Fallback: Show items from the nearest active neighborhood with transparency: "Nothing in [your neighborhood] yet. Here's what's happening in [nearby neighborhood], 15 min away."
 
 ---
@@ -872,7 +872,7 @@ The current design drops new users onto an empty map with no guidance. Here's th
 - *Design:* Post-exchange feedback is optional and binary: "As described" or "Not as described." No public reviews. No star ratings. Three "Not as described" flags in 30 days surface a private prompt to seller: "A few neighbors felt items didn't match descriptions. Adding detailed photos helps build trust."
 - *No public shaming.* This is a neighborhood. Escalation is private and constructive.
 
-**3. Cold Start — New Neighborhood**
+**3. Cold Start: New Neighborhood**
 - *Trigger:* User signs up in a neighborhood with zero active users and zero listings.
 - *Design:* Three-layer seed strategy:
   - **Personal:** Contact import to surface existing Nearby users. "3 of your neighbors are already here."
@@ -898,9 +898,9 @@ The current design drops new users onto an empty map with no guidance. Here's th
 
 ## /include
 agent: Vigil
-summary: Audited accessibility across screen reader, keyboard, cognitive load, and motor access dimensions.
+summary: Audited accessibility for screen readers, keyboards, cognitive load and motor access.
 
-We confronted the hard truth that a map-first interface inherently excludes people who can't see maps. Rather than treating accessibility as a compliance layer, we redesigned the core experience to work across modalities — the list view isn't a secondary mode, it's an equal citizen. We also addressed cognitive load, motor access, and the specific challenges of a location-based app for people with disabilities.
+A map-first interface shuts out people who can't see the map. The list view does everything the map does, so either one carries the whole experience.
 
 ### Output
 
@@ -910,7 +910,7 @@ We confronted the hard truth that a map-first interface inherently excludes peop
 
 **Screen Reader Experience Design**
 
-The map-first interface is fundamentally inaccessible as a primary experience for screen reader users. This is an architectural decision to revisit, not a bug to patch. The list view must be promoted from "toggle alternative" to "equal citizen." When VoiceOver or TalkBack is active, the app should default to list view.
+As the primary experience, the map shuts out screen reader users, and the fix is architectural. The list view must be promoted from "toggle alternative" to "equal citizen." When VoiceOver or TalkBack is active, the app should default to list view.
 
 **Item card announcement order:**
 `[Item name], [price or "Free"], [walking time] away, posted by [neighbor name], [neighborhood tenure]. [Pickup type].`
@@ -928,7 +928,7 @@ Example: "Blue IKEA bookshelf, free, 4 minutes away, posted by Jake, your neighb
 | Posting flow | Step indicator: "Step [N] of 5: [step name]" | Each field labeled. AI-suggested title announced: "Suggested title: [title]. Edit or confirm." | Focus on first editable field per step |
 | Activity tab | Banner: "Activity". Sections: "My Listings", "My Interests" | Status announced per item: "Waiting for response" / "Accepted, coordinate pickup" / "Completed" | Focus on first unread item |
 
-**Critical requirement:** The undo toast ("Interest sent. Undo") must be announced via aria-live and the undo button must be keyboard-focusable for its full 5-second duration. A timed action that screen reader users can't reach is an inaccessible pattern, not a real undo.
+**Critical requirement:** The undo toast ("Interest sent. Undo") must be announced via aria-live and the undo button must be keyboard-focusable for its full 5-second duration. If screen reader users can't reach it in time, they have no undo.
 
 ---
 
@@ -982,7 +982,7 @@ Example: "Blue IKEA bookshelf, free, 4 minutes away, posted by Jake, your neighb
 **No time pressure. Anywhere.**
 - No countdown timers (the 5-second undo is the one exception, and it's not destructive if missed).
 - No "3 others are interested" urgency messaging. Ever. This is a design principle.
-- Batched notifications ensure sellers don't feel rushed to respond.
+- Batched notifications keep sellers from feeling rushed to respond.
 
 ---
 
@@ -1008,9 +1008,9 @@ Example: "Blue IKEA bookshelf, free, 4 minutes away, posted by Jake, your neighb
 
 ## /transpose
 agent: Wren
-summary: Analyzed mobile-first vs. web experience, designed for offline scenarios and cross-device continuity.
+summary: Planned the phone and web experiences, offline use and moving between devices.
 
-We designed Nearby for the reality that most exchanges happen on phones, on the move — someone walking past a "FREE" sign, someone browsing while sitting on their porch. But we also designed for the laptop-at-kitchen-table moment: batch-posting after a decluttering weekend, or browsing casually on a bigger screen. And we confronted the offline problem head-on, because not every sidewalk has signal.
+Most exchanges happen on a phone, on the move: passing a "FREE" sign, browsing from the porch. The laptop suits posting a weekend's decluttering in one sitting. And the design plans for the sidewalk where the signal drops.
 
 ### Output
 
@@ -1029,7 +1029,7 @@ We designed Nearby for the reality that most exchanges happen on phones, on the 
 Mobile is the product. Nearby is designed for someone walking through their neighborhood, phone in hand, glancing at what's around them. The interaction model is built for this context:
 
 - **Camera-first posting:** Tap "+", camera opens instantly. No menu, no screen selection, no "what kind of post?" The phone's camera is the listing creation tool; everything else (title, price, category) is supporting metadata.
-- **GPS-powered map:** The primary interface leverages the one thing phones do that laptops can't: know where you are in real time. Map pins update as you walk.
+- **GPS-powered map:** The primary interface uses the one thing phones do that laptops can't: know where you are in real time. Map pins update as you walk.
 - **Push notifications:** Interest alerts, pickup reminders, daily digest. Notification budget: max 5/day. Batch interest notifications every 15 minutes to prevent alert fatigue.
 - **Thumb-zone optimization:** "I want this" button bottom-aligned on item detail. Post FAB center of tab bar. All primary actions reachable one-handed. No interactions require top-of-screen reach.
 - **Deep links:** "Check out this bookshelf near you" from iMessage/WhatsApp opens directly to item detail. If recipient doesn't have the app, opens web preview with app store link.
@@ -1056,7 +1056,7 @@ The web experience is a complement. Feature parity is explicitly not a goal. The
 
 **Offline Design Patterns**
 
-Nearby must work on sidewalks, in basements, and on subway platforms. "No signal" is a Tuesday, not an error state.
+Nearby must work on sidewalks, in basements, and on subway platforms, where losing signal is normal.
 
 | Action | Online behavior | Offline behavior | Transition back |
 |---|---|---|---|
@@ -1080,13 +1080,13 @@ Nearby must work on sidewalks, in basements, and on subway platforms. "No signal
 | Pickup coordination | Active exchange visible on all devices. Quick replies sent from whichever device is in hand. | Real-time sync via server |
 | Notifications | Phone gets push. Desktop gets none. Only one device notifies to avoid alert duplication. | Device priority: most-recently-active device gets push; others get in-app badge only |
 
-**Cross-device anti-pattern avoided:** No "continue where you left off" interstitials. The state just syncs. If you open the laptop and the app shows your neighborhood, you don't need a modal telling you it synced. Seamless is the point.
+**Cross-device anti-pattern avoided:** No "continue where you left off" interstitials. The state just syncs. If you open the laptop and the app shows your neighborhood, you don't need a modal telling you it synced.
 
 ## /localize
 agent: Wren
-summary: Mapped cultural adaptation needs for trust signals, payment norms, content, and RTL support.
+summary: Mapped what changes across cultures: trust signals, payment norms, content and right-to-left layouts.
 
-We examined what happens when Nearby crosses cultural boundaries. A hyperlocal marketplace is deeply embedded in local norms — how people negotiate, how they build trust, what they're comfortable exchanging with strangers, and what "neighbor" even means. We mapped the changes needed for five distinct cultural contexts and surfaced the assumptions baked into the current design.
+A local marketplace runs on local norms: how people negotiate, how they build trust, what they'll trade with strangers, and what "neighbor" means. The work names the assumptions in the current design and what changes in each market.
 
 ### Output
 
@@ -1096,7 +1096,7 @@ We examined what happens when Nearby crosses cultural boundaries. A hyperlocal m
 
 **Trust Signals by Market**
 
-Trust is not universal. What builds trust between strangers in Portland, Oregon destroys it in Osaka, Japan. The entire trust model must be locally reconceived, not merely translated.
+What builds trust between strangers in Portland, Oregon destroys it in Osaka, Japan. Each market needs its trust model rebuilt for local norms.
 
 | Market | Primary trust signal | Secondary trust signals | What to avoid | Design adaptation |
 |---|---|---|---|---|
@@ -1124,7 +1124,7 @@ Nearby is platform-agnostic on payment by design. The platform does not process,
 
 **RTL Support & Layout Mirroring**
 
-Full layout mirroring for Arabic, Hebrew, and Urdu. The entire spatial model flips, not just text direction:
+Full layout mirroring for Arabic, Hebrew, and Urdu. The whole spatial model flips along with the text:
 
 - Navigation: tab bar order reverses (Map on right, Profile on left)
 - Map controls: zoom buttons move to left side. Radius presets read right-to-left.
@@ -1158,20 +1158,20 @@ Full layout mirroring for Arabic, Hebrew, and Urdu. The entire spatial model fli
 | Regulation | Market | Impact on Nearby | Required changes |
 |---|---|---|---|
 | **GDPR** | EU/EEA | Location data is personal data under GDPR. Processing requires explicit consent beyond app-level location permission. | Explicit consent flow: "Nearby uses your location to show items near you. Your exact location is never shared with other users. [Allow] / [Learn more]". Right to deletion includes all location history, exchange history, and profile data. Data portability: user can export all their data. |
-| **PIPL** | China | Data localization required. All data from Chinese users must be stored on servers within China. | Separate infrastructure. Separate legal entity. This is a market-entry decision, not a feature flag. |
+| **PIPL** | China | Data localization required. All data from Chinese users must be stored on servers within China. | Separate infrastructure and a separate legal entity, decided at market entry. |
 | **LGPD** | Brazil | Similar scope to GDPR. Portuguese-language privacy policy required. Consent must be granular. | Portuguese privacy policy. Granular consent: location, notifications, contacts (each separate). DPO (Data Protection Officer) appointment required. |
 | **CCPA/CPRA** | California | Right to know, right to delete, right to opt out of sale. Location data is "personal information." | "Do Not Sell My Personal Information" link. Disclosure of data categories collected. 45-day response window for deletion requests. |
 | **Digital Markets Act** | EU | If Nearby reaches gatekeeper status (unlikely near-term), interoperability requirements apply. | Monitor. Not actionable at current scale. |
 
 ### Philosopher
 
-Does the Western marketplace model — individual sellers, posted prices, bilateral exchange — translate across cultures? In many communities, exchange is communal, not transactional. Things circulate through extended family networks, religious institutions, or community centers without ever being "listed." The bazaar model assumes negotiation. The gift economy model assumes reciprocity over time, not transaction by transaction. By building a marketplace app, are we importing a cultural frame that only fits some of our users? What would Nearby look like if it were designed for circular exchange rather than linear transactions?
+Does the Western marketplace, with individual sellers, posted prices and two-party exchange, fit other cultures? In many communities, things circulate through family networks, places of worship or community centers and are never listed. A bazaar expects haggling. A gift economy expects favors returned over time. Is a marketplace app importing a frame that fits only some of its users? What would Nearby look like built for circular exchange?
 
 ## /measure
 agent: Vigil
-summary: Defined success metrics focused on community health and trust density, not just transaction volume.
+summary: Defined success by community health and trust, with counter-metrics.
 
-We rejected GMV as a north star. For Nearby, gross merchandise value is meaningless — a neighborhood where everyone gives things away for free is a more successful neighborhood than one where everyone haggles. Instead, we designed a measurement framework around exchange density, trust formation, and community health, with explicit counter-metrics to catch growth patterns that harm the product.
+Gross merchandise value is the wrong north star: a neighborhood where everyone gives things away is doing better than one where everyone haggles. The framework tracks exchange density, trust and community health, with counter-metrics that flag growth that harms the product.
 
 ### Output
 
@@ -1187,7 +1187,7 @@ We rejected GMV as a north star. For Nearby, gross merchandise value is meaningl
 - **Target:** 15+ exchanges/1k households/week in neighborhoods active for 3+ months
 - **Data source:** Server-side exchange completion events, census household estimates per defined neighborhood boundary
 - **Measurement frequency:** Weekly, with 4-week rolling average for trend
-- **Why this metric:** It captures the only thing that matters: are neighbors actually exchanging things? Unlike MAU (which rewards browsing without action), GMV (which values expensive items over community health), or listing count (which rewards posting without outcomes), exchange density measures completed value delivery.
+- **Why this metric:** It asks the question that matters: are neighbors exchanging things? Unlike MAU (which rewards browsing without action), GMV (which values expensive items over community health), or listing count (which rewards posting without outcomes), exchange density measures completed value delivery.
 
 ---
 
@@ -1210,7 +1210,7 @@ We rejected GMV as a north star. For Nearby, gross merchandise value is meaningl
    **Signal:** Users who start posting complete it.
    **Metric:** Post-start-to-publish completion rate >85%; median time to post <45 seconds for returning users.
 
-3. **Goal:** Exchanges actually happen after interest is expressed.
+3. **Goal:** Exchanges happen after interest is expressed.
    **Signal:** Accepted interests convert to completed exchanges.
    **Metric:** Interest-to-completion rate >70%; ghost rate <10%.
 
@@ -1223,7 +1223,7 @@ We rejected GMV as a north star. For Nearby, gross merchandise value is meaningl
 | "As described" rate | % of exchanges where optional feedback = "As described" | 90%+ | Proxy for listing quality and honest representation |
 | Ghost rate | % of accepted interests where pickup doesn't happen | <10% | Measures reliability; ghosts destroy trust faster than anything |
 | Message-to-exchange ratio | Average messages exchanged per completed transaction | <3 | Fewer messages means better coordination design; more messages means friction |
-| Neighborhood coverage | % of city neighborhoods with 10+ active users | Grow 5%/month | Growth must be geographic, not merely aggregate. 10 users per neighborhood is minimum viable density. |
+| Neighborhood coverage | % of city neighborhoods with 10+ active users | Grow 5%/month | Growth must be measured by neighborhood. 10 users per neighborhood is minimum viable density. |
 | Free item ratio | % of listings priced at $0 | 25%+ | Generosity is a health indicator. A neighborhood where nobody gives anything away is not a community |
 | Organizer engagement | % of neighborhoods with at least one active organizer | 50% | Organizers are the immune system: they moderate, seed, and set norms |
 | Cold start survival rate | % of newly launched neighborhoods that reach 10+ active users within 30 days | 40% | If cold start kills neighborhoods, growth is a leaky bucket |
@@ -1258,9 +1258,9 @@ These are guardrails. If a primary metric improves while a counter-metric degrad
 
 ## /specify
 agent: Rune
-summary: Packaged the posting scope for the build: the brief, blueprint, flows, site map, wireframes, copy, states, accessibility and metrics, with one page that says how they fit.
+summary: Packaged the posting scope for the build, with one page that says how the pieces fit.
 
-The design was approved for posting, and that scope had to be built while browsing's item detail and the exchange between neighbors were still being redesigned. Nothing was re-described: the brief, the blueprint, the flows, the site map, the wireframes, the copy deck, the state inventory, the accessibility audit and the measurement framework are the handoff, and the only new writing is the page in front of them. It says what Nearby is, what is in the package and in what order to read it, how each drawn screen maps onto its flow step, its place in the navigation, the service behind it and the states drawn for it, and what the builder decides. No pixel specs and no API contracts: the stack, the visual design and the walking-radius implementation are the builder's, with the design's inputs and tiers fixed. The readiness check ran first: the brief approved; Post an item, with the pickup step and the location preview restored after the evaluation, and Posted drawn and approved; every screen Flow 1 names accounted for. Browse rides along as the home the flow returns to. Item detail, Activity and the pickup screen are not drawn, so browsing in full and the exchange are not in this package; they wait for the coordination flow the evaluation asked for, and a second package. The ethical review went to the decision log.
+Posting was approved while browsing and the exchange were still being redesigned, so posting goes to the build first. The handoff is the project's own files: brief, blueprint, flows, site map, wireframes, copy, states, accessibility and metrics. The one new page says how they fit: each screen's flow step, navigation, service and states, and what the builder decides. Before packaging, Rune checked that the brief and the posting screens were approved, and logged the ethical review. Browsing and the exchange get their own package once item detail and the pickup screen are drawn.
 
 ### Output
 
@@ -1310,19 +1310,19 @@ Nearby is a hyperlocal marketplace for the people within walking distance: neigh
 
 ## /present
 agent: Noor
-summary: Turned the whole engagement into a 13-slide go-decision deck for Nearby's leadership, with the outline approved before a slide was built.
+summary: Turned the engagement into a deck asking Nearby's leadership for a go, with the outline approved before any slide was built.
 
-The work was done; now it had to land with the people who decide whether it gets built. Before a slide existed, we pinned down who was in the room, what they should feel walking out, and what we needed from them: a go on the MVP build at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, and an unconditional go would have won its yes by leaving them out, so the deck asks to start building the posting scope from its package now and to hold the launch until the handoff works. The story runs situation, complication, resolution, and the complication is the evaluation's own finding, not one sized to fit the ask. The outline was approved before anything was drawn. Then we refused to dress the plan up: the competitor rates appear only as labeled estimates, the unsourced market size and "why now" stayed out, and the seller in the walkthrough is labeled as a design scenario, not a research participant.
+Noor first settled who would be in the room, what they should feel, and the ask: a go on the MVP at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, so the deck asks to build posting now and hold the launch until the handoff works. Competitor rates appear as labeled estimates, the unsourced market size stays out, and the seller in the walkthrough is labeled a design scenario.
 
 ### Output
 
-These are the deck's own slides, not pictures of slides. The markup is the file /present produced, the grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
+The slides below are the deck's own markup, the file /present produced. The grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
 
 Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Missing evidence stays visible: the plan says no engineering estimate exists yet. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
 
 **The approved outline**
 
-**Pattern:** Situation → complication → resolution. Leadership has to see where the design stands before it can decide, and the complication is the evaluation's own finding, not one sized to fit the ask.
+**Pattern:** Situation → complication → resolution. Leadership has to see where the design stands before it can decide, and the complication is the evaluation's own finding.
 
 **Governing message:** Start building Nearby's MVP now, and launch once the handoff between neighbors works.
 
