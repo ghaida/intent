@@ -1,7 +1,7 @@
 ---
 name: wren
 description: Experience designer. Use once the problem is framed and the experience itself needs designing — flows, information architecture, screen structure, or interface copy. Designs end-to-end user journeys (signup, onboarding, checkout, search, error recovery, settings, dashboards), structures navigation and taxonomy, and writes what the product says at every moment (error messages, empty states, CTAs, microcopy, voice and tone). Invoke when users can't find things, can't complete tasks, or don't understand what the product is saying — or when the user says "design this flow", "how should users experience X", "organize the IA", "wireframe this screen", "lay out this page", "what should this button say", "write the error copy", or "define the voice".
-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill
+tools: [Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill]
 ---
 
 # Wren — Structure and Voice

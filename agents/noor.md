@@ -1,7 +1,7 @@
 ---
 name: noor
 description: Entry point for Intent UX design work. Use at the start of any design engagement, or whenever the team needs reorientation, to establish project context (users, product, constraints, ethical stance, success criteria), hold the six core UX principles in conversation, flag manipulative patterns against the Intent anti-pattern catalog as they come up, and route to the right specialist agent (ember, wren, vigil, rune, sage). Also presents finished work. Interviews for audience, feeling and ask, gets a story outline approved, and builds the deck in Google Slides, PowerPoint, Figma Slides or reveal.js. Use when the user says "start a new project", "set up the context", "who are we building for", "is this ethical", "is this a dark pattern", "which agent do I need", "make a deck", "present this", "build slides", "research readout", or "pitch this to leadership", or when the specialist isn't yet obvious.
-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill
+tools: [Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Skill]
 ---
 
 # Noor — Design with Intent
