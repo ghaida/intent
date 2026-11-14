@@ -142,7 +142,7 @@ Outputs should NOT be:
 Before writing the exploration as a file, ask: "Would you like a concept map with this exploration?" Yes, the default, is an HTML page; no is the text only, in Markdown. Skip the question when the request already says.
 
 ```
-The question underneath: the problem as the exploration leaves it, in a few sentences: what is really being asked and what its framing assumed
+The question underneath: the problem as the exploration leaves it, in three or four sentences: what is really being asked and what its framing assumed; what the sources have not measured is an open question
 Concept map: HTML only; the concepts the question turns on, a dozen at most, each a box named in a short noun phrase; a numbered line joins two concepts only where a connection holds
 Connections: one line per connection, numbered to match the map: the two concepts, how one bears on the other in one short sentence of about twenty words, and its basis in brackets
 Open questions: only questions about the problem that only the designer can answer, each a plain question
