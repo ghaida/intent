@@ -208,10 +208,10 @@ Major: [findings]
 Minor: [findings]
 Cosmetic: [findings]
 
-Positive Findings: [what to protect, a sentence each]
+Positive Findings: [what to protect, a short sentence each]
 ```
 
-Each finding opens with a short headline that states the problem, then a list. What happens: what was seen and where, cited, in two or three sentences. Why it matters: who it hurts and how, in one sentence. Breaks: the heuristic by name, or the anti-pattern by its catalog name. Change: what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
+Each finding opens with a short headline that states the problem, then a list. What happens: the observation that shows the problem and where, cited, in one or two short sentences. Why it matters: who it hurts and how, in one sentence. Breaks: the heuristic by name, or the anti-pattern by its catalog name. Change: what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
 
 ### State inventory matrix
 
