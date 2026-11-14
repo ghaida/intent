@@ -406,7 +406,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
    The chosen pattern, and how global and local navigation behave. What a screen shows is the wireframes'. The states and the collapse on a small screen are drawn in the wireframes, and where no wireframes exist, the site map notes them. Another platform's navigation is `/transpose`'s.
 
 3. **Taxonomy Documentation**
-   Only when the content has categories a person browses by: what each category holds and the rule that puts an item in one, including where an item may have two parents. What a term means is `/articulate`'s terminology. What happens to an item over time, when it is made, moved, used or deleted, is the journey's or the blueprint's.
+   Only when the content is classified by subject, such as topics, product types or genres, that a person browses by: what each category holds and the rule that puts an item in one, including where an item may have two parents. Containers a person fills by using the product, such as decks, folders, playlists or projects, are places on the map, and what puts an item in one is the journey's or the blueprint's. What a term means is `/articulate`'s terminology. What happens to an item over time, when it is made, moved, used or deleted, is the journey's or the blueprint's.
 
 4. **Labeling Guide**
    The naming conventions and the rule for naming a new item. A label's reason is its site-map annotation.
