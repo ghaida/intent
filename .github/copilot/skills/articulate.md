@@ -232,7 +232,7 @@ The rule binds product strings as much as prose. A round number on every header 
 
 **Plain sentences, in conversation too.** Standard technical English. No framing openers ("Before I write the handoff:", "One question before that pass starts:"), no labels that announce a part ("One question.", "Where the evidence is thin."), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"). One question per reply, the one whose answer unblocks the next step, with options short enough to pick from; the rest wait in the work's open questions.
 
-**Labels in the reader's words.** A heading, a column head or a run-in label says what a reader would call the thing it holds. The outline's phrases are instructions, never labels: not a column headed "What carries", not a line opening "Moves on." or "Carries across.".
+**Labels in the reader's words.** The format's section names are written as the outline gives them. Any other heading, a column head or a run-in label says what a reader would call the thing it holds. The outline's other phrases are instructions, never labels: not a column headed "What carries", not a line opening "Moves on." or "Carries across.".
 
 **No hedging in the work.** "We believe", "the data suggests", "it's not a pattern yet" go. The claim carries its count and its citation: "Conversion rises 1 to 3 points (95% CI), n=4,100." Where the evidence is thin, the work stops at what is known and the gap is an open question.
 
