@@ -34,7 +34,7 @@ Include works alongside the full Intent skill system. Accessibility touches ever
 
 - **`/evaluate`** — Accessibility assessment is part of every UX evaluation. When `/evaluate` runs a heuristic review, accessibility violations surface across multiple heuristics. Your detailed accessibility methodology feeds their assessment framework. Their findings in accessibility categories route to you.
 
-- **`/specify`** — Your screen reader flow documentation, keyboard navigation map and remediation plan ride in the handoff package. ARIA roles, keyboard interaction patterns, focus management behavior and screen reader announcements are not "nice to have" annotations; they are what the builder builds from, so they live in your artifacts, referenced from the package's entry page.
+- **`/specify`** — Your accessibility audit rides in the handoff package, referenced from its entry page. Its announcements, focus targets and tab order are what the builder builds from.
 
 - **`/blueprint`** — System architecture affects accessibility. Notification systems need ARIA live regions. Real-time updates need polite announcements. Infinite scroll needs alternative navigation. When `/blueprint` designs the system, you flag where architecture decisions create or prevent accessibility.
 
@@ -196,53 +196,28 @@ Automated tools catch approximately 30% of accessibility issues — mostly the p
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`accessibility-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Cut to the request: the conditions it names set the scope. The findings are the only place a problem is described, each with its change and a test that shows it is done. The other sections carry what the findings do not: what a screen reader reads and announces, where focus goes, the tab stops.
+Cut to the request: the conditions it names set the scope. The findings are the only place a problem is described, each with its severity, its change and a test that shows it is done. Announcement wording, politeness and focus targets are stated once, in the live-region table and the keyboard map; a finding whose change sets one of them leaves the value to its table.
 
 ```
 ## Accessibility Audit — Per WCAG Principle
-[Each finding: the problem and its effect, the criterion it fails, the
-change, and the test that shows it is done]
+[Findings only where the design falls short, in the order to fix them within each principle; a principle with no findings is left out. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change, and the test that shows it is done]
+[Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design]
 
 ### Perceivable
-[Findings: contrast ratios, text alternatives, media accessibility,
-color independence, reflow behavior]
 
 ### Operable
-[Findings: keyboard accessibility, focus management, time limits,
-touch targets, skip navigation]
 
 ### Understandable
-[Findings: reading level, consistency, predictability, input assistance]
 
 ### Robust
-[Findings: semantic HTML, ARIA usage, assistive tech compatibility]
 
 ## Screen Reader Flow Documentation
-[Reading order only where it departs from the visual order]
-[Live region behavior: what is announced, how politely, where focus goes,
-for every state change; this table is the only home for announcements]
-[Each labelling fix is part of its finding; the landmark structure is a
-line in the Robust findings]
+[Reading order only where it departs from the visual order, with the tab order when it departs the same way]
+[Live regions: for each change the person must hear, what is announced, how politely, and where focus goes. This table is the only home for announcements]
+[Each labelling fix is part of its finding; the landmark structure is a line in the Robust findings]
 
 ## Keyboard Navigation Map
-[Tab order only where it departs from the visual order]
-[Focus management for modals, dropdowns, custom widgets]
-[Focus traps, and where focus returns]
-
-## Remediation Plan
-[The finding titles by severity, in the order to fix them; each finding
-carries its change and its done-when test, so nothing is restated]
-### Critical — Blocks access for some users
-[Titles of the findings that prevent task completion for assistive tech users]
-
-### High — Significantly degrades the experience
-[Titles of the findings that make the experience very difficult but not impossible]
-
-### Medium — Below WCAG AA compliance
-[Titles of the findings that fail specific WCAG criteria but don't block access]
-
-### Low — Below best practices
-[Titles of the findings that pass WCAG but fall short of inclusive design standards]
+[Only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens and where it returns when it closes]
 ```
 
 ---

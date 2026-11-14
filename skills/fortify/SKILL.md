@@ -41,7 +41,7 @@ Fortify works alongside the full Intent skill system, with especially tight conn
 
 - **`/evaluate`** — Their assessment identifies what's failing in the current experience; you design the fixes. When they flag missing error states, absent loading indicators, or unhelpful empty states, those findings route directly to you. Your output feeds back into their next evaluation cycle.
 
-- **`/specify`** — Your state inventory and edge case catalog ride in the handoff package. Every state you design, every error recovery flow you define, every stress test result goes in your own artifact, which the package's entry page references: a package that carries only the happy path produces a broken product.
+- **`/specify`** — Your state inventory and edge case catalog ride in the handoff package, referenced from its entry page: a package that carries only the happy path produces a broken product.
 
 - **`/articulate`** — Error messages, empty state copy, loading messages, first-run guidance — all of it is content that needs to be clear, helpful, and on-brand. You define what needs to be said; they define how to say it.
 
@@ -77,17 +77,16 @@ Every screen, component, and flow has states beyond "default." Most designs only
 
 **For each state that gets a row, answer three questions:** What does the user see? What can the user do? How does the user recover or progress?
 
-**Example: State inventory for a file upload component**
+**Example: the states a file upload component lacks when only its drop zone is drawn**
 
-| State | What the user sees | What they can do | Recovery/progress |
-|---|---|---|---|
-| Default | Drop zone with "Drag files or click to browse" | Drag files or click to open file picker | — |
-| Loading | File name, progress bar at 43%, cancel button | Cancel the upload | Cancel returns to default |
-| Partial | 2 of 3 files uploaded, 1 still in progress | Cancel remaining, remove completed, add more | Cancel or wait |
-| Success | 3 files listed with checkmarks, "Done" button | Remove individual files, add more, proceed | Click "Done" to continue |
-| Error | File name in red, "File too large (max 25 MB)", retry icon | Retry, remove, or choose a different file | Retry or remove and continue with other files |
-| Disabled | Grayed drop zone, "Upload limit reached (10 files)" | Nothing — must remove existing files first | Tooltip explains: "Remove a file to upload more" |
-| Offline | Last uploaded files visible, banner "Uploads paused — no connection" | View already-uploaded files, queue new files | Queued uploads resume automatically when connection returns |
+| State | What the user sees | What they can do | Recovery/progress | Severity |
+|---|---|---|---|---|
+| Error | File name in red, "File too large (max 25 MB)", retry icon | Retry, remove, or choose a different file | Retry or remove and continue with other files | Critical |
+| Offline | Last uploaded files visible, banner "Uploads paused — no connection" | View already-uploaded files, queue new files | Queued uploads resume automatically when connection returns | Critical |
+| Loading | File name, progress bar at 43%, cancel button | Cancel the upload | Cancel returns to the drop zone | Major |
+| Disabled | Grayed drop zone, "Upload limit reached (10 files)" | Nothing — must remove existing files first | Tooltip explains: "Remove a file to upload more" | Major |
+| Partial | 2 of 3 files uploaded, 1 still in progress | Cancel remaining, remove completed, add more | Cancel or wait | Minor |
+| Success | 3 files listed with checkmarks, "Done" button | Remove individual files, add more, proceed | Click "Done" to continue | Minor |
 
 ### 2. Error recovery design
 
@@ -125,7 +124,7 @@ The first time a user encounters your product or feature is the most fragile mom
 
 ### 4. Stress testing prompts
 
-Systematic questions designed to break your design. Run the ones the request calls for; a prompt that passes gets no row.
+Systematic questions designed to break your design. Run the ones the request calls for. Each failure becomes a row in the state inventory or the edge case catalog; a prompt that passes gets no row.
 
 **Content stress:**
 - What if the title is 3 characters? 300 characters? Contains only emoji?
@@ -203,33 +202,18 @@ Users need to know three things during any wait: Is it working? How long will it
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`states-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Cut to the request: the conditions it names set the scope, and sections it did not call for are left out. The state inventory is the only place a state is described, with its message and recovery; every other section names it or adds what it lacks.
+Cut to the request: the conditions it names set the scope, and sections it did not call for are left out. The state inventory is the only place a state is described, with its message, timings and recovery. A state the design already draws, and a stress prompt it passes, get no row.
 
 ```
 ## State Inventory
-[Matrix: Screen/Component x State (empty, loading, partial, error,
-offline, disabled, overflow), rows only for states the design does
-not already draw]
-[For each: what the user sees, what they can do, how they recover]
+[A row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's]
+[Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have]
 
 ## Edge Case Catalog
-[Organized by stress category: content, volume, time, network,
-device, user behavior]
-[Only scenarios the inventory does not cover. Each: scenario, current
-behavior, recommended behavior, priority]
+[Scenarios that are not states: the scenario, what the design does now, the change, and its severity. Grouped by stress category only when there are many]
 
-## Stress Test Results
-[Failures only, each naming its inventory state or catalog row; a scenario the design can't settle is an open question, never a result]
-
-## First-Run Experience Assessment
-[Only when the request covers first run: the current flow and what changes]
-
-## Resilience Recommendations
-[The inventory and catalog rows by severity, by name, nothing restated]
-[Critical: Missing states that cause user confusion or data loss]
-[Major: Degraded states that significantly harm the experience]
-[Minor: Missing polish that reduces trust or perceived quality]
-[Cosmetic: Nice-to-have improvements for edge case handling]
+## Open Questions
+[Scenarios only the designer can settle]
 ```
 
 ---

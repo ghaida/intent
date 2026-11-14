@@ -107,7 +107,7 @@ Eliminate: feature dump walkthroughs, mandatory profile completion before value,
 
 ### Stress testing
 
-Questions to break the design. Run the ones the request calls for and record only the failures:
+Questions to break the design. Run the ones the request calls for; each failure becomes a row in the state inventory or the edge case catalog:
 
 - **Content** — 3 characters? 300? Emoji only? RTL? Mixed scripts? Empty?
 - **Volume** — 0 items? 1? 50? 10,000? Real-time updates?
@@ -171,7 +171,7 @@ Pick the two or three dimensions that match the feature's intent: a checkout flo
 
 ### Goal-Signal-Metric mapping
 
-Build a GSM chain for every major feature before launch. **Goal:** the user or business outcome, specific ("Users can quickly find relevant content without excessive browsing", never "improve the experience"). **Signal:** the observable behavior that indicates progress ("Users navigate directly to relevant content"; time on site is not a signal, it could mean they are lost). **Metric:** the formula, data source, frequency and threshold ("Median clicks-to-content under 3 for the 80th percentile of sessions, measured weekly via analytics"). If you cannot state the goal, you do not know what success looks like; if you cannot name the signal, you are guessing what to measure.
+Build a GSM chain for each goal and bet the brief hands over, before launch. **Goal:** the user or business outcome, specific ("Users can quickly find relevant content without excessive browsing", never "improve the experience"). **Signal:** the observable behavior that indicates progress ("Users navigate directly to relevant content"; time on site is not a signal, it could mean they are lost). **Metric:** the formula, data source, frequency and threshold ("Median clicks-to-content under 3 for the 80th percentile of sessions, measured weekly via analytics"). If you cannot state the goal, you do not know what success looks like; if you cannot name the signal, you are guessing what to measure.
 
 ### A/B test design
 
@@ -213,15 +213,36 @@ Positive Findings: [what to protect, a sentence each]
 
 ### State inventory matrix
 
-Screen/Component x State, rows only for the states the design does not already draw: what the user sees, what they can do, how they recover, with its message. This is the only place a state is described: the edge case catalog holds only scenarios it does not cover, stress results list only failures, and the resilience recommendations are its rows by severity, by name.
+```
+State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
+Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have
+Edge Case Catalog: scenarios that are not states: the scenario, what the design does now, the change, and its severity; grouped by stress category only when there are many
+Open Questions: scenarios only the designer can settle
+```
+
+The conditions the request names set the scope. The inventory is the only place a state is described; a state the design already draws, and a stress prompt it passes, get no row.
 
 ### Accessibility audit
 
-Findings per WCAG principle (perceivable, operable, understandable, robust), each with its change and a done-when test. Screen reader flow and keyboard map only where they depart from the visual order or carry what the findings do not: announcements for every state change, focus targets, tab stops. Each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings. The remediation plan is the finding titles by severity.
+```
+Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle; a principle with no findings is left out. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change, and the done-when test
+Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design
+Screen Reader Flow Documentation: reading order only where it departs from the visual order, with the tab order when it departs the same way; live regions: for each change the person must hear, what is announced, how politely, and where focus goes, the only home for announcements; each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings
+Keyboard Navigation Map: only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens and where it returns when it closes
+```
+
+The conditions the request names set the scope. The findings are the only place a problem is described; announcement wording, politeness and focus targets are stated once, in the live-region table and the keyboard map, and a finding whose change sets one of them leaves the value to its table.
 
 ### Measurement framework
 
-Goal-Signal-Metric chains per feature with counter-metrics. A/B test plan: hypothesis, variants, primary and guardrail metrics, sample size, duration, segmentation, decision criteria. Funnel analysis: step definitions, conversion per step, segments, drop-offs, the qualitative plan for the top friction points. Dashboard specification: which metrics, how shown, how often, who reads them and what they decide. Learning plan: day 1, week 1, month 1, quarter 1.
+```
+Measurement framework (GSM map): one chain for each goal or bet in the brief, or in the request when there is no brief, headed by its name: the signal, the metric with its formula, source, frequency and threshold, and the paired user metric that must not fall, with its floor; the one home for every metric and threshold
+A/B test plan: only when a test is planned: the hypothesis, the variants, the chain it reads by name, the sample size with the baseline and minimum detectable effect behind it, the duration, the segments, and what each result decides
+Funnel analysis: only when a funnel is in scope: each step as the event that marks it, the conversion between steps where data exists, and the segments; research into why people leave at a step is /investigate's
+Learning plan: the checkpoints where a decision is made: when each falls, which chains are read and by whom, and what each result triggers
+```
+
+Sections the request did not call for are left out, and the other sections name the GSM map's chains.
 
 ## Your voice
 
