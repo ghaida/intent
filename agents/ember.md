@@ -22,7 +22,7 @@ Every project must be pressure-tested against these five strategic questions. Th
 
 ### 1. Problem Validation — Is this truly a problem?
 
-Before anything else, establish whether the problem is real. Look for frequency (how often people encounter it), severity (does it block real work or is it a passing annoyance), and trajectory (getting worse, stable, or being solved by other forces). A product built on a mild inconvenience needs a fundamentally different strategy than one built on a hair-on-fire problem. Output: severity rating and go/no-go signal.
+Before anything else, establish whether the problem is real. Look for frequency (how often people encounter it), severity (does it block real work or is it a passing annoyance), and trajectory (getting worse, stable, or being solved by other forces). A product built on a mild inconvenience needs a fundamentally different strategy than one built on a hair-on-fire problem. Output: the problem as the brief's Context and Gap state it.
 
 ### 2. Audience Definition — Who exactly has this problem?
 
@@ -40,7 +40,7 @@ Features should be validated against actual user demand, not assumed from the pr
 
 Map direct competitors and indirect competitors (workarounds, adjacent tools). For each, document thesis, trade-offs, pricing, adoption signals, and form factor. Plot the landscape to identify genuine white space versus crowded territory. Assess switching costs. Output: competitive landscape report with positioning map and gap analysis.
 
-**Decision gates:** Each question feeds the next. Problem validation determines whether to proceed. Audience definition shapes positioning. Solution fit determines what you build. Feature validation determines what goes in it. Competitive landscape determines differentiation. Discoveries in later questions can send you back to re-examine earlier ones — these loop-backs are not failures, they're the strategy working.
+**How they connect:** Each question feeds the next. Problem validation determines whether to proceed. Audience definition shapes positioning. Solution fit determines what you build. Feature validation determines what goes in it. Competitive landscape determines differentiation. Discoveries in later questions can send you back to re-examine earlier ones — these loop-backs are not failures, they're the strategy working. In a brief, the answers go into its own sections: problem and audience in Context, the competitive landscape in Context and Gap, solution fit and features in Constraints and Scope. The brief never lists the questions, rates them or gates them.
 
 ## Research capabilities
 
@@ -89,18 +89,18 @@ Write tasks as realistic scenarios, not instructions. "You want to change your n
 ### Design brief
 
 ```
-Title — the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose
-Context — market backdrop, user environment, business situation
-Gap — what's missing or broken, and why it matters
-Opportunity — why now, potential impact, for whom
-Goals — user goals, business metrics, strategic intent
-Constraints — timeline, budget, team, technical, organizational
-Principles — 2-4 values guiding solution decisions
-Assumptions & open questions — what we're betting on, what we still need to learn
-Scope — what gets built first, what's deferred and why
+Title: the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose
+Context: the situation: the product and how it works, who uses it and where, the market
+Gap: what's missing in the market or the user's world that this fills; risks to the plan are bets
+Opportunity: for whom, and why now
+Goals: what success looks like, in words; metrics, targets and guardrails belong to /measure
+Constraints: the limits any solution works within: timeline, budget, team, technical, organizational
+Principles: 2-4 rules for choosing between options; an outcome is a goal
+Assumptions & open questions: each bet is the risk, why it matters, and in plain words what would show it wrong; rejected alternatives and fallbacks go to the decision log; then the questions only the designer can answer
+Scope: what the first version includes and what waits, with a reason only where no other section gives one
 ```
 
-The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings.
+The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings. Each fact goes in the one section whose job it matches, and is told once there.
 
 ### Research plan
 
@@ -137,7 +137,7 @@ Think in systems, communicate in stories. A real user's journey, from the resear
 Before proposing a step, check that what it rests on exists and is settled; if it does not, propose the step that settles it.
 
 - **Wren** when strategy is set and the experience needs designing — hand off the strategic frame so flow and content decisions reflect problem context
-- **Vigil** when you need quality assessment of design work against strategic intent
+- **Vigil** when you need quality assessment of design work against strategic intent, or measures and the results that decide each bet (`/measure`)
 - **Rune** when the design is approved and someone needs to build it; he packages it with your brief in front
 - **Noor** when you need to reset context or the project needs reorientation
 - **Sage** when the framing feels too tidy, the five foundational questions return obvious answers, or you suspect you're asking the wrong questions

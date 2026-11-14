@@ -71,7 +71,7 @@ For the full pattern library and stance, see `storytelling`.
 Every project — regardless of stage, domain, or scale — should be pressure-tested against these five strategic questions. They are not optional. They form the minimum viable investigation before committing resources to building anything. When planning user research, structuring a brief, or advising on strategy, use these as the backbone.
 
 ### 1. Problem Validation — Is this truly a problem people have?
-Before anything else, establish whether the problem is real, how acute the pain is, and whether it's growing or shrinking. A product built on a mild inconvenience needs a fundamentally different strategy than one built on a hair-on-fire problem. Look for evidence of frequency (how often people encounter the problem), severity (does it block real work or is it a passing annoyance), and trajectory (is the problem getting worse, stable, or being solved by other forces). Desk research, intercept interviews, and targeted surveys are the primary methods. The output is a clear severity rating and a go/no-go signal.
+Before anything else, establish whether the problem is real, how acute the pain is, and whether it's growing or shrinking. A product built on a mild inconvenience needs a fundamentally different strategy than one built on a hair-on-fire problem. Look for evidence of frequency (how often people encounter the problem), severity (does it block real work or is it a passing annoyance), and trajectory (is the problem getting worse, stable, or being solved by other forces). Desk research, intercept interviews, and targeted surveys are the primary methods. Its answer feeds the brief's Context and Gap.
 
 ### 2. Audience Definition — Who exactly has this problem?
 "Everyone" is not an audience. Identify the distinct user segments who experience the problem, and understand their contexts, motivations, constraints, and current workarounds. Different segments may experience the same problem at different intensities or in different contexts, which changes everything about how you build and position the product. Use interview data and survey responses to build behavioral clusters, then validate with deeper contextual interviews per segment. The output is evidence-based audience profiles that replace assumptions.
@@ -85,7 +85,7 @@ Features should be validated against actual user demand, not assumed from the pr
 ### 5. Competitive Landscape — What already exists?
 Understand both direct competitors (products that solve the same problem) and indirect competitors (workarounds and adjacent tools people use instead). For each, document the thesis, trade-offs, pricing, adoption signals, and form factor. Plot the landscape to identify genuine white space versus crowded territory. Assess switching costs — what would make someone leave their current workaround for your product? The output is a competitive landscape report with positioning map and gap analysis.
 
-**How these connect:** Each question has a decision gate. Problem validation determines whether to proceed at all. Audience definition shapes positioning and messaging. Solution fit determines what you build. Feature validation determines what goes in it. Competitive landscape determines how you differentiate and enter the market. Findings from each question feed forward into the next, and discoveries in later questions can send you back to re-examine earlier ones. If audience definition reveals the problem affects a different segment than expected, loop back to problem validation — the severity and frequency may look completely different for a new audience. If competitive analysis reveals the white space is smaller than assumed, revisit solution fit — the form factor or positioning may need to shift. If feature validation surfaces a killer feature that changes the value proposition, re-examine audience definition — you may be building for a different segment than you thought. These loop-backs are not failures; they're the strategy working.
+**How these connect:** Problem validation determines whether to proceed at all. Audience definition shapes positioning and messaging. Solution fit determines what you build. Feature validation determines what goes in it. Competitive landscape determines how you differentiate and enter the market. Findings from each question feed forward into the next, and discoveries in later questions can send you back to re-examine earlier ones. If audience definition reveals the problem affects a different segment than expected, loop back to problem validation — the severity and frequency may look completely different for a new audience. If competitive analysis reveals the white space is smaller than assumed, revisit solution fit — the form factor or positioning may need to shift. If feature validation surfaces a killer feature that changes the value proposition, re-examine audience definition — you may be building for a different segment than you thought. These loop-backs are not failures; they're the strategy working. In a brief, the answers go into its own sections: problem and audience in Context, the competitive landscape in Context and Gap, solution fit and features in Constraints and Scope. The brief never lists the questions, rates them or gates them.
 
 ---
 
@@ -191,39 +191,37 @@ Listen to stakeholder priorities and map them against constraints. If everything
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`brief-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Use this structure to deliver strategic outputs. It creates consistency and ensures you've thought through all angles:
+Use this structure:
 
 ```
 # [Product and change]
 
 ## Context
-[Market backdrop, user environment, business situation, relevant trends]
+[The situation: the product and how it works, who uses it and where, the market]
 
 ## Gap
-[What's missing, broken, or misaligned? Why does this matter?]
+[What's missing in the market or the user's world that this fills. Risks to the plan are bets, under Key Assumptions]
 
 ## Opportunity
-[Why now? What's the potential impact? For whom?]
+[For whom, and why now]
 
 ## Goals
-[Intended outcomes—user goals, business metrics, strategic intent]
+[What success looks like, in words. Metrics, targets and guardrails belong to /measure]
 
 ## Constraints
-[Timeline, budget, team, technical, organizational, market constraints]
+[The limits any solution works within: timeline, budget, team, technical, organizational]
 
 ## Guiding Principles
-[2–4 values that guide solution decisions: e.g., "Privacy-first," "Reduce cognitive load," "Scalable for future growth"]
+[2–4 rules for choosing between options. An outcome is a goal]
 
 ## Key Assumptions & Open Questions
-[What are we betting on? What do we still need to learn?]
+[Each bet: the risk, why it matters, and in plain words what would show it wrong. Rejected alternatives and fallbacks go to the decision log. Then the questions only the designer can answer]
 
 ## Proposed Scope (Phase 1)
-[What gets built first? What's deferred?]
+[What the first version includes and what waits, with a reason only where no other section gives one]
 ```
 
-The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings. The title names the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose.
-
-This template prevents surprises later. It makes thinking visible and invites challenge.
+The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings. The title names the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose. Each fact goes in the one section whose job it matches, and is told once there.
 
 ---
 
