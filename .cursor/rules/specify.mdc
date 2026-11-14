@@ -24,10 +24,10 @@ Each of these makes an artifact that rides in the package when the project made 
 - **`/organize`**: the information architecture.
 - **`/blueprint`**: the service blueprint.
 - **`/fortify`**: the state inventory and the edge case catalog.
-- **`/include`**: the screen reader flow documentation, the keyboard navigation map and the remediation plan.
+- **`/include`**: the accessibility audit: its findings, the screen reader flow documentation and the keyboard navigation map.
 - **`/measure`**: the measurement framework.
-- **`/articulate`**: the copy deck, where copy exists beyond what the wireframes carry (an error message inventory, a voice framework).
-- **`/transpose`** and **`/localize`**: the platform adaptation specs, the cross-device journey map, the market requirement matrix and the cultural adaptation brief, where the project went to a new platform or market.
+- **`/articulate`**: the copy deck, where copy exists beyond what the wireframes carry (error messages, a voice framework).
+- **`/transpose`** and **`/localize`**: the platform adaptation specs, the market requirement matrix and the cultural adaptation brief, where the project went to a new platform or market.
 - **`/evaluate`**: its findings are settled before packaging; an open critical finding means the design is not ready.
 - **`/present`**: decks. This skill builds none; hand the package to `/present` as source material when the build needs a room's approval.
 - **`/philosopher`**: a cross-cutting cognitive mode. Enter when readiness keeps failing and no one can say why, or when the map of how the pieces fit shows a seam the design papered over.
@@ -69,10 +69,10 @@ When the project made them, by the rule that anything the project made which sta
 - The user journey map.
 - The information architecture.
 - The state inventory and edge case catalog.
-- The screen reader flow documentation, the keyboard navigation map and the remediation plan.
+- The accessibility audit's findings, the screen reader flow documentation and the keyboard navigation map.
 - The measurement framework.
 - The copy deck, where copy exists beyond what the wireframes carry.
-- The platform adaptation specs and cross-device journey map, the market requirement matrix and the cultural adaptation brief.
+- The platform adaptation specs, the market requirement matrix and the cultural adaptation brief.
 - The decision log, which carries the ethical review's outcome among its entries.
 
 Never: visual design. No color, type, spacing or motion beyond what the journey's interaction specification states. The builder picks the stack.

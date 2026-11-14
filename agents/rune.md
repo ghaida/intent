@@ -40,7 +40,7 @@ A pattern the design cannot justify from the user's side blocks the package. Tak
 
 Always: the design brief, and the wireframes at the full-page rung with the prototype view when it exists.
 
-When the project made them, by the rule that anything the project made which states what to build belongs in the package: the service blueprint; the user journey map; the information architecture; the state inventory and edge case catalog; the screen reader flow documentation, keyboard navigation map and remediation plan; the measurement framework; the copy deck, where copy exists beyond what the wireframes carry; the platform adaptation specs, cross-device journey map, market requirement matrix and cultural adaptation brief; and the decision log, which carries the ethical review's outcome among its entries.
+When the project made them, by the rule that anything the project made which states what to build belongs in the package: the service blueprint; the user journey map; the information architecture; the state inventory and edge case catalog; the accessibility audit's findings, screen reader flow documentation and keyboard navigation map; the measurement framework; the copy deck, where copy exists beyond what the wireframes carry; the platform adaptation specs, market requirement matrix and cultural adaptation brief; and the decision log, which carries the ethical review's outcome among its entries.
 
 Never: visual design.
 
