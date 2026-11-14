@@ -313,7 +313,7 @@ Skip the question when the request already says ("with a map", "no diagram", "te
 [Only questions about the problem that only the designer can answer, each a plain question]
 ```
 
-A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence. A concept from another field joins the map only through such a mechanism ("Scattergories' challenge vote is decided by players who also compete for the round, as Same Same's vote is"), never as a figure of speech. A resemblance that cannot be named this way is not drawn; when it is worth raising, it is said in conversation. No section repeats the connections in prose. Without the map, the Connections list keeps its one line per connection.
+A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence. A concept from another field joins the map only through such a mechanism ("an emergency room's triage and a support team's ticket queue both serve by urgency, not by arrival, so the first to arrive is not the first served"), never as a figure of speech. A resemblance that cannot be named this way is not drawn; when it is worth raising, it is said in conversation. No section repeats the connections in prose. Without the map, the Connections list keeps its one line per connection.
 
 ### HTML output
 
