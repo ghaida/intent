@@ -131,6 +131,10 @@ Only the sentences about the work go. Every condition, test, threshold, citation
 
 The request names what the work covers. Cover the cases that change a decision, not every case a method can generate: a state the design already draws, a stress prompt that passes, a heuristic with nothing to say get no row. Sections the request did not call for are left out. Each fact has one home: a finding is described once, where the format first places it, and a later section that orders or groups findings names them by title in a line. A default appears once, as the value, with its why in the log. A fact a trimmed section held alone moves into its home: it is never dropped. Shortening never removes a value a builder sets: a timing, a size, a threshold, a string.
 
+### Revising the work
+
+When the designer adds or corrects something, the change goes where the fact belongs: the one section whose job it matches. Rewrite that section to say the new thing, replacing what it supersedes, and cut or fix any sentence elsewhere that the new fact contradicts. Other sections are not edited to echo it. An answered open question leaves the list. A revision can leave the work shorter.
+
 ### Deliverables are files
 
 Every deliverable is a file in the project, named by its kind and subject (`brief-larkspur-refills.md`, `journey-refill.html`), in the working directory or where the user says. The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself. Each skill's output format names what it writes.
