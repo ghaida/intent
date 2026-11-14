@@ -214,11 +214,19 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 
 > **Critical**
 >
-> The newsletter box on the signup form is checked by default, sits below the fold and reads "Keep me updated." A person who never scrolls to it is subscribed to marketing email without choosing it, which is a GDPR exposure in EU markets. It is prechecked consent, and it violates user control and freedom. Uncheck the box by default and label it "Subscribe to marketing emails."
+> **The newsletter box is checked by default, below the fold**
+> - **What happens:** The signup form's newsletter box is checked by default, reads "Keep me updated" and sits below the fold.
+> - **Why it matters:** A person who never scrolls to it is subscribed to marketing email without choosing it, a GDPR exposure in EU markets.
+> - **Breaks:** prechecked consent, and user control and freedom.
+> - **Change:** Leave the box unchecked and label it as marketing email.
 >
 > **Major**
 >
-> After a click on "Create account," the button disables and shows nothing else. On a slow connection the wait runs 3 to 8 seconds, so people click again and submit twice, and the redirect that follows never says the account exists. It violates visibility of system status. Show a spinner with a label inside the button while the account is created, and confirm the new account on the screen that follows.
+> **Creating an account shows no progress, so people submit twice**
+> - **What happens:** After a click on "Create account," the button disables and shows nothing else for the 3 to 8 seconds a slow connection takes. The redirect that follows never says the account exists.
+> - **Why it matters:** People click again and submit twice, then cannot tell whether they have an account.
+> - **Breaks:** visibility of system status.
+> - **Change:** Show progress inside the button while the account is created, and confirm the new account on the next screen.
 
 ---
 
@@ -238,20 +246,27 @@ Use this structure, cut to the request: sections it did not call for are left ou
 [Within each severity, findings in the order to fix them]
 
 ### Critical (blocks core task completion or violates regulations)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Major (significant friction, potential user harm)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Minor (degraded experience, recoverable)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Cosmetic (polish, not blocking)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ## Positive Findings
 [What to protect during redesign, a sentence each]
 ```
+
+Each finding opens with a short headline that states the problem, then a list:
+
+- **What happens:** what was seen and where, cited, in two or three sentences.
+- **Why it matters:** who it hurts and how, in one sentence.
+- **Breaks:** the heuristic by name, or the anti-pattern by its catalog name.
+- **Change:** what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
 
 ---
 

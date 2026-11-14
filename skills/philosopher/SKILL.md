@@ -304,7 +304,7 @@ Skip the question when the request already says ("with a map", "no diagram", "te
 [The problem as the exploration leaves it, in three or four sentences: what is really being asked and what its framing assumed. What the sources have not measured is an open question]
 
 ## Concept map
-[HTML only. The concepts the question turns on, a dozen at most, each a box named in a short noun phrase. A numbered line joins two concepts only where a connection below holds]
+[HTML only. The concepts the question turns on and the ones other fields bring to it, a dozen at most, each a box named in a short noun phrase. A numbered line joins two concepts only where a connection below holds]
 
 ## Connections
 [One line per connection, numbered to match the map: the two concepts, how one bears on the other in one short sentence of about twenty words, and its basis in brackets]
@@ -313,7 +313,7 @@ Skip the question when the request already says ("with a map", "no diagram", "te
 [Only questions about the problem that only the designer can answer, each a plain question]
 ```
 
-A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence. A concept from another field joins the map only through such a mechanism ("an emergency room's triage and a support team's ticket queue both serve by urgency, not by arrival, so the first to arrive is not the first served"), never as a figure of speech. A resemblance that cannot be named this way is not drawn; when it is worth raising, it is said in conversation. No section repeats the connections in prose. Without the map, the Connections list keeps its one line per connection.
+Most connections reach outside the project: each brings in a field that meets the same mechanism, such as law, economics, medicine, ecology or game design, and its sentence says what that field knows about it. Its basis names the field's body of work, one the reader can look up, never an invented study or figure ("A support queue sorted by urgency makes some customers wait longer, and emergency triage tells waiting patients why" [emergency medicine: triage]). The other connections join two of the project's own concepts, only where a thread from another field needs them, each with its source cited. A concept from another field never joins as a figure of speech. A resemblance with no nameable mechanism is not drawn; when it is worth raising, it is said in conversation. No section repeats the connections in prose. Without the map, the Connections list keeps its one line per connection.
 
 ### HTML output
 
