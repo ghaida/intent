@@ -264,9 +264,7 @@ the transition.
 Outputs in this mode tend to be:
 - **Non-linear** — don't force a logical sequence if the ideas don't naturally
   have one
-- **Dense with connections** — surface the links explicitly ("this reminds me
-  of...", "structurally this is similar to...", "this is the same problem as X
-  in a different domain")
+- **Dense with connections** — each connection stated as the mechanism the two share, with its basis
 - **Grounded where it lands** — where evidence is thin, the exploration stops
   at what is known; what is generative is said in conversation
 - **Cited, not narrated** — what rests on the brief, the review or research cites it in brackets; no piece is the subject of a sentence
@@ -279,6 +277,93 @@ Outputs should NOT be:
 - Longer than necessary — expansive thinking is vivid, not rambling
 
 Standard technical English, in the work and in conversation: literal words, with no idiom, metaphor or wordplay in place of the claim. A connection found in another domain is stated as the mechanism the two share, never as a figure of speech.
+
+---
+
+## Exploration output
+
+The exploration happens in conversation. When it is written up as a file, the file holds what the exploration found, in the structure below, and nothing else.
+
+### Ask first
+
+Before writing the file, ask:
+
+> Would you like a concept map with this exploration?
+>
+> - **Yes** (default): an HTML page with the concepts the question turns on and the numbered connections between them, beside the text
+> - **No**: the text only, in Markdown
+
+Skip the question when the request already says ("with a map", "no diagram", "text only"). A yes that names no format is the HTML map.
+
+### Structure
+
+```
+# [Product]: [the question explored]
+
+## The question underneath
+[The problem as the exploration leaves it, in a few sentences: what is really being asked and what its framing assumed]
+
+## Concept map
+[HTML only. The concepts the question turns on, a dozen at most, each a box named in a short noun phrase. A numbered line joins two concepts only where a connection below holds]
+
+## Connections
+[One line per connection, numbered to match the map: the two concepts, how one bears on the other in one sentence, and its basis in brackets]
+
+## Open questions
+[Only questions about the problem that only the designer can answer, each a plain question]
+```
+
+A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence. A concept from another field joins the map only through such a mechanism ("Scattergories' challenge vote is decided by players who also compete for the round, as Same Same's vote is"), never as a figure of speech. A resemblance that cannot be named this way is not drawn; when it is worth raising, it is said in conversation. No section repeats the connections in prose. Without the map, the Connections list keeps its one line per connection.
+
+### HTML output
+
+Write one self-contained HTML file to the working directory, or where the user says (`exploration-<topic>.html`): no external CSS, no external fonts, no JS. The map is an inline SVG with a `viewBox`, so it scales to the page; the sections around it are HTML.
+
+**Required style block**: paste verbatim into `<style>`:
+
+```css
+:root {
+  --bg: #fafafc; --surface: #ffffff; --fg: #18182b; --fg-muted: #65657a;
+  --border: #d8d8e4; --accent: #4338ca;
+  --sans: "Hanken Grotesk", Inter, system-ui, -apple-system, sans-serif;
+  --s2: 8px; --s4: 16px; --s6: 24px; --s7: 32px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+    --border: #2a2a44; --accent: #7c6ff0;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #18182b; --surface: #1f1f36; --fg: #f0f0f8; --fg-muted: #8888a8;
+  --border: #2a2a44; --accent: #7c6ff0;
+}
+* { box-sizing: border-box; }
+body { font-family: var(--sans); background: var(--bg); color: var(--fg);
+  margin: 0; padding: var(--s7); line-height: 1.5; }
+main { max-width: 960px; margin: 0 auto; }
+.concept-map { display: block; width: 100%; height: auto; margin: var(--s6) 0; }
+.concept-map .concept rect { fill: var(--surface); stroke: var(--border); stroke-width: 1.5; }
+.concept-map .concept text { fill: var(--fg); font: 600 14px var(--sans); text-anchor: middle; }
+.concept-map .link line { stroke: var(--fg-muted); stroke-width: 1.5; }
+.concept-map .link circle { fill: var(--accent); }
+.concept-map .link text { fill: #fff; font: 600 12px var(--sans); text-anchor: middle; dominant-baseline: central; }
+.connections { list-style: none; padding: 0; }
+.connections li { display: grid; grid-template-columns: 28px 1fr; gap: var(--s2); margin-bottom: var(--s2); }
+.connections .n { color: var(--accent); font-weight: 600; }
+```
+
+**Rules:**
+
+- Each concept is a `<g class="concept">` holding a `<rect>` and its `<text>`; each connection is a `<g class="link">` holding a `<line>`, a `<circle>` and the number. Lines are drawn before boxes, so a box sits on top of any line end.
+- Concepts sit on a grid of boxes of one size, with at least half a box's width between neighbors. Concepts that share the most connections sit closest.
+- A label fits inside its box: at most two lines, broken by hand with `<tspan>`, each short enough to clear the box's edges at 14px.
+- A connection is a straight line from one box to the other that crosses no third box. Where a straight line would cross one, move a box.
+- Each number sits in its circle on its line, clear of every box and every other number.
+- The `<svg>` carries a `<title>` naming the question. The Connections list says everything the map shows, so nothing lives only in the drawing.
+- Before delivering, check the coordinates: every label inside its box, no line through a third box, no circle over a box or another circle.
+- Both ramps always ship. A standalone artifact carries no `data-theme` and follows the OS. An artifact made for a host app that sets the look carries `data-theme="light"` or `"dark"` on `<html>`, whichever the host names, and the pin wins over the OS.
+- The page carries no account of how it was made and no first person.
 
 ---
 
