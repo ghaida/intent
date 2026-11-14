@@ -1619,12 +1619,15 @@ function fit() {
     <= stage.clientWidth - railW;
   f.style.left = pageCentered ? '50%' : `${avail / 2}px`;
 }
-/* the view + frame index live in the URL, so a review state is linkable */
+/* the view + frame index live in the URL, so a review state is linkable.
+   A board embedded in another page (an iframe's srcdoc, an artifact)
+   may refuse the new address; the link is lost there, never the view */
 function syncHash() {
   const v = view();
   const h = v === 'grid' ? '' : `#${v}-${cur + 1}`;
-  if (h !== location.hash)
-    history.replaceState(null, '', h || location.pathname + location.search);
+  if (h === location.hash) return;
+  try { history.replaceState(null, '', h || location.pathname + location.search); }
+  catch (e) { /* embedded: no linkable state */ }
 }
 addEventListener('resize', () => {
   fit();
