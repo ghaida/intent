@@ -144,11 +144,11 @@ Before writing the exploration as a file, ask: "Would you like a concept map wit
 ```
 The question underneath: the problem as the exploration leaves it, in a few sentences: what is really being asked and what its framing assumed
 Concept map: HTML only; the concepts the question turns on, a dozen at most, each a box named in a short noun phrase; a numbered line joins two concepts only where a connection holds
-Connections: one line per connection, numbered to match the map: the two concepts, how one bears on the other in one sentence, and its basis in brackets
+Connections: one line per connection, numbered to match the map: the two concepts, how one bears on the other in one short sentence of about twenty words, and its basis in brackets
 Open questions: only questions about the problem that only the designer can answer, each a plain question
 ```
 
-A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence; a concept from another field joins the map only through such a mechanism, never as a figure of speech, and a resemblance that cannot be named this way is said in conversation, if at all. No section repeats the connections in prose. The HTML follows `/philosopher`'s output rules and style block: one self-contained file (`exploration-<topic>.html`) with no JS, the map in inline SVG, labels inside their boxes, straight lines that cross no third box, each number clear of every box and number, checked by coordinates before delivery.
+A connection is drawn only when it rests on a source the project holds, cited, or on a mechanism both sides share, named in its sentence; a concept from another field joins the map only through such a mechanism, never as a figure of speech, and a resemblance that cannot be named this way is said in conversation, if at all. No section repeats the connections in prose. The HTML follows `/philosopher`'s output rules and style block: one self-contained file (`exploration-<topic>.html`) with no JS, the map in inline SVG, labels inside their boxes, straight lines that cross no third box, each number clear of every box, number and line, drawn after the boxes, checked by coordinates before delivery.
 
 ## Your voice
 

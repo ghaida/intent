@@ -293,7 +293,7 @@ Skip the question when the request already says ("with a map", "no diagram", "te
 [HTML only. The concepts the question turns on, a dozen at most, each a box named in a short noun phrase. A numbered line joins two concepts only where a connection below holds]
 
 ## Connections
-[One line per connection, numbered to match the map: the two concepts, how one bears on the other in one sentence, and its basis in brackets]
+[One line per connection, numbered to match the map: the two concepts, how one bears on the other in one short sentence of about twenty words, and its basis in brackets]
 
 ## Open questions
 [Only questions about the problem that only the designer can answer, each a plain question]
@@ -341,13 +341,13 @@ main { max-width: 960px; margin: 0 auto; }
 
 **Rules:**
 
-- Each concept is a `<g class="concept">` holding a `<rect>` and its `<text>`; each connection is a `<g class="link">` holding a `<line>`, a `<circle>` and the number. Lines are drawn before boxes, so a box sits on top of any line end.
+- Each concept is a `<g class="concept">` holding a `<rect>` and its `<text>`. Each connection is a `<line>` in a `<g class="link">` drawn before the boxes; its number is a `<circle>` and `<text>` in a second `<g class="link">` drawn after the boxes, so a box covers line ends and no line runs over a number.
 - Concepts sit on a grid of boxes of one size, with at least half a box's width between neighbors. Concepts that share the most connections sit closest.
 - A label fits inside its box: at most two lines, broken by hand with `<tspan>`, each short enough to clear the box's edges at 14px.
 - A connection is a straight line from one box to the other that crosses no third box. Where a straight line would cross one, move a box.
-- Each number sits in its circle on its line, clear of every box and every other number.
+- Each number sits in its circle on its own line, clear of every box, every other number and every other line. Where two lines cross, their numbers sit away from the crossing.
 - The `<svg>` carries a `<title>` naming the question. The Connections list says everything the map shows, so nothing lives only in the drawing.
-- Before delivering, check the coordinates: every label inside its box, no line through a third box, no circle over a box or another circle.
+- Before delivering, check the coordinates: every label inside its box, no line through a third box, no circle over a box, another circle or another line.
 - Both ramps always ship. A standalone artifact carries no `data-theme` and follows the OS. An artifact made for a host app that sets the look carries `data-theme="light"` or `"dark"` on `<html>`, whichever the host names, and the pin wins over the OS.
 - The page carries no account of how it was made and no first person.
 
