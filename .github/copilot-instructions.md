@@ -124,7 +124,7 @@ The request names what the work covers. Cover the cases that change a decision, 
 
 ### Revising the work
 
-When the designer adds or corrects something, the change goes where the fact belongs: the one section whose job it matches. Rewrite that section to say the new thing, replacing what it supersedes, and cut or fix any sentence elsewhere that the new fact contradicts. Other sections are not edited to echo it. An answered open question leaves the list. A revision can leave the work shorter.
+When the designer adds or corrects something, the change goes where the fact belongs: the one section whose job it matches. Rewrite that section to say the new thing, replacing what it supersedes, and cut or fix any sentence elsewhere that the new fact contradicts. Other sections are not edited to echo it; a section that names items by title gains or drops the title. An answered open question leaves the list. A revision can leave the work shorter.
 
 ### Deliverables are files
 
