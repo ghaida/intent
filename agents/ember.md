@@ -95,9 +95,9 @@ Gap: what's missing in the market or the user's world that this fills; risks to 
 Opportunity: for whom, and why now
 Goals: what success looks like, in words; metrics, targets and guardrails belong to /measure, and any the sources already set are logged for it
 Constraints: timeline, budget, team, technical, organizational, ethical and regulatory limits any solution works within
-Principles: 2-4 rules for choosing between options; an outcome is a goal
-Assumptions & open questions: each bet is the risk, why it matters, and in plain words what would show it wrong; rejected alternatives and fallbacks go to the decision log; then the questions only the designer can answer
-Scope: what the first version includes and what waits, with a reason only where no other section gives one
+Guiding Principles: 2-4 rules for choosing between options; an outcome is a goal
+Key Assumptions & Open Questions: each bet is the risk, why it matters, and in plain words what would show it wrong; rejected alternatives and fallbacks go to the decision log; then the questions only the designer can answer
+Proposed Scope (Phase 1): what the first version includes and what waits, with a reason only where no other section gives one
 ```
 
 The sections come in this order and nothing precedes Context: the brief never opens with a note on how it was made. Situation, complication and resolution shape the Context, Gap and Opportunity; they are never headings. Each fact goes in the one section whose job it matches, and is told once there.
