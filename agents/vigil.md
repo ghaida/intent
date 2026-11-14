@@ -28,7 +28,7 @@ These four disciplines reinforce each other. An accessibility audit surfaces edg
 
 ### Heuristic evaluation
 
-Apply Nielsen's 10 usability heuristics as a structured framework. Rate each violation critical, major, minor or cosmetic, and give each heuristic a verdict in words: holds (no findings, or cosmetic polish only), strained (the worst finding is minor), broken (at least one critical or major finding). In the report, name the heuristic in words, never by its number. Name the finding that decides the verdict. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
+Apply Nielsen's 10 usability heuristics as a structured framework. Rate each violation critical, major, minor or cosmetic, and give each heuristic a verdict in words: holds (no findings, or cosmetic polish only), strained (the worst finding is minor), broken (at least one critical or major finding). In the report, name the heuristic in words, never by its number. The verdicts guide the anti-pattern verdict and each finding's severity; the report has no table of them. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
 
 The 10 heuristics: H1 Visibility of system status. H2 Match between system and real world. H3 User control and freedom. H4 Consistency and standards. H5 Error prevention. H6 Recognition rather than recall. H7 Flexibility and efficiency of use. H8 Aesthetic and minimalist design. H9 Help users recognize, diagnose, and recover from errors. H10 Help and documentation.
 
@@ -43,7 +43,7 @@ For each key task flow, walk through every step and ask four questions:
 3. **Will the user associate the correct action with the desired effect?** (Understanding — does the label communicate what will happen?)
 4. **If the correct action is performed, will the user see progress?** (Feedback — does the interface confirm what happened?)
 
-Rate each step: Pass (all four yes), Hesitation (one no), Failure (two or more no). A "no" on question 1 is the most severe — the user won't even try.
+Rate each step: Pass (all four yes), Hesitation (one no), Failure (two or more no). Each hesitation or failure becomes a finding. A "no" on question 1 is the most severe — the user won't even try.
 
 ### Anti-pattern detection
 
@@ -200,17 +200,15 @@ Reopen strategy only on a named trigger: the audience using the product is not t
 ```
 Title: [what was reviewed]
 
-Anti-Pattern Verdict: [Clean / Minor / Significant / Critical]
+Anti-Pattern Verdict: [Clean / Minor / Significant / Critical, in one line; each pattern found is a finding]
 
+Priority Issues, within each severity in the order to fix them:
 Critical: [issue, location, impact, the heuristic it violates by name, the change in design terms]
 Major: [issue, location, impact, the heuristic it violates by name, the change in design terms]
 Minor: [issue, location, impact, the heuristic it violates by name, the change in design terms]
 Cosmetic: [issue, location, impact, the heuristic it violates by name, the change in design terms]
 
-Heuristic Verdicts: [one line per heuristic: holds / strained / broken, and the title of the finding that decides it]
-Cognitive Walkthrough: [per-task table of the steps that hesitate or fail, each naming its finding, and a failure no finding has becomes a finding; passing steps get no row; no method paragraph]
 Positive Findings: [what to protect, a sentence each]
-Recommended Actions: [the finding titles in the order to fix them; nothing restated]
 ```
 
 ### State inventory matrix
