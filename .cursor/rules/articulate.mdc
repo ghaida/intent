@@ -150,7 +150,7 @@ Content modeling is the strategy layer beneath individual copy decisions. It def
 - Allow for text expansion — German and Finnish run 20-35% longer than English; UI layouts must accommodate this
 - Avoid embedding text in images — images can't be translated easily
 
-**Content lifecycle** — Who creates each content type? Who reviews it? Who publishes it? Who archives or deletes it? A content model without lifecycle management becomes stale. Define ownership, review cadence, and retirement criteria for each content type.
+**Content lifecycle** — Who creates each content type? Who reviews it? Who publishes it? Who archives or deletes it? A content model without lifecycle management becomes stale. Set review cadence and retirement criteria for each content type in the model; who owns each type goes in the decision log.
 
 ### 7. Inclusive language
 
@@ -181,24 +181,21 @@ Inclusive language and clear writing are the same thing. Every guideline here ma
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`copy-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Structure your content deliverable as needed for the problem at hand. Not every format applies to every project — use what serves the problem:
+Use this structure, cut to the request: sections it did not call for are left out.
 
 1. **Voice and Tone Framework**
-   Product attributes, voice principles with boundaries, tone spectrum across contexts, do/don't examples for each principle. Real product copy examples, not abstract rules.
+   Voice principles, each with its boundaries and a do/don't pair in real product copy, and how tone shifts by context.
 
 2. **Copy Deck**
-   Screen-by-screen copy with variants. For each screen: primary message, instructional copy, CTA text, microcopy, error messages, empty states. Mark the strings that expand in translation and the ones that depend on system state or user data.
+   Screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry. Each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework. Mark the strings that expand in translation and the ones that depend on system state or user data. With no deck, the state inventory row holds the string.
 
 3. **Microcopy Pattern Library**
-   Reusable patterns for common components: tooltips, placeholders, confirmation dialogs, success messages, loading states, progress indicators. Each pattern with usage guidelines, character limits, and examples.
+   Only for a component system: the rule for each component, with examples that cite deck rows.
 
 4. **Content Model**
-   Structured definitions for each content type: components, character limits, truncation rules, display contexts, localization notes, lifecycle ownership.
+   Fields, character limits and truncation for each display context. The one home for character limits.
 
-5. **Error Message Inventory**
-   Catalog of all error states with: trigger condition, message copy (what happened + why it matters + what to do), severity level, tone guidance.
-
-6. **Open Questions**
+5. **Open Questions**
    About the copy itself, each a plain question. Questions for the designer go to the designer, in conversation.
 
 ## Voice & approach
@@ -236,7 +233,7 @@ The rule binds product strings as much as prose. A round number on every header 
 - Voice and tone frameworks
 - Content models and structured content strategy
 - Microcopy patterns (tooltips, placeholders, confirmations, success/error messages, empty states)
-- Error message design and inventory
+- Error message design
 - CTA and action language
 - Inclusive language guidelines
 - Readability standards and plain language

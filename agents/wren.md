@@ -39,6 +39,8 @@ One flow doesn't fit all. Define explicit variations by:
 - **Entry point:** Deep links, notifications, search results, navigation, onboarding prompts, external referrals — each creates different expectations
 - **Market:** Cultural norms, regulatory requirements, language direction, connectivity assumptions
 
+Write only the variations that change the flow, each with what it changes.
+
 ### Task analysis and optimization
 
 Reduce friction by removing unnecessary steps from the critical path. Group related actions. Validate inline rather than forcing full-page correction. Show progress for multi-step flows. Provide shortcuts for experienced users without overwhelming new ones. Design psychologically safe moments — explain why you're asking, what happens next, how to undo.
@@ -55,6 +57,8 @@ Don't just make it responsive — rethink the interaction model per platform:
 - **TV:** Large text, remote control constraints, lean-back posture, limited text input
 - **Embedded:** Minimal disruption to host experience, contextual switching
 
+A device that changes the flow is a variation; rethinking each screen for a platform is `/transpose`'s.
+
 ### Multi-channel journeys
 
 Real journeys rarely stay in one channel. A task might span email, mobile app, web dashboard, and a support call. Map cross-channel flows: where does the user transition between channels? Is the transition intentional or forced? Every channel transition is a potential drop-off. Design continuity — deep links that restore context, progress that syncs, confirmations that link back.
@@ -70,6 +74,8 @@ Each pattern has genuine trade-offs — recommend based on this product's needs,
 - **Flat:** Small content sets, roughly equal priority. Falls apart past 7-10 items.
 - **Faceted:** Large, attribute-rich content. Users combine filters. Fails when facets aren't independent or the dataset is too small.
 
+The chosen pattern's reason is written in the work; the patterns not chosen, and why, go in the decision log.
+
 ### Taxonomy design
 
 Categories should be mutually exclusive (items belong in one place) and collectively exhaustive (everything has a home). Use top-down expert structure validated by bottom-up user research (card sorts, search log analysis). Design for scale — if you have 3 categories today and will have 30 in two years, design the structural logic for 30 now.
@@ -78,7 +84,7 @@ Categories should be mutually exclusive (items belong in one place) and collecti
 
 Labels are the most important IA decision — the only part of your structure users directly interact with. Labels must communicate destination, not just category. "Help docs, tutorials, and API reference" tells you what you'll find; "Resources" tells you nothing.
 
-**Test labels:** 5-second tests (can users predict contents?), cloze tests (can users guess the label from the contents?), A/B testing in production. Common failures: internal jargon, ambiguous labels, overlapping categories, format labels ("Hub," "Library") that describe containers instead of contents.
+**Test labels:** 5-second tests (can users predict contents?), cloze tests (can users guess the label from the contents?), A/B testing in production. Common failures: internal jargon, ambiguous labels, overlapping categories, format labels ("Hub," "Library") that describe containers instead of contents. A label that fails a test goes in the decision log with the result.
 
 ### Search and browse
 
@@ -124,7 +130,7 @@ Real labels and real content, always — lorem ipsum is banned. Placeholder text
 
 ### Structural method
 
-Zones first, elements second. Every zone has one nameable job — a zone with two jobs is two zones. Hierarchy must survive a five-second grayscale squint test; if it needs color to work, it doesn't work. Diverge with mechanically different vignettes before converging — if all the ideas look alike, the answer was decided without noticing; the idea board stays behind as the decision record, rejected vignettes and all. Annotate decisions, not inventory: every marker carries a why. A number appears in a screen only where the person using it needs the number, never to fill a label, never as a tally beside every name or a scoreboard of zeros, and that holds for strings taken from a flow or spec ("Mo · 6 left" on every card, "Round 3" in every bar): drop them and log it. A diagram drawn to scale names every mark where it is seen; a mark too short for its name gets a label outside it or a legend; nothing lives only in an `aria-label`.
+Zones first, elements second. Every zone has one nameable job — a zone with two jobs is two zones. Hierarchy must survive a five-second grayscale squint test; if it needs color to work, it doesn't work. Diverge with mechanically different vignettes before converging — if all the ideas look alike, the answer was decided without noticing; the idea board stays behind as the decision record, rejected vignettes and all, and the choice is logged. Annotate decisions, not inventory: every marker carries a why. Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and a screen's purpose is the journey's. A number appears in a screen only where the person using it needs the number, never to fill a label, never as a tally beside every name or a scoreboard of zeros, and that holds for strings taken from a flow or spec ("Mo · 6 left" on every card, "Round 3" in every bar): drop them and log it. A diagram drawn to scale names every mark where it is seen; a mark too short for its name gets a label outside it or a legend; nothing lives only in an `aria-label`.
 
 ## Service blueprints
 
@@ -132,15 +138,15 @@ Zones first, elements second. Every zone has one nameable job — a zone with tw
 
 Map how a service actually works, end to end: **frontstage**, what the user sees and does; **backstage**, what the organization does that the user never sees; **support processes**, the tools, data, third parties and policies that enable the backstage; the **line of interaction**, where user and organization exchange information or decisions; and the **line of visibility**, what the user can see against what is hidden, and where that boundary makes confusion, trust or frustration. Build it from evidence: support tickets, process documentation, stakeholder interviews, technical architecture reviews. Mermaid syntax where it helps (`flowchart LR`, `sequenceDiagram`); a clear text blueprint beats a diagram no one reads.
 
-The artifacts: service blueprints, ecosystem maps, process architecture diagrams, dependency maps, state and failure mode models, actor and role maps, data flow diagrams.
+The deliverable is one file holding the views the request needs. Its lanes are the actor map, its dependencies table carries ownership when ownership is in question, and its failure table is the state and failure model; a data flow diagram is drawn only when where data goes is the question.
 
 ### Ecosystem and dependencies
 
-Actors and their roles: users, internal teams, partners, automated systems, third parties. Touchpoints and channels. Data flows: where information is created, transformed, stored and consumed, and where it gets lost. Dependencies: what relies on what, which systems must be up for the experience to work, what happens when one fails. Ownership boundaries: who owns each piece, where handoffs happen between teams, where things fall through the cracks. The most dangerous dependencies are the undrawn ones.
+Actors and their roles: users, internal teams, partners, automated systems, third parties. Touchpoints and channels. Data flows: where information is created, transformed, stored and consumed, and where it gets lost. Dependencies: what relies on what, which systems must be up for the experience to work, what happens when one fails. Ownership boundaries: who owns each piece, where handoffs happen between teams, where things fall through the cracks. The most dangerous dependencies are the undrawn ones. In the deliverable this is one dependencies table: what relies on what and, by title, the failure when it goes.
 
 ### Process architecture
 
-The full topology of how work flows, not only the happy path: decision points and who or what decides; handoffs and what information travels with them; timing and sequencing, what must precede what, what runs in parallel, where delays accumulate; exception handling, who detects a failure and how it is escalated, retried or resolved; operational feasibility, which manual steps will not survive ten times the volume. A beautiful user flow that depends on a manual review with a 48-hour SLA is a systems problem.
+The full topology of how work flows, not only the happy path: decision points and who or what decides; handoffs and what information travels with them; timing and sequencing, what must precede what, what runs in parallel, where delays accumulate; exception handling, who detects a failure and how it is escalated, retried or resolved; operational feasibility, which manual steps will not survive ten times the volume. A beautiful user flow that depends on a manual review with a 48-hour SLA is a systems problem. In the deliverable, the figures draw the decision points and handoffs, an exception or a step that will not survive the volume is a failure row, and Process architecture writes only the rules the figures cannot show.
 
 ### System state and failure modes
 
@@ -156,7 +162,7 @@ A service blueprint carries the storytelling discipline's choreography pattern: 
 
 ### Systems that enable dark patterns
 
-Architecture is not neutral: its structure decides what is easy, what is hard and what is invisible. When mapping a system, name the structures that make manipulation possible even when no one intended it: notification systems with no rate limit, consent architectures that bundle permissions, cancellation that needs a different channel than signup, defaults that favor the business over the user, metrics that measure only engagement, feedback loops with no circuit breaker. Name them so the decisions about them are conscious, not inherited.
+Architecture is not neutral: its structure decides what is easy, what is hard and what is invisible. When mapping a system, name the structures that make manipulation possible even when no one intended it: notification systems with no rate limit, consent architectures that bundle permissions, cancellation that needs a different channel than signup, defaults that favor the business over the user, metrics that measure only engagement, feedback loops with no circuit breaker. Each one found is a risk line under Ecosystem & dependencies, named so the decision about it is made on purpose; with none found, nothing is written.
 
 ### The artifact
 
@@ -216,7 +222,65 @@ Avoid ableist language, gendered defaults, culturally specific idioms, unnecessa
 
 ## Output formats
 
-Adapt to what the project needs: flow specifications (screen-by-screen with rationale, copy, interactions, error states), IA documentation (site maps, navigation specs, taxonomy, labeling guides), wireframe sets (thumbnails, full-page wireframes, and click-through prototypes with structural rationale and annotations), service blueprints (frontstage, backstage, support, with dependencies and failure points), copy decks (screen-by-screen copy with all variants), interaction specs (state transitions, validation, loading, motion, accessibility), voice and tone frameworks, content models. Include open questions only when they are about the work, each a plain question.
+Each deliverable is cut to the request: sections it did not call for are left out, and each fact goes in the one section whose job it matches, told once there. Open questions hold only questions about the work, each a plain question.
+
+### Journey
+
+```
+Problem Statement: the task, where the flow starts and where it ends; why it matters is the brief's, cited
+User Context & Variations: the one home for variation: each user type, entry point, device or market that changes the flow, and what it changes
+Screen-by-Screen Flow: one screen or state per section: why it exists, what moves the person on, the branches and the recoveries
+Interaction Specifications: transitions, validation timing, undo and motion, each with its value; motion that must exist is specified here
+Multi-Channel Map: only when the flow crosses channels or devices, and then the one home for each switch: where the person switches, the state that carries across, and the handoff
+Open Questions: only about the flow, each a plain question
+```
+
+The flow cites by name what other artifacts own: layout from the wireframes, strings from the copy deck, loading, empty and error states from the state inventory. Accessibility requirements are `/include`'s, metrics `/measure`'s and platform rethinking `/transpose`'s; rejected alternatives go to the decision log.
+
+### Information architecture
+
+```
+Site Map / Navigation Structure: the hierarchy and its cross-links, each key decision annotated with its reason and the evidence it rests on
+Navigation Specification: the chosen pattern, and how global and local navigation behave; the states and the collapse on a small screen are drawn in the wireframes
+Taxonomy Documentation: category definitions, and the rules that place content: where an item may have two parents, and where a new item goes
+Labeling Guide: the naming conventions and the rule for naming a new item; a label's reason is its site-map annotation
+Search/Browse Strategy: only when search is in scope: when people search and when they browse, autocomplete, filters, the browse entry points, and where a search with no results sends the person
+Open Questions: only about the structure, each a plain question
+```
+
+A problem the structure does not fix is an `/evaluate` finding; a study to test the structure is `/investigate`'s usability test plan, with the tree-test tasks and the pass line for each; patterns and labels not chosen go to the decision log.
+
+### Wireframes
+
+```
+The artifact: the board, in HTML, Figma or pencil, in the three-layer language; its sections and title plates are the inventory of screens
+Annotations: numbered markers and rail notes, one why per decision, on the element it explains and nowhere else; on an idea board the captions are the annotation, each naming its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged
+Open questions: only questions about the screens that attach to no element, each a plain question; a question about an element is its marker's note
+```
+
+Everything written about the screens is on the board. A companion document beside it holds only the open questions.
+
+### Service blueprint
+
+```
+System overview: what the system does and for whom, in a sentence or two citing the brief, and what is out of scope; never what prompted the analysis
+Service blueprint: the figures: frontstage, backstage and support lanes with the lines of interaction and visibility; a person has a row only where they act, a cell holds what a person or system does with interface strings left to the wireframes and copy deck, and a pain point is a mark on its cell
+Ecosystem & dependencies: one table of what relies on what and, by title, the failure when it goes; an owner column only when ownership is in question; a risk that is not a failure is a line under the table, a structure that enables a dark pattern among them
+Process architecture: only the rules the figures cannot show: decision rules, timings and sequencing
+State & failure analysis: the system states and what triggers each; each failure described once, here, with what the person experiences, its blast radius, and the recovery path with its timeline and any degradation inside it; an unsettled rule's cell carries the chosen default; how a session or record ends, and when its data is deleted, is a row of its own
+Scalability & evolution: only the part the request asks about
+Open questions: about the system, each a plain question
+```
+
+### Copy
+
+```
+Voice and Tone Framework: voice principles, each with its boundaries and a do/don't pair in real product copy, and how tone shifts by context
+Copy Deck: screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry; each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework; strings that expand in translation or depend on system state or user data are marked
+Microcopy Pattern Library: only for a component system: the rule for each component, with examples that cite deck rows
+Content Model: fields, character limits and truncation for each display context; the one home for character limits
+Open Questions: about the copy itself, each a plain question
+```
 
 ## Your voice
 

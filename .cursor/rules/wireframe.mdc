@@ -368,7 +368,7 @@ A number appears in a screen only where the person using it needs the number: ne
 
 ### 5. Annotation discipline
 
-A wireframe shows what; annotations carry why. Annotate decisions, not inventory: "search is in the header because support data shows nav-first users fail 40% of the time" earns a marker — "this is the search box" does not. Number markers, keep notes in the rail, and mark open questions as questions ("does legal require the disclaimer above the fold?"). Un-annotated wireframes invite the real-estate-tour reading; over-annotated ones bury the three decisions that matter under twenty that don't.
+A wireframe shows what; annotations carry why. Annotate decisions, not inventory: "search is in the header because support data shows nav-first users fail 40% of the time" earns a marker — "this is the search box" does not. Number markers, keep notes in the rail, and mark open questions as questions ("does legal require the disclaimer above the fold?"). Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and the deliverable's Open questions hold only those that attach to no element. A screen's purpose is the journey's, so no note restates it. Un-annotated wireframes invite the real-estate-tour reading; over-annotated ones bury the three decisions that matter under twenty that don't.
 
 ### 6. Wireflow & prototype assembly
 
@@ -376,18 +376,20 @@ Materialize flow logic from `/journey` as connected screens. Lay frames in flow 
 
 ### 7. Divergence practice
 
-For any new problem, ideas come first and come plural. Draw mechanically different vignettes — different answers to "what mechanism solves this?", not the same mechanism with the button moved. If all your ideas look alike, you've decided the answer without noticing. Present alternatives with the trade-off named in each caption, converge deliberately with the user, then promote the chosen mechanism up a rung — into the screens of its own wireframe artifact. The idea board stays behind as the decision record, rejected vignettes and all — what was chosen against is part of the design.
+For any new problem, ideas come first and come plural. Draw mechanically different vignettes — different answers to "what mechanism solves this?", not the same mechanism with the button moved. If all your ideas look alike, you've decided the answer without noticing. Present alternatives with the trade-off named in each caption, converge deliberately with the user, then promote the chosen mechanism up a rung — into the screens of its own wireframe artifact. The idea board stays behind as the decision record, rejected vignettes and all — what was chosen against is part of the design. The choice itself is a decision log entry.
 
 ## Output format
 
-Structure the deliverable as the work requires. The artifact is the file named under HTML output; the reply says what the board is for and what feedback it wants. When the written sections live in a companion document beside the board, it follows the board's rule: it opens with the screen inventory, and nothing in it describes the devices, their sizes, the scale or whose phone is drawn. The full toolkit:
+The deliverable is the board, in the file named under HTML output or in Figma or pencil frames, and everything written about the screens is on it. The reply says what the board is for and what feedback it wants. A companion document beside the board holds only the open questions, and nothing in it describes the devices, their sizes, the scale or whose phone is drawn.
 
-1. **Screen inventory** — What screens or ideas are in play, at what rung, grouped into which sections. The shared map of the artifact.
-2. **Structural rationale** — Per screen: what its primary job is, what zones exist and why, what hierarchy was chosen and why. Per vignette: what mechanism it proposes and what trade it makes. The reasoning the wireframe renders.
-3. **The artifact** — HTML (default), Figma, or pencil, per the ask-first protocol. The wireframes themselves, in the three-layer language.
-4. **Annotations** — Numbered decisions and open questions, in the annotation layer and recapped in text.
-5. **Considered & rejected** — Vignettes that lost, with one line each on why. Lives in the idea-board artifact.
-6. **Open questions** — Only when they are about the screens, each a plain question. What needs `/organize`, `/investigate`, or stakeholder input before structure can freeze is said in the reply.
+1. **The artifact**
+   The board, in HTML (default), Figma or pencil per the ask-first protocol, in the three-layer language. Its sections and title plates are the inventory of screens.
+
+2. **Annotations**
+   Numbered markers and rail notes, one why per decision, on the element it explains and nowhere else. A screen's purpose is the journey's. On an idea board the captions are the annotation: each names its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged.
+
+3. **Open questions**
+   Only questions about the screens that attach to no element, each a plain question; a question about an element is its marker's note. What needs `/organize`, `/investigate`, or stakeholder input before structure can freeze is said in the reply.
 
 ## Voice & approach
 
