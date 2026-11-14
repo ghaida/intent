@@ -85,6 +85,7 @@ What this rules out:
 - Source bookkeeping: "isn't in the material", "has no benchmark in the material", "can't be judged from the material", "could only be partly read". What the material lacks is an open question.
 - Gap and proposal marks in any form: "Open:", "Proposed:", "Untested", "The tie rule is open.", "is still open in the flow", "Both targets are open.", "There is no significance test at this n". A value is written as the value, once, and the log records why; a question only the designer can answer goes to the format's open questions, and a default is never restated as one.
 - Routing and workings: "Route to /fortify", "Organized by skill", "This assessment covers…", severity codes, catalog codes, heuristic codes, finding numbers.
+- Outline wording as labels: a column headed "What carries", a line opening "Moves on.". Headings and labels are the words a reader would use for what they hold.
 - Filler that announces, sums up or classifies: "Here is the same number seen from the counter.", "This is a product decision, not a design one.", "Want to bring this back into the brief?".
 
 What stays, because it is the work:

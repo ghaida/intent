@@ -391,13 +391,13 @@ Write the deliverable to a file in the working directory, or where the user says
 Use this structure, cut to the request: sections it did not call for are left out. Each fact goes in the one section whose job it matches. A problem the structure does not fix is an `/evaluate` finding; a study to test the structure is `/investigate`'s usability test plan, with the tree-test tasks and the pass line for each; patterns and labels not chosen go to the decision log.
 
 1. **Site Map / Navigation Structure**
-   The hierarchy and its cross-links, each key decision annotated with its reason and the evidence it rests on.
+   The hierarchy and its cross-links, each key decision annotated with its reason and its dependencies, cited.
 
 2. **Navigation Specification**
-   The chosen pattern, and how global and local navigation behave. The states and the collapse on a small screen are drawn in the wireframes, and where no wireframes exist, the site map notes them. Another platform's navigation is `/transpose`'s.
+   The chosen pattern, and how global and local navigation behave. What a screen shows is the wireframes'. The states and the collapse on a small screen are drawn in the wireframes, and where no wireframes exist, the site map notes them. Another platform's navigation is `/transpose`'s.
 
 3. **Taxonomy Documentation**
-   Category definitions, and the rules that place content: where an item may have two parents, and where a new item goes.
+   Only when the content has categories a person browses by: what each category holds and the rule that puts an item in one, including where an item may have two parents. What a term means is `/articulate`'s terminology. What happens to an item over time, when it is made, moved, used or deleted, is the journey's or the blueprint's.
 
 4. **Labeling Guide**
    The naming conventions and the rule for naming a new item. A label's reason is its site-map annotation.

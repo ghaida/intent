@@ -198,7 +198,7 @@ Users switch devices mid-task. This isn't an edge case — it's the normal flow 
 - Re-authentication friction: minimize it across devices. Biometric on phone, magic link on desktop, persistent session on TV.
 - Don't make users start over because they switched devices.
 
-In the deliverable, each switch is the journey's, on the Carries across line of the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure: `/fortify` designs what the person sees, `/blueprint` what the system does.
+In the deliverable, each switch is the journey's, told on the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure: `/fortify` designs what the person sees, `/blueprint` what the system does.
 
 ### 5. Progressive disclosure per context
 
@@ -227,7 +227,7 @@ Write the disclosure strategy, in the adaptation spec, for the features whose di
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`adaptation-larkspur-mobile.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Where the experience crosses devices, each switch is the journey's, on the Carries across line of the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure for `/fortify` or `/blueprint`.
+Where the experience crosses devices, each switch is the journey's, told on the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure for `/fortify` or `/blueprint`.
 
 ### Platform-specific adaptation specs
 Per target context, the interaction model and conventions that replace the source's, and any feature the context adds, each with the context fact that forces it. A dimension that changes nothing is not written.
@@ -256,7 +256,7 @@ Respect the intelligence of each context. Mobile isn't desktop's lesser sibling.
 - Cross-platform UX strategy and context analysis
 - Platform-specific interaction model recommendations
 - Content priority mapping across contexts
-- Cross-device continuity needs, which the journey's screens hold on their Carries across lines
+- Cross-device continuity needs, which the journey tells on the screen where each switch happens
 - Progressive disclosure strategy per context
 
 ### This skill does NOT own:

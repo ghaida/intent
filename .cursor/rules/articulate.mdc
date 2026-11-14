@@ -186,16 +186,19 @@ Use this structure, cut to the request: sections it did not call for are left ou
 1. **Voice and Tone Framework**
    Voice principles, each with its boundaries and a do/don't pair in real product copy, and how tone shifts by context.
 
-2. **Copy Deck**
+2. **Terminology**
+   The product's own nouns: each term, what it means to the person using the product, and the words not to use for it. The one home for what a term means; the site map, the journey and the copy deck use the terms and never define them.
+
+3. **Copy Deck**
    Screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry. Each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework. Mark the strings that expand in translation and the ones that depend on system state or user data. With no deck, the state inventory row holds the string.
 
-3. **Microcopy Pattern Library**
+4. **Microcopy Pattern Library**
    Only for a component system: the rule for each component, with examples that cite deck rows.
 
-4. **Content Model**
+5. **Content Model**
    Fields, character limits and truncation for each display context. The one home for character limits.
 
-5. **Open Questions**
+6. **Open Questions**
    About the copy itself, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ## Voice & approach
@@ -219,6 +222,8 @@ The rule binds product strings as much as prose. A round number on every header 
 **Titles name the subject.** The product and the change, in a few plain words: "Larkspur Pharmacy's refill redesign", never a phrase about purpose. The same for every artifact and every finding: a finding's title names the problem and its effect.
 
 **Plain sentences, in conversation too.** Standard technical English. No framing openers ("Before I write the handoff:", "One question before that pass starts:"), no labels that announce a part ("One question.", "Where the evidence is thin."), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"). One question per reply, the one whose answer unblocks the next step, with options short enough to pick from; the rest wait in the work's open questions.
+
+**Labels in the reader's words.** A heading, a column head or a run-in label says what a reader would call the thing it holds. The outline's phrases are instructions, never labels: not a column headed "What carries", not a line opening "Moves on." or "Carries across.".
 
 **No hedging in the work.** "We believe", "the data suggests", "it's not a pattern yet" go. The claim carries its count and its citation: "Conversion rises 1 to 3 points (95% CI), n=4,100." Where the evidence is thin, the work stops at what is known and the gap is an open question.
 
