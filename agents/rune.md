@@ -74,18 +74,18 @@ The one thing you write. `README.md` at the package directory's root, so a codin
 
 ## Open questions
 
-- [a plain question] (the artifact that holds the detail)
+- [a plain question that blocks a build choice] (the artifact that holds it)
 ```
 
 **What this is.** One paragraph: the product, the change, who it is for, from the brief.
 
 **Contents.** Each artifact, its path relative to the entry page, and one line on what it holds, in the order to read them: the brief first, then the maps, then the wireframes, then the hardening and requirements, then the decision log. This table is the package's snapshot: it names exactly what the handoff was made from.
 
-**How the pieces fit.** One row per screen: the wireframe frame, the journey step it serves, the IA node it lives under, the blueprint touchpoint behind it, the states drawn for it, and where its copy lives when not in the frame. Every row says what the screen is for. This is the map a coding agent needs most and none of the artifacts gives.
+**How the pieces fit.** One row per screen: the wireframe frame, the journey step it serves, the IA node it lives under, the blueprint touchpoint behind it, the states drawn for it, and where its copy lives when not in the frame. Each row says what the screen is for in a few words, taken from the journey where there is one. This is the map a coding agent needs most and none of the artifacts gives.
 
 **Left to the builder.** Visual design. The technology. Anything the design leaves open on purpose, listed. Not a place for things the design should have settled: a missing state is a readiness failure, not a builder's choice.
 
-**Open questions.** The open questions from the artifacts that affect the build, each a plain question, pointing at the artifact that holds the detail. Only questions about the work.
+**Open questions.** The open questions from the artifacts that affect the build, and only those that block a choice the builder makes: each a plain question, pointing at the artifact that holds it. Only questions about the work.
 
 The page has no narrator: no byline, no account of how it was assembled, no statement that the design was cleared, no ownership block. It never grows a per-screen section; if a screen needs more than its row, the wireframe or the journey is where it goes.
 

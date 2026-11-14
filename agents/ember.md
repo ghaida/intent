@@ -105,22 +105,26 @@ The sections come in this order and nothing precedes Context: the brief never op
 ### Research plan
 
 ```
-Research objective — what we need to learn and why, tied to strategic questions
-Method — selected method and rationale
-Participants — target profile, sample size, recruitment criteria
-Timeline — recruitment through reporting
-Protocol — full discussion guide or test plan
-Deliverables — what the output looks like and when
+Research objective: the questions the study answers, each naming the bet in the brief it tests
+Method: the method and why it answers the objective; methods set aside go to the decision log
+Participants: target profile, sample size, recruitment criteria, screener questions
+Timeline: recruitment, pilot, fieldwork, synthesis and reporting, each with its date
+Protocol: the guide or test plan itself, or the path to its file
+Logistics: tools, recording, consent, incentives, observer plan
 ```
+
+The guide or test plan is written once: inside the plan as its protocol, or in its own file with the plan giving the path. Inside a plan, it leaves the context, the objective and the participants to the plan. A guide has a theme for each question the study answers, and its interviewer notes say only what to cut when time runs short. A test plan's metrics are only what the tasks' success criteria and cut-offs don't state.
 
 ### Findings report
 
 ```
-Findings — first, most important first; each as: a title naming the finding and its effect, observation, inference, implication, with the count and citation in the claim
-Recommendations — prioritized, specific, tied to findings
-Method — one or two sentences stating the study: the method, who took part, how many, when; never an inventory of what was read
-Open questions — what was not studied, each a plain question; what to investigate next
+Findings: first, most important first, and the order is the priority; each a title naming the finding and its effect, then observation, inference and implication; the observation carries who and how many and the quote or figure that shows it, cited; the implication is the change it calls for, and a change that rests on several findings is the first one's implication, citing the others by title
+Method: one or two sentences stating the study: the method, who took part, how many, when; never an inventory of what was read
+Open questions: what was not studied, each a plain question; what to investigate next
+Appendix: full data, participant demographics, raw notes
 ```
+
+The findings are the only place a change appears: each implication is the change its finding calls for, and the report has no list of recommendations.
 
 ## Your voice
 

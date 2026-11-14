@@ -157,7 +157,7 @@ Governing message: <one sentence>
 N. <the ask or takeaway> | ...
 
 Gaps: <what the material lacks, one plain sentence each>
-Refusal checks: <passed, or the refusal that triggered and what to do instead>
+Refusal checks: <only when one triggered: the refusal and what to do instead>
 ```
 
 Then ask: **"Approve this outline, or tell me what to change."**
@@ -268,7 +268,7 @@ A single self-contained `.html` file:
 - **Filename** is a slug of the deck title.
 - **Source credits** go on the slide: in the body for read decks, on a small source line for live decks.
 - **Visuals you can't produce** become labeled placeholder frames like `[SCREENSHOT: checkout step 2, mobile]`, never stock imagery. A placeholder tells the truth about what's missing; a stock photo hides it.
-- **The closing summary** states the format, how to open or import it, the slide count, and the remaining gaps.
+- **The closing summary** says where the file is, how to open or import it, and the gaps the deck still carries.
 
 ## Voice & approach
 

@@ -245,70 +245,64 @@ Write the deliverable to a file in the working directory, or where the user says
 
 ### Research plan
 
+The guide or test plan is written once: inside the plan as its protocol, or in its own file with the plan giving the path. Inside a plan, it leaves the context, the objective and the participants to the plan.
+
 ```
 ## Research objective
-[What we need to learn and why — tied to specific strategic questions]
+[The questions the study answers, each naming the bet in the brief it tests]
 
 ## Method
-[Selected method and rationale for choosing it over alternatives]
+[The method and why it answers the objective. Methods set aside go to the decision log]
 
 ## Participants
 [Target profile, sample size, recruitment criteria, screener questions]
 
 ## Timeline
-[Recruitment → Pilot → Fieldwork → Synthesis → Reporting]
+[Recruitment → Pilot → Fieldwork → Synthesis → Reporting, each with its date]
 
 ## Discussion guide / Protocol
-[Full guide or test plan — see templates below]
+[The guide or test plan itself, from the templates below, or the path to its file]
 
 ## Logistics
 [Tools, recording, consent, incentives, observer plan]
-
-## Deliverables
-[What the output will look like and when it will be ready]
 ```
 
 ### Interview guide
 
 ```
 ## Study context
-[Brief background for the interviewer — what we're exploring and why]
+[Only when no research plan holds it: what is being explored and why]
 
 ## Opening (5-10 min)
 [Introduction script, consent, rapport building, context setting]
 
 ## Core questions
-### Theme 1: [Topic]
+### Theme: [Topic, one per question the study answers]
 - [Primary question — open-ended, behavior-focused]
   - Probe: [Follow-up if needed]
   - Probe: [Follow-up if needed]
 
-### Theme 2: [Topic]
-- [Primary question]
-  - Probe: [Follow-up]
-
-### Theme 3: [Topic]
-- [Primary question]
-  - Probe: [Follow-up]
+### [Next theme]
+[Same structure]
 
 ## Closing (5-10 min)
 [Summary, "anything I missed?", next steps, thanks]
 
 ## Notes for interviewer
-[Timing guidance, flexibility notes, what to prioritize if running short]
+[What to cut when time runs short]
 ```
 
 ### Usability test plan
 
 ```
 ## Test objective
-[What we're evaluating and what success looks like]
+[Only when no research plan holds it: what is being evaluated, and the bet it tests]
 
 ## Prototype / Product
 [What participants will interact with — fidelity level, platform, access]
 
 ## Participants
-[Target profile, sample size, screener criteria]
+[Only when no research plan holds it: target profile, sample size, screener criteria]
 
 ## Tasks
 ### Task 1: [Scenario description]
@@ -320,7 +314,7 @@ Write the deliverable to a file in the working directory, or where the user says
 - Maximum time: [Cut-off]
 
 ## Metrics
-[Task completion rate, time on task, error rate, satisfaction rating, severity of issues found]
+[Only what the tasks' success criteria and cut-offs don't state, such as a satisfaction rating or an error count]
 
 ## Session structure
 [Welcome → Consent → Warm-up → Tasks → Debrief → Close]
@@ -331,21 +325,19 @@ Write the deliverable to a file in the working directory, or where the user says
 
 ### Findings report
 
+The findings are the only place a change appears: each implication is the change its finding calls for, and the report has no list of recommendations.
+
 ```
 ## Findings
-[Most important first]
+[Most important first; the order is the priority]
 
 ### [Title naming the finding and its effect]
-- **Observation:** [What we saw, with who and how many, cited]
+- **Observation:** [What was seen, with who and how many and the quote or figure that shows it, cited]
 - **Inference:** [What it means]
-- **Implication:** [What to do about it]
-- **Supporting data:** [Specific quotes, metrics, observations]
+- **Implication:** [The change it calls for. A change that rests on several findings is the first one's implication, citing the others by title]
 
 ### [Next finding]
 [Same structure]
-
-## Recommendations
-[Prioritized, specific, tied to findings — not opinions]
 
 ## Method
 [One or two sentences stating the study: the method, who took part, how many, when. Never an inventory of what was read.]

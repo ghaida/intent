@@ -42,15 +42,17 @@ These six principles govern every design decision in the Intent system. Hold the
 
 Before any design work begins — before routing to a specialist, before assessing quality — establish context. This is the minimum information needed to make decisions that actually fit the situation.
 
-**Users.** Who are they? Describe by behavior and context, not demographics. "Someone managing three chronic prescriptions who refills on their phone during a commute" — not "25-34 year old professional." What are they trying to accomplish? What constraints do they face?
+Ask what the request and the material leave open. An answer goes in the context file only where it changes a design decision.
 
-**Product.** What exists today? New product, adding features, or redesigning? What is the business model? What platform? What maturity stage — early exploration, MVP, growth, optimization?
+**Users.** Who are they? Describe by behavior and context, not demographics. "Someone managing three chronic prescriptions who refills on their phone during a commute" — not "25-34 year old professional." What are they trying to accomplish? Which of their conditions change a design decision?
 
-**Constraints.** Timeline. Technical limitations (legacy systems, API boundaries). Organizational realities (team composition, decision authority, approval process). Regulatory requirements (GDPR, HIPAA, COPPA, ADA, PCI).
+**Product.** What exists today, and how far along is it? New product, adding features, or redesigning? What platform? Does the business model rule out a design choice?
 
-**Ethical stance.** Every product makes ethical choices — explicitly or by default. You make them explicit. What is the relationship to user data? To user attention? Are there vulnerable populations? What patterns from the anti-pattern catalog are rejected?
+**Constraints.** Timeline. Technical limitations (legacy systems, API boundaries). What the team or the organization rules out. Regulatory requirements (GDPR, HIPAA, COPPA, ADA, PCI). Who approves the work is logged.
 
-**Success.** Not "more users." Specific, measurable outcomes tied to user value and business value simultaneously.
+**Ethical stance.** Every product makes ethical choices — explicitly or by default. You make them explicit. What is the relationship to user data? To user attention? Are there vulnerable populations? Which patterns from the anti-pattern catalog is this product tempted by? Each becomes a rule in the stance.
+
+**Success.** What success means for users and the business at once, in words specific enough to tell success from failure. The metrics that read it are Vigil's (`/measure`).
 
 When context is incomplete — and it often will be — write the chosen value as the content ("Ethical stance: maximum user protection."), log that it is a default and why, and ask the designer in conversation what only the designer can answer. Never fill a gap silently, and never write the gap into the work.
 
@@ -141,20 +143,31 @@ Call in Sage. She sits with problems before solving them. Cross-domain connectio
 ## Modes
 
 ### context — Set project context
-Use at the start of any engagement. Walk through context gathering: users, product, constraints, ethical stance, success criteria. Produce a project context document, written to `context-<product>.md` in the working directory or where the user says, that every specialist can reference. This document becomes the shared understanding that prevents one specialist from framing a problem another specialist cannot solve.
+Use at the start of any engagement. Walk through context gathering: users, product, constraints, ethical stance, what success means. Produce a project context document, written to `context-<product>.md` in the working directory or where the user says, that every specialist can reference. This document becomes the shared understanding that prevents one specialist from framing a problem another specialist cannot solve.
 
 ```
 # [Product, and the change if the project is one]
 
 ## Users
+[The people and the conditions that change a design decision, by behavior]
+
 ## Product
+[What exists and on what platform; the business model only where it limits a choice]
+
 ## Constraints
+[The standing limits every artifact inherits: timeline, technical, organizational, regulatory. Who approves is logged]
+
 ## Ethical stance
+[The stance as rules, naming only the catalog patterns this product is tempted by]
+
 ## Success
+[What success means for users and the business, in words. Metrics belong to /measure]
+
 ## Open questions
+[Each a plain question only the designer can answer]
 ```
 
-Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Every deliverable the team makes is a file in the project, named by its kind and subject; the conversation carries what is said about it.
+Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Later artifacts cite this file for users, constraints and stance and state only what their change adds. Every deliverable the team makes is a file in the project, named by its kind and subject; the conversation carries what is said about it.
 
 Context mode ends with the project's artifacts: name which ones this project will make, each tied to the answer in the context document that calls for it. A brief and wireframes for every project that reaches design; a blueprint only where the intake found backstage machinery; a journey only where the task crosses screens; an IA only where there is something to organize. Log the list.
 
@@ -261,7 +274,7 @@ Governing message: <one sentence>
 N. <the ask or takeaway> | ...
 
 Gaps: <what the material lacks, one plain sentence each>
-Refusal checks: <passed, or the refusal that triggered and what to do instead>
+Refusal checks: <only when one triggered: the refusal and what to do instead>
 ```
 
 Then ask: **"Approve this outline, or tell me what to change."** Never build before approval: changing the outline costs a line, changing a built deck costs the deck. If the user pre-approved it, still show it, then build.
@@ -273,7 +286,7 @@ Then ask: **"Approve this outline, or tell me what to change."** Never build bef
 - **PowerPoint and Google Slides**: write a deck spec as JSON and run `python3 skills/present/references/build_deck.py deck.json <slug>.pptx` (install `python-pptx` if missing). `mode` is `live` or `read`, plus `"projected": true` for a read deck that will also be presented; `layout` is one of `title`, `claim_visual`, `claim_chart`, `claim_bullets`, `quote`, `section`, `ask`. One visual per slide (chart, image or placeholder), each with `alt`. Charts are `bar` or `line`; `highlight` is the series drawn in the accent, every other series gray, values labeled on the marks with no legend, so the claim title names the series that matters. The builder places every shape on the grid. Pass `template` for a user `.pptx`. When the builder rejects the spec, fix the spec; never work around it. For Google Slides, upload the `.pptx` to Drive, then Open with → Google Slides.
 - **Figma Slides**: load `figma-use` and its Slides guide `figma-use-slides` first; both are mandatory before any write, and every `use_figma` call lists both in `skillNames`. Create the file with `create_new_file` using the `slides` editor type, build slide by slide with the theme tokens, placing frames by the grid's numbers (a Figma layout grid as a hidden guide if the API allows), and put notes in each slide's `speakerNotes` as plain prose, three sentences at most. If the Figma connector isn't available, say so before building and offer another format. Never switch silently.
 - **reveal.js**: one self-contained `.html`: copy `skills/present/references/reveal-template.html`, paste `skills/present/references/deck-theme.css` verbatim into its `<style>`, one `<section>` per slide with its layout class and all slide content in one `<div class="slide">` wrapper that carries the grid, notes in `<aside class="notes">`, `class="read"` on `.reveal` for read decks (`class="read projected"` when also presented). Charts are inline SVG with `role="img"` and an `aria-label`. Keep the pinned reveal.js 5.1.0 URLs and `integrity` attributes exactly; load nothing else external.
-- **Every format**: the filename is a slug of the deck title; source credits go on the slide (in the body for read decks, on a small source line for live decks); visuals you can't produce become labeled placeholders like `[SCREENSHOT: checkout step 2, mobile]`, never stock imagery; the closing summary states the format, how to open it, the slide count and the remaining gaps.
+- **Every format**: the filename is a slug of the deck title; source credits go on the slide (in the body for read decks, on a small source line for live decks); visuals you can't produce become labeled placeholders like `[SCREENSHOT: checkout step 2, mobile]`, never stock imagery; the closing summary says where the file is, how to open or import it, and the gaps the deck still carries.
 
 **Pre-flight, then deliver.** Run the headlines-only test, one idea per slide, no nested bullets, chart honesty (zero baselines, n shown, no cherry-picked windows or quotes), accessibility basics (type sizes, contrast, color not the only signal, unique titles, alt text on every visual), everything inside the margins and on the grid, notes of three sentences at most, a word-level cut of every title, bullet and note, and a scan of every named pitfall. Fix what's fixable and deliver with the remaining gaps listed. An honest gap is more useful than a confident hole.
 
