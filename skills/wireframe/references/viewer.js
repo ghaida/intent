@@ -4,9 +4,10 @@
    viewer.css. Powers the chrome (view toggle, slideshow, theme, notes)
    and the kit's stateful controls (chips, switches, prototype triggers).
 
-   View model: body[data-view] = grid | slides | proto. Grid sets
-   full-page screens 3-up, each scaled down to its column (--grid-scale,
-   never up). Slides pages frames in section order with prev/next +
+   View model: body[data-view] = grid | slides | proto. Grid is an
+   overview: every full-page frame is a tile of one size, its title
+   above and the whole frame scaled down to fit (--grid-scale, never
+   up), with no annotation. Slides pages frames in section order with prev/next +
    arrow keys. Proto makes the wireframes themselves the prototype —
    data-go on real trigger elements navigates the flow, and those
    triggers join the tab order (Enter/Space activate) while the mock's
@@ -19,7 +20,7 @@
    so clear of the notes rail.
 
    The reviewer's place is never lost: grid scroll is restored on
-   return, a plate click in grid opens THAT frame in slides, and the
+   return, a click on a tile in grid opens THAT frame in slides, and the
    view + frame index mirror into location.hash (#slides-2, #proto-1)
    so any state is linkable. Slide bounds are real — no silent
    wrap-around; prev/next disable at the ends.
@@ -150,25 +151,43 @@ addEventListener('keydown', e => {
   if (e.key === 'Escape') setView('grid');
 });
 
-/* grid — each full-page screen keeps its real width and scales down
-   to its column. The authored width becomes --frame-w; a resize of
-   the column (window, rail collapsed or hidden) rescales it */
+/* grid — each full-page frame is a tile: the whole frame, at its real
+   width, scales down to fit a 4:3 panel the width of its column. The
+   real size is read once, before any scale applies: the authored width
+   becomes --frame-w and the height at that width --frame-h. A resize of
+   the column rescales it */
 const screens = frames.filter(f => !f.querySelector('.vignette'));
 screens.forEach(f => {
-  const w = parseFloat(f.style.width) || f.querySelector('.wf')?.offsetWidth;
-  if (w) f.style.setProperty('--frame-w', `${w}px`);
+  const wf = f.querySelector('.wf');
+  const w = parseFloat(f.style.width) || wf?.offsetWidth;
+  if (!w) return;
+  f.style.setProperty('--frame-w', `${w}px`);
+  if (wf) f.style.setProperty('--frame-h', `${wf.offsetHeight}px`);
 });
 function fitGrid(f) {
   const w = parseFloat(f.style.getPropertyValue('--frame-w'));
+  const h = parseFloat(f.style.getPropertyValue('--frame-h'));
   if (view() !== 'grid' || !w || !f.clientWidth) return;
-  f.style.setProperty('--grid-scale', Math.min(1, f.clientWidth / w).toFixed(4));
+  const inset = sp(3);                      /* the panel's margin around the frame */
+  const tileW = f.clientWidth, tileH = tileW * 3 / 4;   /* the panel is 4:3 (viewer.css) */
+  const s = Math.min(1, (tileW - 2 * inset) / w, h ? (tileH - 2 * inset) / h : 1);
+  f.style.setProperty('--grid-scale', s.toFixed(4));
 }
 const gridFit = new ResizeObserver(entries => entries.forEach(en => fitGrid(en.target)));
 screens.forEach(f => gridFit.observe(f));
+/* the whole tile is the handle: a click anywhere on it opens that frame
+   in slides (its title is the keyboard's way in, below) */
+function openTile(f) {
+  if (view() !== 'grid') return;
+  cur = frames.indexOf(f);
+  setView('slides');
+}
+screens.forEach(f => f.addEventListener('click', () => openTile(f)));
 
-/* a plate is its frame's handle — in grid, clicking it opens that
-   frame in slides. The plate's content is wrapped in a real button
-   at runtime (the behavior only exists when the viewer does). */
+/* a plate is its frame's keyboard handle — in grid, Enter or a click
+   on it opens that frame in slides. The plate's content is wrapped in
+   a real button at runtime (the behavior only exists when the viewer
+   does). */
 document.querySelectorAll('.frame-plate').forEach(p => {
   const f = p.closest('.frame');
   if (!f) return;
@@ -177,11 +196,7 @@ document.querySelectorAll('.frame-plate').forEach(p => {
   b.setAttribute('title', 'Open in slides');
   while (p.firstChild) b.appendChild(p.firstChild);
   p.appendChild(b);
-  b.addEventListener('click', () => {
-    if (view() !== 'grid') return;
-    cur = frames.indexOf(f);
-    setView('slides');
-  });
+  b.addEventListener('click', e => { e.stopPropagation(); openTile(f); });
 });
 
 /* theme — a stage-mode switch. The reviewer's saved choice wins,
@@ -361,8 +376,7 @@ addEventListener('click', e => {
 /* where am I: the section in view is the last one whose top has
    passed the upper third of the viewport, or the last section once the
    page bottoms out, so a short final section still counts. The section
-   index (when present) marks it; in grid the open rail follows it to
-   that section's notes */
+   index (when present) marks it */
 const sections = [...document.querySelectorAll('.board-section')];
 const indexLinks = [...document.querySelectorAll('.board-index a')];
 let inView = null;
@@ -375,11 +389,6 @@ function spy() {
   inView = s;
   indexLinks.forEach(a => a.getAttribute('href') === `#${s.id}`
     ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
-  if (rail?.offsetWidth && document.body.dataset.notes === 'open') {
-    const notes = [...rail.querySelectorAll('.note-section')]
-      .find(n => n.dataset.section === s.dataset.section);
-    if (notes) rail.scrollTo({ top: notes.offsetTop - railTitle.offsetHeight, behavior: motion });
-  }
 }
 addEventListener('scroll', () => requestAnimationFrame(spy), { passive: true });
 setNotes();
