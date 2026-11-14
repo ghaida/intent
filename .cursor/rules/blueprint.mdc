@@ -506,9 +506,10 @@ Only the part the request asks about.
 
 ### Open questions
 
-- About the system, each a plain question. Assumptions needing validation and
-  dependencies on other teams go in the decision log; technical unknowns
-  needing engineering input are said in the reply.
+- About the system, each a plain question that only the designer can answer.
+  Questions for research, stakeholders, engineering or another skill are said
+  in the reply; assumptions needing validation and dependencies on other teams
+  go in the decision log.
 
 ## Voice and approach
 

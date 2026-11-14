@@ -403,7 +403,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
    The hierarchy and its cross-links, each key decision annotated with its reason and the evidence it rests on.
 
 2. **Navigation Specification**
-   The chosen pattern, and how global and local navigation behave. The states and the collapse on a small screen are drawn in the wireframes; another platform's navigation is `/transpose`'s.
+   The chosen pattern, and how global and local navigation behave. The states and the collapse on a small screen are drawn in the wireframes, and where no wireframes exist, the site map notes them. Another platform's navigation is `/transpose`'s.
 
 3. **Taxonomy Documentation**
    Category definitions, and the rules that place content: where an item may have two parents, and where a new item goes.
@@ -415,7 +415,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
    Only when search is in scope: when people search and when they browse, autocomplete, filters, the browse entry points, and where a search with no results sends the person. What that empty result shows is a state for `/fortify`, in words from `/articulate`.
 
 6. **Open Questions**
-   Only when they are about the structure, each a plain question. What needs research, stakeholder input, or technical validation is said in the reply.
+   Only when they are about the structure, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ## Voice & approach
 

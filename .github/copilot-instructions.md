@@ -170,7 +170,7 @@ Context mode produces a **project context document**, written to `context-<produ
 [Each a plain question only the designer can answer]
 ```
 
-Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Later artifacts cite this file for users, constraints and stance and state only what their change adds. Context mode ends by naming which artifacts this project will make, each tied to the answer that calls for it, and that list is logged.
+Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Artifacts after the brief cite this file and the brief for users, constraints and stance, and state only what their change adds. Context mode ends by naming which artifacts this project will make, each tied to the answer that calls for it, and that list is logged.
 
 ### `practice` — Build and improve UX
 

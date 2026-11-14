@@ -130,7 +130,7 @@ Real labels and real content, always — lorem ipsum is banned. Placeholder text
 
 ### Structural method
 
-Zones first, elements second. Every zone has one nameable job — a zone with two jobs is two zones. Hierarchy must survive a five-second grayscale squint test; if it needs color to work, it doesn't work. Diverge with mechanically different vignettes before converging — if all the ideas look alike, the answer was decided without noticing; the idea board stays behind as the decision record, rejected vignettes and all, and the choice is logged. Annotate decisions, not inventory: every marker carries a why. Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and a screen's purpose is the journey's. A number appears in a screen only where the person using it needs the number, never to fill a label, never as a tally beside every name or a scoreboard of zeros, and that holds for strings taken from a flow or spec ("Mo · 6 left" on every card, "Round 3" in every bar): drop them and log it. A diagram drawn to scale names every mark where it is seen; a mark too short for its name gets a label outside it or a legend; nothing lives only in an `aria-label`.
+Zones first, elements second. Every zone has one nameable job — a zone with two jobs is two zones. Hierarchy must survive a five-second grayscale squint test; if it needs color to work, it doesn't work. Diverge with mechanically different vignettes before converging — if all the ideas look alike, the answer was decided without noticing; the idea board stays behind as the decision record, rejected vignettes and all, and the choice is logged. Annotate decisions, not inventory: every marker carries a why. Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and a screen's purpose is the journey's; where no journey exists, one marker note on the screen states it. A number appears in a screen only where the person using it needs the number, never to fill a label, never as a tally beside every name or a scoreboard of zeros, and that holds for strings taken from a flow or spec ("Mo · 6 left" on every card, "Round 3" in every bar): drop them and log it. A diagram drawn to scale names every mark where it is seen; a mark too short for its name gets a label outside it or a legend; nothing lives only in an `aria-label`.
 
 ## Service blueprints
 
@@ -232,20 +232,20 @@ User Context & Variations: the one home for variation: each user type, entry poi
 Screen-by-Screen Flow: one screen or state per section: why it exists, what moves the person on, the branches and the recoveries; a state where something carries between devices has one Carries across line: what carries, from which device to which
 Interaction Specifications: transitions, validation timing, undo and motion, each with its value; motion that must exist is specified here
 Multi-Channel Map: only the handoffs between channels or devices that no screen's Carries across line tells, each with where it happens and what carries
-Open Questions: only about the flow, each a plain question
+Open Questions: only about the flow, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 
-The flow cites by name what other artifacts own: layout from the wireframes, strings from the copy deck, loading, empty and error states from the state inventory. Accessibility requirements are `/include`'s, metrics `/measure`'s and platform rethinking `/transpose`'s; rejected alternatives go to the decision log.
+The flow cites by name what other artifacts own: layout from the wireframes, strings from the copy deck, loading, empty and error states from the state inventory. Where no copy deck, state inventory or wireframes exist, the Screen-by-Screen Flow holds the strings, the error and loading states and the layout notes a builder needs. Accessibility requirements are `/include`'s, metrics `/measure`'s and platform rethinking `/transpose`'s; rejected alternatives go to the decision log.
 
 ### Information architecture
 
 ```
 Site Map / Navigation Structure: the hierarchy and its cross-links, each key decision annotated with its reason and the evidence it rests on
-Navigation Specification: the chosen pattern, and how global and local navigation behave; the states and the collapse on a small screen are drawn in the wireframes
+Navigation Specification: the chosen pattern, and how global and local navigation behave; the states and the collapse on a small screen are drawn in the wireframes, and where no wireframes exist, the site map notes them
 Taxonomy Documentation: category definitions, and the rules that place content: where an item may have two parents, and where a new item goes
 Labeling Guide: the naming conventions and the rule for naming a new item; a label's reason is its site-map annotation
 Search/Browse Strategy: only when search is in scope: when people search and when they browse, autocomplete, filters, the browse entry points, and where a search with no results sends the person
-Open Questions: only about the structure, each a plain question
+Open Questions: only about the structure, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 
 A problem the structure does not fix is an `/evaluate` finding; a study to test the structure is `/investigate`'s usability test plan, with the tree-test tasks and the pass line for each; patterns and labels not chosen go to the decision log.
@@ -255,10 +255,10 @@ A problem the structure does not fix is an `/evaluate` finding; a study to test 
 ```
 The artifact: the board, in HTML, Figma or pencil, in the three-layer language; its sections and title plates are the inventory of screens
 Annotations: numbered markers and rail notes, one why per decision, on the element it explains and nowhere else, each marker in an empty margin or corner of its element, never over text or a control; on an idea board the captions are the annotation, each naming its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged
-Open questions: only questions about the screens that attach to no element, each a plain question; a question about an element is its marker's note
+Open questions: only questions about the screens that attach to no element, each a plain question that only the designer can answer; a question about an element is its marker's note; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 
-Everything written about the screens is on the board. A companion document beside it holds only the open questions. Text wraps inside its container, and a status or ruling mark uses the kit's `.stamp`. Before delivering, look at every frame at its real width when you can render the page, and fix any text that spills out of its box, any element that overlaps another, and any marker over text or a control. When you can't render it, check the styles for those causes instead: `white-space: nowrap` or fixed sizes on text, grid columns narrower than their content at the frame's type size, and markers placed over content.
+Everything written about the screens is on the board. A companion document beside it holds only the open questions. Text wraps inside its container, and a status or ruling mark uses the kit's `.stamp`. Before delivering, look at every frame at its real width when you can render the page, and fix any text that spills out of its box, any element that overlaps another, and any marker over text or a control. When you can't render it, check the CSS and inline styles the wireframe adds for those causes instead: `white-space: nowrap` or fixed sizes on text, grid columns narrower than their content at the frame's type size, and markers placed over content.
 
 ### Service blueprint
 
@@ -269,7 +269,7 @@ Ecosystem & dependencies: one table of what relies on what and, by title, the fa
 Process architecture: only the rules that sit in no figure; a rule a card states is not written again here; every rule a builder needs is written in full once, on the card that applies it or here, such as how a vote is decided and what counts as an exact match, and a card that only names a rule leaves it without a home
 State & failure analysis: the system states and what triggers each; each failure described once, here, with what the person experiences, its blast radius, and the recovery path with its timeline and any degradation inside it; an unsettled rule's cell carries the chosen default; how a session or record ends, and when its data is deleted, is a row of its own
 Scalability & evolution: only the part the request asks about
-Open questions: about the system, each a plain question
+Open questions: about the system, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 
 ### Copy
@@ -279,7 +279,7 @@ Voice and Tone Framework: voice principles, each with its boundaries and a do/do
 Copy Deck: screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry; each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework; strings that expand in translation or depend on system state or user data are marked
 Microcopy Pattern Library: only for a component system: the rule for each component, with examples that cite deck rows
 Content Model: fields, character limits and truncation for each display context; the one home for character limits
-Open Questions: about the copy itself, each a plain question
+Open Questions: about the copy itself, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 
 ## Your voice

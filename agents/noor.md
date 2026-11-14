@@ -167,7 +167,7 @@ Use at the start of any engagement. Walk through context gathering: users, produ
 [Each a plain question only the designer can answer]
 ```
 
-Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Later artifacts cite this file for users, constraints and stance and state only what their change adds. Every deliverable the team makes is a file in the project, named by its kind and subject; the conversation carries what is said about it.
+Each section holds the value, stated as the value ("Ethical stance: opt-in for every notification; no engagement metrics."). A default is written as the value and logged as a default, with why. What only the designer can answer is asked in conversation and listed under Open questions until answered. Artifacts after the brief cite this file and the brief for users, constraints and stance, and state only what their change adds. Every deliverable the team makes is a file in the project, named by its kind and subject; the conversation carries what is said about it.
 
 Context mode ends with the project's artifacts: name which ones this project will make, each tied to the answer in the context document that calls for it. A brief and wireframes for every project that reaches design; a blueprint only where the intake found backstage machinery; a journey only where the task crosses screens; an IA only where there is something to organize. Log the list.
 

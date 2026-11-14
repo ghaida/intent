@@ -198,22 +198,13 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 
 **Example: Annotated evaluation excerpt (signup flow)**
 
-> **Visibility of system status. Verdict: broken (major)**
-> After clicking "Create account," the button disables but there is no loading indicator, progress message, or spinner. On slow connections, users wait 3-8 seconds with no feedback, leading to double-clicks and duplicate submissions. The success state redirects silently — no confirmation that the account was created.
-> → Show a loading indicator while the account is created and a confirmation when it is.
+> **Critical**
 >
-> **Error prevention. Verdict: strained (minor)**
-> Password field shows requirements only after first failed validation ("Must include uppercase, number, and symbol"). Requirements should be visible before the user types, not after they fail. Email field accepts input but validates only on submit — inline validation on blur would catch typos early.
-> → Show the password requirements before the user types, and validate the email on blur.
+> The newsletter box on the signup form is checked by default, sits below the fold and reads "Keep me updated." A person who never scrolls to it is subscribed to marketing email without choosing it, which is a GDPR exposure in EU markets. It is prechecked consent, and it violates user control and freedom. Uncheck the box by default and label it "Subscribe to marketing emails."
 >
-> **Anti-pattern: Asymmetric consent — Severity: High**
-> Newsletter opt-in is prechecked during signup. Opting out requires noticing a small checkbox below the fold. The checkbox label reads "Keep me updated" rather than "Subscribe to marketing emails." This is a prechecked consent pattern with a disguised label — potential GDPR violation in EU markets.
-> → Critical. Uncheck the box by default and label it "Subscribe to marketing emails"; a prechecked consent box is a GDPR exposure in EU markets.
+> **Major**
 >
-> **Cognitive walkthrough: "Create account and reach dashboard" — Step 3 of 5: Verify email**
-> Q1 (Motivation): Yes — user understands they need to verify. Q2 (Visibility): No — verification email takes 30-60 seconds but the screen says "Check your inbox" immediately, so users check before it arrives and assume it failed. Q3 (Understanding): Yes — "Click the link in the email" is clear. Q4 (Feedback): No — after clicking the email link, the redirect is slow and shows a blank page for 2 seconds before the dashboard loads.
-> Rating: Failure (two "no" answers). Users abandon or request re-send unnecessarily.
-> → Say "Email arrives within 60 seconds" on the check-your-inbox screen, and show a loading state during the redirect.
+> After a click on "Create account," the button disables and shows nothing else. On a slow connection the wait runs 3 to 8 seconds, so people click again and submit twice, and the redirect that follows never says the account exists. It violates visibility of system status. Show a spinner with a label inside the button while the account is created, and confirm the new account on the screen that follows.
 
 ---
 

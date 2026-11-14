@@ -323,8 +323,8 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
 - A mid-fi board carries one notes rail, after `.board-main` inside `.board-body`, never one per section. Don't author the notes switch, the sidebar toggle or the rail's title; viewer.js builds them.
 - Include the Prototype view button and `data-go` attributes ONLY when the user asked for a prototype. `data-go` goes on the actual trigger element — the prototype IS the wireframe, not an overlay on it.
 - Real labels, real content. No lorem ipsum, anywhere, ever.
-- Text wraps inside its container. No `white-space: nowrap` on text that can grow, and no fixed width or height on an element that holds text; a status or ruling mark uses `.stamp`.
-- Before delivering, look at every frame at its real width when you can render the page, and fix any text that spills out of its box, any element that overlaps another, and any marker over text or a control. When you can't render it, check the styles for those causes instead: `white-space: nowrap` or fixed sizes on text, grid columns narrower than their content at the frame's type size, and markers placed over content.
+- Text wraps inside its container. The CSS and inline styles a wireframe adds put no `white-space: nowrap` on text that can grow and no fixed width or height on an element that holds text; kit classes keep their own sizes, and a status or ruling mark uses `.stamp`.
+- Before delivering, look at every frame at its real width when you can render the page, and fix any text that spills out of its box, any element that overlaps another, and any marker over text or a control. When you can't render it, check the CSS and inline styles the wireframe adds for those causes instead: `white-space: nowrap` or fixed sizes on text, grid columns narrower than their content at the frame's type size, and markers placed over content.
 - Controls are native elements with working interaction states — inputs type, buttons hover and press, chips and switches toggle. A div painted as a button is a vocabulary violation. The accent appears only where the kit puts it: primary actions, selection states, focus. `--w-error` appears only on invalid states.
 
 ### Figma output
@@ -383,7 +383,7 @@ A number appears in a screen only where the person using it needs the number: ne
 
 ### 5. Annotation discipline
 
-A wireframe shows what; annotations carry why. Annotate decisions, not inventory: "search is in the header because support data shows nav-first users fail 40% of the time" earns a marker — "this is the search box" does not. Number markers, keep notes in the rail, and mark open questions as questions ("does legal require the disclaimer above the fold?"). Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and the deliverable's Open questions hold only those that attach to no element. A screen's purpose is the journey's, so no note restates it. Un-annotated wireframes invite the real-estate-tour reading; over-annotated ones bury the three decisions that matter under twenty that don't.
+A wireframe shows what; annotations carry why. Annotate decisions, not inventory: "search is in the header because support data shows nav-first users fail 40% of the time" earns a marker — "this is the search box" does not. Number markers, keep notes in the rail, and mark open questions as questions ("does legal require the disclaimer above the fold?"). Each why is written once, on the marker for the element it explains; a question about an element is its marker's note, and the deliverable's Open questions hold only those that attach to no element. A screen's purpose is the journey's, so no note restates it; where no journey exists, one marker note on the screen states it. Un-annotated wireframes invite the real-estate-tour reading; over-annotated ones bury the three decisions that matter under twenty that don't.
 
 ### 6. Wireflow & prototype assembly
 
@@ -401,10 +401,10 @@ The deliverable is the board, in the file named under HTML output or in Figma or
    The board, in HTML (default), Figma or pencil per the ask-first protocol, in the three-layer language. Its sections and title plates are the inventory of screens.
 
 2. **Annotations**
-   Numbered markers and rail notes, one why per decision, on the element it explains and nowhere else. A screen's purpose is the journey's. On an idea board the captions are the annotation: each names its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged.
+   Numbered markers and rail notes, one why per decision, on the element it explains and nowhere else. A screen's purpose is the journey's; where no journey exists, one marker note on the screen states it. On an idea board the captions are the annotation: each names its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged.
 
 3. **Open questions**
-   Only questions about the screens that attach to no element, each a plain question; a question about an element is its marker's note. What needs `/organize`, `/investigate`, or stakeholder input before structure can freeze is said in the reply.
+   Only questions about the screens that attach to no element, each a plain question that only the designer can answer; a question about an element is its marker's note. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ## Voice & approach
 
