@@ -236,13 +236,11 @@ Write **one self-contained file per rung** — `wireframes-<topic>-thumbnails.ht
   </header>
 
   <!-- in the stage views this row replaces the section label:
-       name · position grouped left, controls right. Each view carries
-       its own quiet hint; proto swaps sequential next for Restart -->
+       name · position grouped left, controls right; proto swaps
+       sequential next for Restart -->
   <nav class="slide-nav">
     <span class="slide-section">[SECTION NAME]</span>
     <span class="slide-pos">1/1</span>
-    <span class="nav-hint slides-hint">← → to page · Esc returns to grid</span>
-    <span class="nav-hint proto-hint">Tap live controls to navigate · ← steps back · Esc returns to grid</span>
     <button data-prev aria-label="Previous"></button>
     <button data-next aria-label="Next"></button>
     <button data-restart>Restart</button>
