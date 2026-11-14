@@ -340,7 +340,7 @@ The findings are the only place a change appears: each implication is the change
 [Most important first; the order is the priority]
 
 ### [Title naming the finding and its effect]
-- **Observation:** [A nested list, one item per piece of evidence, each opening with who or what it was seen in, then what was seen, how many, and the quote or figure that shows it, cited. Evidence for a different point belongs to that point's finding]
+- **Observation:** [A nested list, one item per piece of evidence, each opening with who or what it was seen in, then what was seen, how many where the source counts it, and the quote or figure that shows it, cited. A count the source lacks is left out of the line. Evidence for a different point belongs to that point's finding]
 - **Inference:** [What it means]
 - **Implication:** [The change it calls for. A change that rests on several findings is the first one's implication, citing the others by title]
 

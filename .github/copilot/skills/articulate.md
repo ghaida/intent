@@ -205,7 +205,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
    Only for a component system: the rule for each component, with examples that cite deck rows.
 
 5. **Content Model**
-   Fields, character limits and truncation for each display context. The one home for character limits.
+   Fields, character limits and truncation for each display context, and each content type's review cadence and retirement criteria. The one home for character limits.
 
 6. **Open Questions**
    About the copy itself, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.

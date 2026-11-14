@@ -99,6 +99,8 @@ For each state that gets a row: what the user sees, what they can do, how they r
 
 ### First-run experience
 
+The inventory records each first-use state; the first-session sequence itself is `/journey`'s. These patterns are what a first-use state is checked against.
+
 - **Progressive onboarding** — Learn by doing, not reading. First task delivers value immediately. Reveal complexity gradually.
 - **Value-first** — Show what the product does before asking for setup. Let users see a populated state before requiring configuration.
 - **Just-in-time guidance** — Explain features when relevant, not all at once.
@@ -213,10 +215,10 @@ Positive Findings: [what to protect, a short sentence each]
 
 Each finding opens with a short headline that states the problem, then a list. What happens: the observation that shows the problem and where, cited, in one or two short sentences. Why it matters: who it hurts and how, in one sentence. Breaks: the heuristic by name, or the anti-pattern by its catalog name. Change: what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
 
-### State inventory matrix
+### State inventory and edge cases
 
 ```
-State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a phone that reconnects, a person who rejoins, a shared screen that returns) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
+State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a device that reconnects, a person who returns to a half-finished task, a session that resumes) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
 Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have
 Edge Case Catalog: scenarios that are not states: the scenario, what the design does now, the change, and its severity; grouped by stress category only when there are many
 Open Questions: scenarios only the designer can settle
@@ -227,14 +229,14 @@ The conditions the request names set the scope. The inventory is the only place 
 ### Accessibility audit
 
 ```
-Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change stated as the one value or string chosen (the words, the size, the timing), and the done-when test. A change that names only a direction is unfinished. Under each principle, after its findings, one Keep line for each thing that passes and must survive the next pass, with its value where it has one. A principle with neither findings nor Keep lines is left out
+Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change stated as the one value chosen (the size, the timing, and the words where no copy deck holds them), and the done-when test. A change that names only a direction is unfinished. Under each principle, after its findings, one Keep line for each thing that passes and must survive the next pass, with its value where it has one. A principle with neither findings nor Keep lines is left out
 Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design
-Screen Reader Flow Documentation: reading order only where it departs from the visual order, with the tab order when it departs the same way; live regions: for each change the person must hear, what is announced, how politely, and where focus goes, the only home for announcements; each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings
-Keyboard Navigation Map: only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens and where it returns when it closes
+Screen Reader Flow Documentation: reading order only where it departs from the visual order, with the tab order when it departs the same way; live regions: for each change the person must hear, what is announced and how politely, the only home for announcements; each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings
+Keyboard Navigation Map: only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens or a change moves it, and where it returns when it closes; the only home for focus targets
 Open Questions: questions only the designer can settle
 ```
 
-The conditions the request names set the scope. The findings are the only place a problem is described; announcement wording, politeness and focus targets are stated once, in the live-region table and the keyboard map, and a finding whose change sets one of them leaves the value to its table.
+The conditions the request names set the scope. The findings are the only place a problem is described; announcements and their politeness are stated once, in the live-region table, and focus targets once, in the keyboard map, and a finding whose change sets one of them leaves the value to its table.
 
 ### Measurement framework
 

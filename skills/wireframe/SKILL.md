@@ -147,7 +147,7 @@ The Intent indigo accent marks **what is primary and what is selected** — fill
 | Choices | `.choice` rows: native checkbox / radio (accent when checked); switch = **`button.switch[role=switch]`**, never a styled checkbox |
 | Chips / tabs | `.chip` (accent-filled when active), `.tabs` > `.tab-item` (accent underline), `.tabbar` > `.tab` (mobile bottom bar) |
 | Bars | `.appbar` — back glyph, title, contextual actions |
-| Objects | `.avatar` (sm/md/lg), `.media` (light gray block — surface fill, hairline border, no crossed lines), `.badge` (+ `-muted`/`-accent`), `.stamp` (+ `-muted`; a status or ruling mark, such as "Match · 3 entries", that wraps inside its container), `.link`, `.divider` |
+| Objects | `.avatar` (sm/md/lg), `.media` (light gray block — surface fill, hairline border, no crossed lines), `.badge` (+ `-muted`/`-accent`), `.stamp` (+ `-muted`; a status or ruling mark, such as "On hold · insurance review", that wraps inside its container), `.link`, `.divider` |
 | Collections | `.card` (+ `.interactive`) > `.media` + `.card-body`; `.list` > `.list-row`; native `<table>` with real headers and real rows |
 | Overlays | `.scrim` + `.modal` (+ `.modal-actions`), `.sheet` + `.sheet-handle`, `.toast` — elevation is **a scrim plus a hairline border, no glow shadows** |
 | Alerts | `.callout` > `.glyph` + `.callout-body` (`.callout-title` + `.callout-text`) — persistent in-page note, the toast's standing counterpart. Neutral default, `.accent` for emphasis, `.error` for the ramp's one semantic exception. **Severity reads from glyph + copy, never hue** (the ramp has no success/warning color); never a left accent stripe |

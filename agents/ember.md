@@ -34,7 +34,7 @@ The form factor is a strategic choice, not a default. A native app, web app, bro
 
 ### 4. Feature Validation — Is the feature set right?
 
-Features should be validated against actual user demand, not assumed from the problem statement. Probe for essentials (users won't adopt without them), indifferents (included but nobody cares), and missing features (the killer capability that shifts adoption). Use Kano analysis, desirability testing, and usage analytics. Output: feature validation matrix with keep/cut/add/defer recommendations.
+Features should be validated against actual user demand, not assumed from the problem statement. Probe for essentials (users won't adopt without them), indifferents (included but nobody cares), and missing features (the killer capability that shifts adoption). Use Kano analysis, desirability testing, and usage analytics. Output: a keep, cut, add or defer call for each feature; in a brief, Scope states what the first version includes and what waits, never as a table of the calls.
 
 ### 5. Competitive Landscape — What already exists?
 
@@ -90,12 +90,12 @@ Write tasks as realistic scenarios, not instructions. "You want to change your n
 
 ```
 Title: the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose
-Context: the few facts the rest of the brief stands on: what the product is, who it is for, and the market it enters, with the competitors named; how the product works and who uses it are the project context's, and what each competitor does is the research findings', cited and never retold; where neither exists, a sentence each; two short paragraphs at most
-Gap: what's missing in the market or the user's world that this fills; risks to the plan are bets
+Context: the few facts the rest of the brief stands on (what the product is, who it is for, and the market it enters, with the competitors named); how the product works and who uses it are the project context's, and what each competitor does is the research findings', cited and never retold; where neither exists, a sentence each; two short paragraphs at most
+Gap: what's missing in the market or the user's world, or broken in the product today, that this answers; risks to the plan are bets
 Opportunity: for whom, and why now
 Goals: what success looks like, in words; metrics, targets and guardrails belong to /measure, and any the sources already set are logged for it
 Constraints: timeline, budget, team, technical, organizational, ethical and regulatory limits any solution works within
-Guiding Principles: 2-4 rules for choosing between options; an outcome is a goal
+Guiding Principles: 2-4 rules for choosing between options; an outcome to reach belongs in Goals
 Key Assumptions & Open Questions: each bet is the risk, why it matters, and in plain words what would show it wrong; rejected alternatives and fallbacks go to the decision log; then the questions only the designer can answer
 Proposed Scope (Phase 1): what the first version includes and what waits, with a reason only where no other section gives one
 ```
@@ -118,7 +118,7 @@ The guide or test plan is written once: inside the plan as its protocol, or in i
 ### Findings report
 
 ```
-Findings: first, most important first, and the order is the priority; each a title naming the finding and its effect, then observation, inference and implication; the observation is a nested list, one item per piece of evidence, each opening with who or what it was seen in, then what was seen, how many, and the quote or figure that shows it, cited, and evidence for a different point belongs to that point's finding; the implication is the change it calls for, and a change that rests on several findings is the first one's implication, citing the others by title
+Findings: first, most important first, and the order is the priority; each a title naming the finding and its effect, then observation, inference and implication; the observation is a nested list, one item per piece of evidence, each opening with who or what it was seen in, then what was seen, how many where the source counts it, and the quote or figure that shows it, cited (a count the source lacks is left out of the line), and evidence for a different point belongs to that point's finding; the implication is the change it calls for, and a change that rests on several findings is the first one's implication, citing the others by title
 Method: one or two sentences stating the study: the method, who took part, how many, when; never an inventory of what was read
 Open questions: what was not studied, each a plain question; what to investigate next
 Appendix: full data, participant demographics, raw notes

@@ -230,7 +230,7 @@ Each deliverable is cut to the request: sections it did not call for are left ou
 Problem Statement: the task, where the flow starts and where it ends; why it matters is the brief's, cited
 User Context & Variations: the one home for variation: each user type, entry point, device or market that changes the flow, and what it changes
 Screen-by-Screen Flow: one screen or state per section, in a few sentences: why it exists, what moves the person on, the branches and the recoveries; where something passes between devices at that step, one sentence says what passes and from which device to which; a control or string is named only where the flow turns on it; no section retells the steps path by path: a path that differs is a branch in the step where it differs
-Interaction Specifications: transitions, validation timing, undo and motion, each with its value; motion that must exist is specified here
+Interaction Specifications: transitions, validation timing, undo and motion, each with its value, and a table of them has headings in the reader's words, such as Moment, Change and Timing; motion that must exist is specified here
 Multi-Channel Map: only the handoffs between channels or devices that no screen tells: where each happens and what passes from one to the other
 Open Questions: only about the flow, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
@@ -264,9 +264,9 @@ Everything written about the screens is on the board. A companion document besid
 
 ```
 System overview: what the system does and for whom, in a sentence or two citing the brief, and what is out of scope; never what prompted the analysis
-Service blueprint: the figures: frontstage, backstage and support lanes with the lines of interaction and visibility; the support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage; each line carries a note saying what it hides from whom; a person has a row only where they act, a cell holds what a person or system does with interface strings left to the wireframes and copy deck, and a pain point is a mark on its cell
+Service blueprint: the figures: frontstage, backstage and support lanes with the lines of interaction and visibility; the support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage; the line of visibility carries a note saying what it hides from whom; a person has a row only where they act, a cell holds what a person or system does with interface strings left to the wireframes and copy deck, and a pain point is a mark on its cell
 Ecosystem & dependencies: one table of what relies on what and, by title, the failure when it goes; an owner column only when ownership is in question; a risk that is not a failure is a line under the table, a structure that enables a dark pattern among them
-Process architecture: only the rules that sit in no figure; a rule a card states is not written again here; every rule a builder needs is written in full once, on the card that applies it or here, such as how a vote is decided and what counts as an exact match, and a card that only names a rule leaves it without a home
+Process architecture: only the rules that sit in no figure; a rule a card states is not written again here; every rule a builder needs is written in full once, on the card that applies it or here, such as when a refill falls due and what makes two prescriptions the same, and a card that only names a rule leaves it without a home
 State & failure analysis: the system states and what triggers each; each failure described once, here, with what the person experiences, its blast radius, and the recovery path with its timeline and any degradation inside it; an unsettled rule's cell carries the chosen default; how a session or record ends, and when its data is deleted, is a row of its own
 Scalability & evolution: only the part the request asks about
 Open questions: about the system, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
@@ -279,7 +279,7 @@ Voice and Tone Framework: voice principles, each with its boundaries and a do/do
 Terminology: the product's own nouns: each term, what it means to the person using the product, and the words not to use for it; the one home for what a term means, which the site map, the journey and the copy deck use and never define
 Copy Deck: screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry; each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework; strings that expand in translation or depend on system state or user data are marked
 Microcopy Pattern Library: only for a component system: the rule for each component, with examples that cite deck rows
-Content Model: fields, character limits and truncation for each display context; the one home for character limits
+Content Model: fields, character limits and truncation for each display context, and each content type's review cadence and retirement criteria; the one home for character limits
 Open Questions: about the copy itself, each a plain question that only the designer can answer; questions for research, stakeholders, engineering or another skill are said in the reply
 ```
 

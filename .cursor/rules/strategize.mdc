@@ -73,7 +73,7 @@ Before anything else, establish whether the problem is real, how acute the pain 
 The form factor of the solution is a strategic choice, not a default. A native desktop app, a mobile app, a web app, a browser extension, a CLI tool, or a platform plugin each carry different trade-offs in reach, friction, capability, and positioning. Research where and how users encounter the problem — the answer might surprise you. Map form factors against user needs and evaluate whether the chosen solution meets users where they already are, or asks them to change behavior. The output is a form factor recommendation grounded in user context.
 
 ### 4. Feature Validation — Is the feature set right?
-Features should be validated against actual user demand, not assumed from the problem statement. Probe for features that are essential (users won't adopt without them), features that are indifferent (included but nobody cares), and features that are missing (the killer feature that could shift adoption from "nice" to "necessary"). Kano analysis, feature desirability testing during interviews, and post-launch usage analytics are the primary methods. The output is a feature validation matrix with keep/cut/add/defer recommendations.
+Features should be validated against actual user demand, not assumed from the problem statement. Probe for features that are essential (users won't adopt without them), features that are indifferent (included but nobody cares), and features that are missing (the killer feature that could shift adoption from "nice" to "necessary"). Kano analysis, feature desirability testing during interviews, and post-launch usage analytics are the primary methods. The output is a keep, cut, add or defer call for each feature. In a brief, Scope states what the first version includes and what waits, never as a table of the calls.
 
 ### 5. Competitive Landscape — What already exists?
 Understand both direct competitors (products that solve the same problem) and indirect competitors (workarounds and adjacent tools people use instead). For each, document the thesis, trade-offs, pricing, adoption signals, and form factor. Plot the landscape to identify genuine white space versus crowded territory. Assess switching costs — what would make someone leave their current workaround for your product? The output is a competitive landscape report with positioning map and gap analysis.
@@ -111,7 +111,7 @@ Frame problems into structured design briefs that establish shared understanding
 - Use the output template below to structure briefs consistently
 
 **How to do it:**
-When a user brings a vague problem, ask clarifying questions that map to: Context (market/user/business backdrop), Gap (what's broken or missing), Opportunity (why now matters), Goals (intended outcomes), and Constraints (budget, timeline, technical limits, org structure). Don't guess—synthesize from evidence the user provides or acknowledge open questions.
+When a user brings a vague problem, ask clarifying questions that map to: Context (what the product is, who it is for, the market), Gap (what's missing or broken), Opportunity (for whom, and why now), Goals (what success looks like), and Constraints (the limits any solution works within). Don't guess—synthesize from evidence the user provides or acknowledge open questions.
 
 ### 2. Research synthesis & evidence grounding
 
@@ -176,7 +176,7 @@ Define what's in scope, what's out, and why—making trade-offs visible to stake
 - Make scope decisions traceable to strategy, not arbitrary
 
 **How to do it:**
-Listen to stakeholder priorities and map them against constraints. If everything is "must-have," that's a conversation, not a scope—help stakeholders see the trade-offs. Frame out-of-scope work as future phases or alternatives, not rejections. What was chosen against, and why, goes in the decision log; in the brief, scope is content.
+Listen to stakeholder priorities and map them against constraints. If everything is "must-have," that's a conversation, not a scope—help stakeholders see the trade-offs. Out-of-scope work appears in the brief as what waits for a later phase. What was chosen against, and why, goes in the decision log; in the brief, scope is content.
 
 ---
 
@@ -193,7 +193,7 @@ Use this structure:
 [The few facts the rest of the brief stands on: what the product is, who it is for, and the market it enters, with the competitors named. How the product works and who uses it are the project context's, and what each competitor does is the research findings', cited and never retold; where neither exists, a sentence each. Two short paragraphs at most]
 
 ## Gap
-[What's missing in the market or the user's world that this fills. Risks to the plan are bets, under Key Assumptions]
+[What's missing in the market or the user's world, or broken in the product today, that this answers. Risks to the plan are bets, under Key Assumptions]
 
 ## Opportunity
 [For whom, and why now]
@@ -205,7 +205,7 @@ Use this structure:
 [The limits any solution works within: timeline, budget, team, technical, organizational, ethical and regulatory]
 
 ## Guiding Principles
-[2–4 rules for choosing between options. An outcome is a goal]
+[2–4 rules for choosing between options. An outcome to reach belongs in Goals]
 
 ## Key Assumptions & Open Questions
 [Each bet: the risk, why it matters, and in plain words what would show it wrong. Rejected alternatives and fallbacks go to the decision log. Then the questions only the designer can answer]

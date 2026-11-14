@@ -303,12 +303,10 @@ The strings live in the wireframes and, beyond what they carry, in `/articulate`
 Define:
 - **State transitions** (what changes when user taps, hovers, submits, drags, selects?)
 - **Validation feedback** (inline errors vs. summary errors; when do they appear and clear?)
-- **Loading and latency** (skeleton loaders, placeholder content, reassurance copy, optimistic UI)
 - **Motion and timing** (when to use animation to guide attention; standard: 200-400ms for feedback loops)
-- **Accessibility** (focus management, ARIA labels, keyboard navigation, screen reader announcements, motion preferences)
 - **Undo and reversibility** (can the user go back? how do they recover from mistakes?)
 
-Document what *must* animate versus what's nice-to-have. Motion that must exist is specified here; the package carries it. Loading and latency states are rows in `/fortify`'s state inventory, and accessibility requirements are `/include`'s; the flow names them where they occur.
+Document what *must* animate versus what's nice-to-have. Motion that must exist is specified here; the package carries it. Loading and latency states are rows in `/fortify`'s state inventory, and focus, labels, keyboard use, announcements and motion preferences are `/include`'s; the flow names them where they occur.
 
 ### 7. Device-aware design
 
@@ -367,7 +365,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
    One screen or state per section, in a few sentences: why it exists, what moves the person on, the branches and the recoveries. Where something passes between devices at that step, one sentence says what passes and from which device to which. A control or string is named only where the flow turns on it. No section retells the steps path by path: a path that differs is a branch in the step where it differs.
 
 4. **Interaction Specifications**
-   Transitions, validation timing, undo and motion, each with its value. Motion that must exist is specified here; the package carries it.
+   Transitions, validation timing, undo and motion, each with its value; a table of them has headings in the reader's words, such as Moment, Change and Timing. Motion that must exist is specified here; the package carries it.
 
 5. **Multi-Channel Map**
    Only the handoffs between channels or devices that no screen tells: where each happens and what passes from one to the other.

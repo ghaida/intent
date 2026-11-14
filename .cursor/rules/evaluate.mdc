@@ -170,7 +170,7 @@ Define the key tasks users need to accomplish, then evaluate each one against co
 - Steps-to-completion — actual steps vs. minimum necessary steps
 - Recovery rate — percentage of errors that the user recovers from without abandoning
 
-You won't always have quantitative data. When evaluating designs (not live products), these metrics are estimates the walkthrough already implies: include a task table only when the request asks for task success, with the column headed Estimated and nothing else saying so.
+You won't always have quantitative data. When evaluating designs (not live products), these metrics are estimates the walkthrough already implies: include a task table only when the request asks for task success, as a last section, Task Success, after Positive Findings, with the column headed Estimated and nothing else saying so.
 
 ### 5. Assessment-to-action routing
 
@@ -194,7 +194,7 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 | Ready to build | `/specify` | The design is approved and someone needs to build it |
 | Vague unease, qualitative wrongness | `/philosopher` | "Something feels off but I can't name it" |
 
-**Priority mapping:** Critical issues get addressed first regardless of category. Within the same priority tier, address issues that affect the most users or the most critical tasks first. Group issues by skill when possible — it's more efficient to engage `/fortify` once for 5 edge case issues than 5 times for 1 issue each.
+**Priority mapping:** Critical issues get addressed first regardless of category. Within the same priority tier, address issues that affect the most users or the most critical tasks first. In the reply, group the changes by the skill that makes them, so `/fortify` is engaged once for five edge cases rather than five times; the report keeps fix order.
 
 **Example: Annotated evaluation excerpt (signup flow)**
 

@@ -273,7 +273,7 @@ Per target market, the adaptations that change the design, each with its evidenc
 The one home for legal and format requirements, by market. A requirement that does not change by market gets no row.
 
 ### Localization test plan
-The tests that catch the risks above, each with its pass line, sessions with players in a market among them. Planning those sessions is `/investigate`'s, said in the reply; the work names no skill.
+The tests that catch the risks above, each with its pass line, sessions with people in a market among them. Planning those sessions is `/investigate`'s, said in the reply; the work names no skill.
 
 ### Open questions
 Only when they are about the localization, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.

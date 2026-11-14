@@ -1,5 +1,5 @@
 ---
-description:  Harden designs for real-world use by systematically identifying and designing for every condition outside the happy path. Part of the Intent design strategy system. Covers state inventories, error recovery, empty states, loading patterns, first-run experiences, stress testing, internationalization readiness, and latency handling. Trigger on: edge cases, error states, empty states, loading states, first-run experience, onboarding, offline mode, "what happens when", "what if the user", "stress test this", "what could go wrong", "harden this design", "edge case review", "what are the failure modes", zero states, timeout handling, or any question about how a design behaves outside ideal conditions.
+description:  Harden designs for real-world use by systematically identifying and designing for every condition outside the happy path. Part of the Intent design strategy system. Covers state inventories, error recovery, empty states, loading patterns, first-use states, stress testing, internationalization readiness, and latency handling. Trigger on: edge cases, error states, empty states, loading states, first-use states, offline mode, "what happens when", "what if the user", "stress test this", "what could go wrong", "harden this design", "edge case review", "what are the failure modes", zero states, timeout handling, or any question about how a design behaves outside ideal conditions.
 alwaysApply: false
 ---
 
@@ -14,7 +14,7 @@ Every design starts with the ideal scenario: the user has a stable connection, r
 
 Fortify systematically identifies every condition your users will actually encounter and ensures the design handles each one with the same care you gave the happy path. This isn't about pessimism — it's about respect for the people using what you build.
 
-**When to activate this skill:** Edge case reviews, error state design, empty state design, loading pattern design, first-run experience design, offline mode planning, internationalization readiness checks, stress testing, or any moment someone asks "but what happens when..."
+**When to activate this skill:** Edge case reviews, error state design, empty state design, loading pattern design, first-use states, offline mode planning, internationalization readiness checks, stress testing, or any moment someone asks "but what happens when..."
 
 ---
 
@@ -96,6 +96,8 @@ When something goes wrong — and it will — the user's ability to recover dete
 **Error recovery anti-patterns to eliminate:** Generic error messages with no recovery action. Error states that require a full page reload. Silent failures where the user doesn't know anything went wrong. Error states that clear the user's input. Error messages in technical language ("Error 500: Internal Server Error"). Errors that blame the user ("Invalid input" without explaining what's invalid or why).
 
 ### 3. First-run experience design
+
+The inventory records each first-use state; the first-session sequence itself is `/journey`'s. These patterns are what a first-use state is checked against.
 
 The first time a user encounters your product or feature is the most fragile moment. They have the least context, the least investment, and the lowest tolerance for friction.
 
@@ -195,7 +197,7 @@ Cut to the request: the conditions it names set the scope, and sections it did n
 
 ```
 ## State Inventory
-[A row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a phone that reconnects, a person who rejoins, a shared screen that returns) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's]
+[A row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a device that reconnects, a person who returns to a half-finished task, a session that resumes) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's]
 [Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have]
 
 ## Edge Case Catalog

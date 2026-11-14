@@ -481,15 +481,15 @@ What the system does and for whom, in a sentence or two citing the brief, and wh
 
 ### Service blueprint
 
-The figures: frontstage, backstage and support lanes with the lines of interaction and visibility. The support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage. Each line carries a note saying what it hides from whom. A person has a row only where they act. A cell holds what a person or system does, and interface strings stay in the wireframes and the copy deck. A pain point is a mark on its cell.
+The figures: frontstage, backstage and support lanes with the lines of interaction and visibility. The support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage. The line of visibility carries a note saying what it hides from whom. A person has a row only where they act. A cell holds what a person or system does, and interface strings stay in the wireframes and the copy deck. A pain point is a mark on its cell.
 
 ### Ecosystem & dependencies
 
-One table: what relies on what and, by title, the failure when it goes. An owner column only when ownership is in question. A risk that is not a failure is a line under the table, such as a join code that is a group's only security or data that reaches a log. A structure that enables a dark pattern is one of these lines; with none found, nothing is written.
+One table: what relies on what and, by title, the failure when it goes. An owner column only when ownership is in question. A risk that is not a failure is a line under the table, such as a shared link that is a record's only protection, or data that reaches a log. A structure that enables a dark pattern is one of these lines; with none found, nothing is written.
 
 ### Process architecture
 
-Only the rules that sit in no figure; a rule a card states is not written again here. Every rule a builder needs is written in full once, on the card that applies it or here, such as how a vote is decided and what counts as an exact match; a card that only names a rule leaves it without a home. Decision points and handoffs are drawn in the figures, and exceptions are failure rows.
+Only the rules that sit in no figure; a rule a card states is not written again here. Every rule a builder needs is written in full once, on the card that applies it or here, such as when a refill falls due and what makes two prescriptions the same; a card that only names a rule leaves it without a home. Decision points and handoffs are drawn in the figures, and exceptions are failure rows.
 
 ### State & failure analysis
 
