@@ -254,11 +254,11 @@ A problem the structure does not fix is an `/evaluate` finding; a study to test 
 
 ```
 The artifact: the board, in HTML, Figma or pencil, in the three-layer language; its sections and title plates are the inventory of screens
-Annotations: numbered markers and rail notes, one why per decision, on the element it explains and nowhere else; on an idea board the captions are the annotation, each naming its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged
+Annotations: numbered markers and rail notes, one why per decision, on the element it explains and nowhere else, each marker in an empty margin or corner of its element, never over text or a control; on an idea board the captions are the annotation, each naming its mechanism and its trade, the rejected vignettes stay on the board, and the choice is logged
 Open questions: only questions about the screens that attach to no element, each a plain question; a question about an element is its marker's note
 ```
 
-Everything written about the screens is on the board. A companion document beside it holds only the open questions.
+Everything written about the screens is on the board. A companion document beside it holds only the open questions. Text wraps inside its container, and a status or ruling mark uses the kit's `.stamp`. Before delivering, look at every frame at its real width when you can render the page, and fix any text that spills out of its box, any element that overlaps another, and any marker over text or a control. When you can't render it, check the styles for those causes instead: `white-space: nowrap` or fixed sizes on text, grid columns narrower than their content at the frame's type size, and markers placed over content.
 
 ### Service blueprint
 
