@@ -229,9 +229,9 @@ Each deliverable is cut to the request: sections it did not call for are left ou
 ```
 Problem Statement: the task, where the flow starts and where it ends; why it matters is the brief's, cited
 User Context & Variations: the one home for variation: each user type, entry point, device or market that changes the flow, and what it changes
-Screen-by-Screen Flow: one screen or state per section: why it exists, what moves the person on, the branches and the recoveries
+Screen-by-Screen Flow: one screen or state per section: why it exists, what moves the person on, the branches and the recoveries; a state where something carries between devices has one Carries across line: what carries, from which device to which
 Interaction Specifications: transitions, validation timing, undo and motion, each with its value; motion that must exist is specified here
-Multi-Channel Map: only when the flow crosses channels or devices, and then the one home for each switch: where the person switches, the state that carries across, and the handoff
+Multi-Channel Map: only the handoffs between channels or devices that no screen's Carries across line tells, each with where it happens and what carries
 Open Questions: only about the flow, each a plain question
 ```
 
@@ -264,9 +264,9 @@ Everything written about the screens is on the board. A companion document besid
 
 ```
 System overview: what the system does and for whom, in a sentence or two citing the brief, and what is out of scope; never what prompted the analysis
-Service blueprint: the figures: frontstage, backstage and support lanes with the lines of interaction and visibility; a person has a row only where they act, a cell holds what a person or system does with interface strings left to the wireframes and copy deck, and a pain point is a mark on its cell
+Service blueprint: the figures: frontstage, backstage and support lanes with the lines of interaction and visibility; the support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage; each line carries a note saying what it hides from whom; a person has a row only where they act, a cell holds what a person or system does with interface strings left to the wireframes and copy deck, and a pain point is a mark on its cell
 Ecosystem & dependencies: one table of what relies on what and, by title, the failure when it goes; an owner column only when ownership is in question; a risk that is not a failure is a line under the table, a structure that enables a dark pattern among them
-Process architecture: only the rules the figures cannot show: decision rules, timings and sequencing
+Process architecture: only the rules that sit in no figure; a rule a card states is not written again here; every rule a builder needs is written in full once, on the card that applies it or here, such as how a vote is decided and what counts as an exact match, and a card that only names a rule leaves it without a home
 State & failure analysis: the system states and what triggers each; each failure described once, here, with what the person experiences, its blast radius, and the recovery path with its timeline and any degradation inside it; an unsettled rule's cell carries the chosen default; how a session or record ends, and when its data is deleted, is a row of its own
 Scalability & evolution: only the part the request asks about
 Open questions: about the system, each a plain question

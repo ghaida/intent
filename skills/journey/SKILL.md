@@ -374,13 +374,13 @@ Use this structure, cut to the request: sections it did not call for are left ou
    The one home for variation: each user type, entry point, device or market that changes the flow, and what it changes. A variation that changes nothing gets no line.
 
 3. **Screen-by-Screen Flow**
-   One screen or state per section: why it exists, what moves the person on, the branches and the recoveries. Layout, strings and states are cited by name.
+   One screen or state per section: why it exists, what moves the person on, the branches and the recoveries. A state where something carries between devices has one Carries across line: what carries, from which device to which. Layout, strings and states are cited by name.
 
 4. **Interaction Specifications**
    Transitions, validation timing, undo and motion, each with its value. Motion that must exist is specified here; the package carries it.
 
 5. **Multi-Channel Map**
-   Only when the flow crosses channels or devices, and then the one home for each switch: where the person switches, the state that carries across, and the handoff.
+   Only the handoffs between channels or devices that no screen's Carries across line tells, each with where it happens and what carries.
 
 6. **Open Questions**
    Only when they are about the flow, each a plain question. Questions for the designer and for other skills go in the reply.

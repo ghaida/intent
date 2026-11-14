@@ -494,7 +494,7 @@ What the system does and for whom, in a sentence or two citing the brief, and wh
 
 ### Service blueprint
 
-The figures: frontstage, backstage and support lanes with the lines of interaction and visibility. A person has a row only where they act. A cell holds what a person or system does, and interface strings stay in the wireframes and the copy deck. A pain point is a mark on its cell.
+The figures: frontstage, backstage and support lanes with the lines of interaction and visibility. The support lane is drawn once, for the whole service, as a figure of its own or as one lane spanning every stage. Each line carries a note saying what it hides from whom. A person has a row only where they act. A cell holds what a person or system does, and interface strings stay in the wireframes and the copy deck. A pain point is a mark on its cell.
 
 ### Ecosystem & dependencies
 
@@ -502,7 +502,7 @@ One table: what relies on what and, by title, the failure when it goes. An owner
 
 ### Process architecture
 
-Only the rules the figures cannot show: decision rules, timings and sequencing. Decision points and handoffs are drawn in the figures, and exceptions are failure rows.
+Only the rules that sit in no figure; a rule a card states is not written again here. Every rule a builder needs is written in full once, on the card that applies it or here, such as how a vote is decided and what counts as an exact match; a card that only names a rule leaves it without a home. Decision points and handoffs are drawn in the figures, and exceptions are failure rows.
 
 ### State & failure analysis
 

@@ -206,7 +206,7 @@ Cut to the request: the conditions it names set the scope, and sections it did n
 
 ```
 ## State Inventory
-[A row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's]
+[A row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a phone that reconnects, a person who rejoins, a shared screen that returns) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's]
 [Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have]
 
 ## Edge Case Catalog

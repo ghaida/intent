@@ -212,7 +212,7 @@ Cut to the request: the conditions it names set the scope. The findings are the 
 
 ```
 ## Accessibility Audit — Per WCAG Principle
-[Findings only where the design falls short, in the order to fix them within each principle; a principle with no findings is left out. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change, and the test that shows it is done]
+[Findings only where the design falls short, in the order to fix them within each principle. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change stated as the one value or string chosen (the words, the size, the timing), and the test that shows it is done. A change that names only a direction is unfinished. Under each principle, after its findings, one Keep line for each thing that passes and must survive the next pass, with its value where it has one. A principle with neither findings nor Keep lines is left out]
 [Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design]
 
 ### Perceivable
@@ -230,6 +230,9 @@ Cut to the request: the conditions it names set the scope. The findings are the 
 
 ## Keyboard Navigation Map
 [Only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens and where it returns when it closes]
+
+## Open Questions
+[Questions only the designer can settle]
 ```
 
 ---

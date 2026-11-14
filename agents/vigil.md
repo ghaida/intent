@@ -214,7 +214,7 @@ Positive Findings: [what to protect, a sentence each]
 ### State inventory matrix
 
 ```
-State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
+State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a phone that reconnects, a person who rejoins, a shared screen that returns) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
 Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have
 Edge Case Catalog: scenarios that are not states: the scenario, what the design does now, the change, and its severity; grouped by stress category only when there are many
 Open Questions: scenarios only the designer can settle
@@ -225,10 +225,11 @@ The conditions the request names set the scope. The inventory is the only place 
 ### Accessibility audit
 
 ```
-Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle; a principle with no findings is left out. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change, and the done-when test
+Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change stated as the one value or string chosen (the words, the size, the timing), and the done-when test. A change that names only a direction is unfinished. Under each principle, after its findings, one Keep line for each thing that passes and must survive the next pass, with its value where it has one. A principle with neither findings nor Keep lines is left out
 Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design
 Screen Reader Flow Documentation: reading order only where it departs from the visual order, with the tab order when it departs the same way; live regions: for each change the person must hear, what is announced, how politely, and where focus goes, the only home for announcements; each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings
 Keyboard Navigation Map: only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens and where it returns when it closes
+Open Questions: questions only the designer can settle
 ```
 
 The conditions the request names set the scope. The findings are the only place a problem is described; announcement wording, politeness and focus targets are stated once, in the live-region table and the keyboard map, and a finding whose change sets one of them leaves the value to its table.
