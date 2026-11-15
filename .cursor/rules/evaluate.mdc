@@ -247,7 +247,7 @@ Use this structure, cut to the request: sections it did not call for are left ou
 [What to protect during redesign, a short sentence each]
 ```
 
-Each finding opens with a short headline that states the problem, then a list:
+Each finding opens with a short headline that states the problem in plain words, with no count, then a list:
 
 - **What happens:** the observation that shows the problem and where, cited, in one or two short sentences.
 - **Why it matters:** who it hurts and how, in one sentence.
