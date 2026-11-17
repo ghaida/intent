@@ -51,7 +51,7 @@ function inlineMarkdown(text: string): string {
     .replace(/\*(.+?)\*/g, '<em>$1</em>');
 }
 
-function simpleMarkdown(text: string): string {
+export function simpleMarkdown(text: string): string {
   const lines = text.split('\n');
   const html: string[] = [];
   let i = 0;
@@ -80,14 +80,20 @@ function simpleMarkdown(text: string): string {
       continue;
     }
 
-    // Unordered list block (supports indented sub-items)
+    // Unordered list block. An item indented two or more spaces nests one
+    // level under the item above it (a finding's labelled parts, an
+    // observation's pieces of evidence).
     if (line.match(/^\s*- /)) {
-      const items: string[] = [];
+      const items: { text: string; subs: string[] }[] = [];
       while (i < lines.length && lines[i].match(/^\s*- /)) {
-        items.push(`<li>${inlineMarkdown(lines[i].replace(/^\s*- /, ''))}</li>`);
+        const text = inlineMarkdown(lines[i].replace(/^\s*- /, ''));
+        if (/^\s{2,}- /.test(lines[i]) && items.length) items[items.length - 1].subs.push(text);
+        else items.push({ text, subs: [] });
         i++;
       }
-      html.push(`<ul>${items.join('')}</ul>`);
+      const li = ({ text, subs }: { text: string; subs: string[] }) =>
+        `<li>${text}${subs.length ? `<ul>${subs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}</li>`;
+      html.push(`<ul>${items.map(li).join('')}</ul>`);
       continue;
     }
 

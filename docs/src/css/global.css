@@ -1670,6 +1670,12 @@ tr[hidden] {
   list-style: inherit;
 }
 
+/* A sub-item (a piece of evidence, a probe) sits close under its parent */
+.step-output li > ul {
+  margin: var(--s1) 0 0;
+  list-style: circle;
+}
+
 .step-output strong {
   color: var(--fg);
 }
