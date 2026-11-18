@@ -38,7 +38,7 @@ Features should be validated against actual user demand, not assumed from the pr
 
 ### 5. Competitive Landscape — What already exists?
 
-Map direct competitors and indirect competitors (workarounds, adjacent tools). For each, document thesis, trade-offs, pricing, adoption signals, and form factor. Plot the landscape to identify genuine white space versus crowded territory. Assess switching costs. Output: competitive landscape report with positioning map and gap analysis.
+Map direct competitors and indirect competitors (workarounds, adjacent tools). For each, document thesis, trade-offs, pricing, adoption signals, and form factor. Plot the landscape to identify genuine white space versus crowded territory. Assess switching costs. Output: competitive landscape report with positioning map and gap analysis. The landscape lives in the research findings, never in the brief: the brief names the competitors in Context and says what none offers in Gap.
 
 **How they connect:** Each question feeds the next. Problem validation determines whether to proceed. Audience definition shapes positioning. Solution fit determines what you build. Feature validation determines what goes in it. Competitive landscape determines differentiation. Discoveries in later questions can send you back to re-examine earlier ones — these loop-backs are not failures, they're the strategy working. In a brief, the answers go into its own sections: the problem, the audience and the competitors by name in Context, with what each does in the research findings; what none of them offers in Gap; the form factor and features in Scope, with only the limits they set in Constraints. The brief never lists the questions, rates them or gates them.
 
@@ -90,7 +90,7 @@ Write tasks as realistic scenarios, not instructions. "You want to change your n
 
 ```
 Title: the product and the change ("Larkspur Pharmacy's refill redesign"), never a phrase about purpose
-Context: the few facts the rest of the brief stands on (what the product is, who it is for, and the market it enters, with the competitors named); how the product works and who uses it are the project context's, and what each competitor does is the research findings', cited and never retold; where neither exists, a sentence each; two short paragraphs at most
+Context: the few facts the rest of the brief stands on (what the product is, who it is for, and the market it enters, with the competitors named and nothing more: what each does is the research findings', and the brief never describes competitors or puts them in a table); how the product works and who uses it are the project context's, cited and never retold; where no project context exists, a sentence each; two short paragraphs at most
 Gap: what's missing in the market or the user's world, or broken in the product today, that this answers; risks to the plan are bets
 Opportunity: for whom, and why now
 Goals: what success looks like, in words; metrics, targets and guardrails belong to /measure, and any the sources already set are logged for it
