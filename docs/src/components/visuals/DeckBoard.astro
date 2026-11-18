@@ -1,8 +1,9 @@
 ---
 // GENERATED SLIDES — lifted verbatim from a deck produced by the /present
-// skill itself (present-eval-workspace/site-examples/run-7). Do not hand-edit
-// the slide markup: regenerate the deck and re-extract. Each frame holds the
-// deck's own <section> and its <div class="slide"> grid wrapper, minus the
+// skill itself (intent-eval-workspace/showcase-v2/present/outputs/
+// nearby-mvp-go-decision.html). Do not hand-edit the slide markup:
+// regenerate the deck and re-extract. Each frame holds the deck's own
+// <section> and its <div class="slide"> grid wrapper, minus the
 // <aside class="notes"> (notes aren't on screen); one slide's notes are shown
 // below the frames, lifted verbatim.
 // Theme and per-deck styles come from present-deck.css (synced copy of the
@@ -15,301 +16,359 @@ import '../../css/present-deck.css';
   <div class="visual-label">The deck: Nearby's MVP go decision</div>
   <div class="deck-ex-grid">
     <div class="deck-ex">
-      <p class="deck-ex-plate">01 / 13</p>
+      <p class="deck-ex-plate">01 / 12</p>
       <div class="deck-frame">
           <section class="layout-title">
             <div class="slide">
-              <h1>Start building Nearby’s MVP now, and launch once the handoff between neighbors works</h1>
-              <p class="subtitle">Nearby leadership · MVP go decision · Monday 12 October 2026</p>
+              <h1>Build Nearby for one neighborhood and measure the bet</h1>
+              <p class="subtitle">Nearby leadership · Monday 23 November 2026 · Go decision on the first version</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">02 / 13</p>
+      <p class="deck-ex-plate">02 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual">
+            <div class="slide">
+              <h2>A $10 lamp goes to the curb when posting takes over a minute</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="A seller with a $10 lamp has two paths. A listing on Marketplace or Craigslist takes more than 60 seconds and is abandoned. The curb with a FREE sign is where the lamp goes.">
+                <rect class="box" x="0" y="135" width="220" height="110"/>
+                <text class="ink" x="110" y="200" text-anchor="middle" font-size="28" font-weight="700">A $10 lamp</text>
+                <path class="line" d="M220,190 H300 M300,100 V280 M300,100 H368 M300,280 H368"/>
+                <polygon class="ink" points="380,100 366,92 366,108"/>
+                <polygon class="ink" points="380,280 366,272 366,288"/>
+                <rect class="box" x="380" y="40" width="740" height="120"/>
+                <text class="ink" x="412" y="90" font-size="26" font-weight="700">A listing on Marketplace or Craigslist</text>
+                <text class="muted" x="412" y="128" font-size="24">More than 60 seconds of posting: the seller gives up</text>
+                <rect class="box-accent" x="380" y="220" width="740" height="120"/>
+                <text class="ink" x="412" y="270" font-size="26" font-weight="700">The curb, with a FREE sign</text>
+                <text class="muted" x="412" y="308" font-size="24">Where the lamp goes</text>
+              </svg>
+              <p class="source">Source: project context, Users; brief, Gap</p>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">03 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual">
+            <div class="slide">
+              <h2>Nearby lists only what a neighbor can walk to</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="The walking radius grows as housing gets sparser: 400 meters in an urban core, 800 meters at medium density, 1,600 meters in suburban and rural areas, measured along the street network.">
+                <text class="muted" x="0" y="26" font-size="24">Walking radius by households per km², measured along the street network</text>
+                <circle class="ring" cx="187" cy="242" r="28"/>
+                <circle class="accent" cx="187" cy="242" r="6"/>
+                <circle class="ring" cx="560" cy="215" r="55"/>
+                <circle class="accent" cx="560" cy="215" r="6"/>
+                <circle class="ring" cx="933" cy="160" r="110"/>
+                <circle class="accent" cx="933" cy="160" r="6"/>
+                <text class="ink" x="187" y="310" text-anchor="middle" font-size="28" font-weight="700">400 m</text>
+                <text class="ink" x="187" y="344" text-anchor="middle" font-size="24">Urban core</text>
+                <text class="muted" x="187" y="376" text-anchor="middle" font-size="24">over 5,000</text>
+                <text class="ink" x="560" y="310" text-anchor="middle" font-size="28" font-weight="700">800 m</text>
+                <text class="ink" x="560" y="344" text-anchor="middle" font-size="24">Medium density</text>
+                <text class="muted" x="560" y="376" text-anchor="middle" font-size="24">1,000 to 5,000</text>
+                <text class="ink" x="933" y="310" text-anchor="middle" font-size="28" font-weight="700">1,600 m</text>
+                <text class="ink" x="933" y="344" text-anchor="middle" font-size="24">Suburban and rural</text>
+                <text class="muted" x="933" y="376" text-anchor="middle" font-size="24">under 1,000</text>
+              </svg>
+              <p class="source">Source: brief, Gap; service blueprint, Walking radius</p>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">04 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual">
+            <div class="slide">
+              <h2>The first version posts, browses and arranges a pickup</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Scope of the first version. Included: posting with a photo and a price or Free, browsing on a map and a list, one-tap interest, and trust signals from tenure and distance. Waiting: messaging, other neighborhoods, mutual connections. Out of scope: payments and delivery.">
+                <rect class="box-accent" x="0" y="0" width="416" height="380"/>
+                <text class="ink" x="28" y="48" font-size="28" font-weight="700">In the first version</text>
+                <text class="ink" x="28" y="104" font-size="24">Post: photo, price or Free</text>
+                <text class="ink" x="28" y="152" font-size="24">Browse: a map and a list</text>
+                <text class="ink" x="28" y="200" font-size="24">Interest in one tap</text>
+                <text class="ink" x="28" y="248" font-size="24">Area: each person's radius</text>
+                <text class="ink" x="28" y="296" font-size="24">Trust: account age, tenure,</text>
+                <text class="ink" x="28" y="328" font-size="24">approximate distance</text>
+                <rect class="box" x="448" y="0" width="320" height="380"/>
+                <text class="ink" x="476" y="48" font-size="28" font-weight="700">Waits</text>
+                <text class="ink" x="476" y="104" font-size="24">Messaging</text>
+                <text class="ink" x="476" y="152" font-size="24">Other neighborhoods</text>
+                <text class="ink" x="476" y="200" font-size="24">Mutual connections</text>
+                <rect class="box-dashed" x="800" y="0" width="320" height="380"/>
+                <text class="ink" x="828" y="48" font-size="28" font-weight="700">Out</text>
+                <text class="ink" x="828" y="104" font-size="24">Payments</text>
+                <text class="ink" x="828" y="152" font-size="24">Delivery</text>
+              </svg>
+              <p class="source">Source: brief, Proposed Scope (Phase 1)</p>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">05 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual with-bullets">
+            <div class="slide">
+              <h2>A seller posts on one screen with a photo and a price</h2>
+              <svg width="640" height="432" viewBox="0 0 640 432" role="img" aria-label="Wireframe of Post an item, simplified to projection size: a photo at the top, a title filled in from the photo, a price field with Free and Trade beside it, the pickup option, and the Post it button.">
+                <rect class="frame" x="100" y="0" width="440" height="388" rx="16"/>
+                <text class="ink" x="124" y="36" font-size="24" font-weight="700">Post an item</text>
+                <rect class="fill-surface" x="124" y="52" width="392" height="76"/>
+                <text class="muted" x="320" y="98" text-anchor="middle" font-size="24">Photo of the bookshelf</text>
+                <rect class="field" x="124" y="140" width="392" height="48"/>
+                <text class="ink" x="140" y="172" font-size="24">Blue IKEA bookshelf</text>
+                <rect class="field" x="124" y="200" width="150" height="48"/>
+                <text class="ink" x="140" y="232" font-size="24">$25</text>
+                <rect class="field" x="286" y="200" width="100" height="48" rx="24"/>
+                <text class="ink" x="336" y="232" text-anchor="middle" font-size="24">Free</text>
+                <rect class="field" x="398" y="200" width="118" height="48" rx="24"/>
+                <text class="ink" x="457" y="232" text-anchor="middle" font-size="24">Trade</text>
+                <rect class="field" x="124" y="260" width="392" height="48"/>
+                <text class="ink" x="140" y="292" font-size="24">Porch pickup</text>
+                <rect class="fill-ink" x="124" y="324" width="392" height="52"/>
+                <text class="on-ink" x="320" y="358" text-anchor="middle" font-size="24" font-weight="700">Post it</text>
+              </svg>
+              <ul>
+                <li>The photo suggests the title and category</li>
+                <li>Free is one tap</li>
+                <li>Pickup fills in from the last listing</li>
+                <li>Goal: live in under 30 seconds</li>
+              </ul>
+              <p class="source">Source: wireframes, Post an item; brief, Proposed Scope</p>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">06 / 12</p>
+      <div class="deck-frame">
+          <section class="layout-claim-visual">
+            <div class="slide">
+              <h2>One tap asks for the item; acceptance releases the meeting place</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="The exchange in four steps: the buyer taps I want this, the seller accepts with It's yours, the two meet for pickup, and either person confirms the exchange. Before acceptance the buyer sees a walking time and an approximate pin. From acceptance the buyer sees the nearest intersection, or the address for a porch pickup.">
+                <rect class="box" x="0" y="20" width="250" height="124"/>
+                <text class="ink" x="125" y="70" text-anchor="middle" font-size="28" font-weight="700">I want this</text>
+                <text class="muted" x="125" y="112" text-anchor="middle" font-size="24">Buyer, one tap</text>
+                <rect class="box" x="290" y="20" width="250" height="124"/>
+                <text class="ink" x="415" y="70" text-anchor="middle" font-size="28" font-weight="700">It's yours</text>
+                <text class="muted" x="415" y="112" text-anchor="middle" font-size="24">Seller accepts</text>
+                <rect class="box" x="580" y="20" width="250" height="124"/>
+                <text class="ink" x="705" y="70" text-anchor="middle" font-size="28" font-weight="700">Pickup</text>
+                <text class="muted" x="705" y="112" text-anchor="middle" font-size="24">On foot</text>
+                <rect class="box" x="870" y="20" width="250" height="124"/>
+                <text class="ink" x="995" y="70" text-anchor="middle" font-size="28" font-weight="700">Exchanged</text>
+                <text class="muted" x="995" y="112" text-anchor="middle" font-size="24">Either confirms</text>
+                <path class="line" d="M250,82 H278 M540,82 H568 M830,82 H858"/>
+                <polygon class="ink" points="290,82 276,74 276,90"/>
+                <polygon class="ink" points="580,82 566,74 566,90"/>
+                <polygon class="ink" points="870,82 856,74 856,90"/>
+                <text class="muted" x="0" y="204" font-size="24">What the buyer sees of the seller's location</text>
+                <rect class="fill-surface" x="0" y="220" width="250" height="88"/>
+                <text class="ink" x="16" y="256" font-size="24">Walking time,</text>
+                <text class="ink" x="16" y="288" font-size="24">approximate pin</text>
+                <rect class="box-accent" x="290" y="220" width="830" height="88"/>
+                <text class="ink" x="314" y="256" font-size="24">The nearest intersection,</text>
+                <text class="ink" x="314" y="288" font-size="24">or the address for a porch pickup</text>
+                <text class="ink" x="0" y="368" font-size="24">No messages before acceptance. Payment happens in person, and the app records none.</text>
+              </svg>
+              <p class="source">Source: journey, Buying; service blueprint, Location disclosure</p>
+            </div>
+          </section>
+      </div>
+    </div>
+
+    <div class="deck-ex">
+      <p class="deck-ex-plate">07 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-chart">
             <div class="slide">
-              <h2>The MVP tests one bet: walking distance lifts completion to 60%+</h2>
-              <svg class="chart" role="img" aria-label="Bar chart from zero of the share of listings that end in a completed exchange. The strategy brief estimates Craigslist at about 15% for local items, Facebook Marketplace at about 25%, and Buy Nothing groups at about 60% within a group. Nearby’s target, 60% or more, is a dashed outline because nothing has been measured yet." viewBox="0 0 1120 304" width="1120" height="304">
-                <line class="axis" x1="384" y1="0" x2="384" y2="304"/>
-                <text x="0" y="43" class="big">Craigslist</text>
-                <rect class="bar" x="384" y="8" width="96" height="48"/>
-                <text x="496" y="43"><tspan class="value">~15%</tspan><tspan class="muted"> of local items</tspan></text>
-                <text x="0" y="123" class="big">Facebook Marketplace</text>
-                <rect class="bar" x="384" y="88" width="160" height="48"/>
-                <text x="560" y="123"><tspan class="value">~25%</tspan></text>
-                <text x="0" y="203" class="big">Buy Nothing groups</text>
-                <rect class="bar" x="384" y="168" width="384" height="48"/>
-                <text x="784" y="203"><tspan class="value">~60%</tspan><tspan class="muted"> within a group</tspan></text>
-                <text x="0" y="283" class="big accent" font-weight="700">Nearby</text>
-                <rect class="target" x="385.5" y="249.5" width="381" height="45"/>
-                <text x="784" y="283"><tspan class="value accent">60%+</tspan><tspan class="accent"> target</tspan></text>
+              <h2>The 60% completion goal rests on estimates nobody has measured</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Bar chart from zero of the estimated share of local listings that end in an exchange: about 15% on Craigslist, about 25% on Facebook Marketplace, about 60% inside a Buy Nothing group. Nearby's goal is 60% or more. Every figure is an estimate and none has been measured.">
+                <text class="muted" x="0" y="26" font-size="24">Share of local listings that end in an exchange. Estimates, none measured.</text>
+                <rect class="bar" x="60" y="256" width="180" height="54"/>
+                <text class="ink" x="150" y="242" text-anchor="middle" font-size="24">about 15%</text>
+                <text class="ink" x="150" y="344" text-anchor="middle" font-size="24">Craigslist</text>
+                <rect class="bar" x="330" y="220" width="180" height="90"/>
+                <text class="ink" x="420" y="206" text-anchor="middle" font-size="24">about 25%</text>
+                <text class="ink" x="420" y="344" text-anchor="middle" font-size="24">Facebook</text>
+                <text class="ink" x="420" y="374" text-anchor="middle" font-size="24">Marketplace</text>
+                <rect class="bar" x="600" y="94" width="180" height="216"/>
+                <text class="ink" x="690" y="80" text-anchor="middle" font-size="24">about 60%</text>
+                <text class="ink" x="690" y="344" text-anchor="middle" font-size="24">Buy Nothing</text>
+                <text class="ink" x="690" y="374" text-anchor="middle" font-size="24">group</text>
+                <rect class="accent" x="870" y="94" width="180" height="216"/>
+                <text class="ink" x="960" y="80" text-anchor="middle" font-size="24" font-weight="700">60% or more</text>
+                <text class="ink" x="960" y="344" text-anchor="middle" font-size="24" font-weight="700">Nearby</text>
+                <text class="ink" x="960" y="374" text-anchor="middle" font-size="24" font-weight="700">goal, untested</text>
+                <path class="line" d="M44,310 H1100"/>
+                <text class="muted" x="0" y="318" font-size="24">0%</text>
               </svg>
-              <p class="source">Strategy brief estimates, no source cited. Nextdoor is listed as “very low,” with no figure.</p>
+              <p class="source">Source: brief, Key Assumptions; journey, Problem Statement. Estimates with no sample.</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">03 / 13</p>
+      <p class="deck-ex-plate">08 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
             <div class="slide">
-              <h2>The foundations hold: no dark patterns, and trust without star ratings</h2>
-              <div class="visual cols-2" role="img" aria-label="Two panels. No dark patterns: no fees, no fake scarcity, no urgency, and the line ‘Visible to neighbors within 1 mile · no fees’ sits above the Post button. Trust without star ratings: tenure, distance and exchange counts, shown as ‘12 exchanges in Capitol Hill’ and ‘New to Nearby’.">
-                <div class="card">
-                  <div class="head">No dark patterns</div>
-                  <div class="text">No fees, no fake scarcity, no urgency. Free is a first-class price.</div>
-                  <div class="chips"><span class="chip">Visible to neighbors within 1 mile · no fees</span></div>
-                  <div class="muted">Shown above the Post button</div>
-                </div>
-                <div class="card">
-                  <div class="head">Trust without star ratings</div>
-                  <div class="text">Tenure, distance and exchange counts. Newness is labeled.</div>
-                  <div class="chips"><span class="chip">12 exchanges in Capitol Hill</span><span class="chip">New to Nearby</span></div>
-                </div>
-              </div>
-              <p class="source">Design evaluation verdicts. Interface copy from the wireframes and the copy deck.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">04 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-claim-chart">
-            <div class="slide">
-              <h2>Two findings block launch, and both sit in the handoff between neighbors</h2>
-              <svg class="chart" role="img" aria-label="Unit chart of the design evaluation’s findings by severity, one square per finding: two block launch and both sit in the handoff between neighbors, five are major, seven minor and two cosmetic." viewBox="0 0 1120 296" width="1120" height="296">
-                <text x="0" y="43"><tspan class="big" font-weight="700">Blocks launch</tspan></text>
-                <rect class="bar hi" x="384" y="8" width="48" height="48"/>
-                <rect class="bar hi" x="440" y="8" width="48" height="48"/>
-                <text x="504" y="43" class="value">2</text>
-                <text x="548" y="41" class="accent">both in the handoff between neighbors</text>
-                <text x="0" y="123"><tspan class="big">Major</tspan></text>
-                <rect class="bar" x="384" y="88" width="48" height="48"/>
-                <rect class="bar" x="440" y="88" width="48" height="48"/>
-                <rect class="bar" x="496" y="88" width="48" height="48"/>
-                <rect class="bar" x="552" y="88" width="48" height="48"/>
-                <rect class="bar" x="608" y="88" width="48" height="48"/>
-                <text x="672" y="123" class="value">5</text>
-                <text x="0" y="203"><tspan class="big">Minor</tspan></text>
-                <rect class="bar" x="384" y="168" width="48" height="48"/>
-                <rect class="bar" x="440" y="168" width="48" height="48"/>
-                <rect class="bar" x="496" y="168" width="48" height="48"/>
-                <rect class="bar" x="552" y="168" width="48" height="48"/>
-                <rect class="bar" x="608" y="168" width="48" height="48"/>
-                <rect class="bar" x="664" y="168" width="48" height="48"/>
-                <rect class="bar" x="720" y="168" width="48" height="48"/>
-                <text x="784" y="203" class="value">7</text>
-                <text x="0" y="283"><tspan class="big">Cosmetic</tspan></text>
-                <rect class="bar" x="384" y="248" width="48" height="48"/>
-                <rect class="bar" x="440" y="248" width="48" height="48"/>
-                <text x="504" y="283" class="value">2</text>
+              <h2>The first interviews report on 18 December, after this decision</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Research timeline in 2026. The go decision falls on 23 November, the day recruitment starts. Recruitment runs 23 to 27 November, a pilot session on 30 November, 13 interviews from 1 to 11 December, synthesis 14 to 17 December, and the findings report on 18 December.">
+                <text class="accent" x="0" y="44" font-size="26" font-weight="700">Go decision, 23 Nov</text>
+                <path class="line-accent" d="M2,58 V214"/>
+                <rect class="fill-surface stroke-rule" x="4" y="170" width="211" height="44"/>
+                <text class="ink" x="14" y="152" font-size="24">Recruitment</text>
+                <text class="muted" x="4" y="248" font-size="24">23 to 27 Nov</text>
+                <rect class="fill-surface stroke-rule" x="301" y="170" width="43" height="44"/>
+                <text class="ink" x="296" y="152" font-size="24">Pilot</text>
+                <text class="muted" x="282" y="248" font-size="24">30 Nov</text>
+                <rect class="bar" x="344" y="170" width="473" height="44"/>
+                <text class="ink" x="400" y="152" font-size="24" font-weight="700">Fieldwork: 13 interviews</text>
+                <text class="muted" x="400" y="248" font-size="24">1 to 11 Dec</text>
+                <rect class="fill-surface stroke-rule" x="903" y="170" width="172" height="44"/>
+                <text class="ink" x="880" y="152" font-size="24">Synthesis</text>
+                <text class="muted" x="860" y="248" font-size="24">14 to 17 Dec</text>
+                <rect class="fill-ink" x="1075" y="170" width="43" height="44"/>
+                <text class="ink" x="1118" y="152" text-anchor="end" font-size="24" font-weight="700">Report</text>
+                <text class="muted" x="1118" y="248" text-anchor="end" font-size="24">18 Dec</text>
+                <text class="ink" x="0" y="324" font-size="24">13 interviews of 45 minutes: 5 sellers, 5 buyers, 3 organizers.</text>
+                <text class="ink" x="0" y="360" font-size="24">One urban and one suburban neighborhood.</text>
               </svg>
-              <p class="source">Design evaluation: every finding ranked by severity, judged on paper before build.</p>
+              <p class="source">Source: research plan, Method, Participants, Timeline (2026)</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">05 / 13</p>
+      <p class="deck-ex-plate">09 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
             <div class="slide">
-              <h2>A seller can list her couch, then can’t get it picked up</h2>
-              <div class="visual cols-2 walk" role="img" aria-label="Walkthrough of a seller getting a couch picked up. Posting: starting a listing, photographing and describing it, and posting pass, but saying how pickup works fails because the screen has no pickup field. The handoff: finding out who wants it fails, picking a buyer causes hesitation, getting the buyer to her door fails, and closing it out passes.">
-                <div>
-                  <div class="stage">Posting</div>
-                  <div class="step pass"><span class="n">1</span><span class="name">Start a listing</span><span class="verdict"><b>Pass</b></span></div>
-                  <div class="step pass"><span class="n">2</span><span class="name">Photograph and describe it</span><span class="verdict"><b>Pass</b></span></div>
-                  <div class="step fail"><span class="n">3</span><span class="name">Say how pickup works</span><span class="verdict"><b>Fail:</b> no pickup field on the screen</span></div>
-                  <div class="step pass"><span class="n">4</span><span class="name">Post it</span><span class="verdict"><b>Pass</b></span></div>
-                </div>
-                <div>
-                  <div class="stage">The handoff</div>
-                  <div class="step fail"><span class="n">5</span><span class="name">Find out who wants it</span><span class="verdict"><b>Fail:</b> no screen shows an interest</span></div>
-                  <div class="step hesitation"><span class="n">6</span><span class="name">Pick a buyer</span><span class="verdict"><b>Hesitation:</b> no way to compare neighbors</span></div>
-                  <div class="step fail"><span class="n">7</span><span class="name">Get the buyer to her door</span><span class="verdict"><b>Fail:</b> only the nearest intersection</span></div>
-                  <div class="step pass"><span class="n">8</span><span class="name">Close it out</span><span class="verdict"><b>Pass</b></span></div>
-                </div>
-              </div>
-              <p class="source">Cognitive walkthrough, design evaluation. The seller is a flow scenario, not a participant.</p>
+              <h2>Pickup timing, address exposure and the daily digest change first</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Findings from the design evaluation and the change for each. Critical: after acceptance the two people cannot agree when to meet; quick replies ship and the buyer picks a time in the window. Critical: walking times to the minute can locate a seller's home; a walking-time band from the approximate pin is shown until acceptance. Major: the daily digest is sent by default, against opt-in notifications; it is sent only to a neighbor who turned it on.">
+                <text class="muted" x="150" y="26" font-size="24">Finding</text>
+                <text class="muted" x="660" y="26" font-size="24">Change</text>
+                <rect class="fill-surface" x="0" y="44" width="1120" height="104"/>
+                <text class="ink" x="16" y="104" font-size="24" font-weight="700">Critical</text>
+                <text class="ink" x="150" y="86" font-size="24">After acceptance, the two people</text>
+                <text class="ink" x="150" y="120" font-size="24">cannot agree when to meet</text>
+                <text class="ink" x="660" y="86" font-size="24">Quick replies ship, and the buyer</text>
+                <text class="ink" x="660" y="120" font-size="24">picks a time in the window</text>
+                <rect class="fill-surface" x="0" y="160" width="1120" height="104"/>
+                <text class="ink" x="16" y="220" font-size="24" font-weight="700">Critical</text>
+                <text class="ink" x="150" y="202" font-size="24">Walking times to the minute</text>
+                <text class="ink" x="150" y="236" font-size="24">can locate a seller's home</text>
+                <text class="ink" x="660" y="202" font-size="24">A walking-time band from the</text>
+                <text class="ink" x="660" y="236" font-size="24">approximate pin until acceptance</text>
+                <rect class="fill-surface" x="0" y="276" width="1120" height="104"/>
+                <text class="muted" x="16" y="336" font-size="24" font-weight="700">Major</text>
+                <text class="ink" x="150" y="318" font-size="24">The daily digest is on by default,</text>
+                <text class="ink" x="150" y="352" font-size="24">against opt-in notifications</text>
+                <text class="ink" x="660" y="318" font-size="24">Sent only to a neighbor</text>
+                <text class="ink" x="660" y="352" font-size="24">who turned it on</text>
+                <path class="line" d="M606,96 H634 M606,212 H634 M606,328 H634"/>
+                <polygon class="ink" points="646,96 632,88 632,104"/>
+                <polygon class="ink" points="646,212 632,204 632,220"/>
+                <polygon class="ink" points="646,328 632,320 632,336"/>
+              </svg>
+              <p class="source">Source: evaluation, Priority Issues; project context, Ethical stance</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">06 / 13</p>
+      <p class="deck-ex-plate">10 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
             <div class="slide">
-              <h2>The brief, the flows and the screens start an exchange three ways</h2>
-              <div class="visual cols-3" role="img" aria-label="Three panels compare how an exchange starts. The strategy brief: one tap shows interest and messaging waits for version 2. The user flows: interest lands in Activity and quick replies open once the seller accepts. The wireframes: a Messages tab where neighbors message you directly. No drawn screen shows where an interest lands or where the seller accepts.">
-                <div class="card"><div class="label">Strategy brief</div><div class="text">One tap shows interest. Messaging waits for version 2.</div></div>
-                <div class="card"><div class="label">User flows</div><div class="text">Interest lands in Activity. Quick replies open once the seller accepts.</div></div>
-                <div class="card"><div class="label">Wireframes</div><div class="text">A Messages tab, where neighbors “message you directly.”</div></div>
-                <div class="wide text">Nothing drawn shows an interest arriving or a seller saying “It’s yours.”</div>
-              </div>
-              <p class="source">Design evaluation, finding 1. Brief scope, user flows 3 and 4, wireframes.</p>
+              <h2>Posting is packaged to build; the exchange has no wireframes</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Browse, Post an item and Posted are in the handoff package with full-page wireframes. Item detail, Activity and Pickup have flows, copy and states and no wireframes.">
+                <text class="ink" x="0" y="30" font-size="28" font-weight="700">In the handoff package</text>
+                <rect class="tile" x="0" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="80" y="164" text-anchor="middle" font-size="24">Browse</text>
+                <rect class="tile" x="180" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="260" y="148" text-anchor="middle" font-size="24">Post an</text>
+                <text class="ink" x="260" y="180" text-anchor="middle" font-size="24">item</text>
+                <rect class="tile" x="360" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="440" y="164" text-anchor="middle" font-size="24">Posted</text>
+                <text class="muted" x="0" y="304" font-size="24">Wireframes at full page, with states,</text>
+                <text class="muted" x="0" y="338" font-size="24">copy and the accessibility audit</text>
+                <text class="ink" x="600" y="30" font-size="28" font-weight="700">The exchange</text>
+                <rect class="box-dashed" x="600" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="680" y="148" text-anchor="middle" font-size="24">Item</text>
+                <text class="ink" x="680" y="180" text-anchor="middle" font-size="24">detail</text>
+                <rect class="box-dashed" x="780" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="860" y="164" text-anchor="middle" font-size="24">Activity</text>
+                <rect class="box-dashed" x="960" y="52" width="160" height="208" rx="12"/>
+                <text class="ink" x="1040" y="164" text-anchor="middle" font-size="24">Pickup</text>
+                <text class="muted" x="600" y="304" font-size="24">Flows, copy and states.</text>
+                <text class="muted" x="600" y="338" font-size="24">No wireframes.</text>
+              </svg>
+              <p class="source">Source: handoff, Contents and How the pieces fit; wireframes</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">07 / 13</p>
+      <p class="deck-ex-plate">11 / 12</p>
       <div class="deck-frame">
           <section class="layout-claim-visual">
             <div class="slide">
-              <h2>On a first exchange, nothing gets the buyer to the seller’s door</h2>
-              <div class="visual cols-3 paths" role="img" aria-label="Three ways an address could pass between neighbors, all closed: no step marks that both agree or releases the address, quick replies can’t carry an address, and free text is locked until three exchanges. So porch pickup can’t complete, and only the nearest intersection is offered.">
-                <div class="card"><div class="label">Mutual agreement</div><div class="text">No step marks it or releases the address</div></div>
-                <div class="card"><div class="label">Quick replies</div><div class="text">None of them can carry an address</div></div>
-                <div class="card"><div class="label">Free text</div><div class="text">Locked until three exchanges, so never on a first</div></div>
-                <div class="down" aria-hidden="true">↓</div>
-                <div class="down" aria-hidden="true">↓</div>
-                <div class="down" aria-hidden="true">↓</div>
-                <div class="wide outcome">Porch pickup can’t complete; only the nearest intersection is offered</div>
-              </div>
-              <p class="source">Design evaluation, finding 2. Project privacy constraint; user flows 3 and 4.</p>
+              <h2>Eight weeks in one neighborhood show whether the bet holds</h2>
+              <svg width="1120" height="432" viewBox="0 0 1120 432" role="img" aria-label="Pilot checkpoints. Day 30: 50 or more active people, or no other neighborhood opens. Week 8: listing completion at 60% or more means the bet holds; at 25% or below the brief is reopened. Month 3: 15 confirmed exchanges a week per 1,000 households, and the next neighborhood opens. Gross merchandise value, city-wide user totals and time in app are never targets.">
+                <rect class="box" x="0" y="20" width="352" height="264"/>
+                <text class="ink" x="24" y="66" font-size="28" font-weight="700">Day 30</text>
+                <text class="ink" x="24" y="118" font-size="24">50 or more</text>
+                <text class="ink" x="24" y="150" font-size="24">active people.</text>
+                <text class="muted" x="24" y="222" font-size="24">Under 50: no other</text>
+                <text class="muted" x="24" y="254" font-size="24">neighborhood opens.</text>
+                <rect class="box-accent" x="384" y="20" width="352" height="264"/>
+                <text class="ink" x="408" y="66" font-size="28" font-weight="700">Week 8</text>
+                <text class="ink" x="408" y="118" font-size="24">Listing completion</text>
+                <text class="ink" x="408" y="150" font-size="24">at 60% or more:</text>
+                <text class="ink" x="408" y="182" font-size="24">the bet holds.</text>
+                <text class="muted" x="408" y="222" font-size="24">At 25% or below:</text>
+                <text class="muted" x="408" y="254" font-size="24">the brief is reopened.</text>
+                <rect class="box" x="768" y="20" width="352" height="264"/>
+                <text class="ink" x="792" y="66" font-size="28" font-weight="700">Month 3</text>
+                <text class="ink" x="792" y="118" font-size="24">15 confirmed exchanges</text>
+                <text class="ink" x="792" y="150" font-size="24">a week per 1,000</text>
+                <text class="ink" x="792" y="182" font-size="24">households.</text>
+                <text class="muted" x="792" y="222" font-size="24">Then the next</text>
+                <text class="muted" x="792" y="254" font-size="24">neighborhood opens.</text>
+                <path class="line" d="M352,152 H372 M736,152 H756"/>
+                <polygon class="ink" points="384,152 370,144 370,160"/>
+                <polygon class="ink" points="768,152 754,144 754,160"/>
+                <text class="ink" x="0" y="344" font-size="24">Never a target: gross merchandise value, city-wide user totals, time in app.</text>
+              </svg>
+              <p class="source">Source: metrics, Measurement framework and Learning plan</p>
             </div>
           </section>
       </div>
     </div>
 
     <div class="deck-ex">
-      <p class="deck-ex-plate">08 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <div class="slide">
-              <h2>Decide today: quick replies once the seller accepts, no open messaging</h2>
-              <div class="visual cols-2" role="img" aria-label="Two options side by side. Recommended: quick replies once the seller accepts, as the flows and blueprint designed, with free text unlocking after three exchanges; it still needs a step that releases the address. As drawn in the wireframes: open messaging, which the blueprint ruled out because it invites spam, lowballing and harassment.">
-                <div class="card pick">
-                  <div class="label accent">Recommended</div>
-                  <div class="head">Quick replies once the seller accepts</div>
-                  <div>Designed in the flows and the blueprint</div>
-                  <div>Free text unlocks after three exchanges</div>
-                  <div>Still needs an address-release step</div>
-                </div>
-                <div class="card">
-                  <div class="label">As drawn</div>
-                  <div class="head">Open messaging</div>
-                  <div>A Messages tab in the wireframes</div>
-                  <div>The blueprint ruled it out: it invites spam, lowballing and harassment</div>
-                </div>
-              </div>
-              <p class="source">Service blueprint decision record. User flow 4. Design evaluation, findings 1 and 2.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">09 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-quote">
-            <div class="slide">
-              <h2>The bet’s assumptions are untested: the interviews were written, not run</h2>
-              <blockquote>“…because proximity eliminates logistics friction and neighborhood context reduces trust friction.”<cite>Measurable hypothesis, strategy brief</cite></blockquote>
-              <p class="source">Research plan: 13 interviews in two neighborhoods over four weeks. No findings yet.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">10 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <div class="slide">
-              <h2>Beyond the blockers, two major issues need new design</h2>
-              <div class="visual cols-2" role="img" aria-label="The five major issues in two groups. Needing new design: organizer tools, and the listing and notification limits a moving-week seller hits. Redraws of existing work: Browse to match the flows, Post with its pickup step restored, and the quiet-neighborhood states already written.">
-                <div>
-                  <div class="group-head accent">New design</div>
-                  <div class="item"><div class="head">Organizer tools</div><div>Organizers moderate first, with no screen to see a flag, hide a listing or warn a user</div></div>
-                  <div class="item"><div class="head">Moving-week limits</div><div>A new seller’s fourth listing fails without a word, and pickup reminders can drop</div></div>
-                </div>
-                <div>
-                  <div class="group-head">Redraw from existing work</div>
-                  <div class="item"><div class="head">Browse</div><div>Map first, in walking minutes, per the flows</div></div>
-                  <div class="item"><div class="head">Post</div><div>Restore pickup; cut the “Birch St.” example</div></div>
-                  <div class="item"><div class="head">Quiet neighborhoods</div><div>Draw the first-run states already written</div></div>
-                </div>
-              </div>
-              <p class="source">Design evaluation, findings 3 to 7, ranked major: fix before launch.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">11 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <div class="slide">
-              <h2>Engineering starts on the packaged scope while design fixes the handoff</h2>
-              <div class="visual cols-3" role="img" aria-label="A plan in three stages. Today, leadership settles coordination scope. Then, in parallel, design works out the handoff with an address step, the interviews run for four weeks with 13 neighbors, and engineering builds from the package. Before launch, the handoff is built, the major issues are fixed, and launch waits until both blockers clear.">
-                <div class="phase">
-                  <div class="label">Today</div>
-                  <div class="card pick">Leadership settles coordination scope</div>
-                </div>
-                <div class="phase">
-                  <div class="label">Then, in parallel</div>
-                  <div class="card">Design the handoff, including the address step</div>
-                  <div class="card">Interviews with 13 neighbors, over four weeks</div>
-                  <div class="card">Engineering builds from the package</div>
-                </div>
-                <div class="phase">
-                  <div class="label">Before launch</div>
-                  <div class="card">Then build the handoff</div>
-                  <div class="card">Fix the major issues</div>
-                  <div class="card"><b>Launch once both blockers clear</b></div>
-                </div>
-              </div>
-              <p class="source">The evaluation’s recommended actions; research plan timeline. No engineering estimate yet.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">12 / 13</p>
-      <div class="deck-frame">
-          <section class="layout-claim-visual">
-            <div class="slide">
-              <h2>The MVP is judged on completed exchanges, never time in app</h2>
-              <div class="visual cols-4" role="img" aria-label="Four targets. North star: 15 or more exchanges per 1,000 households a week after a neighborhood’s first 3 months. 60% of listings end in an exchange. Under 48 hours median from listing to pickup. Under 10% of accepted pickups never happen. Never optimized: time in app, notification opens, GMV, DAU/MAU and blended acquisition cost.">
-                <div class="card tile north"><div class="label accent">North star</div><div class="num">15+</div><div>exchanges per 1,000 households a week, after 3 months</div></div>
-                <div class="card tile"><div class="label">Completion</div><div class="num">60%</div><div>of listings end in an exchange</div></div>
-                <div class="card tile"><div class="label">Time to pickup</div><div class="num">&lt;48 h</div><div>median, from listing to pickup</div></div>
-                <div class="card tile"><div class="label">Ghost rate</div><div class="num">&lt;10%</div><div>of accepted pickups never happen</div></div>
-                <div class="wide"><b>Never optimized:</b> time in app, notification opens, GMV, DAU/MAU, blended acquisition cost</div>
-              </div>
-              <p class="source">Measurement framework targets. No baseline exists until the first neighborhoods run.</p>
-            </div>
-          </section>
-      </div>
-    </div>
-
-    <div class="deck-ex">
-      <p class="deck-ex-plate">13 / 13</p>
+      <p class="deck-ex-plate">12 / 12</p>
       <div class="deck-frame">
           <section class="layout-ask">
             <div class="slide">
-              <h2>Approve the build today; launch once the handoff between neighbors works</h2>
-              <p class="subtitle">Leadership decides today. Interviews report in four weeks.</p>
-              <ul>
-                <li><strong>Go:</strong> start building from the package</li>
-                <li><strong>Gate:</strong> launch once both handoff blockers clear</li>
-                <li><strong>Scope:</strong> quick replies, not open messaging</li>
-              </ul>
+              <h2>Approve building Nearby's first version for one neighborhood</h2>
+              <p class="subtitle">Leadership decides Monday 23 November: a go on posting now, and on the exchange once it is wireframed with the changes from the review. The go names the pilot neighborhood, the team and the platform.</p>
             </div>
           </section>
       </div>
@@ -317,9 +376,9 @@ import '../../css/present-deck.css';
   </div>
 
   <figure class="deck-notes">
-    <figcaption class="deck-ex-plate">Speaker notes · slide 4</figcaption>
+    <figcaption class="deck-ex-plate">Speaker notes · slide 7</figcaption>
     <blockquote>
-      <p>The evaluation ranked every finding by severity, and two block launch. Both sit in the handoff between neighbors: how an exchange starts, and how the buyer reaches the seller’s door. The five major issues come after the blockers.</p>
+      <p>The gap Nearby is built on is the distance between about 25% and 60%, and both ends are estimates. If sellers already complete most local listings, the gap is smaller than the brief assumes. The interviews that test this have not run yet.</p>
     </blockquote>
   </figure>
 </div>

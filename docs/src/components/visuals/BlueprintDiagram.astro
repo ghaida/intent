@@ -1,40 +1,35 @@
 ---
-// Service blueprint: Item Exchange — frontstage/backstage/support layers
+// Service blueprint: Posting and browsing — frontstage/backstage/support layers
 ---
 
-<div class="visual-diagram blueprint-diagram" role="img" aria-label="Service blueprint: Item exchange flow showing seller and buyer frontstage touchpoints, backstage services (neighborhood graph, trust engine, moderation, notifications), and support infrastructure">
-  <div class="visual-label">Service Blueprint: Item Exchange</div>
+<div class="visual-diagram blueprint-diagram" role="img" aria-label="Service blueprint: posting and browsing. Sarah, the seller, photographs the couch, confirms the title and sets a price, confirms how pickup works, and posts. Marcus, the buyer, opens the app, browses the map or the list and opens the couch listing. Backstage: title and category suggestion, Content Moderation, Trust Inference Engine, Neighborhood Graph Service and Notification Service. Support: Geolocation API, street network graph, housing density data, photo storage and CDN, push notification service, search index, organizer guidelines and prohibited items policy.">
+  <div class="visual-label">Service Blueprint: Posting and browsing</div>
 
   <!-- Frontstage: Seller -->
   <div class="blueprint-lane">
     <div class="blueprint-lane-label">
       <span class="blueprint-lane-title">Frontstage</span>
-      <span class="blueprint-lane-sub">Seller</span>
+      <span class="blueprint-lane-sub">Sarah, seller, moving this week. Steps 1 to 4 take under 30 seconds [brief]. The couch has to be gone within 4 to 48 hours.</span>
     </div>
     <div class="blueprint-lane-nodes">
       <div class="blueprint-node">
         <div class="blueprint-node-step">1</div>
-        <div class="blueprint-node-label">Post item</div>
+        <div class="blueprint-node-label">Photographs the couch or picks a photo</div>
       </div>
       <div class="blueprint-connector"></div>
       <div class="blueprint-node">
         <div class="blueprint-node-step">2</div>
-        <div class="blueprint-node-label">Set details</div>
+        <div class="blueprint-node-label">Confirms or edits the title, then sets a price or marks the couch free</div>
       </div>
       <div class="blueprint-connector"></div>
       <div class="blueprint-node">
         <div class="blueprint-node-step">3</div>
-        <div class="blueprint-node-label">Receive interest</div>
+        <div class="blueprint-node-label">Confirms how pickup works: porch, meet outside or flexible</div>
       </div>
       <div class="blueprint-connector"></div>
       <div class="blueprint-node">
-        <div class="blueprint-node-step">4</div>
-        <div class="blueprint-node-label">Accept</div>
-      </div>
-      <div class="blueprint-connector"></div>
-      <div class="blueprint-node blueprint-node-end">
-        <div class="blueprint-node-step">5</div>
-        <div class="blueprint-node-label">Exchange</div>
+        <div class="blueprint-node-step">4 ◆</div>
+        <div class="blueprint-node-label">Posts</div>
       </div>
     </div>
   </div>
@@ -47,32 +42,17 @@
   <div class="blueprint-lane">
     <div class="blueprint-lane-label">
       <span class="blueprint-lane-title">Frontstage</span>
-      <span class="blueprint-lane-sub">Buyer</span>
+      <span class="blueprint-lane-sub">Marcus, buyer, walking home. Opening the app to pickup takes him 20 minutes to 2 hours.</span>
     </div>
     <div class="blueprint-lane-nodes">
       <div class="blueprint-node">
-        <div class="blueprint-node-step">1</div>
-        <div class="blueprint-node-label">Browse map</div>
-      </div>
-      <div class="blueprint-connector"></div>
-      <div class="blueprint-node">
-        <div class="blueprint-node-step">2</div>
-        <div class="blueprint-node-label">View item</div>
-      </div>
-      <div class="blueprint-connector"></div>
-      <div class="blueprint-node">
-        <div class="blueprint-node-step">3</div>
-        <div class="blueprint-node-label">"I want this"</div>
-      </div>
-      <div class="blueprint-connector"></div>
-      <div class="blueprint-node">
-        <div class="blueprint-node-step">4</div>
-        <div class="blueprint-node-label">Coordinate</div>
+        <div class="blueprint-node-step">5 ◆</div>
+        <div class="blueprint-node-label">Opens the app and browses the map or the list</div>
       </div>
       <div class="blueprint-connector"></div>
       <div class="blueprint-node blueprint-node-end">
-        <div class="blueprint-node-step">5</div>
-        <div class="blueprint-node-label">Pick up</div>
+        <div class="blueprint-node-step">6</div>
+        <div class="blueprint-node-label">Opens the couch listing</div>
       </div>
     </div>
   </div>
@@ -88,20 +68,24 @@
     </div>
     <div class="blueprint-lane-nodes blueprint-lane-services">
       <div class="blueprint-service">
-        <div class="blueprint-service-name">Neighborhood Graph</div>
-        <div class="blueprint-service-detail">Walking radius + barriers</div>
+        <div class="blueprint-service-name">Title and category suggestion</div>
+        <div class="blueprint-service-detail">Step 1. Suggests a title and category from the photo.</div>
       </div>
       <div class="blueprint-service">
-        <div class="blueprint-service-name">Trust Engine</div>
-        <div class="blueprint-service-detail">Tenure, exchanges, connections</div>
+        <div class="blueprint-service-name">Content Moderation, automated layer</div>
+        <div class="blueprint-service-detail">Step 4. Classifies the photo and text. Holds prohibited items (weapons, drugs, regulated goods) for review, detects duplicate listings, and flags price anomalies during a declared emergency.</div>
       </div>
       <div class="blueprint-service">
-        <div class="blueprint-service-name">Moderation</div>
-        <div class="blueprint-service-detail">Photo + text classification</div>
+        <div class="blueprint-service-name">Trust Inference Engine</div>
+        <div class="blueprint-service-detail">Step 4. Limits a new account to 3 active listings until its first completed exchange. Step 6. Supplies Sarah's trust signals.</div>
       </div>
       <div class="blueprint-service">
-        <div class="blueprint-service-name">Notifications</div>
-        <div class="blueprint-service-detail">15-min batching</div>
+        <div class="blueprint-service-name">Neighborhood Graph Service</div>
+        <div class="blueprint-service-detail">Steps 4 and 5. Computes each person's walking radius and returns the listings inside Marcus's.</div>
+      </div>
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">Notification Service</div>
+        <div class="blueprint-service-detail">Sends each person a daily digest of the 3 to 5 newest items closest to them.</div>
       </div>
     </div>
   </div>
@@ -120,13 +104,25 @@
         <div class="blueprint-service-name">Geolocation API</div>
       </div>
       <div class="blueprint-service blueprint-service-infra">
-        <div class="blueprint-service-name">Street Network</div>
+        <div class="blueprint-service-name">Street network graph</div>
       </div>
       <div class="blueprint-service blueprint-service-infra">
-        <div class="blueprint-service-name">Photo CDN</div>
+        <div class="blueprint-service-name">Housing density data</div>
       </div>
       <div class="blueprint-service blueprint-service-infra">
-        <div class="blueprint-service-name">Push Service</div>
+        <div class="blueprint-service-name">Photo storage and CDN</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Push notification service</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Search index</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Organizer guidelines</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Prohibited items policy</div>
       </div>
     </div>
   </div>

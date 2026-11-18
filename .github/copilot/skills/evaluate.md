@@ -94,7 +94,7 @@ For the full pattern library and stance, see `storytelling`.
 
 Apply Nielsen's 10 usability heuristics as a structured evaluation framework. For each heuristic, examine the experience systematically, document specific violations with evidence, rate each violation critical, major, minor or cosmetic (defined in the output format below), and give the heuristic a verdict.
 
-**Verdict per heuristic, in words:** Holds (no findings, or cosmetic polish only). Strained (the worst finding is minor: friction users recover from). Broken (at least one critical or major finding: it blocks a task, causes harm, or violates regulation). Name the finding that decides the verdict. In the report, name each heuristic in words, never by its number. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
+**Verdict per heuristic, in words:** Holds (no findings, or cosmetic polish only). Strained (the worst finding is minor: friction users recover from). Broken (at least one critical or major finding: it blocks a task, causes harm, or violates regulation). The verdicts guide the anti-pattern verdict and each finding's severity; the report has no table of them. In a finding, name the heuristic in words, never by its number. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
 
 **The 10 heuristics, applied:**
 
@@ -136,7 +136,7 @@ For each key task flow, walk through every step and ask four questions. Where th
 
 Define the task. List every step required to complete it. For each step, answer all four questions. Document every "no" — that's a specific, locatable UX failure. Note: a "no" on question 1 (motivation) is the most severe — the user won't even try. A "no" on question 4 (feedback) means the user will try but won't know if they succeeded.
 
-Rate each step: Pass (all four "yes"), Hesitation (one "no," likely recoverable), Failure (two or more "no," user likely abandons or errors).
+Rate each step: Pass (all four "yes"), Hesitation (one "no," likely recoverable), Failure (two or more "no," user likely abandons or errors). Each hesitation or failure becomes a finding; the report has no table of the steps.
 
 ### 3. Anti-pattern detection
 
@@ -184,11 +184,11 @@ Define the key tasks users need to accomplish, then evaluate each one against co
 - Steps-to-completion — actual steps vs. minimum necessary steps
 - Recovery rate — percentage of errors that the user recovers from without abandoning
 
-You won't always have quantitative data. When evaluating designs (not live products), these metrics are estimates the walkthrough already implies: include a task table only when the request asks for task success, with the column headed Estimated and nothing else saying so.
+You won't always have quantitative data. When evaluating designs (not live products), these metrics are estimates the walkthrough already implies: include a task table only when the request asks for task success, as a last section, Task Success, after Positive Findings, with the column headed Estimated and nothing else saying so.
 
 ### 5. Assessment-to-action routing
 
-Every finding maps to a specific Intent skill. This map is for the reply: the report names the change, never the skill. The report closes with "Recommended Actions": the finding titles in the order to fix them.
+Every finding maps to a specific Intent skill. This map is for the reply: the report names the change, never the skill. Within each severity, the report lists findings in the order to fix them.
 
 **What kind of change each category needs:**
 
@@ -208,26 +208,25 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 | Ready to build | `/specify` | The design is approved and someone needs to build it |
 | Vague unease, qualitative wrongness | `/philosopher` | "Something feels off but I can't name it" |
 
-**Priority mapping:** Critical issues get addressed first regardless of category. Within the same priority tier, address issues that affect the most users or the most critical tasks first. Group issues by skill when possible — it's more efficient to engage `/fortify` once for 5 edge case issues than 5 times for 1 issue each.
+**Priority mapping:** Critical issues get addressed first regardless of category. Within the same priority tier, address issues that affect the most users or the most critical tasks first. In the reply, group the changes by the skill that makes them, so `/fortify` is engaged once for five edge cases rather than five times; the report keeps fix order.
 
 **Example: Annotated evaluation excerpt (signup flow)**
 
-> **Visibility of system status. Verdict: broken (major)**
-> After clicking "Create account," the button disables but there is no loading indicator, progress message, or spinner. On slow connections, users wait 3-8 seconds with no feedback, leading to double-clicks and duplicate submissions. The success state redirects silently — no confirmation that the account was created.
-> → Show a loading indicator while the account is created and a confirmation when it is.
+> **Critical**
 >
-> **Error prevention. Verdict: strained (minor)**
-> Password field shows requirements only after first failed validation ("Must include uppercase, number, and symbol"). Requirements should be visible before the user types, not after they fail. Email field accepts input but validates only on submit — inline validation on blur would catch typos early.
-> → Show the password requirements before the user types, and validate the email on blur.
+> **The newsletter box is checked by default, below the fold**
+> - **What happens:** The signup form's newsletter box is checked by default, reads "Keep me updated" and sits below the fold.
+> - **Why it matters:** A person who never scrolls to it is subscribed to marketing email without choosing it, a GDPR exposure in EU markets.
+> - **Breaks:** prechecked consent, and user control and freedom.
+> - **Change:** Leave the box unchecked and label it as marketing email.
 >
-> **Anti-pattern: Asymmetric consent — Severity: High**
-> Newsletter opt-in is prechecked during signup. Opting out requires noticing a small checkbox below the fold. The checkbox label reads "Keep me updated" rather than "Subscribe to marketing emails." This is a prechecked consent pattern with a disguised label — potential GDPR violation in EU markets.
-> → Critical. Uncheck the box by default and label it "Subscribe to marketing emails"; a prechecked consent box is a GDPR exposure in EU markets.
+> **Major**
 >
-> **Cognitive walkthrough: "Create account and reach dashboard" — Step 3 of 5: Verify email**
-> Q1 (Motivation): Yes — user understands they need to verify. Q2 (Visibility): No — verification email takes 30-60 seconds but the screen says "Check your inbox" immediately, so users check before it arrives and assume it failed. Q3 (Understanding): Yes — "Click the link in the email" is clear. Q4 (Feedback): No — after clicking the email link, the redirect is slow and shows a blank page for 2 seconds before the dashboard loads.
-> Rating: Failure (two "no" answers). Users abandon or request re-send unnecessarily.
-> → Say "Email arrives within 60 seconds" on the check-your-inbox screen, and show a loading state during the redirect.
+> **Creating an account shows no progress, so people submit twice**
+> - **What happens:** After a click on "Create account," the button disables and shows nothing else for the 3 to 8 seconds a slow connection takes. The redirect that follows never says the account exists.
+> - **Why it matters:** People click again and submit twice, then cannot tell whether they have an account.
+> - **Breaks:** visibility of system status.
+> - **Change:** Show progress inside the button while the account is created, and confirm the new account on the next screen.
 
 ---
 
@@ -235,41 +234,39 @@ Every finding maps to a specific Intent skill. This map is for the reply: the re
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`evaluation-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Use this structure, cut to the request: sections it did not call for are left out. The findings under Priority Issues are the only place a problem is described; every other section names findings by title or adds what they do not carry.
+Use this structure, cut to the request: sections it did not call for are left out. The findings under Priority Issues are the only place a problem appears. The heuristic check and the cognitive walkthrough are how findings are found: each failure either one turns up becomes a finding, and the report has no table of either.
 
 ```
 # [What was reviewed]
 
 ## Anti-Pattern Verdict
-[Clean / Minor Issues / Significant Issues / Critical]
-[Specific patterns named, with severity and location]
+[Clean / Minor Issues / Significant Issues / Critical, in one line. Each pattern found is a finding below]
 
 ## Priority Issues
+[Within each severity, findings in the order to fix them]
+
 ### Critical (blocks core task completion or violates regulations)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Major (significant friction, potential user harm)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Minor (degraded experience, recoverable)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ### Cosmetic (polish, not blocking)
-[Issue: what, where, why it matters, the heuristic it violates by name, the change in design terms]
-
-## Heuristic Verdicts
-[One line per heuristic: its name, holds / strained / broken, and the title of the finding that decides it]
-
-## Cognitive Walkthrough Results
-[Per-task table of the steps that hesitate or fail, each naming the finding it supports; a failure no finding has becomes a finding; passing steps get no row, the four questions are its columns, and no paragraph explains the method]
+[Each finding: a short headline that states the problem, then What happens, Why it matters, Breaks and Change]
 
 ## Positive Findings
-[What to protect during redesign, a sentence each, nothing a verdict already said]
-
-## Recommended Actions
-[The finding titles in the order to fix them. The change is in each
-finding, so nothing is restated. No skill names, no numbers.]
+[What to protect during redesign, a short sentence each]
 ```
+
+Each finding opens with a short headline that states the problem in plain words, with no count, then a list:
+
+- **What happens:** the observation that shows the problem and where, cited, in one or two short sentences.
+- **Why it matters:** who it hurts and how, in one sentence.
+- **Breaks:** the heuristic by name, or the anti-pattern by its catalog name.
+- **Change:** what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
 
 ---
 

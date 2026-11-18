@@ -74,7 +74,7 @@ Constraints AND opportunities. Small screens force focus — that's a feature, n
 - Kiosk: 1-3 minutes maximum, single-purpose
 - Embedded: seconds at a time, momentary glances
 
-For each transposition project, fill out this framework explicitly. Do not skip dimensions because they seem obvious.
+Work through every dimension for each transposition, including the ones that seem obvious. In the deliverable, a dimension appears only as the reason for a change it forces.
 
 ### 2. Platform-specific UX conventions
 
@@ -161,7 +161,7 @@ What's primary changes by context. This is the core of transposition — not jus
 - Large touch targets, clear progress indicators, obvious "start over" escape hatch
 - Timeout recovery: save state briefly, but reset cleanly
 
-Document priority shifts explicitly for each screen and feature. Create a priority matrix: what's primary, secondary, hidden, and removed per context.
+Write a priority shift only where priority changes: what the context shows first, demotes or drops, and why. Where an element sits on a screen is `/wireframe`'s.
 
 ### 4. Cross-device journey continuity
 
@@ -187,6 +187,8 @@ Users switch devices mid-task. This isn't an edge case — it's the normal flow 
 - Re-authentication friction: minimize it across devices. Biometric on phone, magic link on desktop, persistent session on TV.
 - Don't make users start over because they switched devices.
 
+In the deliverable, each switch is the journey's, told on the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure: `/fortify` designs what the person sees, `/blueprint` what the system does.
+
 ### 5. Progressive disclosure per context
 
 The same information architecture may need fundamentally different disclosure strategies per context. This is not about responsive breakpoints — it's about cognitive load management per context.
@@ -206,7 +208,7 @@ Strip away everything that isn't the current step. No settings, no account manag
 **Voice: reveal through conversation.**
 "Here are your three options. Would you like to hear more about any of them?" Progressive disclosure happens through dialogue turns, not visual hierarchy.
 
-Map disclosure strategy per context for every major feature. Don't assume what works on desktop will work anywhere else with minor modifications.
+Write the disclosure strategy, in the adaptation spec, for the features whose disclosure changes in the target context. Don't assume what works on desktop will work anywhere else with minor modifications.
 
 ---
 
@@ -214,17 +216,16 @@ Map disclosure strategy per context for every major feature. Don't assume what w
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`adaptation-larkspur-mobile.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-### Context analysis matrix
-For each platform/context, document: input method, attention model, screen real estate, connectivity, environment, session length, and their UX implications.
+Where the experience crosses devices, each switch is the journey's, told on the screen where it happens, cited by name. Where no journey exists, the platform adaptation spec holds the switch points, what carries across and the handoff. Where continuity breaks is a failure for `/fortify` or `/blueprint`.
 
 ### Platform-specific adaptation specs
-Per platform: which conventions apply, which native patterns to adopt, which source patterns to replace (and with what), which features to add/remove/transform.
+Per target context, the interaction model and conventions that replace the source's, and any feature the context adds, each with the context fact that forces it. A dimension that changes nothing is not written.
 
 ### Priority mapping per context
-For each major screen/feature: what's primary, secondary, on-demand, and removed — per context. Explicitly document what gets cut and why.
+The one home for what each context shows first, demotes or drops, written only where priority changes, each with the context fact behind it. Where an element sits on a screen is `/wireframe`'s.
 
-### Cross-device journey map
-For multi-device experiences: where users switch, what state transfers, what handoff mechanisms exist, and where continuity breaks.
+### Open questions
+Only when they are about the adaptation, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ---
 
@@ -244,7 +245,7 @@ Respect the intelligence of each context. Mobile isn't desktop's lesser sibling.
 - Cross-platform UX strategy and context analysis
 - Platform-specific interaction model recommendations
 - Content priority mapping across contexts
-- Cross-device journey continuity design
+- Cross-device continuity needs, which the journey tells on the screen where each switch happens
 - Progressive disclosure strategy per context
 
 ### This skill does NOT own:

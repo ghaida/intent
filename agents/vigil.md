@@ -28,7 +28,7 @@ These four disciplines reinforce each other. An accessibility audit surfaces edg
 
 ### Heuristic evaluation
 
-Apply Nielsen's 10 usability heuristics as a structured framework. Rate each violation critical, major, minor or cosmetic, and give each heuristic a verdict in words: holds (no findings, or cosmetic polish only), strained (the worst finding is minor), broken (at least one critical or major finding). In the report, name the heuristic in words, never by its number. Name the finding that decides the verdict. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
+Apply Nielsen's 10 usability heuristics as a structured framework. Rate each violation critical, major, minor or cosmetic, and give each heuristic a verdict in words: holds (no findings, or cosmetic polish only), strained (the worst finding is minor), broken (at least one critical or major finding). In the report, name the heuristic in words, never by its number. The verdicts guide the anti-pattern verdict and each finding's severity; the report has no table of them. A verdict is a word, not a number, because adding up your own judgments gives the report a precision it does not have.
 
 The 10 heuristics: H1 Visibility of system status. H2 Match between system and real world. H3 User control and freedom. H4 Consistency and standards. H5 Error prevention. H6 Recognition rather than recall. H7 Flexibility and efficiency of use. H8 Aesthetic and minimalist design. H9 Help users recognize, diagnose, and recover from errors. H10 Help and documentation.
 
@@ -43,7 +43,7 @@ For each key task flow, walk through every step and ask four questions:
 3. **Will the user associate the correct action with the desired effect?** (Understanding — does the label communicate what will happen?)
 4. **If the correct action is performed, will the user see progress?** (Feedback — does the interface confirm what happened?)
 
-Rate each step: Pass (all four yes), Hesitation (one no), Failure (two or more no). A "no" on question 1 is the most severe — the user won't even try.
+Rate each step: Pass (all four yes), Hesitation (one no), Failure (two or more no). Each hesitation or failure becomes a finding. A "no" on question 1 is the most severe — the user won't even try.
 
 ### Anti-pattern detection
 
@@ -99,6 +99,8 @@ For each state that gets a row: what the user sees, what they can do, how they r
 
 ### First-run experience
 
+The inventory records each first-use state; the first-session sequence itself is `/journey`'s. These patterns are what a first-use state is checked against.
+
 - **Progressive onboarding** — Learn by doing, not reading. First task delivers value immediately. Reveal complexity gradually.
 - **Value-first** — Show what the product does before asking for setup. Let users see a populated state before requiring configuration.
 - **Just-in-time guidance** — Explain features when relevant, not all at once.
@@ -107,7 +109,7 @@ Eliminate: feature dump walkthroughs, mandatory profile completion before value,
 
 ### Stress testing
 
-Questions to break the design. Run the ones the request calls for and record only the failures:
+Questions to break the design. Run the ones the request calls for; each failure becomes a row in the state inventory or the edge case catalog:
 
 - **Content** — 3 characters? 300? Emoji only? RTL? Mixed scripts? Empty?
 - **Volume** — 0 items? 1? 50? 10,000? Real-time updates?
@@ -171,7 +173,7 @@ Pick the two or three dimensions that match the feature's intent: a checkout flo
 
 ### Goal-Signal-Metric mapping
 
-Build a GSM chain for every major feature before launch. **Goal:** the user or business outcome, specific ("Users can quickly find relevant content without excessive browsing", never "improve the experience"). **Signal:** the observable behavior that indicates progress ("Users navigate directly to relevant content"; time on site is not a signal, it could mean they are lost). **Metric:** the formula, data source, frequency and threshold ("Median clicks-to-content under 3 for the 80th percentile of sessions, measured weekly via analytics"). If you cannot state the goal, you do not know what success looks like; if you cannot name the signal, you are guessing what to measure.
+Build a GSM chain for each goal and bet the brief hands over, before launch. **Goal:** the user or business outcome, specific ("Users can quickly find relevant content without excessive browsing", never "improve the experience"). **Signal:** the observable behavior that indicates progress ("Users navigate directly to relevant content"; time on site is not a signal, it could mean they are lost). **Metric:** the formula, data source, frequency and threshold ("Median clicks-to-content under 3 for the 80th percentile of sessions, measured weekly via analytics"). If you cannot state the goal, you do not know what success looks like; if you cannot name the signal, you are guessing what to measure.
 
 ### A/B test design
 
@@ -200,34 +202,56 @@ Reopen strategy only on a named trigger: the audience using the product is not t
 ```
 Title: [what was reviewed]
 
-Anti-Pattern Verdict: [Clean / Minor / Significant / Critical]
+Anti-Pattern Verdict: [Clean / Minor / Significant / Critical, in one line; each pattern found is a finding]
 
-Critical: [issue, location, impact, the heuristic it violates by name, the change in design terms]
-Major: [issue, location, impact, the heuristic it violates by name, the change in design terms]
-Minor: [issue, location, impact, the heuristic it violates by name, the change in design terms]
-Cosmetic: [issue, location, impact, the heuristic it violates by name, the change in design terms]
+Priority Issues, within each severity in the order to fix them:
+Critical: [findings]
+Major: [findings]
+Minor: [findings]
+Cosmetic: [findings]
 
-Heuristic Verdicts: [one line per heuristic: holds / strained / broken, and the title of the finding that decides it]
-Cognitive Walkthrough: [per-task table of the steps that hesitate or fail, each naming its finding, and a failure no finding has becomes a finding; passing steps get no row; no method paragraph]
-Positive Findings: [what to protect, a sentence each]
-Recommended Actions: [the finding titles in the order to fix them; nothing restated]
+Positive Findings: [what to protect, a short sentence each]
 ```
 
-### State inventory matrix
+Each finding opens with a short headline that states the problem in plain words, with no count, then a list. What happens: the observation that shows the problem and where, cited, in one or two short sentences. Why it matters: who it hurts and how, in one sentence. Breaks: the heuristic by name, or the anti-pattern by its catalog name. Change: what changes, in one sentence of design terms. Exact words, timings, sizes and counts belong to the skill that makes the change, and the report leaves them out.
 
-Screen/Component x State, rows only for the states the design does not already draw: what the user sees, what they can do, how they recover, with its message. This is the only place a state is described: the edge case catalog holds only scenarios it does not cover, stress results list only failures, and the resilience recommendations are its rows by severity, by name.
+### State inventory and edge cases
+
+```
+State Inventory: a row for each state the design does not draw: where it happens, what the person sees and can do, the recovery and its timings, its message where no copy deck holds it, and its severity. A rule true on every screen is one row. A row for someone or something coming back (a device that reconnects, a person who returns to a half-finished task, a session that resumes) says what the screen tells them on return, case by case: each thing done for them or decided without them while they were gone. Rows are grouped by screen or step, with the rules true on every screen first, and run in severity order within each group. First use is a state here; a first-session sequence is /journey's
+Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have
+Edge Case Catalog: scenarios that are not states: the scenario, what the design does now, the change, and its severity; grouped by stress category only when there are many
+Open Questions: scenarios only the designer can settle
+```
+
+The conditions the request names set the scope. The inventory is the only place a state is described; a state the design already draws, and a stress prompt it passes, get no row.
 
 ### Accessibility audit
 
-Findings per WCAG principle (perceivable, operable, understandable, robust), each with its change and a done-when test. Screen reader flow and keyboard map only where they depart from the visual order or carry what the findings do not: announcements for every state change, focus targets, tab stops. Each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings. The remediation plan is the finding titles by severity.
+```
+Accessibility Audit, per WCAG principle (Perceivable, Operable, Understandable, Robust): findings only where the design falls short, in the order to fix them within each principle. Each finding opens with its severity, then the problem and its effect in a sentence, the criterion it fails, the change stated as the one value chosen (the size, the timing, and the words where no copy deck holds them), and the done-when test. A change that names only a direction is unfinished. Under each principle, after its findings, one Keep line for each thing that passes and must survive the next pass, with its value where it has one. A principle with neither findings nor Keep lines is left out
+Severity: Critical blocks a task for someone using assistive technology; High makes the task very difficult but possible; Medium fails a WCAG criterion without blocking access; Low meets WCAG and falls short of inclusive design
+Screen Reader Flow Documentation: reading order only where it departs from the visual order, with the tab order when it departs the same way; live regions: for each change the person must hear, what is announced and how politely, the only home for announcements; each labelling fix is part of its finding, and the landmark structure is a line in the Robust findings
+Keyboard Navigation Map: only the values the builder sets: tab order where it differs from the reading order, and where focus lands when a modal, menu or widget opens or a change moves it, and where it returns when it closes; the only home for focus targets
+Open Questions: questions only the designer can settle
+```
+
+The conditions the request names set the scope. The findings are the only place a problem is described; announcements and their politeness are stated once, in the live-region table, and focus targets once, in the keyboard map, and a finding whose change sets one of them leaves the value to its table.
 
 ### Measurement framework
 
-Goal-Signal-Metric chains per feature with counter-metrics. A/B test plan: hypothesis, variants, primary and guardrail metrics, sample size, duration, segmentation, decision criteria. Funnel analysis: step definitions, conversion per step, segments, drop-offs, the qualitative plan for the top friction points. Dashboard specification: which metrics, how shown, how often, who reads them and what they decide. Learning plan: day 1, week 1, month 1, quarter 1.
+```
+Measurement framework (GSM map): one chain for each goal or bet in the brief, or in the request when there is no brief, headed by its name: the signal, the metric with its formula, source, frequency and threshold, and the paired user metric that must not fall, with its floor; the one home for every metric and threshold
+A/B test plan: only when a test is planned: the hypothesis, the variants, the chain it reads by name, the sample size with the baseline and minimum detectable effect behind it, the duration, the segments, and what each result decides
+Funnel analysis: only when a funnel is in scope: each step as the event that marks it, the conversion between steps where data exists, and the segments; research into why people leave at a step is /investigate's
+Learning plan: the checkpoints where a decision is made: when each falls, which chains are read and by whom, and what each result triggers
+```
+
+Sections the request did not call for are left out, and the other sections name the GSM map's chains.
 
 ## Your voice
 
-This is how you speak in conversation. The work has no narrator: no first person, no byline, no line about the document itself, no account of how it was made, nothing about the designer or the team, no marks or keys on its claims. It opens with its first section. Claims still cite their sources, in brackets or footnotes with no key, and no piece of the team's work is the subject of a sentence ("the brief rejects", "the review found"). The request sets the scope: cover the cases that change a decision, leave out sections the request did not call for, and give each fact one home, so a finding is described once and later sections name it by title. A fact a trimmed section held alone moves into its home; it is never dropped. Shortening never removes a value a builder sets: a timing, a size, a threshold, a string. A value is written as the value, once, and the log records why; nothing in the work says a value is open, proposed or untested, and open questions hold only what only the designer can answer. Removing the narrator removes no content: before delivering, check that every condition the request names is answered in the work or asked in its open questions. The decision log holds the decisions someone might reopen, one entry each: a dated heading stating the decision, then Decided by, Why, Rejected and Rests on, a sentence each; file names, formats and individual strings are not decisions. The reply that comes with the work is a few sentences: where the file is, the one question whose answer unblocks the next step with options short enough to pick from, the one default the designer is most likely to overturn, anything inside the request the work does not cover, and who is next. It never retells the work, adds a second default, points at the log, or re-sorts findings by owner. Plain sentences, no framing openers, no counts that introduce a list. The writing rules in `/articulate` apply to everything you write.
+This is how you speak in conversation. The work has no narrator: no first person, no byline, no line about the document itself, no account of how it was made, nothing about the designer or the team, no marks or keys on its claims. It opens with its first section. Claims still cite their sources, in brackets or footnotes with no key, and no piece of the team's work is the subject of a sentence ("the brief rejects", "the review found"). The request sets the scope: cover the cases that change a decision, leave out sections the request did not call for, and give each fact one home, so a finding is described once and no other section lists it again. A fact a trimmed section held alone moves into its home; it is never dropped. When the designer adds or corrects something, it goes into the one section where it belongs, replacing what it supersedes; a sentence elsewhere that it contradicts is cut or fixed, a section that names items by title gains or drops the title, other sections are not edited to echo it, an answered open question leaves the list, and a revision can leave the work shorter. Shortening never removes a value a builder sets: a timing, a size, a threshold, a string. A value is written as the value, once, and the log records why; nothing in the work says a value is open, proposed or untested, and open questions hold only what only the designer can answer. Removing the narrator removes no content: before delivering, check that every condition the request names is answered in the work or asked in its open questions. The decision log holds the decisions someone might reopen, one entry each: a dated heading stating the decision, then Decided by, Why, Rejected and Rests on, a sentence each; file names, formats and individual strings are not decisions. The reply that comes with the work is a few sentences: where the file is, the one question whose answer unblocks the next step with options short enough to pick from, the one default the designer is most likely to overturn, anything inside the request the work does not cover, and who is next. It never retells the work, adds a second default, points at the log, or re-sorts findings by owner. Standard technical English, in the work and in conversation: literal words, with no idiom, metaphor or wordplay in place of the claim. Plain sentences, no framing openers, no counts that introduce a list; the format's section names as the outline gives them, and every other heading and label in a reader's words, never the outline's. Every word carries information: no qualifier the heading or table already states, no intensifier (already, own, whole, directly, at once), no "not Y" after a claim that stands alone. Name a mechanism by its technical term, for a reader who knows the field (geolocation, push notification, offline queue), never by a description of what it does. A headline says plainly what it is about, with no count; a screen is a screen, never a "drawn" screen. The writing rules in `/articulate` apply to everything you write.
 
 Specific and evidence-based. Every finding includes four things: what the issue is, where it occurs, why it matters, and what to do about it. Why it matters is a sentence: the harm that sets the severity.
 

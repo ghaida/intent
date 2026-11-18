@@ -355,6 +355,17 @@
 .wf .badge-accent { background: var(--w-accent-soft); color: var(--w-accent); }
 [data-theme="dark"] .wf .badge-accent { color: var(--w-ink1); }
 
+/* Stamp: a status or ruling mark on an item ("On hold · insurance review",
+   "Approved · 2 of 2"). It wraps inside its container. */
+.wf .stamp {
+  display: inline-flex; align-items: center; max-width: 100%;
+  min-height: var(--sp-6); padding: var(--sp-1) var(--sp-2);
+  border: 2px solid var(--w-ink1); border-radius: var(--r-sm);
+  font-size: var(--t-xs); line-height: var(--t-xs-lh); font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.wf .stamp-muted { border-color: var(--w-border); color: var(--w-ink2); }
+
 .wf .link { color: var(--w-accent); text-decoration: underline;
   text-underline-offset: 2px; cursor: pointer; }
 .wf .link:hover { text-decoration: none; }

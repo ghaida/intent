@@ -2,7 +2,7 @@
 // Organize: Site map tree + navigation tab bar
 ---
 
-<div class="visual-diagram sitemap-diagram" role="img" aria-label="Information architecture: Nearby app with 5 navigation tabs (Explore map, Feed list, Post, Activity, Profile) and their child screens">
+<div class="visual-diagram sitemap-diagram" role="img" aria-label="Information architecture: Nearby. The tab bar holds Explore, List, Post, Activity and You, each with the places under it. Explore opens on launch, Post starts a listing, and Item detail belongs to no tab.">
   <div class="visual-label">Information Architecture: Nearby</div>
 
   <!-- Tab bar mockup -->
@@ -37,25 +37,27 @@
     <div class="sitemap-branches">
       <div class="sitemap-branch">
         <div class="sitemap-node sitemap-node-primary">
-          <span>Map</span>
+          <span>Explore</span>
           <span class="sitemap-node-tag">default</span>
         </div>
         <div class="sitemap-children">
-          <div class="sitemap-leaf">Item pins</div>
-          <div class="sitemap-leaf">Radius controls</div>
-          <div class="sitemap-leaf">Item detail (sheet)</div>
+          <div class="sitemap-leaf">Map of items within the walking radius</div>
+          <div class="sitemap-leaf">Item card on a pin</div>
+          <div class="sitemap-leaf">Radius: 5, 10 or 20 min walk</div>
+          <div class="sitemap-leaf">Filters: category, price, posted</div>
+          <div class="sitemap-leaf">What's new on your block, from the daily push notification</div>
         </div>
       </div>
 
       <div class="sitemap-branch">
         <div class="sitemap-node">
-          <span>Feed</span>
-          <span class="sitemap-node-tag">toggle</span>
+          <span>List</span>
+          <span class="sitemap-node-tag">same items</span>
         </div>
         <div class="sitemap-children">
-          <div class="sitemap-leaf">Distance groups</div>
-          <div class="sitemap-leaf">Filter chips</div>
-          <div class="sitemap-leaf">Search (pull-down)</div>
+          <div class="sitemap-leaf">Rows grouped by walking time</div>
+          <div class="sitemap-leaf">Search</div>
+          <div class="sitemap-leaf">Filters: category, price, posted</div>
         </div>
       </div>
 
@@ -64,7 +66,11 @@
           <span>Post (+)</span>
         </div>
         <div class="sitemap-children">
-          <div class="sitemap-leaf">Camera → Details → Preview → Publish</div>
+          <div class="sitemap-leaf">Camera and photo check</div>
+          <div class="sitemap-leaf">Title, price and category</div>
+          <div class="sitemap-leaf">Pickup</div>
+          <div class="sitemap-leaf">Preview and post</div>
+          <div class="sitemap-leaf">Wanted request, from search and the Wanted filter</div>
         </div>
       </div>
 
@@ -73,20 +79,33 @@
           <span>Activity</span>
         </div>
         <div class="sitemap-children">
-          <div class="sitemap-leaf">My Listings</div>
-          <div class="sitemap-leaf">My Interests</div>
-          <div class="sitemap-leaf">Pickup Coordination</div>
+          <div class="sitemap-leaf">Your listings, each with the interest it received</div>
+          <div class="sitemap-leaf">Your interests</div>
+          <div class="sitemap-leaf">Pickup: meeting point, time window, quick replies</div>
+          <div class="sitemap-leaf">Exchange confirmation</div>
         </div>
       </div>
 
       <div class="sitemap-branch">
         <div class="sitemap-node">
-          <span>Profile</span>
+          <span>You</span>
         </div>
         <div class="sitemap-children">
-          <div class="sitemap-leaf">Neighborhood identity</div>
-          <div class="sitemap-leaf">Settings</div>
-          <div class="sitemap-leaf">Help</div>
+          <div class="sitemap-leaf">How neighbors see you</div>
+          <div class="sitemap-leaf">Neighborhood and location</div>
+          <div class="sitemap-leaf">Notifications</div>
+          <div class="sitemap-leaf">Organizer tools, for organizers</div>
+        </div>
+      </div>
+
+      <div class="sitemap-branch">
+        <div class="sitemap-node">
+          <span>Item detail</span>
+          <span class="sitemap-node-tag">no tab</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">Photo, price, walking time, seller tenure, pickup type</div>
+          <div class="sitemap-leaf">I want this</div>
         </div>
       </div>
     </div>

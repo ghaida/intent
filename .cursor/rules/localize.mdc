@@ -61,7 +61,7 @@ Cultural frameworks provide starting hypotheses for design adaptation — not st
 - Long-term oriented cultures: loyalty programs resonate, subscription models accepted, trust built gradually, relationship-first onboarding.
 - Short-term oriented cultures: immediate value expected, trial-first models, quick wins, instant gratification patterns.
 
-**IMPORTANT:** These are spectrums and tendencies, not rules. Every individual is different. Every market has subcultures. Never design for a stereotype. Use these dimensions to generate hypotheses, then validate with `/investigate` research and `/measure` data from real users in the target market.
+**IMPORTANT:** These are spectrums and tendencies, not rules. Every individual is different. Every market has subcultures. Never design for a stereotype. Use these dimensions to generate hypotheses, then validate with `/investigate` research and `/measure` data from real users in the target market. In the deliverable, a dimension appears only as the reason for an adaptation it drives.
 
 ### 2. RTL and LTR design
 
@@ -243,6 +243,8 @@ Run before any real translation. Replace all strings with accented/extended char
 - Moderated testing for cultural insight
 - Device and OS coverage per market (Android-dominant vs. iOS-dominant markets)
 
+Planning sessions with users in a market is `/investigate`'s; the test plan names the risk they answer.
+
 ---
 
 ## Output format
@@ -250,16 +252,19 @@ Run before any real translation. Replace all strings with accented/extended char
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`localization-larkspur-de.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
 ### Localization readiness checklist
-Audit of current design and codebase against i18n requirements: string externalization, layout flexibility, format handling, RTL support, cultural assumptions.
+Only the gaps against the i18n requirements in the design and codebase, each with where it is and the change. An item that passes gets no row.
 
 ### Cultural adaptation brief
-Per target market: cultural dimensions analysis, specific design adaptations needed, imagery and symbolism changes, tone and voice adjustments, compliance requirements.
+Per target market, the adaptations that change the design, each with its evidence. A cultural dimension appears only as the reason for an adaptation. Tone is named here; the strings are `/articulate`'s.
 
 ### Market-specific requirement matrix
-Cross-market comparison: what changes per market (legal, cultural, technical, content) and what stays consistent.
+The one home for legal and format requirements, by market. A requirement that does not change by market gets no row.
 
 ### Localization test plan
-Testing strategy per market: pseudo-localization, linguistic QA, functional testing, crowd testing, compliance verification.
+The tests that catch the risks above, each with its pass line, sessions with people in a market among them. Planning those sessions is `/investigate`'s, said in the reply; the work names no skill.
+
+### Open questions
+Only when they are about the localization, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ---
 

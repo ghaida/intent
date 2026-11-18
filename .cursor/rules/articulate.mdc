@@ -150,7 +150,7 @@ Content modeling is the strategy layer beneath individual copy decisions. It def
 - Allow for text expansion — German and Finnish run 20-35% longer than English; UI layouts must accommodate this
 - Avoid embedding text in images — images can't be translated easily
 
-**Content lifecycle** — Who creates each content type? Who reviews it? Who publishes it? Who archives or deletes it? A content model without lifecycle management becomes stale. Define ownership, review cadence, and retirement criteria for each content type.
+**Content lifecycle** — Who creates each content type? Who reviews it? Who publishes it? Who archives or deletes it? A content model without lifecycle management becomes stale. Set review cadence and retirement criteria for each content type in the model; who owns each type goes in the decision log.
 
 ### 7. Inclusive language
 
@@ -181,25 +181,25 @@ Inclusive language and clear writing are the same thing. Every guideline here ma
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`copy-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
-Structure your content deliverable as needed for the problem at hand. Not every format applies to every project — use what serves the problem:
+Use this structure, cut to the request: sections it did not call for are left out.
 
 1. **Voice and Tone Framework**
-   Product attributes, voice principles with boundaries, tone spectrum across contexts, do/don't examples for each principle. Real product copy examples, not abstract rules.
+   Voice principles, each with its boundaries and a do/don't pair in real product copy, and how tone shifts by context.
 
-2. **Copy Deck**
-   Screen-by-screen copy with variants. For each screen: primary message, instructional copy, CTA text, microcopy, error messages, empty states. Mark the strings that expand in translation and the ones that depend on system state or user data.
+2. **Terminology**
+   The product's own nouns: each term, what it means to the person using the product, and the words not to use for it. The one home for what a term means; the site map, the journey and the copy deck use the terms and never define them.
 
-3. **Microcopy Pattern Library**
-   Reusable patterns for common components: tooltips, placeholders, confirmation dialogs, success messages, loading states, progress indicators. Each pattern with usage guidelines, character limits, and examples.
+3. **Copy Deck**
+   Screen-by-screen copy with variants, the one home for every string beyond what the wireframes carry. Each state or error row names the inventory state it serves, which is its trigger, and takes its tone from the framework. Mark the strings that expand in translation and the ones that depend on system state or user data. With no deck, the state inventory row holds the string.
 
-4. **Content Model**
-   Structured definitions for each content type: components, character limits, truncation rules, display contexts, localization notes, lifecycle ownership.
+4. **Microcopy Pattern Library**
+   Only for a component system: the rule for each component, with examples that cite deck rows.
 
-5. **Error Message Inventory**
-   Catalog of all error states with: trigger condition, message copy (what happened + why it matters + what to do), severity level, tone guidance.
+5. **Content Model**
+   Fields, character limits and truncation for each display context, and each content type's review cadence and retirement criteria. The one home for character limits.
 
 6. **Open Questions**
-   About the copy itself, each a plain question. Questions for the designer go to the designer, in conversation.
+   About the copy itself, each a plain question that only the designer can answer. Questions for research, stakeholders, engineering or another skill are said in the reply.
 
 ## Voice & approach
 
@@ -213,19 +213,23 @@ Structure your content deliverable as needed for the problem at hand. Not every 
 
 These rules cover everything an agent writes: deliverables and conversation alike.
 
-**No counting for its own sake.** A number appears where the person reading needs it, never to fill a label, introduce a list, or enumerate. Not "six friends: Dee, Mo, Sam…", not "third of six", not "Your hand · 5 cards", not a scoreboard of zeros, not an index number on a caption, not "four parts, one story". In conversation, not "That tells us two things.", "Three things would change my direction:", "Two calls in the design are mine".
+**No counting for its own sake.** A number appears where the person reading needs it, never to fill a label, introduce a list, or enumerate. Not "three plans: Basic, Plus, Team…", not "third of six", not "Your orders · 4", not a row of zeros, not an index number on a caption, not "four parts, one story". In conversation, not "That tells us two things.", "Three things would change my direction:", "Two calls in the design are mine".
 
-The rule binds product strings as much as prose. A round number on every header ("Round 3 · Play a card") and a count beside every name ("Mo · 5 left") are furniture, not information. A number that matters to the game, such as cards left in a race to empty a hand, appears once, where the player looks for it at the moment it matters.
+The rule binds product strings as much as prose. A section number on every header ("Section 3 · Payment") and a count beside every name ("Sam · 14 posts") are furniture. A number that matters to the task, such as the refills left on a prescription, appears once, where the person looks for it at the moment it matters.
 
 **No sentence that rests on nobody.** The shape is any sentence whose weight rests on nobody or no one doing something: "a copay nobody has seen", "a screen nobody controls", "a round decided by nobody", "a ruling nobody can follow", "a moderator nobody asked for". It ends on a flourish instead of the fact. Say who does what: "Auto-refill on by default charges the copay before the person has seen the price." "The timer ends the round before any player rules." Facts the material reports keep their wording: "Nobody had told P3 delivery existed" is an interview finding.
 
-**Titles name the subject.** The product and the change, in a few plain words: "Larkspur Pharmacy's refill redesign", never a phrase about purpose. The same for every artifact and every finding: a finding's title names the problem and its effect.
+**Titles name the subject.** The product and the change, in a few plain words: "Larkspur Pharmacy's refill redesign", never a phrase about purpose. The same for every artifact and every finding: a finding's title names the problem and its effect. A headline or title says plainly what it is about, never how many variants it has: "The brief, flows and wireframes disagree on how an exchange starts", where "An exchange starts three different ways" only counts.
 
-**Plain sentences, in conversation too.** Standard technical English. No framing openers ("Before I write the handoff:", "One question before that pass starts:"), no labels that announce a part ("One question.", "Where the evidence is thin."), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"). One question per reply, the one whose answer unblocks the next step, with options short enough to pick from; the rest wait in the work's open questions.
+**Plain sentences, in conversation too.** Standard technical English, in the work and in conversation: literal words, with no idiom, metaphor or wordplay in place of the claim. A mechanism is named by its technical term, for a reader who knows the field: "geolocation sets the neighborhood", "push notification", "offline queue", "rate limit". A sentence that walks through what a mechanism does, where its name would say it, is rewritten around the name. No framing openers ("Before I write the handoff:", "One question before that pass starts:"), no labels that announce a part ("One question.", "Where the evidence is thin."), no intensifiers that perform conviction ("deliberately", "the whole point", "genuinely"). One question per reply, the one whose answer unblocks the next step, with options short enough to pick from; the rest wait in the work's open questions.
+
+**Labels in the reader's words.** The format's section names are written as the outline gives them. Any other heading, a column head or a run-in label says what a reader would call the thing it holds. The outline's other phrases are instructions, never labels: not a column headed "What carries", not a line opening "Moves on." or "Carries across.". The team's process words stay out of the work: a screen is a screen, never a "drawn" screen, and a screen with no wireframe is said to have none.
 
 **No hedging in the work.** "We believe", "the data suggests", "it's not a pattern yet" go. The claim carries its count and its citation: "Conversion rises 1 to 3 points (95% CI), n=4,100." Where the evidence is thin, the work stops at what is known and the gap is an open question.
 
 **No filler.** Nothing that announces what comes next, sums up what was just said, or classifies the sentence it sits in. No line about the document itself, no section lede that classifies what follows, no sentence that points at another section.
+
+**Every word carries information.** A word or clause that the sentence, its heading or its table already says is cut: a qualifier the heading or table already states ("Opening (5 min), every session" in a protocol that every session follows), an intensifier such as already, own, whole, directly or at once, a "not Y" after a claim that stands alone, and a clause added for rhythm. A contrast stays when Y is an alternative a reader might assume.
 
 **As long as the content.** Each fact appears once, in the section it belongs to; a failure described in one table is not described again in the next. Cutting a restatement never cuts a condition, a test, a citation, or a value a builder sets: a timing, a size, a threshold, a string. A fact only a trimmed section held moves into the section that owns its subject.
 
@@ -236,7 +240,7 @@ The rule binds product strings as much as prose. A round number on every header 
 - Voice and tone frameworks
 - Content models and structured content strategy
 - Microcopy patterns (tooltips, placeholders, confirmations, success/error messages, empty states)
-- Error message design and inventory
+- Error message design
 - CTA and action language
 - Inclusive language guidelines
 - Readability standards and plain language

@@ -96,7 +96,7 @@ The GSM framework prevents you from jumping straight to metrics without understa
 - Signal: Users proceed through checkout steps without abandoning or going back
 - Metric: Checkout completion rate > 75% for users who add items to cart; median checkout time under 90 seconds; back-navigation rate during checkout < 10%
 
-**Build GSM chains for every major feature before launch.** If you can't articulate the goal, you don't know what success looks like. If you can't identify the signal, you're guessing what to measure. If you can't define the metric, you can't learn from what you ship.
+**Build a GSM chain for each goal and bet the brief hands over, before launch.** If you can't articulate the goal, you don't know what success looks like. If you can't identify the signal, you're guessing what to measure. If you can't define the metric, you can't learn from what you ship.
 
 ### 3. A/B test design
 
@@ -203,7 +203,7 @@ High engagement can signal addiction, not satisfaction. A user who checks their 
 Any metric that would improve by implementing a dark pattern is measuring the wrong thing. Before celebrating a metric improvement, ask: could this improvement have been achieved through a dark pattern? If yes, verify that it wasn't.
 
 **Ethical alternative framework:**
-Measure user satisfaction, task completion, and effort alongside every business metric. Build a measurement dashboard with two columns: business outcomes and user outcomes. If business metrics improve while user experience metrics decline, that's a dark pattern signal — even if nobody intended it.
+Measure user satisfaction, task completion, and effort alongside every business metric. Each chain pairs its business metric with a user metric. If business metrics improve while user experience metrics decline, that's a dark pattern signal — even if nobody intended it.
 
 - Business metric: conversion rate → Paired user metric: post-purchase satisfaction
 - Business metric: engagement (DAU) → Paired user metric: user-reported value
@@ -246,20 +246,19 @@ At most one strategy reopen per project iteration based on post-launch metrics. 
 
 Write the deliverable to a file in the working directory, or where the user says, named by its kind and subject (`metrics-larkspur-refills.md`). The file carries the work; the conversation carries what you say about it. It opens with its first section, with no line about itself.
 
+Use these sections, cut to the request. The GSM map is the one home for every metric and threshold; the other sections name its chains.
+
 ### Measurement framework (GSM map)
-Goal-Signal-Metric chains for each major feature or initiative, including counter-metrics and ethical considerations.
+One chain for each goal or bet in the brief, or in the request when there is no brief, headed by its name: the signal, the metric with its formula, source, frequency and threshold, and the paired user metric that must not fall, with its floor.
 
-### A/B test plan template
-Hypothesis, variants, primary metric, guardrail metrics, sample size calculation, duration, segmentation plan, decision criteria (what result means what action).
+### A/B test plan
+Only when a test is planned: the hypothesis, the variants, the chain it reads by name, the sample size with the baseline and minimum detectable effect behind it, the duration, the segments, and what each result decides.
 
-### Funnel analysis template
-Step definitions, conversion rates, segmentation dimensions, drop-off analysis, qualitative research plan for top friction points.
-
-### Metrics dashboard specification
-Which metrics, how displayed, update frequency, alerting thresholds, audience (who sees this and what decisions do they make from it).
+### Funnel analysis
+Only when a funnel is in scope: each step as the event that marks it, the conversion between steps where data exists, and the segments. Research into why people leave at a step is /investigate's.
 
 ### Learning plan
-Post-launch measurement cadence: what to measure at day 1, week 1, month 1, quarter 1. When to check back, what to look for, when to declare success or pivot.
+The checkpoints where a decision is made: when each falls, which chains are read and by whom, and what each result triggers.
 
 ---
 

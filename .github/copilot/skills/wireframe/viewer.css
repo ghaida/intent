@@ -26,8 +26,8 @@
   --icon-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='2.5' y='2.5' width='4.5' height='4.5' rx='1'/%3E%3Crect x='9' y='2.5' width='4.5' height='4.5' rx='1'/%3E%3Crect x='2.5' y='9' width='4.5' height='4.5' rx='1'/%3E%3Crect x='9' y='9' width='4.5' height='4.5' rx='1'/%3E%3C/svg%3E");
   --icon-slides: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.75' y='2.5' width='12.5' height='8.5' rx='1.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='5.5' cy='13.75' r='0.9' fill='%23000'/%3E%3Ccircle cx='8' cy='13.75' r='0.9' fill='%23000'/%3E%3Ccircle cx='10.5' cy='13.75' r='0.9' fill='%23000'/%3E%3C/svg%3E");
   --icon-proto: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 2.5v10.5l2.9-2.7 1.9 4.2 1.8-.8-1.9-4.1 3.9-.2z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
-  --icon-notes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 2.75h10a1.25 1.25 0 0 1 1.25 1.25v6a1.25 1.25 0 0 1-1.25 1.25H8.25L5 13.75v-2.5H3A1.25 1.25 0 0 1 1.75 10V4A1.25 1.25 0 0 1 3 2.75z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
-  --icon-notes-off: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath d='M3 2.75h10a1.25 1.25 0 0 1 1.25 1.25v6a1.25 1.25 0 0 1-1.25 1.25H8.25L5 13.75v-2.5H3A1.25 1.25 0 0 1 1.75 10V4A1.25 1.25 0 0 1 3 2.75z' stroke-linejoin='round'/%3E%3Cpath d='M1.5 1.5l13 13' stroke-linecap='round'/%3E%3C/svg%3E");
+  --icon-notes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M4 2.75h8a1.25 1.25 0 0 1 1.25 1.25v5.75l-3.5 3.5H4A1.25 1.25 0 0 1 2.75 12V4A1.25 1.25 0 0 1 4 2.75z'/%3E%3Cpath d='M13.25 9.75H11a1.25 1.25 0 0 0-1.25 1.25v2.25'/%3E%3C/svg%3E");
+  --icon-notes-off: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cmask id='gap'%3E%3Crect width='16' height='16' fill='%23fff' stroke='none'/%3E%3Cpath d='M1.5 14.5l13-13' stroke-width='4' stroke-linecap='round'/%3E%3C/mask%3E%3Cg mask='url(%23gap)'%3E%3Cpath d='M4 2.75h8a1.25 1.25 0 0 1 1.25 1.25v5.75l-3.5 3.5H4A1.25 1.25 0 0 1 2.75 12V4A1.25 1.25 0 0 1 4 2.75z'/%3E%3Cpath d='M13.25 9.75H11a1.25 1.25 0 0 0-1.25 1.25v2.25'/%3E%3C/g%3E%3Cpath d='M1.5 14.5l13-13' stroke-linecap='round'/%3E%3C/svg%3E");
   --icon-sidebar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='1.75' y='2.75' width='12.5' height='10.5' rx='1.5'/%3E%3Cpath d='M10 2.75v10.5'/%3E%3C/svg%3E");
   --icon-sidebar-open: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.75' y='2.75' width='12.5' height='10.5' rx='1.5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M10 2.75h2.75a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5H10z' fill='%23000'/%3E%3C/svg%3E");
 }
@@ -154,9 +154,10 @@ body[data-notes="hidden"] .notes-toggle { --icon: var(--icon-notes-off); }
 .note-collapse { --icon: var(--icon-sidebar-open); }
 body[data-notes="collapsed"] .note-collapse { --icon: var(--icon-sidebar); }
 /* a switch with nothing to act on keeps its place, so the header
-   doesn't shift: prototype hides the notes, and hidden notes leave
-   no rail to collapse */
+   doesn't shift: grid and prototype show no notes, and hidden notes
+   leave no rail to collapse */
 body[data-view="proto"] :is(.notes-toggle, .note-collapse),
+body[data-view="grid"] :is(.notes-toggle, .note-collapse),
 body[data-notes="hidden"] .note-collapse { visibility: hidden; }
 .theme-toggle .swatch {
   width: var(--ic-sm); height: var(--ic-sm); border-radius: var(--r-full);
@@ -254,39 +255,47 @@ body[data-view="grid"] .plate-open:hover { color: var(--chrome-fg); }
   border-radius: var(--r-lg); overflow: hidden;
 }
 
-/* ── grid — full-page screens 3-up ──────────────────────────────────
-   Every screen keeps its real device width and scales DOWN to its
-   column, never up: viewer.js reads the authored width into
-   --frame-w and sets --grid-scale per frame. zoom rather than
-   transform, so the scaled screen's layout box shrinks with it and
-   rows pack tight. The plate stays full size — chrome never scales.
-   The column count follows the main column (2-up, then 1-up on a
-   phone). Idea boards keep their own grid above. */
+/* ── grid — an overview: every wireframe a tile ─────────────────────
+   Every full-page frame becomes a tile of one size: its title above,
+   the whole frame scaled DOWN to fit inside a 4:3 panel, never up
+   (viewer.js reads the frame's real width and height into --frame-w and
+   --frame-h and sets --grid-scale from the tile). A transform, never
+   zoom: phone browsers hold text at a minimum size under zoom, so the
+   words outgrow their shrunken boxes; a transform scales the finished
+   drawing. Negative margins shrink the layout box to the scaled size,
+   so the frame still centers in its panel. Grid
+   shows no annotation: markers, the notes rail and the notes switches
+   wait for slides. The whole tile is the handle: a click opens that
+   frame in slides, and its controls stay inert here. As many tiles per
+   row as fit, one per row on a phone. Idea boards keep their own grid
+   above. */
 body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--sp-10) var(--sp-6); align-items: start;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: var(--sp-8) var(--sp-6); align-items: start;
 }
 body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame {
   width: auto !important; min-width: 0; /* the track owns the width */
+  display: grid; grid-template-columns: minmax(0, 1fr); cursor: pointer;
+}
+/* the panel: the tile's one size, behind the scaled frame */
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame::before {
+  content: ""; grid-row: 2; grid-column: 1; aspect-ratio: 4 / 3;
+  background: color-mix(in srgb, var(--chrome-border) 30%, var(--stage));
+  border: 1px solid var(--chrome-border); border-radius: var(--r-lg);
+}
+body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame:hover::before {
+  border-color: var(--chrome-ink);
 }
 body[data-view="grid"] .frame-grid:not(:has(.vignette)) > .frame > .wf {
-  width: var(--frame-w); zoom: var(--grid-scale, 1);
+  grid-row: 2; grid-column: 1; place-self: center;
+  width: var(--frame-w);
+  transform: scale(var(--grid-scale, 1)); transform-origin: 0 0;
+  margin: 0 calc(var(--frame-w) * (var(--grid-scale, 1) - 1))
+    calc(var(--frame-h, 0px) * (var(--grid-scale, 1) - 1)) 0;
+  pointer-events: none;
 }
-/* markers stay legible on a scaled screen: they counter-scale about
-   their own center, so they keep their anchor and their size */
-body[data-view="grid"] .frame-grid:not(:has(.vignette)) .note-marker {
-  transform: scale(calc(1 / var(--grid-scale, 1)));
-}
-@container (max-width: 839px) {
-  body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@container (max-width: 479px) {
-  body[data-view="grid"] .frame-grid:not(:has(.vignette)) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
+body[data-view="grid"] .note-marker,
+body[data-view="grid"] .note-rail { display: none; }
 
 /* ── slideshow + prototype views — a fixed stage, not a long page ──
    The page stops scrolling and becomes header / nav / stage. The
@@ -363,10 +372,6 @@ body[data-view="proto"] .slide-nav {
 }
 .slide-pos { font-variant-numeric: tabular-nums; }
 .slide-nav [data-prev] { margin-left: auto; }
-/* each stage view instructs itself — one quiet line in the row's slot */
-.nav-hint { display: none; }
-body[data-view="slides"] .slides-hint { display: inline; }
-body[data-view="proto"] .proto-hint { display: inline; }
 /* prev/next carry the kit's drawn arrow, never a text character —
    the --gl-* masks are theme-free alpha shapes, so borrowing them
    here doesn't breach the chrome/ramp color separation */
@@ -460,9 +465,9 @@ body[data-view="proto"] [data-go]:hover {
    notes sit in a .note-section whose data-section matches its board
    section, and each frame's notes in a .note-group whose data-for names
    the frame id, headed by a .note-frame line. Markers number per
-   wireframe (each frame restarts at 1). Grid shows every section;
-   slides shows only the active frame's group (viewer.js toggles
-   .active). Section-level notes sit outside any group and always show. */
+   wireframe (each frame restarts at 1). The rail shows in slides only,
+   and there only the active frame's group (viewer.js toggles .active).
+   Section-level notes sit outside any group and show with their section. */
 .note-section + .note-section { margin-top: var(--sp-8); }
 .note-section-label {
   font-family: var(--display); font-size: var(--t-md); line-height: var(--t-md-lh);
