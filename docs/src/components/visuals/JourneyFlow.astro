@@ -1,65 +1,83 @@
 ---
-// Journey flow diagram: Posting an Item (5 steps + decision gates)
-// Grid layout: 13 columns (7 nodes + 6 arrows) so gates align to node columns
+// Journey flow diagram: Posting an item (steps + decision gates)
+// Grid layout: 11 columns (6 nodes + 5 arrows) so gates align to node columns
 ---
 
-<div class="visual-diagram journey-flow" role="img" aria-label="Flow diagram: Posting an item in 5 steps from camera to publish, with decision gates for photo moderation and price anomaly detection">
-  <div class="visual-label">Flow 1: Posting an Item</div>
+<div class="visual-diagram journey-flow" role="img" aria-label="Flow: posting an item. From + on any screen to Camera, Photo check, Details, Pickup, then Preview and publish, where the listing is live. A new account with 3 active listings gets the limit notice. With camera permission denied, the gallery opens. When the upload fails, the draft is kept to retry. A listing flagged by moderation is held to retake or edit. Offline, the listing is queued and publishes on reconnect.">
+  <div class="visual-label">Flow: posting an item</div>
 
   <div class="flow-grid">
     <!-- Row 1: flow nodes and arrows -->
     <div class="flow-node flow-start">
       <div class="flow-node-icon">+</div>
-      <div class="flow-node-label">Tap "+"</div>
+      <div class="flow-node-label">Any screen</div>
     </div>
     <div class="flow-arrow"></div>
     <div class="flow-node">
       <div class="flow-node-step">1</div>
-      <div class="flow-node-label">Capture</div>
-      <div class="flow-node-detail">Camera opens immediately</div>
+      <div class="flow-node-label">Camera</div>
+      <div class="flow-node-detail">Shutter or gallery</div>
     </div>
     <div class="flow-arrow"></div>
     <div class="flow-node">
       <div class="flow-node-step">2</div>
-      <div class="flow-node-label">Confirm</div>
-      <div class="flow-node-detail">AI suggests title</div>
+      <div class="flow-node-label">Photo check</div>
+      <div class="flow-node-detail">Use this photo or retake</div>
     </div>
     <div class="flow-arrow"></div>
     <div class="flow-node">
       <div class="flow-node-step">3</div>
       <div class="flow-node-label">Details</div>
-      <div class="flow-node-detail">Price / Free / Trade</div>
+      <div class="flow-node-detail">Title, price, category</div>
     </div>
     <div class="flow-arrow"></div>
     <div class="flow-node">
       <div class="flow-node-step">4</div>
       <div class="flow-node-label">Pickup</div>
-      <div class="flow-node-detail">Porch / Meet / Flexible</div>
+      <div class="flow-node-detail">Option and availability</div>
     </div>
     <div class="flow-arrow"></div>
     <div class="flow-node flow-end">
       <div class="flow-node-step">5</div>
-      <div class="flow-node-label">Publish</div>
-      <div class="flow-node-detail">"Live in your neighborhood"</div>
+      <div class="flow-node-label">Preview and publish</div>
+      <div class="flow-node-detail">Listing is live</div>
     </div>
 
-    <!-- Row 2: decision gates aligned to Capture (col 3) and Details (col 7) -->
+    <!-- Rows 2 and 3: decision gates aligned to Any screen (col 1), Camera (col 3), Photo check (col 5) and Preview and publish (col 11) -->
+    <div class="flow-gate" style="grid-column: 1; grid-row: 2;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">New account with 3 active listings?</div>
+      <div class="flow-gate-action">Limit notice</div>
+    </div>
     <div class="flow-gate" style="grid-column: 3; grid-row: 2;">
       <div class="flow-gate-connector"></div>
       <div class="flow-gate-diamond"></div>
-      <div class="flow-gate-label">Photo flagged?</div>
-      <div class="flow-gate-action">Retake or edit</div>
+      <div class="flow-gate-label">Camera permission denied?</div>
+      <div class="flow-gate-action">Gallery</div>
     </div>
-    <div class="flow-gate" style="grid-column: 7; grid-row: 2;">
+    <div class="flow-gate" style="grid-column: 5; grid-row: 2;">
       <div class="flow-gate-connector"></div>
       <div class="flow-gate-diamond"></div>
-      <div class="flow-gate-label">Price anomaly?</div>
-      <div class="flow-gate-action">Soft warning, no block</div>
+      <div class="flow-gate-label">Upload fails?</div>
+      <div class="flow-gate-action">Draft kept, retry</div>
+    </div>
+    <div class="flow-gate" style="grid-column: 11; grid-row: 2;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">Flagged by moderation?</div>
+      <div class="flow-gate-action">Held, retake or edit</div>
+    </div>
+    <div class="flow-gate" style="grid-column: 11; grid-row: 3;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">Offline?</div>
+      <div class="flow-gate-action">Queued, publishes on reconnect</div>
     </div>
   </div>
 
   <div class="flow-metric">
-    <span class="flow-metric-value">4 taps</span>
-    <span class="flow-metric-label">to post · under 30 seconds</span>
+    <span class="flow-metric-value">Under 30 sec</span>
+    <span class="flow-metric-label">from + to live, after a first listing</span>
   </div>
 </div>

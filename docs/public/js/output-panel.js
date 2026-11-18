@@ -35,6 +35,17 @@
     }
   }
 
+  // Wireframe frames and deck slides render at an illustration scale set
+  // in CSS (--ex-scale). A transform keeps the layout box at full size, so
+  // each frame gets negative margins equal to the space the scale removes.
+  function scaleExamples() {
+    body.querySelectorAll('.wf-ex > .wf, .deck-ex > .deck-frame').forEach(function (frame) {
+      var s = parseFloat(getComputedStyle(frame).getPropertyValue('--ex-scale')) || 1;
+      frame.style.marginRight = frame.offsetWidth * (s - 1) + 'px';
+      frame.style.marginBottom = frame.offsetHeight * (s - 1) + 'px';
+    });
+  }
+
   function open(skill, trigger) {
     // SAFETY CONTRACT: the source <div> below is populated at build time
     // by Astro from showcase.md, after passing through simpleMarkdown() in
@@ -48,6 +59,7 @@
     activeTrigger = trigger;
     title.textContent = '/' + skill;
     body.innerHTML = source.innerHTML;
+    scaleExamples();
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
     overlay.classList.add('open');
@@ -82,6 +94,11 @@
 
   // Overlay click closes
   overlay.addEventListener('click', close);
+
+  // The deck's scale steps with the viewport
+  window.addEventListener('resize', function () {
+    if (panel.classList.contains('open')) scaleExamples();
+  });
 
   // Escape key closes
   document.addEventListener('keydown', function (e) {

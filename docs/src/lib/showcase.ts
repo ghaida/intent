@@ -137,7 +137,11 @@ export function simpleMarkdown(text: string): string {
       paraLines.push(lines[i]);
       i++;
     }
-    html.push(`<p>${inlineMarkdown(paraLines.join(' '))}</p>`);
+    // A paragraph that is only a bold phrase is a section heading; one that
+    // opens with a bold run-in label and carries text after it is not.
+    const para = paraLines.join(' ');
+    const isHeading = /^\*\*[^*]+\*\*$/.test(para.trim());
+    html.push(`<p${isHeading ? ' class="output-heading"' : ''}>${inlineMarkdown(para)}</p>`);
   }
 
   return html.join('\n');

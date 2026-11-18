@@ -11,75 +11,73 @@ Nearby is a tool for neighbors, and its trust comes from proximity: the person s
 
 ### Output
 
-**Nearby, a walking-distance marketplace**
+**Nearby**
 
 ---
 
 **Users**
 
-**Sellers** are moving, decluttering or upgrading. They post in bursts: a moving weekend, a garage cleanout. Most have tried Craigslist or Facebook Marketplace and found the effort too high for a $10 lamp. When posting takes more than 60 seconds, they put the item on the curb with a "FREE" sign.
-
-**Buyers** want a bargain or a short trip, and prefer walking two blocks to waiting two days for shipping. They open the app with no item in mind, so browsing serves them better than search. They come for the walking-distance limit.
-
-**Organizers** are block captains, community garden coordinators and buy-nothing group admins. They run lending, gifting and sharing through Facebook Groups, group texts and paper flyers, and want better tools for it. They are the likeliest early advocates and the hardest group to satisfy.
+- **Sellers** have things to get rid of because they are moving, decluttering or upgrading. They post in bursts: a moving weekend, a garage cleanout. Most have tried Craigslist or Facebook Marketplace and found them too much work for a $10 lamp. A post that takes longer than 60 seconds loses to leaving the item on the curb with a "FREE" sign.
+- **Buyers** want bargains and convenience, and would walk two blocks before waiting two days for shipping. They browse with no item in mind and buy on impulse, so they find things by seeing what is around more than by searching.
+- **Organizers** are block captains, community garden coordinators and buy-nothing group admins. They run lending, gifting and sharing through Facebook Groups, group texts and paper flyers, and they want better tools for that work. They are the likeliest first advocates in a neighborhood and the least tolerant of a tool that falls short.
 
 ---
 
 **Product**
 
-Nearby is a new marketplace for buying, selling and trading within walking distance. Its value is exchange density per square mile. It has to work in one neighborhood before it expands, and it grows outward from each active neighborhood.
+Nearby is a new marketplace for buying, selling and trading within walking distance, used on phones. Most items are under $20.
 
-Revenue: optional promoted listings and partnerships with neighborhood businesses.
+Revenue comes from optional promoted listings and partnerships with neighborhood businesses.
 
----
-
-**Design principles**
-
-- **Walking distance decides what belongs.** A feature that does not depend on proximity is left out.
-- **Effort matches the price.** Most items cost under $20, and each step is sized to that.
-- **Distance before reputation.** "3 blocks away" earns more trust than "4.8 stars". Listings show the neighborhood and no star ratings.
-- **Speed for sellers, discovery for buyers.** Neither is improved at the other's cost.
+Value depends on density: exchanges per square mile. One neighborhood reaches critical mass before the product expands outward from it.
 
 ---
 
 **Constraints**
 
-- Mobile first. More than 90% of expected use is on a phone, in motion.
-- No identity verification at signup. In a small market, signup friction stops adoption.
+- No identity verification at signup: signup friction stops adoption in a small market.
 - Works in a neighborhood with as few as 50 active users.
-- No delivery. People walk to collect.
-- An exact address stays hidden until both people agree to share it.
-- No transaction fees, and no payment step between neighbors.
-- WCAG 2.2 AA on every screen.
+- No delivery. Buyers and sellers walk.
+- Exact addresses stay hidden until both parties agree.
+- Mobile-first: 90%+ of expected usage is on phones, on the move.
+- No transaction fees. The platform never handles money between neighbors.
+
+---
+
+**Design principles**
+
+1. **Proximity is the product.** A feature that does not depend on walking distance is out.
+2. **Lower the stakes.** The effort the product asks matches a $20 item.
+3. **Trust through transparency.** "3 blocks away" builds more trust than "4.8 stars".
+4. **Respect the asymmetry.** Sellers want speed and buyers want discovery. Neither is served at the other's cost.
 
 ---
 
 **Ethical stance**
 
-- No fabricated urgency or social proof. No "3 others are looking at this".
-- Every notification is opt-in. No re-engagement notifications.
-- Data minimization: only what the core function needs. Home location is never sold and never used for ad targeting.
-- Every promoted listing is labeled.
-- Feedback about a person is private and constructive. A person's conduct is never shown in public.
-- No pattern that manipulates a neighbor into an exchange. If revenue depends on one, the revenue model changes.
+- No fake social proof and no fabricated urgency: nothing like "3 others are looking at this".
+- No notification spam. Every push notification is opt-in.
+- A user who opens the app less often because they found what they needed is a success.
+- Collect only the data core functions need. Where a user lives is never monetized.
+- Promoted listings are labeled as promoted.
+- Feedback between neighbors is private and constructive. Nothing about a neighbor's conduct is shown publicly.
+- If revenue requires manipulating neighbors into transactions, the revenue model changes.
 
 ---
 
 **Success**
 
-For sellers, the item is gone and posting took under a minute. For buyers, something worth the walk turns up close to home. A person who opens the app less often because they found what they needed quickly is a success.
-
-For the business, success is exchange density: completed exchanges per 1,000 households per week within a walkable radius. A neighborhood where 20 things change hands every week, sold, traded or given away, is a success. A city with 100,000 users across 50 neighborhoods, none of them dense, is a failure.
+Success is exchange density: completed exchanges each week among the households within a walkable radius. A neighborhood where 20 things change hands every week, sold, traded or given away, is succeeding. A city with 100,000 users across 50 neighborhoods and density in none of them is failing. Revenue follows the same density: promoted listings and business partnerships have value only where neighbors exchange often.
 
 ---
 
 **Open questions**
 
-- Which city and country is the first neighborhood in?
-- When does the first neighborhood launch?
-- Who approves the brief and the wireframes?
-- Can a person under 18 hold an account?
-- What does a neighborhood business get from a partnership?
+- When does the first neighborhood launch, and which neighborhood is it?
+- Which countries or states will Nearby operate in?
+- What is the minimum age for an account?
+- Is Nearby a native app, a web app or both?
+- Who approves the design work?
 
 ## /strategize
 agent: Ember
@@ -95,74 +93,98 @@ Marketplace, Craigslist and Nextdoor treat location as a search filter. In Nearb
 
 **Context**
 
-US peer-to-peer exchange exceeds $200B. Nearby competes with the products below and with habits that involve no product: the group text, the paper flyer, and the item left on the curb with a FREE sign [project context].
+Nearby is a mobile marketplace for buying, selling, trading and giving within walking distance. It serves sellers clearing things out, buyers who browse what is around them, and organizers who run lending and gifting for a block or a group [project context].
 
-| Competitor | Thesis | Trust rests on | Use of location | Estimated completion |
-|---|---|---|---|---|
-| Facebook Marketplace | Scale wins | Facebook identity, eroding | Filter | About 25% |
-| Craigslist | Open classifieds | Nothing | City | About 15% for local items |
-| Nextdoor | Neighborhood social network; commerce secondary | Verified address | Minimal | Very low |
-| Buy Nothing groups | Gift economy inside a community | Facebook group membership | Group, no distance within it | About 60% within a group |
+It enters peer-to-peer exchange, a US activity of more than $200B a year. Neighbors exchange today through Facebook Marketplace, Craigslist, Nextdoor and Buy Nothing groups, and through group texts, paper flyers and a "FREE" sign on the curb [project context].
 
 ---
 
 **Gap**
 
-Every competitor uses location as a search filter or as group membership. None builds trust, discovery and handover on walking distance.
+Each of these tools treats location as a filter on a city-wide or group-wide inventory. None offers a market whose inventory is what a person can walk to, where trust comes from living nearby and pickup is a walk.
+
+- Sellers found Marketplace and Craigslist too heavy for a $10 lamp. When posting takes more than 60 seconds they leave the item on the curb [project context].
+- Buyers do not know what they want until they see it, so discovery matters more to them than search [project context].
+- Organizers run lending, gifting and sharing through Facebook Groups, group texts and flyers, and want better tools for work they do today [project context].
 
 ---
 
 **Opportunity**
 
-Neighbors exchange at a high rate where membership is local, using manual tools.
+For neighbors with low-value items, most under $20, where the effort a broad platform asks for costs more than the item is worth [project context]. Organizers are the first audience inside each neighborhood: they run exchange today and are the most likely early evangelists [project context].
+
+Why now: local exchange is moving to neighborhood scale, and the broad platforms are built on city-wide inventory and account identity. Rebuilding them around a walking radius is an architectural change that takes years.
+
+Nearby's value depends on density, so the opportunity is sized by exchanges per 1,000 households in a walkable radius. User totals across a city do not size it [project context].
 
 ---
 
 **Goals**
 
+- In a mature neighborhood, things change hands every week: some sold, some traded, some given away [project context].
 - Most listings end in an exchange.
+- A listing is exchanged within days of posting.
+- Giving is a regular part of the market, with free listings a large share of what is posted.
+- A person who finds what they need and opens the app less often counts as a success [project context].
 
 ---
 
 **Constraints**
 
-- Cold start: an empty neighborhood gives a buyer no reason to return, so activation precedes growth spending. The product has to work with 50 active users [project context].
+- **Cold start.** A neighborhood with no listings gives a buyer nothing to see. Activation inside one neighborhood comes before growth to the next, and the product has to work with 50 active users [project context].
+- **Privacy.** Neighbors expect more privacy from each other than from a general marketplace. An interest in a bookshelf must not tell a stranger where the seller lives. Exact addresses stay hidden until both people agree, and location data is used only for the core function [project context].
+- **Revenue.** Income comes from optional promoted listings and neighborhood business partnerships. It cannot depend on transaction fees, transaction volume or engagement optimization [project context].
+- **Signup.** No identity verification [project context].
+- **Logistics.** No delivery. Walking is the delivery method [project context].
+- **Ethics.** No manufactured urgency, no notification spam, no public ratings or shaming, no dark patterns [project context].
+- **Device.** More than 90% of expected use is on phones, on the move [project context].
 
 ---
 
 **Guiding Principles**
 
-2. The walking radius decides. Cut a feature that works the same without it.
-
-4. Trust comes from tenure and proximity. Choose "3 blocks away" over a star rating.
+- **Density before breadth.** Between a feature that makes one neighborhood busier and one that reaches more neighborhoods, build the first.
+- **The walking radius decides.** A feature that works the same without walking distance is cut [project context].
+- **Casual over transactional.** Between a step that protects a sale and a step that keeps posting as light as a sign in the yard, keep posting light.
+- **Trust from tenure and proximity.** Where a trust signal is needed, show how long someone has lived nearby and how close they are. Star ratings and public reviews are never the answer.
 
 ---
 
 **Key Assumptions & Open Questions**
 
-**Proximity and neighborhood trust signals raise completion.** Listings limited to walking distance, each showing the other person's tenure and distance, complete more often, because the handover is a walk and the other person is a neighbor. Every goal depends on this. Wrong if pilot listings complete no more often than Facebook Marketplace listings.
+- **Walking distance makes more listings end in an exchange.** A marketplace limited to walking distance, showing tenure and distance, completes more listings than a broad platform, because walking removes the logistics and living nearby lowers the doubt about a stranger. The product is built on this. Wrong if listings in a pilot neighborhood end in an exchange no more often than local listings on Marketplace.
+- **A walking radius holds enough supply.** In a low-density area the radius can hold too few listings to bring a buyer back. It matters because the product has to work with 50 active users. Wrong if buyers in a suburban pilot open the map to an empty radius on most days.
+- **Proximity raises trust.** Living close can raise safety concerns in place of trust, most of all for people who are vulnerable at home. It matters because distance is the main trust signal. Wrong if people in interviews say they hesitate more to exchange with someone who lives on their block, or sellers hold back listings because the buyers are near.
+- **One tap of interest is enough to arrange a pickup.** The first version has no messaging. It matters because an interest that cannot become a time and a place ends in no exchange. Wrong if pilot exchanges stall after the seller accepts, or the two people move to text or Facebook to finish.
+- **Organizers bring their groups.** Cold start depends on organizers moving exchanges they run elsewhere. Wrong if organizers in interviews say their Facebook group is good enough, or a pilot organizer joins and the group's exchanges stay where they were.
+- **The baseline is low.** Local listings on broad platforms are estimated to complete 20–30% of the time: about 25% on Marketplace and 15% on Craigslist, against about 60% inside a Buy Nothing group. The gap and the completion goal are set against these figures, and none has been measured. Wrong if sellers in interviews report that most of their local listings end in an exchange.
 
-**Walking distance holds enough supply.** A low-density radius may hold too few listings to browse. Buyers who find nothing new churn, and sellers follow. Wrong if a pilot neighborhood with 50 active users has no new listing inside a buyer's radius in most weeks.
+Questions for the designer:
 
-**A tap is enough to arrange a handover.** The first version has no messaging, so two people agree a time and place through an expression of interest alone. If they cannot, interest does not convert to an exchange. Wrong if most pilot exchanges are arranged outside Nearby, or if interest is expressed and the item does not change hands.
+- Which neighborhoods run the pilot?
+- What are the timeline, the budget and the team for the first version?
 
 ---
 
 **Proposed Scope (Phase 1)**
 
-A neighborhood is a 10-minute walking radius, about half a mile, around the person's home location.
+A mobile app. A neighborhood is the walking radius around each person's location.
 
 Included:
 
-- Post an item with a photo, a price or "free", and a location radius, in under 30 seconds.
+- Post an item with a photo, a price or Free, and a pickup radius, in under 30 seconds.
+- Browse items within walking distance, on a map and in a list.
+- Express interest with one tap.
+- Neighborhood identity: each person sees their area, scoped to their surroundings.
+- Trust signals: account age, neighborhood tenure and approximate distance.
 
-- One-tap expression of interest in an item.
+Waits:
 
-- Trust signals per person: account age, neighborhood tenure, approximate distance.
+- Messaging, until the second version.
+- Browsing other neighborhoods.
+- Mutual connections as a trust signal.
 
-Waiting:
-
-- Messaging, in the second version.
+Out of scope: payments, which neighbors settle between themselves, and delivery.
 
 ### Philosopher
 
@@ -180,47 +202,61 @@ Before any design, the research goes to people who already trade locally: neighb
 
 ### Output
 
-**Nearby neighborhood exchange interviews**
-
----
-
 **Research objective**
 
-- What does walking distance change about an exchange, and how far is it in an urban and a suburban neighborhood? Tests the bet that walking distance differentiates exchange, its risk of thin supply at low density, and the open question of what defines a neighborhood [brief].
-- Does proximity to the other person raise trust in the exchange or safety concerns? Tests the bet that people trust neighbors more than online strangers, and its risk that proximity raises safety concerns [brief].
-- At which steps do Facebook Marketplace, Buy Nothing groups and Craigslist fail an exchange between neighbors? Tests the claim that these tools do not fit walking-distance trust and logistics, which the 60% completion hypothesis rests on [brief].
+| Question the study answers | Bet in the brief it tests |
+|---|---|
+| What distance do people treat as near enough for an exchange, and what changes inside it? | Walking distance is a strong enough constraint to make the experience different; in low-density areas it may leave too little supply. The answer also informs the open question of what defines a neighborhood [brief]. |
+| Does knowing the other person lives close raise trust or raise concern about safety? | People trust neighbors more than strangers from the internet; proximity can increase safety concerns [brief]. |
+| At which steps do Facebook Marketplace, Buy Nothing groups and Craigslist fail an exchange between neighbors? | The existing tools are the wrong shape for walking-distance trust and logistics [brief]. |
 
 ---
 
 **Method**
 
-Semi-structured interviews, 45 minutes each, 13 sessions. The bets concern listing choice, the decision to show up and the causes of failed exchanges, which participants can report from past exchanges. The guides ask about past behavior only.
+Semi-structured interviews: 13 sessions of 45 minutes by video call, with 5 minutes of opening, 35 minutes of core questions and 5 minutes of closing. The three questions concern motivation, trust and the steps of past exchanges, and the answers worth counting at scale are not yet known. An interview follows each participant's account of a real exchange and can ask about what the guide did not anticipate.
+
+Sessions run in two neighborhoods, one urban and one suburban, so the distance question is answered at both densities.
 
 ---
 
 **Participants**
 
-People who exchange locally, in an urban neighborhood (more than 5,000 households per km²) and a suburban one (1,000 to 3,000 households per km²). Every group draws from both.
+| Group | Sessions | Qualifies | Mix |
+|---|---|---|---|
+| Sellers | 5 | Sold or gave away 3 or more items locally in the past 6 months | Facebook, Craigslist, curb alerts and word of mouth all represented |
+| Buyers | 5 | Bought or picked up an item from a local stranger in the past 3 months | Active seekers and casual browsers |
+| Organizers | 3 | Admin or moderate a Buy Nothing group, neighborhood exchange group or community swap with 50 or more members | |
 
-| Group | Sessions | Must have | Mix | Excluded |
-|---|---|---|---|---|
-| Sellers | 5 | Sold or gave away 3 or more items locally in the past 6 months | Facebook, Craigslist, curb alerts, word of mouth | Professional resellers, business accounts |
-| Buyers | 5 | Bought or picked up an item from a local stranger in the past 3 months | Searchers for a specific item and browsers | |
-| Community organizers | 3 | Current admin or moderator of a Buy Nothing group, neighborhood exchange group or community swap with 50 or more members | | |
+Professional resellers and business accounts are excluded. A person who qualifies for more than one group is interviewed in one.
 
-Recruitment channels: Buy Nothing group admins, Nextdoor posts, and flyers at coffee shops and on community boards. Target: 18 recruits for 13 sessions, leaving 5 reserves.
+Each group includes participants from both neighborhoods: one urban, above 5,000 households per km², and one suburban, at 1,000 to 3,000 households per km².
+
+Recruitment runs through outreach to Buy Nothing group admins, Nextdoor posts, and flyers at coffee shops and on community boards. The target is 18 recruits for 13 sessions; the 5 spares cover the pilot and no-shows.
+
+**Screener**
+
+| Question | Answer that qualifies |
+|---|---|
+| Which neighborhood do you live in? | One of the two study neighborhoods |
+| In the past 6 months, how many items have you sold or given away to someone in your area? (None, 1 to 2, 3 to 5, 6 or more) | 3 to 5 or 6 or more, for sellers |
+| Where did you offer them? (Facebook Marketplace, a Buy Nothing or other Facebook group, Craigslist, Nextdoor, the curb, word of mouth, other) | Any; used to balance the mix |
+| Do you sell items as a business or buy items to resell? | No |
+| When did you last buy or pick up an item from someone local you had not met before? (Past 3 months, 3 to 12 months ago, longer, never) | Past 3 months, for buyers |
+| How did you come across that item? (I was searching for it, I saw it while browsing, someone told me, other) | Any; used to balance seekers and browsers |
+| Do you admin or moderate a group where neighbors sell, give, lend or swap things? How many members does it have? | Yes, with 50 or more members, for organizers |
 
 ---
 
 **Timeline**
 
-| Stage | Dates | Work |
+| Stage | Dates (2026) | Work |
 |---|---|---|
-| Recruitment | November 16 to 20, 2026 | Outreach, screening, scheduling |
-| Pilot | November 23 | One session with a reserve seller; wording and timing corrected the same day |
-| Fieldwork | November 24 to December 4, no sessions November 26 or 27 | 3 to 4 interviews a day, with a debrief between sessions |
-| Synthesis | December 7 to 10 | Affinity mapping of the session notes |
-| Reporting | December 11 | Findings report |
+| Recruitment | 23 to 27 November | Outreach, screening and scheduling |
+| Pilot | 30 November | One seller session from the spare recruits; question wording and theme timings are fixed afterwards |
+| Fieldwork | 1 to 11 December | 13 sessions, at most 4 a day, with a debrief after each |
+| Synthesis | 14 to 17 December | Affinity mapping across all sessions |
+| Reporting | 18 December | Findings report, organized by theme. Each finding states how many of the 13 sessions showed it, with quotes under participant codes and the change it calls for |
 
 ---
 
@@ -228,66 +264,131 @@ Recruitment channels: Buy Nothing group admins, Nextdoor posts, and flyers at co
 
 **Opening (5 min)**
 
-- Purpose: "We are learning how people in neighborhoods sell, give away and trade things. We are not testing you or any product, and there are no wrong answers."
-- Consent: "I would like to record the audio of this call so that my notes are accurate. Only the research team hears the recording, and your name will not appear in anything we write. You can skip any question or stop at any time, and the gift card is yours either way. Is it all right if I record?"
+- Purpose: "We're exploring how people in neighborhoods sell, give away and trade things. We're not testing anything, just learning from your experience. There are no wrong answers."
+- Consent: confirm permission to record, how the recording and quotes are used, and that the participant can skip a question or stop at any time.
+- Warm-up: "Tell me a bit about your neighborhood. How long have you lived there?"
+- Organizers only: "Tell me about the group you run and how you got involved."
 
-**Sellers: core questions (35 min)**
+**Sellers**
 
-**Distance**
+**Where the current tools fail (13 min)**
 
-- Tell me about the last thing you sold or gave away locally. Walk me through it from the moment you decided to get rid of it.
-  - Probe: How did you decide where to list it? What made you choose that over the other places?
-  - Probe: How long did it take from that decision until the item was gone?
-- How far did the person who took it come?
-  - Probe: Where did the handover happen, and who chose the place?
-  - Probe: Tell me about a time someone came from much farther away. What was different?
-- When you say "my neighborhood", where does it start and end?
-  - Probe: Which of your exchanges happened inside it?
-
-**Trust**
-
-- What did you know about that person before you met?
-  - Probe: How did you learn it?
-  - Probe: How did it affect the handover?
-- Tell me about a time the person who took an item turned out to live close to you.
-  - Probe: What changed once you knew?
-- How have you told people where to come for a pickup?
-  - Probe: Tell me about a time you hesitated to say where you live. What did you do?
-
-**Where today's tools fail**
-
-- What was the hardest part of that last sale or giveaway?
-  - Probe: Walk me through that part step by step.
-- Tell me about something you wanted to sell or give away locally and did not.
-  - Probe: What stopped you?
-  - Probe: What happened to the item?
-- Tell me about an exchange that went badly.
+- Tell me about the last thing you sold or gave away locally. Walk me through what happened from the moment you decided to get rid of it.
+  - Probe: Walk me through that step by step.
+  - Probe: How long did it take from deciding to the item being gone?
+- How did you decide where to list it?
+  - Probe: What made you choose that over the other places you considered?
+- What was the hardest part?
+- Tell me about a time you wanted to sell or give something away locally and did not. What stopped you?
+- Tell me about an exchange that went wrong. What happened?
   - Probe: What did you do next?
-  - Probe: Where did you list the next item?
 
-**Buyers: core questions (35 min)**
+**Distance (11 min)**
 
-**Distance**
+- For that last item, how far did the other person come to get it?
+  - Probe: How did they get there?
+- When you say "local", what area do you mean?
+  - Probe: Where does your neighborhood end?
+- Think of the nearest person you have sold or given something to, and the farthest. What was different about the two exchanges?
+- Tell me about a time someone was interested and distance ended the exchange.
 
-- How did you get there, and how long did the trip take?
-  - Probe: Tell me about an item you wanted and did not go to get. How far away was it?
-  - Probe: Tell me about the last time you passed a "FREE" sign or items left on a curb. What did you do?
+**Trust and safety (11 min)**
 
-**Community organizers: core questions (35 min)**
+- What did you know about the person who took the last item before you agreed to hand it over?
+  - Probe: Had you met them before? How did that affect the exchange?
+- How did you decide where to hand it over?
+  - Probe: What made you choose that place?
+- Has there been a time you hesitated to tell someone where you live? What happened?
+- Have you sold or given something to a person who lives on your block? How did that exchange compare with the others?
 
-**Where today's tools fail**
+**Buyers**
 
-- What do you do for the group outside its platform: texts, lists, paper?
-  - Probe: What made you start doing that?
-- Tell me about a time you tried a different tool for the group.
-  - Probe: What made you stay with it, or go back?
+**Where the current tools fail (13 min)**
+
+- Tell me about the last thing you bought or picked up from someone local. Walk me through it from the moment you first saw it.
+  - Probe: Walk me through that step by step.
+- How did you come across it?
+  - Probe: Were you looking for it at the time?
+- In the past month, when did you look at local listings?
+  - Probe: What prompted you to look?
+- What was the hardest part of getting the item?
+- Tell me about a pickup that went wrong. What happened?
+  - Probe: What did you do next?
+
+**Distance (11 min)**
+
+- How did you get to that last pickup?
+  - Probe: How far was it?
+- When you look for things nearby, what area do you mean?
+  - Probe: Where does your neighborhood end?
+- Tell me about an item you wanted and did not go for because of where it was.
+- What have you picked up close to home that you would not have travelled for?
+- Tell me about the last time you passed a "FREE" sign on a curb. What did you do?
+
+**Trust and safety (11 min)**
+
+- What did you know about the seller before you went?
+  - Probe: What made you trust them enough to go?
+- Where did you meet?
+  - Probe: Who chose the place?
+- How did you pay?
+- Has there been a pickup where you felt uncomfortable? What happened?
+- Have you bought or picked up something from a person who lives on your block? How did that exchange compare with the others?
+
+**Organizers**
+
+**Where the current tools fail (13 min)**
+
+- Walk me through the past week of running exchanges in your group. What did you do?
+  - Probe: Walk me through that step by step.
+- Which problems come back week after week?
+  - Probe: What did you do the last time it happened?
+- Which rules have you added since the group started?
+  - Probe: What happened that led to the rule?
+- Which parts of the work happen outside the group, such as group texts, spreadsheets or paper?
+- What other tools has the group tried?
+  - Probe: What made you stay with, or return to, the one you use now?
+
+**Distance (11 min)**
+
+- What area does your group cover?
+  - Probe: How was that boundary set?
+- Tell me about the last request to join, or post, from outside that area. What did you do?
+- In the last few exchanges you saw, how far apart did the two people live?
+- Tell me about an exchange in the group that failed because of distance.
+
+**Trust and safety (11 min)**
+
+- Tell me about the last time someone did not follow through on a pickup. How did you handle it?
+- How do members arrange where to hand an item over?
+  - Probe: What rules does the group have about sharing addresses?
+- Tell me about a time you removed someone from the group. What happened?
+- What is the most serious thing that has happened in the group?
+  - Probe: How did you handle it?
+
+**Closing (5 min)**
+
+- Summarize the main points heard and ask: "What did I get wrong or leave out?"
+- "What about exchanging things with neighbors should I have asked about and didn't?"
+- Next steps: the gift card arrives by email today, and quotes in the report carry a code in place of a name.
+- Thank the participant.
+
+**Notes for interviewer**
+
+- When a session runs behind, cut the last question of each theme, starting with the first theme.
+- A theme that has not started by minute 30 gets its first question only.
+- The opening consent and the closing are never cut.
 
 ---
 
 **Logistics**
 
-- **Incentive:** $50 gift card for each participant, including the pilot participant.
-- **Observers:** One interviewer and one note-taker per session, no other attendees. They debrief after each session and add what the notes missed before the next one starts.
+- **Tools:** video call with recording and automatic transcription. A participant who prefers a phone call gets one.
+- **Recording:** audio, video and transcript, with consent. A participant who declines recording is interviewed with written notes only.
+- **Consent:** a consent form goes out with the booking and is confirmed aloud in the opening. It states what the study covers, that the session is recorded, how quotes are used, and that the participant can skip any question or stop and keep the incentive. Questions about exchanges that went wrong or felt unsafe are skipped at any sign of discomfort.
+- **Data:** notes and the report use participant codes (S1 to S5, B1 to B5, O1 to O3). Quotes carry no names, street names or group names. Recordings are deleted 30 days after the findings report.
+- **Incentive:** a $50 gift card, emailed the day of the session.
+- **Observers:** one note-taker per session, camera and microphone off, introduced in the opening. Notes follow one template: timestamp, theme, observation, quote. The interviewer and note-taker debrief for 15 minutes after each session.
 
 ## /blueprint
 agent: Wren
@@ -297,115 +398,251 @@ A $5 exchange runs on geolocation, notification timing, trust signals and modera
 
 ### Output
 
-**Nearby item exchange service blueprint**
+**Service blueprint: Nearby item exchange**
 
 **System overview**
 
-A neighbor posts an item, and another neighbor within walking distance claims it and collects it on foot. Sellers want the item gone with little effort, buyers browse what is close, and organizers moderate their neighborhood's listings [project context] [brief].
+An item exchange on Nearby takes one item from a seller's post to a handoff on foot between two neighbors: post, browse, one-tap interest, acceptance, pickup and confirmation [brief]. It serves sellers who want an item gone with little effort, buyers who browse what is within walking distance, and organizers who moderate their neighborhood [project context]. The app coordinates the exchange up to the meeting; the handoff and any payment happen in person [brief].
+
+Out of scope: messaging, payments, delivery and browsing other neighborhoods [brief]. Signup, promoted listings and neighborhood activation are not mapped.
 
 ---
 
 **Service blueprint**
 
-**An exchange, from post to handoff**
+Each step says what the person does and what the app shows them. Below the line of visibility are the services and people whose work Sarah and Marcus do not see. Support holds the infrastructure and policy that every stage uses. ◆ marks a step where an exchange stalls.
 
-*Frontstage.* The seller, selling a couch during a moving week. Post to handoff takes 4 to 48 hours.
+*Posting and browsing*
 
-| Step | What the seller does and sees | Pain point |
+Frontstage: Sarah, seller, moving this week. Steps 1 to 4 take under 30 seconds [brief]. The couch has to be gone within 4 to 48 hours.
+
+| Step | Sarah does | Sarah sees |
 |---|---|---|
-| 1 | Photographs the couch. Sees a suggested title and category. | |
-| 2 | Sets a price or free, and a pickup preference: porch, meet outside or flexible. The preference is prefilled from the last listing. | |
-| 3 | Posts. Sees the listing as a pin on the neighbors' map. | A first-time seller clearing a home stops at 3 listings. |
-| 8 | Gets a push notification of the buyer's interest. Sees the buyer's walking time and neighborhood tenure. | Notification batching delays it up to 15 minutes after the buyer's tap. |
-| 9 | Accepts or ignores. Sees a suggested meeting point and time. | |
-| 11 | Meets the buyer outside and hands over the couch. Any payment passes between them. | The app records nothing at the handoff. |
-| 12 | Marks the couch exchanged. Sees their exchange count in Capitol Hill. | |
+| 1 | Photographs the couch or picks a photo | Camera, then a suggested title and category |
+| 2 | Confirms or edits the title, then sets a price or marks the couch free | Price field with a free option |
+| 3 | Confirms how pickup works: porch, meet outside or flexible | The choice from her last listing, filled in, and the listing as a neighbor's map shows it |
+| 4 ◆ | Posts | Confirmation that the listing is live, with its map pin |
 
-*Line of interaction.* Until they meet at 11, the seller and the buyer reach each other only through the platform.
+Line of interaction: Sarah's listing reaches Marcus when it falls inside his walking radius.
 
-*Frontstage.* The buyer, walking home with nothing in mind to buy. Seeing the couch to carrying it takes 20 minutes to 2 hours.
+Frontstage: Marcus, buyer, walking home. Opening the app to pickup takes him 20 minutes to 2 hours.
 
-| Step | What the buyer does and sees | Pain point |
+| Step | Marcus does | Marcus sees |
 |---|---|---|
-| 4 | Opens the app. Sees items within walking distance as map pins, or as a list sorted by distance. | |
-| 5 | Opens the couch. Sees the photo, the description, the walking time, the seller's neighborhood tenure and the pickup type. | |
-| 6 | Expresses interest in one tap. Optimistic UI confirms it, with undo for 5 seconds. | |
-| 7 | Checks the activity tab. Sees a waiting status and the seller's usual response time. | The buyer waits on the batch, then on the seller, and may be home by then. |
-| 10 | Gets a push notification that the seller accepted. Sees the meeting point and a time window. | |
-| 11 | Walks over, meets the seller and takes the couch. | |
-| 12 | Marks it received. Can say whether the couch was as described. | |
+| 5 ◆ | Opens the app and browses the map or the list | Listings inside his walking radius: map pins with thumbnails, or a list sorted by distance |
+| 6 | Opens the couch listing | Photo, description, walking time, Sarah's tenure in the neighborhood and the pickup type |
 
-*Line of visibility.* Hidden from the seller and the buyer: each other's address, the 15-minute notification batching, content moderation of the listing, and trust inference.
+Line of visibility: Hidden from Marcus: Sarah's address and every listing outside his radius. Hidden from Sarah: the moderation check and which neighbors her listing reaches.
 
-*Backstage*
+Backstage
 
-| Service | What it does |
+- **Title and category suggestion.** Step 1. Suggests a title and category from the photo.
+- **Content Moderation, automated layer.** Step 4. Classifies the photo and text. Holds prohibited items (weapons, drugs, regulated goods) for review, detects duplicate listings, and flags price anomalies during a declared emergency.
+- **Trust Inference Engine.** Step 4. Limits a new account to 3 active listings until its first completed exchange. Step 6. Supplies Sarah's trust signals.
+- **Neighborhood Graph Service.** Steps 4 and 5. Computes each person's walking radius and returns the listings inside Marcus's.
+- **Notification Service.** Sends each person a daily digest of the 3 to 5 newest items closest to them.
+
+*Interest and acceptance*
+
+Frontstage: Marcus
+
+| Step | Marcus does | Marcus sees |
+|---|---|---|
+| 1 | Sends interest with one tap | Confirmation, with undo for 5 seconds |
+| 2 ◆ | Waits for Sarah | In the activity tab, a waiting status with Sarah's approximate response time |
+| 5 | Receives the acceptance | Push and in-app notification with the meeting point and a time window |
+
+Line of interaction: Marcus's interest reaches Sarah as a notification, and her acceptance reaches him as one. They exchange no messages [brief].
+
+Frontstage: Sarah
+
+| Step | Sarah does | Sarah sees |
+|---|---|---|
+| 3 | Receives the interest notification | Marcus's name, his walking time from the couch and his tenure |
+| 4 ◆ | Accepts, or leaves the request unanswered | Pickup screen with a suggested meeting point and time |
+
+Line of visibility: Hidden from Marcus: when Sarah was notified and how many neighbors asked for the couch [project context]. Hidden from Sarah: Marcus's position; she sees a walking time.
+
+Backstage
+
+- **Platform server.** Step 1. Saves the interest when Marcus taps, before any notification is sent. Step 4. Suggests the meeting point and a time window.
+- **Notification Service.** Step 3. Holds interest notifications and sends them in one batch every 15 minutes. Step 5. Sends the acceptance to Marcus.
+- **Trust Inference Engine.** Step 3. Supplies Marcus's tenure for the notification.
+- **Neighborhood Graph Service.** Steps 3 and 4. Computes the walking time and the intersection nearest the couch.
+
+*Pickup and completion*
+
+Frontstage: Sarah
+
+| Step | Sarah does | Sarah sees |
+|---|---|---|
+| 1 | Gets the pickup reminder | Push notification 1 hour before the agreed time |
+| 2 ◆ | Meets Marcus and hands over the couch | Nothing: the handoff happens with the app closed |
+| 3 | Marks the couch exchanged | Confirmation with her exchange count in Capitol Hill |
+
+Line of interaction: The handoff and any payment happen in person. The app records neither [brief].
+
+Frontstage: Marcus
+
+| Step | Marcus does | Marcus sees |
+|---|---|---|
+| 1 | Gets the pickup reminder | Push notification 1 hour before the agreed time |
+| 2 ◆ | Walks over, meets Sarah and takes the couch | Nothing: the handoff happens with the app closed |
+| 4 | Marks the couch received | An optional choice: as described, or not as described |
+
+Line of visibility: Hidden from Sarah and from other neighbors: Marcus's answer. It changes her as-described rate, which her profile does not show [project context].
+
+Backstage
+
+- **Notification Service.** Step 1. Sends both people a reminder 1 hour before the agreed time.
+- **Platform server.** Steps 3 and 4. Closes the listing at the first confirmation and tells the other interested neighbors the couch is gone.
+- **Trust Inference Engine.** Steps 3 and 4. Adds the exchange to both people's counts and Marcus's answer to Sarah's as-described rate.
+
+*A flagged listing*
+
+Frontstage: Marcus
+
+| Step | Marcus does |
 |---|---|
-| Notification Service | Batches interest from 6 every 15 minutes and sends it at 8. Notifies the buyer at 10 that the seller accepted. Sends both a pickup reminder 1 hour before the agreed time. |
+| 1 | Reports a listing or a person |
 
-**A listing held or reported**
+Line of visibility: Hidden from every neighbor except the person concerned: holds, warnings and suspensions [project context].
 
-*Frontstage.* The seller, and a neighbor who reports.
+Backstage: Diane, organizer in Capitol Hill for as long as the neighborhood runs. She did this work in a Facebook group before Nearby [project context].
 
-| Step | What they do and see |
-|---|---|
-| 1 | The seller posts a listing that automated moderation holds. It stays off the map while held. |
-| 1 | A neighbor reports a listing, or reports a person for harassment. |
-
-*Line of interaction.* The held listing or the report goes to that neighborhood's organizer.
-
-*Frontstage.* The organizer, who runs a group's exchanges by hand and is present for as long as the neighborhood is.
-
-| Step | What the organizer does and sees | Pain point |
+| Step | Diane does | Diane sees |
 |---|---|---|
-| 2 | Opens the held or reported listing in the moderation tools. | One organizer reviews every held listing in the neighborhood. |
-| 3 | Escalates to Nearby staff when the case needs a suspension or legal action. | |
-| 4 | Otherwise releases the listing, hides it, or warns the person. | |
+| 2 ◆ | Receives the flag: a held listing, a report or a stale listing | Her moderation queue for Capitol Hill |
+| 3 | Reviews it with what she knows of the neighborhood |  |
+| 4 | Clears it, hides the listing or warns the person |  |
+| 5 | Escalates what she cannot settle |  |
+
+Backstage
+
+- **Content Moderation, automated layer.** Step 2. Sends each held listing to Diane's queue.
+- **Platform moderation.** Step 5. Handles legal escalation, account suspension and coordination with law enforcement.
+
+*Support for every stage*
+
+Support
+
+- **Geolocation API.** Positions each person for the radius. Responds in under 100 ms, accurate to under 100 m.
+- **Street network graph.** Walking distance and barriers. Updated monthly.
+- **Housing density data.** Sets the density tier. Reclassified weekly.
+- **Photo storage and CDN.** Item photos and thumbnails. Thumbnails load in under 200 ms.
+- **Push notification service.** Delivers interest batches, acceptances, reminders and the digest. A batched send arrives in under 30 seconds.
+- **Search index.** Full-text search of titles and descriptions. Answers in under 500 ms.
+- **Organizer guidelines.** What an organizer hides, warns about and escalates.
+- **Prohibited items policy.** The list the classifier holds listings against.
 
 ---
 
 **Ecosystem & dependencies**
 
-| What relies on it | Relies on | Failure when it goes |
+| What | Relies on | Failure when it goes |
 |---|---|---|
-| Interest notifications, acceptance notifications, pickup reminders | Notification Service and the push notification service | Notification service down; Push rate limit reached |
-| A held listing reaching the map | An organizer's review | Held listing waits for review |
-| Any exchange | Enough active neighbors inside the walking radius | Too few listings in the radius |
-| Closing a listing and counting the exchange | The seller or the buyer confirming a handoff the app does not see | Handoff not confirmed |
+| **Posting and browsing** | The phone's location, through the Geolocation API | Location unavailable; Location inaccurate |
+| **Walking radius and walking times** | Street network graph | Street network data unavailable |
+| **Walking radius** | Housing density data | Density classification stale |
+| **A listing going live** | Photo storage | Photo upload fails |
+| **Judging an item before asking for it** | Photo storage and CDN | Photos fail to load |
+| **Sarah learning of a request, Marcus learning of the acceptance, pickup reminders** | Push notification service | Push delivery down; Push limit reached |
+| **Trust signals on listings and notifications** | Trust Inference Engine | Trust signals unavailable |
+| **Search** | Search index | Search unavailable |
+| **A listing going live** | Content Moderation's automated layer | Listing held by the classifier |
+| **Held and reported items** | Diane, a volunteer | No organizer action; Stale listings |
+| **An answer to a request** | Sarah opening the notification or the app | Interest unanswered |
+| **The handoff** | Both people arriving at the meeting point | Buyer does not show up |
+| **Exchange counts and the completion rate** | Sarah or Marcus confirming in the app | Handoff not confirmed |
+| **Every exchange** | Active neighbors inside the walking radius | Neighborhood below density |
 
-- A listing's map pin and walking time allow triangulation of the seller's home before both sides have agreed [project context].
-- The daily digest is the one push sent with no exchange in progress, so it is where engagement messaging could grow. The push rate limit and the digest's last place in the sending order limit it [project context].
+- A walking time is computed from each viewer's position. A person who opens one listing from several positions can estimate the seller's address before any acceptance [project context].
+- In a newly opened neighborhood every account carries the new-account badge and no exchange count, so its first exchanges run on the weakest trust signals [brief].
+- Diane can hide listings and warn people in the neighborhood where she also trades. Her decisions are reviewed only when she escalates, so moderation differs from one neighborhood to the next.
+- The daily digest is sent every day by default and is selected by distance and recency alone. The same structure can be tuned for app opens [project context].
+- Mutual connections read the contact list, a second permission beside location. Requesting both in one prompt bundles consent [project context].
 
 ---
 
 **Process architecture**
 
-**Neighborhood.** The walking radius sets what a person can browse. A named neighborhood, such as Capitol Hill, is the area one organizer moderates and the name on a person's exchange count. A listing belongs to the named neighborhood its seller lives in.
+*Walking radius*
 
-**Addresses.** Neither address is shown before both have agreed: the buyer by expressing interest, the seller by accepting. Both then see the meeting point. A porch pickup shows the seller's address to the buyer at that point [project context].
+| Density tier | Households per km² | Walking radius |
+|---|---|---|
+| **Urban core** | Over 5,000 | 400 m |
+| **Medium** | 1,000 to 5,000 | 800 m |
+| **Suburban and rural** | Under 1,000 | 1,600 m |
 
-**Pushes.** Push notifications are rate-limited to 5 per person per day. One interest batch is one push, covering all of that person's listings. The daily digest carries 3 to 5 items posted in the person's closest radius and is sent only on a day with no other push. The fifth push of a day is reserved for a pickup reminder.
+Distance is measured along the street network. Highways, rivers, railways and gated communities are hard boundaries: the radius stops at them even where the straight-line distance qualifies.
+
+*Location disclosure*
+
+Before acceptance a listing shows a walking time and an approximate pin. On acceptance, meet outside and flexible give both people the nearest intersection. Porch gives Sarah's address to Marcus alone [project context].
+
+*Trust signals*
+
+Nearby has no ratings or star scores [brief]. The Trust Inference Engine reads account age, completed exchanges, tenure at the current location, mutual contacts where both people gave permission, and the as-described rate. It shows a person's neighbor-since date, their exchange count in the neighborhood and a mutual connection. An account shows a new-account badge for its first 4 weeks.
+
+*Push notifications*
+
+A person receives at most 5 push notifications a day. Acceptances and pickup reminders are sent first, interest batches next and the digest last.
+
+*Several requests for one item*
+
+Sarah sees requests in the order they arrived and accepts one at a time. The others keep a waiting status until the listing closes or Sarah releases the acceptance.
 
 ---
 
 **State & failure analysis**
 
+*System states*
+
+| State | Trigger | Effect |
+|---|---|---|
+| **Healthy** | Every dependency answers and the neighborhood has 50 or more active users [project context] | Exchanges run as the figures show |
+| **Degraded** | Street network data unavailable, Density classification stale, Trust signals unavailable, Photos fail to load or Search unavailable | Exchanges continue with a less accurate radius or less information on a listing |
+| **Coordination delayed** | Push delivery down | Exchanges continue; each step waits until the person opens the app |
+| **Moderation delayed** | No organizer action | Held listings wait and reported listings stay up |
+| **Unavailable to one person** | Location unavailable | That person can neither post nor browse |
+| **Below density** | Fewer than 50 active users in the neighborhood [project context] | Listings draw no requests and browsing shows an empty map |
+
+*Failures*
+
 | Failure | What the person experiences | Blast radius | Recovery |
 |---|---|---|---|
-| Push rate limit reached | A seller with many listings in one day gets no interest notifications after the fourth push. New interest waits in the activity tab. | One person for the rest of that day, and the buyers waiting on them. | The limit resets the next day. A pickup reminder still arrives as the fifth push. |
-| Handoff not confirmed | The listing stays open after the item is gone, other interested neighbors keep waiting, and the exchange is not counted for either person. | One listing and the neighbors waiting on it. | Either person's confirmation closes it. With neither, the seller is asked once, the day after the agreed time, whether the exchange happened. On a no, the listing returns to the map with its other interest. |
+| **Location unavailable** | The app asks for location access and links to the phone's settings. Sarah cannot post and Marcus cannot browse. | The service, for that person. | Manual: the person turns on location services and retries. |
+| **Location inaccurate** | Marcus sees listings outside his walking radius, with wrong walking times. | That person's session. In an urban core a 100 m error is a quarter of the radius. | A fix less accurate than 100 m is discarded. The last accurate position stays in use until a better fix arrives. |
+| **Street network data unavailable** | No visible change. Walking distance becomes 1.3 times the straight-line distance, so a radius can cross a highway or a river. | Every radius in the affected area. | Automatic when the data returns. |
+| **Density classification stale** | No visible change. A classification older than 7 days keeps its last tier, so people see too many or too few listings. | Every person in the misclassified area. | Automatic at the next weekly reclassification. |
+| **Photo upload fails** | Sarah is told the photo did not upload and can retry. The draft stays on her phone. | One listing. | Sarah retries. |
+| **Photos fail to load** | Listings appear without photos. Marcus can still send interest, with less to judge the item by. | Every listing viewed during the outage. | Automatic when photo storage or the CDN returns. |
+| **Push delivery down** | Marcus's interest is saved, but Sarah gets no alert. Acceptances and pickup reminders arrive late or not at all. | Pickup coordination for every open exchange. | Sarah sees requests the next time she opens the app. Queued notifications go out in one batch when delivery returns. |
+| **Push limit reached** | A person who has had 5 push notifications today gets no alert for a new request, acceptance or reminder. | That person's exchanges for the rest of the day. | The notification appears in the activity tab without a push. The limit resets the next day. |
+| **Trust signals unavailable** | Profiles show a member label without tenure or exchange count. | Every listing and notification during the outage. Exchanges continue. | Automatic: the signals fill in when the engine returns. |
+| **Search unavailable** | Search returns nothing and the app offers browsing. | Low: buyers browse more than they search [project context]. | Automatic when the index returns. |
+| **Listing held by the classifier** | Sarah's listing does not go live and she is told it is in review. A listing held in error can outlast her 4 to 48 hours. | One listing. | Diane clears or hides it. Held listings come first in her queue. |
+| **No organizer action** | A held listing stays unpublished and a reported listing stays up. A neighborhood without an organizer has no first reviewer. | Every held or reported item in the neighborhood. | Platform moderation takes any item Diane has not acted on within 24 hours, and every item immediately where the neighborhood has no organizer. |
+| **Interest unanswered** | Marcus keeps a waiting status. Sarah is notified up to 15 minutes after his tap, and his 20 minutes to 2 hours can pass before she answers. | One request. | The request expires 48 hours after Marcus sent it, and he is told. |
+| **Buyer does not show up** | Sarah waits at the meeting point. The other interested neighbors keep a waiting status. | One exchange and every neighbor waiting on that item. | Sarah releases the acceptance and the listing reopens to the neighbors still waiting. |
+| **Handoff not confirmed** | The couch changes hands and neither person marks it. The listing stays open and other neighbors keep waiting. | One listing, both people's exchange counts and the completion rate [brief]. | Each person gets one prompt when the time window ends. Either confirmation completes the exchange. With none after 48 hours the listing closes as unconfirmed and adds to no count. |
+| **Stale listings** | Marcus sees listings for items that are gone. Hiding them is manual work for Diane that grows with volume. | Browsing across the neighborhood. | Diane hides a stale listing. A listing with no accepted request closes after 14 days, and Sarah can post it again. |
+| **Neighborhood below density** | Sarah's listing draws no requests and Marcus opens the app to an empty map. | Every exchange in the neighborhood [brief]. | None inside the exchange. Density comes from activating the neighborhood. |
 
-| How a listing ends | What ends it | What happens next |
+*How records end*
+
+| Record | Ends when | Data deleted |
 |---|---|---|
-| Data deleted | Any ending. | The meeting point, the time window and any address shown for a porch pickup are deleted 24 hours after the listing ends. Photos and listing text are deleted 30 days after. The exchange count and the as-described answer are kept as trust inputs. |
+| **Listing** | Sarah or Marcus confirms the exchange, Diane or platform moderation hides it, or it closes under Stale listings or Handoff not confirmed | Photos, 30 days after the listing closes |
+| **Interest request** | Marcus undoes it within 5 seconds, it expires under Interest unanswered, Sarah releases the acceptance, or the listing closes | 30 days after the request ends |
+| **Accepted exchange** | Sarah or Marcus confirms it, or it closes under Handoff not confirmed | Meeting point, time window and a porch address, 30 days after the exchange ends. The exchange count and the as-described answer stay while the account exists |
 
 ---
 
 **Open questions**
 
-- Is an organizer's area a named neighborhood with a fixed boundary, or the listings inside the organizer's walking radius?
-- Should an organizer or Nearby staff be the first to review a listing held for a prohibited item?
-- Does the limit of 3 active listings hold for a first-time seller clearing a home in one week?
+- Is a neighborhood the walking radius around each person, or a named area with a fixed boundary? Browsing uses the radius; the exchange count in Capitol Hill and Diane's queue need a named area [brief].
+- Who appoints a neighborhood's organizer, and who can remove one?
 
 ### Storytelling
 
@@ -419,17 +656,31 @@ Each flow takes fewer taps than the alternatives. When the seller lives down the
 
 ### Output
 
+**Nearby: posting, discovering, buying and messaging**
+
+---
+
 **Problem Statement**
 
-A neighbor posts an item from their phone. Another neighbor finds it within walking distance and sends interest, and the two arrange a pickup on foot. The flow starts when either opens Nearby and ends when both confirm the exchange and the item leaves the map. Payment is in person, outside the app [project context]. Target: 60% of listings end in an exchange, against 20 to 30% on broad platforms [brief].
+A seller lists an item, a neighbor within walking distance finds it, asks for it and collects it on foot. Posting starts at + and ends when the listing is live. Discovering starts when the app opens and ends on an item's detail. Buying starts at "I want this" and ends when either person confirms the exchange and the item leaves the map. Messaging runs between the seller's accept and the pickup. Local exchange completes 20 to 30% of the time on existing platforms, and the hypothesis is 60% or more inside walking distance [brief]. Money changes hands in person: Nearby charges no fee and processes no payment [project context].
 
 ---
 
 **User Context & Variations**
 
-- **A seller clearing out in a burst.** In her moving week, she posts several items in spare minutes on a weak connection, and leaves the item on the curb if a post takes more than a minute [project context] [blueprint]. + opens the camera with no menu, the pickup choice defaults to her last listing's, and an offline post goes to the offline queue.
-- **A buyer with nothing in mind.** He opens the app on the walk home and wants nothing until he sees it [blueprint]. The app opens on the map of items in walking range, with no search box, and interest is one tap that commits him to no time or place.
-- **An organizer moving a gift group.** Her group gives things away [blueprint]. Free has the same weight as a price on Details, is a filter in discovery, and follows the same path as a priced item.
+- **Seller posting in a burst.** A seller in a moving week lists several items between other tasks, on a weak connection, and abandons a listing that takes more than 60 seconds [project context]. Posting asks for no description, and a listing made offline publishes on reconnect.
+- **First listing.** No pickup option is saved, so the pickup step needs a choice. Later listings open it preselected. The target is under 60 seconds for a first listing and under 30 after it [project context] [brief].
+- **New account.** An account with no completed exchange holds 3 active listings [blueprint]. With 3 active, + opens the limit notice and the camera stays closed.
+- **Buyer with nothing in mind.** A buyer opens the app without a goal and decides on sight [project context]. Home is the map, discovery has no search step, and interest is one tap with no message to write.
+- **Organizer.** Organizers bring gift exchanges over from Facebook groups [project context]. Free sits beside the price field and follows the same flow as a sale. A harassment flag in a thread notifies the neighborhood's organizer.
+- **Housing density.** The map opens at the walking radius the Neighborhood Graph sets for the address: 400 m in an urban core, 800 m at medium density, 1,600 m in a suburban or rural area [blueprint].
+- **Entry from a push notification.** Each push opens the screen it reports and skips the map.
+  - Interest in a listing opens that listing's interest screen.
+  - An accepted interest opens the pickup screen.
+  - A pickup reminder opens the pickup screen.
+  - The daily digest opens the digest cards.
+- **Entry from a shared link.** The link opens the item's detail.
+- **Location off.** No flow starts until geolocation is on. The app asks for location and links to settings [blueprint, Geolocation unavailable].
 
 ---
 
@@ -437,69 +688,127 @@ A neighbor posts an item from their phone. Another neighbor finds it within walk
 
 **Posting an item**
 
-- Start: + on any screen
-- 1 Camera: photo or gallery
+*Flow: posting an item*
+
+- Any screen
+  - New account with 3 active listings? Limit notice
+- Camera: shutter or gallery
   - Camera permission denied? Gallery
-- 2 Photo check: title suggested
-- 3 Details: price, Free or Trade
-  - Price far above similar items? Warn, never block
-- 4 Pickup: how and when
-- 5 Preview: as neighbors see it
-  - Flagged at Post? Held for review
-- 6 Live: pin on the map
-  - Offline? Offline queue, posts on reconnect
+- Photo check: use this photo or retake
+  - Upload fails? Draft kept, retry
+- Details: title, price, category
+- Pickup: option and availability
+- Preview and publish: listing is live
+  - Flagged by moderation? Held, retake or edit
+  - Offline? Queued, publishes on reconnect
 
-**Pickup.** The handover method (porch pickup, meet outside or flexible) and her availability. The answer sets what the accepted buyer sees on the Pickup plan. It defaults to her last listing's, so in a burst she confirms it.
+Under 30 sec from + to live, after a first listing
 
-**Discovering what is nearby**
+*Camera*
 
-- Start: Open Nearby
-  - Location off? Turn on, then retry
-- 1 Map or List: items in walking range
-  - Nothing in range? Widen the radius or post
-- 2 Item card: photo, price, walk time
-  - From the daily digest? Card stack in place of the map
-- 3 Item detail: buying starts here
-  - From a push notification or deep link? Opens here
+A photo and a price are all a seller gives [project context], so + opens the camera with no menu before it. The shutter or a gallery photo moves the seller on. With camera permission denied, the gallery opens with a link to settings. A draft left at any step stays on the phone, and + reopens it.
 
-**Map.** Home. Buyers do not know what they want until they see it [project context], so the app opens on the items in walking range: pins with thumbnails, the radius labeled in walking minutes, and the neighborhood name. Pinch or the 5, 10 and 20 minute presets set the radius; items outside it stay visible, faded. A pin opens the Item card. Without geolocation the map cannot render: the screen requests location with a link to settings, and retry returns here [blueprint]. The empty state offers the 20 minute radius and posting an item, which opens the Camera.
+*Photo check*
 
-**Item card.** An overlay on the map with the photo, title, price and walk time. Tapping the card opens Item detail; tapping the map closes it.
+The seller sees the photo full size with a title suggested from it, and retakes a bad photo before typing anything. "Use this photo" starts the upload and opens the details. When the upload fails, the draft stays and the seller retries from the same screen [blueprint, Photo upload fails].
+
+*Details*
+
+The title and category arrive filled in and editable, so the price is the one field the seller has to set: an amount, Free or Trade. Offline, the title is empty and the seller types it. A price far above similar items nearby shows a notice and does not stop the seller.
+
+*Pickup*
+
+The seller picks porch pickup, meet outside or flexible, and an availability window. The option decides what a buyer is shown when the seller accepts: the address for porch pickup, the nearest intersection for the others.
+
+*Preview and publish*
+
+The listing appears as neighbors will see it, on a map with the seller's approximate location and the radius it reaches. The preview shows the seller that the exact address is not on the listing [project context]. "Post it" publishes. Moderation classifies the photo and text at that moment [blueprint]. A flagged listing is held for review, and the seller retakes the photo or edits the details to submit it again. Offline, the listing queues with a pending mark and publishes on reconnect.
+
+**Discovering nearby items**
+
+*Flow: discovering nearby items*
+
+- App opens
+- Map: pins inside the walking radius
+  - No listings in the radius? Post an item, or widen to a 20 min walk
+  - Switched to the list? Same items by walking time
+- Item card: photo, title, price, distance
+  - Opened from the daily digest? Digest cards replace the map
+- Item detail: buying starts here
+
+*Map*
+
+Home is a map centered on the buyer, because buyers do not know what they want until they see it [project context]. Listings inside the walking radius are pins with thumbnails, listings beyond it are faded pins, and the header names the neighborhood. A pin opens an item card with the photo, title, price and distance, and the card opens the item's detail. Pinching the map or a preset of a 5, 10 or 20 min walk changes the radius. Filters for category, price range with Free and Trade, and posted today or this week apply to the map and the list. With no listings in the radius, the buyer can post an item or widen the radius to a 20 min walk.
+
+*List*
+
+A toggle shows the same listings sorted by distance, then by how recently they were posted, grouped by walking time. The list gives each listing's walking time and the seller's tenure before the buyer opens it. A row opens the item's detail.
+
+*Digest cards*
+
+The daily digest push opens a stack of the 3 to 5 items posted closest to the buyer [blueprint]. The stack holds those items and nothing else from the feed, and a card opens the item's detail.
 
 **Buying**
 
-- Start: Item detail
-- 1 Interest sent: one tap, with undo
-  - Taken? Similar items nearby
-- 2 Waiting: status in Activity
-  - No answer? Interest expires
-- 3 Interest from a neighbor: seller accepts one
-  - Seller passes? Buyer is told
-- 4 Pickup plan: place and time, for both
-  - Cannot make it? Reschedule by quick reply
-- 5 Exchanged: both confirm
-  - Fell through? Listing stays live
+*Flow: buying*
 
-**Interest sent.** A state of Item detail. The button uses optimistic UI, because notification batching delays the seller's alert [blueprint]. An undo window follows, and the interest is sent to the seller when it closes. If the item was just taken, the screen says so and offers the 3 nearest similar items. Offline, the interest goes to the offline queue and shows as pending.
+- Item detail
+- Interest sent: buyer taps "I want this"
+  - Undo within 5 sec? Interest withdrawn
+  - Item taken? Similar items nearby
+- Waiting: seen, Accepted or Passed
+  - No answer in 48 h? Interest expires
+- Accepted: seller taps "It's yours"
+- Pickup: meeting point and time window
+  - Fell through? Listing takes interest again
+- Exchanged: item leaves the map
 
-**Interest from a neighbor.** A push notification names the interested neighbor, their walk time and their tenure [blueprint], and opens the listing's interested neighbors; with push off or undelivered, the list is on the listing at her next app open. She accepts one with "It's yours" or leaves it. Accepting moves her and that buyer to the Pickup plan. The other interested neighbors stay waiting until the exchange is confirmed.
+*Item detail*
 
-**Pickup plan.** One screen for both: a meeting place and a time window, suggested from the listing's pickup choice and availability. For meet outside and flexible the place is the nearest intersection [blueprint]. For porch pickup it is the seller's address, shown from acceptance and only to the accepted buyer, because acceptance is where both have agreed [project context]. The acceptance notification opens this screen for the buyer. Quick replies are sent here, and both confirm the exchange here.
+The detail gives a buyer what they need to decide without asking the seller: photo, title, price, walking time, the seller's tenure in the neighborhood and the pickup option [brief]. "I want this" sends interest. When the item was accepted for another buyer before the interest arrived, the buyer is told and shown 3 similar items by distance. Offline, the interest queues with a pending mark and sends on reconnect.
 
-**Exchanged.** After meeting, the seller marks the item exchanged and the buyer confirms he got it. On both confirmations the item leaves the map, both exchange counts increment, the waiting neighbors are told it is gone, and the buyer may give private feedback on whether it was as described. If either says it fell through, the listing stays live, that buyer's interest ends, and the seller returns to her interested neighbors.
+*Interest sent*
+
+The button changes to a confirmation on the phone before the server answers, because the seller's notification is batched and the buyer would otherwise wait for a sign that the tap worked [blueprint]. Undo withdraws the interest during the undo window, and the interest goes to the server when the window closes.
+
+*Waiting*
+
+The activity tab lists the interest with the seller's name, a response time estimated from the seller's past answers, and a status of Seen, Accepted or Passed. When an interest expires unanswered, the buyer is told and can ask to hear if the item is listed again, and the seller is asked whether the item is still available.
+
+*Interest in a listing*
+
+The seller sees who is interested, their walking time and their tenure, and chooses on proximity and tenure in place of a rating [brief]. "It's yours" accepts one buyer and opens the pickup screen for both. The listing stops taking interest and the other interested buyers see Passed. A seller who does nothing lets the interest expire.
+
+*Pickup*
+
+Buyer and seller see the same map with the meeting point and the time window. On accept, the seller's phone passes the pickup location to the buyer's: the address for porch pickup, the nearest intersection for meet outside or flexible. No address leaves the seller's phone before accept [project context]. The thread sits on this screen. The seller's "Exchanged" or the buyer's "Yes, got it" moves both on, and "It fell through" from either reopens the listing to interest.
+
+*Exchanged*
+
+One confirmation from either person completes the exchange, because the handoff happens on the sidewalk where the app records nothing [blueprint]. The item leaves the map and each person's exchange count rises by one. The buyer can mark the item as described or not as described [blueprint].
 
 **Messaging**
 
-- Start: Interest accepted
-- 1 Thread opens: on the Pickup plan
-  - 3 exchanges together? Free text opens
-- 2 Quick reply: one tap sends
-  - Message reported? Sender loses messaging
-- 3 Thread ends: deleted after the exchange
+*Flow: messaging*
 
-**Thread.** Messaging coordinates one pickup. The thread opens on acceptance, between the seller and the accepted buyer, on the Pickup plan; there is no inbox. No messaging before acceptance keeps out spam, haggling and harassment [blueprint].
+- Seller accepts
+- Quick replies: on the pickup screen
+  - Message reported? Reported person loses messaging
+- Free text: after 3 exchanges between the same two people
+  - Harassment flag on either account? Quick replies only
+- Thread deleted: 48 h after the exchange ends
 
-**Quick replies.** Canned replies: on my way, I can come now, hold it until tomorrow, I need to reschedule, and never mind. One tap sends. The reschedule reply reopens the time window, and the person rescheduling picks a time inside the seller's availability. The never mind reply ends the plan as "it fell through" does.
+*Thread*
+
+No thread exists before the seller accepts, because open messaging before a commitment invites spam, lowball offers and harassment [blueprint]. The thread opens on the pickup screen with quick replies: "On my way", "I can pick up now", "Running 10 min late", "Can you hold until tomorrow?", "Need to reschedule" and "Never mind, sorry". "Need to reschedule" reopens the time window for both people. "Never mind, sorry" ends the exchange as fallen through.
+
+*Free text*
+
+A text field joins the quick replies once the same two people have completed 3 exchanges with each other [blueprint].
+
+*Report*
+
+Every message carries a report action. The reported person loses messaging immediately, until the report is reviewed. An account flagged for harassment has quick replies only in every thread, and the neighborhood's organizer is notified without a notice to the flagged person.
 
 ---
 
@@ -507,25 +816,33 @@ A neighbor posts an item from their phone. Another neighbor finds it within walk
 
 | Moment | Change | Timing |
 |---|---|---|
-| Tap "I want this" | Optimistic UI: the button becomes a checkmark and "Interest sent" | 150 ms, spring |
-| Interest sent | Undo window; undo returns the button to its first state; on expiry the interest is sent to the seller | 5 seconds |
-| Interest unanswered | It expires; the buyer is told and the seller is asked once | 48 hours after it was sent |
-| Both confirm the exchange | The item leaves the map and both exchange counts increment | At the second confirmation |
+| Details, no price set | Next is disabled until an amount, Free or Trade is set | While the field is empty |
+| Switch between map and list | Filter chips and radius stay as set | On the toggle |
+| Pull down on the list | List refreshes | On release |
+| Tap "I want this" | Button becomes a checkmark and "Interest sent", with a spring animation, before the server answers. This motion must exist: it is the buyer's only confirmation while the seller's notification waits in a batch. | 150 ms |
+| Undo | A toast offers Undo. A tap returns the button to "I want this". At expiry the interest goes to the server. | 5 seconds |
+| Interest reaches the seller | Push notification, batched | Every 15 minutes |
+| Seller opens the interest, accepts it or passes | Buyer's status changes to Seen, Accepted or Passed | On the seller's action |
+| Interest unanswered | Interest expires | 48 hours after it was sent |
+| Before a pickup | Reminder push | 1 hour before the agreed time |
+| Exchange completes or falls through | Thread is deleted | 48 hours after |
 
 ---
 
 **Multi-Channel Map**
 
-| Handoff | What passes |
-|---|---|
-| Phone to the sidewalk | The buyer takes the meeting place and the time window. Payment and the item change hands in person, and only the two confirmations return to the app [project context]. |
+| Handoff | Where it happens | What passes |
+|---|---|---|
+| App to the street | Buyer leaves the pickup screen and walks to the meeting point | The meeting point or address, the time window and the price. Payment is made in person and the app records none [project context]. |
+| Street to app | Either person confirms on the pickup screen after the handoff | The outcome: exchanged or fell through |
+| Missed push to app | A seller whose interest push did not arrive opens the app | The waiting interests, listed in the activity tab [blueprint, Notification service down] |
 
 ---
 
 **Open Questions**
 
-- Messaging is outside the first release's scope, and interest is meant to need no messaging [brief]. Do the quick replies ship with the first release, or does coordination stop at the suggested place and time?
-- Trade is a choice on Details, but before acceptance a buyer can send only interest. How does a buyer say what they would trade?
+- The brief places messaging in v2 and scopes interest as one tap with no message [brief]. Do quick replies ship with the MVP?
+- A seller clearing a home has more than 3 items, and a new account holds 3 active listings [blueprint]. Does the limit apply to that seller?
 
 ### Philosopher
 
@@ -545,88 +862,166 @@ People open Nearby to see what's around, so proximity comes first and category s
 
 **Site Map / Navigation Structure**
 
-- **Explore** (default)
+**Nearby**
+
+- Explore (default)
   - Map of items within the walking radius
-  - Item card, over the map
+  - Item card on a pin
   - Radius: 5, 10 or 20 min walk
-  - Filters
-- **List** (same items)
-  - Items by walking time
-  - Groups: On your block, 5-min walk, 10-min walk
-  - Search, on pull-down
-  - Filters
-- **Post (+)**
-  - Photo
-  - Details and category
+  - Filters: category, price, posted
+  - What's new on your block, from the daily push notification
+- List (same items)
+  - Rows grouped by walking time
+  - Search
+  - Filters: category, price, posted
+- Post (+)
+  - Camera and photo check
+  - Title, price and category
   - Pickup
   - Preview and post
-- **Activity**
-  - Interests you sent
-  - Interests in your listings
-  - Pickup, with quick replies
-- **You**
-  - Your listings
-  - Your profile, as neighbors see it
-  - Settings: location, notifications
-  - Moderation, for organizers
+  - Wanted request, from search and the Wanted filter
+- Activity
+  - Your listings, each with the interest it received
+  - Your interests
+  - Pickup: meeting point, time window, quick replies
+  - Exchange confirmation
+- You
+  - How neighbors see you
+  - Neighborhood and location
+  - Notifications
+  - Organizer tools, for organizers
+- Item detail (no tab)
+  - Photo, price, walking time, seller tenure, pickup type
+  - I want this
 
-**Decisions in the structure**
+**Cross-links**
+
+| From | To | When |
+|---|---|---|
+| Pin card, list row, search result, Activity row, shared link | Item detail | The person taps it [journey, Flow 2] |
+| Daily digest push notification | What's new on your block, then Item detail | The person taps the notification [journey, Flow 2] |
+| Item detail | Activity, Your interests | The person taps I want this and the undo window ends [journey, Flow 3] |
+| Interest push notification | Activity, the listing that received it | A neighbor is interested [blueprint, Seller touchpoints] |
+| Accepted and pickup-reminder push notifications | Activity, Pickup | The seller accepts; one hour before the agreed time [blueprint, Notification Service] |
+| Preview and post | Explore, with the new pin | The listing is published [blueprint, Seller touchpoints] |
+| Explore or List with no listings in the radius | Post; the 20 min walk radius | The neighborhood has nothing listed [journey, Flow 2] |
+| Search with no results | The next wider radius; Wanted request | Nothing in the radius matches |
+| Wanted filter | Wanted request | The person wants to ask for an item |
+| Item detail of an item already taken | Item detail of similar items, nearest first | Another neighbor's interest was accepted first [journey, Flow 3] |
+| You, Organizer tools | Item detail of a flagged listing | An organizer reviews a flag [blueprint, Content Moderation System] |
+
+**Decisions**
 
 | Decision | Reason | Depends on |
 |---|---|---|
-| Explore is the first tab and the launch screen. Its label is Explore, not Map. | Buyers browse without a target item [context]. Walking distance is the product, so its map is the home screen [brief]. The label names the task. | Location permission: with location off, every tab is empty [blueprint]. The neighborhood name in the header depends on the neighborhood definition [brief]. |
-| Explore and List are separate tabs over one item set. | A map and a scrolling list use different gestures. Radius and filters persist across both [journey]. | The walking radius from geolocation [blueprint] |
-| Free and Wanted are browse entries beside the categories. | A quarter of listings are meant to be free [brief], and a price filter would put them one step further than a couch for sale. Wanted shows demand in a neighborhood with few listings. | The Free price option in the posting flow [journey] |
+| Explore opens on launch as a map centered on the person. | Buyers arrive without a target and choose from what is near [project context, Buyers]. Walking distance is the product [brief, Guiding Principles]. | Geolocation. Without it no place in the app has content [blueprint, Failure Modes]. |
+| List is a tab that shows the items, radius and filters of Explore as rows. | A pin holds a thumbnail. A row holds title, price, walking time and seller tenure, which a person compares across items [journey, Flow 2]. A tab keeps the rows one tap from any screen and gives search a place. | Radius and filter state shared between the two tabs. |
+| Post is the center tab and opens the camera with no menu before it. | A seller abandons a post that takes more than 60 seconds [project context, Sellers]. The + is on every screen [journey, Flow 1]. | Camera permission, with the gallery as the fallback [journey, Flow 1]. |
+| Activity holds each exchange in progress, for the person as seller and as buyer. | One person posts and takes. Interest, acceptance and pickup arrive as push notifications and need one place to land [blueprint, Notification Service]. | Push notification delivery. When it is down, interest appears here on the next open [blueprint, Failure Modes]. |
+| Your listings sit in Activity. You holds the profile and settings. | A listing needs an answer from its seller while it is live. A profile does not. | None. |
+| Messages have no destination. Quick replies sit on the Pickup screen of an accepted interest. | Messaging unlocks only after acceptance and deletes 48 hours after the exchange, so no conversation list exists [journey, Flow 4]. General messaging is outside the MVP [brief, Proposed Scope]. | The acceptance step [journey, Flow 3]. |
+| Organizer tools sit under You and appear for organizers. | An organizer enters when a listing is flagged or a neighbor is reported [blueprint, Diane]. A tab for those tools would be empty for sellers and buyers. | The organizer role on the account [blueprint, Content Moderation System]. |
+| Item detail belongs to no tab. | It is reached from Explore, List, search, Activity, a shared link and a push notification [journey, Flow 2 and Flow 3]. | Deep links that open the item. |
+| A category filters Explore and List. No category has a page. | Proximity comes before subject [project context, Design Principles]. A neighborhood can have 50 active users [project context, Hard Constraints], so a category page would often be empty. | The category set on each listing when it is posted [journey, Flow 1]. |
+| Free and Wanted sit in the category list beside the subjects. | The goal is 25% or more of listings free [brief, Goals], and an organizer moves a group over when giving has a place of its own [journey, Diane]. A Wanted request shows demand in a neighborhood with few listings [brief, Constraints]. | The price on each listing; a request form. |
+| No drawer. Each destination is in the tab bar or inside a tab. | The tab bar holds every destination at phone width, where over 90% of use is expected [project context, Hard Constraints]. | None. |
 
 ---
 
 **Navigation Specification**
 
-The pattern is hub and spoke, with the map as the hub. Browsing, posting, arranging a pickup and managing listings are separate tasks with different interactions: a map, a camera and a form, a status list [journey]. Each has a tab. The app launches on the map, which is centered by geolocation.
+Global navigation is flat: a bottom tab bar of equal destinations, each reachable from the others in one tap. Browsing, posting, coordinating a pickup and managing an account share no steps, and the + has to be reachable from every screen [journey, Flow 1]. Local navigation on Explore and List is faceted: radius, category, price and posted date combine to narrow one set of items.
 
-**Wayfinding**
+**Tab bar**
 
-| What the person needs to know | What tells them |
-|---|---|
-| Where they are | The neighborhood name in the header, such as Capitol Hill, and a location dot at the map center |
-| What they are seeing | The radius label, persistent on Explore and List: "Showing items within a 10-min walk", with the item count |
+| Tab | Opens | Badge |
+|---|---|---|
+| Explore | The map, centered on the person | Dot when items were posted in the radius since the last open |
+| List | The items of Explore as rows, nearest first, then newest [journey, Flow 2] | The Explore dot |
+| Post (+) | The camera | None |
+| Activity | Your listings and Your interests, with those waiting on the person first | Count of unread interest responses and pickup reminders |
+| You | The profile as neighbors see it, then settings | Dot when a setting needs attention, such as expired location permission |
+
+- The tab bar shows on each tab and on Item detail. It hides during posting, where the camera is full screen [journey, Flow 1]. Closing a post returns to the tab the person left.
+- Each tab keeps its position when the person switches away. Tapping the active tab returns it to its top; on Explore that recenters the map on the person.
+- Back from Item detail returns to the place that opened it. From a shared link or a push notification, Back goes to Explore centered on the item.
+
+**Local navigation**
+
+- Explore and List share the radius and the filters. A change in one tab holds in the other [journey, Flow 2].
+- Radius: presets of 5, 10 and 20 min walk, and pinch-to-zoom on the map [journey, Flow 2]. The radius starts at 10 min walk and keeps the person's last choice.
+- Filters: category, price (Free, Trade or a range) and posted (today or this week), one value each [journey, Flow 2]. Each active filter shows as a chip that removes it.
+- Activity has two groups, Your listings and Your interests. A listing opens the interest it received; an accepted interest opens Pickup, from either group.
+
+**Orientation**
+
+- The header of Explore and List names the neighborhood, such as Capitol Hill, and the map shows the person's location [journey, Flow 2].
+- A radius label on Explore and List states the walking time in force: Showing items within a 10-min walk [journey, Flow 2].
+- Items beyond the radius show on the map as faded pins [journey, Flow 2].
+- List groups its rows under On your block, 5-min walk and 10-min walk [journey, Flow 2].
+- After more than 24 hours away, Explore opens with a notice of the items posted since the last visit. Tapping it shows them.
+
+**States**
+
+- A tab is active, inactive or badged. The active tab is marked on every screen that shows the tab bar.
+- With geolocation off, each tab shows the location request and a link to system settings [blueprint, Failure Modes].
+- With the search index down, List has no search and browsing continues [blueprint, Support Processes].
+- The phone is the base size. The tab bar holds every destination there, and nothing moves into a menu.
 
 ---
 
 **Taxonomy Documentation**
 
-| Category | Holds | Goes elsewhere | Pilot note |
-|---|---|---|---|
-| Furniture & Home | Tables, chairs, shelves, lamps, decor, TVs over 40 inches | Appliances go to Kitchen & Dining. Patio furniture goes to Garden & Outdoor. | The largest category [pilot data] |
-| Electronics & Gadgets | Phones, laptops, cables, small devices | TVs over 40 inches go to Furniture & Home | |
-| Kids & Baby | Kids' clothing, toys, gear, strollers, cribs | | A high share of free items [pilot data] |
-| Sports & Fitness | Equipment, bikes, weights | | Bikes are the most-listed single item [pilot data] |
+| Category | Holds | Goes elsewhere |
+|---|---|---|
+| Furniture & Home | Tables, chairs, shelves, lamps, decor | Appliances: Kitchen & Dining |
+| Electronics & Gadgets | Phones, laptops, cables, small devices | TVs over 40 inches: Furniture & Home |
+| Clothing & Accessories | Wearable items, bags, jewelry | Kids' clothing: Kids & Baby |
+| Kids & Baby | Clothing, toys, gear, strollers, cribs | |
+| Books & Media | Books, vinyl, games, DVDs | |
+| Kitchen & Dining | Appliances, cookware, dishes | |
+| Garden & Outdoor | Plants, tools, patio furniture | |
+| Sports & Fitness | Equipment, bikes, weights | |
+| Free | Every item priced Free | |
+| Wanted | Requests for an item | |
 
-**Rules**
-
-- A listing has exactly one category. Image classification suggests it from the photo and the seller confirms or changes it [journey].
-- When two categories fit, such as a kid's bike in Kids & Baby or Sports & Fitness, the seller chooses.
-- Free and Wanted are the second parents. A listing priced at $0 appears under Free and in its category. A Wanted listing requests an item and appears under Wanted only.
+- The list is one level deep, with no sub-categories. A walking radius holds few listings per subject [project context, Hard Constraints], and a shorter list is faster to post into [project context, Sellers].
+- An item has one subject category. The category is suggested from the photo and the seller can change it [journey, Flow 1]. Where two subjects fit, such as a kid's bike, the seller chooses.
+- Free is set by price. An item priced Free has two parents: its subject category and Free. Choosing Free in the category list sets the price filter to Free.
+- Wanted is set by listing type. A request sits in Wanted alone and appears among items only when Wanted is the chosen category.
+- Trade is a price and has no category [journey, Flow 1].
+- A new subject is added as one more category at this level.
 
 ---
 
 **Search/Browse Strategy**
 
-Browsing is the primary path. Buyers open the app without a target item [context], and Explore and List need no query. Search serves known-item lookup.
+People browse first. Buyers open Nearby without an item in mind and decide when they see one [project context, Buyers], so Explore and List carry discovery. Search serves the person who wants one item, and a Wanted request serves that person when the item is not listed.
+
+**Browse entry points**
+
+- Explore: the map of pins within the radius.
+- List: the same items, grouped by walking time.
+- Filters on both tabs.
+- What's new on your block: the daily push notification opens a stack of the 3 to 5 items posted in the closest radius [blueprint, Notification Service].
+- Faded pins beyond the radius, and the notice of new items after 24 hours away.
 
 **Search**
 
-- The search field is in List, on pull-down. Explore has none.
-- Results sort by walking distance, then relevance, with infinite scroll.
-- A zero-results search offers a wider radius or posting a Wanted listing.
+- Search is in List, revealed by pulling the list down. Explore has no search field.
+- It matches full text in titles and descriptions [blueprint, Support Processes], within the radius in force.
+- Results sort by distance, then relevance, and load as the person scrolls.
+- Results update as the person types. Search suggests no queries: a radius holds few enough listings to scan.
+- The filters in force apply to results and can be changed there.
+- A search with no results sends the person to the next wider radius, up to 20 min walk, or to a Wanted request that carries the query.
+- Queries with no results are logged by neighborhood. They show which items to seed in a neighborhood with few listings [brief, Constraints].
 
 ---
 
 **Open Questions**
 
-- Explore and List show the same items. Do they stay two tabs, or become one tab with a map and list toggle?
-- Does a Wanted listing start from Post as well, or only from a zero-results search?
-- Bikes are the most-listed single item in the pilot. Do they get a category?
+- Is giving a mode with a place of its own in the navigation, or is Free a category and a price?
+- Does a Wanted request also start from the +, which puts a choice before the camera?
 
 ## /wireframe
 agent: Wren
@@ -636,15 +1031,15 @@ Posting could work in mechanically different ways, so the first artifact was an 
 
 ### Output
 
-The wireframes below are live markup from the kit: the inputs take typing, the controls are native, and the site's theme flows through them. The idea board holds mechanically different answers to "how does posting work," each a fragment of real UI with its trade-off in the caption. Photo-first won and moved up a rung; the losers stay on the board, so "why isn't it a form?" has an artifact for an answer.
+The wireframes above are live markup from the kit: the inputs take typing, the controls are native, and the site's theme flows through them. The idea board holds mechanically different answers to "how does posting work," each a fragment of real UI with its trade-off in the caption. Photo-first won and moved up a rung; the losers stay on the board, so "why isn't it a form?" has an artifact for an answer.
 
 The indigo markers are annotations, each anchored to the element whose decision it records. A few of them:
 
-**Browse ②** Free is a first-class price, with a badge on the card and a chip in the taxonomy. Free exchange is the social glue of a walking-distance market, so it gets its own scan channel. **③** Pending items stay visible: a market that visibly moves reads as alive.
+**Browse ②** Free is a filter chip and, in a row, a filled badge in the price position, the heaviest mark in the row. A quarter of listings are meant to be free [brief, goals]. **③** Rows are grouped by walking time, nearest first, because distance decides whether a person opens an item [project context, design principles].
 
-**Post an item ①** The camera owns the top of the screen: this is the photo-first mechanism from the idea board. The photo does the describing, so fields follow it. **④** Audience and cost ("within 1 mile · no fees") sit directly above the commit button, answered at the moment of commitment.
+**Post an item ①** The photo zone is the top of the screen and opens as the camera viewfinder; the frame shows it after capture. The photo suggests the title and category, so the fields below arrive filled [idea board, Photo first]. **④** Who sees the listing, what stays hidden and what it costs sit above Post it, where the seller commits [project context, hard constraints].
 
-**Posted ①** The confirmation names the audience (842 neighbors), so the seller knows real people nearby will see the listing.
+**Posted ①** The confirmation gives the audience as a number of neighbors, so the seller knows people within walking distance will see the listing [project context, design principles].
 
 ## /articulate
 agent: Wren
@@ -656,245 +1051,341 @@ Nearby sounds casual and warm, like a note on a neighborhood bulletin board. The
 
 **Voice and Tone Framework**
 
-Nearby speaks as one neighbor to another about items that mostly cost under $20 [project context].
+Nearby speaks as one neighbor to another about an item that costs under $20 [project context, design principles].
 
-| Principle | What it is | What it is not | Do | Don't |
-|---|---|---|---|---|
-| Neighborly | Warm, direct. Names, contractions, "you". | Corporate or chummy. No emoji, no exclamation marks. | "Dana wants your bookshelf." | "You have received an offer on your listing." |
-| Local | Names the neighborhood. Distance is walking time [project context]. | Generic ("near you"), or finer than a minute of walking. No addresses. | "Capitol Hill is quiet right now." | "No items found in your area." |
-| Plain | Everyday words that survive translation. | Idiom, slang, culture-bound jokes. No joke in an error. | "Have something you don't need? A neighbor might want it." | "After that, you'll wonder why you ever drove to Goodwill." |
-| Honest | States what Nearby knows and what it can't do. | Unbacked reassurance, urgency, or a claim of verification. Signup has no identity verification [project context]. | "New to Nearby" | "Verified neighbor" |
+**Neighborly.** People are neighbors, never users, buyers or members, and a neighbor is named when the name is known. The voice stops before familiarity: no greeting, no nickname, no comment on the item.
 
-Voice is constant across strings.
+- Do: Sarah accepted another neighbor before your interest arrived.
+- Don't: This item is no longer available to the requesting user.
 
-| Moment | Tone | How it sounds |
+**Plain and exact.** Everyday words and contractions carry the exact fact: what failed, what is saved, what the limit is. No emoji, no exclamation marks, no error codes, no joke in an error.
+
+- Do: That photo didn't upload. Your draft is saved on this phone.
+- Don't: Oops! Something went wrong.
+
+**Local.** A place is a walking time or the neighborhood's name [brief, guiding principles]. Never "near you", "in your area", miles, a street or an address.
+
+- Do: Nothing within a 10-min walk yet
+- Don't: No results found in your area
+
+**Brief.** One sentence. A second sentence carries the next step or what is safe. Brief stops before curt: an error names the next step.
+
+- Do: You're offline. This listing will post when you're back online.
+- Don't: We were unable to publish your listing at this time due to a network connectivity issue. Please check your connection and try again later.
+
+**Honest.** The copy states what Nearby knows and what it can't do. A trust signal is a fact about tenure, distance or history, with no adjective and no verdict, because Nearby verifies no identity [project context, constraints]. No urgency, no count of other people looking, no praise for activity [project context, ethical stance].
+
+- Do: New to Nearby
+- Don't: Verified neighbor
+- Don't: 3 others are looking at this
+
+**Tone by context**
+
+| Context | Tone | Example |
 |---|---|---|
-| An empty neighborhood, list or tab | Inviting | Says why the screen is empty and offers one action. No guilt, no promise about demand. |
-| A system failure | Steady | What failed, what is saved, what to do. No humor. |
-| A neighbor passed or didn't reply | Kind | Blames neither person. Points to other nearby items. |
-| A trust signal | Factual | A fact about the neighbor. No adjective, score or judgment [brief]. |
-
----
-
-**Terminology**
-
-| Term | What it means to the person | Words not to use |
-|---|---|---|
-| Free | A price. Always capitalized. | $0, giveaway, no charge |
-| Interest | Telling a neighbor "I want this". The neighbor answers "It's yours" or passes. | Offer, bid, claim, order |
-| Exchange | An item changing hands: sold, traded or given. | Transaction, sale, deal, order |
-| Walk | Distance as walking time in minutes: "4 min walk" as a label, "within a 10-min walk" in a sentence. Item detail appends miles: "4 min walk (0.2 mi)". | Radius, range, miles alone, near you |
+| An empty map, list or tab | Inviting: one thing to do and no pressure to do it | Got something you don't need? Neighbors within a 20-min walk will see it. |
+| A notice on a field | Matter-of-fact, one sentence, and the person can continue | Similar items nearby are listed for less. You can still post at this price. |
+| An error the person can recover from | Calm: what failed, what is saved, the action | That photo didn't upload. Your draft is saved on this phone. |
+| A rule or a hold | Direct: the rule and when it ends, with no blame | New accounts can list 3 at a time. The limit ends after your first exchange. |
+| An exchange that stalls or falls through | Neutral about both neighbors: what happened and the next step | Sarah didn't answer within 48 hours. |
+| A trust signal | A fact in the fewest words | Neighbor since 2021 |
 
 ---
 
 **Copy Deck**
 
-Braces mark variables. In Notes, "Longer in translation" marks a fixed-width label.
+Text in braces is filled from data: {radius} is the radius in force, such as 10-min walk; {item} is the listing's title; {seller} and {buyer} are first names.
 
-*Explore and List*
+**Empty states: Explore and List**
 
-| State | Tone | Copy | Actions | Notes |
+| State | Headline | Body | Actions | Build notes |
 |---|---|---|---|---|
-| No listings within the walk [journey, Discovering nearby items] | Inviting | **{neighborhood} is quiet right now.** Nothing is listed within a {minutes}-min walk. | Post an item / Look within a 20-min walk | No neighborhood name: "Your neighborhood is quiet right now." Second action hidden at 20 minutes. Longer in translation: both buttons. |
-| Neighborhood with no listing posted yet | Inviting | **You're one of the first in {neighborhood}.** Nearby works when neighbors join. Invite people on your block, or post the first item. | Invite neighbors / Post an item | No neighborhood name: "You're one of the first here." |
+| No listings inside the radius [journey, Discovering nearby items] [blueprint, Neighborhood below density] | Nothing within a {radius} yet | Got something you don't need? Neighbors within a 20-min walk will see it. | Post an item. Widen to a 20-min walk | With the radius at a 20-min walk, Post an item is the one action. Both buttons expand in translation. |
+| Search with no results [site map, Search] | No match for "{query}" within a {radius} | Look further out, or ask your neighbors for it. | Search a {next radius}. Post a Wanted request | {next radius} is the next preset up. At a 20-min walk the body is "Ask your neighbors for it." and Post a Wanted request is the one action. The request carries {query}. |
 
-*Location*
+**Empty states: Activity**
 
-| State | Tone | Copy | Actions | Notes |
+| State | Headline | Body | Actions | Build notes |
 |---|---|---|---|---|
-| Location permission not granted, first launch | Direct | **Nearby needs your location.** It shows you what's within walking distance. Neighbors see how far away you are, not your address. | Allow location / Not now | "Allow location" opens the OS permission prompt. |
+| Your listings, nothing posted | Nothing posted yet | Got something you don't need? A neighbor might want it. | Post an item | |
+| A listing with no interest [wireframes, Posted] | No interest yet | You'll get a notification when a neighbor wants it. | None | With push notifications off, the body is "It will show here when a neighbor wants it." |
+| Your interests, nothing sent | Nothing here yet | Tap I want this on an item and the seller's answer shows here. | See what's nearby | Opens Explore. |
 
-*Post an item*
+**Empty states: Organizer tools**
 
-| State | Tone | Copy | Actions | Notes |
+| State | Headline | Body | Actions | Build notes |
 |---|---|---|---|---|
-| Photo upload fails [journey, Posting an item] | Steady | **That photo didn't upload.** Your listing is saved as a draft. | Try again | |
+| Moderation queue cleared [blueprint, A flagged listing] | Nothing to review in {neighborhood} | Held and reported listings show here. | None | |
 
-*Interest and pickup*
+Each empty state carries one line icon of its subject, such as a map pin, a magnifier or a tag, and no character illustration.
 
-| State | Tone | Copy | Actions | Notes |
+**Errors: every tab**
+
+| State | Headline | Body | Actions | Build notes |
 |---|---|---|---|---|
-| No reply in 48 hours, shown to the person who asked [journey, Expressing interest] | Kind | **{neighbor} didn't reply, so this one is closed.** We'll tell you if the item is listed again. | See what's nearby | |
-| The neighbor passed [journey, Expressing interest] | Kind | **{neighbor} passed this time.** Here's what else is nearby. | None | Similar items follow, sorted by distance. |
+| Location unavailable [blueprint, Location unavailable] | Location is off for Nearby | Nearby shows what's within walking distance of you, so nothing can load without it. Your location is used for that and never sold. | Open Settings | Opens the app's location permission, or the phone's location services when those are off. |
+| Session expired | You were signed out | Your drafts and activity are still here. | Sign in | |
 
-*Trust signals*
+**Errors: Explore and List**
 
-Nearby shows no stars, scores or public reviews [brief].
+| State | Headline | Body | Actions | Build notes |
+|---|---|---|---|---|
+| Search unavailable [blueprint, Search unavailable] | Search isn't working right now | Everything within a {radius} is in the list. | Browse the list | |
+| Photos fail to load [blueprint, Photos fail to load] | Photos aren't loading right now | You can still open an item and send interest. | None | One notice per screen. Each empty photo frame has the alt text "Photo didn't load". The notice clears when photos return. |
 
-| Signal | Copy | Where it shows | Notes |
+**Errors: Post**
+
+| State | Headline | Body | Actions | Build notes |
+|---|---|---|---|---|
+| New account with 3 active listings [journey, New account] | You have 3 items listed | New accounts can list 3 at a time. The limit ends after your first exchange. | See your listings | Replaces the camera. |
+| Camera permission denied [journey, Camera] | Camera is off for Nearby | Pick a photo here, or turn the camera on in Settings. | Open Settings | Shown above the gallery. |
+| Photo upload fails [blueprint, Photo upload fails] | That photo didn't upload | Your draft is saved on this phone. | Try again | |
+| Offline, no title suggestion [journey, Details] | | You're offline, so there's no suggestion. Type a title. | None | Replaces "Suggested from your photo." under Title. |
+| Price far above similar items [journey, Details] | | Similar items nearby are listed for less. You can still post at this price. | None | Under Price. Post it stays enabled. |
+| Offline at Post it [journey, Preview and publish] | You're offline | This listing will post when you're back online. | Done | The listing shows "Waiting to post" in Your listings until it publishes. |
+| Listing held by the classifier [blueprint, Listing held by the classifier] | This listing is in review | It isn't live yet. A person checks it against what can be listed on Nearby, and the result shows in Activity. Changing the photo or the details sends it for a new check. | Edit listing. Retake photo. What can't be listed | What can't be listed opens the prohibited items policy. |
+| Listing closed after 14 days [blueprint, Stale listings] | {item} closed after 14 days | It had no accepted pickup. Post it again to put it back on the map. | Post it again | |
+
+**Errors: Item detail and interest**
+
+| State | Headline | Body | Actions | Build notes |
+|---|---|---|---|---|
+| Item taken before the interest arrived [journey, Item detail] | This one's taken | {seller} accepted another neighbor before your interest arrived. | None | Followed by 3 items under the heading "Similar items nearby", nearest first. |
+| Offline at I want this [journey, Item detail] | You're offline | Your interest will send when you're back online. | None | The button shows "Waiting to send" until it sends. |
+| Interest fails to send | Your interest didn't send | {seller} hasn't been notified. | Try again | |
+| Interest expired, buyer [blueprint, Interest unanswered] | Your interest in {item} expired | {seller} didn't answer within 48 hours. | Tell me if it's listed again | The button expands in translation. |
+| Interest expired, seller [journey, Waiting] | Is {item} still available? | {buyer}'s interest expired after 48 hours without an answer. | Still available. Take it down | |
+
+**Errors: Pickup**
+
+| State | Headline | Body | Actions | Build notes |
+|---|---|---|---|---|
+| Either person taps It fell through [journey, Pickup] | Did this pickup fall through? | {item} goes back on the map for other neighbors. | It fell through. Keep the pickup | Confirmation dialog. |
+| Time window ended with no confirmation, seller [blueprint, Handoff not confirmed] | Did {buyer} pick up {item}? | | Exchanged. It fell through | Sent once. |
+| Time window ended with no confirmation, buyer [blueprint, Handoff not confirmed] | Did you get {item}? | | Yes, got it. It fell through | Sent once. |
+| No confirmation after 48 hours [blueprint, Handoff not confirmed] | {item} closed without a confirmation | The pickup wasn't marked within 48 hours, so it isn't in your exchange count. | None | |
+
+**Trust signals**
+
+| Signal | String | Where it shows | Rule |
 |---|---|---|---|
-| Tenure [blueprint, Trust Inference Engine] | Your neighbor since {month} {year} | Item detail, profile card, list card, interest notification | Always month and year, in the locale's date format. |
-| New account [blueprint, Trust Inference Engine] | New to Nearby | Replaces tenure for an account's first 4 weeks | Longer in translation: badge. |
-| Distance | {n} min walk | Item detail, profile card, list card, interest notification | Rounded to the nearest minute. Under 1 minute: "Close by". Never says where a neighbor lives. Needs plural rules. |
-| Exchange history [blueprint, Trust Inference Engine] | {n} exchanges in {neighborhood} | Item detail, profile card | Singular: "1 exchange in {neighborhood}". Hidden at zero. Needs plural rules. |
-| Meeting point [journey, Expressing interest] | Meet at {intersection}. Your address stays private unless you choose to share it. | Pickup screen | Intersection from map data. |
+| Tenure | Neighbor since {month}. Neighbor since {year} | List rows, item detail, the interest screen and the profile [wireframes, Browse] | Counted from the date the person's current location was set [blueprint, Trust signals]. The month name for under 12 months, the year after that. On the person's own listing: "You · Neighbor since {month}" [wireframes, Posted]. Month names are translated. |
+| Walking time | {minutes} min walk | List rows, item detail and the interest screen | Measured along the street network from the viewer [blueprint, Walking radius], rounded to the minute. Under 1 minute shows "1 min walk". Never a distance, a street or an address. |
+| A neighbor who is interested | {buyer} · {minutes} min walk · Neighbor since {year} | The interest push notification and the interest screen [blueprint, Interest and acceptance] | Walking time is from the item. |
+| New account | New to Nearby | Item detail, the interest screen and the profile, before the tenure | For an account's first 4 weeks [blueprint, Trust signals]. The badge expands in translation. |
+| Exchange count | {count} exchanges in {neighborhood} | The profile | Hidden at zero. At one: "1 exchange in {neighborhood}". Plural forms differ by language. Never beside a name in a list, a notification or the interest screen. |
+| Trust signals unavailable [blueprint, Trust signals unavailable] | Neighbor | Wherever the tenure shows | Replaces the tenure and hides the exchange count until the signals return. |
+| Approximate location | Approximate location. {seller} shares the meeting place after accepting. | Under the map on item detail | Before acceptance [blueprint, Location disclosure]. |
+| Private feedback | {seller} won't see your answer. | Under As described and Not as described, after the buyer confirms | [blueprint, Pickup and completion] |
 
 ---
 
 **Open Questions**
 
-- Should the deck's words follow the journey (Activity, walking minutes, interest before any message) or the posting wireframes (Messages, miles, neighbors messaging directly)?
+- Empty states name the walking radius and the exchange count names the neighborhood. Should the empty map name the neighborhood too, as in "Nothing in Capitol Hill yet"?
+- The exchange count shows on the profile and nowhere else. Should a seller also see it on the interest screen when choosing between neighbors?
 
 ## /evaluate
 agent: Vigil
 summary: Found the launch blockers, ranked every issue by severity and named the fix for each.
 
-Each issue got its severity, the heuristic it breaks and the change that fixes it. Both launch blockers are in the handoff between neighbors: the strategy, the flows and the wireframes each start an exchange a different way, and no step gets the buyer to the seller's door.
+Each issue got its severity, the heuristic it breaks and the change that fixes it. The one launch blocker is in the handoff between neighbors: after the seller accepts, the two people cannot agree when to meet.
 
 ### Output
 
-**Nearby before launch: posting, browsing and the exchange between neighbors**
+**Nearby's item exchange design**
 
 ---
 
 **Anti-Pattern Verdict**
 
-Minor Issues: dead ends and missing feedback. No deceptive, consent, urgency or addictive pattern.
+Significant Issues: notification spam and attention bait, in the daily digest and the new-item dot.
 
 ---
 
 **Priority Issues**
 
-*Critical: blocks core task completion or violates regulations*
+*Critical (blocks core task completion or violates regulations)*
 
-**The brief, flows and wireframes disagree on how an exchange starts**
-- **What happens:** The launch scope has one-tap interest and defers messaging; the flows route interests to an Activity tab and unlock quick replies on seller acceptance [brief; journey, Flows 3 and 4]. The wireframes have a Messages tab, no Activity, and Posted says interested neighbors "message you directly" [wireframes, Posted].
-- **Why it matters:** The seller watches Messages for replies that cannot arrive before she accepts, and no screen lets her accept.
-- **Breaks:** consistency and standards.
-- **Change:** Decide whether messaging ships at launch, draw one path from incoming interest to seller acceptance, and make Posted describe it.
+**After the seller accepts, the two people cannot agree when to meet**
 
-**A pickup at the seller's door cannot be arranged**
-- **What happens:** After acceptance, the meeting point is the nearest intersection for every pickup type [journey, Flow 3]. Addresses stay hidden until both people agree, no step records that agreement, and a first exchange has quick replies only [context; journey, Flow 4].
-- **Why it matters:** A seller who chose porch pickup cannot tell the buyer which door, so the couch stays in the apartment or is carried to the corner.
-- **Breaks:** match between system and the real world.
-- **Change:** Add a mutual address-release step, and show the address on the pickup screen for pickups at the seller's home.
+- **What happens:** Acceptance sends both people a meeting point and a time window that the server suggests, and the buyer never confirms a time [blueprint, Interest and acceptance]. The quick replies that carry one, "I can pick up now" and "Need to reschedule", sit in the pickup thread [journey, Messaging], and messaging waits for the second version [brief, Proposed Scope].
+- **Why it matters:** At a meet-outside pickup the seller stands at an intersection during a window, the buyer arrives at another time, and the exchange ends with no handoff.
+- **Breaks:** user control and freedom, and consistency and standards.
+- **Change:** Ship the quick replies with the first version, and add the buyer's choice of a time inside the window to the pickup screen.
 
-*Major: significant friction, potential user harm*
+**Walking times show where a seller lives before any acceptance**
 
-**The post screen leads sellers to publish their street**
-- **What happens:** Post an item lacks the pickup choice and location preview the posting flow has [journey, Flow 1; wireframes, Post an item]. The description hint asks for a line on pickup, and the sample text ends "Porch pickup on Birch St." [wireframes, Post an item].
-- **Why it matters:** Sellers put their street in public listing text, the exposure the privacy constraint prevents [context].
+- **What happens:** A listing's walking time is computed from each viewer's position, so a person who opens it from several places can work out the seller's address [blueprint, Ecosystem & dependencies]. List rows give the time to the minute: "1 min walk" under "On your block" [wireframes, Browse].
+- **Why it matters:** Any neighbor in the radius can find the home of a seller who has accepted no pickup, against the line above Post it that the address stays hidden [wireframes, Post an item] [project context, Constraints].
 - **Breaks:** error prevention.
-- **Change:** Restore the pickup choice and location preview on the post screen, and remove pickup from the description hint.
+- **Change:** Before acceptance, show walking time as a band measured from the approximate pin, and give the time to the minute on the pickup screen.
 
-**Browse is a search grid with distances in miles**
-- **What happens:** Browse opens on a search bar and a newest-first grid, with distances in miles and no seller tenure on the cards [wireframes, Browse]. The flow and the navigation make the map home, sort by distance, give walking minutes, put tenure on every card and hide search [journey, Flow 2; navigation specification].
-- **Why it matters:** Buyers get a general marketplace with a distance filter, without the walking-distance view or the trust signal that differentiate Nearby [brief].
+*Major (significant friction, potential user harm)*
+
+**Posting never sets where the item is**
+
+- **What happens:** Posting has no step for the item's location or for the address a porch pickup releases [journey, Posting an item] [wireframes, Post an item]. Positions come from the phone's geolocation, accurate to 100 m [blueprint, Support for every stage].
+- **Why it matters:** A seller who posts from work pins the listing there, and a porch pickup sends the buyer to a position several doors from the item.
+- **Breaks:** error prevention.
+- **Change:** Add the item's location to the pickup step, confirmed on the first listing and reused after it, with the street address asked for when the seller picks porch pickup.
+
+**The walking radius has a different size in the brief, the blueprint, the site map and the screens**
+
+- **What happens:** Post and Posted give the audience as neighbors within a 20-min walk, and List opens at a 10-min walk [wireframes, Post an item, Posted, Browse] [site map, Local navigation]. The radius is 400 m to 1,600 m by housing density [blueprint, Walking radius], and the seller sets a pickup radius when posting [brief, Proposed Scope].
+- **Why it matters:** A seller is told an audience that default browsing does not reach, and a builder has no single rule for which listings a buyer sees.
 - **Breaks:** consistency and standards.
-- **Change:** Redraw Browse with the map as home, the walking radius visible, distance as walking time and seller tenure on each card.
+- **Change:** Set one rule for which listings a buyer sees, and state the audience on Post and Posted from that rule.
 
-**Neither neighbor can say no once interest is sent**
-- **What happens:** The seller can tap "It's yours" or ignore the interest, and the buyer's only exit is a 5-second undo [blueprint, seller touchpoints; journey, Flow 3]. An unanswered interest times out after 48 hours, and no step produces the "Passed" status [journey, Flow 3].
-- **Why it matters:** A buyer whose visit lasts 20 minutes to 2 hours waits two days for an answer the seller knows, and a buyer who changed their mind becomes a no-show [blueprint].
+**A listing and a person have no report action**
+
+- **What happens:** Moderation starts when a neighbor reports a listing or a person [blueprint, A flagged listing], and item detail holds the photo, price, walking time, tenure, pickup type and "I want this" [site map, Item detail]. The one report action is on a message, after acceptance [journey, Messaging].
+- **Why it matters:** A buyer who sees a prohibited item, or a seller who gets unwanted interest from one neighbor, cannot send it to the organizer's queue.
 - **Breaks:** user control and freedom.
-- **Change:** Give the seller a pass action and a way to choose among several interested neighbors, and let the buyer withdraw from Activity.
+- **Change:** Add a report action to item detail and to each interested neighbor in Activity.
 
-**The listing cap and the push limit stop a seller without telling them**
-- **What happens:** A new account is capped at 3 active listings until its first exchange completes, and push notifications are rate-limited to 5 a day per account [blueprint]. Neither limit has a message or a screen, and pickup reminders share the rate limit with the daily digest [blueprint; copy deck].
-- **Why it matters:** A seller clearing a home in one weekend is stopped at the fourth item with no explanation, and can miss a pickup reminder on the day buyers arrive [context; journey].
-- **Breaks:** missing feedback.
-- **Change:** Tell the seller when a limit is reached and what lifts it, and prioritize pickup reminders over every other push notification.
+**Posted promises a notification the seller may not receive**
 
-**Reports reach an organizer who has no screen**
-- **What happens:** Organizers are first-line moderators and receive harassment flags silently, yet no flow, tab or screen gives them a moderation queue, or lets them hide a listing or warn a person [blueprint; journey, Flow 4; navigation specification]. Only messages have a report control, and a reported person loses messaging pending a review that has no screen [journey, Flow 4].
-- **Why it matters:** A neighbor who sees an unsafe listing cannot report it, and a person reported in error stays unable to arrange a pickup.
-- **Breaks:** user control and freedom.
-- **Change:** Give organizers a moderation queue with actions, add a report control to listings, and show a reported person their status.
-
-**The screens show only a busy neighborhood**
-- **What happens:** Browse shows 38 listings, and Posted says 842 neighbors can see the listing "right now" and that a first reply "usually arrives within a day" [wireframes, Browse and Posted]. Every neighborhood starts below the density the service needs, and the empty states exist only as copy [blueprint; copy deck, empty states].
-- **Why it matters:** The first sellers in a new neighborhood, the ones a cold start depends on, are promised an audience and a reply time that neighborhood cannot deliver.
+- **What happens:** Posted reads "You'll get a notification when a neighbor wants it. Nothing to check until then." [wireframes, Posted]. Push is opt-in and capped at 5 a day, with interest sent after acceptances and reminders [project context, Ethical stance] [blueprint, Push notifications], and posting has no step that asks for the permission [journey, Posting an item].
+- **Why it matters:** A seller with push off, or with several listings on a moving day, stays out of Activity as the screen says, and the interest expires after 48 hours [journey, Interaction Specifications].
 - **Breaks:** visibility of system status.
-- **Change:** Draw Browse and Posted for a low-density neighborhood, and compute audience and reply time from that neighborhood's activity.
+- **Change:** Ask for push permission on Posted, and where push is off or the cap is reached, say that interest waits in Activity.
 
-*Minor: degraded experience, recoverable*
+**The daily digest is sent by default**
 
-**Trade and Wanted cannot be posted**
-- **What happens:** Onboarding promises things "for trade" and the search empty state offers "Post a Wanted" [copy deck]. The price field has only a Free chip, and posting starts with a photo of the item [wireframes, Post an item].
-- **Why it matters:** A buyer who follows the empty state to post a Wanted lands on a camera with nothing to photograph, and Wanted is the demand signal a new neighborhood relies on [navigation specification].
-- **Breaks:** consistency and standards.
-- **Change:** Give the price field a Trade choice and Wanted a text-first form, or remove both from the copy.
+- **What happens:** The digest of the 3 to 5 newest items goes out every day by default [blueprint, Ecosystem & dependencies], and every push notification is opt-in [project context, Ethical stance]. Explore and List carry a dot whenever an item was posted since the last open, and Explore opens with a notice of new items after 24 hours away [site map, Tab bar, Orientation].
+- **Why it matters:** A person who found what they needed is called back every day, where opening the app less often counts as success [project context, Ethical stance].
+- **Breaks:** notification spam and attention bait.
+- **Change:** Send the digest only to a person who turned it on, and take the new-item dot off the Explore and List tabs.
 
-**The post form adds fields the posting flow leaves out**
-- **What happens:** The flow posts in four taps: photo, title, price, publish [journey, Flow 1]. The form adds Condition, and a Description whose hint encourages filling it in [wireframes, Post an item].
-- **Why it matters:** Sellers abandon a post that takes more than 60 seconds, and each added field moves the form toward that limit [context].
+**The listing limit stops a seller clearing a home**
+
+- **What happens:** An account with no completed exchange holds 3 active listings, and at the limit + opens a notice with the camera closed [journey, User Context & Variations]. In a newly opened neighborhood every account is new [blueprint, Ecosystem & dependencies], and the primary action on Posted is "Post another item" [wireframes, Posted].
+- **Why it matters:** A seller in a moving week is refused at the fourth item and leaves the rest on the curb, in the weeks when the neighborhood has the fewest listings [project context, Users] [brief, Constraints].
 - **Breaks:** flexibility and efficiency of use.
-- **Change:** Require only photo, title and price, and collapse Condition and Description into an optional section.
+- **Change:** Raise the limit to fit a clear-out, and state it on Posted, with what lifts it, before the seller reaches it.
 
-**Declining location ends the app**
-- **What happens:** "Not now" on the location permission prompt leaves an app that "can't show you anything", with Settings as the only way back [copy deck, onboarding]. No state covers approximate location permission, which cannot meet the 100-meter accuracy the radius needs [blueprint].
-- **Why it matters:** A person careful about location, in a privacy-first product, must grant precise location before seeing anything, or leave.
-- **Breaks:** dead ends.
-- **Change:** Let a person who declines see a neighborhood without precise location, and design the approximate-location state.
+**Tenure dates claim more than the app knows**
 
-**A neighborhood is a name on screen and a radius underneath**
-- **What happens:** The screens name a place and a flat range: "Post to Maplewood", "Visible to neighbors within 1 mile" [wireframes, Post an item]. The service computes a per-user walking radius from housing density, bounded by highways and rivers [blueprint].
-- **Why it matters:** A seller cannot tell who will see the listing, and an organizer moderating a neighborhood has no boundary to apply.
+- **What happens:** Rows read "Neighbor since 2019" and "Neighbor since 2021" [wireframes, Browse]. Signup verifies no identity [project context, Constraints], and the date comes from account age and time at the current location, which start at signup [blueprint, Trust signals].
+- **Why it matters:** Tenure is the main trust signal [brief, Guiding Principles], and in a new neighborhood it shows the signup month for a 20-year resident and a newcomer alike.
 - **Breaks:** match between system and the real world.
-- **Change:** Settle one definition of neighborhood and show the seller the listing's reach.
+- **Change:** Label the date as time on Nearby in this area.
 
-**Trust signals state where people live**
-- **What happens:** "Your neighbor since March 2025" and "Lives about a 3-minute walk from you" state residence [copy deck, trust signals]. Signup has no identity verification, so both come from geolocation history [context].
-- **Why it matters:** A buyer deciding whether to walk to a stranger's door reads an inferred location as a verified neighbor.
-- **Breaks:** match between system and the real world.
-- **Change:** Word tenure and distance as observed location.
+**Approximate location leaves a person with no position and no message**
 
-**Nothing says how the seller gets paid**
-- **What happens:** Payment is off-platform, and no listing, pickup screen or quick reply says whether the seller takes cash or a payment app [brief; journey, Flows 3 and 4].
-- **Why it matters:** With free text locked, a buyer arrives at the door without knowing what to bring.
-- **Breaks:** help and documentation.
-- **Change:** Let the seller state accepted payment on the listing, and show it on the pickup screen.
-
-**The digest, the new-item dots and the return overlay cannot be turned off**
-- **What happens:** A daily digest push notification, a new-item badge on two tabs and an overlay after a day away each prompt a return [journey, Flow 2; navigation specification]. No notification settings are designed.
-- **Why it matters:** A person who wants notifications only about their exchanges cannot stop the rest, against the stance that opening the app less often is success [context].
-- **Breaks:** user control and freedom.
-- **Change:** Design notification settings with a toggle for the digest and for the new-item prompts.
-
-**Free-text messaging unlocks under conflicting rules**
-- **What happens:** One flow unlocks free text when each person has three prior exchanges, and the other when the same two people have completed three together [journey, Flows 3 and 4].
-- **Why it matters:** Under the first rule a regular can type to anyone and under the second almost no pair can, so which neighbors can explain themselves depends on which rule gets built.
-- **Breaks:** consistency and standards.
-- **Change:** State one unlock rule in both flows.
-
-**The tab bar on the screens differs from the navigation**
-- **What happens:** The screens' tabs are Browse, Saved, Post, Messages and Profile, and the navigation's are Explore, List, Post, Activity and You [wireframes, Browse; navigation specification]. Saved, and the "Share to nearby groups" button on Posted, have no flow [wireframes, Posted; journey].
-- **Why it matters:** A person who taps Saved or Share reaches a feature with no defined behavior.
-- **Breaks:** dead ends.
-- **Change:** Use the navigation's tabs, and give Saved and Share to nearby groups a flow or remove them.
-
-**Posting errors blame the wrong cause**
-- **What happens:** The upload failure ends "Good lighting helps it sell faster anyway", which blames the photo for a network fault [copy deck, error messages]. The image moderation message, "This photo was flagged", does not name the rule the photo broke [journey, Flow 1].
-- **Why it matters:** The seller retakes a photo that was fine, or guesses at what to change.
+- **What happens:** A fix less accurate than 100 m is discarded [blueprint, Failures], so a phone that grants approximate location never supplies one. The location states are location on and location off [journey, User Context & Variations] [site map, States].
+- **Why it matters:** A person who chose approximate location for privacy can neither browse nor post, and no screen says why.
 - **Breaks:** help users recognize, diagnose, and recover from errors.
-- **Change:** Make the upload failure name the connection, and the moderation message name the rule.
+- **Change:** Add a state for approximate location that says precise location is needed and why, with the link to settings.
 
-*Cosmetic: polish, not blocking*
+*Minor (degraded experience, recoverable)*
 
-**Category names differ between Browse and the taxonomy**
-- **What happens:** Browse chips read "Plants & garden", "Electronics" and "Free", and the taxonomy reads "Garden & Outdoor", "Electronics & Gadgets" and "Free Stuff" [wireframes, Browse; navigation specification].
-- **Why it matters:** A seller picks a category under one name and a buyer filters by another.
+**A buyer cannot withdraw interest and a seller cannot decline it**
+
+- **What happens:** Interest ends by undo within 5 seconds, by expiry at 48 hours or when the listing closes [blueprint, How records end]. The seller's choices are "It's yours" or no answer [journey, Buying].
+- **Why it matters:** A buyer who found the item elsewhere stays in the seller's list, the seller accepts a person who no longer wants it, and a buyer the seller will not choose waits 48 hours to hear.
+- **Breaks:** user control and freedom.
+- **Change:** Add withdraw to an interest in Activity and a pass action to the seller's interest screen.
+
+**The other interested neighbors see Passed in the journey and a waiting status in the blueprint**
+
+- **What happens:** On acceptance the other buyers see Passed [journey, Buying], or keep a waiting status until the listing closes or the seller releases the acceptance [blueprint, Several requests for one item]. When a pickup falls through, the listing reopens to new interest [journey, Buying] or to the neighbors still waiting [blueprint, Failures].
+- **Why it matters:** A buyer told Passed stops watching an item that returns an hour later, or a buyer left waiting holds out for an item that is gone.
+- **Breaks:** consistency and standards, and visibility of system status.
+- **Change:** Keep the other buyers in a waiting status that says the item is promised to another neighbor, and offer it to them in order when the pickup falls through.
+
+**A trade has no step for what is offered in return**
+
+- **What happens:** Trade is a price on Post and a filter on List [wireframes, Post an item, Browse], and interest is one tap with no message [journey, User Context & Variations]. The quick replies after acceptance name no item [journey, Messaging].
+- **Why it matters:** The seller accepts without knowing what the buyer brings, and the two find out at the meeting point.
+- **Breaks:** match between system and the real world.
+- **Change:** Let interest in a Trade listing carry what the buyer offers.
+
+**Neither person learns how payment is made**
+
+- **What happens:** Payment is made in person, and the pickup screen passes the meeting point, the time window and the price [journey, Multi-Channel Map]. Item detail and the quick replies carry no payment method [site map, Item detail] [journey, Messaging].
+- **Why it matters:** A buyer arrives with a payment app, the seller takes cash, and the handoff fails.
+- **Breaks:** help and documentation.
+- **Change:** Let the seller state the payment accepted, and show it on item detail and the pickup screen.
+
+**The preview on Posted has no map**
+
+- **What happens:** The preview on Posted is a card with the photo, title, price, pickup type and tenure [wireframes, Posted]. The preview before publishing showed the listing on a map with the seller's approximate location and the radius it reaches [journey, Posting an item].
+- **Why it matters:** The seller never sees the pin neighbors get, which is the seller's one check that the address is off the listing.
+- **Breaks:** visibility of system status.
+- **Change:** Add the map with the approximate pin and the radius to the preview on Posted.
+
+**A Wanted request has no flow after the form**
+
+- **What happens:** A search with no results and the Wanted filter both open a Wanted request [site map, Cross-links]. The flows cover posting, discovering, buying and messaging [journey, Screen-by-Screen Flow], and the List chips hold no Wanted [wireframes, Browse].
+- **Why it matters:** A buyer who sends a request cannot tell who sees it or how a neighbor answers.
+- **Breaks:** dead ends.
+- **Change:** Add the Wanted flow to the journey: who sees a request, how a neighbor answers and how the requester hears.
+
+**Trust signals read a contact list the first version leaves out**
+
+- **What happens:** The Trust Inference Engine reads mutual contacts and shows a mutual connection [blueprint, Trust signals], and mutual connections wait for a later version [brief, Proposed Scope]. Reading contacts is a second permission beside location [blueprint, Ecosystem & dependencies].
+- **Why it matters:** An app built from the blueprint asks for a contact list that no first-version function needs [project context, Ethical stance].
 - **Breaks:** consistency and standards.
-- **Change:** Use one category vocabulary for posting and filtering.
+- **Change:** Remove mutual connections from the first version's trust signals and permissions.
 
-**Posted shows clock time**
-- **What happens:** Posted reads "Today, 9:41 AM", and the copy patterns use relative time, "Posted 2 hours ago" [wireframes, Posted; copy deck, microcopy patterns].
-- **Why it matters:** The seller reads absolute time on this screen and relative time everywhere else.
+**The header names a neighborhood and browsing uses a radius**
+
+- **What happens:** The header reads "Capitol Hill" over items within a walking radius [wireframes, Browse]. The exchange count and the organizer's queue belong to a named area [blueprint, Open questions].
+- **Why it matters:** People in two named areas see a listing near an edge, and a report on it has two organizers' queues to go to.
+- **Breaks:** match between system and the real world.
+- **Change:** Draw a fixed boundary for each named area, used for the header, the exchange count and the organizer's queue, and keep the radius for browsing.
+
+**The audience count on Posted has no floor**
+
+- **What happens:** Posted reads "842 neighbors within a 20-min walk can see your bookshelf" [wireframes, Posted]. A neighborhood runs with as few as 50 active users [project context, Constraints].
+- **Why it matters:** The first sellers in a neighborhood read a count in the tens, or a count of every account in range that overstates who will see the listing.
+- **Breaks:** visibility of system status.
+- **Change:** Count the neighbors active in the radius, and replace the number with words below a floor.
+
+**The seller never receives "not as described"**
+
+- **What happens:** The buyer's answer changes the seller's as-described rate, and the seller sees neither the answer nor the rate [blueprint, Pickup and completion].
+- **Why it matters:** Feedback meant to be constructive [project context, Ethical stance] feeds a rate the seller cannot see, learn from or correct.
+- **Breaks:** visibility of system status.
+- **Change:** Tell the seller privately when a buyer answers "not as described", with what the answer changes.
+
+*Cosmetic (polish, not blocking)*
+
+**Item detail and search use a description that posting never collects**
+
+- **What happens:** Item detail shows a description and search matches descriptions [blueprint, Posting and browsing, Support for every stage]. Posting asks for none [journey, User Context & Variations] [wireframes, Post an item].
+- **Why it matters:** Item detail carries an empty block, and search matches titles alone.
 - **Breaks:** consistency and standards.
-- **Change:** Show posting time as relative time.
+- **Change:** Remove the description from item detail and from search.
+
+**The pickup reminder is set an hour ahead of pickups that start sooner**
+
+- **What happens:** The reminder goes out 1 hour before the agreed time [journey, Interaction Specifications], and a buyer takes 20 minutes to 2 hours from opening the app to pickup [blueprint, Posting and browsing].
+- **Why it matters:** For a pickup inside the hour the reminder arrives with the acceptance and uses one of the day's 5 push notifications [blueprint, Push notifications].
+- **Breaks:** aesthetic and minimalist design.
+- **Change:** Send the reminder only when the pickup is further off than the reminder's lead time.
+
+**The filter chips read as one set**
+
+- **What happens:** All, Free, Trade, the categories and Posted today sit in one row of chips [wireframes, Browse]. Category, price and posted are separate filters that combine, one value each [site map, Local navigation].
+- **Why it matters:** A person cannot tell that Free and Furniture & Home combine while Free and Trade replace each other.
+- **Breaks:** consistency and standards.
+- **Change:** Group the chips by filter, so each group shows its one active value.
 
 ---
 
 **Positive Findings**
 
-- A failed upload or a lost connection keeps the draft, and the offline queue posts it on reconnect [journey, Flow 1].
-- A denied camera permission falls back to the gallery [journey, Flow 1].
-- Optimistic UI shows the buyer "Interest sent" while seller notifications are batched every 15 minutes [blueprint].
-- Messaging unlocks on the seller's acceptance, which keeps spam and lowball offers out [blueprint].
-- Trust rests on tenure, distance and exchange counts with no star ratings, and a new account is labeled as new [copy deck, trust signals].
-- Audience and cost sit above the Post button [wireframes, Post an item].
-- Free has a badge and a filter, and a pending item stays visible as plain status [wireframes, Browse].
-- The list groups items by walking distance, and every empty state ends in an action [journey, Flow 2; copy deck, empty states].
+- A draft stays on the phone at every posting step, a failed upload retries from the same screen, and an offline listing queues and publishes on reconnect [journey, Posting an item].
+- The buyer's tap is confirmed on the phone before the server answers, while the seller's notification waits in a batch [journey, Interaction Specifications].
+- List holds every item the map holds, grouped by walking time, so no task depends on reading a map [site map, Decisions].
+- Who sees the listing, what stays hidden and "No fees" sit above Post it, where the seller commits [wireframes, Post an item].
+- Free is a chip beside the price field and a filled badge in the row, so a gift takes one tap and reads as a first-class price [wireframes, Post an item, Browse].
+- A buyer never sees how many neighbors asked for an item, and a pending pickup is a plain stamp, so no screen manufactures competition [blueprint, Interest and acceptance] [wireframes, Browse].
+- No thread exists before the seller accepts, which keeps spam, lowball offers and harassment out of a first contact [journey, Messaging].
+- Pickup fills in from the seller's last listing, so a seller clearing a home sets it once [wireframes, Post an item].
 
 ## /fortify
 agent: Vigil
@@ -906,48 +1397,76 @@ People ghost, misdescribe items and harass neighbors, and every neighborhood sta
 
 **State Inventory**
 
-Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality; Cosmetic is a nice-to-have.
-
 *Every screen*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| Report sent | Report is on every listing, profile, quick reply and finished pickup in Activity [evaluation]. A confirmation replaces the report sheet. Sending a report blocks the reported neighbor: their listings, interests and quick replies are filtered from the reporter's Explore, List and Activity. A pickup between the two is cancelled. | The block is immediate and permanent, whatever the review decides. The organizer has 24 hours to decide [blueprint]. The report escalates to platform review immediately where the neighborhood has no organizer or the organizer is the person reported, and otherwise after 24 hours without a decision. | "Report sent. You won't see [Name] on Nearby anymore, and they can't contact you. We'll tell you when a reviewer has looked at it. If you're in danger right now, call 911." | Critical |
-| The neighbor who was reported | During the review, the pickup with the reporter shows as cancelled and the reporter's listings are filtered out. No screen discloses the report. Pickups and quick replies with other neighbors continue. | No rule broken: nothing is shown. Listing removed: Activity names the listing and the rule, and the seller can edit and repost. Warning: Activity names the rule. Suspension [blueprint]: the sign-in screen names the rule and the appeal address. No message names the reporter. | "This pickup was cancelled." / "A reviewer removed [item] because it breaks this rule: [rule]. Edit it to post again." / "A reviewer found that something you sent broke this rule: [rule]. Another report like this can suspend your account." / "Your account is suspended because of this rule: [rule]. To ask for a second look, write to [address]." | Major |
+| A notice about the person's conduct or a moderation decision: a pickup marked as a no-show, a not-as-described answer, a report, a hold | The person concerned sees it as the first row in Activity, with what happened and one action. Other neighbors' screens do not change: no count, label or status appears on the profile, the listing or a request [project context, ethical stance]. | The row stays until the person opens it. A push notification is sent only inside the daily limit of 5. Past the limit the row waits in Activity [blueprint, Push limit reached]. | No message of its own. | Major |
 
 *Explore and List*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| No listing has ever been posted within a 20-minute walk | Cold-start empty state: Explore shows the map with the radius and no pins, and List shows the same card. The person can invite neighbors or post. First use lands here after the location permission prompt. | Ends when the first listing goes live in the radius. | The cold-start message [copy deck], with "Post an item" as a second action. | Major |
-| Listings were posted before and none is live in the current radius | Empty state on the map or list, with the quiet-neighborhood message and the one-tap expansion to a 20-minute walk [journey, Flow 2]. The expansion action is removed where the 20-minute radius is also empty. Listings from other neighborhoods are not shown [brief: multi-neighborhood browsing is out of scope]. | Pull to refresh. Ends when a listing goes live in the radius. | The map empty-state message [copy deck]. | Major |
+| No listings within a 20-min walk, on first open and on later opens | Explore shows the map centered on the person, the radius outline and no pins. List shows the message in place of rows. Both give the number of neighbors within a 20-min walk, the figure the Posted screen uses [wireframes, Posted]. The person can post an item or ask for one with a Wanted request [site map]. | The message leaves when a listing enters the radius, and the Explore tab shows its dot [site map, Tab bar]. | "No items within a 20-min walk yet. 37 neighbors are within a 20-min walk, and an item you post shows to each of them." Buttons: "Post an item", "Ask for an item". With no neighbors: "No items within a 20-min walk yet, and you are the first neighbor here. An item you post shows to each neighbor who joins." | Critical |
+| No listings in the radius in force, and listings within a 20-min walk | Explore shows faded pins beyond the radius [journey, Map]. List shows the message with the number of items within a 20-min walk. The person can widen the radius or post an item [journey, Discovering nearby items]. | The wider radius stays as the person's choice [site map, Local navigation]. | "Nothing within a 10-min walk. 6 items are within a 20-min walk." Buttons: "Show a 20-min walk", "Post an item". | Major |
+| Filters leave no listings, and the radius holds listings | The message in place of rows and pins, with the number of listings the filters hide. The filter chips stay in view. | "Clear filters" restores the listings. A chip removes one filter [site map, Local navigation]. | "No Free items within a 10-min walk. 14 other items are." Button: "Clear filters". | Minor |
+| Fewer listings than fill the screen | The rows, then a closing line under the last row. A walking-time group with no listings shows no header. | The button widens the radius. It is absent at a 20-min walk. | "That is everything within a 10-min walk." Button: "Show a 20-min walk". | Minor |
 
-*Post an item and Posted*
+*Item detail*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| Listing cap reached | A new account has 3 active listings and no finished pickup [blueprint]. The seller can photograph and fill in a fourth listing. The commit button reads "Save draft", with an explanation above it. | The draft posts with one tap when a listing ends or the first pickup is confirmed. Activity notifies the seller. | "New accounts can have 3 listings up until the first pickup is done. This one is saved, ready to post when a spot opens." / "A spot opened. Post [item]?" | Major |
-| Slow mode | The seller has 3 missed pickups in the past 30 days. The pickup step disables the availability autofill from the last listing [journey, Flow 1], and the window is required before the listing goes live. | Lifts when fewer than 3 missed pickups remain in the past 30 days. The line is removed with no announcement. | "A few of your pickups fell through this month. Set when you can hand this over before it goes live." | Major |
+| Report sent about a listing or a person | Item detail and Pickup carry a Report action outside the thread, so reporting does not depend on quick replies [journey, Open Questions]. Reasons: "Prohibited item", "Not a real item", "About a person", "Unsafe behavior". After sending, the person sees the confirmation and can hide the listing from their Explore and List. | The listing stays up for other neighbors until it is reviewed [blueprint, No organizer action]. On return, Activity shows "Your report was reviewed." without the outcome: holds, warnings and suspensions are visible only to the person concerned [blueprint, A flagged listing]. | "Reported. Sarah is not told who reported this." Button: "Hide this listing for me". | Major |
+| Listing paused, hidden in review or closed, opened from a shared link, the digest or Activity | The message and 3 similar items by distance, as for an item taken [journey, Item detail]. No reason is given. "I want this" is absent. | A paused listing that its seller shows again opens as normal. | "This item is not available." | Minor |
+| Price above the usual during a declared emergency | A notice under the price. The listing stays up and takes interest [blueprint, Content Moderation]. | The notice shows while the price is more than 2 times the category's 90-day average in the neighborhood and the emergency is declared. An organizer can escalate the listing [blueprint, A flagged listing]. | "This price is higher than usual for this item." | Minor |
 
-*Activity, while a buyer waits for a seller*
+*Post an item*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| Interest ended with no reply | The buyer sees the ended message [journey, Flow 3]. The listing is delisted from Explore and List. Other neighbors waiting on the listing get the same message at the same moment. | The listing stays delisted until the seller answers. It still expires 14 days after it was posted. | The ended-interest message [journey, Flow 3]. | Major |
-| The seller comes back to a hidden or archived listing | The top of Activity lists each listing that changed while the seller was away. For a listing hidden after an unanswered interest: "Still available" relists it and notifies the neighbors whose interest ended; "It's gone" archives it. For a listing archived at 14 days after the day-12 "Still available?" push notification went unanswered: one-tap repost. | No time limit on either answer. | "[Buyer] wanted [item], and the request ended after 2 days without a reply. It's hidden until you tell us it's still available." / "[Item] was up for 14 days, so we archived it. Post it again?" | Major |
+| Seller with no-shows marked by 3 different neighbors in the past 30 days | The pickup option and "Available for pickup" arrive empty in place of the values from the last listing [wireframes, Post an item], with the message above them. "Post it" is disabled until both are set. | The fields fill from the last listing again when the 30-day count falls below 3. | "Recent pickups fell through because you were not there. Choose when you can hand this one over." | Major |
+| Listing matches one the seller has live | On "Post it", duplicate detection [blueprint, Content Moderation] stops the post and names the first listing. The seller posts it as a new item or opens the first listing. | The draft stays on the phone [journey, Camera]. "Post it as a new item" publishes. | "You have a listing like this: Blue IKEA bookshelf, posted 10 minutes ago. Is this a different item?" Buttons: "Post it as a new item", "Open the first listing". | Minor |
+| Seller with not-as-described answers from 3 different neighbors in the past 30 days | A line above the photo zone on the next post. Posting is not blocked. The line names no neighbor and no item. | Shown once, on the first post after the third answer. | "Some neighbors said recent items did not match the listing. A photo that shows wear or damage helps." | Minor |
+
+*Posted*
+
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
+|---|---|---|---|---|
+| Listing held by the classifier | The message in place of "Posted" and of the neighbor count. The seller can edit the listing, which submits it again [journey, Preview and publish], or withdraw it. | An organizer reviews it. Platform moderation takes it after 24 hours without a decision, or immediately where the neighborhood has no organizer [blueprint, No organizer action]. On return, a cleared listing shows in Activity as "Your bookshelf is live." A removed listing shows as "Your bookshelf was removed in review: it is on the prohibited items list." with "Ask Nearby to review", which sends the decision to platform moderation once per listing. | "Your bookshelf is in review and is not live yet. We tell you here when the review is done." Buttons: "Edit listing", "Withdraw". | Major |
+| No neighbors within a 20-min walk | The confirmation states that the listing is posted and that no neighbor has joined yet. The preview, "Post another item" and the notification callout stay [wireframes, Posted]. "Share listing" is added; the link opens the item's detail [journey, Entry from a shared link]. | The count line returns when a neighbor is within a 20-min walk. With one neighbor it reads "1 neighbor". | "Your bookshelf is posted. No neighbors within a 20-min walk have joined yet. It shows to each neighbor who joins." | Major |
+
+*Activity, Your interests*
+
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
+|---|---|---|---|---|
+| Waiting longer than the seller's estimated response time | The status line gives how long ago the request was sent, the estimate and the expiry time. 3 similar items by distance show under it. The buyer can withdraw the request. | The line changes when the wait passes the estimate. The request expires 48 hours after it was sent [blueprint, Interest unanswered]. | "Sent 5 hours ago. Sarah usually answers within 2 hours. This request expires Thursday at 6:10 pm." Button: "Withdraw request". | Major |
+| Request or pickup ended while the buyer was away | One row for each thing that happened. Request expired: the buyer can ask to hear if the item is listed again [journey, Waiting]. Seller ended the pickup before the time window: the listing takes interest again and the buyer can ask again. Listing removed in review: no reason is given. Each row shows 3 similar items by distance. | The meeting point, the time window and a porch address leave the buyer's Pickup screen when the pickup ends. | Expired: "Sarah did not answer. Your request for the couch expired." Button: "Tell me if it is listed again". Seller ended it: "Sarah ended the pickup for the couch. The couch is listed again." Button: "Ask again". Removed: "The pickup for the couch was cancelled. The couch is no longer listed." | Major |
+| Waiting on a seller with no past answers | The status line gives the expiry time in place of an estimate. In a new neighborhood this is every seller [blueprint, Ecosystem & dependencies]. | The estimate appears after the seller's first answer. | "Sarah has not answered a request before. This request expires Thursday at 6:10 pm." | Minor |
+
+*Activity, Your listings*
+
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
+|---|---|---|---|---|
+| Listing paused after a request expired unanswered, seen when the seller returns | The listing pauses when the first request expires, 48 hours after it was sent. A paused listing is hidden from Explore, List and search and takes no new requests. Requests still waiting keep their 48 hours. The row names the request that expired, says the listing is hidden, and lists the requests still waiting. | "I still have it" shows the listing again and opens the waiting requests. "It's gone" closes the listing and tells the waiting neighbors the item is gone. With no answer the listing closes 14 days after it was posted [blueprint, Stale listings]. | "Marcus's request expired after 48 hours without an answer. Your couch is hidden from neighbors until you answer. Do you still have it?" Buttons: "I still have it", "It's gone". | Major |
+| Pickup ended while the seller was away | One row for each thing that happened. Buyer marked the seller as not there: the row gives the buyer, the time window and that the listing takes interest again. Buyer marked the item as not as described at the handoff: the listing takes interest again and the row opens "Edit listing". Buyer reported the seller and ended the pickup: the row says the pickup ended and gives no reason. | The listing reopens to interest when the pickup ends [journey, Pickup]. A not-there mark adds to the 30-day count behind the Post an item state. | Not there: "Marcus came for the couch on Tuesday between 5 and 8 pm and marked that you were not there. The couch is listed again." Not as described: "Marcus did not take the couch and said it did not match the listing. The couch is listed again." Button: "Edit listing". Ended: "The pickup with Marcus ended. The couch is listed again." | Major |
+| Listing 12 days old with no accepted request | A row in Your listings on day 12, and a push notification where the seller has them on. | "Keep it listed" restarts the 14 days. With no answer the listing closes on day 14 [blueprint, Stale listings]. On return after it closed: "Your couch closed after 14 days without a pickup." with "Post it again", which publishes it in one tap. | "Your couch closes in 2 days. Do you still have it?" Buttons: "Keep it listed", "It's gone". | Minor |
 
 *Pickup*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| The buyer answers "It fell through" | A follow-up question with answers by pickup type. Porch pickup: "It wasn't there". Meeting outside: "[Seller] didn't come". Both: "It wasn't as described" and "I couldn't make it". | "It wasn't there" and "[Seller] didn't come" delist the listing and ask the seller what happened. "It wasn't as described" records the feedback, relists the listing, and tells the seller only that the buyer did not take the item. "I couldn't make it" relists the listing immediately. | "What happened?" Then, for the first two answers: "Sorry about that. We've asked [Seller], and we'll tell you if they want to try again." | Major |
-| The seller comes back after the buyer reported a missed pickup | Activity shows the buyer's answer and the actions "Set a new time", "Offer it to someone else" and "It's gone". Any answer within 48 hours records no missed pickup. | After 48 hours with no answer, a missed pickup is recorded and the listing is archived. | Meeting outside: "[Buyer] says they came for [item] and missed you. Want to set a new time or offer it to someone else?" Porch pickup: "[Buyer] came for [item] and says it wasn't on the porch. Is it still available?" | Major |
+| Report sent from Pickup | The confirmation, then a choice to end the pickup or keep it. The reported person loses messaging when the report is sent [journey, Report]. | "End this pickup" ends the exchange as fallen through with no mark against either person, removes the meeting point, the time window and a porch address from the reported person's screen, and reopens the listing. A porch address the reported person saw on acceptance cannot be withdrawn, and the message says so. | "Reported. Marcus can no longer message you." After "End this pickup", meet outside or flexible: "The pickup has ended. Marcus no longer sees the meeting point." Porch pickup: "The pickup has ended. Marcus saw your address when you accepted. It is no longer shown to him in Nearby." Buttons: "End this pickup", "Keep the pickup". | Critical |
+| The other person is not at the meeting point, or the item does not match the listing | "It fell through" [journey, Pickup] asks for a reason. Buyer: "Sarah was not there", "The item was not on the porch", "It did not match the listing", "I changed my mind". Seller: "Marcus was not there", "I changed my mind". The not-there reasons are offered once the time window has opened. | The listing takes interest again and the meeting point, time window and address leave the buyer's screen. A not-there reason counts as a no-show for the other person. "It did not match the listing" counts as a not-as-described answer. The buyer sees 3 similar items by distance and can ask again. At the end of the time window each person gets one prompt [blueprint, Handoff not confirmed]. | After a not-there reason: "The pickup for the couch has ended. The couch is listed again." Button: "Ask again". Prompt to the buyer: "Did you pick up the couch?" Prompt to the seller: "Did Marcus pick up the couch?" Answers: "Yes, got it" or "Exchanged", and "It fell through". | Major |
+| Messaging paused for a reported person | The quick replies and the text field are replaced by the message. The meeting point, the time window, the confirmation and "It fell through" keep working while the pickup stands. The message does not name the reporter or the organizer [journey, Report]. | On return after review, a cleared report shows "The review is finished. Messaging is back." An upheld report shows "The review found a message that broke the neighborhood guidelines. You have quick replies only." [journey, Report]. | "Messaging is paused while a report is reviewed. We tell you the result here." | Major |
 
-*After a pickup*
+*Exchange confirmation*
 
-| State | What the person sees and can do | Recovery and timing | Message | Severity |
+| State | What the person sees and can do | Recovery and timings | Message | Severity |
 |---|---|---|---|---|
-| The item turns out wrong after the buyer has it | The "As described" and "Not as described" choice [blueprint] persists in Activity after the sidewalk prompt and is editable. After "Not as described", the buyer sees what happens with the answer and gets a quick reply to send the seller. | The choice stays open for 48 hours after the pickup, matching message retention [journey, Flow 4]. | "Thanks. [Seller] isn't told who said this. Nearby doesn't handle payment, so a refund is between you and [Seller]." Quick reply: "Something's wrong with the item. Can we sort it out?" | Major |
+| The seller confirmed first, or the buyer finds a fault after confirming | The completed exchange stays in the buyer's Your interests with the choice: as described, not as described [blueprint, Pickup and completion], or not received. The buyer can change the answer. | The choice stays for 48 hours after the first confirmation, the lifetime of the thread [journey, Interaction Specifications]. "I did not get it" takes the exchange off both counts, counts as a no-show for the seller, and leaves the listing closed. | "Sarah marked the couch as exchanged. How was it?" Answers: "As described", "Not as described", "I did not get it". | Major |
+| Answer of not as described, or not received, saved | A confirmation that says who sees the answer. The answer changes the seller's as-described rate, which no profile shows [blueprint, Pickup and completion]. | None needed. | "Saved. Your answer is private. Sarah is not told what you answered." | Minor |
+
+Severity: Critical causes confusion or data loss; Major significantly harms the experience; Minor reduces trust or perceived quality.
 
 ---
 
@@ -955,95 +1474,156 @@ Severity: Critical causes confusion or data loss; Major significantly harms the 
 
 | Scenario | What the design does now | Change | Severity |
 |---|---|---|---|
-| One neighbor reports another to cut off their pickups, or reports in error | A reported person loses all messaging immediately, pending review [journey, Flow 4]. A seller in a moving week loses coordination on every pending pickup. | A report blocks contact between the two people only. The reported person's other pickups continue until a reviewer decides. | Major |
-| A neighbor keeps tapping "I want this" on one seller's listings to reach them or learn their meeting point | The seller can only ignore each interest until its 48-hour timeout, and accepting reveals the meeting point [journey, Flow 3]. | Each incoming interest carries a "Block" action with the effect of a report and no review. The blocked neighbor stops seeing the seller's listings and is not notified. | Major |
-| Harassment is reported after the messages are gone | Messages auto-delete 48 hours after the exchange, and Report is only on a message [journey, Flow 4]. | Report is also on the finished pickup in Activity, and a reported conversation is retained until the review closes. | Major |
-| The seller edits the price, condition or photos after accepting a buyer | No flow covers an edit after acceptance. The buyer walks over for a listing that has changed. | The Pickup screen shows "Listing changed" with the old and new values. The buyer can withdraw with nothing recorded against either person. | Major |
+| A person opens one listing from several positions and estimates the seller's address from the walking times | The walking time is computed from each viewer's position to the item [blueprint, Ecosystem & dependencies]. | Before acceptance, the walking time and the pin are computed to the intersection nearest the item, the point meet outside and flexible disclose on acceptance [blueprint, Location disclosure]. | Critical |
+| One neighbor sends a request on every listing a seller posts, or a seller does not want requests from a neighbor | Each request reaches the seller with the neighbor's name, walking time and tenure [journey, Interest in a listing]. The seller has no action against the sender. | The interest screen carries "Stop requests from Marcus". That neighbor's later requests to this seller show Passed, and this seller's listings leave that neighbor's Explore, List and search. Neither person is notified. | Major |
+| A report concerns the organizer or the organizer's listing | Reports go to the neighborhood organizer's queue [blueprint, A flagged listing]. | A report that names the organizer, or a listing or request of the organizer's, goes to platform moderation and does not enter the organizer's queue. | Major |
+| A person reports a neighbor falsely to cut off messaging during a pickup | The reported person loses messaging until the report is reviewed [journey, Report]. | After 3 of a person's reports are cleared in 30 days, that person's later reports are reviewed before messaging is paused. | Major |
+| A suspended person signs up again | Signup has no identity verification [project context]. A new account shows a badge for 4 weeks and holds 3 active listings [blueprint, Trust signals]. | An account created on a device that holds a suspended account has its listings and requests held for platform moderation. | Major |
+| A day with no new item in the radius | The digest is sent every day with the 3 to 5 newest items [blueprint, Ecosystem & dependencies]. | No digest is sent on a day with no item posted in the radius since the last one. A day with 1 or 2 new items sends those. | Minor |
 
 ---
 
 **Open Questions**
 
-- Who staffs platform review, and how soon can it decide a report or a held listing that an organizer has not handled?
-- Does seeding a new neighborhood import listings from buy-nothing groups whose owners have not joined Nearby? An imported listing whose owner is not a member cannot answer an interest.
+- How long does platform moderation take to decide a held listing or a report once it has the item? The in-review messages state no time until this is set, and a seller's item has to be gone within 4 to 48 hours [blueprint, Posting and browsing].
+- Does a seller whose listing was removed learn that the neighborhood organizer made the decision? Naming the organizer exposes a volunteer who lives in the neighborhood; leaving the name out hides who decided.
+- With no identity verification at signup [project context], does a suspension follow a phone number, a device, or neither?
+- Who declares the emergency that turns on the price notice?
 
 ## /include
 agent: Vigil
 summary: Audited accessibility for screen readers, keyboards, cognitive load and motor access.
 
-A map-first interface shuts out people who can't see the map. The audit finds where the list view and the pickup screen fall short of it.
+A map-first interface shuts out people who can't see the map. The audit finds where the list view falls short of it.
 
 ### Output
 
-**Accessibility Audit, per WCAG Principle**
+**Accessibility Audit — Per WCAG Principle**
 
 Severity: Critical blocks a task for someone using assistive technology. High makes the task very difficult but possible. Medium fails a WCAG criterion without blocking access. Low meets WCAG and falls short of inclusive design.
 
 **Perceivable**
 
-**Critical: the camera controls have no accessible names, so a blind seller cannot take the first photo.** The viewfinder's shutter, gallery shortcut and flash toggle are icon-only, and the copy deck gives the screen no strings [journey, Flow 1] [copy deck]. A screen reader announces each as "button".
+- **High. The map gives a screen reader pins in no order.** Explore opens on launch as a map of pins with thumbnails [site map, Decisions]. A screen reader user meets each pin as a separate stop, with no nearest-first sequence, on the screen every session starts from.
+  - Criterion: 1.3.2 Meaningful Sequence.
+  - Change: with a screen reader running, the app opens on List. On Explore the map is one element named "Map of items within a 10-min walk. The List tab has the same items.", with the radius in force in place of 10, and the pins are hidden from assistive technology.
+  - Done when: with VoiceOver on and with TalkBack on, a cold launch lands on List, and on Explore one swipe moves from the map to the tab bar.
+- **High. Item photos have no text alternative.** Posting asks for a photo and no description [journey, User Context & Variations], so on Item detail a blind buyer judges the item by its title and price.
+  - Criterion: 1.1.1 Non-text Content.
+  - Change: the title and category suggestion service [blueprint, Posting and browsing] also writes one sentence that names the item, its color and its visible condition. The sentence is the photo's text alternative on Item detail. For a listing made offline it is written when the listing publishes. Posting gains no field. Thumbnails in List rows and digest cards have an empty text alternative, because the title sits beside them.
+  - Done when: for a listing posted with a photo and a price, a screen reader on Item detail reads a sentence that names the item, its color and its condition.
+- **Medium. Items beyond the radius appear on the map alone.** Explore shows them as faded pins [site map, Orientation] and List has no row for them, so a person who browses in List does not learn that a wider radius holds more items.
+  - Criterion: 1.1.1 Non-text Content.
+  - Change: List ends with a row, "More items within a 20-min walk", that sets the radius to 20 min. The row is absent at 20 min and where no item lies beyond the radius.
+  - Done when: at a 10-min radius with an item 15 minutes away, List shows the row, and activating it lists the item.
+- **Medium. List's distance groups are not headings.** "On your block", "5-min walk" and "10-min walk" are styled text [wireframes, Browse], so a screen reader user steps through every row to reach a farther group.
+  - Criterion: 1.3.1 Info and Relationships.
+  - Change: each group label is a level-2 heading.
+  - Done when: the VoiceOver rotor's Headings list on List reads Capitol Hill, On your block, 5-min walk, 10-min walk.
+- **Medium. Hints are not tied to their controls.** "Suggested from your photo." under Category and "Filled from your last listing." under the pickup options are separate text [wireframes, Post an item], so a screen reader user who moves from field to field does not hear that the app filled them.
+  - Criterion: 1.3.1 Info and Relationships.
+  - Change: each hint is the accessible description of its control, read after the name and the value. The pickup hint describes the radio group.
+  - Done when: focus on Category reads "Category, Furniture & Home, button, Suggested from your photo."
 
-- Criterion: 1.1.1 Non-text Content
-- Change: accessible names "Take photo", "Choose from gallery" and "Flash". Flash exposes its on or off state.
-- Done when: a tester using VoiceOver with the screen curtain on takes a photo and reaches the title field unaided.
-
-**Critical: the meeting point is a map pin with no text alternative, so a blind neighbor cannot learn where to meet.** The pickup screen is a map with a meeting point pin and a row of quick replies; the intersection and the time window have no text [journey, Flow 3].
-
-- Criterion: 1.1.1 Non-text Content
-- Change: one text line above the map, "[Street] and [Street], [minutes] min walk. [Day], [start] to [end]." The map is hidden from screen readers.
-- Done when: with the screen curtain on, a tester states the place and the time from the first announcement.
-
-**High: Explore's pins have no accessible names, and List has no radius control.** The app opens on the map, where items are pins with thumbnail previews [journey, Flow 2]. A screen reader user has to find the List tab to browse, and on List cannot widen the radius or reach the items beyond it: the presets and the faded pins exist only on the map [journey, Flow 2] [information architecture].
-
-- Criterion: 1.1.1 Non-text Content
-- Change: with VoiceOver or TalkBack running, the app opens on List. On Explore the map is one image named "[count] items within a [minutes]-minute walk. Open List to browse them." List gains the 5, 10 and 20 minute presets and shows items beyond the radius under a last group heading, "Further away".
-- Done when: with VoiceOver on, a first launch lands on List, and every item and radius setting on Explore is reachable on List.
-
-- Keep: Free and Pending pickup are text on the card; neither relies on color or a muted price [wireframes, Browse].
+- Keep: each tab has a text label beside its icon, and the icon is hidden from assistive technology [wireframes, Browse].
+- Keep: Free is a word in the price position, and "Pending pickup" is a text stamp on the row [wireframes, Browse].
 
 **Operable**
 
-**High: the undo toast times out after 5 seconds, too short for a screen reader or a switch.** "Interest sent. Undo" closes after 5 seconds, and the "new items since you last checked" notice is a brief overlay [journey, Flow 3] [information architecture]. A person who needs longer loses the undo, and the seller is notified of an interest the buyer did not mean.
+- **Critical. Search opens by pulling the list down and by no other control.** The app bar has no search field or button [wireframes, Browse] [site map, Search]. A keyboard, a switch and a screen reader have no pull gesture, so their users cannot search.
+  - Criterion: 2.1.1 Keyboard; 2.5.7 Dragging Movements.
+  - Change: List's app bar has a Search button, 44 by 44 px, named "Search", that opens the search field. Pulling down still opens it. Activating the active List tab returns the list to its top and refreshes it.
+  - Done when: with a screen reader on, and with an external keyboard, a person opens search and refreshes List without a drag.
+- **Critical. Undo lasts 5 seconds and nothing else withdraws an interest.** The toast offers Undo for 5 seconds, then the interest goes to the server [journey, Interaction Specifications]. A screen reader user has to hear the toast and reach Undo inside that time, and a switch user has to scan to it; afterwards the seller is notified and no screen takes the interest back.
+  - Criterion: 2.2.1 Timing Adjustable.
+  - Change: each waiting interest in Activity, Your interests has a Withdraw button until the seller accepts. The toast keeps its 5 seconds.
+  - Done when: with a screen reader, and with switch control, a person withdraws an interest 1 minute after sending it, and the seller's listing no longer shows it.
+- **Low. Controls on the wireframes are smaller than 44 px.** Filter chips, Retake and Add a photo are 32 px high, Close is 32 by 32 px, each pickup option is a 32 px row, and the fields, the Free and Trade chips and Edit listing are 40 px high [wireframes]. On a phone used on the move [project context, Constraints], a person with a tremor, or holding the phone in one hand, hits the neighboring chip.
+  - Criterion: meets 2.5.8 Target Size (Minimum), 24 px; misses 2.5.5 Target Size (Enhanced), 44 px.
+  - Change: each of these controls is at least 44 px high and 44 px wide. The 8 px gap between neighbors stays.
+  - Done when: no touch target on Browse, Post an item or Posted measures under 44 by 44 px, and neighbors are 8 px apart.
+- **Low. A keyboard or switch user passes each filter chip before the first item.** The chips sit between the app bar and the list [wireframes, Browse], and each is a separate stop on every visit.
+  - Criterion: none failed.
+  - Change: the filter chips are one tab stop, and the radius presets are another. Left and Right arrows move inside each. Space toggles a chip, and an arrow selects a preset.
+  - Done when: from the Search button, two presses of Tab reach the first row of List.
+- **Low. The interest confirmation is a spring animation.** The button changes to a checkmark and "Interest sent" with a spring, in 150 ms [journey, Interaction Specifications], and the motion plays for a person who has turned motion off.
+  - Criterion: 2.3.3 Animation from Interactions.
+  - Change: with Reduce Motion on, the checkmark and "Interest sent" replace the label in the same 150 ms with no movement.
+  - Done when: with Reduce Motion on, tapping "I want this" changes the icon and label and nothing on the screen moves.
 
-- Criterion: 2.2.1 Timing Adjustable
-- Change: after "I want this", item detail and the item's Activity row show a Withdraw button until the seller accepts. The toast remains as a shortcut. The new-items notice becomes a persistent line under the header, removed on tap or dismiss.
-- Done when: using VoiceOver alone, a tester withdraws an interest one minute after sending it, and the new-items line is still on screen after one minute.
-
-- Keep: the radius has tap presets at 5, 10 and 20 minutes beside the pinch [journey, Flow 2].
+- Keep: radius presets of 5, 10 and 20 min walk set what pinching the map sets [journey, Map].
+- Keep: the gallery sits beside the shutter and opens when camera permission is denied [journey, Camera].
+- Keep: interest is one tap with no message, and a pickup is arranged with quick replies, so neither needs typing [journey, Item detail] [journey, Thread].
+- Keep: Free and Trade are single taps beside Price, so a gift needs no typing [wireframes, Post an item].
+- Keep: each pickup option is a label that wraps its radio input, so the row is the target [wireframes, Post an item].
+- Keep: Post it, Post another item and Done are 48 px high and full width [wireframes].
+- Keep: the focus indicator is a 2 px outline in the accent color, 2 px outside the control: 7.9:1 against the light canvas and 4.4:1 against the dark [wireframes].
 
 **Understandable**
 
-**Medium: Post an item has no validation state for a missing photo, title or price.** No artifact shows what happens when Post is pressed with a field missing [wireframes, Post an item] [state inventory]. A seller who cannot see the form cannot find the field that blocked the post.
+- **Medium. Post it is disabled with no reason shown.** The button that follows the price is disabled until an amount, Free or Trade is set [journey, Interaction Specifications], and nothing on Post an item marks Price as required [wireframes, Post an item]. Keyboard focus skips a disabled button, and a person with a cognitive disability cannot tell what is missing.
+  - Criterion: 3.3.2 Labels or Instructions.
+  - Change: Post it stays enabled. Activating it with no price shows "Set a price, or choose Free or Trade." under the Price field.
+  - Done when: activating Post it with Price empty shows the message under Price, and no listing is posted.
+- **Low. "Passed" reads as a success.** A buyer whose interest the seller did not choose sees the status Passed [journey, Waiting]. "Passed" also means approved, so the buyer can take it as good news and keep waiting.
+  - Criterion: none failed.
+  - Change: the status reads "Went to someone else".
+  - Done when: Your interests shows "Went to someone else" for a buyer the seller did not choose.
 
-- Criterion: 3.3.1 Error Identification
-- Change: pressing Post with a field missing preserves all input and shows an inline error under each missing field, associated with the field, with an icon and text: "Add at least one photo.", "Add a title.", "Add a price, or choose Free."
-- Done when: a tester using a screen reader presses Post on an empty form, hears the first error, fixes it, and finds the other fields unchanged.
-
-- Keep: sending an interest is one tap, with no message to write [journey, Flow 3].
+- Keep: the tab bar holds the same destinations in the same order on each tab and on Item detail [site map, Tab bar].
+- Keep: Post an item is one screen. The title, category and pickup option arrive filled, and the seller sets the price [wireframes, Post an item].
+- Keep: each field on Post an item has a visible label above it [wireframes, Post an item].
+- Keep: who sees the listing, what stays hidden and the cost are stated above Post it [wireframes, Post an item].
+- Keep: a draft stays on the phone when posting is closed, and + reopens it [journey, Camera].
+- Keep: the pickup screen shows the meeting point and the time window, and the reminder push notification opens it [journey, Pickup].
+- Keep: no screen shows a countdown or how many neighbors asked for an item [project context, Ethical stance] [blueprint, Interest and acceptance].
+- Keep: categories are one level deep [site map, Taxonomy Documentation].
 
 **Robust**
 
-**Medium: chips and tabs expose their state only visually.** A chip reports a pressed state only when it is on, Free reports none, the current tab is marked by style alone, and the tab badges are dots and counts with no text [wireframes, Browse] [wireframes, Post an item] [information architecture].
+- **High. A change that leaves the person on the same screen is silent.** "Interest sent" is a button change and an animation, the buyer's one confirmation while the seller's notification waits in a batch [journey, Interaction Specifications]. A failed upload, a queued listing and a filter result appear the same way. A screen reader user cannot tell whether the tap worked or the upload failed.
+  - Criterion: 4.1.3 Status Messages.
+  - Change: each of these changes is announced as a status message, and focus does not move.
+  - Done when: with a screen reader on, sending interest, a failed photo upload, a listing queued offline and a filter change are each heard with focus where it was.
+- **Medium. Chips, tabs and pickers do not expose their state.** The active filter chip and the active tab are marked by fill, color and weight [wireframes, Browse]. Free and Trade are buttons with no state and no tie to the Price field, and Category and Available for pickup read their label without their value [wireframes, Post an item]. A screen reader user hears "All, button" and "Category, button".
+  - Criterion: 4.1.2 Name, Role, Value.
+  - Change: filter chips are toggle buttons with a pressed state. The active tab has the selected state. A badged tab adds the badge to its name: "Explore, new items", "Activity, 2 unread", "You, a setting needs attention". Price, Free and Trade are one group named "Price"; Free and Trade are toggle buttons, pressing one empties the amount, and typing an amount releases both. Category and Available for pickup read the label, then the value.
+  - Done when: a screen reader reads the All chip as pressed, the List tab as selected, Free as pressed with the amount empty, and "Category, Furniture & Home, button".
+- **Medium. Screens have no headings or landmarks.** Capitol Hill, Post an item and Posted are styled text, the tab bar is an unnamed navigation region, and no screen has a main region [wireframes]. A screen reader user cannot jump to the content or to the tabs.
+  - Criterion: 1.3.1 Info and Relationships; 2.4.6 Headings and Labels.
+  - Change: each screen has a banner that holds the screen title as its level-1 heading, one main region, and the tab bar as a navigation region named "Tabs".
+  - Done when: the screen reader's landmark list on Browse reads banner, main and Tabs, and its heading list starts with Capitol Hill at level 1.
 
-- Criterion: 4.1.2 Name, Role, Value
-- Change: every filter chip and the Free chip report pressed or not pressed. The current tab reports selected. A tab with a badge appends it to its accessible name: "Explore, new items", "Activity, [count] unread", "You, needs attention".
-- Done when: a screen reader announces on or off for every chip and tab, and reads each badge.
-
-- Keep: icon-only buttons have accessible names: "Notifications", "Close and return to browse", "Add another photo" [wireframes].
+- Keep: the controls on the wireframes are native buttons, text inputs and radio inputs [wireframes].
+- Keep: the Close button has the name "Close", and decorative icons are hidden from assistive technology [wireframes, Post an item].
+- Keep: the pickup options are a radio group named by its question, "How should they pick it up?" [wireframes, Post an item].
 
 ---
 
 **Screen Reader Flow Documentation**
 
-| Change the person must hear | Announced | Politeness |
-|---|---|---|
-| A title is suggested from the photo | "Suggested title: [title]." | Polite |
-| A photo upload fails | The upload-failure message [copy deck] | Assertive |
-| A filter chip or radius preset changes the results | "[count] items within a [minutes]-minute walk." | Polite |
-| An interest is sent | "Interest sent." [copy deck] | Polite |
-| An interest is withdrawn | "Interest withdrawn." | Polite |
+**Reading order**
 
-Missing-field errors on Post an item and the taken-item message have no live region; they are announced when focus moves to them.
+The undo toast appears at the bottom of Item detail. It is read, and reached by Tab, after the "Interest sent" button and before the rest of the screen.
+
+**Live regions**
+
+| Change | Announced | Politeness |
+|---|---|---|
+| "I want this" is tapped | "Interest sent. Undo is the next control." | Polite |
+| Undo, or Withdraw in Activity | "Interest withdrawn." | Polite |
+| The item was accepted for another buyer before the interest arrived [journey, Item detail] | "This item went to another neighbor. Similar items nearby follow." | Polite |
+| Interest sent offline | "Offline. Your interest sends when you reconnect." | Polite |
+| A filter or the radius changes | "12 items within a 10-min walk.", with the count and radius in force; "No items within a 10-min walk." at zero | Polite |
+| Search results update | "3 results.", 1 second after the last keystroke | Polite |
+| List refreshes | "List updated." | Polite |
+| The title and category fill in after the photo | "Title and category suggested from your photo." | Polite |
+| Photo upload fails [journey, Photo check] | "The photo did not upload. Your draft is saved. Retry is the next control." | Assertive |
+| Post it with no price | The message under Price | Assertive |
+| Post it offline | "Offline. Your listing posts when you reconnect." | Polite |
+| The listing is held by moderation [journey, Preview and publish] | "Your listing is in review and is not live yet." | Polite |
+| A status changes while Activity is open | The item's title and the new status: "Blue IKEA bookshelf: Accepted." | Polite |
+| A quick reply arrives while the pickup screen is open | The sender's name and the reply: "Sarah: On my way." | Polite |
 
 ---
 
@@ -1051,18 +1631,24 @@ Missing-field errors on Post an item and the taken-item message have no live reg
 
 | When | Focus lands on | On close, focus returns to |
 |---|---|---|
-| The camera opens | Take photo | Add another photo, or Add photos when no photo was taken |
-| "I want this" is pressed | The "Interest sent" status | |
-| Withdraw is pressed | "I want this" | |
-| The pickup screen opens | The meeting place and time | The Activity row that opened it |
-
-- Explore: the focus order is the neighborhood header, the radius presets, then the tab bar. The map and its pins are out of the focus order.
+| The app launches with a screen reader running | The Capitol Hill heading on List | |
+| A tab, Item detail, Posted or a screen opened from a push notification opens | The screen's level-1 heading | Back from Item detail: the row, pin card or search result that opened it |
+| The Post tab opens the camera | The shutter, named "Take photo". Gallery is the next stop | Close: the Post tab, on the tab the person left |
+| A photo is taken or chosen | The Title field | |
+| Category or Available for pickup opens its picker | The selected option. Focus stays inside the picker, and Escape closes it | The button that opened it |
+| Post it is activated with no price | The Price field | |
+| + opens the limit notice | The notice's heading. Focus stays inside the notice, and Escape closes it | The Post tab |
+| The Search button is activated | The search field | Escape: the Search button |
+| "I want this" is activated | The same button, now "Interest sent". Undo is the next stop for the toast's 5 seconds | When the toast ends with focus on Undo: the "Interest sent" button |
+| A row leaves a list: a withdrawn interest, a closed listing | The next row; the previous row when the last one left; the group's heading when the group is empty | |
 
 ---
 
 **Open Questions**
 
-- Does Nearby ship on the web as well as on phones? On the web the map needs keyboard operation; on a phone, List can carry keyboard browsing.
+- A buyer who cannot walk to a meeting point cannot complete an exchange, and Nearby has no delivery [project context, Constraints]. Can a buyer ask the seller to bring the item to them?
+- Is Nearby a native app, a web app or both [project context, Open questions]? A web app cannot detect a screen reader, so opening on List for screen reader users needs a native app.
+- Pulling List down reveals search [site map, Search] and refreshes the list [journey, Interaction Specifications]. Which does it do?
 
 ## /transpose
 agent: Wren
@@ -1072,65 +1658,87 @@ Most exchanges happen on a phone, on the move: passing a "FREE" sign, browsing f
 
 ### Output
 
+**Nearby on phone and web**
+
+---
+
 **Platform-specific adaptation specs**
 
-**Phone app (iOS and Android)**
+*Phone*
 
-More than 90% of use is on a phone, on the move [project context]: walking, often one-handed, in short glances.
+The phone is a native app on iOS and Android. Posting opens the camera [journey, Camera], browsing depends on geolocation [site map, Decisions], and each step of an exchange arrives as a push notification [blueprint, Interest and acceptance]. More than 90% of use is on phones, on the move [project context]. The flows are the journey's, the navigation the site map's and the screens the wireframes'. The rows below are what the two platforms and a person who is walking add to them.
 
-| What the phone app does | What about the phone forces it |
+| Change | Forced by |
 |---|---|
-| Requests location permission in onboarding [copy deck], camera permission on the first Post [journey, Flow 1], and notification permission after the first post or first interest. | iOS and Android show each permission prompt once. A notification prompt shown before the person has anything to be notified about is declined, and the app cannot re-prompt. |
-| The iOS edge swipe and Android Back gesture close an open item card, then leave the screen. In the posting flow they go back one step and keep the input. A drag that starts inside the map pans the map; a drag from the screen edge is the system gesture. | Both systems reserve the edge swipe, and people use it without looking to undo the last step. A map that captures the edge swipe traps them on the screen. |
+| The position marker and the radius follow geolocation while Explore is open. Pins reload when the person has moved 100 m. | A buyer browses while walking, and the radius is measured from where the person stands [blueprint, Walking radius]. 100 m is the accuracy of a geolocation fix [blueprint, Support for every stage]. |
+| "I want this", "Post it", "It's yours" and the exchange confirmation sit in the lower 60% of the screen. | One hand holds the phone. The other carries a bag or the item. |
+| A haptic tap accompanies the change to "Interest sent" [journey, Interaction Specifications]. | A person who is walking is not always looking at the screen when the button changes. |
+| Back is the edge swipe on iOS and the system back gesture on Android. In posting it steps to the previous step and keeps the draft [journey, Camera]. From Item detail it returns to the place that opened it [site map, Tab bar]. On Explore, Android back leaves the app. | Both gestures belong to the operating system and work on every screen, including the full-screen camera. |
+| Pull-down on the list refreshes it [journey, Interaction Specifications] and does nothing else. Search, which shares the gesture [wireframes, Browse], moves to a control in the bar. | Pull-to-refresh is the list convention on both platforms, and one gesture carries one action. |
+| Post stays the center tab on Android, where a floating action button is the convention for creating. | The + is in one place on both platforms and on every tab [site map, Decisions]. |
+| Each permission is requested at the first use that needs it: location on first open, camera on the first +, notifications after the first listing posted or interest sent. | Both platforms ask once per permission, every push notification is opt-in [project context], and permissions requested together bundle consent [blueprint, Ecosystem & dependencies]. |
 
-**Phone app without signal**
+*Phone with no connection*
 
-Signal drops on sidewalks, in basements and on subway platforms, and a seller posts from a hallway with bad reception [journey]. The app is offline-first: every action is stored locally and synced on reconnect.
+A sidewalk, a basement or a subway platform drops the connection in the middle of a session. Every action a person can take without a connection goes into an offline queue on the phone and is sent on reconnect, in the order taken. What the person sees in each of these states is the state inventory's.
 
-| What the person is doing | Without signal | When signal returns |
+| Action | With no connection | On reconnect |
 |---|---|---|
-| Posting | The draft, photos and every field, is stored locally, as in Draft saved (offline) [state inventory, Posting flow]. | The listing auto-publishes. A failed photo upload follows Photo upload failed [state inventory, Posting flow]. |
+| Browse Explore and List | The listings from the last load. Their age is shown once the load is 1 hour old. | Refreshes, loading only what changed. |
+| Search | Unavailable. The list of stored listings stays [blueprint, Search unavailable]. | Available. |
+| Open an item | Item detail, where the person opened it before. An item not opened before shows what its row holds: title, price, walking time and seller tenure. | The detail loads. |
+| Post an item | The draft and its photo are saved on the phone and queued with a pending mark. The seller types the title, because the suggestion comes from the server [journey, Details]. | The listing publishes [journey, Preview and publish]. Moderation runs at that moment, so a queued listing can be held. A failed upload follows Photo upload fails [blueprint]. |
+| Send interest | Queued with a pending mark on the item [journey, Item detail]. The buyer can withdraw it until it sends. | Sends. Where the item was accepted for another buyer, the buyer is told and shown similar items [journey, Item detail]. |
+| Accept an interest | Queued. | Sends. Where the interest expired or was withdrawn, the seller is told and the listing keeps taking interest. |
+| Walk to a pickup | The pickup screen is stored on the phone when the acceptance arrives: the meeting point or address, the time window and the thread [journey, Pickup]. | The thread updates. |
+| Send a quick reply | Queued. | Sends, in order. |
+| Confirm an exchange | Queued. | Sends. The first confirmation to reach the server completes the exchange [journey, Exchanged]. |
+| Location | The last accurate position stays in use until a new fix arrives [blueprint, Location inaccurate], and the map is marked as showing it. | A new fix recenters the map and clears the mark. |
 
-**Web (nearby.app)**
+*Web*
 
-The web is used at a desk, with a keyboard, a pointer, a large screen and a steady connection, in a planned session. It takes the work that is slow on the phone: long descriptions, batch posting and settings. Feature parity with the app is a non-goal.
+The web serves a seller or an organizer seated at a laptop, with a keyboard, a wide screen and a session of several minutes. It carries the tasks the phone does badly: listing many items in one sitting, seeing the neighborhood on one screen, and changing settings. It does not match the phone feature for feature.
 
-| What the web does | What about the desk forces it |
+| Change | Forced by |
 |---|---|
-| Batch posting. Photos are added by drag-and-drop from a folder or by an equivalent file picker [accessibility audit, motor accessibility]. Title, price and description are typed. "Post another" opens the next item with the pickup preference prefilled [journey, Flow 1]. | Sellers post in bursts, on a moving weekend or after a garage cleanout [project context]. Posting 15 items one at a time is slow on a phone, and so is typing a description on its keyboard. |
-| The map centers on the phone's last reported position, under the badge "Showing items near your last known location." Walking times are measured from that position. The web never asks for a typed address. | A laptop has no GPS. Exact addresses stay private [project context], and geolocation sets the neighborhood [state inventory, Duplicate accounts]. |
+| Posting starts from files. The seller drags photos from a folder, each photo becomes a draft with its suggested title and category [journey, Photo check], and the drafts sit in one grid. Tab moves between the price fields, pickup is set once for the batch, and one action posts every draft that has a price. The limit of 3 active listings on a new account applies [blueprint, Posting and browsing]. | A seller clearing a home lists several items in one sitting [project context]. A laptop has a keyboard and a file system, and its camera points at the person. |
+| The map and the list are one page, side by side, with one radius and one set of filters. Hover on a pin shows its item card and highlights its row. A click opens Item detail. | The screen holds both and a pointer hovers. The phone splits them into two tabs for lack of width [site map, Decisions]. |
+| The map centers on the account's saved location [site map, You]. The browser's geolocation is not requested. | A laptop's position comes from Wi-Fi and is often less accurate than 100 m, a fix that is discarded [blueprint, Location inaccurate]. A laptop stays at home. |
+| Each item has a URL, and a shared link opens it [journey, User Context & Variations]. The URL holds the item and nothing about the sender: no position, radius or filters. Signed in, the page is Item detail. Signed out, it shows the photo, title, price and neighborhood name, with no pin and no walking time, and links to the app store. Browser Back and a new tab both work. | The web navigates and shares by URL. Walking times computed from several positions can locate a seller [blueprint, Ecosystem & dependencies], and an address stays hidden until both people agree [project context]. |
+| Arrow keys move through the list rows, Enter opens the item, and the + and − keys step the radius through its presets. | A keyboard is under the person's hands. |
+| The tab bar becomes a top bar: Explore, Post, Activity and You. | List has merged into Explore, and a pointer reaches the top of a wide screen as easily as the bottom. |
+| Organizer tools gain a printable flyer with a QR code. The code opens the app where it is installed and the app store where it is not. | Organizers recruit with paper flyers [project context], and printing is done from a computer. |
+| The web sends no push notifications. Activity shows the count that the phone's tab badge shows [site map, Tab bar]. The daily digest goes by email to a person who opts in. | The phone is the device a person carries, and a second alert for one event is notification spam [project context]. |
+| The web has no offline queue. A change saves to the server when it is made. | A laptop at home has a stable connection. |
 
-**Moving between devices**
+*Moving between phone and web*
 
-The web signs in with the app's phone number [state inventory, Duplicate accounts], so the account, its neighborhood and its drafts are the same on both. Sync is silent: no "continue where you left off" screen.
+The account holds the state and each device loads it on opening. No screen announces a sync.
 
-| Switch | What the second device has | How it gets there |
+| Switch | What carries across | Handoff |
 |---|---|---|
-| Starting a listing on the laptop, then taking its photos on the phone | The draft with its title, price, description and pickup preference. Post on the phone opens the draft, and photos taken there attach to it. The listing publishes from either device. | The draft autosaves to the account. |
-| Drafting on the phone without signal, then opening the laptop | Nothing until the phone reconnects. The draft is stored on the phone only. | The phone syncs the draft on reconnect. |
+| Browsing on one device, then on the other | The radius and the filters [site map, Local navigation] | Loaded when Explore opens. |
+| Photographing items on the phone, pricing them on the web | Drafts: the photo and any field already set | A draft left on the phone [journey, Camera] appears in the web's draft grid. A draft added on the web with no photo appears under + on the phone, which opens the camera for it. |
+| An accepted exchange | The pickup screen and its thread [journey, Pickup] | Both devices show it, and a quick reply goes from either. |
+| A shared link opened on a laptop | The item | The web's item page shows a QR code that opens the item in the app. |
+| Notifications | What has been read | A push notification goes to the phone. With the app on several phones, it goes to the one used most recently. Opening the event on either device clears the count on both. |
 
 ---
 
 **Priority mapping per context**
 
-**Phone app**
-
-- First: the map around the person's live position, and the camera on Post. The person is outdoors, near the listed items.
-- Demoted: the description, which is optional and the last field on the form [wireframes, Post an item], because typing on a phone is slow. Settings sit inside the profile tab [information architecture], because they are set once.
-- Dropped: batch posting and the flyer. Both need files or a printer.
-
-**Web**
-
-- First: batch posting, the wide map and the account pages. A person at a desk has a keyboard and time.
-- Demoted: the person's position, which is the phone's last report and is labeled as such.
-- Dropped: the camera, push notifications and the offline queue. The desk has none of the conditions they answer.
+| Context | Shows first | Demotes | Drops | Because |
+|---|---|---|---|---|
+| Phone, walking | The map centered on the person, and the camera on + [journey, Map] [journey, Camera] | Search, and the settings under You | Posting a batch, the flyer | Sessions are short and interrupted, with one hand free. |
+| Phone, no connection | The list of stored listings with their age, and the pending marks on queued actions | The map, which shows only the area whose tiles are stored | Search, and the title and category suggestions | Stored data is all the phone has, and the person needs to know what has been sent. |
+| Web | The map and list together, the draft grid, and settings | The pickup screen | The camera, push notifications, live geolocation and the digest cards | The session is seated, with a keyboard and a wide screen. The handoff happens on the street, with the phone. |
 
 ---
 
 **Open questions**
 
-- Can a person join Nearby on the web alone, or does every account start on a phone?
-- Do the flyer and the widget ship with the MVP, or after it?
+- Phase 1 is scoped as a mobile app [brief]. Does the web ship with it, or after the pilot?
+- Can a person hold an account on the web with no phone app? That seller gets no push notification and learns of interest by opening Activity.
 
 ## /localize
 agent: Wren
@@ -1142,75 +1750,112 @@ A local marketplace runs on local norms: how people negotiate, how they build tr
 
 **Localization readiness checklist**
 
-**Right-to-left layout: Arabic, Hebrew and Urdu**
-
-| Where | Gap | Change |
+| Gap | Where | Change |
 |---|---|---|
-| Tab bar [wireframes, Browse] | Order is fixed left to right. | Order mirrors: first tab at the right edge, last at the left, Post in the center. |
-| Map [journey, Flow 2] | Zoom buttons sit on the right; radius presets read 5, 10, 20 from the left. | Zoom buttons move to the left; presets read 5, 10, 20 from the right. The map is never mirrored. |
-| Prices, distances and counts [wireframes, Browse] | Digits and units have no direction set. | Digits render left to right inside right-to-left text. Prices use Western numerals (0 to 9) in every market; Eastern Arabic numerals (٠ to ٩) are a display preference. |
+| The app's language has no stated source | Every screen | The phone's language sets it, for each person. One walking radius holds neighbors who read different languages, so a market never sets the language. |
+| Layout is positioned with left and right | Every screen; the wireframe styles align text left and pad from the left [wireframes] | The root element takes its direction from the person's language, and layout uses logical properties (inline-start, inline-end). Arabic, Hebrew and Urdu follow the lists under this table. |
+| Titles and names mix scripts | Listing titles, neighbor names and neighborhood names; an Arabic title can hold "IKEA", and an English title can appear in an Arabic interface [wireframes, Posted] | Each title and name takes its direction from its first strong character and is isolated from the line around it. The row's walking time, tenure and price are separate isolated runs. |
+| Sentences are assembled from a count, a distance and an item title | "842 neighbors within a 20-min walk can see your bookshelf" [wireframes, Posted]; the audience line above Post it [wireframes, Post an item] | One ICU message per sentence, with CLDR plural rules: Arabic has six plural forms and Japanese has one. The item title sits outside the sentence, because its gender and case are unknown. |
+| The tenure label needs the person's gender | "Neighbor since 2021" on rows, item detail and interest notifications [wireframes, Browse] [blueprint] | German, Portuguese, Spanish, Arabic and Hebrew inflect "neighbor" by gender, and Nearby collects only the data core functions need [project context]. The label is phrased without a noun for the person. |
+| Dates and times are fixed English strings | "Today, until 8 pm", "Neighbor since March", "Posted today" [wireframes, Browse and Post an item] | Each is formatted from a timestamp by the person's locale. Relative time is the first choice wherever a moment is shown. |
+| The currency is fixed | "$" in the price field and on price badges [wireframes, Post an item and Browse] | The neighborhood's market sets the currency, and the person's locale formats the amount. Free stays a word on a chip and a badge in every market. |
+| Labels have no room to grow | Tab bar, filter chips, list rows and buttons at 390 px [wireframes, Browse] | A button label is at most 20 characters in English and 28 translated, and truncates beyond 28. A row's walking time and tenure wrap to a second line before they truncate, and the Pending pickup stamp moves under the title. Line height is set per script: Japanese, Arabic and Urdu need taller lines than Latin. |
+| "On your block" names a unit of the US street grid | The nearest list group and the daily digest's name [wireframes, Browse] [site map] | Outside the United States and Canada the nearest group is named by walking time, as the other groups are. |
+| The meeting point is the nearest intersection | Pickup, for meet outside and flexible [blueprint, Location disclosure] | Japanese addresses name blocks, and most streets have no name. In Japan the meeting point is a map pin with the nearest named landmark. |
+| Quick replies are fixed English sentences | The thread on the pickup screen [journey, Thread] | A quick reply is sent as a message key and rendered in each reader's language, so two neighbors with different languages can arrange a pickup. Free text is shown as written. |
 
-**Strings, formats and content**
+*Right-to-left layout: Arabic, Hebrew, Urdu*
 
-| Where | Gap | Change |
-|---|---|---|
-| Free listings [wireframes, Browse; Post an item] | A zero price and "Free" are the same value. | Free is a price type, shown as the translated word, never as a zero amount. |
-| Quick replies [journey, Flow 4] | A reply is sent as text, so the recipient reads it in the sender's language. | A reply is sent as a string key and rendered in each reader's app language. |
+Mirrors:
+
+- The tab bar: Explore at the right edge, You at the left. Post stays in the center [site map].
+- List rows: the thumbnail on the right, the price badge and the Pending pickup stamp on the left [wireframes, Browse].
+- Filter chips: All starts at the right edge and the row scrolls leftward [wireframes, Browse].
+- Radius presets: 5 min at the right, 20 min at the left [site map].
+- Back arrows point right, and each posting step enters from the left [journey, Posting an item].
+- The digest card stack advances in the opposite direction [journey, Digest cards].
+- Map controls sit on the left edge.
+- The Undo action sits at the left end of its toast [journey, Interaction Specifications].
+
+Stays:
+
+- The map. Geography has no reading direction.
+- Photos.
+- Prices, clock times and walking minutes. Digits read left to right inside a right-to-left line.
+- The plus on Post, the camera shutter and the checkmark on Interest sent.
+
+Prices use Western digits (0 to 9) in every market. A person reading Arabic or Urdu can choose Eastern Arabic digits (٠ to ٩) for display.
 
 ---
 
 **Cultural adaptation brief**
 
-**Japan**
+The design as it stands fits the United States and Canada: tenure, exchange count and walking time carry trust [brief], the listed price is the price, neighbors pay in cash or with Venmo at pickup, and the tone is casual.
 
-| What changes | Reason | In the design now |
-|---|---|---|
-| Nearby sends the buyer's interest to the seller as an introduction. The seller accepts a meeting request. | Platform mediation is the trust signal between strangers; direct contact before an introduction reads as rude. | The seller receives "[Name], 4 min walk away, is interested" and responds to the interest [blueprint; journey, Flow 3]. |
-| No offer control. "I want this" commits the buyer to the listed price. | Listed prices are almost never negotiated. | Matches the current design. |
+*Every market*
 
-**India**
+- **Payment methods at pickup.** The pickup screen names the in-person payment methods the seller takes, chosen from the market's list. Nearby processes and records no payment [project context].
+- **Listing photos.** The camera frames the item, and no prompt asks for a face. Whether clothing is shown worn, on a hanger or laid flat is set in each neighborhood's organizer guidelines [blueprint, Support for every stage].
 
-| What changes | Reason | In the design now |
-|---|---|---|
-| Phone verification is offered after signup and is the first trust signal on the profile. Browsing and posting never require it. | An unverified, anonymous account signals low investment. | Signup has no identity verification [project context]. |
-| "Make an offer" sits beside "I want this". The buyer suggests a price; the seller accepts, counters or declines. Each step is a control. | Negotiation is expected, and the listed price is an opening position. Free text is locked until the same two neighbors have completed 3 exchanges [journey, Flow 4]. | The price is final, with no offer control [journey, Flow 3]. |
+*Japan*
 
-**Germany**
+- **Nearby makes the introduction.** Trust attaches to the service that introduces two people before it attaches to either person. Interest reaches the seller as a notification from Nearby with no message between the two [blueprint, Interest and acceptance]. In Japan that notification presents the interest as a request to meet, and the seller accepts the request.
+- **Account age and tenure lead.** The item detail and the interest notification show how long the person has been a member before the exchange count [blueprint, Trust signals].
+- **Formal register.** Notifications, quick replies and errors use polite forms. "Never mind, sorry" becomes a formal apology.
+- **The listed price is final.** "I want this" commits the buyer to the listed price. The pickup screen states the amount, because neighbors pay in cash in an envelope or with PayPay [journey, Multi-Channel Map].
+- **Free is written as a word.** ¥0 does not read as a gift.
+- **The text carries the confirmation.** The checkmark on Interest sent can read as a mark for a wrong answer, so "Interest sent" is never shown as the mark alone [journey, Interaction Specifications].
 
-| What changes | Reason | In the design now |
-|---|---|---|
-| A seller's walking time is opt-in. Until the seller opts in, the card, item detail and profile say "In your neighborhood", and the listing has no distance group in the list. | A stated walking time to a person's home reads as surveillance. | "Lives about a 3-minute walk from you" and a walking time on every card [copy deck; journey, Flow 2]. |
-| Formal address (Sie) by default; informal address (du) is a setting. | The person chooses informal address. | The voice sits 80% toward casual [copy deck]. |
+*India*
 
-**Brazil**
+- **Community affiliation is the lead trust signal.** Trust comes from a shared community, and an account with no affiliation reads as low commitment. The profile and the item detail show the organizer-run groups a person belongs to [project context, Organizers].
+- **Phone verification is optional and comes after signup.** A verified number shows on the profile. Signup asks for none [project context, Constraints].
+- **An interest can carry an offer.** Negotiation is expected, and a listed price is an opening position. The buyer adds an amount to "I want this". The seller sees it beside the walking time and tenure and accepts or passes [journey, Interest in a listing]. The app carries no counter-offer and no message.
+- **Payment methods:** UPI (PhonePe, Google Pay) and cash.
 
-| What changes | Reason | In the design now |
-|---|---|---|
-| After an exchange, each neighbor can leave a short thank-you note. It shows on the other person's profile once that person approves it. | Visible social warmth builds trust. | No public reviews, and feedback is private [copy deck; project context]. |
+*Mexico*
 
-**Mexico**
+- **An interest can carry an offer on a listing priced above 200 MXN.** Negotiation is expected above that price. The mechanism is India's.
+- **Payment methods:** cash and MercadoPago.
 
-| What changes | Reason | In the design now |
-|---|---|---|
-| India's offer control appears on listings priced over 200 MXN. | Negotiation is expected above that price. | The price is final, with no offer control [journey, Flow 3]. |
+*Germany*
+
+- **A listing shows a walking-time group in place of minutes.** Exact walking minutes to a stranger's home read as surveillance. The item detail shows the list group, such as 5-min walk, unless the seller turns on minutes. The group also limits the estimate of a seller's address that walking times from several positions allow [blueprint, Ecosystem & dependencies].
+- **Formal address.** Copy uses Sie. A person can switch to du in You.
+- **One offer for each buyer on a listing.** A single counter-proposal is acceptable and repeated haggling is not. The mechanism is India's, limited to one amount.
+- **Payment methods:** cash, PayPal and bank transfer.
+
+*Brazil*
+
+- **Profile photos are prompted and optional.** Trust comes from seeing and hearing from the person.
+- **A thank-you note after an exchange.** Either person can send the other a short note. It goes to that person alone: nothing about a neighbor's conduct is shown publicly [project context, Ethical stance].
+- **Warm, informal tone.**
 
 ---
 
 **Market-specific requirement matrix**
 
-**Formats**
+*Formats*
 
-| Requirement | US (current design) | Japan | India | Germany | Brazil | Mexico |
-|---|---|---|---|---|---|---|
-| Payment methods a seller can name on a listing | Venmo, cash | Cash, PayPay | UPI, cash | Bank transfer, cash, PayPal | Cash | Cash, MercadoPago |
-
-Nearby does not process, hold or record a payment in any market [project context]. The seller picks the payment methods as labels.
-
-**Legal**
-
-| Market | Requirement | Change to the design |
+| Requirement | Market | Value |
 |---|---|---|
-| EU and EEA, Germany included (GDPR) | Location is personal data; processing it needs explicit consent beyond the OS location permission. People can delete and export their data. | A consent screen before the location request states that location is used to show nearby items and that exact location is never shared with other people. Account deletion removes location history, exchange history and profile data. Settings has a data export. |
+| Decimal and thousands separators | United States, Canada, Mexico, India, Japan | 1,000.00 |
+| Decimal and thousands separators | Germany, Brazil | 1.000,00 |
+| Decimal places in a price | Japan | None |
+| Clock | United States, Canada, India | 12-hour |
+| Clock | Germany, Brazil, Mexico, Japan | 24-hour |
+| Date order | United States | Month, day |
+| Date order | Canada, Germany, Brazil, Mexico, India | Day, month |
+| Date order | Japan | Year, month, day |
+
+*Law*
+
+| Law | Market | Requirement | Change to Nearby |
+|---|---|---|---|
+| GDPR | EU and EEA | Location is personal data, and processing it needs consent separate from the phone's location permission. A person can delete and export their data. | A consent screen before the map says location is used to show nearby items and that an exact location is never shown to other neighbors. Deleting an account deletes location history, exchange history and the profile, including the exchange count that otherwise stays while the account exists [blueprint, How records end]. A person can export all their data. |
+| LGPD | Brazil | Consent is granular. The privacy policy is in Portuguese. A data protection officer is appointed. | Location, notifications and contacts each get a separate consent; the contact list and location never share a prompt [blueprint, Ecosystem & dependencies]. |
+| CCPA and CPRA | California | Right to know, to delete and to opt out of sale. Location is personal information. | A "Do Not Sell or Share My Personal Information" link, a disclosure of the data categories collected, and deletion requests answered within 45 days. |
+| PIPL | China | Personal data of people in China is stored in China. | Separate infrastructure and a separate legal entity, decided at market entry. |
 
 ---
 
@@ -1218,15 +1863,25 @@ Nearby does not process, hold or record a payment in any market [project context
 
 | Test | Risk it catches | Pass line |
 |---|---|---|
-| Right-to-left build with Arabic content written by a native speaker, on Browse, the posting steps, Posted, item detail and the pickup screen | Elements left unmirrored, and elements mirrored in error | Every row of the right-to-left table holds. The map, digits and non-directional glyphs are unchanged. |
-| Sessions in Germany: 5 sellers post with distance hidden, and 5 buyers browse those listings | "In your neighborhood" gives buyers too little to act on | 4 of 5 sellers keep the default or opt in with a stated reason. 4 of 5 buyers express interest in a listing with no walking time. |
+| Pseudo-localization of Browse, Post an item and Posted at 390 px, strings lengthened to 150% and accented | Labels with no room to grow; strings outside the translation files | No text is clipped or overlaps another element. A button label of up to 28 characters shows in full. No unaccented string appears. |
+| Arabic build of Browse, Post an item, Posted and Pickup | Layout positioned with left and right | Every element under Mirrors is mirrored and every element under Stays is unchanged. |
+| Mixed-script listings: an Arabic title holding a Latin brand name, an English title in the Arabic interface, each with a price and a walking time | Titles and names that mix scripts | The brand name, digits and currency symbol read in their written order on the list row, the item detail and the interest notification. |
+| Plural and gender review by a native speaker in Arabic, German, Portuguese, Spanish and Japanese | Assembled sentences; the gendered tenure label | The audience sentence is grammatical for every CLDR plural category of the language. The tenure label is correct for a person of any gender. |
+| Format check in each market's locale | Fixed dates, times and currency | Prices, clock times and dates on Browse, Post an item and Pickup match the formats table. |
+| In-context review by a native speaker in each market | Register and tone | Japanese copy is in polite forms throughout. German copy uses Sie until the person switches. No string is flagged as machine translation. |
+| Sessions with sellers and buyers in each market: item detail and interest notification | The market's lead trust signal | At least 4 in 5 participants say they would hand over or collect the item, and name the market's lead signal as a reason. |
+| Sessions in India, Mexico and Germany: sending and receiving an interest with an offer | An offer amount in place of negotiation | At least 4 in 5 buyers who want a lower price send an offer unprompted. At least 4 in 5 sellers accept or pass without asking for a way to reply. |
+| Sessions in Japan and the United States: a listing with no offer | Price shown as final | At most 1 in 5 participants looks for a way to propose a lower price. |
+| Sessions with sellers in Germany: the listing preview | Walking-time group in place of minutes | At least 4 in 5 sellers say the listing shows no more about their location than they accept. |
+| Sessions in Japan: the pickup screen | Meeting point as a pin and landmark; the checkmark | At least 4 in 5 buyers point to where they would wait. At least 4 in 5 read the Interest sent confirmation as sent. |
+| Sessions in Brazil: the thank-you note | A private note in place of a public one | At least 4 in 5 participants who send a note expect it to reach the other person alone. |
 
 ---
 
 **Open questions**
 
-- Which market launches first?
-- Does the rule against identity verification at signup allow phone verification in India when it is offered after signup?
+- Which market does Nearby enter after the United States, and in what order do the others follow?
+- Which languages besides English does the first neighborhood need?
 
 ### Philosopher
 
@@ -1242,73 +1897,186 @@ Gross merchandise value is the wrong north star: a neighborhood where everyone g
 
 **Measurement framework (GSM map)**
 
-Every chain is segmented by neighborhood and density tier: urban core, medium density, suburban and rural [blueprint, Neighborhood Graph Service]. City-wide totals are never a result [project context, success definition].
+Each metric is computed weekly for each neighborhood over a rolling 4-week window and stored as a neighborhood aggregate with its n. A rate with fewer than 30 cases in the window is reported as a count. Aggregates are computed before interest requests and exchange details are deleted, 30 days after they end [blueprint, How records end].
 
-A completed exchange: the buyer confirms "Yes, got it", or the seller marks "Exchanged" and the buyer does not answer "It fell through" [journey, Flow 3]. An active neighbor: an account that posted an item or sent an interest in the last 30 days.
+A neighborhood is the named area that an organizer's queue and a person's exchange count belong to [blueprint, Open questions]. An active person posted, sent an interest or confirmed an exchange in the past 28 days.
 
-**Exchange density**
+*Things change hands every week*
 
-Goal: 15 or more exchanges per 1,000 households per week in a mature neighborhood [brief, goal 1].
+- **Signal:** Neighbors confirm exchanges week after week, whether the item was sold, traded or given [brief, Goals].
+- **Metric:** Weekly exchange density.
+  - Formula: confirmed exchanges in the week ÷ (households in the neighborhood ÷ 1,000).
+  - Source: exchange confirmations on the platform server; households from housing density data [blueprint, Support for every stage].
+  - Threshold: 15 or more in a neighborhood open 3 months or longer.
+  - Undercount: an accepted exchange that closes unconfirmed after 48 hours adds to no count [blueprint, Handoff not confirmed]. The share of accepted exchanges that close unconfirmed is reported beside density.
+- **Counter-metric:** As-described rate.
+  - Formula: exchanges the buyer marks as described ÷ exchanges where the buyer answered [blueprint, Pickup and completion].
+  - Source: Trust Inference Engine.
+  - Floor: 90%.
+- **Never a target:** Gross merchandise value, city-wide user totals and blended acquisition cost. Each rises while no neighborhood reaches density [project context, Success], and a free item counts the same as a $40 one.
 
-- Signal: neighbors inside one walking radius complete exchanges every week, sold, traded or given.
-- Metric: completed exchanges in the neighborhood in the week ÷ (households in the neighborhood ÷ 1,000). A free exchange counts the same as a sale; prices are not summed.
-- Source: server exchange-completion events; census household estimates for the neighborhood boundary.
-- Frequency: weekly, 4-week rolling average.
-- Threshold: 15 or more in neighborhoods active for 3 months or longer.
-- Counter-metric: median weekly minutes in app per weekly active user. Ceiling: 20 minutes. Density that rises with time in app comes from browsing without exchange [project context, ethical stance].
+*Most listings end in an exchange*
 
-**Listing completion**
+- **Signal:** A listing closes with a confirmed exchange before it expires at 14 days [blueprint, Stale listings].
+- **Metric:** Listing completion rate.
+  - Formula: listings closed by a confirmed exchange ÷ listings closed, excluding listings hidden by moderation.
+  - Source: listing records.
+  - Threshold: 60% or more [journey, Problem Statement]. The bet that walking distance completes more listings fails at 25% or below, the estimate for local listings on Marketplace [brief, Key Assumptions].
+- **Counter-metric:** Posting effort.
+  - Formula: posts started at + that publish ÷ posts started; median time from + to live for a seller past their first listing.
+  - Source: post events in the app.
+  - Floor: 85% publish. Ceiling: 30 seconds [brief, Proposed Scope].
 
-Goal: 60% or more of listings end in a handoff, against 20 to 30% on broad platforms [brief, goal 2 and hypothesis].
+*A listing is exchanged within days*
 
-- Signal: a published listing reaches a confirmed exchange.
-- Metric: listings with a completed exchange ÷ listings published, by weekly publish cohort, read at the 14-day listing expiry [edge cases, abandoned listings]. Expired, archived and withdrawn listings stay in the denominator.
-- Source: server listing-published and exchange-completion events.
-- Frequency: weekly.
-- Threshold: 60% or higher.
-- Counter-metric: "As described" answers ÷ all answers to the post-exchange feedback prompt, reported with n [blueprint, buyer step 6]. Floor: 90%. Completion that rises while this falls means items do not match their listings.
+- **Signal:** The time between a listing going live and its confirmation is short.
+- **Metric:** Time to exchange.
+  - Formula: median hours from live to confirmed exchange, among exchanged listings.
+  - Source: listing records.
+  - Threshold: under 48 hours [blueprint, Posting and browsing].
+- **Counter-metric:** Push notifications kept on.
+  - Formula: people with push notifications on 30 days after opting in ÷ people who opted in.
+  - Source: notification settings.
+  - Floor: 80%.
+- **Never a target:** Notification open rate. It rises with more frequent and more urgent notifications [project context, Ethical stance].
 
-**Trust between neighbors**
+*Giving is a regular part of the market*
 
-Goal: tenure, distance and exchange counts are enough for a neighbor to meet a stranger, with no ratings [brief, guiding principle 4 and hypothesis].
+- **Signal:** Sellers set the price to Free [wireframes, Post an item].
+- **Metric:** Free share.
+  - Formula: listings posted as Free ÷ listings posted.
+  - Source: listing records.
+  - Threshold: 25% or more [site map, Decisions].
+- **Counter-metric:** Completion rate of Free listings, computed as the listing completion rate. Floor: 60%.
 
-- Signal: a neighbor who completed one exchange with a stranger completes another.
-- Metric: active neighbors with 2 or more completed exchanges in the calendar month ÷ active neighbors in that month.
-- Source: server exchange-completion events per account.
-- Frequency: monthly.
-- Threshold: 30% or higher.
-- Counter-metric: reports of a message, a listing or a person per 100 completed exchanges [journey, Flow 4]. Ceiling: 1. Repeat exchange that rises with reports means the neighbors retained are the ones doing harm.
+*A person who found what they need opens the app less*
 
-**Cold start**
+- **Signal:** A buyer finds an item within minutes of opening the app [project context, Ethical stance].
+- **Metric:** Time to first interest.
+  - Formula: median time from app open to the first interest, in sessions that send one.
+  - Source: session events in the app; interest requests.
+  - Threshold: under 3 minutes.
+- **Metric:** Browse-to-interest rate.
+  - Formula: sessions that send an interest ÷ sessions that open Explore or List.
+  - Source: session events in the app; interest requests.
+  - Threshold: above 15%.
+- **Counter-metric:** Repeat exchange.
+  - Formula: active people with 2 or more confirmed exchanges in a calendar month ÷ active people.
+  - Source: exchange counts in the Trust Inference Engine.
+  - Floor: 30%.
+- **Never a target:** Time in app and the ratio of daily to monthly active users. Both rise when discovery fails or when people feel compelled to check every day.
 
-Goal: a launched neighborhood reaches working density before the next one opens [brief, constraints and guiding principle 1].
+*Living nearby raises trust*
 
-- Signal: a new neighborhood has enough neighbors posting and responding for a listing to be seen.
-- Metric: neighborhoods with 10 or more active neighbors 30 days after launch ÷ neighborhoods launched.
-- Source: server account, listing and interest events by neighborhood.
-- Frequency: day 30 per neighborhood; the rate monthly.
-- Threshold: 40% or higher.
-- Counter-metric: active neighbors in a neighborhood with 10 or more active neighbors ÷ all active neighbors. Floor: 80%. Launches that outrun this put new neighbors on an empty map [project context, success definition].
+- **Signal:** Buyers ask for items on their block as readily as for items farther away [brief, Key Assumptions].
+- **Metric:** Interest rate by walking time.
+  - Formula: interests sent ÷ item detail views, for On your block, 5-min walk and 10-min walk [site map, Orientation].
+  - Source: interest requests; walking time from the Neighborhood Graph Service.
+  - Threshold: the rate for On your block is at or above the rate for 10-min walk.
+- **Counter-metric:** Exchanges without a report.
+  - Formula: accepted exchanges where neither person reports the other ÷ accepted exchanges.
+  - Source: reports [blueprint, A flagged listing].
+  - Floor: 99%.
 
-**Never a target**
+*One tap of interest is enough to arrange a pickup*
 
-- GMV: it ranks a $50 sale above a gift, and the platform takes no fee on either [project context, hard constraints].
-- DAU/MAU: it rises with compulsive daily checking, and fewer opens after a quick find is success [project context, ethical stance].
-- Push notification open rate: it rises with more frequent and more urgent pushes, past the rate limit of 5 a day and the 15-minute notification batching [blueprint, Notification Service].
-- Blended CAC and city-wide user counts: a signup in an empty neighborhood adds nothing, and a blended figure hides it [project context, success definition].
+- **Signal:** An accepted interest ends in a handoff after few quick replies [brief, Key Assumptions].
+- **Metric:** Accepted-to-exchanged rate.
+  - Formula: accepted interests confirmed as exchanged ÷ accepted interests.
+  - Source: accepted exchange records.
+  - Threshold: 70% or more.
+- **Metric:** No-show rate.
+  - Formula: accepted interests marked "It fell through" after the time window opened ÷ accepted interests [journey, Buying].
+  - Source: accepted exchange records.
+  - Threshold: under 10%.
+- **Metric:** Quick replies per exchange.
+  - Formula: median quick replies sent in the thread of a confirmed exchange [journey, Messaging].
+  - Source: thread counts, taken before the thread is deleted.
+  - Threshold: under 3.
+- **Counter-metric:** Interests answered.
+  - Formula: interests the seller accepts or passes before the 48-hour expiry ÷ interests sent [journey, Buying].
+  - Source: interest requests.
+  - Floor: 80%.
+
+*A walking radius holds enough supply*
+
+- **Signal:** A buyer who opens the app sees items inside their walking radius [brief, Key Assumptions].
+- **Metric:** Empty-radius rate.
+  - Formula: app opens where Explore has no listing inside the person's walking radius ÷ app opens, by density tier [blueprint, Walking radius].
+  - Source: Neighborhood Graph Service.
+  - Threshold: under half in each tier.
+- **Metric:** Active people.
+  - Formula: active people in the neighborhood.
+  - Source: listing, interest and exchange records.
+  - Threshold: 50 or more within 30 days of the neighborhood opening [project context, Constraints].
+- **Metric:** Activation.
+  - Formula: new accounts that post or send an interest within 7 days ÷ new accounts.
+  - Source: account, listing and interest records.
+  - Threshold: 40% or more.
+- **Counter-metric:** Exchanges within a 10-minute walk.
+  - Formula: confirmed exchanges where the buyer's walking time to the item was 10 minutes or less ÷ confirmed exchanges.
+  - Source: Neighborhood Graph Service.
+  - Floor: 75%.
+
+*Organizers bring their groups*
+
+- **Signal:** A neighborhood's organizer posts and reviews the moderation queue week after week [brief, Key Assumptions].
+- **Metric:** Organizer activity.
+  - Formula: neighborhoods where an organizer posted or settled a queue item in the past 28 days ÷ open neighborhoods.
+  - Source: listing records; moderation queue.
+  - Threshold: 50% or more.
+- **Counter-metric:** Queue settled by the organizer.
+  - Formula: held and reported items the organizer clears, hides, warns on or escalates within 24 hours ÷ items sent to the queue [blueprint, No organizer action].
+  - Source: moderation queue.
+  - Floor: 80%. Below it the queue is more than a volunteer can carry.
 
 ---
 
 **Learning plan**
 
-Product and design read every checkpoint together.
+Product and design read each checkpoint together.
 
-| When | Chains read | What the result triggers |
-|---|---|---|
-| Every week, per neighborhood | All, each with its counter-metric | A threshold met while its counter-metric is past its limit does not count as met. A counter-metric past its limit two weeks running: the change that moved it is rolled back, and interviews at that step find the cause before another change ships. |
-| 30 days after a neighborhood launches | Cold start | 10 or more active neighbors: the neighborhood moves to the weekly read. Fewer: the seeding steps come before any other work there [edge cases, cold start]. Rate under 40%, or the counter-metric under its floor: launches stop until both recover. |
-| 3 months after a neighborhood launches | Exchange density, Listing completion, Time to exchange, Free listings | All met with counter-metrics inside their limits: the neighborhood counts as mature and the next neighborhood outward opens [project context, product and business]. Listing completion between 30% and 60%: the brief stands, and work goes to the step between interest and handoff with the largest drop-off. Listing completion at 30% or lower: the hypothesis is contradicted, and reopening the brief is requested. Density under 15 in suburban and rural neighborhoods while urban ones meet it: the assumption that walking distance yields enough supply at low density is contradicted, and reopening the brief is requested [brief, key assumptions]. The brief is reopened once per iteration at most. |
-| Every month | Trust between neighbors, Organizer moderation | Repeat exchange under 30%, or reports past the ceiling: the trust questions in the interview guides run in that neighborhood before any trust signal changes [research plan]. Organizer coverage under 50%: organizers are recruited in the uncovered neighborhoods before the next launch. Flags acted on under 90%: that neighborhood's flags escalate to platform moderation until a second organizer joins [blueprint, Content Moderation System]. |
+*Weekly review*
+
+- **When:** Every week from the day the first neighborhood opens.
+- **Reads:** Every chain.
+- **Results:**
+  - A counter-metric under its floor: the change that preceded the fall is reversed, and the chain's metric counts as no progress until the floor holds again.
+  - A metric that moves in the 2 weeks after a change: read from week 3.
+
+*Day 30*
+
+- **When:** 30 days after a neighborhood opens.
+- **Reads:** A walking radius holds enough supply; Organizers bring their groups.
+- **Results:**
+  - 50 or more active people: the neighborhood runs to week 8 unchanged.
+  - Under 50 active people: activation work stays in this neighborhood and no other neighborhood opens.
+  - No organizer activity: the neighborhood's queue goes to platform moderation [blueprint, No organizer action], and organizer recruitment restarts.
+
+*Week 8*
+
+- **When:** 8 weeks after a neighborhood opens, with two 4-week windows complete.
+- **Reads:** Most listings end in an exchange; One tap of interest is enough to arrange a pickup; Living nearby raises trust; A walking radius holds enough supply.
+- **Results:**
+  - Listing completion at 60% or more: the walking-distance bet holds.
+  - Listing completion between 25% and 60%: interviews with sellers whose listings expired.
+  - Listing completion at 25% or below: the designer is asked to reopen the brief.
+  - Accepted-to-exchanged under 70%, or no-show at 10% or more: holding messaging until the second version [brief, Proposed Scope] goes back to the designer.
+  - Interest rate for On your block below the rate for 10-min walk: interviews with buyers and sellers on exchanging with the closest neighbors.
+  - Empty-radius at half or more in a density tier: that tier's walking radius is reviewed [blueprint, Walking radius].
+
+*Month 3*
+
+- **When:** 3 months after a neighborhood opens.
+- **Reads:** Things change hands every week; A listing is exchanged within days; Giving is a regular part of the market; A person who found what they need opens the app less.
+- **Results:**
+  - Density at 15 or more with the as-described rate at 90% or more: the next neighborhood opens [brief, Guiding Principles].
+  - Density under 15: no further neighborhood opens.
+  - Density at 1.5 or below: the designer is asked to reopen the brief.
+  - Free share under 25%: whether giving gets a place in the navigation [site map, Open Questions] goes back to the designer.
+  - Time to exchange at 48 hours or more, or time to first interest at 3 minutes or more: interviews at the step where the wait falls.
+
+A request to reopen the brief is made once per iteration. It carries the metric, its counter-metric and the assumption they contradict, and the designer decides.
 
 ## /specify
 agent: Rune
@@ -1318,9 +2086,9 @@ Posting was approved while browsing and the exchange were still being redesigned
 
 ### Output
 
-**Nearby: posting**
+**Nearby: posting an item**
 
-Nearby is a walking-distance marketplace: neighbors sell, trade and give things away, and the buyer picks the item up on foot [brief]. This package covers posting an item, for a neighbor who wants something gone with the effort of a yard sign; the target is a post in under 30 seconds [brief]. Browse is included as the entry and return screen for posting. Out of scope: the rest of browsing, and the exchange from interest to pickup, whose item detail, Activity and pickup screens have no wireframes.
+Nearby is a mobile marketplace for buying, selling, trading and giving within walking distance [brief]. This package covers posting: a seller photographs an item, sets a price or Free and a pickup option, and the listing is live to neighbors within a 20-min walk, in under 30 seconds after a first listing [brief] [wireframes, Post an item]. Posting is for sellers clearing things out in a burst, who leave the item on the curb when a post takes more than 60 seconds [project context]. Browse is in the package as the screen posting starts from and returns to. A row on Browse opens item detail; item detail, Activity and the pickup screen belong to the exchange, which this package leaves out.
 
 ---
 
@@ -1328,9 +2096,19 @@ Nearby is a walking-distance marketplace: neighbors sell, trade and give things 
 
 | Artifact | What it holds |
 |---|---|
-| Brief | The walking-distance hypothesis, goals, constraints and MVP scope, with posting under 30 seconds |
-| User journey map | Flow 1, posting: steps, decision gates, error paths, tap and time targets. Flows 2 to 4: discovery, interest, messaging |
-| Wireframes | Full-page screens for Browse, Post an item and Posted, with the click-through from Browse's Post tab to Posted and back |
+| Brief | The gap, the goals, the constraints, the guiding principles, the assumptions and the Phase 1 scope |
+| Project context | Users, hard constraints, design principles and the ethical stance the other artifacts cite |
+| Service blueprint | What each person does and sees, the services behind each step, the walking radius tiers, location disclosure, failures and their recovery |
+| Journey | The posting flow with its branches, the interaction specification, and the discovering, buying and messaging flows the exchange uses |
+| Site map | The tab bar, what each tab holds, cross-links, filters, the category taxonomy, search and browse |
+| Wireframes | Browse, Post an item and Posted at full page, with the reason for each numbered element and a prototype view of the posting flow |
+| Copy deck | Copy the frames do not carry: error messages, empty states, notices and the voice framework |
+| State inventory | The state inventory and edge case catalog: what each screen shows when a step fails, waits or has nothing to show |
+| Accessibility audit | Findings, the screen reader flow and the keyboard navigation map |
+| Adaptation specs | How the screens change across platforms |
+| Localization requirements | The market requirement matrix and the cultural adaptation brief |
+| Measurement framework | The metrics that read the scope's success and the events that feed them |
+| Decision log | Decisions someone might reopen, with the ethical review among them |
 
 ---
 
@@ -1338,67 +2116,70 @@ Nearby is a walking-distance marketplace: neighbors sell, trade and give things 
 
 | Screen | Wireframe | Journey step | IA node | Blueprint touchpoint | States | Copy |
 |---|---|---|---|---|---|---|
-| Post an item: photo first, then fields, because the photo does the describing | Post an item | Flow 1, steps 1 to 3 (capture, confirm photo, set details) on one screen; Post to Maplewood publishes. Step 4 (pickup) and step 5 (map preview) have no wireframe | Post tab. Category takes one taxonomy category | Seller steps 1 to 4. Image and text moderation at post time. Listing cap: 3 active per new account until its first exchange | On the screen: the filled form with 2 of 8 photos. In the state inventory: upload in progress, upload failed, offline draft, moderation hold, duplicate detected. In Flow 1: camera permission denied, flagged photo, price warning | On the screen. Error messages: copy deck |
-| Posted: confirms the item is live and states its audience and that posting is free | Posted | After Flow 1, step 5 | Post tab, active | Seller step 4, Publish. Notification batching: interest alerts every 15 minutes (seller step 5) | On the screen: the live listing. In the state inventory: moderation hold; offline queue, pending publish | On the screen |
+| **Browse.** What a neighbor can walk to, nearest first; posting starts at its + and Done returns here. | Browse | Discovering nearby items, List; the "any screen" that posting starts from [journey] | List tab; Post (+) is the center tab; search appears on pull-down [site map] | Posting and browsing, step 5. The Neighborhood Graph Service returns the listings inside the walking radius [blueprint] | In the frame: listings grouped by walking time, one marked Pending pickup. In the state inventory: no listings in the radius, geolocation off, search index down | In the frame. Empty-state and error strings in the copy deck |
+| **Post an item.** One screen from photo to commit, because a seller abandons a post that takes more than 60 seconds [project context]. | Post an item | Posting an item: Camera, Photo check, Details and Pickup, on one screen [journey] | Post (+): Camera and photo check; Title, price and category; Pickup. The tab bar is hidden [site map] | Posting and browsing, steps 1 to 4. Title and category suggestion from the photo; photo storage on upload; on Post it, the automated layer of Content Moderation, the Trust Inference Engine's limit of 3 active listings and the Neighborhood Graph Service [blueprint] | In the frame: photo taken, title and category suggested, pickup filled from the last listing. In the state inventory: first listing with no saved pickup, limit notice at 3 active listings, camera permission denied, upload failed with the draft kept, no price set, price far above similar items, offline with an empty title | In the frame, including the line above Post it that states who sees the listing, that the address stays hidden and that there are no fees. Notices and errors in the copy deck |
+| **Posted.** Confirms the listing is live, shows it as neighbors see it, and sends the seller to the next item. | Posted | Posting an item: Preview and publish, with the preview shown after publishing [journey] | Post (+): Preview and post. Post another item reopens Post an item; Done opens the List tab [site map] | Posting and browsing, step 4, the confirmation. The Notification Service batches interest push notifications every 15 minutes [blueprint] | In the frame: published. In the state inventory: held by the classifier for review, queued offline until reconnect | In the frame; 842 stands for the number of neighbors inside the listing's 20-min walk [wireframes, Posted]. Held and queued strings in the copy deck |
 
 ---
 
 **Left to the builder**
 
-- Visual design: color, type, spacing, motion beyond the journey's interaction specification
+- Visual design: color, type, spacing, and motion beyond the journey's interaction specification
 - Technology
-- Title and category suggestion from the photo. The design fixes that both are prefilled and editable [journey, Flow 1]
+- The walking radius computation. The design fixes the density tiers (400 m, 800 m, 1,600 m), measurement along the street network, and the hard boundaries at highways, rivers, railways and gated communities [blueprint, Process architecture]. The isochrone computation and its caching are the builder's.
+- The title and category suggestion. The design fixes that both come from the photo and arrive editable, and that the title is empty offline [journey, Posting an item]. The model is the builder's.
+- The offline queue. The design fixes that a draft stays on the phone and a listing made offline publishes on reconnect [journey, Posting an item]. Storage and sync are the builder's.
 
 ---
 
 **Open questions**
 
-- Does posting keep the pickup step and the map preview? Post an item draws neither, and its description hint asks for pickup details in public text. (journey, Flow 1, steps 4 and 5; wireframes, Post an item)
-- Where does Posted say interest arrives: in Messages, as the screen says, or in Activity, with no messaging before the seller accepts? (wireframes, Posted; journey, Flows 3 and 4; brief, MVP scope)
-- Who sees a listing: every neighbor within the 1 mile the screens state, or every neighbor inside the density-tiered walking radius of 400, 800 or 1,600 m, bounded by highways, rivers and railways? (wireframes; service blueprint, Neighborhood Graph Service)
+- Does Trade ship in Phase 1? The scope lists a price or Free, and the price field has a Trade chip. (brief; wireframes, Post an item)
+- Does a Wanted request start from +? If it does, a choice comes before the camera. (site map)
+- Does the limit of 3 active listings apply to a new seller clearing a home? (journey)
+- Is a neighborhood the walking radius around each person or a named area with a fixed boundary? Browse's header names Capitol Hill and Posted counts neighbors within a 20-min walk. (blueprint)
+- Every push notification is opt-in, and Posted says a notification will come. Where is the seller asked, and what does Posted say to a seller who declined? (project context; wireframes, Posted)
+- What does Edit listing on Posted open? (wireframes, Posted)
 
 ## /present
 agent: Noor
 summary: Turned the engagement into a deck asking Nearby's leadership for a go, with the outline approved before any slide was built.
 
-Noor first settled who would be in the room, what they should feel, and the ask: a go on the MVP at Monday's meeting. The evaluation changed that ask. Both launch blockers sit in the handoff between neighbors, so the deck asks to build posting now and hold the launch until the handoff works. Competitor rates appear as labeled estimates, the unsourced market size stays out, and the seller in the walkthrough is labeled a design scenario.
+Noor first settled who would be in the room, what they should feel, and the ask: a go on the MVP at Monday's meeting. The material changed that ask. No neighbor has been interviewed yet, so the deck asks to build for one pilot neighborhood and let eight weeks of exchanges test the bet. Competitor rates appear as unmeasured estimates, the unsourced market size stays out, and the lamp on the curb is cited as the team's claim.
 
 ### Output
 
-The slides below are the deck's own markup, the file /present produced. The grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
+The slides above are the deck's own markup, the file /present produced. The grid and margins come from the skill's theme, and the site's light and dark modes flow through them. Read only the titles, top to bottom, and the argument holds; that's the headlines test a deck passes before it's built.
 
-Every number traces to an earlier chapter, and the source line at the foot of each slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Missing evidence stays visible: the plan says no engineering estimate exists yet. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
+Every number traces to an earlier chapter, and the source line at the foot of a slide says which. Estimates say they're estimates, and targets don't pretend to have baselines. Missing evidence stays visible: the deck says the first interviews report after the decision. The notes stay at three plain sentences a slide, short enough to read at a glance mid-talk.
 
 **The approved outline**
 
-**Pattern:** Situation → complication → resolution. Leadership has to see where the design stands before it can decide, and the complication is the evaluation's own finding.
+**Pattern:** What-is / what-could-be (leadership can decide and the deck asks for a go, so it alternates between how neighbors exchange now and what Nearby changes, and ends on what is still unmeasured)
 
-**Governing message:** Start building Nearby's MVP now, and launch once the handoff between neighbors works.
+**Governing message:** Build Nearby's first version for one pilot neighborhood, where eight weeks of exchanges show whether walking distance makes more listings end in an exchange.
 
-1. **Start building Nearby's MVP now, and launch once the handoff between neighbors works** | Visual: title slide | Source: /evaluate summary
-2. **The MVP tests one bet: walking distance lifts completion to 60%+** | Visual: bar chart from zero of estimated completion by platform, Nearby's target as a dashed outline | Source: /strategize competitive landscape, measurable hypothesis
-3. **The foundations hold: no dark patterns, and trust without star ratings** | Visual: two panels quoting the interface copy | Source: /evaluate anti-pattern verdict and positive findings; /wireframe; /articulate trust signal copy
-4. **Two findings block launch, and both sit in the handoff between neighbors** | Visual: unit chart, one square per finding, by severity | Source: /evaluate priority issues
-5. **A seller can list her couch, then can't get it picked up** | Visual: the eight walkthrough steps with their verdicts | Source: /evaluate cognitive walkthrough
-6. **The brief, the flows and the screens start an exchange three ways** | Visual: three panels side by side | Source: /evaluate, the exchange-start finding; /strategize MVP scope; /journey flows 3 and 4; /wireframe
-7. **On a first exchange, nothing gets the buyer to the seller's door** | Visual: three closed paths for an address, one outcome | Source: /evaluate, the pickup finding; /intent hard constraints; /journey flows 3 and 4
-8. **Decide today: quick replies once the seller accepts, no open messaging** | Visual: the recommended option beside the current one | Source: /blueprint decision documentation; /journey flow 4; /evaluate, both blocking findings
-9. **The bet's assumptions are untested: the interviews were written, not run** | Visual: the hypothesis's "because" clause, quoted | Source: /strategize measurable hypothesis; /investigate research plan
-10. **Beyond the blockers, two major issues need new design** | Visual: the five major issues, grouped into new design and redraws | Source: /evaluate, the five major findings
-11. **Engineering starts on the packaged scope while design fixes the handoff** | Visual: plan in three stages: today, in parallel, before launch | Source: /evaluate recommended actions; /investigate timeline; /specify
-12. **The MVP is judged on completed exchanges, never time in app** | Visual: four target tiles and the counter-metrics | Source: /measure framework
-13. **Approve the build today; launch once the handoff between neighbors works** | Visual: the ask, with go, gate and scope | Source: /evaluate recommended actions; /investigate timeline
+1. Build Nearby for one neighborhood and measure the bet | Visual: title slide | Source: brief, Key Assumptions; metrics, Learning plan
+2. A $10 lamp goes to the curb when posting takes over a minute | Visual: diagram of a seller's two paths, a Marketplace or Craigslist listing and the curb | Source: project context, Users; brief, Gap
+3. Nearby lists only what a neighbor can walk to | Visual: the walking radius at each housing density, 400 m, 800 m and 1,600 m | Source: brief, Gap; service blueprint, Walking radius
+4. The first version posts, browses and arranges a pickup | Visual: scope diagram of what is in, what waits and what is out | Source: brief, Proposed Scope (Phase 1)
+5. A seller posts on one screen with a photo and a price | Visual: the Post an item wireframe | Source: wireframes, Post an item; brief, Proposed Scope
+6. One tap asks for the item; acceptance releases the meeting place | Visual: the exchange from interest to confirmation, with what the buyer sees of the seller's location at each step | Source: journey, Buying; service blueprint, Location disclosure
+7. The 60% completion goal rests on estimates nobody has measured | Visual: bar chart from zero of the estimated completion on Craigslist, Facebook Marketplace and Buy Nothing beside Nearby's goal | Source: brief, Key Assumptions; journey, Problem Statement
+8. The first interviews report on 18 December, after this decision | Visual: research timeline from recruitment on 23 November to the findings report | Source: research plan, Method, Participants, Timeline
+9. Pickup timing, address exposure and the daily digest change first | Visual: each finding beside its change, with its severity | Source: evaluation, Priority Issues; project context, Ethical stance
+10. Posting is packaged to build; the exchange has no wireframes | Visual: the screens in the handoff package beside the exchange screens that have flows, copy and states | Source: handoff, Contents and How the pieces fit; wireframes
+11. Eight weeks in one neighborhood show whether the bet holds | Visual: the pilot checkpoints at day 30, week 8 and month 3, each with its threshold and what follows | Source: metrics, Measurement framework and Learning plan
+12. Approve building Nearby's first version for one neighborhood | Visual: the ask, with who decides and when | Source: brief, Proposed Scope; project context, Open questions
 
-**Gaps:**
+**Gaps**
 
-- The interviews are planned, not run, so the trust model, the reply-time promise and pickup safety rest on assumptions.
-- The brief's platform completion rates are estimates with no source, and its 20 to 30% range does not match its own table, which puts Craigslist near 15%.
-- Nothing in the material says when launch could happen; the build estimate is engineering's.
-- Whether Trade and Wanted ship in the MVP has no recommendation in the material, so it stays off the ask.
+- No neighbor has been interviewed: the research plan reports on 18 December, so no slide carries a quote or a finding.
+- The completion figures for Marketplace, Craigslist and Buy Nothing are estimates with no sample.
+- Item detail, Activity and the pickup screen have no wireframes.
+- The material names no pilot neighborhood, launch date, timeline, budget, team or platform, so the ask cannot say when the build starts or what it costs.
 
-**Refusal checks:**
+**Refusal checks**
 
-- An unconditional go would engineer assent by leaving out the launch blockers, so the deck asks for a gated go instead.
-- The brief's "why now" and its market size have no source. They stay out so they can't create urgency.
-- The walkthrough's seller is the evaluation's design scenario, labeled on the slide as not a research participant.
-- The completion chart keeps Buy Nothing's ~60% instead of showing only the platforms Nearby would beat.
+- Won't substitute emotional appeal for evidence. The lamp on the curb comes from the project context, with no interviewed seller behind it, so slide 2 cites it as the team's claim and no slide quotes a neighbor.
+- Won't engineer assent by narrative shortcut. The 60% is a goal set against unmeasured estimates, so slide 7 shows it as that, and the $200B market figure is left out because it sizes no neighborhood.

@@ -1681,7 +1681,7 @@ tr[hidden] {
 }
 
 /* Bold-only paragraphs and an output's own headings act as section headings */
-.step-output p > strong:only-child,
+.step-output p.output-heading > strong,
 .step-output :is(h4, h5, h6) {
   display: block;
   font-size: var(--text-sm);
@@ -1695,7 +1695,7 @@ tr[hidden] {
   color: var(--fg);
 }
 
-.step-output p:first-child > strong:only-child,
+.step-output p.output-heading:first-child > strong,
 .step-output > :is(h4, h5, h6):first-child {
   margin-top: 0;
 }
@@ -1804,14 +1804,18 @@ tr[hidden] {
 
 /* Illustration scale: the kit's absolute sizes are app-scale by design;
    on the page the frames render at 70% so they read as examples, not a
-   full-size app pasted into the article. zoom scales layout and type
-   together, so proportions stay exactly the kit's. */
+   full-size app pasted into the article. A transform scales layout and
+   type together (iPhone Safari holds text at a minimum size under zoom),
+   and output-panel.js gives each frame negative margins so it takes only
+   its scaled space. */
 .wf-ex {
   width: fit-content;
 }
 
 .wf-ex > .wf {
-  zoom: 0.7;
+  --ex-scale: 0.7;
+  transform: scale(var(--ex-scale));
+  transform-origin: 0 0;
   position: relative;
   font-weight: 400; /* the site's dark-mode 300 body weight must not thin the frames */
   border: 1px solid var(--border);
@@ -1827,9 +1831,9 @@ tr[hidden] {
   width: 390px;
 }
 
-/* stages equalize so the three captions start on one line */
+/* stages equalize so the captions start on one line */
 .wf-examples .vignette {
-  min-height: 264px;
+  min-height: 380px;
 }
 
 .wf-ex-plate {
@@ -1850,8 +1854,9 @@ tr[hidden] {
    deck's own CSS).
 
    Illustration scale: each slide is a 1280×720 stage (1282×722 with
-   its hairline border) scaled with zoom
-   (layout and type together, so proportions stay the deck's). The
+   its hairline border) scaled with a transform
+   (layout and type together, so proportions stay the deck's; see the
+   wireframe examples for why it isn't zoom). The
    steps are computed from the output panel's content width — full
    viewport minus 2 × --s8 padding below 769px; min(66.666vw, 960px)
    minus its 1px border and 2 × --s8 padding above — so a slide never
@@ -1880,7 +1885,9 @@ tr[hidden] {
 }
 
 .deck-ex > .deck-frame {
-  zoom: 0.199; /* 255px — fits a 320px viewport */
+  --ex-scale: 0.199; /* 255px — fits a 320px viewport */
+  transform: scale(var(--ex-scale));
+  transform-origin: 0 0;
   border: 1px solid var(--border);
   border-radius: 8px;
 }
@@ -1914,42 +1921,45 @@ tr[hidden] {
 }
 
 @media (min-width: 375px) {
-  .deck-ex > .deck-frame { zoom: 0.24; } /* 308px of 311 */
+  .deck-ex > .deck-frame { --ex-scale: 0.24; } /* 308px of 311 */
 }
 
 @media (min-width: 480px) {
-  .deck-ex > .deck-frame { zoom: 0.32; } /* 410px of 416 */
+  .deck-ex > .deck-frame { --ex-scale: 0.32; } /* 410px of 416 */
 }
 
 @media (min-width: 600px) {
-  .deck-ex > .deck-frame { zoom: 0.41; } /* 526px of 536 */
+  .deck-ex > .deck-frame { --ex-scale: 0.41; } /* 526px of 536 */
 }
 
 @media (min-width: 700px) {
-  .deck-ex > .deck-frame { zoom: 0.49; } /* 628px of 636 */
+  .deck-ex > .deck-frame { --ex-scale: 0.49; } /* 628px of 636 */
 }
 
 @media (min-width: 769px) {
-  .deck-ex > .deck-frame { zoom: 0.34; } /* 436px of 447 (panel opens at 2/3 width) */
+  .deck-ex > .deck-frame { --ex-scale: 0.34; } /* 436px of 447 (panel opens at 2/3 width) */
 }
 
 @media (min-width: 1024px) {
-  .deck-ex > .deck-frame { zoom: 0.48; } /* 615px of 617 */
+  .deck-ex > .deck-frame { --ex-scale: 0.48; } /* 615px of 617 */
 }
 
 @media (min-width: 1280px) {
   .deck-ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .deck-ex > .deck-frame { zoom: 0.29; } /* 372px of a 382px column */
+  .deck-ex > .deck-frame { --ex-scale: 0.29; } /* 372px of a 382px column */
 }
 
 @media (min-width: 1440px) {
-  .deck-ex > .deck-frame { zoom: 0.33; } /* 423px of a 435px column (panel capped at 960px) */
+  .deck-ex > .deck-frame { --ex-scale: 0.33; } /* 423px of a 435px column (panel capped at 960px) */
 }
 
 /* Journey flow */
+/* the start column holds a long gate label without crowding the steps;
+   below 560px the flow scrolls inside its own box (.visual-diagram) */
 .flow-grid {
   display: grid;
-  grid-template-columns: auto 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
+  grid-template-columns: fit-content(120px) 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
+  min-width: 560px;
   align-items: center;
   padding: var(--s3) 0;
   row-gap: var(--s2);
@@ -2154,8 +2164,16 @@ tr[hidden] {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 4px;
-  flex: 1;
+  flex: 1 1 120px;
   min-width: 80px;
+}
+
+/* narrower than the desktop panel, a lane's steps wrap as the blueprint's
+   own narrow-width layout does, so long labels keep their boxes */
+@media (max-width: 1023px) {
+  .blueprint-lane-nodes { flex-wrap: wrap; gap: var(--s2); }
+  .blueprint-node { flex: 1 1 140px; }
+  .blueprint-connector { display: none; }
 }
 
 .blueprint-service-name {
